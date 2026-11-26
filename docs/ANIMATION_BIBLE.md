@@ -1,4 +1,4 @@
-# ANIMATION BIBLE – Ewigfels
+# ANIMATION BIBLE – Nocturna
 
 Stand: 26.11.2026 · Phase 1 · Version 0.1
 Umsetzung ab Phase 3. Checklisten unten werden beim Import abgehakt (`[x]`) und mit Quelle versehen: **GAS** = Game Animation Sample, **MX** = Mixamo, **MC** = eigene MoCap (FreeMoCap), **KF** = Keyframe (Control Rig/Blender), **MH** = MetaHuman Animator.

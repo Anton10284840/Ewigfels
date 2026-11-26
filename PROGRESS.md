@@ -37,7 +37,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
 | Aufgabe | Status | Notiz |
 |---|---|---|
-| docs/GDD.md | ✅ | Grundsatzentscheidungen E1–E5 mit Optionen (Empfehlung umgesetzt), 25 Weisen, 25 Gegnertypen, 15 Bosse, Systeme, Steuerung |
+| docs/GDD.md | ✅ | E1 entschieden: Akademie + Spieltitel **Nocturna**; E2–E5 mit Optionen (Empfehlung umgesetzt), 25 Weisen, 25 Gegnertypen, 15 Bosse, Systeme, Steuerung |
 | docs/STORY_BIBLE.md | ✅ | Welt Velmark, Zeitlinie, Magie „Resonanz“, Fraktionen, 50 Missionen (Liste), 6 Entscheidungen, 4 Enden, 6 Questreihen |
 | docs/CHARACTER_BIBLE.md | ✅ | Pipeline, MetaHuman-Anleitung, 4 Türme, 15 Figurenblätter, NPC-Plan, 20 Kreaturen |
 | docs/ART_BIBLE.md | ✅ | Paletten pro Region, Rendering, Post Process, Master-Materialien, Licht-Rigs, VFX, Presets, Budgets |

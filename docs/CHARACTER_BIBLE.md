@@ -1,4 +1,4 @@
-# CHARACTER BIBLE – Ewigfels
+# CHARACTER BIBLE – Nocturna
 
 Stand: 26.11.2026 · Phase 1 · Version 0.1
 Inhalt: Pipeline · MetaHuman-Grundanleitung · 4 Türme (Häuser) · 15 Hauptfiguren · NPCs & Crowds · 20 Kreaturen + Reittier.
@@ -48,7 +48,7 @@ Seit UE 5.6 läuft der MetaHuman Creator **im Editor** (kein Browser mehr). Die 
 
 ## 3. Die vier Türme (Häuser)
 
-Ewigfels hat vier Türme. Neue Schüler **wählen** ihren Turm nach Gesprächen mit den Turmsprechern (Mission M102). Jeder Turm wurde 402 n. E. von einer anderen Gruppe gestiftet.
+Nocturna hat vier Türme. Neue Schüler **wählen** ihren Turm nach Gesprächen mit den Turmsprechern (Mission M102). Jeder Turm wurde 402 n. E. von einer anderen Gruppe gestiftet.
 
 | Turm | Lage & Stifter | Werte | Farben (Primär / Sekundär / Akzent) | Wappen | Gemeinschaftsraum | Uniform-Detail |
 |---|---|---|---|---|---|---|
@@ -159,9 +159,9 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 
 | | |
 |---|---|
-| Alter / Rolle / Fraktion | 69 · Rektorin von Ewigfels · neutral, Diplomatin zwischen Kollegium, Hütern und Zünften |
+| Alter / Rolle / Fraktion | 69 · Rektorin von Nocturna · neutral, Diplomatin zwischen Kollegium, Hütern und Zünften |
 | Persönlichkeit | würdevoll, kontrolliert, politisch, kann eiskalt sein. Liebt die Akademie mehr als jeden Menschen. |
-| Ziel | Ewigfels unabhängig halten |
+| Ziel | Nocturna unabhängig halten |
 | Geheimnis | wusste von Brandheim und hat Edda trotzdem eingestellt, als Pfand gegen das Kollegium |
 | Bogen | A1 fern und mächtig · A2 schützt die Akademie, nicht den Spieler · A3 lässt das Turnier trotz Gefahr laufen · A4 tritt zurück oder bleibt (Ruf) · A5 hält in Ende A die Abschlussrede, in B schließt sie die Akademie |
 | Aussehen | langes, edles Gesicht, Adlernase, schwarze Augen, kurzes weißes Haar, sehr dunkle Augenbrauen. Olivfarbene Haut. 178 cm, schlank. |
@@ -310,7 +310,7 @@ Alle Kreaturen sind Eigenentwürfe. Regeln: keine bekannten Fabelwesen-Namen aus
 |---|---|---|---|---|---|---|
 | 1 | **Sturmschwinge** (Reittier) | Weiße Zinnen, Treibende Inseln | Greifenartig: Vorderkörper einer Schnee-Eule (Kopf, Schwingen, Krallen), Hinterkörper eines Luchses, Federohren, Schwanz mit Federfächer. Spannweite 7 m. | scheu, stolz, folgt nur dem, der ihr die Federn ordnet | ja (Story, M305) | Flug-Reittier, Rennen |
 | 2 | **Glimmermotte** | Raunwald, Akademie-Gärten | handgroße Motte, Flügel mit Leuchtmustern, die auf Musik reagieren | schwärmt bei Kerzenlicht, harmlos | nein (anlockbar) | Ambient-VFX, Lichträtsel |
-| 3 | **Laternenkrähe** | Ewigfels, Glockenturm | Krähe mit einer glühenden Kehle, die nachts wie eine Laterne leuchtet | neugierig, klaut glänzende Dinge, bringt Botschaften | ja | Haustier im Turmzimmer, Sammel-Quest |
+| 3 | **Laternenkrähe** | Nocturna, Glockenturm | Krähe mit einer glühenden Kehle, die nachts wie eine Laterne leuchtet | neugierig, klaut glänzende Dinge, bringt Botschaften | ja | Haustier im Turmzimmer, Sammel-Quest |
 | 4 | **Nebelfuchs** | Raunwald | silbergrauer Fuchs, löst sich bei Gefahr in Nebel auf | verspielt, führt Verirrte im Kreis | ja (selten) | Rätsel-Führer, Sidequest |
 | 5 | **Borkenbär** | Raunwald, Zinnen-Ausläufer | Bär mit Fell, das wie Rinde und Moos verwächst, Pilze auf dem Rücken | territorial, schläft im Winter als „Hügel“ | nein | Gegner (Wild), Schutzgebiet-Quest |
 | 6 | **Wurzelvater** | Raunwald-Herz | uralter, 12 m hoher Baumgeist aus verflochtenen Wurzeln, Laternen-Pilze als Augen | schläft, erwacht krank durch Nachhall | nein | Regionsboss |

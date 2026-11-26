@@ -1,4 +1,4 @@
-# STORY BIBLE – Ewigfels
+# STORY BIBLE – Nocturna
 
 Stand: 26.11.2026 · Phase 1 · Version 0.1
 Lore, Weltgeschichte, Zeitlinie, Magieregeln, Fraktionen, Beziehungen, Aktstruktur, Missionsliste, Entscheidungen, Enden.
@@ -20,7 +20,7 @@ Velmark ist ein Kontinent aus Hochland, Wäldern und rauer Küste, technisch ung
 | **Morn** | klein, rostrot, schnell | 11 Tage | unruhige Magie, Nachhall dünner. Vollmorn = Nacht der Unruhe |
 | **Doppelnacht** | beide voll (alle ~319 Tage) | selten | Grenze zum Nachhall öffnet sich, Urton hörbar. Story-Wendepunkte fallen auf Doppelnächte |
 
-**Kalender:** Jahre „n. E.“ (nach Errichtung von Ewigfels). Spielbeginn: **Herbst 812 n. E.** Ein Akademiejahr beginnt zur Herbst-Ilse.
+**Kalender:** Jahre „n. E.“ (nach Errichtung von Nocturna). Spielbeginn: **Herbst 812 n. E.** Ein Akademiejahr beginnt zur Herbst-Ilse.
 
 ## 2. Weltgeschichte und Zeitlinie
 
@@ -30,14 +30,14 @@ Velmark ist ein Kontinent aus Hochland, Wäldern und rauer Küste, technisch ung
 | ~2200 v. E. | Blütezeit. Die Kael „singen“ Inseln in den Himmel (heute: die Treibenden Inseln) und legen die **Adern** in Stimmung: Kraftlinien, die Klang durch das Land tragen. |
 | ~1200 v. E. | **Das Verstummen.** Die Hohe Sängerin **Nymrael** versucht mit dem Urton, den Tod umzuschreiben. Der Ton bricht. Das Becken verdorrt zur Wüste, das Volk der Kael verschwindet in den **Nachhall**, die Welt aus allem, was ungeschehen gemacht wurde. Nymrael bleibt dort gefangen (heute: „Nym“, die Echofrau). |
 | 1200–0 v. E. | Zersplitterte Reiche. Die **Stimmkriege**: Wirker-Fürsten kämpfen um Aderknoten. |
-| 0 n. E. | Die Freien Zünfte und die Hüter der Adern errichten auf dem **Ewigen Fels**, einem summenden Felsen auf dem größten Aderknoten am Ilsensee, eine neutrale Schule: **Ewigfels**. Ein Ort, an dem Klangwirker lernen, statt zu kämpfen. |
-| 402 n. E. | Ewigfels bekommt seine vier Türme. Jeder Turm wird von einer anderen Gruppe gestiftet (§5). |
+| 0 n. E. | Die Freien Zünfte und die Hüter der Adern errichten auf dem **Ewigen Fels**, einem summenden Felsen auf dem größten Aderknoten am Ilsensee, eine neutrale Schule: **Nocturna** („die Nächtliche“, weil der Fels nachts unter den Monden am lautesten summt). Ein Ort, an dem Klangwirker lernen, statt zu kämpfen. |
+| 402 n. E. | Nocturna bekommt seine vier Türme. Jeder Turm wird von einer anderen Gruppe gestiftet (§5). |
 | 655 n. E. | Gründung des **Hohen Kollegiums** in Aurenburg. Ende der Stimmkriege. Das Kollegium regiert Velmark als Rat der Magister. |
 | 661 n. E. | **Edikt der Stille:** Forschung am Urton wird bei Verbannung verboten. Kael-Artefakte gehören dem Kollegium. |
 | 789 n. E. | **Die Nacht von Brandheim.** Ein geheimes Kollegiums-Experiment unter Leitung von Magistra **Edda Vornholt** und Magister **Ruprecht von Stauffen** versucht, den Urton kontrolliert zu nutzen (als Energiequelle). In einer Doppelnacht bricht der Ton. Die Stadt Brandheim wird binnen Sekunden „ungeschehen“: Häuser stehen noch, aber farblos, und 3000 Menschen sind verschwunden. Überlebende: ein Säugling (der **Spieler**) und ein 19-jähriger Wirker-Student, **Theodric Vaal**, der seine Familie verliert. Das Kollegium vertuscht alles als „Aderbrand“. |
 | 790–805 n. E. | Theodric wird zum **Dirigenten** und gründet im Verborgenen **die Stille Hand**. Er hält Magie selbst für die Ursache allen Unglücks. |
-| 800 n. E. | Edda verlässt das Kollegium und wird Lehrerin in Ewigfels. Sie sucht seit Jahren das Kind aus Brandheim. |
-| 812 n. E. | **Spielbeginn.** Der Spieler (15) kommt als Spätberufener nach Ewigfels. Er/sie wuchs in einem Waisenhaus in Kesselbrunn auf und weiß nichts von Brandheim. |
+| 800 n. E. | Edda verlässt das Kollegium und wird Lehrerin in Nocturna. Sie sucht seit Jahren das Kind aus Brandheim. |
+| 812 n. E. | **Spielbeginn.** Der Spieler (15) kommt als Spätberufener nach Nocturna. Er/sie wuchs in einem Waisenhaus in Kesselbrunn auf und weiß nichts von Brandheim. |
 | 812–817 n. E. | Die fünf Akte = fünf Akademiejahre. |
 
 ## 3. Magiesystem: Resonanz
@@ -87,7 +87,7 @@ Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *tha
 
 | # | Region | Kurzbeschreibung | Akt |
 |---|---|---|---|
-| 1 | **Ewigfels & Ilsensee** | Akademie auf einer Klippe über dem tiefen, dunklen Ilsensee. Bootssteg, Inseln, versunkene Glocke im See. | 1–5 |
+| 1 | **Nocturna & Ilsensee** | Akademie auf einer Klippe über dem tiefen, dunklen Ilsensee. Bootssteg, Inseln, versunkene Glocke im See. | 1–5 |
 | 2 | **Raunwald** | Uralter Wald, in dem die Bäume flüstern („raunen“). Nebel, Pilzkreise, Hüter-Hain, verwunschene Lichtungen. | 1 |
 | 3 | **Kesselbrunn** | Bergdorf in einem Talkessel mit heißen Quellen, Markt, Mine, Waisenhaus des Spielers, Werkstatt von Ambros. | 1 |
 | 4 | **Graumoor** | Moor mit den Ruinen der alten Festung **Altwacht** und einem dünnen Ort zum Nachhall. Hüter-Siedlung auf Stelzen. | 2 |
@@ -100,7 +100,7 @@ Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *tha
 
 **Brandheim** (verbotene Zone zwischen Kesselbrunn und Aurenburg): farblose Geisterstadt, Schauplatz von Schlüsselszenen in Akt 2 und 5.
 
-## 5. Ewigfels – Akademie
+## 5. Nocturna – Akademie
 
 - **Gründung:** 0 n. E. durch Zünfte und Hüter als neutrale Schule. Grundsatz über dem Tor: *„Hier lernt man hören, bevor man spricht.“*
 - **Architektur:** Romanisch-gotischer Kern (Große Halle, Kreuzgang) aus grauem Granit auf dem Fels, jüngere Türme in hellem Kalkstein mit Kupferdächern (grün patiniert). Überall Klangarchitektur: Resonanzkammern, Glockenstühle, Röhren, durch die der Fels summt.
@@ -154,7 +154,7 @@ Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscene
 
 | ID | Mission | Inhalt |
 |---|---|---|
-| M101 | Das Boot über den Ilsensee 🎬 | Ankunft bei Nebel, erster Blick auf Ewigfels, Treffen mit Lio. Charakter-Editor davor. Tutorial Bewegung. |
+| M101 | Das Boot über den Ilsensee 🎬 | Ankunft bei Nebel, erster Blick auf Nocturna, Treffen mit Lio. Charakter-Editor davor. Tutorial Bewegung. |
 | M102 | Die Turmwahl | Gespräche mit den vier Turmsprechern, Wahl des Turms, Führung durch die Akademie. |
 | M103 | Der erste Ton | Klangkunde bei Edda, erste Weise (Leichtklang), Duellsaal-Tutorial bei Grell. |
 | M104 | Ein Stab für dich | Reise nach Kesselbrunn, Ambros Kettler stimmt den Stimmstab. Er erkennt etwas und schweigt. Markt-Tutorial. |
@@ -187,7 +187,7 @@ Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscene
 | M301 | Brandheim 🎬 | Mit Edda in die verbotene Stadt. Edda gesteht ihre Mitschuld (Text variiert nach Entscheidung 1). |
 | M302 | Salz und Nebel | Reise nach Tiedmar, Ermittlerin Nell Tiedemann, verschwundene Wirker. |
 | M303 | Der Leuchtturm | Ermittlung + Kampf, Spur zu einem Schiff der Stillen Hand. |
-| M304 | Turnier von Ewigfels | Zwischenstopp: das große Duellturnier (Verbindung zur Duell-Questreihe), Aurelia als Finalgegnerin. |
+| M304 | Turnier von Nocturna | Zwischenstopp: das große Duellturnier (Verbindung zur Duell-Questreihe), Aurelia als Finalgegnerin. |
 | M305 | Die Weißen Zinnen | Aufstieg mit Lio zum Kloster der Schweigemönche. Firnwölfe, Lawinen. Erstes Reittier (Sturmschwinge) wird gezähmt. |
 | M306 | Das Schweigen der Mönche | Die Mönche kennen den Urton als Gebet. Sie lehren Entklang. |
 | M307 | Kaelschlucht | Wüsten-Canyon, Ruinenstadt Vor-Kael, Klangtürme. |
@@ -204,7 +204,7 @@ Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscene
 | M403 | Die Senke | Fink und die Grauen Finken zeigen, was das Kollegium verschweigt. |
 | M404 | Archiv der Asche | Einbruch ins Kollegiumsarchiv, Brandheim-Akten: Ruprechts Unterschrift. |
 | M405 | Die Probe | Corvin bietet an, den Urton mit dem Spieler „sicher“ zu üben (er misst heimlich). |
-| M406 | Die Nacht der Glocken 🎬⚖ | Angriff der Stillen Hand auf Ewigfels. Corvin öffnet die Tore. **Entscheidung 4:** Die Große Halle mit den Schülern verteidigen oder Corvin verfolgen, bevor er die Stimmglocke stiehlt. Ergebnis: Grell oder Saphira stirbt, Ausmaß der Zerstörung. |
+| M406 | Die Nacht der Glocken 🎬⚖ | Angriff der Stillen Hand auf Nocturna. Corvin öffnet die Tore. **Entscheidung 4:** Die Große Halle mit den Schülern verteidigen oder Corvin verfolgen, bevor er die Stimmglocke stiehlt. Ergebnis: Grell oder Saphira stirbt, Ausmaß der Zerstörung. |
 | M407 | Corvin | Story-Boss 4 (in beiden Fällen, Ort variiert). Corvin gesteht: auch er Brandheim-Überlebender, Halbbruder des Dirigenten. |
 | M408 | Trümmer | Akademie nach dem Angriff, Trauer, Rektorin Varga tritt zurück oder bleibt (abhängig von Ruf). |
 | M409 | Aufstand in Aurenburg ⚖ | Kanzler verhängt Kriegsrecht. **Entscheidung 5:** Aufstand der Grauen Finken unterstützen oder mit dem Kanzler verhandeln (Aurelia als Vermittlerin). |
@@ -223,7 +223,7 @@ Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscene
 | M507 | Der Chor der Stillen Hand | Großer Kampf, Verbündete (nach Entscheidungen) treten auf. |
 | M508 | Der Dirigent | Story-Boss 5, Phase 1–2 in der Welt (Aurenburg-Glockenturm), Phase 3 im Nachhall. |
 | M509 | Der Grundton 🎬 | Finale Wahl der Endung (abhängig von Flags, siehe §9). |
-| M510 | Epilog: Das nächste Jahr | Rückkehr nach Ewigfels, Varianten je nach Entscheidungen, Abschlussfeier. |
+| M510 | Epilog: Das nächste Jahr | Rückkehr nach Nocturna, Varianten je nach Entscheidungen, Abschlussfeier. |
 
 ### 8.2 Große Entscheidungen (Flags)
 
@@ -243,11 +243,11 @@ Dazu laufende Werte: **Nachhall-Belastung** des Spielers (Summe über das Spiel)
 | Ende | Bedingung | Inhalt |
 |---|---|---|
 | **A: Neue Stimmung** (bestes Ende) | Nachhall-Belastung < 50 %, mind. 2 Fraktionen ≥ Geschätzt, `E6_BindNym` oder Nym-Beziehung hoch | Der Spieler spielt den Urton nicht zum Löschen, sondern stimmt die Adern neu. Magie bleibt, wird aber sanfter. Der Nachhall schließt sich, Brandheim bekommt seine Farbe zurück (die Verschwundenen nicht). |
-| **B: Die Stille** | Spieler gibt dem Dirigenten nach (Dialogoption im Finale) oder Verbündete fehlen | Alle Magie verstummt. Ewigfels wird eine gewöhnliche Schule. Bittersüß: kein Brandheim mehr, aber auch kein Ilsenlicht. |
+| **B: Die Stille** | Spieler gibt dem Dirigenten nach (Dialogoption im Finale) oder Verbündete fehlen | Alle Magie verstummt. Nocturna wird eine gewöhnliche Schule. Bittersüß: kein Brandheim mehr, aber auch kein Ilsenlicht. |
 | **C: Der Erste Ton** (dunkles Ende) | Nachhall-Belastung > 75 % und Wahl im Finale | Der Spieler nimmt die Macht selbst, schreibt das Kollegium „um“ und regiert Velmark. Freunde wenden sich ab. |
 | **D: Das Opfer** | `E6_FreeNym` und hohe Lio- oder Aurelia-Beziehung | Der Spieler (oder bei sehr hoher Beziehung: Lio/Aurelia an seiner Stelle, wählbar) bleibt im Nachhall, um ihn von innen zu verschließen. Nym kehrt zurück. |
 
-**Epilog-Bausteine** (kombiniert nach Flags, je 20–40 s Standbild + Erzählerstimme): Ewigfels (wiederaufgebaut/Ruine/Denkmal) · Lio & Mara · Aurelia (Kanzlerin, Exil, Lehrerin) · Edda (Strafe, Ruhe, Tod im Finale) · Graumoor · Aurenburg · Hüter · Zünfte · Kreaturen-Schutzgebiet · Turnierchampion · Tiedmar-Fall · Kael-Entschlüsselung.
+**Epilog-Bausteine** (kombiniert nach Flags, je 20–40 s Standbild + Erzählerstimme): Nocturna (wiederaufgebaut/Ruine/Denkmal) · Lio & Mara · Aurelia (Kanzlerin, Exil, Lehrerin) · Edda (Strafe, Ruhe, Tod im Finale) · Graumoor · Aurenburg · Hüter · Zünfte · Kreaturen-Schutzgebiet · Turnierchampion · Tiedmar-Fall · Kael-Entschlüsselung.
 
 ## 10. Questreihen (6) – Grundriss
 

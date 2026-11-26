@@ -1,4 +1,4 @@
-# GDD – Ewigfels (Game Design Document)
+# GDD – Nocturna (Game Design Document)
 
 Stand: 26.11.2026 · Phase 1 · Version 0.1
 Verwandte Dokumente: [STORY_BIBLE](STORY_BIBLE.md) · [CHARACTER_BIBLE](CHARACTER_BIBLE.md) · [ART_BIBLE](ART_BIBLE.md) · [ANIMATION_BIBLE](ANIMATION_BIBLE.md)
@@ -9,13 +9,12 @@ Verwandte Dokumente: [STORY_BIBLE](STORY_BIBLE.md) · [CHARACTER_BIBLE](CHARACTE
 
 Ich habe überall mit der **Empfehlung** weitergearbeitet. Wenn du anders entscheidest, ändere ich die Bibeln entsprechend (Namen sind per Suchen/Ersetzen schnell getauscht, das Magiesystem ist der teuerste Wechsel).
 
-### E1 – Name der Akademie
+### E1 – Name der Akademie ✅ entschieden
 
-| Option | Vorteil | Nachteil |
-|---|---|---|
-| **A: Ewigfels** ⭐ Empfehlung | Titel = Ort, starke Marke. „Der Ewige Fels“ ist ein summender Felsen auf einem Aderknoten, das passt zum Magiesystem. | Spieltitel und Ortsname gleich, das kann in Texten doppelt wirken („Ewigfels in Ewigfels“). |
-| B: Hallstein | Klingt alt, passt zum Klang-Thema. | Nah am echten Ort Hallstatt, wenig eigen. |
-| C: Klangwacht | Sagt sofort, worum es geht. | Klingt eher nach Orden als nach Schule. |
+**Nocturna** (lat. „die Nächtliche“, sprich nok-TUR-na). Vom Nutzer am 26.11.2026 gewählt, ist auch der **Spieltitel**.
+Lore: Der Ewige Fels, auf dem die Akademie steht, summt am lautesten nachts unter den beiden Monden. Darum nannten die Gründer die Schule nach der Nacht.
+Projekt-, Repo-, Ordner- und Code-Namen bleiben `Ewigfels` (Umbenennung würde Build und Pfade brechen).
+Verworfen: Ewigfels, Stimmhorn, Ilsenhall, Hallwacht, Glockenklippe, Echospire, Hollowbell, Altisonus, Sonarium, Vox Nox, Cantus Altus, Alta Cantata, Sonora Aurora, Resona, Canora, Sonora.
 
 ### E2 – Grundregel des Magiesystems
 
@@ -45,7 +44,7 @@ GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Vorläufige Empfehl
 
 | | |
 |---|---|
-| Titel (Arbeitstitel) | Ewigfels |
+| Titel | **Nocturna** (Code-/Projektname: Ewigfels) |
 | Genre | Open-World-Action-RPG, Third-Person |
 | Setting | Dunkles Märchen trifft Realismus. Kontinent **Velmark**, ca. 18.–19.-Jahrhundert-Technik ohne Industrie, zwei Monde |
 | Plattform | Windows-PC, Tastatur/Maus + Gamepad |
@@ -154,7 +153,7 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 
 | Region | Boss | Mechanik in einem Satz |
 |---|---|---|
-| Ewigfels & Ilsensee | **Die Seeglocke** (versunkene Glocke, belebt) | Wellen von Schall, man pariert im Takt der Glockenschläge |
+| Nocturna & Ilsensee | **Die Seeglocke** (versunkene Glocke, belebt) | Wellen von Schall, man pariert im Takt der Glockenschläge |
 | Raunwald | **Der Wurzelvater** | Zwei Phasen: Ranken brennen, dann Kern freilegen mit Ziehklang |
 | Kesselbrunn | **Schmelzer** (Hüttenkonstrukt in der Mine) | Lava-Kanäle umleiten, mit Frost abkühlen |
 | Graumoor | **Moorkönigin** (riesige Moorlicht-Unke) | Irrlichter löschen, im Nebel nur über Ton orten |
@@ -232,7 +231,7 @@ Umsetzung über **Enhanced Input** mit Input-Mapping-Contexts: Erkundung, Kampf,
 ## 9. UI/UX und Barrierefreiheit
 
 - HUD: Atem-Bogen am Fadenkreuz, Urklang als feiner Ring, Gesundheit unten links, Kompass oben, alles einzeln ausblendbar.
-- Menüs: Hauptmenü mit Live-Szene (Ewigfels bei Nacht, Monde ziehen), Questlog, Inventar, Talentbäume, Kodex/Lore (Kreaturen, Orte, Personen, Weisen), Karte, Optionen.
+- Menüs: Hauptmenü mit Live-Szene (Nocturna bei Nacht, Monde ziehen), Questlog, Inventar, Talentbäume, Kodex/Lore (Kreaturen, Orte, Personen, Weisen), Karte, Optionen.
 - Barrierefreiheit: Untertitel (Größe, Hintergrund, Sprechername, Farbe), farbenblinde Modi für Elementar-Farben (zusätzlich Symbole), Zielhilfe, Parierfenster-Regler, Kamera-Wackeln aus, Motion Blur aus, Text-to-Speech für Menüs (Phase 11), **visuelle Klang-Hinweise** (wichtig, weil Rätsel auf Ton basieren: jede Ton-Mechanik hat ein visuelles Gegenstück).
 
 ## 10. Inhalt und Spielzeit
