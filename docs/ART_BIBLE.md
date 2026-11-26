@@ -8,7 +8,7 @@ Moodboard-Prompts: `Scripts/ComfyUI/prompts/moodboards.json` · Ablauf: [`Script
 
 ## 1. Look in einem Satz
 
-**Dunkles Märchen trifft Realismus:** echte Materialien, echtes Licht, aber die Welt ist ein bisschen zu schön und ein bisschen zu unheimlich. Innen warmes Kerzenlicht (1800–2700 K), außen kühles Nebelblau (6500–9000 K), **goldene Stunde** (3200 K Sonne, blauer Schatten) als Signature-Look für Key-Art und große Momente.
+**Verspieltes Märchen mit dunklen Ecken, realistisch gerendert:** echte Materialien, echtes Licht. Die Welt lädt ein (warm, lebendig, bunt auf Märkten und Festen), und genau deshalb wirken die gruseligen Orte doppelt unheimlich. Innen warmes Kerzenlicht (1800–2700 K), außen kühles Nebelblau (6500–9000 K), **goldene Stunde** (3200 K Sonne, blauer Schatten) als Signature-Look für Key-Art und große Momente.
 
 ### 1.1 Die fünf Look-Regeln
 
@@ -20,7 +20,7 @@ Moodboard-Prompts: `Scripts/ComfyUI/prompts/moodboards.json` · Ablauf: [`Script
 
 ### 1.2 Was wir nicht machen
 
-Comic-Sättigung, überall Bloom, Lens Flares im Gameplay, lila-pinker Fantasy-Kitsch, glänzend-plastische Haut, Neonfarben außerhalb von Magie, Spitzhüte, Zauberstäbe als dünne Holzstäbchen (bei uns: Stimmstab mit Quarz).
+Comic-Sättigung, überall Bloom, Lens Flares im Gameplay, lila-pinker Fantasy-Kitsch, glänzend-plastische Haut, Neonfarben außerhalb von Magie, Spitzhüte, Zauberstäbe (bei uns kommt Magie direkt aus den Fingern).
 
 ## 2. Farbpaletten pro Region
 
@@ -39,6 +39,17 @@ Primär = dominante Flächenfarbe, Sekundär = zweite Fläche, Akzent = kleine H
 | 9 | Treibende Inseln | Himmelblau `#8DB7E0` | Wolkenweiß `#F3F1EA` | Morgenrosa `#F2A28C` | 5800, weich | klar, Wolkenmeer, Gewitter | schwerelos, frei |
 | 10 | Aurenburg | Marmorweiß `#E7E2D8` | Kollegiumsblau `#24406B` | Blattgold `#C9A227` | 5400 | klar, bewölkt, Regen | prächtig, kalt, drückend |
 | 10b | Der Nachhall | Aschgrau `#7A7A7E` | Negativ-Violett `#B8A7D9` | Urton-Weiß `#F4F0FF` | Licht von **unten**, 9000 | „Trümmerwind“ | entrückt, falsch |
+
+### 2.1 Dorf-Looks: fröhlich gegen gruselig
+
+| | Fröhliche Dörfer | Gruseldörfer (Missklinger) |
+|---|---|---|
+| Farbe | gesättigter als die Region (+15 %), bunte Fensterläden, Wimpelketten, Blumenkästen | entsättigt (−40 %), Schwarz-Violett `#2A1F33`, kränkliches Grün `#9BB06A`, einzelne rote Akzente |
+| Licht | warm 2700–3500 K, viele Laternen, Lichterketten bei Festen | kalt, wenig Licht, Kerzen nur hinter Fenstern, Lichtquellen flackern unregelmäßig |
+| Nebel | leicht, goldener Dunst | dicht, bodennah, bewegt sich gegen den Wind |
+| Ton | Musik, Kinderlachen, Tiere | Stille, Krähen, Holzknarren, Flüstern, schiefe Töne |
+| Details | Wäsche, Katzen, Hühner, Blumen | Puppen, Krähen, Kreidezeichen, zerbrochene Spiegel |
+| Nach Befreiung | – | Übergang per Material-Parameter `VillageCursed` 1→0 in 20 s (Farbe kehrt zurück) |
 
 **Akademie-Innenräume:** Holz `#5A3B24`, Stein `#6A645C`, Kerzenlicht 1900 K, Fensterlicht 7000 K blau. Buntglas: Turmfarben.
 
@@ -128,10 +139,11 @@ Pro Shot im Sequencer: **Key** (motiviert durch Szene, z. B. Kerze), **Fill** (�
 
 ### 6.1 Zauber
 
-Jede Weise hat vier Teile: **Cast** (am Quarz des Stimmstabs + Hand), **Projektil/Strahl**, **Impact**, **Nachglühen** (Decal + Restpartikel 2–4 s). Farbe = Grundtöne der Weise (STORY_BIBLE §3.2). Gemeinsames Leitmotiv: **Resonanzringe** (konzentrische Schallwellen-Ringe aus Distortion-Partikeln) beim Cast.
+Jede Weise hat vier Teile: **Cast** (an den Fingerspitzen: kleine Lichtfäden pro Finger, Ringe glimmen mit), **Projektil/Strahl**, **Impact**, **Nachglühen** (Decal + Restpartikel 2–4 s). Farbe = Grundtöne der Weise (STORY_BIBLE §3.2). Gemeinsames Leitmotiv: **Resonanzringe** (konzentrische Schallwellen-Ringe aus Distortion-Partikeln) beim Cast.
 
 | Schule | Visuelle Signatur |
 |---|---|
+| Grundgeste | Licht sammelt sich an den Fingerspitzen (10 kleine Emitter an `fx_tip_*`), Lichtfäden zwischen den Fingern beim Greifen, Ringe glimmen in Quarzfarbe |
 | Schlagweisen | scharfe Splitter, Schockwellen-Distortion, Funken |
 | Schutzweisen | Glockenform, Hexagon-Muster aus Schallwellen, silberweiß |
 | Elementar | echte Elemente (Feuer, Eis, Blitz, Wasser, Stein) mit Klang-Ringen verwoben |

@@ -321,6 +321,70 @@
           "height": 832
         }
       ]
+    },
+    {
+      "id": "M02_Perlsegler",
+      "folder": "creatures/M02_Perlsegler",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a saddled riding creature: a horse-sized creature with a long neck and four broad membrane sails between its legs, mother-of-pearl shimmering fur, a glowing tuft at the tail tip, in its habitat: above a sea of clouds at dusk"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a riding mount: a horse-sized creature with a long neck and four broad membrane sails between its legs, mother-of-pearl shimmering fur, a glowing tuft at the tail tip, with a decorated saddle, side view, full body, neutral studio backdrop",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "M03_Moosbock",
+      "folder": "creatures/M03_Moosbock",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a saddled riding creature: a giant ram-like goat with a fur of moss, small mushrooms and plants growing on its back, twisted bark-like horns, climbing a cliff, in its habitat: ancient mossy forest cliff"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a riding mount: a giant ram-like goat with a fur of moss, small mushrooms and plants growing on its back, twisted bark-like horns, climbing a cliff, with a decorated saddle, side view, full body, neutral studio backdrop",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "M04_Duenenschreiter",
+      "folder": "creatures/M04_Duenenschreiter",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a saddled riding creature: a three meter tall running bird with armored scaly legs and a crest on its head like a sun parasol, in its habitat: red desert canyon"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a riding mount: a three meter tall running bird with armored scaly legs and a crest on its head like a sun parasol, with a decorated saddle, side view, full body, neutral studio backdrop",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "M06_Glutdachs",
+      "folder": "creatures/M06_Glutdachs",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a saddled riding creature: a pony-sized badger with glowing ember stripes in its fur, sparks under its paws, in its habitat: snowy cave entrance"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a riding mount: a pony-sized badger with glowing ember stripes in its fur, sparks under its paws, with a decorated saddle, side view, full body, neutral studio backdrop",
+          "width": 1216,
+          "height": 832
+        }
+      ]
     }
   ]
 }

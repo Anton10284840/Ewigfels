@@ -20,7 +20,7 @@ Verworfen: Ewigfels, Stimmhorn, Ilsenhall, Hallwacht, Glockenklippe, Echospire, 
 
 | Option | Kern | Vorteil | Nachteil |
 |---|---|---|---|
-| **A: Resonanz (Klangmagie)** ⭐ Empfehlung | Magie ist Klang. Zauber („Weisen“) sind Akkorde aus Grundtönen, gespielt über einen Stimmstab. Die verbotene alte Magie ist der **Urton**, der Ton unter allen Tönen: er löscht und schreibt Wirklichkeit um. | Sehr eigenständig, klar von anderen Zaubererwelten getrennt. Gibt Audio, VFX und Animation ein gemeinsames Leitmotiv. Dein Akkordeon wird Teil der Welt (Akkorde = Zauber, Soundtrack-Leitmotive = Weisen). | Ungewohnt. Muss in Audio sauber umgesetzt werden, sonst wirkt es nur wie ein Name. |
+| **A: Resonanz (Klangmagie)** ⭐ Empfehlung | Magie ist Klang. Zauber („Weisen“) sind Akkorde aus Grundtönen, gespielt mit den Fingern (wie Tasten auf einem Akkordeon). Die verbotene alte Magie ist der **Urton**, der Ton unter allen Tönen: er löscht und schreibt Wirklichkeit um. | Sehr eigenständig, klar von anderen Zaubererwelten getrennt. Gibt Audio, VFX und Animation ein gemeinsames Leitmotiv. Dein Akkordeon wird Teil der Welt (Akkorde = Zauber, Soundtrack-Leitmotive = Weisen). | Ungewohnt. Muss in Audio sauber umgesetzt werden, sonst wirkt es nur wie ein Name. |
 | B: Erinnerungsmagie | Magie ist das Gedächtnis der Welt. Verboten: Erinnerungen umschreiben. | Starke Story-Twists möglich. | Kampf-Zauber wirken aufgesetzt, schwer zu visualisieren. |
 | C: Klassisches Mana über Kraftlinien | Energie aus Linien im Boden, Elemente. | Leicht verständlich, einfach zu bauen. | Generisch, sieht aus wie jedes andere Fantasy-RPG. |
 
@@ -37,6 +37,32 @@ Alternative: feste Figur mit Namen. Vorteil: stärkere Cutscenes. Nachteil: wide
 ### E5 – Zaubersystem-Technik (Entscheidung erst Phase 3, hier nur vorgemerkt)
 
 GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Vorläufige Empfehlung: **GAS**, weil Cooldowns, Kosten, Tags, Effekte (Nässe, Brennen) und Netzwerk-Robustheit fertig dabei sind.
+
+---
+
+### E6 – Ton ✅ entschieden (Nutzer, 26.11.2026)
+
+**Verspielt und zum Eintauchen, mit dunklen, gruseligen Gegnern.** Die Welt soll Spaß machen und einladen (bunte Märkte, freundliche Dörfer, Tiere, Läden, Feste), der Kontrast sind echte Gruselorte und Schwarzmagier, gegen die man kämpft. Siehe ART_BIBLE §1 und §2.1.
+
+### E7 – Magie aus den Fingern ✅ entschieden (Nutzer, 26.11.2026)
+
+**Kein Zauberstab.** Magie bricht direkt aus den Fingerspitzen. Ausrüstung dafür: bis zu 4 **Stimmringe** und Handschuhe (STORY_BIBLE §3.3, ANIMATION_BIBLE §3.2).
+
+### E8 – Reittiere ✅ entschieden (Nutzer, 26.11.2026)
+
+**Mehrere selbst erfundene Reittiere** (Luft, Boden, Wasser), personalisierbar. Liste: [CHARACTER_BIBLE §7](CHARACTER_BIBLE.md#7-reittiere). Wenn du eigene Tiere erfinden willst, beschreib sie mir, dann kommen sie dazu.
+
+### E9 – Weltgröße ✅ entschieden: Option A (Nutzer, 26.11.2026)
+
+Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) bauen Teams aus über 1000 Leuten über viele Jahre. Allein mit 0 € kann man so eine Fläche **nicht** komplett von Hand füllen. Unreal schafft die Größe technisch (World Partition streamt nur, was nah ist), das Problem ist der Inhalt.
+
+| Option | Fläche | Wie | Vorteil | Nachteil |
+|---|---|---|---|---|
+| **A: Groß mit dichten Kernen** ⭐ Empfehlung | ca. 64 km² (8 × 8 km), wächst pro Akt | Dörfer, Städte, Akademie, Dungeons von Hand; Wildnis dazwischen per **PCG** (prozedural: Wälder, Felsen, Wege, Ruinen, Camps automatisch) | Fühlt sich riesig an, ist aber überall voll. Machbar. Läuft auf deiner RTX 5070. | Kleiner als GTA (etwa GTA-5-Klasse statt GTA-6) |
+| B: GTA-6-Größe | 150+ km² (12 × 12 km und mehr) | fast alles per PCG, Handarbeit nur an wenigen Orten | Riesige Fläche, langes Reiten und Fliegen | Viel leere, gleich aussehende Fläche, sehr lange Bauzeit, viel Speicher (Hunderte GB), längere Ladezeiten |
+| C: Kompakt und sehr dicht | ca. 16 km² (4 × 4 km) | fast alles von Hand | Höchste Qualität pro Meter | Wirkt kleiner, Fliegen ist schnell vorbei |
+
+**Empfehlung A**, gebaut in Ringen: Phase 5 (Akt 1) startet mit ca. 16 km² rund um die Akademie, jeder Akt fügt Regionen hinzu bis ca. 64 km². Wenn es gut läuft, können wir später Richtung B erweitern, World Partition erlaubt das ohne Neubau. Gewählt: **A** (Details §15).
 
 ---
 
@@ -63,6 +89,7 @@ GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Vorläufige Empfehl
 3. **Entscheidungen mit Gewicht.** Mindestens 6 große Entscheidungen verändern Figuren (Tod/Abwendung), Fraktionen und Regionen. 4 Enden.
 4. **Cinematic-Look in Echtzeit.** Lieber eine Szene perfekt als zehn halb fertig (Art Bible).
 5. **Verbotene Kraft mit Preis.** Der Urton ist stark, aber er nimmt der Welt Farbe und Klang. Der Spieler soll jedes Mal überlegen, ob er ihn benutzt.
+6. **Verspielt eintauchen, dunkel kämpfen.** Läden, Feste, Tiere, Personalisierung und freundliche Dörfer machen Spaß. Dagegen stehen gruselige Orte und Schwarzmagier, die echtes Unbehagen erzeugen. Beides braucht das andere.
 
 ## 3. Spielerfantasie und Kern-Loops
 
@@ -136,12 +163,13 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 - **Gegner-KI:** StateTree (UE 5.8) mit Gruppen-Koordinator (max. 2 greifen gleichzeitig nah an, Fernkämpfer flankieren).
 - **Schwierigkeit:** Geschichte / Normal / Schwer / Meister + Einzeloptionen (Parierfenster, Gegnerschaden, Zielhilfe).
 
-### 5.1 Gegnertypen (25)
+### 5.1 Gegnertypen (30)
 
 | Gruppe | Typen |
 |---|---|
 | Stille Hand (Orden) | Novize · Schweiger (Nahkampf, verstummt Weisen) · Taktgeber (Fernkampf, synchronisiert Gruppen) · Choralist (stärkt Verbündete) · Dirigentenwache (Elite, Schild) |
 | Wilderer & Schmuggler | Klingenschnapper (Messer, schnell) · Fallensteller (Netze, Öl) · Schmugglerwirker (Elementar) · Wildererhund (Tier) |
+| **Missklinger (Schwarzmagier, Gruseldörfer)** | Fluchsänger (verflucht, lässt Spieler stolpern) · Knochenpfeifer (ruft Skelett-Krähen) · Schattenweber (unsichtbar bis zum Angriff) · Puppenmeister (steuert Dorfbewohner-Marionetten) · Hexenmutter (Elite, Fluchkreise) |
 | Kollegium-Vollstrecker (nur bei schlechtem Ruf/Story) | Ediktwache (Hellebarde, Schild) · Bannmagier (Schild gegen Weisen) |
 | Wilde Kreaturen | Firnwolf · Borkenbär · Moorlicht-Unke · Glasnatter · Salzkrake (Jungtier) · Pilzbrut (Schwarm) |
 | Kael-Konstrukte | Klangwächter (Golem, reagiert auf Ton) · Scherbengolem · Sandsänger (Fernkampf, Echo) |
@@ -169,7 +197,7 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 ## 6. Erkundung und Bewegung
 
 - Laufen, Sprinten, Springen, Ausweichen, **Klettern** (markierte Kanten + Ranken), **Schwimmen/Tauchen**, **Gleiten** mit dem Umhang (Leichtklang-Talent, ab Akt 1 Ende).
-- **Reittier:** Sturmschwinge (greifenartig, siehe CHARACTER_BIBLE §5). Fliegen mit Ausdauer, Upgrades (Ausdauer, Tempo, Sturzflug-Boost), Flugrennen.
+- **Reittiere:** mehrere eigene Arten für Luft, Boden und Wasser (CHARACTER_BIBLE §7). Fliegen mit Ausdauer, Upgrades, Rennen, Aussehen anpassbar.
 - **Karte:** Weltkarte mit Nebel des Krieges, Aussichtspunkte (Glockentürme) lüften Nebel, Schnellreise über Aderquellen.
 - **Kompass** oben, ausblendbar. Marker nur für aktive Quest + gesetzte eigene Marker.
 - **Rätselschreine** (40+): Mechaniken: Klangfolgen nachspielen, Licht mit Spiegeln umlenken, Wiederklang-Reparatur, Gewichte mit Leichtklang, Elementar-Schalter, Nachhall-Ebenen (nur im Nachhallschritt sichtbar), Zeit-Platten, Wasserstand, Echo-Labyrinth (blind, nur Ton).
@@ -184,11 +212,12 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 | 4 | Quests | JSON, Bedingungen, Verzweigung, Flags | 2 | Quest |
 | 5 | Dialoge | Verzweigung, Skill-/Ruf-Checks, Emotions-Tags, Kamera | 2 | Dialogue |
 | 6 | Entscheidungen | globale Flags, Beziehungswerte (−100…+100), Ruf bei 3 Fraktionen | 2 | Quest |
-| 7 | Inventar & Ausrüstung | 6 Kleidungsslots + Stimmstab (Griff, Schaft, Quarz), Transmog, Seltenheit: Gewöhnlich, Gestimmt, Rein, Meisterhaft, Uralt | 2/5 | Core |
-| 8 | Crafting | Tränke (Minispiel: Hitze + Rühr-Rhythmus), Pflanzenbeete im Turm, Stimmstab-Teile verbessern bei Ambros Kettler | 5 | Core |
+| 7 | Inventar & Ausrüstung | 10 Kleidungsslots + 4 Stimmringe + Handschuhe (siehe §13), Transmog, Seltenheit: Gewöhnlich, Gestimmt, Rein, Meisterhaft, Uralt | 2/5 | Core |
+| 8 | Crafting | Tränke (Minispiel: Hitze + Rühr-Rhythmus), Pflanzenbeete im Turm, Stimmringe schmieden und verbessern bei Ambros Kettler | 5 | Core |
 | 9 | Progression | Level 1–40, Talentbaum je Schule (5 Bäume × 12 Talente), Weisen über Unterricht/Quests | 3/5 | Magic |
 | 10 | Begleiter | 1 aktiver Begleiter (Lio, Aurelia ab Akt 2, Nell in Tiedmar, Fink in Aurenburg), eigene Kampf-KI, Kommentare | 5 | AI |
-| 11 | Reittier | Sturmschwinge, Fliegen, Upgrades, Rennen | 5 | Core |
+| 11 | Reittiere | 6 Arten (Luft/Boden/Wasser), Stall in der Akademie, Upgrades, Rennen, Sattel/Rüstung/Fellfarbe im Laden | 5 | Core |
+| 12a | Personalisierung & Läden | Charakter bis ins Detail über Läden in der Welt (Schneider, Barbier, Tätowierer, Ringschmied, Stallmeister …), siehe §13 | 2/5 | Core, UI |
 | 12 | Housing | Turmzimmer: Möbel, Pflanzen, Kreaturen-Ecke, Trophäen | 5 | Core |
 | 13 | Karte & Kompass | Nebel des Krieges, Marker, Schnellreise | 5 | UI |
 | 14 | Speichern/Laden | mehrere Slots, Autosave, kompletter Weltstatus | 2 | Save |
@@ -203,7 +232,7 @@ Drei Fraktionen (Ruf −100 bis +100, Stufen: Feind, Misstrauisch, Neutral, Gesc
 |---|---|---|
 | **Das Hohe Kollegium** (Magierregierung) | Aurenburg | Zugang zu Archiven, legale Schnellreise in die Hauptstadt, Ediktwachen greifen nicht an |
 | **Die Hüter der Adern** | Graumoor, Raunwald | Aderquellen als Schnellreise, Kreaturen-Zähmung, Nachhall-Reinigung |
-| **Die Freien Zünfte** | Tiedmar, Kesselbrunn | Händlerpreise, seltene Stimmstab-Teile, Schmuggelpfade |
+| **Die Freien Zünfte** | Tiedmar, Kesselbrunn | Händlerpreise, seltene Stimmringe und Stoffe, Schmuggelpfade |
 
 ### 7.2 Unterrichts-Minispiele
 
@@ -269,3 +298,48 @@ Umsetzung über **Enhanced Input** mit Input-Mapping-Contexts: Erkundung, Kampf,
 - Flow vs. eigenes JSON-Questsystem (siehe [PLUGINS.md](PLUGINS.md)).
 - JSON-Schema für Quest, Dialog, Item, Weise, Kreatur, NPC.
 - Validierungs-Skript (fehlende IDs, tote Verzweigungen, Übersetzungen, Spielzeit-Summe).
+
+## 13. Personalisierung und Läden
+
+Ziel: **Jeder Spielercharakter sieht anders aus, bis ins kleinste Detail.** Der Charakter-Editor am Anfang ist nur der Start. Alles Weitere kauft, findet oder erarbeitet man in der Welt. Ein Spiegel in jedem Laden und im Turmzimmer zeigt Änderungen live.
+
+| Laden / Ort | Was man ändern kann | Wo |
+|---|---|---|
+| **Schneiderei** | 10 Kleidungsslots: Kopf, Gesicht (Brille, Maske), Hals (Schal, Kette), Oberkörper, Umhang/Mantel, Gürtel, Handschuhe, Beine, Schuhe, Tasche. Jedes Teil mit 3 Farbzonen (frei färbbar mit Farbstoffen), Muster (Karo, Streifen, Stickerei), Material (Wolle, Leder, Samt, Leinen) | Kesselbrunn, Tiedmar, Aurenburg (je eigene Mode) |
+| **Barbier & Haarstube** | Frisur (40+ Grooms), Haarfarbe inkl. Strähnen und Verlauf, Bart, Augenbrauen, Wimpern | Kesselbrunn, Tiedmar, Aurenburg |
+| **Tätowierer & Malerin** | Tattoos (Körper + Gesicht, Position, Größe, Farbe), Narben, Sommersprossen, Schminke, Kriegsbemalung, leuchtende Klang-Runen (ab Akt 3) | Tiedmar, Kaelschlucht |
+| **Ringschmied** (Ambros Kettler) | 4 Stimmringe: Metall, Quarzfarbe (= Farbe der Magie!), Gravur. Werte + Optik | Kesselbrunn |
+| **Handschuhmacher** | Handschuhe, Armreife, Fingerkappen | Aurenburg |
+| **Spiegelhexe** (freundliche Hexe im Raunwald) | Gesicht nachträglich ändern (Regler wie beim Start), Augenfarbe, Stimme | Raunwald, gegen Kräuter |
+| **Stallmeister** | Reittiere: Sattel, Zaumzeug, Rüstung, Fellfarbe/Muster, Schmuck, Name | Akademie-Stall, jede Region 1 Stall |
+| **Möbeltischler** | Turmzimmer: Möbel, Teppiche, Bilder, Pflanzen | Kesselbrunn, Tiedmar |
+| **Farbstoff-Händler** | 60+ Farbstoffe (sammeln, kaufen, aus Pflanzen/Kreaturen brauen) | überall |
+
+**Regeln:**
+- **Transmog:** Werte eines Teils und Aussehen eines anderen kombinierbar. Optik-Sets speicherbar (5 Plätze, z. B. „Unterricht“, „Kampf“, „Fest“).
+- **Magie-Farbe** kommt aus den Stimmringen: Ein Spieler mit rot-goldenen Ringen hat rot-goldene Funken. Teil der Personalisierung.
+- **Nichts nur gegen Echtgeld**, keine Mikrotransaktionen. Alles erspielbar.
+- **Kleidung reagiert:** nass bei Regen, Schnee auf den Schultern, Ruß nach Feuer, verblasst nicht dauerhaft.
+- Technik: modulare Skeletal Meshes mit Leader Pose (CHARACTER_BIBLE §1.1), Farbzonen über Material-Masken (RGB-Maske = 3 Zonen), Muster als Detail-Textur. So reichen wenige Meshes für tausende Kombinationen.
+
+## 14. Dörfer mit Kontrast
+
+Jede Region hat **mindestens ein fröhliches und ein unheimliches Dorf** (Liste: STORY_BIBLE §4.1).
+
+| | Fröhliche Dörfer | Gruseldörfer (Missklinger) |
+|---|---|---|
+| Stimmung | Musik auf dem Platz, Kinder spielen, Märkte, Feste, Laternen, warme Farben | Stille, Nebel, Krähen, verriegelte Fenster, Puppen an Türen, falsche Freundlichkeit |
+| NPCs | grüßen, schenken Kleinigkeiten, laden zum Essen ein, Gerüchte, Minispiele (Tanzen, Würfeln, Wettessen) | starren, flüstern, folgen dem Spieler, manche sind Marionetten |
+| Gameplay | Läden, Quests, Tiere, Housing-Deko, Rast (Bonus) | Rätsel, Schleichen, Fallen, Gruselmomente, Kampf gegen Schwarzmagier, Befreiung |
+| Nach der Befreiung | – | Gruseldorf kann sich in ein fröhliches Dorf verwandeln (Farbe kehrt zurück, Musik spielt, neuer Laden). Belohnung, die man sieht. |
+
+## 15. Weltgröße und Aufbau (E9 = Option A)
+
+| Bereich | Größe | Inhalt |
+|---|---|---|
+| Kern um die Akademie (Akt 1) | ca. 16 km² | Nocturna, Ilsensee, Raunwald, Kesselbrunn + 2 Dörfer |
+| Endausbau (Akt 5) | ca. 64 km² + Treibende Inseln (Luftraum) + Nachhall (eigene Ebene) | 10 Regionen, 25+ Dörfer/Weiler, 3 Städte |
+| Dichte | alle 300–500 m etwas Sehenswertes | Dorf, Ruine, Höhle, Rätselschrein, Lager, Aussichtspunkt, Tiere, Händler unterwegs |
+| Technik | World Partition (Zellen 128 m), HLODs für Fernsicht, PCG für Wildnis, Python-Skripte für Platzierung aus JSON | Landschaft 8 × 8 km mit 1 m Auflösung, Höhendaten selbst erzeugt |
+| Fliegen | Höhenlimit 1200 m, Wolkendecke als Grenze | Fernsicht bis 6 km (Nebel + HLOD) |
+| Speicher (geschätzt) | 80–150 GB Projekt, 30–50 GB fertiges Spiel | |
