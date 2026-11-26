@@ -27,7 +27,8 @@
 		{ "Name": "Water", "Enabled": true },
 		{ "Name": "PoseSearch", "Enabled": true },
 		{ "Name": "MotionWarping", "Enabled": true },
-		{ "Name": "Chooser", "Enabled": true }
+		{ "Name": "Chooser", "Enabled": true },
+		{ "Name": "SUDS", "Enabled": true }
 	],
 	"TargetPlatforms": [
 		"Windows"

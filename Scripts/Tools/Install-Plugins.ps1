@@ -5,15 +5,17 @@
   Plugins liegen NICHT im Repo (.gitignore), nur diese Liste. Danach neu bauen (Build-Ewigfels.ps1),
   weil die Plugins als C++-Quellcode kommen und mit dem Projekt kompiliert werden.
 .EXAMPLE
-  .\Scripts\Tools\Install-Plugins.ps1                 # Sets "empfohlen" + "phase2" (PCGEx, DlgSystem, SUDS, Flow)
+  .\Scripts\Tools\Install-Plugins.ps1                 # Set "empfohlen" (PCGEx, SUDS)
   .\Scripts\Tools\Install-Plugins.ps1 -All            # zusätzlich optionale (SPUD, ImGui)
   .\Scripts\Tools\Install-Plugins.ps1 -Name SPUD      # nur bestimmte
   .\Scripts\Tools\Install-Plugins.ps1 -Update         # vorhandene auf den Stand der Liste bringen
+  .\Scripts\Tools\Install-Plugins.ps1 -Prune          # Plugins löschen, die nicht mehr in der Liste stehen (z. B. DlgSystem, Flow)
 #>
 param(
     [string[]]$Name,
     [switch]$All,
-    [switch]$Update
+    [switch]$Update,
+    [switch]$Prune
 )
 $ErrorActionPreference = 'Stop'
 $root     = Resolve-Path "$PSScriptRoot\..\.."
@@ -41,4 +43,10 @@ foreach ($p in $list) {
 }
 
 Write-Host "`nFertig. Jetzt neu bauen: .\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir <Pfad>" -ForegroundColor Green
-Write-Host 'Hinweis: Der erste Build mit Plugins dauert deutlich länger (PCGEx ist groß). Flow ist standardmäßig deaktiviert, bis die Phase-2-Entscheidung steht.' -ForegroundColor Yellow
+if ($Prune) {
+    Get-ChildItem $target -Directory | Where-Object { $manifest.plugins.name -notcontains $_.Name } | ForEach-Object {
+        Write-Host "==> entferne $($_.Name) (nicht mehr in Plugins.json)" -ForegroundColor Yellow
+        Remove-Item $_.FullName -Recurse -Force
+    }
+}
+Write-Host 'Hinweis: Der erste Build mit Plugins dauert deutlich länger (PCGEx ist groß).' -ForegroundColor Yellow

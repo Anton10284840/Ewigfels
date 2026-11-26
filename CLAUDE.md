@@ -7,7 +7,8 @@ Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidung
 - `GAME_PROMPT.md` – Gesamtspezifikation (23 KB). **Nicht komplett lesen**, gezielt Abschnitt suchen (`grep -n "^#" GAME_PROMPT.md`).
 - `PROGRESS.md` – Status Phasen/Systeme/Quests. Nach jeder Phase/jedem Feature aktualisieren.
 - `CREDITS.md` – jede externe Ressource (Asset, Plugin, KI-Modell). Ohne Eintrag kommt nichts rein.
-- `docs/` – `SETUP_WINDOWS.md` (Installation), `KI_LIZENZEN.md` (Tool-Lizenzen), `PLUGINS.md` (Plugin-Bewertung).
+- `docs/` – `SETUP_WINDOWS.md` (Installation), `KI_LIZENZEN.md` (Tool-Lizenzen), `PLUGINS.md` (Plugin-Bewertung), `QUEST_FORMAT.md` (Quest-JSON, SUDS-Dialoge, Weltstatus-Syntax, Speichern).
+- Kernsysteme (Phase 2, `Source/Ewigfels/{WorldState,Quest,Dialogue,Save}`): Weltstatus-Subsystem (Flags/Beziehungen/Ruf), Quest-Subsystem (lädt `Content/Data/Quests/**/*.json`), SUDS-Brücke, Save-Subsystem. Neue Quest = JSON + `.sud`, danach `python Scripts/Tools/validate_data.py` (läuft auch in der Cloud). Erlaubte Flags/NPCs/Regionen: `Content/Data/World/WorldState.json`.
 - Bibeln (Phase 1, groß, gezielt per `grep -n "^#"` lesen): `GDD.md` (Systeme, Weisen, Gegner), `STORY_BIBLE.md` (Lore, Missionen, Flags, Enden), `CHARACTER_BIBLE.md` (Figuren, Türme, Kreaturen), `ART_BIBLE.md` (Look, Budgets), `ANIMATION_BIBLE.md` (Checklisten).
 - Kernbegriffe: Spiel- und Akademiename **Nocturna** (Code, Repo, Pfade, Klassen-Präfix bleiben `Ewigfels`), Kontinent **Velmark**, Magie = Klang aus den Fingern, kein Stab (**Weisen**, **Stimmringe**, **Atem**), Schwarzmagier = **Missklinger**, verbotene Magie **Urton**, Schattenreich **Nachhall**, Antagonisten **Stille Hand**/**Dirigent**, Häuser = 4 **Türme**.
 - `Source/Ewigfels/` – C++ (`Public/` Header, `Private/` Implementierung, `Private/Tests/` Automation-Tests).

@@ -137,7 +137,7 @@ Erst wenn Schritt 4 grün ist, sonst suchen wir Fehler an zwei Stellen gleichzei
 
 ```powershell
 cd D:\Dev\Ewigfels
-.\Scripts\Tools\Install-Plugins.ps1                       # PCGEx, SUDS, DlgSystem, Flow (Quellcode, gepinnt)
+.\Scripts\Tools\Install-Plugins.ps1                       # PCGEx, SUDS (Quellcode, gepinnt)
 .\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir "D:\Epic\UE_5.8"   # Plugins werden mitkompiliert
 ```
 

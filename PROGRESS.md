@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **1 – Bibeln** (Phase 0: erster Build beim Nutzer offen) · Engine: UE 5.8
+Stand: 26.11.2026 · Aktuelle Phase: **2 – Kernsysteme** (Code geschrieben, erster Build + Tests beim Nutzer offen) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -10,7 +10,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 |---|---|---|
 | 0 | Setup, Tools, Testprojekt | 🟨 Dateien fertig, Installation + erster Build beim Nutzer offen |
 | 1 | Bibeln + Moodboards | 🟨 Bibeln + ComfyUI-Pipeline fertig, Bilder generieren + Grundsatzentscheidungen E1–E4 bestätigen beim Nutzer |
-| 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | ⬜ |
+| 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | 🟨 Code + Prüfskript fertig, Build + Automation-Tests beim Nutzer offen. Entscheidung: SUDS + eigenes JSON (docs/PLUGINS.md §3) |
 | 3 | Charakter & Animation | ⬜ |
 | 4 | Grafik-Benchmark-Szene | ⬜ |
 | 5 | Vertical Slice Akt 1 | ⬜ |
@@ -27,7 +27,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Lizenzprüfung KI-Tools | ✅ | Hunyuan3D raus (EU-Ausschluss), TRELLIS raus (VRAM + nvdiffrast), Cascadeur Free nicht kommerziell → TripoSG, Control Rig |
 | Installationsanleitung | ✅ | docs/SETUP_WINDOWS.md |
 | .gitignore / .gitattributes | ✅ | Content-Binärdateien nicht in Git, Backup per OneDrive |
-| C++-Testprojekt | 🟨 | geschrieben, **noch nie kompiliert** (erster Build beim Nutzer) |
+| C++-Testprojekt | ✅ | erster Build beim Nutzer erfolgreich (26.11.2026) |
 | GitHub-Repo | ⬜ | Nutzer legt `koelleprime-afk/ewigfels` (privat) an |
 | OneDrive-Backup-Skript | ✅ | Scripts/Tools/Backup-ToOneDrive.ps1 |
 | Plugins ausgewählt | ✅ | docs/PLUGINS.md (Runde 2: PCGEx, SUDS, Engine-Plugins für KI/UI/Wasser/Motion Matching); Installation per Install-Plugins.ps1 beim Nutzer offen |
@@ -53,12 +53,20 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
 | System | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|
-| _ab Phase 2_ | | | |
+| Weltstatus: Flags, Beziehungen, Ruf (`WorldState/`) | ✅ | 🟨 nicht kompiliert | ⬜ Tests `Ewigfels.WorldState.*` |
+| Quests aus JSON (`Quest/`) | ✅ | 🟨 nicht kompiliert | ⬜ Tests `Ewigfels.Quest.*` |
+| Dialoge: SUDS-Brücke (`Dialogue/`) | ✅ | 🟨 nicht kompiliert | ⬜ Test `Ewigfels.Dialogue.*`, Dialog im Editor abspielen |
+| Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | 🟨 nicht kompiliert | ⬜ Test `Ewigfels.Save.*`, PIE mit Level |
+| Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
+| Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
+| Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
 ## Quests (geschätzte Spielzeit gesamt: 0 / ~100 Std. umgesetzt · geplant: 50 Hauptmissionen ≈ 45–50 Std., Liste in STORY_BIBLE §8.1)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
+| M101 | Das Boot über den Ilsensee | Main | 45 min | ✅ JSON + Dialog D_M101_Lio (Beispiel) | ⬜ Level fehlt | ⬜ |
+| M110 | Die Doppelnacht ⚖ E1 | Main | 55 min | ✅ JSON + Dialog D_M110_Edda (Beispiel) | ⬜ Level fehlt | ⬜ |
 
 ## Charaktere
 

@@ -27,18 +27,18 @@ Installation der GitHub-Plugins: `.\Scripts\Tools\Install-Plugins.ps1` (gepinnte
 |---|---|---|---|---|
 | [PCG Extended Toolkit (PCGEx)](https://github.com/Nebukam/PCGExtendedToolkit) | MIT | ja (`.uplugin` 5.8.0) | sehr aktiv (Commit 26.11.2026) | Wege, Straßen, Flussufer, Siedlungslayouts, Graphen, bessere Verteilung. Hebt PCG für die 7 Regionen und Dörfer auf ein anderes Niveau. Nachteil: großer Quellcode, erster Build dauert länger. |
 
-## 3. Von GitHub – Kandidaten für Phase 2 (`set: phase2`)
+## 3. Dialog- und Questsystem: entschieden (26.11.2026)
 
-Zu Beginn von Phase 2 entscheiden wir, **welches** Dialog- und Questsystem wir nehmen. Die anderen fliegen dann wieder raus.
+**SUDS für Dialoge + eigenes JSON-Questsystem.** SUDS steht jetzt im Set `empfohlen`, der Ewigfels-Code hängt davon ab. DlgSystem und Flow sind aus `Plugins.json` geflogen (`Install-Plugins.ps1 -Prune` löscht sie lokal). Format und Regeln: [QUEST_FORMAT.md](QUEST_FORMAT.md).
 
-| Plugin | Lizenz | UE 5.8 | Gepflegt | Stärke | Schwäche |
-|---|---|---|---|---|---|
-| [SUDS](https://github.com/sinbad/SUDS) | MIT | ja (Commit „UE 5.8 compatibility“, 19.06.2026) | aktiv (12.11.2026) | Dialoge als **Textskripte**: Entscheidungen, Bedingungen, Variablen, Events, Lokalisierung, Test-Tool im Editor. Claude kann Dialoge direkt als Text schreiben und prüfen – sehr token-effizient. | Kein Graph-Editor. |
-| [Not Yet: DlgSystem](https://github.com/NotYetGames/DlgSystem) | MIT | ja (5.6–5.8) | 22.06.2026 | Graph-Editor, JSON-Import/-Export, Bedingungen, Events | Graphen sind schwerer zu überblicken als Text. |
-| [Flow Graph](https://github.com/MothCocoon/FlowGraph) | MIT | ja (Tag `v2.3-5.8`) | aktiv | Quest-/Story-Ablauf als Graph, in großen Produktionen bewährt | Flows sind `.uasset`, nicht JSON. Standardmäßig deaktiviert. |
+| Plugin | Lizenz | UE 5.8 | Ergebnis |
+|---|---|---|---|
+| [SUDS](https://github.com/sinbad/SUDS) | MIT | ja (Commit „UE 5.8 compatibility“, 19.06.2026) | ✅ genommen: Dialoge als Textskripte (`.sud`), Entscheidungen, Bedingungen, Variablen, Events, Lokalisierung, Test-Tool im Editor. Claude schreibt und prüft Dialoge direkt als Text. |
+| [Not Yet: DlgSystem](https://github.com/NotYetGames/DlgSystem) | MIT | ja (5.6–5.8) | ❌ raus: Graph-Editor, schwerer zu überblicken und von Claude schlechter direkt zu schreiben. |
+| [Flow Graph](https://github.com/MothCocoon/FlowGraph) | MIT | ja (Tag `v2.3-5.8`) | ❌ raus: Flows sind `.uasset`, nicht JSON. Quests sind bei uns reine Daten (`Content/Data/Quests/*.json`). |
 
-Meine vorläufige Tendenz: **SUDS für Dialoge + eigenes JSON-Questsystem** (Flow nur, wenn uns der Graph-Editor fehlt). Entscheidung mit Optionen in Phase 2.
 Hinweis zu SUDS und SPUD: Der Autor lehnt KI-generierte Pull Requests an *sein* Repo ab. Das betrifft nur Beiträge dorthin, nicht die Nutzung (MIT).
+Speichern: SPUD wird nicht gebraucht, das eigene `UEwigfelsSaveSubsystem` (auf `USaveGame`) kann World Partition.
 
 ## 4. Von GitHub – optional (`set: optional`, nur mit `-All`)
 
