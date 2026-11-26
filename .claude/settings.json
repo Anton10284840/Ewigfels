@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./Binaries/**)",
+      "Read(./Intermediate/**)",
+      "Read(./Saved/**)",
+      "Read(./DerivedDataCache/**)",
+      "Read(./.vs/**)",
+      "Read(./Plugins/ThirdParty/**/Binaries/**)",
+      "Read(./Plugins/ThirdParty/**/Intermediate/**)",
+      "Read(**/*.uasset)",
+      "Read(**/*.umap)",
+      "Read(**/*.pdb)",
+      "Read(**/*.dll)",
+      "Read(**/*.exe)",
+      "Read(**/*.blend)",
+      "Read(**/*.fbx)",
+      "Read(**/*.wav)",
+      "Read(**/*.safetensors)",
+      "Read(./raw/**)",
+      "Read(./models/**)",
+      "Read(./art/**/*.png)",
+      "Read(./art/**/*.jpg)",
+      "Read(./art/**/*.exr)"
+    ]
+  },
+  "respectGitignore": true
+}

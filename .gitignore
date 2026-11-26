@@ -14,6 +14,11 @@ Build/Windows/
 Platforms/
 Plugins/**/Binaries/
 Plugins/**/Intermediate/
+# Drittanbieter-Plugins: nur Liste im Repo (Scripts/Tools/Plugins.json)
+/Plugins/ThirdParty/
+
+# --- Claude Code: persönliche Einstellungen bleiben lokal ---
+.claude/settings.local.json
 
 # --- IDE / Visual Studio ---
 .vs/
