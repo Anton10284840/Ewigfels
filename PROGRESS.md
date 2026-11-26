@@ -22,8 +22,8 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Aufgabe | Status | Notiz |
 |---|---|---|
 | Hardware erfasst | ✅ | Ryzen 7 9700X, RTX 5070 12 GB, 32 GB DDR5, Win 11 |
-| Freier Speicher | ⬜ | Nachfrage offen |
-| Webcam / Android-Modell | ⬜ | Nachfrage offen (für FreeMoCap, MetaHuman Animator) |
+| Freier Speicher | ✅ | 2 TB SSD |
+| Webcam / Android-Modell | 🟨 | Pixel 10 Pro (kein Echtzeit-Tracking in Live Link Face, Nutzung als USB-Webcam für Mono-Video, siehe SETUP 8a). Webcam-Modell offen |
 | Lizenzprüfung KI-Tools | ✅ | Hunyuan3D raus (EU-Ausschluss), TRELLIS raus (VRAM + nvdiffrast), Cascadeur Free nicht kommerziell → TripoSG, Control Rig |
 | Installationsanleitung | ✅ | docs/SETUP_WINDOWS.md |
 | .gitignore / .gitattributes | ✅ | Content-Binärdateien nicht in Git, Backup per OneDrive |
