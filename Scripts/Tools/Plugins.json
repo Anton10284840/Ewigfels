@@ -1,0 +1,41 @@
+{
+  "_kommentar": "Drittanbieter-Plugins für Ewigfels. Werden per Install-Plugins.ps1 nach Plugins/ThirdParty/<Name> geklont (nicht im Repo). Jede Version ist fest gepinnt. Neue Einträge nur mit Zeile in CREDITS.md und Bewertung in docs/PLUGINS.md.",
+  "plugins": [
+    {
+      "name": "DlgSystem",
+      "repo": "https://github.com/NotYetGames/DlgSystem.git",
+      "ref": "d705231216bd64558d437b87a57928689b1e7fef",
+      "license": "MIT",
+      "ue": "5.6, 5.7, 5.8",
+      "set": "empfohlen",
+      "zweck": "Dialoge mit Verzweigungen, Bedingungen, Events; JSON-Import/-Export"
+    },
+    {
+      "name": "Flow",
+      "repo": "https://github.com/MothCocoon/FlowGraph.git",
+      "ref": "v2.3-5.8",
+      "license": "MIT",
+      "ue": "5.8 (Tag v2.3-5.8, 11.07.2026)",
+      "set": "empfohlen",
+      "zweck": "Quest- und Story-Ablauf als Graph (Questlog, Trigger, Weltstatus)"
+    },
+    {
+      "name": "SPUD",
+      "repo": "https://github.com/sinbad/SPUD.git",
+      "ref": "2473000c679256c485c00ec54893f1ab2160b4f6",
+      "license": "MIT",
+      "ue": "offiziell bis 5.5, World Partition nur im Neben-Branch",
+      "set": "optional",
+      "zweck": "Speichersystem-Kandidat (Weltstatus, Streaming-Level). Nur testen, nicht fest einplanen."
+    },
+    {
+      "name": "ImGui",
+      "repo": "https://github.com/IDI-Systems/UnrealImGui.git",
+      "ref": "17cab9c1587e5cdaf18c2a962cec78241ee8bc60",
+      "license": "MIT",
+      "ue": "offiziell bis 5.5",
+      "set": "optional",
+      "zweck": "Debug-Overlays im laufenden Spiel (Quest-Flags, Zauber-Cooldowns)"
+    }
+  ]
+}

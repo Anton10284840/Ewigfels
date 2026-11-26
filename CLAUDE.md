@@ -1,0 +1,33 @@
+# Ewigfels – Kurzinfo für Claude
+
+Open-World-Zauberer-RPG, **UE 5.8, C++**. Eigenständige Welt, keine Begriffe aus fremden Marken. Budget 0 €: nur Gratis-/CC0-Assets und kommerziell nutzbare Lizenzen.
+Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidungen 2–3 Optionen mit Vor-/Nachteilen.
+
+## Wo was liegt
+- `GAME_PROMPT.md` – Gesamtspezifikation (23 KB). **Nicht komplett lesen**, gezielt Abschnitt suchen (`grep -n "^#" GAME_PROMPT.md`).
+- `PROGRESS.md` – Status Phasen/Systeme/Quests. Nach jeder Phase/jedem Feature aktualisieren.
+- `CREDITS.md` – jede externe Ressource (Asset, Plugin, KI-Modell). Ohne Eintrag kommt nichts rein.
+- `docs/` – `SETUP_WINDOWS.md` (Installation), `KI_LIZENZEN.md` (Tool-Lizenzen), `PLUGINS.md` (Plugin-Bewertung).
+- `Source/Ewigfels/` – C++ (`Public/` Header, `Private/` Implementierung, `Private/Tests/` Automation-Tests).
+- `Config/` – `DefaultEngine.ini` (Rendering: Lumen HW-RT, Nanite, VSM, TSR).
+- `Content/Data/**` – JSON/CSV-Daten (Quests, Dialoge, Items, Zauber). Einziger versionierter Teil von `Content/`.
+- `Scripts/Tools/` – PowerShell: Build, Test, Install, Backup. `Scripts/Python/` – Editor-Skripte. `Scripts/ComfyUI/` – Workflows.
+- `Plugins/ThirdParty/` – Drittanbieter-Plugins, **nicht im Repo**, Liste in `Scripts/Tools/Plugins.json`.
+
+## Konventionen
+- C++: Systeme über Komponenten und Interfaces, keine Monster-Klassen. Klassen-Präfix `Ewigfels` (z. B. `AEwigfelsGameMode`, `UEwigfelsQuestComponent`). Kommentare auf Deutsch, knapp.
+- Modulplan: Core, Magic, Combat, Quest, Dialogue, AI, UI, Save, World (je eigenes Modul, sobald gebraucht).
+- Gameplay-Inhalte datengetrieben (JSON in `Content/Data`), Texte über String Tables (DE + EN).
+- Binär-Assets (`*.uasset`, `*.umap`, `art/`) nie in Git. Backup über OneDrive.
+- Commits: ein funktionierendes Feature pro Commit, Nachricht auf Deutsch.
+
+## Bauen und testen (Windows, beim Nutzer)
+```powershell
+.\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir "D:\Epic\UE_5.8"
+.\Scripts\Tools\Test-Ewigfels.ps1  -EngineDir "D:\Epic\UE_5.8"
+```
+In der Cloud gibt es keine Engine: C++ dort nur schreiben, nicht bauen. Bei Build-Fehlern nur die `error`-Zeilen auswerten, nicht das ganze Log.
+
+## Editor steuern (Unreal MCP, eingebaut ab UE 5.8, experimentell)
+Editor offen → Server läuft auf `http://127.0.0.1:8000/mcp` (`.mcp.json` im Repo). Claude Code im Projektordner starten.
+Tools zuerst mit `list_toolsets`/`describe_tools` suchen statt raten. Nur lokal, nie nach außen öffnen.

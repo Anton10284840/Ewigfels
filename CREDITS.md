@@ -13,6 +13,16 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 | Visual Studio 2022 Community | https://visualstudio.microsoft.com | Microsoft-Lizenz (Community: Einzelentwickler ok) | C++-IDE |
 | Git / Git LFS | https://git-scm.com | GPL-2.0 / MIT | Versionsverwaltung |
 
+## Plugins & Code (Details: [`docs/PLUGINS.md`](docs/PLUGINS.md), Versionen: `Scripts/Tools/Plugins.json`)
+
+| Name | Quelle | Lizenz | Verwendung |
+|---|---|---|---|
+| Unreal MCP + All Toolsets | in UE 5.8 enthalten | UE EULA | Editor-Steuerung durch Claude (nur Editor, experimentell) |
+| Not Yet: DlgSystem | https://github.com/NotYetGames/DlgSystem | MIT | Dialogsystem (`Plugins/ThirdParty/DlgSystem`) |
+| Flow Graph | https://github.com/MothCocoon/FlowGraph | MIT | Quest-/Story-Ablauf, Kandidat Phase 2 (`Plugins/ThirdParty/Flow`) |
+| SPUD | https://github.com/sinbad/SPUD | MIT | optional, Save-System-Kandidat (`Plugins/ThirdParty/SPUD`) |
+| UnrealImGui | https://github.com/IDI-Systems/UnrealImGui | MIT | optional, Debug-Overlays (`Plugins/ThirdParty/ImGui`) |
+
 ## KI-Modelle (Inhalte, die damit erzeugt wurden, sind als „KI-generiert“ markiert)
 
 | Name | Quelle | Lizenz | Verwendung |
