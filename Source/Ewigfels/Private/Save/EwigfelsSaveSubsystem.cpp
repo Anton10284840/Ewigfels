@@ -195,6 +195,7 @@ void UEwigfelsSaveSubsystem::ApplySnapshot(const UEwigfelsSaveGame* SaveGame)
 	if (Quests)
 	{
 		Quests->LoadSaveData(SaveGame->Quests);
+		Quests->StartAvailableAutoQuests(); // neue Quests aus einem Update, deren Voraussetzung schon erfüllt ist
 	}
 	if (USUDSSubsystem* Suds = GetGameInstance()->GetSubsystem<USUDSSubsystem>())
 	{
@@ -328,10 +329,6 @@ void UEwigfelsSaveSubsystem::StartNewGame()
 	{
 		WorldState->ReplaceData(FEwigfelsWorldStateData());
 	}
-	if (Quests)
-	{
-		Quests->ResetProgress();
-	}
 	if (USUDSSubsystem* Suds = GetGameInstance()->GetSubsystem<USUDSSubsystem>())
 	{
 		Suds->ResetGlobalState(true);
@@ -340,6 +337,11 @@ void UEwigfelsSaveSubsystem::StartNewGame()
 	PendingLoad = nullptr;
 	PlayTimeBeforeSession = 0.0;
 	SessionStartSeconds = FPlatformTime::Seconds();
+	if (Quests)
+	{
+		Quests->ResetProgress();
+		Quests->StartAvailableAutoQuests(); // z. B. M101
+	}
 }
 
 void UEwigfelsSaveSubsystem::SetAutosaveInterval(float Seconds)

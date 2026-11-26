@@ -66,6 +66,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Ewigfels|Quest")
 	void SetTrackedQuest(FName QuestId);
 
+	/** Startet alle Quests mit auto_start, deren Voraussetzungen erfüllt sind (neues Spiel, nach dem Laden, bei Weltstatus-Änderung). */
+	UFUNCTION(BlueprintCallable, Category = "Ewigfels|Quest")
+	void StartAvailableAutoQuests();
+
 	// --- Abfragen (Questlog, HUD, Kompass) ---
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Quest")
@@ -125,7 +129,6 @@ private:
 	/** Ziele vom Typ condition gegen den Weltstatus prüfen. Rückgabe: ob sich etwas geändert hat. */
 	bool UpdateConditionObjectives(const FEwigfelsQuestDef& Quest);
 	void SetStatusFlag(FName QuestId, EEwigfelsQuestStatus Status);
-	void CheckAutoStart();
 
 	UFUNCTION()
 	void HandleWorldStateChanged(EEwigfelsStateDomain Domain, FName Key, int32 OldValue, int32 NewValue);

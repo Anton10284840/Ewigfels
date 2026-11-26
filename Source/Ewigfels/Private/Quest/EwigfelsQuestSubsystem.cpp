@@ -93,7 +93,8 @@ bool UEwigfelsQuestSubsystem::AddDefinitionFromJson(const FString& JsonText, con
 		OutErrors.Add(FString::Printf(TEXT("%s: Quest-ID '%s' gibt es doppelt"), *SourceName, *Quest.Id.ToString()));
 		return false;
 	}
-	Definitions.Add(Quest.Id, MoveTemp(Quest));
+	const FName QuestId = Quest.Id;
+	Definitions.Add(QuestId, MoveTemp(Quest));
 	return true;
 }
 
@@ -317,7 +318,7 @@ void UEwigfelsQuestSubsystem::TryAdvance(FName QuestId)
 		return;
 	}
 
-	UE_LOG(LogEwigfels, Warning, TEXT("Quest: %s Etappe %s ist fertig, aber keine 'next'-Regel passt. Quest bleibt stehen."),
+	UE_LOG(LogEwigfels, Verbose, TEXT("Quest: %s Etappe %s ist fertig, wartet auf eine passende 'next'-Bedingung."),
 		*QuestId.ToString(), *LeavingStage.ToString());
 	Progress->StageId = LeavingStage;
 }
@@ -408,7 +409,7 @@ void UEwigfelsQuestSubsystem::SetStatusFlag(FName QuestId, EEwigfelsQuestStatus 
 	}
 }
 
-void UEwigfelsQuestSubsystem::CheckAutoStart()
+void UEwigfelsQuestSubsystem::StartAvailableAutoQuests()
 {
 	TArray<FName> ToStart;
 	for (const TPair<FName, FEwigfelsQuestDef>& Pair : Definitions)
@@ -435,13 +436,13 @@ void UEwigfelsQuestSubsystem::HandleWorldStateChanged(EEwigfelsStateDomain Domai
 	// IDs zuerst kopieren: Zuhörer können während der Schleife Quests starten (Array wächst).
 	for (const FName& QuestId : GetQuestsWithStatus(EEwigfelsQuestStatus::Active))
 	{
-		const FEwigfelsQuestDef* Quest = Definitions.Find(QuestId);
-		if (Quest && UpdateConditionObjectives(*Quest))
+		if (const FEwigfelsQuestDef* Quest = Definitions.Find(QuestId))
 		{
-			TryAdvance(QuestId);
+			UpdateConditionObjectives(*Quest);
+			TryAdvance(QuestId); // auch Etappen, die auf eine passende 'next'-Bedingung warten
 		}
 	}
-	CheckAutoStart();
+	StartAvailableAutoQuests();
 }
 
 // ---------------------------------------------------------------------------

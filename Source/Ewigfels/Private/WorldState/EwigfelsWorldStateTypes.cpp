@@ -121,7 +121,7 @@ FString FEwigfelsEffect::ToString() const
 	{
 		return FString::Printf(TEXT("%s:%s=%d"), DomainPrefix(Domain), *Key.ToString(), Value);
 	}
-	return FString::Printf(TEXT("%s:%s%+d"), DomainPrefix(Domain), *Key.ToString(), Value);
+	return FString::Printf(TEXT("%s:%s%s%d"), DomainPrefix(Domain), *Key.ToString(), Value < 0 ? TEXT("-") : TEXT("+"), FMath::Abs(Value));
 }
 
 // ---------------------------------------------------------------------------

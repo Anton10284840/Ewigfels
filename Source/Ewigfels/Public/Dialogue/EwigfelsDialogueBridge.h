@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "SUDSParticipant.h"
+#include "SUDSValue.h"
 #include "WorldState/EwigfelsWorldStateTypes.h"
 #include "EwigfelsDialogueBridge.generated.h"
 
