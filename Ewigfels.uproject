@@ -1,0 +1,25 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.8",
+	"Category": "Games",
+	"Description": "Ewigfels – Open-World-Zauberer-RPG",
+	"Modules": [
+		{
+			"Name": "Ewigfels",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{ "Name": "PythonScriptPlugin", "Enabled": true, "TargetAllowList": [ "Editor" ] },
+		{ "Name": "EditorScriptingUtilities", "Enabled": true, "TargetAllowList": [ "Editor" ] },
+		{ "Name": "PCG", "Enabled": true },
+		{ "Name": "EnhancedInput", "Enabled": true }
+	],
+	"TargetPlatforms": [
+		"Windows"
+	]
+}

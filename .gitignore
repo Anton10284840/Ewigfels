@@ -1,0 +1,78 @@
+# =====================================================================
+# Ewigfels – .gitignore (UE 5.8)
+# Aufteilung: GitHub = Code, Config, Skripte, JSON-Daten, Docs.
+#             OneDrive = große Binär-Assets (Content/*.uasset/.umap, Rohdaten, Concept Art).
+# Siehe docs/SETUP_WINDOWS.md, Abschnitt 9.
+# =====================================================================
+
+# --- UE-Build- und Cache-Ordner (werden immer neu erzeugt) ---
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+Build/Windows/
+Platforms/
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# --- IDE / Visual Studio ---
+.vs/
+.vscode/
+.idea/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.user
+*.code-workspace
+compile_commands.json
+
+# --- Kompilate ---
+*.obj
+*.o
+*.pdb
+*.pch
+*.ilk
+*.exp
+*.lib
+*.dll
+*.exe
+*.ipch
+
+# --- Content: Binär-Assets bleiben lokal + OneDrive-Backup ---
+# Alles unter Content ignorieren ...
+/Content/**
+# ... aber Ordnerstruktur und Text-Daten versionieren:
+!/Content/**/
+!/Content/**/.gitkeep
+!/Content/Data/**/*.json
+!/Content/Data/**/*.csv
+!/Content/Localization/**/*.po
+
+# --- Concept Art / Rohdaten: nur Doku + Workflows ins Repo ---
+/art/**
+!/art/**/
+!/art/**/.gitkeep
+!/art/**/*.md
+!/art/**/*.json
+!/art/**/*.txt
+
+# --- Externe Rohquellen (Blender, FBX, Sounds, KI-Modelle) ---
+/raw/
+/models/
+*.blend1
+*.blend2
+
+# --- Python ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Windows / OneDrive ---
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
