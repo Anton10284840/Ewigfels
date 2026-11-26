@@ -1,0 +1,615 @@
+{
+ "_kommentar": "Wer oder was Weisen lehrt. learn.who in Kernweisen/Alltagsweisen/Koopweisen zeigt hierher. act = ab welchem Akt erreichbar. Prüfen: python Scripts/Tools/validate_spells.py",
+ "teachers": [
+  {
+   "id": "edda",
+   "name": "Magistra Edda Vornholt",
+   "role": "Lehrerin Klangkunde und Kael",
+   "place": "Nocturna, Klangkunde-Saal",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Klangkunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "brams",
+   "name": "Magister Haldor Brams",
+   "role": "Lehrer Schlagweisen, früher Glockengießer, spricht immer etwas zu laut",
+   "place": "Nocturna, Schlaghof",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Schlagweisen",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "grell",
+   "name": "Meister Tobiah Grell",
+   "role": "Lehrer Schutzweisen und Duellkunde",
+   "place": "Nocturna, Duellsaal",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Schutzweisen, Duellkunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "kesselmayr",
+   "name": "Dozentin Brunhilde „Bruni“ Kesselmayr",
+   "role": "Lehrerin Elementarkunde und Tränke in Akt 1, lacht über jeden explodierten Kessel, geht nach Akt 1 in den Ruhestand (darum kommt Corvin)",
+   "place": "Nocturna, Kesselkeller",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Elementarkunde, Tränkekunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "corvin",
+   "name": "Magister Corvin Hale",
+   "role": "Lehrer Elementarkunde und Tränke ab Akt 2",
+   "place": "Nocturna, Kesselkeller",
+   "region": "Ilsensee",
+   "act": 2,
+   "teaches": "Elementarkunde, Tränkekunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "ollendorf",
+   "name": "Magister Pim Ollendorf",
+   "role": "Lehrer Wandelkunde, winzig und rund, sein Hut verwandelt sich ständig von selbst, seine Tische sind lebendig",
+   "place": "Nocturna, Wandelstube",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Wandelkunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "saphira",
+   "name": "Dozentin Saphira Lindqvist",
+   "role": "Lehrerin Kreaturenkunde",
+   "place": "Nocturna, Gehege am See",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Kreaturenkunde",
+   "condition": "Unterricht besuchen"
+  },
+  {
+   "id": "morgenroth",
+   "name": "Magistra Ilka Morgenroth",
+   "role": "Lehrerin Sternkunde, fast blind, „hört“ die Sterne, schläft tagsüber im Observatorium",
+   "place": "Nocturna, Observatorium",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Sternkunde",
+   "condition": "Unterricht besuchen (nur nachts)"
+  },
+  {
+   "id": "varga",
+   "name": "Rektorin Ysolde Varga",
+   "role": "Leitung der Akademie",
+   "place": "Nocturna, Rektorat",
+   "region": "Ilsensee",
+   "act": 4,
+   "teaches": "Sonderunterricht",
+   "condition": "Ruf „geschätzt“ bei der Akademie"
+  },
+  {
+   "id": "gundel",
+   "name": "Mutter Gundel Mehlstaub",
+   "role": "Köchin der Großen Halle, dirigiert den Küchenchor mit einem Holzlöffel",
+   "place": "Nocturna, Küche",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Küchenweisen",
+   "condition": "beim Küchendienst (Nachsitzen) helfen"
+  },
+  {
+   "id": "staub",
+   "name": "Herr Fennimore Staub",
+   "role": "Bibliothekar im „Gehör“, spricht nur im Flüsterton, kennt jedes Buch am Klang",
+   "place": "Nocturna, Bibliothek",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Leseweisen",
+   "condition": "3 verlorene Bücher zurückbringen"
+  },
+  {
+   "id": "kessel_klaus",
+   "name": "Kessel Klaus",
+   "role": "sprechender Teekessel in jedem Turm-Gemeinschaftsraum (vier Brüder, je mit eigenem Dialekt), pfeift, wenn er beleidigt ist",
+   "place": "Nocturna, Turmräume",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Turmweisen",
+   "condition": "ihm jeden Abend Tee machen lassen (Beziehung)"
+  },
+  {
+   "id": "ottilie",
+   "name": "Ottilie, die wandelnde Laterne",
+   "role": "grantige lebendige Laterne auf Messingbeinchen, bewacht nachts die Gänge und singt die Sperrstunde",
+   "place": "Nocturna, Gänge bei Nacht",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Lichtweisen",
+   "condition": "3-mal von ihr erwischt werden und ihr danach Lampenöl schenken"
+  },
+  {
+   "id": "rosa",
+   "name": "Gärtnerin Rosa Dornbusch",
+   "role": "pflegt die Gewächshäuser, redet mit Pflanzen, die antworten",
+   "place": "Nocturna, Gewächshäuser",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Gartenweisen",
+   "condition": "Gewächshaus-Dienst"
+  },
+  {
+   "id": "lio",
+   "name": "Lio Vandermeer",
+   "role": "bester Freund, Streichkönig, spielt Mundharmonika",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Streichweisen, Musikweisen",
+   "condition": "Freundschaft"
+  },
+  {
+   "id": "aurelia",
+   "name": "Aurelia von Stauffen",
+   "role": "Rivalin, beste Duellantin",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Stilweisen, Duellkniffe",
+   "condition": "ihr Duell beim Ilsenlicht (M106) gewinnen oder fair verlieren"
+  },
+  {
+   "id": "ruven",
+   "name": "Ruven Falk",
+   "role": "Schüler im 4. Jahr, Anführer des geheimen Streich-Clubs „Die Schiefen Töne“",
+   "place": "Nocturna, geheimes Clubzimmer hinter der Notentreppe",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Streichweisen",
+   "condition": "Aufnahmeprüfung des Clubs (S106)"
+  },
+  {
+   "id": "panki",
+   "name": "Pankraz „Panki“ Holler",
+   "role": "Mitschüler (Aschenhain), Erfinder, will eine fliegende Badewanne bauen",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Bastelweisen",
+   "condition": "bei seinen Erfindungen helfen"
+  },
+  {
+   "id": "mirela",
+   "name": "Mirela Sandor",
+   "role": "Mitschülerin (Silberquell), sammelt Nachklänge (Echo-Abdrücke früherer Schüler), etwas unheimlich, sehr lieb",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Echoweisen",
+   "condition": "ihr Nachklänge zeigen"
+  },
+  {
+   "id": "tilda",
+   "name": "Tilda Morn",
+   "role": "Mitschülerin (Moosgrund), trägt einen Frosch namens Herr Quaak, der angeblich ein verzauberter Prinz ist",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Tierweisen",
+   "condition": "Herr-Quaak-Questreihe"
+  },
+  {
+   "id": "wenke",
+   "name": "Kapitänin Wenke Haff",
+   "role": "Fischerin in Uferlicht, baut die Laternenboote",
+   "place": "Uferlicht",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Wasserweisen, Reiseweisen",
+   "condition": "beim Laternenboot-Bau helfen"
+  },
+  {
+   "id": "ole",
+   "name": "Ole Butterfass",
+   "role": "Pfannkuchenbäcker in Uferlicht, wirft Pfannkuchen bis aufs Dach",
+   "place": "Uferlicht",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Backweisen",
+   "condition": "Pfannkuchenfest gewinnen"
+  },
+  {
+   "id": "agnes",
+   "name": "Flüsterfrau Agnes",
+   "role": "Älteste von Stillwasser, spricht nach der Befreiung wieder laut",
+   "place": "Stillwasser (nach Befreiung)",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Flüsterweisen",
+   "condition": "Stillwasser befreien"
+  },
+  {
+   "id": "morchel",
+   "name": "Großmutter Morchel",
+   "role": "Älteste von Pilzhausen, wohnt im größten Pilz",
+   "place": "Pilzhausen",
+   "region": "Raunwald",
+   "act": 1,
+   "teaches": "Pilz- und Waldweisen",
+   "condition": "5 Glimmermotten für den Mottenreigen anlocken"
+  },
+  {
+   "id": "spiegelhexe",
+   "name": "Die Spiegelhexe Wilma",
+   "role": "freundliche Hexe im Raunwald, will Kräuter statt Geld",
+   "place": "Raunwald, Spiegelhütte",
+   "region": "Raunwald",
+   "act": 1,
+   "teaches": "Stilweisen",
+   "condition": "Kräuter bringen"
+  },
+  {
+   "id": "puppenmacher",
+   "name": "Puppenmacher Edwin Faden",
+   "role": "einziger Mensch in Krähenhain, der kein Diener der Missklinger war",
+   "place": "Krähenhain (nach Befreiung)",
+   "region": "Raunwald",
+   "act": 1,
+   "teaches": "Puppenweisen",
+   "condition": "Krähenhain befreien"
+  },
+  {
+   "id": "ambros",
+   "name": "Ambros Kettler",
+   "role": "Ringschmied in Kesselbrunn",
+   "place": "Kesselbrunn, Werkstatt",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Ringweisen",
+   "condition": "erste Stimmringe stimmen lassen (M104)"
+  },
+  {
+   "id": "hedda",
+   "name": "Bäckerin Hedda Krume",
+   "role": "Kesselbrunner Bäckerin, singt beim Kneten",
+   "place": "Kesselbrunn, Markt",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Backweisen",
+   "condition": "Brötchen ausliefern"
+  },
+  {
+   "id": "jupp",
+   "name": "Jupp Quetschkommode",
+   "role": "Straßenmusikant mit Akkordeon auf dem Kesselbrunner Markt",
+   "place": "Kesselbrunn, Brunnenplatz",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Musikweisen",
+   "condition": "ihm eine Melodie nachspielen"
+  },
+  {
+   "id": "barbier",
+   "name": "Fritzi Locke",
+   "role": "Barbier und Haarstube in Kesselbrunn",
+   "place": "Kesselbrunn",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Stilweisen",
+   "condition": "Kundschaft (einmal Frisur kaufen)"
+  },
+  {
+   "id": "schneiderin",
+   "name": "Agathe Saum",
+   "role": "Schneiderin in Kesselbrunn",
+   "place": "Kesselbrunn",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Stilweisen",
+   "condition": "Kundschaft (ein Kleidungsstück kaufen)"
+  },
+  {
+   "id": "badewirtin",
+   "name": "Badewirtin Frieda Dampf",
+   "role": "betreibt die heißen Quellen",
+   "place": "Kesselbrunn, Quellbad",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Quellweisen",
+   "condition": "Quellbad besuchen"
+  },
+  {
+   "id": "steiger_ruß",
+   "name": "Steiger Konrad",
+   "role": "letzter Bergmann von Russgrube",
+   "place": "Russgrube (nach Befreiung)",
+   "region": "Kesselbrunn",
+   "act": 1,
+   "teaches": "Bergweisen",
+   "condition": "Russgrube befreien"
+  },
+  {
+   "id": "mirli",
+   "name": "Fahrende Händlerin Mirli",
+   "role": "zieht mit einem Wagen voller Glöckchen durch ganz Velmark",
+   "place": "wechselnd (jede Region)",
+   "region": "Velmark",
+   "act": 1,
+   "teaches": "Reiseweisen",
+   "condition": "bei ihr einkaufen"
+  },
+  {
+   "id": "quendel",
+   "name": "Mutter Quendel",
+   "role": "Älteste der Hüter der Adern",
+   "place": "Stelzenheim",
+   "region": "Graumoor",
+   "act": 2,
+   "teaches": "Hüterweisen",
+   "condition": "Ruf „geschätzt“ bei den Hütern"
+  },
+  {
+   "id": "unkenrufer",
+   "name": "Bertram Unkenrufer",
+   "role": "Dirigent des Frösche-Chors in Stelzenheim",
+   "place": "Stelzenheim",
+   "region": "Graumoor",
+   "act": 2,
+   "teaches": "Sumpfweisen",
+   "condition": "Frösche-Chor-Fest dirigieren"
+  },
+  {
+   "id": "rieke",
+   "name": "Schilfjägerin Rieke",
+   "role": "Jägerin im Graumoor, trifft eine Libelle auf 50 m",
+   "place": "Graumoor",
+   "region": "Graumoor",
+   "act": 2,
+   "teaches": "Jagdweisen",
+   "condition": "Moorlicht-Unke jagen"
+  },
+  {
+   "id": "mina",
+   "name": "Mina Funkel",
+   "role": "Kristallschleiferin in Funkelgrund",
+   "place": "Funkelgrund",
+   "region": "Glastiefen",
+   "act": 2,
+   "teaches": "Kristallweisen",
+   "condition": "Kristall schleifen (Minispiel)"
+  },
+  {
+   "id": "anselm",
+   "name": "Bergmann Anselm",
+   "role": "blinzelt nach der Befreiung wieder",
+   "place": "Hohlstollen (nach Befreiung)",
+   "region": "Glastiefen",
+   "act": 2,
+   "teaches": "Höhlenweisen",
+   "condition": "Hohlstollen befreien"
+  },
+  {
+   "id": "lotte",
+   "name": "Lotte Tau",
+   "role": "Shanty-Sängerin am Möwenkai",
+   "place": "Möwenkai",
+   "region": "Tiedmar",
+   "act": 3,
+   "teaches": "Seeweisen, Musikweisen",
+   "condition": "Shanty-Abend mitsingen"
+  },
+  {
+   "id": "nell",
+   "name": "Nell Tiedemann",
+   "role": "Ermittlerin in Tiedmar",
+   "place": "Tiedmar",
+   "region": "Tiedmar",
+   "act": 3,
+   "teaches": "Ermittlerweisen",
+   "condition": "Ermittler-Questreihe"
+  },
+  {
+   "id": "smilla",
+   "name": "Glockentaucherin Smilla",
+   "role": "holt ertrunkene Glocken aus dem Meer",
+   "place": "Ebbgrund (nach Befreiung)",
+   "region": "Tiedmar",
+   "act": 3,
+   "teaches": "Tauchweisen",
+   "condition": "Ebbgrund befreien"
+  },
+  {
+   "id": "jorin",
+   "name": "Hirte Jorin",
+   "role": "Hirte und Schlittenbauer in Firnhütten",
+   "place": "Firnhütten",
+   "region": "Weiße Zinnen",
+   "act": 3,
+   "teaches": "Bergweisen",
+   "condition": "Schlittenrennen fahren"
+  },
+  {
+   "id": "bruder_stumm",
+   "name": "Bruder Stumm",
+   "role": "Abt der Schweigemönche",
+   "place": "Kloster der Schweigemönche",
+   "region": "Weiße Zinnen",
+   "act": 3,
+   "teaches": "Stilleweisen",
+   "condition": "M306"
+  },
+  {
+   "id": "eismalerin",
+   "name": "Eismalerin Ylva",
+   "role": "taute als Erste in Frostwacht auf",
+   "place": "Frostwacht (nach Befreiung)",
+   "region": "Weiße Zinnen",
+   "act": 3,
+   "teaches": "Eisweisen",
+   "condition": "Frostwacht befreien"
+  },
+  {
+   "id": "seraya",
+   "name": "Seraya",
+   "role": "Feuertänzerin der Karawanen in der Oase Sela",
+   "place": "Oase Sela",
+   "region": "Kaelschlucht",
+   "act": 3,
+   "teaches": "Tanzweisen",
+   "condition": "beim Tanz mithalten (Rhythmus-Minispiel)"
+  },
+  {
+   "id": "sandleserin",
+   "name": "Sandleserin Oma Zirra",
+   "role": "liest die Zukunft im Sand, liegt meistens falsch",
+   "place": "Sandgrab (nach Befreiung)",
+   "region": "Kaelschlucht",
+   "act": 3,
+   "teaches": "Sandweisen",
+   "condition": "Sandgrab befreien"
+  },
+  {
+   "id": "kiki",
+   "name": "Kiki Wolkenbruch",
+   "role": "Drachenfliegerin, 12 Jahre alt, schneller als alle Erwachsenen",
+   "place": "Windnest",
+   "region": "Treibende Inseln",
+   "act": 4,
+   "teaches": "Windweisen",
+   "condition": "Drachenrennen gewinnen"
+  },
+  {
+   "id": "purzel",
+   "name": "Professor Purzel",
+   "role": "Sonderling auf Leerfall, lebt kopfüber",
+   "place": "Leerfall",
+   "region": "Treibende Inseln",
+   "act": 4,
+   "teaches": "Schwereweisen",
+   "condition": "ihm seine Tasse zurückbringen (fällt nach oben)"
+  },
+  {
+   "id": "zappo",
+   "name": "Gaukler Zappo",
+   "role": "Straßenkünstler in der Gauklergasse",
+   "place": "Aurenburg, Gauklergasse",
+   "region": "Aurenburg",
+   "act": 4,
+   "teaches": "Gauklerweisen",
+   "condition": "eine Vorstellung mitspielen"
+  },
+  {
+   "id": "fink",
+   "name": "Fink",
+   "role": "Anführer der Grauen Finken",
+   "place": "Aurenburg, Senke",
+   "region": "Aurenburg",
+   "act": 4,
+   "teaches": "Widerstandsweisen",
+   "condition": "Graue-Finken-Questreihe"
+  },
+  {
+   "id": "nym",
+   "name": "Nym",
+   "role": "Stimme aus dem Nachhall",
+   "place": "Träume, Nachhall",
+   "region": "Nachhall",
+   "act": 1,
+   "teaches": "Urweisen",
+   "condition": "Story"
+  },
+  {
+   "id": "schrein",
+   "name": "Rätselschreine",
+   "role": "Kael-Schreine überall in Velmark",
+   "place": "überall",
+   "region": "Velmark",
+   "act": 1,
+   "teaches": "Kael-Fragmente",
+   "condition": "Schrein lösen"
+  },
+  {
+   "id": "echos",
+   "name": "Kael-Echos",
+   "role": "Echos der verlorenen Kael",
+   "place": "Nachhall, dünne Orte",
+   "region": "Nachhall",
+   "act": 2,
+   "teaches": "Kael-Fragmente",
+   "condition": "Prüfung eines Echos bestehen"
+  },
+  {
+   "id": "bibliothek",
+   "name": "Liedblätter",
+   "role": "versteckte Notenblätter, Bücher, Zettel (Bibliothek, Stumme Kammer, Welt)",
+   "place": "überall",
+   "region": "Velmark",
+   "act": 1,
+   "teaches": "verschiedene",
+   "condition": "finden"
+  },
+  {
+   "id": "kreatur",
+   "name": "Kreaturen",
+   "role": "Tiere, die dir ihr Lied vorsingen, wenn sie dir vertrauen",
+   "place": "überall",
+   "region": "Velmark",
+   "act": 1,
+   "teaches": "Tierlieder",
+   "condition": "Tier beruhigen, füttern oder retten"
+  },
+  {
+   "id": "probieren",
+   "name": "Selbst entdecken",
+   "role": "frei Grundton und Wirkart kombinieren (Probier-Modus)",
+   "place": "überall",
+   "region": "Velmark",
+   "act": 1,
+   "teaches": "Grundformen",
+   "condition": "ausprobieren"
+  },
+  {
+   "id": "ilsenlicht",
+   "name": "Ilsenlicht (Herbstfest)",
+   "role": "Fest",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Festweisen",
+   "condition": "am Fest teilnehmen: Laternenfest auf dem Ilsensee, M106"
+  },
+  {
+   "id": "firnnacht",
+   "name": "Firnnacht (Winterfest)",
+   "role": "Fest",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Festweisen",
+   "condition": "am Fest teilnehmen: erster Frost: Schneeballschlacht und Eisfiguren im Innenhof"
+  },
+  {
+   "id": "wachsfest",
+   "name": "Wachsfest (Frühlingsfest)",
+   "role": "Fest",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Festweisen",
+   "condition": "am Fest teilnehmen: Blütenfest in den Gewächshäusern und am Seeufer"
+  },
+  {
+   "id": "doppelnacht",
+   "name": "Doppelnacht (Jahresende)",
+   "role": "Fest",
+   "place": "Nocturna",
+   "region": "Ilsensee",
+   "act": 1,
+   "teaches": "Festweisen",
+   "condition": "am Fest teilnehmen: beide Monde voll, Jahresakkord der Türme, M110"
+  }
+ ]
+}

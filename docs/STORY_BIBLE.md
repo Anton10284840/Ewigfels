@@ -85,6 +85,16 @@ Die Welt alles Ungeschehenen: entsättigt, Licht kommt von unten statt von oben,
 Regeln: nur Silben aus `a e i o u ae` + `k l m n r s th v y`; Betonung auf der ersten Silbe; Pluralendung `-ir`.
 Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *thas* = Stille · *vor* = Ton · *ilm* = Licht · *seth* = Stein · *myr* = Himmel · *anu* = Leben · *kor* = Tor. Beispiel-Inschrift: *„Vor anu, thas kor.“* = „Der Ton ist Leben, die Stille ist ein Tor.“
 
+### 3.6 Weisen ohne Worte, und wie man sie lernt
+
+Klangwirker sprechen keine Zaubersprüche. Eine Weise entsteht aus einem **Grundton** und einer **Wirkart**, also der Art, wie der Klang den Körper verlässt: **Schnippen, Tippen, Streichen, Kreisen, Pusten, Summen, Pfeifen**, selten auch Klatschen, Stampfen, Singen, Tanzen oder ein Instrument spielen. In Velmark sagt man: *„Wer pfeifen kann, kann zaubern.“*
+
+- **Kernweisen** (60) sind alte, mächtige Akkorde aus drei Grundtönen. Man lernt sie an der Akademie, bei Meistern oder durch die Geschichte.
+- **Alltagsweisen** (358) sind kleine Zauber, die jeder Wirker für den Alltag kennt: Kerzen anzünden, Teig kneten, Strähnen färben, Streiche spielen. Viele haben Bäckerinnen, Musikanten, Fischer und Kinder erfunden. Die 49 **Grundformen** (ein Grundton, eine Wirkart) kann jeder selbst durch Ausprobieren finden. Ihre Verfeinerungen lehrt nur, wer sie erfunden oder geerbt hat. Darum ziehen Wirker durchs Land und sammeln Weisen wie andere Leute Lieder.
+- **Koop-Weisen** (12) brauchen zwei bis vier Stimmen. Die Kael sangen fast nur im Chor; ihre größten Werke konnte niemand allein wirken.
+
+Spielregeln, Lernwege und Liste: [WEISEN.md](WEISEN.md), [WEISEN_KATALOG.md](WEISEN_KATALOG.md).
+
 ## 4. Orte
 
 | # | Region | Kurzbeschreibung | Akt |
@@ -126,6 +136,9 @@ Jede Region hat mindestens ein fröhliches und ein unheimliches Dorf (Design-Reg
 - **Die vier Türme** (= Häuser, Details in CHARACTER_BIBLE §3): Aschenhain (Ost), Silberquell (Nord), Sturmkamm (West), Moosgrund (Süd).
 - **Bereiche:** Große Halle mit hängender Stimmglocke · 4 Turm-Gemeinschaftsräume · Bibliothek „Das Gehör“ mit verbotener Abteilung „Die Stumme Kammer“ · 8 Klassenräume (Klangkunde, Schlagweisen, Schutzweisen, Elementarkunde, Wandelkunde, Tränkekunde, Kreaturenkunde, Sternkunde) + Duellsaal · Gewächshäuser · Kreaturen-Gehege am See · Observatorium auf dem Nordturm · Kerker (alte Gefängnisse der Stimmkriege) · Glockenturm · 3 Innenhöfe · Bootssteg · **mind. 15 Geheimgänge** (Liste in Phase 5).
 - **Veränderung:** Akt 1 Herbstfest „Ilsenlicht“ · Akt 2 Wintersperre nach Angriff · Akt 3 Turnier · Akt 4 Angriff, Westflügel und Glockenturm zerstört · Akt 5 Wiederaufbau (abhängig von Entscheidungen).
+- **Lehrkräfte in Akt 1:** Edda Vornholt (Klangkunde), Haldor Brams (Schlagweisen), Tobiah Grell (Schutzweisen, Duellkunde), Bruni Kesselmayr (Elementarkunde, Tränke; geht nach Akt 1 in den Ruhestand, darum kommt in Akt 2 Corvin Hale), Pim Ollendorf (Wandelkunde), Saphira Lindqvist (Kreaturenkunde), Ilka Morgenroth (Sternkunde). Dazu Mutter Gundel (Küche), Herr Staub (Bibliothek), Gärtnerin Rosa.
+- **Die Akademie lebt:** die launische Stimmglocke der Großen Halle, sprechende Teekessel in jedem Turm (Kessel Klaus und seine Brüder), Ottilie die wandelnde Laterne als Nachtwache, die Notentreppe, die Lauscher in den Wänden (Gerüchte), Nachklänge (leuchtende Echos früherer Schüler), Notenfalter als Post, der Speisefluss, der Sessel Barnabas, der Glockenwels im See, die Turmmelodien statt Passwörtern, der Glockenwettstreit der Türme, Glockenball als Sport, der geheime Streich-Club „Die Schiefen Töne“. Alles dazu, inkl. 15 Geheimgängen, Tagesablauf und Jahreskreis: [AKT1_SCHULLEBEN.md](AKT1_SCHULLEBEN.md).
+- **Feste im ersten Jahr:** Willkommensabend · Ilsenlicht (Herbst) · Firnnacht (Winter) · Wachsfest (Frühling) · Stimmprobe (Prüfungen) · Doppelnacht (Jahresende).
 
 ## 6. Fraktionen
 
@@ -174,20 +187,20 @@ Gegner-Typen: GDD §5.1. Optik: ART_BIBLE §2.1.
 
 Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscenes, Entscheidungen, Belohnungen) entstehen pro Akt **in der jeweiligen Umsetzungsphase** als `docs/missions/M<Akt><Nr>.md` + JSON. Hier die verbindliche Liste. 🎬 = Cutscene-Schwerpunkt, ⚖ = große Entscheidung.
 
-**Akt 1 – Ankunft (Jahr 1, 812/813)**
+**Akt 1 – Ankunft (Jahr 1, 812/813)** · Schwerpunkt: verspielter, zauberhafter Schul-Vibe, Dunkelheit erst ab M108 (AKT1_SCHULLEBEN §0). Dazu 18 Schulleben-Quests S101–S118 (AKT1_SCHULLEBEN §14).
 
 | ID | Mission | Inhalt |
 |---|---|---|
-| M101 | Das Boot über den Ilsensee 🎬 | Ankunft bei Nebel, erster Blick auf Nocturna, Treffen mit Lio. Charakter-Editor davor. Tutorial Bewegung. |
-| M102 | Die Turmwahl | Gespräche mit den vier Turmsprechern, Wahl des Turms, Führung durch die Akademie. |
-| M103 | Der erste Ton | Klangkunde bei Edda, erste Weise (Leichtklang), Duellsaal-Tutorial bei Grell. |
-| M104 | Deine ersten Ringe | Reise nach Kesselbrunn, Ambros Kettler stimmt die ersten Stimmringe. Er erkennt etwas und schweigt. Markt-Tutorial. |
-| M105 | Das Flüstern im Raunwald | Kreaturenkunde-Ausflug mit Saphira, Lio verirrt sich, erste Kämpfe (Pilzbrut), Hüter-Begegnung. |
-| M106 | Ilsenlicht 🎬 | Herbstfest, Aurelia fordert zum Duell, Laternen auf dem See. Erster Traum von Nym. |
-| M107 | Die Stumme Kammer | Nachts mit Lio in die verbotene Bibliotheksabteilung, Kael-Buch reagiert auf den Spieler. |
-| M108 | Erwachen 🎬 | Angriff eines manipulierten Ausbilders (Varn) beim Wald-Training; der Urton bricht aus dem Spieler heraus (Verstummen). Story-Boss 1. |
-| M109 | Was hast du getan? | Folgen: Edda deckt den Spieler, Gerüchte an der Akademie. Erste Spur der Stillen Hand (schwarzer Handschuh bei Varn). |
-| M110 | Die Doppelnacht ⚖ | Jahresende. Nym spricht. **Entscheidung 1:** Edda die Wahrheit sagen oder die Kraft verbergen. |
+| M101 | Das Boot über den Ilsensee 🎬 | Charakter-Editor. Ein Notenfalter mit der Einladung flattert ins Waisenhaus von Kesselbrunn (Kinder jagen ihn durch den Schlafsaal). Ankunft bei Nebel, Treffen mit Lio im Boot, der Glockenwels taucht neben dem Boot auf, erster Blick auf Nocturna, Laternenkrähen begrüßen das Boot. Erstes Schnippen: *Funkenschnipp* zündet die Bootslaterne. Tutorial Bewegung. |
+| M102 | Die Turmwahl | Willkommensabend in der Großen Halle: Speisefluss, Tischlied, die Stimmglocke summt. Gespräche mit den vier Turmsprechern, Wahl des Turms. Führung über die Notentreppe (falscher Ton = Rutsche), erste Turmmelodie, Kessel Klaus, eigenes Turmzimmer. Nachts der erste Blick auf Ottilie. |
+| M103 | Der erste Ton | Klangkunde bei Edda: die drei Gesetze, *Stimmgabel*, erste Kernweise **Leichtklang** (Federn, dann Ollendorfs entlaufene Tische), danach **Probier-Modus**: die erste selbst entdeckte Grundform. Nachmittags Duellsaal-Tutorial bei Grell (Glockenschild, Reinklang). Abends zeigt Lio seinen ersten Streich (*Kitzelklang*). |
+| M104 | Deine ersten Ringe | Bootsausflug nach Kesselbrunn: Markt, Bäckerin Hedda, Jupp mit dem Akkordeon (erster **Meister**: Bedingung erfüllen, Liederheft lernen). Ambros Kettler stimmt die ersten Stimmringe, die Ringfarbe färbt ab jetzt die Magie. Er erkennt etwas und schweigt. Markt-Tutorial, Barbier und Schneiderin (Personalisierung). |
+| M105 | Das Flüstern im Raunwald | Kreaturenkunde-Ausflug mit Saphira (*Wiegenlied*, *Lockruf*), Glimmermotten-Wiese, Lio verirrt sich und folgt einem Nebelfuchs im Kreis, Pilzhausen und Großmutter Morchel, erste Kämpfe (Pilzbrut), Hüter-Begegnung. Am Waldrand der erste Blick auf Krähenhain (Gruselkontrast). |
+| M106 | Ilsenlicht 🎬 | Herbstfest: Laternen auf dem See, Laternenregatta, Kürbisgrinsen, Festweisen, die Stillen Wächter tanzen. Aurelia fordert zum Duell (Sieg oder faires Verlieren öffnet später ihre Stilweisen). In der Nacht der erste Traum von Nym. |
+| M107 | Die Stumme Kammer | Nachts mit Lio unterwegs: an Ottilie vorbei, über den Flüsterkorridor, Hilfe von den Schiefen Tönen (Klinkenlied), durch den Bücherschlund in die verbotene Bibliotheksabteilung. Ein Kael-Buch reagiert auf den Spieler. Ottilie erwischt beide auf dem Rückweg: Nachsitzen bei Edda, die zu lange auf das Buch schaut. |
+| M108 | Erwachen 🎬 | Winter. Wald-Training mit Ausbilder Varn, der manipuliert ist. Der Urton bricht aus dem Spieler heraus (Verstummen): Der Raunwald wird für einen Moment farblos und still. Story-Boss 1. Der Stimmungsbruch des Akts. |
+| M109 | Was hast du getan? | Folgen: Edda deckt den Spieler. Die Lauscher tragen Gerüchte durch die Akademie, die Stimmglocke klingt schief, Mitschüler weichen aus. Die Freunde halten dagegen: Firnnacht, Schneeballschlacht, Eis-Glockenball, Kakao am Kamin. Erste Spur der Stillen Hand (schwarzer Handschuh bei Varn). |
+| M110 | Die Doppelnacht ⚖ | Jahresende nach der Stimmprobe: Glockenwettstreit, Jahresakkord der Türme, Mondtau. Danach spricht Nym. **Entscheidung 1:** Edda die Wahrheit sagen oder die Kraft verbergen. |
 
 **Akt 2 – Schatten im Inneren (Jahr 2, 813/814)**
 
@@ -288,7 +301,7 @@ Dazu laufende Werte: **Nachhall-Belastung** des Spielers (Summe über das Spiel)
 
 ## 11. Ton und Schreibstil
 
-- **Grundton: verspielt und einladend, mit echtem Grusel als Kontrast.** Die Welt darf witzig, warm und bunt sein (Dorffeste, schrullige Händler, Tiere mit Charakter). Dunkle Stellen sind dafür richtig unheimlich, nicht nur „etwas düster“.
+- **Grundton: verspielt und einladend, mit echtem Grusel als Kontrast.** Akt 1 ist der verspielteste Teil des Spiels (Schulalltag, Streiche, Feste). Die Welt darf witzig, warm und bunt sein (Dorffeste, schrullige Händler, Tiere mit Charakter). Dunkle Stellen sind dafür richtig unheimlich, nicht nur „etwas düster“.
 - Dialoge: natürlich, knapp, mit Humor in der Freundesgruppe, ernst und leise bei den Erwachsenen. Keine Pathos-Monologe ohne Grund.
 - Lehrkräfte siezen Schüler, Schüler duzen sich. Der Dirigent siezt immer (höflich, kalt).
 - Kein Fluchen über „verdammt“ hinaus. Eigene Ausrufe: „Bei beiden Monden!“, „Stimm dich ab!“ (= beruhig dich), „Hallkopf“ (= Dummkopf).

@@ -1,6 +1,6 @@
 # GDD – Nocturna (Game Design Document)
 
-Stand: 26.11.2026 · Phase 1 · Version 0.1
+Stand: 26.11.2026 · Phase 1 · Version 0.2 (E10: 430 Weisen, Akt-1-Schulleben)
 Verwandte Dokumente: [STORY_BIBLE](STORY_BIBLE.md) · [CHARACTER_BIBLE](CHARACTER_BIBLE.md) · [ART_BIBLE](ART_BIBLE.md) · [ANIMATION_BIBLE](ANIMATION_BIBLE.md)
 
 ---
@@ -64,6 +64,10 @@ Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) 
 
 **Empfehlung A**, gebaut in Ringen: Phase 5 (Akt 1) startet mit ca. 16 km² rund um die Akademie, jeder Akt fügt Regionen hinzu bis ca. 64 km². Wenn es gut läuft, können wir später Richtung B erweitern, World Partition erlaubt das ohne Neubau. Gewählt: **A** (Details §15).
 
+### E10 – Hunderte Weisen ✅ entschieden: Option C (Nutzer, 26.11.2026)
+
+Wunsch: Hunderte Zauber, lernbar im Unterricht oder bei Meistern, ohne Pflicht zu Zaubersprüchen. Gewählt: **Mischung** aus 60 handgemachten Kernweisen, 358 Alltagsweisen aus einem Baukasten (Grundton × Wirkart) und 12 Koop-Weisen. Optionen, Lernwege und ehrliche Animationskosten: [WEISEN.md §0](WEISEN.md#0-entscheidung-e10--hunderte-weisen--option-c-nutzer-26112026). Dazu: Akt 1 bekommt einen starken verspielten Schul-Vibe, siehe [AKT1_SCHULLEBEN.md](AKT1_SCHULLEBEN.md).
+
 ---
 
 ## 1. Überblick
@@ -90,6 +94,7 @@ Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) 
 4. **Cinematic-Look in Echtzeit.** Lieber eine Szene perfekt als zehn halb fertig (Art Bible).
 5. **Verbotene Kraft mit Preis.** Der Urton ist stark, aber er nimmt der Welt Farbe und Klang. Der Spieler soll jedes Mal überlegen, ob er ihn benutzt.
 6. **Verspielt eintauchen, dunkel kämpfen.** Läden, Feste, Tiere, Personalisierung und freundliche Dörfer machen Spaß. Dagegen stehen gruselige Orte und Schwarzmagier, die echtes Unbehagen erzeugen. Beides braucht das andere.
+7. **Eine Schule zum Verlieben.** Akt 1 lässt sich Zeit: Unterricht, Streiche, Feste, lebendige Dinge, Geheimgänge und Hunderte kleine Weisen. Erst wenn der Spieler Nocturna liebt, wird es dunkel (AKT1_SCHULLEBEN.md).
 
 ## 3. Spielerfantasie und Kern-Loops
 
@@ -100,7 +105,8 @@ Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) 
 | Moment | 30 s | Zauber-Akkorde kombinieren, parieren, Elementar-Reaktionen auslösen, klettern/gleiten |
 | Erkundung | 5–15 min | Ort entdecken → Rätselschrein / Kampf / Lore-Fund → Belohnung (Material, Weise, Kodex) |
 | Quest | 45–60 min | Mission mit Dialog, Ort, Rätsel, Kampf, Entscheidung, Cutscene |
-| Akademie-Woche | 2–4 Std. | Unterricht (Minispiel) → neue Weise → Sidequests → Turmzimmer ausbauen → Story-Mission |
+| Weisen sammeln | laufend | Probieren (Grundton × Wirkart) → Entdeckung; Meister finden → Bedingung erfüllen → Liederheft lernen; Weisenheft füllen (430) |
+| Akademie-Woche | 2–4 Std. | Unterricht (Minispiel) → neue Weise → Schulleben-Quests, Glockenball, Streiche, Nachtausflüge → Turmzimmer ausbauen → Story-Mission (AKT1_SCHULLEBEN §2) |
 | Akt | 8–10 Std. | Ein Schuljahr, neue Regionen, Akt-Boss, große Entscheidung |
 
 ## 4. Magiesystem (Spielmechanik)
@@ -116,43 +122,33 @@ Lore-Regeln stehen in [STORY_BIBLE §3](STORY_BIBLE.md#3-magiesystem-resonanz). 
 | **Urklang** (violett-weiß) | lädt sich durch Kampf und Reinklang-Paraden auf; Urweisen verbrauchen ihn | nur durch Kampf |
 | **Nachhall** (Belastung, 0–100) | jede Urweise erhöht ihn. Hoher Wert: Bild entsättigt, Ton wird dumpf, Nachhall-Kreaturen tauchen auf. Langfristig: beeinflusst Enden und NPC-Reaktionen | sinkt langsam, Meditation an Aderquellen senkt ihn stark |
 
-### 4.2 Weisen (Zauber): 25 in 5 Schulen
+### 4.2 Weisen (Zauber): 430 – Kern, Alltag, Koop (E10)
 
-Steuerung: 4 aktive Weisen auf dem Schnellwahl-Ring, bis zu 4 Ringe (16 Slots), Wahlrad für Ringe. Basisangriff (Funkenstoß) immer verfügbar.
+**Vollständiges System:** [WEISEN.md](WEISEN.md) · **alle Weisen mit Akkord, Effekt, Combo und Lehrer:** [WEISEN_KATALOG.md](WEISEN_KATALOG.md) (automatisch aus `Content/Data/Spells/Katalog/*.json`).
 
-| # | Weise | Schule | Effekt | Interaktionen / Combos | Freischaltung |
-|---|---|---|---|---|---|
-| 1 | **Funkenstoß** | Schlag | Basisprojektil, schnelle 3er-Kette | Kette endet mit Rückstoß | Start |
-| 2 | **Hammerton** | Schlag | Schwere Schockwelle nach vorne, wirft um | auf gezogene Gegner doppelter Schaden | Akt 1 |
-| 3 | **Splitterchor** | Schlag | Fächer aus Quarzsplittern, nah stark | durchschlägt Eisrüstung | Akt 1 |
-| 4 | **Ziehklang** | Schlag | Zieht Gegner/Objekt heran | danach Hammerton = Combo „Schlagzug“ | Akt 1 |
-| 5 | **Zerrton** | Schlag | Kanalisierter Strahl, bricht Schilde | gegen Bannmagier-Schilde Pflicht | Akt 2 |
-| 6 | **Glockenschild** | Schutz | Block; perfektes Timing = **Reinklang** (Konter + Atem zurück) | Basis jeder Verteidigung | Start |
-| 7 | **Spiegelklang** | Schutz | Reflektiert Projektile 2 s lang | reflektierte Glut zündet Öl | Akt 1 |
-| 8 | **Haltelied** | Schutz | Hält Gegner 4 s in der Luft fest | festgehaltene Gegner + Sturmweise = Kettenstrom | Akt 1 |
-| 9 | **Atemwende** | Schutz | Heilt über Zeit, füllt Atem | Begleiter wird mitgeheilt (Talent) | Akt 2 |
-| 10 | **Klangwand** | Schutz | Barriere, hält Projektile, 8 s | Glut durch die Wand = Feuerwand | Akt 2 |
-| 11 | **Glutweise** | Elementar | Feuerball, Brennen-Effekt | Feuer + Öl = Explosion; Feuer + Eis = Dampfwolke (Sichtschutz) | Akt 1 |
-| 12 | **Frostweise** | Elementar | Eislanze, Verlangsamung, friert Wasser | Eis + Wasser = Eisfläche/Plattform; gefrorene Gegner zerbrechen bei Hammerton | Akt 1 |
-| 13 | **Sturmweise** | Elementar | Blitz springt auf 3 Ziele | Blitz + Nässe = doppelte Reichweite und Betäubung | Akt 2 |
-| 14 | **Flutweise** | Elementar | Wasserschwall, macht nass, löscht Feuer | bereitet Sturm- und Frostweise vor | Akt 2 |
-| 15 | **Erdweise** | Elementar | Felsdorn aus dem Boden, auch als Plattform | Erde + Wasser = Schlamm (verlangsamt) | Akt 3 |
-| 16 | **Wiederklang** | Wandel | Repariert Zerbrochenes (Brücken, Statuen) | Kern vieler Rätsel | Akt 1 |
-| 17 | **Leichtklang** | Wandel | Lässt Objekte schweben, werfen | geworfene Fässer + Glut | Start (Tutorial) |
-| 18 | **Wachsklang** | Wandel | Lässt Ranken wachsen (Klettern, Fesseln) | Ranken + Glut = Feuerweg | Akt 2 |
-| 19 | **Formwandel** | Wandel | Verwandelt schwachen Gegner 6 s in harmloses Tier, Objekte in andere | Tiere fliehen, Bosse immun | Akt 3 |
-| 20 | **Schattenweise** | Wandel | Unsichtbarkeit/Tarnung für Schleichpassagen | Überraschungsangriff = 3× Schaden | Akt 2 |
-| 21 | **Verstummen** | Ur (verboten) | Löscht alle Weisen in einem Radius (auch Gegnerschilde) | Kosten: Urklang + Nachhall 10 | Akt 1 (Erwachen) |
-| 22 | **Nachhallschritt** | Ur | Kurzer Sprung durch den Nachhall (Teleport 8 m, durch Gitter) | Rätsel und Flucht | Akt 2 |
-| 23 | **Seelenecho** | Ur | Zeigt Erinnerungen eines Ortes/Objekts (Ermittlung) | Detektiv-Questreihe | Akt 2 |
-| 24 | **Entklang** | Ur | Löst Materie/Barrieren auf, enormer Schaden | Nachhall 20 | Akt 3 |
-| 25 | **Grundton** | Ur | Ultimative Weise: Flächeneffekt, schreibt Gegner „um“ | Nachhall 40, nur mit vollem Urklang | Akt 4 |
+Steuerung: 4 aktive Kernweisen auf dem Schnellwahl-Ring, bis zu 4 Ringe (16 Slots), Wahlrad für Ringe. Basisangriff (Funkenstoß) immer verfügbar. Alltagsweisen über das **Alltagsrad** (8 Favoriten) und den **Kontext-Vorschlag** am Objekt (WEISEN §5).
 
-**Akkord-Darstellung:** Jede Weise hat drei Grundtöne (siehe STORY_BIBLE §3.2). Im Kodex und im HUD als drei kleine farbige Noten sichtbar. Weisen mit gemeinsamem Grundton haben schnellere Übergänge (Combo-Fenster +0,3 s). So entsteht eine Lernkurve, ohne dass der Spieler Musik können muss.
+| Art | Anzahl | Kurz |
+|---|---|---|
+| Kernweisen | 60 | handgemacht: eigene Geste, eigener Effekt, Akkord aus 3 Grundtönen. Kampf, Story, große Rätsel |
+| Alltagsweisen | 358 | Baukasten: Grundton × Wirkart (Schnippen, Tippen, Streichen, Kreisen, Pusten, Summen, Pfeifen + 5 Sonderformen). 49 Grundformen selbst entdecken, Rest bei Lehrern, Meistern, Mitschülern, Tieren, auf Festen |
+| Koop-Weisen | 12 | Duette, Dreiklänge, Vierklänge für 2–4 Spieler; im Einzelspiel mit Begleiter |
+
+Kernweisen nach Schule (✦ = schon in Version 0.1 dabei, Name und Funktion unverändert):
+
+| Schule | Anzahl | Weisen |
+|---|---|---|
+| **Schlag** | 12 | Funkenstoß ✦, Hammerton ✦, Splitterchor ✦, Ziehklang ✦, Prellschlag, Zerrton ✦, Pfeilnote, Trommelfeuer, Stoßkadenz, Bassbrecher, Wirbelschlag, Paukenschlag |
+| **Schutz** | 12 | Glockenschild ✦, Spiegelklang ✦, Haltelied ✦, Wiegenlied, Gleitschleier, Atemwende ✦, Klangwand ✦, Gegenklang, Bannkreis, Fesselkanon, Schutzchor, Stillpunkt |
+| **Elementar** | 14 | Glutweise ✦, Frostweise ✦, Windstoß, Sturmweise ✦, Flutweise ✦, Nebelweise, Reifpfad, Funkenregen, Erdweise ✦, Glutpeitsche, Hagelchor, Donnerkeil, Wirbelflut, Felsfaust |
+| **Wandel** | 14 | Leichtklang ✦, Wiederklang ✦, Laternenlicht, Spurklang, Klinkenlied, Lockruf, Schattenweise ✦, Wachsklang ✦, Kletterhauch, Echoköder, Schrumpfklang, Formwandel ✦, Spiegelbild, Belebung |
+| **Ur (verboten)** | 8 | Verstummen ✦, Nachhallschritt ✦, Seelenecho ✦, Farbraub, Entklang ✦, Rückklang, Stummer Chor, Grundton ✦ |
+
+**Akkord-Darstellung:** Jede Kernweise hat drei Grundtöne (STORY_BIBLE §3.2), jeder Akkord kommt nur einmal vor (das Prüfskript achtet darauf). Im Kodex und im HUD als drei kleine farbige Noten sichtbar. Weisen mit gemeinsamem Grundton haben schnellere Übergänge (Combo-Fenster +0,3 s). So entsteht eine Lernkurve, ohne dass der Spieler Musik können muss.
 
 ### 4.3 Status-Effekte
 
-Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall-berührt (nur Gegner aus dem Schattenreich, verwundbar gegen Urweisen).
+Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall-berührt (nur Gegner aus dem Schattenreich, verwundbar gegen Urweisen). Neu durch Alltagsweisen (E10): **Glatt** (rutscht aus), **Abgelenkt** (2–5 s, kichert, tanzt, flieht vor Gestank; Bosse immun, je Gegner einmal pro Kampf), **Laut**/**Leise** (Lärm lockt an, Stille hilft beim Schleichen). Details: WEISEN §8.
 
 ## 5. Kampf
 
@@ -196,7 +192,7 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 
 ## 6. Erkundung und Bewegung
 
-- Laufen, Sprinten, Springen, Ausweichen, **Klettern** (markierte Kanten + Ranken), **Schwimmen/Tauchen**, **Gleiten** mit dem Umhang (Leichtklang-Talent, ab Akt 1 Ende).
+- Laufen, Sprinten, Springen, Ausweichen, **Klettern** (markierte Kanten + Ranken), **Schwimmen/Tauchen**, **Gleiten** mit dem Umhang (aus der Weise Gleitschleier, ab Akt 1 Ende).
 - **Reittiere:** mehrere eigene Arten für Luft, Boden und Wasser (CHARACTER_BIBLE §7). Fliegen mit Ausdauer, Upgrades, Rennen, Aussehen anpassbar.
 - **Karte:** Weltkarte mit Nebel des Krieges, Aussichtspunkte (Glockentürme) lüften Nebel, Schnellreise über Aderquellen.
 - **Kompass** oben, ausblendbar. Marker nur für aktive Quest + gesetzte eigene Marker.
@@ -207,14 +203,14 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 | # | System | Kurz-Design | Phase | Modul |
 |---|---|---|---|---|
 | 1 | Third-Person-Controller | Motion Matching, Klettern, Schwimmen, Gleiten | 3 | Core |
-| 2 | Zaubersystem | 25 Weisen, Ringe, Combos, Elementar | 3 | Magic |
+| 2 | Zaubersystem | 430 Weisen (60 Kern, 358 Alltag, 12 Koop), Baukasten Grundton × Wirkart, Probier-Modus, Ringe, Combos, Elementar (WEISEN.md) | 3 | Magic |
 | 3 | Kampf | Lock-On, Reinklang, Schwachstellen, StateTree | 3 | Combat, AI |
 | 4 | Quests | JSON, Bedingungen, Verzweigung, Flags | 2 | Quest |
 | 5 | Dialoge | Verzweigung, Skill-/Ruf-Checks, Emotions-Tags, Kamera | 2 | Dialogue |
 | 6 | Entscheidungen | globale Flags, Beziehungswerte (−100…+100), Ruf bei 3 Fraktionen | 2 | Quest |
 | 7 | Inventar & Ausrüstung | 10 Kleidungsslots + 4 Stimmringe + Handschuhe (siehe §13), Transmog, Seltenheit: Gewöhnlich, Gestimmt, Rein, Meisterhaft, Uralt | 2/5 | Core |
 | 8 | Crafting | Tränke (Minispiel: Hitze + Rühr-Rhythmus), Pflanzenbeete im Turm, Stimmringe schmieden und verbessern bei Ambros Kettler | 5 | Core |
-| 9 | Progression | Level 1–40, Talentbaum je Schule (5 Bäume × 12 Talente), Weisen über Unterricht/Quests | 3/5 | Magic |
+| 9 | Progression | Level 1–40, Talentbaum je Schule (5 Bäume × 12 Talente), Weisen über Unterricht, Meister, Mitschüler, Kreaturen, Feste, Probieren (WEISEN §4) | 3/5 | Magic |
 | 10 | Begleiter | 1 aktiver Begleiter (Lio, Aurelia ab Akt 2, Nell in Tiedmar, Fink in Aurenburg), eigene Kampf-KI, Kommentare | 5 | AI |
 | 11 | Reittiere | 6 Arten (Luft/Boden/Wasser), Stall in der Akademie, Upgrades, Rennen, Sattel/Rüstung/Fellfarbe im Laden | 5 | Core |
 | 12a | Personalisierung & Läden | Charakter bis ins Detail über Läden in der Welt (Schneider, Barbier, Tätowierer, Ringschmied, Stallmeister …), siehe §13 | 2/5 | Core, UI |
@@ -236,7 +232,7 @@ Drei Fraktionen (Ruf −100 bis +100, Stufen: Feind, Misstrauisch, Neutral, Gesc
 
 ### 7.2 Unterrichts-Minispiele
 
-Tränkekunde (Rhythmus-Rühren + Hitze), Wandelkunde (Formen nachzeichnen), Sternkunde (Sternbilder und Mondphasen einstellen, Teleskop), Kreaturenkunde (füttern, beruhigen per Summen), Klangkunde (Akkord-Gehörtraining, Basis für neue Weisen), Duellkunde (Arena-Übungskämpfe).
+Tränkekunde (Rhythmus-Rühren + Hitze), Wandelkunde (Formen nachzeichnen, Knopf-zu-Maus), Sternkunde (Sternbilder und Mondphasen einstellen, Teleskop, nur nachts), Kreaturenkunde (füttern, beruhigen per Summen), Klangkunde (Akkord-Gehörtraining, Basis für neue Weisen), Schlagweisen (Zielwerfen auf Glocken, Kegelbahn), Elementarkunde (Elemente kombinieren, Kerzenrennen), Schutzweisen und Duellkunde (Parier-Rhythmus, Arena-Übungskämpfe). Jede Stunde 5–10 min, endet mit einer Weise. Lehrkräfte, Stundenplan, Glockenball, Nachsitzen: [AKT1_SCHULLEBEN §5](AKT1_SCHULLEBEN.md#5-unterricht).
 
 ## 8. Steuerung (Standardbelegung)
 
@@ -272,7 +268,8 @@ Umsetzung über **Enhanced Input** mit Input-Mapping-Contexts: Erkundung, Kampf,
 | Fraktions-Questlinien | 3 × 5 Quests | 6–8 Std. |
 | Sidequests | 60 (6 je Region) | 10–12 Std. |
 | Rätselschreine | 40+ | 4–5 Std. |
-| Aktivitäten (Rennen, Arena, Zähmen, Housing, Unterricht, Sammeln) | – | 6–10 Std. |
+| Schulleben-Quests Akt 1 (S101–S118) | 18 | ca. 8 Std. (Teil der Sidequests) |
+| Aktivitäten (Rennen, Arena, Zähmen, Housing, Unterricht, Glockenball, Weisen sammeln) | 430 Weisen | 6–10 Std. |
 | **Summe** | | **ca. 95–110 Std.** |
 
 ## 11. Produktionsplan und ehrliche Risiken

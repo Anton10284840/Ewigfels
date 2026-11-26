@@ -65,6 +65,13 @@ Je Weise: **Cast-Start → Halten (Loop, für kanalisierte) → Release**. Pro S
 - [ ] Zaubern im Sprung/Gleiten (Upper-Body-Blend auf Luft-Pose) — Blend
 - [ ] Zaubern auf dem Reittier (eine Hand, eingeschränkt) — KF
 - [ ] Schnippen (Funken, Licht anmachen, Gruß) und Fingerspiel-Idle (Finger trommeln, kleine Funken) — MC + KF
+- [ ] **Neue Kernweisen aus E10** (35 zusätzlich, Liste mit Gesten-Beschreibung in `Content/Data/Spells/Katalog/Kernweisen.json` → `anim.gesture`, z. B. Prellschlag, Wiegenlied, Gleitschleier, Windstoß, Laternenlicht, Klinkenlied, Paukenschlag) — MC, Reihenfolge nach Akt
+- [ ] **Wirkart-Gesten für alle 358 Alltagsweisen** (WEISEN.md §2): Schnippen, Tippen, Streichen, Kreisen, Pusten, Summen, Pfeifen — je eine Upper-Body-Montage, einhändig im Gehen, gespiegelt für links — MC
+- [ ] **Sonder-Wirkarten:** Klatschen, Stampfen, Singen (Chor-Haltung), Spielen (Akkordeon, Mundharmonika, Flöte), Tanzen (kurze Schleife) — MC (Akkordeon: du spielst echt)
+- [ ] **Probier-Modus:** „nichts passiert“-Reaktion (Funken verpuffen, Schulterzucken) + Entdecker-Freude (kurzer Jubel, Blick auf die Hand) — MC
+- [ ] **Koop-Weisen** (12): Paar-Posen Rücken an Rücken, Hand in Hand (Tandemgleiten), Hand auf Schulter (Wechselatem), Dreieck/Kreis-Formation — MC mit 2 Personen oder einzeln + Ausrichtung im Editor
+
+Mengen (E10): 60 Kern + 12 Koop + 12 Wirkarten ≈ **84 Zauber-Montages** statt 430. Plan in Scheiben: WEISEN.md §9.
 
 **Signature-Stil:** Unsere Weisen sehen aus wie **Akkordeon spielen in der Luft**: Die Hände greifen Akkorde (Finger gespreizt, Druck wie auf Tasten), die Arme ziehen und drücken wie beim Balg, Licht bricht aus den Fingerspitzen. Leichte Weisen: eine Hand. Schwere: beide Hände ziehen auseinander und schlagen zusammen. Schwere Weisen: Gewicht aus der Hüfte, Atemzug vorher (sichtbar über Brust-Additive).
 

@@ -37,7 +37,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
 | Aufgabe | Status | Notiz |
 |---|---|---|
-| docs/GDD.md | ✅ | E1 entschieden: Akademie + Spieltitel **Nocturna**; E2–E5 mit Optionen (Empfehlung umgesetzt), 25 Weisen, 25 Gegnertypen, 15 Bosse, Systeme, Steuerung |
+| docs/GDD.md | ✅ | E1 entschieden: Akademie + Spieltitel **Nocturna**; E2–E5 mit Optionen (Empfehlung umgesetzt), 430 Weisen (E10), 25 Gegnertypen, 15 Bosse, Systeme, Steuerung |
 | docs/STORY_BIBLE.md | ✅ | Welt Velmark, Zeitlinie, Magie „Resonanz“, Fraktionen, 50 Missionen (Liste), 6 Entscheidungen, 4 Enden, 6 Questreihen |
 | docs/CHARACTER_BIBLE.md | ✅ | Pipeline, MetaHuman-Anleitung, 4 Türme, 15 Figurenblätter, NPC-Plan, 20 Kreaturen |
 | docs/ART_BIBLE.md | ✅ | Paletten pro Region, Rendering, Post Process, Master-Materialien, Licht-Rigs, VFX, Presets, Budgets |
@@ -46,6 +46,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | ComfyUI-Workflows + Batch-Skript | ✅ | `run_comfy.py` gegen Test-Server geprüft, in echtem ComfyUI **noch nicht** gelaufen |
 | Prompt-Listen | ✅ | 110 Moodboard-, 128 Figuren-, 48 Kreaturen-, 12 Turm-Bilder |
 | Nutzer-Wünsche 26.11. | ✅ | Ton verspielt + gruselige Gegner, Magie aus den Fingern (kein Stab), Personalisierung über Läden (GDD §13), 6 eigene Reittiere, fröhliche/gruselige Dörfer + Missklinger. Weltgröße: Option A, ca. 64 km² mit dichten Kernen (GDD E9) |
+| E10 Hunderte Weisen (Option C) + Akt-1-Schulvibe | ✅ | 430 Weisen (60 Kern, 358 Alltag, 12 Koop) in `Content/Data/Spells/Katalog/`, docs/WEISEN.md, docs/WEISEN_KATALOG.md, docs/AKT1_SCHULLEBEN.md (Tagesablauf, lebendige Akademie, 15 Geheimgänge, Feste, Glockenball, 18 Schulleben-Quests S101–S118), Akt-1-Missionen in STORY_BIBLE §8.1 überarbeitet, Prüfskript validate_spells.py. Offen Phase 5: M101/M110-JSON an die neue Beschreibung anpassen, S101–S118 als JSON |
 | Bilder generiert | ⬜ | beim Nutzer (ca. 40–60 min), danach Key-Frames wählen |
 | Missionsdesign-Dokumente | ⬜ | pro Akt in der Umsetzungsphase (Akt 1: Phase 5) |
 
@@ -58,6 +59,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Dialoge: SUDS-Brücke (`Dialogue/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ Dialog im Editor abspielen |
 | Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ PIE mit Level |
 | Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
+| Weisen-Katalog + Prüfskript (`Scripts/Tools/validate_spells.py`) | ✅ | ⬜ Phase 3/5 (GAS, `GA_Alltag`, `IEwigfelsWeiseTarget`) | ✅ 0 Fehler (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 

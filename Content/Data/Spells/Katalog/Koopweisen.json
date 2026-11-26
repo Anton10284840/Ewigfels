@@ -1,0 +1,329 @@
+{
+ "_kommentar": "Koop-Weisen für 2–4 Spieler (Koop kommt später). Im Einzelspiel übernimmt ein Begleiter den zweiten Part. Doku: docs/WEISEN.md §6",
+ "spells": [
+  {
+   "id": "D01",
+   "kind": "koop",
+   "name": {
+    "de": "Zwiegesang",
+    "en": "Duet Ward"
+   },
+   "unlock": 1,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Reinklang eines Spielers gibt beiden Atem zurück."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Zwei Glockenschilde nebeneinander verschmelzen zu einer Kuppel, die beide schützt."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "beide heben gleichzeitig die Hand, Rücken an Rücken",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D02",
+   "kind": "koop",
+   "name": {
+    "de": "Kanonfeuer",
+    "en": "Canon Fire"
+   },
+   "unlock": 1,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Ein Taktfehler setzt den Bonus zurück."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Abwechselnd Funkenstoß im Takt: jeder Treffer im Rhythmus steigert den Schaden beider Spieler (bis +50 %)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "Funkenstoß wie gewohnt, Takt-Anzeige am Fadenkreuz",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D03",
+   "kind": "koop",
+   "name": {
+    "de": "Brückenlied",
+    "en": "Bridge Song"
+   },
+   "unlock": 1,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Rätsel, die man allein mit Leichtklang + Wiederklang lösen muss, gehen zu zweit schneller."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Zwei Spieler an beiden Seiten einer Schlucht singen eine Lichtbrücke, die 20 s hält."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   },
+   "anim": {
+    "gesture": "beide strecken die Hände zueinander, Linie aus Licht",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D04",
+   "kind": "koop",
+   "name": {
+    "de": "Schleuderwurf",
+    "en": "Sling Toss"
+   },
+   "unlock": 1,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Mitspieler werfen = sehr weite Sprünge zu Geheimverstecken."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Einer hebt mit Leichtklang einen Gegenstand (oder Mitspieler!), der andere schießt ihn mit Windstoß weit weg."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   },
+   "anim": {
+    "gesture": "Leichtklang-Geste + Windstoß-Geste",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D05",
+   "kind": "koop",
+   "name": {
+    "de": "Spiegelpaar",
+    "en": "Mirror Pair"
+   },
+   "unlock": 2,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Rätsel mit Lichtstrahlen in Ruinen."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Zwei Spiegelklänge werfen einen Strahl hin und her: jeder Abprall wird stärker, am Ende trifft er alle Gegner auf der Linie."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "beide drehen die Hand wie einen Spiegel",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D06",
+   "kind": "koop",
+   "name": {
+    "de": "Tandemgleiten",
+    "en": "Tandem Glide"
+   },
+   "unlock": 2,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Im Einzelspiel: mit Lio (Story) oder Reittier-Partner."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Zwei Spieler halten sich an den Händen und gleiten doppelt so weit."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   },
+   "anim": {
+    "gesture": "Hand in Hand, Umhänge flattern",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D07",
+   "kind": "koop",
+   "name": {
+    "de": "Wechselatem",
+    "en": "Shared Breath"
+   },
+   "unlock": 2,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Rettung vor dem Niederschlag, Heiler-Rolle im Koop."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Ein Spieler gibt dem anderen Atem ab (1:1)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   },
+   "anim": {
+    "gesture": "Hand auf die Schulter des anderen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "D08",
+   "kind": "koop",
+   "name": {
+    "de": "Rufklang",
+    "en": "Rally Tone"
+   },
+   "unlock": 1,
+   "koop": {
+    "min_players": 2,
+    "bonus": {
+     "de": "Im Einzelspiel hebt Lio dich so einmal pro Kampf auf."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Hebt einen niedergeschlagenen Mitspieler wieder auf (Wiederbeleben)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   },
+   "anim": {
+    "gesture": "knien, Hand auf den Rücken, leises Summen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "T01",
+   "kind": "koop",
+   "name": {
+    "de": "Dreiklang",
+    "en": "Triad"
+   },
+   "unlock": 2,
+   "koop": {
+    "min_players": 3,
+    "bonus": {
+     "de": "Ein eigener Baukasten für Gruppen: 84 Akkorde, darunter 12 benannte „Meisterakkorde“ mit besonderem Effekt."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Drei Spieler spielen je einen Grundton. Der fertige Akkord löst eine starke Flächenweise aus, die von den drei Tönen abhängt (z. B. Glut+Strom+Hall = Feuersturm, Firn+Quell+Grund = Gletscherwelle)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   },
+   "anim": {
+    "gesture": "alle drei greifen gleichzeitig in die Luft, Lichtfäden verbinden sie",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "T02",
+   "kind": "koop",
+   "name": {
+    "de": "Kreiswacht",
+    "en": "Circle Watch"
+   },
+   "unlock": 3,
+   "koop": {
+    "min_players": 3,
+    "bonus": {
+     "de": "Verteidigung bei Doppelnächten."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Drei Bannkreise überlappen zu einer Festung, Nachhall-Kreaturen werden darin geschwächt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   },
+   "anim": {
+    "gesture": "Kniende Spieler im Dreieck",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "V01",
+   "kind": "koop",
+   "name": {
+    "de": "Vierklang",
+    "en": "Four-Part Chord"
+   },
+   "unlock": 4,
+   "koop": {
+    "min_players": 4,
+    "bonus": {
+     "de": "Nur einmal pro Kampf. Bosskampf-Moment."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Vier Spieler bilden einen Chor: 6 s lang verdoppeln sich alle Weisen der Gruppe."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "varga"
+   },
+   "anim": {
+    "gesture": "alle vier heben die Hände, Glockenklang",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "V02",
+   "kind": "koop",
+   "name": {
+    "de": "Glockenchor",
+    "en": "Bell Choir"
+   },
+   "unlock": 4,
+   "koop": {
+    "min_players": 4,
+    "bonus": {
+     "de": "Akademie-Verteidigung, Koop-Version von M406."
+    },
+    "solo_partner": "Begleiter (Lio, Aurelia, Reittier)"
+   },
+   "description": {
+    "de": "Vier Spieler läuten gemeinsam eine Glocke der Akademie: weckt alle Statuen der Umgebung (Belebung für alle)."
+   },
+   "learn": {
+    "how": "story",
+    "who": "varga"
+   },
+   "anim": {
+    "gesture": "alle schlagen gleichzeitig mit offenen Händen nach vorn",
+    "source": "MC"
+   }
+  }
+ ]
+}

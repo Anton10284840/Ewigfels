@@ -1,0 +1,2010 @@
+{
+ "_kommentar": "60 handgemachte Kernweisen (Kampf, Story, Rätsel). Design-Katalog, Kampfwerte stehen in Content/Data/Spells/*.json (catalog_id = id). cost/cooldown sind Richtwerte. Doku: docs/WEISEN.md",
+ "spells": [
+  {
+   "id": "K01",
+   "kind": "kern",
+   "name": {
+    "de": "Funkenstoß",
+    "en": "Spark Burst"
+   },
+   "school": "schlag",
+   "chord": [
+    "Glut",
+    "Strom",
+    "Strom"
+   ],
+   "unlock": 1,
+   "cost": 0,
+   "cooldown": 0,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Basisprojektil aus den Fingerspitzen, schnelle 3er-Kette."
+   },
+   "combo": {
+    "de": "Der dritte Treffer stößt zurück."
+   },
+   "learn": {
+    "how": "start",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "Schnippen-Kette, Hand stößt nach vorn",
+    "source": "MC"
+   },
+   "legacy_name": "Funkenstoß"
+  },
+  {
+   "id": "K02",
+   "kind": "kern",
+   "name": {
+    "de": "Hammerton",
+    "en": "Hammer Tone"
+   },
+   "school": "schlag",
+   "chord": [
+    "Grund",
+    "Grund",
+    "Glut"
+   ],
+   "unlock": 1,
+   "cost": 25,
+   "cooldown": 8,
+   "hands": "two",
+   "delivery_hint": "cone",
+   "description": {
+    "de": "Schwere Schockwelle nach vorne, wirft Gegner um."
+   },
+   "combo": {
+    "de": "Herangezogene Gegner nehmen doppelten Schaden, gefrorene zerbrechen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "beide Hände ballen, Schlag nach vorn wie auf eine Pauke",
+    "source": "MC"
+   },
+   "legacy_name": "Hammerton"
+  },
+  {
+   "id": "K03",
+   "kind": "kern",
+   "name": {
+    "de": "Splitterchor",
+    "en": "Shard Choir"
+   },
+   "school": "schlag",
+   "chord": [
+    "Grund",
+    "Firn",
+    "Strom"
+   ],
+   "unlock": 1,
+   "cost": 20,
+   "cooldown": 6,
+   "hands": "one",
+   "delivery_hint": "cone",
+   "description": {
+    "de": "Fächer aus Quarzsplittern, auf kurze Distanz stark."
+   },
+   "combo": {
+    "de": "Durchschlägt Eisrüstung."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "gespreizte Finger fegen von links nach rechts",
+    "source": "MC"
+   },
+   "legacy_name": "Splitterchor"
+  },
+  {
+   "id": "K04",
+   "kind": "kern",
+   "name": {
+    "de": "Ziehklang",
+    "en": "Pull Tone"
+   },
+   "school": "schlag",
+   "chord": [
+    "Hall",
+    "Strom",
+    "Grund"
+   ],
+   "unlock": 1,
+   "cost": 15,
+   "cooldown": 5,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Zieht einen Gegner oder ein Objekt zu dir heran."
+   },
+   "combo": {
+    "de": "Danach Hammerton = Combo „Schlagzug“."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "greifen und kräftig zurückreißen",
+    "source": "MC"
+   },
+   "legacy_name": "Ziehklang"
+  },
+  {
+   "id": "K05",
+   "kind": "kern",
+   "name": {
+    "de": "Prellschlag",
+    "en": "Ricochet Note"
+   },
+   "school": "schlag",
+   "chord": [
+    "Strom",
+    "Hall",
+    "Glut"
+   ],
+   "unlock": 1,
+   "cost": 15,
+   "cooldown": 4,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Ein Klangball, der bis zu dreimal von Wänden abprallt."
+   },
+   "combo": {
+    "de": "Trifft Glocken und Schalter um die Ecke (Rätsel), jeder Abprall +20 % Schaden."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "Handgelenk-Schnick wie beim Steinehüpfen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K06",
+   "kind": "kern",
+   "name": {
+    "de": "Zerrton",
+    "en": "Rending Tone"
+   },
+   "school": "schlag",
+   "chord": [
+    "Strom",
+    "Strom",
+    "Hall"
+   ],
+   "unlock": 2,
+   "cost": 10,
+   "cooldown": 12,
+   "hands": "two",
+   "delivery_hint": "beam",
+   "description": {
+    "de": "Kanalisierter Strahl, bricht Schilde."
+   },
+   "combo": {
+    "de": "Gegen Bannmagier-Schilde Pflicht."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "beide Hände ziehen auseinander wie ein Akkordeonbalg",
+    "source": "MC"
+   },
+   "legacy_name": "Zerrton"
+  },
+  {
+   "id": "K07",
+   "kind": "kern",
+   "name": {
+    "de": "Pfeilnote",
+    "en": "Arrow Note"
+   },
+   "school": "schlag",
+   "chord": [
+    "Strom",
+    "Firn",
+    "Hall"
+   ],
+   "unlock": 2,
+   "cost": 20,
+   "cooldown": 5,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Aufladbarer Fernschuss, sehr präzise, trifft Schwachpunkte."
+   },
+   "combo": {
+    "de": "Schwachpunkt-Treffer betäubt 1 s."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rieke"
+   },
+   "anim": {
+    "gesture": "Zeigefinger und Daumen spannen wie eine Sehne",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K08",
+   "kind": "kern",
+   "name": {
+    "de": "Trommelfeuer",
+    "en": "Drumfire"
+   },
+   "school": "schlag",
+   "chord": [
+    "Glut",
+    "Grund",
+    "Quell"
+   ],
+   "unlock": 2,
+   "cost": 8,
+   "cooldown": 10,
+   "hands": "two",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Kanalisierte Salve vieler kleiner Schläge."
+   },
+   "combo": {
+    "de": "Gut gegen Schwärme (Pilzbrut, Glimmermotten unter Missklinger-Bann)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "abwechselnd beide Hände trommeln in die Luft",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K09",
+   "kind": "kern",
+   "name": {
+    "de": "Stoßkadenz",
+    "en": "Strike Cadence"
+   },
+   "school": "schlag",
+   "chord": [
+    "Grund",
+    "Glut",
+    "Strom"
+   ],
+   "unlock": 2,
+   "cost": 15,
+   "cooldown": 6,
+   "hands": "one",
+   "delivery_hint": "melee",
+   "description": {
+    "de": "Nahkampf: drei Handstöße, jeder mit eigenem Ton."
+   },
+   "combo": {
+    "de": "Wer im Takt drückt, bekommt beim dritten Stoß Atem zurück. Nach einer Reinklang-Parade doppelt stark."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "drei Stöße im Takt, letzter mit offener Handfläche",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K10",
+   "kind": "kern",
+   "name": {
+    "de": "Bassbrecher",
+    "en": "Bass Breaker"
+   },
+   "school": "schlag",
+   "chord": [
+    "Grund",
+    "Grund",
+    "Grund"
+   ],
+   "unlock": 3,
+   "cost": 35,
+   "cooldown": 14,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Stampfen: Bodenwelle in alle Richtungen, wirft Gegner hoch."
+   },
+   "combo": {
+    "de": "Hochgeworfene Gegner + Haltelied = sie bleiben oben."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jorin"
+   },
+   "anim": {
+    "gesture": "ein Fuß stampft, beide Hände schlagen nach unten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K11",
+   "kind": "kern",
+   "name": {
+    "de": "Wirbelschlag",
+    "en": "Whirl Strike"
+   },
+   "school": "schlag",
+   "chord": [
+    "Strom",
+    "Strom",
+    "Grund"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 12,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Rundumschlag, stößt alle Umzingelnden weg."
+   },
+   "combo": {
+    "de": "Mit Glutweise davor entsteht ein Feuerring."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   },
+   "anim": {
+    "gesture": "Drehung um die eigene Achse, Arme weit",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K12",
+   "kind": "kern",
+   "name": {
+    "de": "Paukenschlag",
+    "en": "Timpani Clap"
+   },
+   "school": "schlag",
+   "chord": [
+    "Grund",
+    "Hall",
+    "Glut"
+   ],
+   "unlock": 4,
+   "cost": 40,
+   "cooldown": 20,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Hände zusammenklatschen, Druckwelle betäubt eine Gruppe 3 s."
+   },
+   "combo": {
+    "de": "Betäubte Gegner + Sturmweise = Blitzkette über alle."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "fink"
+   },
+   "anim": {
+    "gesture": "Arme weit auseinander, dann laut zusammenklatschen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K13",
+   "kind": "kern",
+   "name": {
+    "de": "Glockenschild",
+    "en": "Bell Ward"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Grund",
+    "Firn"
+   ],
+   "unlock": 1,
+   "cost": 10,
+   "cooldown": 0,
+   "hands": "one",
+   "delivery_hint": "shield",
+   "description": {
+    "de": "Block. Perfektes Timing = Reinklang (Konter + Atem zurück)."
+   },
+   "combo": {
+    "de": "Basis jeder Verteidigung."
+   },
+   "learn": {
+    "how": "start",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "Handfläche nach vorn, Finger gespreizt",
+    "source": "MC"
+   },
+   "legacy_name": "Glockenschild"
+  },
+  {
+   "id": "K14",
+   "kind": "kern",
+   "name": {
+    "de": "Spiegelklang",
+    "en": "Mirror Tone"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Hall",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 20,
+   "cooldown": 10,
+   "hands": "one",
+   "delivery_hint": "shield",
+   "description": {
+    "de": "Reflektiert 2 s lang alle Projektile."
+   },
+   "combo": {
+    "de": "Reflektierte Glut zündet Öl."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "Hand dreht sich wie ein Spiegel",
+    "source": "MC"
+   },
+   "legacy_name": "Spiegelklang"
+  },
+  {
+   "id": "K15",
+   "kind": "kern",
+   "name": {
+    "de": "Haltelied",
+    "en": "Holding Song"
+   },
+   "school": "schutz",
+   "chord": [
+    "Firn",
+    "Hall",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 25,
+   "cooldown": 12,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Hält einen Gegner 4 s in der Luft fest."
+   },
+   "combo": {
+    "de": "Festgehaltene Gegner + Sturmweise = Kettenstrom."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "Hand öffnet sich langsam nach oben, Finger zittern",
+    "source": "MC"
+   },
+   "legacy_name": "Haltelied"
+  },
+  {
+   "id": "K16",
+   "kind": "kern",
+   "name": {
+    "de": "Wiegenlied",
+    "en": "Lullaby"
+   },
+   "school": "schutz",
+   "chord": [
+    "Quell",
+    "Firn",
+    "Wachs"
+   ],
+   "unlock": 1,
+   "cost": 20,
+   "cooldown": 15,
+   "hands": "one",
+   "delivery_hint": "cone",
+   "description": {
+    "de": "Schläfert schwache Gegner und Tiere 8 s ein. Ein Treffer weckt sie."
+   },
+   "combo": {
+    "de": "Schlafende Gegner = Überraschungsangriff. Nicht bei Bossen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   },
+   "anim": {
+    "gesture": "Hand wiegt hin und her, leises Summen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K17",
+   "kind": "kern",
+   "name": {
+    "de": "Gleitschleier",
+    "en": "Glide Veil"
+   },
+   "school": "schutz",
+   "chord": [
+    "Strom",
+    "Hall",
+    "Wachs"
+   ],
+   "unlock": 1,
+   "cost": 10,
+   "cooldown": 3,
+   "hands": "one",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Fängt Stürze ab und lässt dich 3 s sanft schweben. Grundlage für das spätere Gleiten."
+   },
+   "combo": {
+    "de": "Mit Windstoß nach unten springt man höher."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   },
+   "anim": {
+    "gesture": "beide Hände streichen nach unten wie ein Rock im Wind",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K18",
+   "kind": "kern",
+   "name": {
+    "de": "Atemwende",
+    "en": "Breath Turn"
+   },
+   "school": "schutz",
+   "chord": [
+    "Quell",
+    "Quell",
+    "Wachs"
+   ],
+   "unlock": 2,
+   "cost": 30,
+   "cooldown": 20,
+   "hands": "one",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Heilt über Zeit und füllt Atem."
+   },
+   "combo": {
+    "de": "Begleiter wird mitgeheilt (Talent)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   },
+   "anim": {
+    "gesture": "Hand auf die Brust, tiefer Atemzug",
+    "source": "MC"
+   },
+   "legacy_name": "Atemwende"
+  },
+  {
+   "id": "K19",
+   "kind": "kern",
+   "name": {
+    "de": "Klangwand",
+    "en": "Sound Wall"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Grund",
+    "Grund"
+   ],
+   "unlock": 2,
+   "cost": 30,
+   "cooldown": 18,
+   "hands": "two",
+   "delivery_hint": "wall",
+   "description": {
+    "de": "Barriere, hält 8 s alle Projektile auf."
+   },
+   "combo": {
+    "de": "Glutweise durch die Wand = Feuerwand."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "beide Hände ziehen eine Linie am Boden entlang hoch",
+    "source": "MC"
+   },
+   "legacy_name": "Klangwand"
+  },
+  {
+   "id": "K20",
+   "kind": "kern",
+   "name": {
+    "de": "Gegenklang",
+    "en": "Counter Tone"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Hall",
+    "Firn"
+   ],
+   "unlock": 2,
+   "cost": 15,
+   "cooldown": 8,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Unterbricht eine gegnerische Weise im Aufbau (Fenster 0,5 s)."
+   },
+   "combo": {
+    "de": "Unterbrochene Missklinger sind 2 s betäubt."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "scharfes Wegschnippen zur Seite",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K21",
+   "kind": "kern",
+   "name": {
+    "de": "Bannkreis",
+    "en": "Warding Circle"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Wachs",
+    "Grund"
+   ],
+   "unlock": 2,
+   "cost": 35,
+   "cooldown": 30,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Leuchtender Kreis am Boden für 10 s. Nachhall-Kreaturen kommen nicht hinein."
+   },
+   "combo": {
+    "de": "Rettet Begleiter; Rätsel mit Stummlingen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   },
+   "anim": {
+    "gesture": "Hand zeichnet einen Kreis am Boden, kniend",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K22",
+   "kind": "kern",
+   "name": {
+    "de": "Fesselkanon",
+    "en": "Binding Canon"
+   },
+   "school": "schutz",
+   "chord": [
+    "Firn",
+    "Strom",
+    "Wachs"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 15,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Lichtfessel verbindet zwei Gegner: was einer abbekommt, spürt der andere zur Hälfte mit."
+   },
+   "combo": {
+    "de": "Mit Flächenzaubern sehr stark."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   },
+   "anim": {
+    "gesture": "zwei Finger zeigen auf zwei Ziele, dann Faust",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K23",
+   "kind": "kern",
+   "name": {
+    "de": "Schutzchor",
+    "en": "Guardian Choir"
+   },
+   "school": "schutz",
+   "chord": [
+    "Hall",
+    "Quell",
+    "Grund"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 25,
+   "hands": "one",
+   "delivery_hint": "shield",
+   "description": {
+    "de": "Schild auf einen Begleiter oder Mitspieler, 6 s."
+   },
+   "combo": {
+    "de": "Eskorten; im Koop auf einen Mitspieler."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   },
+   "anim": {
+    "gesture": "Hand streckt sich zum Ziel, Glocke formt sich dort",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K24",
+   "kind": "kern",
+   "name": {
+    "de": "Stillpunkt",
+    "en": "Still Point"
+   },
+   "school": "schutz",
+   "chord": [
+    "Firn",
+    "Firn",
+    "Hall"
+   ],
+   "unlock": 3,
+   "cost": 50,
+   "cooldown": 40,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Blase von 4 m: alles außer dir bewegt sich 3 s in Zeitlupe."
+   },
+   "combo": {
+    "de": "Rettung in letzter Sekunde, Bossphasen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "bruder_stumm"
+   },
+   "anim": {
+    "gesture": "Hände legen sich langsam aneinander, kein Ton",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K25",
+   "kind": "kern",
+   "name": {
+    "de": "Glutweise",
+    "en": "Ember Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Glut",
+    "Glut",
+    "Strom"
+   ],
+   "unlock": 1,
+   "cost": 20,
+   "cooldown": 4,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Feuerball, Brennen-Effekt."
+   },
+   "combo": {
+    "de": "Feuer + Öl = Explosion, Feuer + Eis = Dampfwolke (Sichtschutz)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   },
+   "anim": {
+    "gesture": "Finger reiben aneinander, dann Wurf",
+    "source": "MC"
+   },
+   "legacy_name": "Glutweise"
+  },
+  {
+   "id": "K26",
+   "kind": "kern",
+   "name": {
+    "de": "Frostweise",
+    "en": "Frost Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Firn",
+    "Firn",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 20,
+   "cooldown": 4,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Eislanze, verlangsamt, friert Wasser."
+   },
+   "combo": {
+    "de": "Eis + Wasser = Plattform; gefrorene Gegner zerbrechen bei Hammerton."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   },
+   "anim": {
+    "gesture": "Finger spreizen sich steif, Stoß nach vorn",
+    "source": "MC"
+   },
+   "legacy_name": "Frostweise"
+  },
+  {
+   "id": "K27",
+   "kind": "kern",
+   "name": {
+    "de": "Windstoß",
+    "en": "Gust"
+   },
+   "school": "elementar",
+   "chord": [
+    "Strom",
+    "Strom",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 15,
+   "cooldown": 5,
+   "hands": "one",
+   "delivery_hint": "cone",
+   "description": {
+    "de": "Windböe: schiebt Gegner, Kisten, Boote und Segel, löscht kleine Feuer, bläst Nebel weg."
+   },
+   "combo": {
+    "de": "Gegner über Kanten schubsen; mit Gleitschleier höher springen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   },
+   "anim": {
+    "gesture": "flache Hand fächert kräftig nach vorn",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K28",
+   "kind": "kern",
+   "name": {
+    "de": "Sturmweise",
+    "en": "Storm Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Strom",
+    "Strom",
+    "Strom"
+   ],
+   "unlock": 2,
+   "cost": 25,
+   "cooldown": 6,
+   "hands": "one",
+   "delivery_hint": "chain",
+   "description": {
+    "de": "Blitz springt auf 3 Ziele."
+   },
+   "combo": {
+    "de": "Blitz + Nässe = doppelte Reichweite und Betäubung."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "Finger zucken, Blitz zwischen den Fingern, dann Zeigen",
+    "source": "MC"
+   },
+   "legacy_name": "Sturmweise"
+  },
+  {
+   "id": "K29",
+   "kind": "kern",
+   "name": {
+    "de": "Flutweise",
+    "en": "Flood Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Quell",
+    "Quell",
+    "Strom"
+   ],
+   "unlock": 2,
+   "cost": 20,
+   "cooldown": 6,
+   "hands": "two",
+   "delivery_hint": "cone",
+   "description": {
+    "de": "Wasserschwall, macht nass, löscht Feuer."
+   },
+   "combo": {
+    "de": "Bereitet Sturm- und Frostweise vor."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "beide Hände schöpfen und schleudern",
+    "source": "MC"
+   },
+   "legacy_name": "Flutweise"
+  },
+  {
+   "id": "K30",
+   "kind": "kern",
+   "name": {
+    "de": "Nebelweise",
+    "en": "Mist Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Quell",
+    "Quell",
+    "Hall"
+   ],
+   "unlock": 2,
+   "cost": 25,
+   "cooldown": 20,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Nebelfeld (8 m, 12 s). Gegner verlieren dich aus den Augen."
+   },
+   "combo": {
+    "de": "Schleichen; Glutweise in den Nebel = er verdampft schlagartig und blendet."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "über die Handfläche pusten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K31",
+   "kind": "kern",
+   "name": {
+    "de": "Reifpfad",
+    "en": "Rime Path"
+   },
+   "school": "elementar",
+   "chord": [
+    "Firn",
+    "Strom",
+    "Firn"
+   ],
+   "unlock": 2,
+   "cost": 10,
+   "cooldown": 8,
+   "hands": "one",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Eisbahn unter deinen Füßen: schnelles Gleiten, auch über Wasser."
+   },
+   "combo": {
+    "de": "Flucht, Rennen, Teiche überqueren."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "Hand streicht nach unten-vorn, Körper geht in Rutschhaltung",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K32",
+   "kind": "kern",
+   "name": {
+    "de": "Funkenregen",
+    "en": "Spark Rain"
+   },
+   "school": "elementar",
+   "chord": [
+    "Glut",
+    "Glut",
+    "Hall"
+   ],
+   "unlock": 2,
+   "cost": 30,
+   "cooldown": 14,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Glutregen auf eine Fläche."
+   },
+   "combo": {
+    "de": "Zündet Ölpfützen und Pilzbrut-Nester."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "beide Hände nach oben, Finger öffnen sich wie Feuerwerk",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K33",
+   "kind": "kern",
+   "name": {
+    "de": "Erdweise",
+    "en": "Earth Air"
+   },
+   "school": "elementar",
+   "chord": [
+    "Grund",
+    "Grund",
+    "Wachs"
+   ],
+   "unlock": 3,
+   "cost": 25,
+   "cooldown": 8,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Felsdorn aus dem Boden, auch als Plattform."
+   },
+   "combo": {
+    "de": "Erde + Wasser = Schlamm (verlangsamt)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "Hand reißt von unten nach oben",
+    "source": "MC"
+   },
+   "legacy_name": "Erdweise"
+  },
+  {
+   "id": "K34",
+   "kind": "kern",
+   "name": {
+    "de": "Glutpeitsche",
+    "en": "Ember Lash"
+   },
+   "school": "elementar",
+   "chord": [
+    "Glut",
+    "Strom",
+    "Wachs"
+   ],
+   "unlock": 3,
+   "cost": 12,
+   "cooldown": 10,
+   "hands": "one",
+   "delivery_hint": "beam",
+   "description": {
+    "de": "Feuerpeitsche: zieht eine Linie aus Feuer, holt leichte Gegner heran."
+   },
+   "combo": {
+    "de": "Ranken + Glutpeitsche = Feuerweg."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "seraya"
+   },
+   "anim": {
+    "gesture": "Tänzerische Drehung des Handgelenks",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K35",
+   "kind": "kern",
+   "name": {
+    "de": "Hagelchor",
+    "en": "Hail Choir"
+   },
+   "school": "elementar",
+   "chord": [
+    "Firn",
+    "Firn",
+    "Grund"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 16,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Hagel auf eine Fläche, verlangsamt."
+   },
+   "combo": {
+    "de": "Auf Gefrorene: doppelter Schaden."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jorin"
+   },
+   "anim": {
+    "gesture": "beide Hände zeigen nach oben, dann Schlag nach unten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K36",
+   "kind": "kern",
+   "name": {
+    "de": "Donnerkeil",
+    "en": "Thunderbolt"
+   },
+   "school": "elementar",
+   "chord": [
+    "Strom",
+    "Strom",
+    "Firn"
+   ],
+   "unlock": 3,
+   "cost": 35,
+   "cooldown": 14,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Aufgeladener Blitzeinschlag, zerstört Schilde."
+   },
+   "combo": {
+    "de": "Auf nasse Gegner: Fläche verdoppelt."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "Arm hoch, Finger gespreizt, Faust nach unten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K37",
+   "kind": "kern",
+   "name": {
+    "de": "Wirbelflut",
+    "en": "Whirlpool"
+   },
+   "school": "elementar",
+   "chord": [
+    "Quell",
+    "Strom",
+    "Grund"
+   ],
+   "unlock": 3,
+   "cost": 35,
+   "cooldown": 18,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Strudel zieht Gegner 4 s zusammen."
+   },
+   "combo": {
+    "de": "Danach Flächenzauber auf alle."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   },
+   "anim": {
+    "gesture": "beide Hände kreisen gegeneinander",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K38",
+   "kind": "kern",
+   "name": {
+    "de": "Felsfaust",
+    "en": "Rock Fist"
+   },
+   "school": "elementar",
+   "chord": [
+    "Grund",
+    "Glut",
+    "Wachs"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 12,
+   "hands": "two",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Felsbrocken aus dem Boden reißen und werfen."
+   },
+   "combo": {
+    "de": "Zerbricht brüchige Mauern."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "corvin"
+   },
+   "anim": {
+    "gesture": "hocken, greifen, heben, werfen",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K39",
+   "kind": "kern",
+   "name": {
+    "de": "Leichtklang",
+    "en": "Light Tone"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Strom",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 5,
+   "cooldown": 0,
+   "hands": "one",
+   "delivery_hint": "grab",
+   "description": {
+    "de": "Lässt Objekte schweben und werfen. Die erste Weise im Unterricht."
+   },
+   "combo": {
+    "de": "Geworfene Fässer + Glutweise."
+   },
+   "learn": {
+    "how": "story",
+    "who": "edda"
+   },
+   "anim": {
+    "gesture": "Finger heben sich langsam, als hielte man einen Faden",
+    "source": "MC"
+   },
+   "legacy_name": "Leichtklang"
+  },
+  {
+   "id": "K40",
+   "kind": "kern",
+   "name": {
+    "de": "Wiederklang",
+    "en": "Re-Tone"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Wachs",
+    "Quell"
+   ],
+   "unlock": 1,
+   "cost": 5,
+   "cooldown": 0,
+   "hands": "two",
+   "delivery_hint": "beam",
+   "description": {
+    "de": "Repariert Zerbrochenes (Brücken, Statuen, Vasen)."
+   },
+   "combo": {
+    "de": "Kern vieler Rätsel."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   },
+   "anim": {
+    "gesture": "präzise Fingerbewegung, Scherben fliegen zurück",
+    "source": "MC"
+   },
+   "legacy_name": "Wiederklang"
+  },
+  {
+   "id": "K41",
+   "kind": "kern",
+   "name": {
+    "de": "Laternenlicht",
+    "en": "Lantern Light"
+   },
+   "school": "wandel",
+   "chord": [
+    "Glut",
+    "Hall",
+    "Hall"
+   ],
+   "unlock": 1,
+   "cost": 10,
+   "cooldown": 2,
+   "hands": "one",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Eine Lichtkugel folgt dir und zeigt unsichtbare Schrift und Nachhall-Spuren."
+   },
+   "combo": {
+    "de": "Stummlinge scheuen das Licht."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ottilie"
+   },
+   "anim": {
+    "gesture": "Hand formt eine Schale, Licht wächst darin",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K42",
+   "kind": "kern",
+   "name": {
+    "de": "Spurklang",
+    "en": "Trace Tone"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Hall",
+    "Grund"
+   ],
+   "unlock": 1,
+   "cost": 10,
+   "cooldown": 10,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Zeigt 15 s lang Spuren, Fußabdrücke und Hinweise (Ermittlersicht)."
+   },
+   "combo": {
+    "de": "Detektiv-Quests, verlorene Dinge finden."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   },
+   "anim": {
+    "gesture": "Finger an die Schläfe, Augen leuchten kurz",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K43",
+   "kind": "kern",
+   "name": {
+    "de": "Klinkenlied",
+    "en": "Latch Song"
+   },
+   "school": "wandel",
+   "chord": [
+    "Grund",
+    "Grund",
+    "Strom"
+   ],
+   "unlock": 1,
+   "cost": 15,
+   "cooldown": 3,
+   "hands": "one",
+   "delivery_hint": "touch",
+   "description": {
+    "de": "Öffnet Schlösser über ein Melodie-Minispiel (Töne nachspielen)."
+   },
+   "combo": {
+    "de": "Truhen, Türen, die Stumme Kammer."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   },
+   "anim": {
+    "gesture": "Finger tippen auf das Schloss wie auf Tasten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K44",
+   "kind": "kern",
+   "name": {
+    "de": "Lockruf",
+    "en": "Calling Song"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Wachs",
+    "Strom"
+   ],
+   "unlock": 1,
+   "cost": 10,
+   "cooldown": 5,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Lockt Tiere und Kreaturen an und beruhigt verängstigte."
+   },
+   "combo": {
+    "de": "Zähmen; Köder für Gegner auslegen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   },
+   "anim": {
+    "gesture": "Hand offen hinhalten, sanftes Locken mit den Fingern",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K45",
+   "kind": "kern",
+   "name": {
+    "de": "Schattenweise",
+    "en": "Shadow Air"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Firn",
+    "Wachs"
+   ],
+   "unlock": 2,
+   "cost": 8,
+   "cooldown": 15,
+   "hands": "two",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Tarnung für Schleichpassagen."
+   },
+   "combo": {
+    "de": "Überraschungsangriff = 3× Schaden."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   },
+   "anim": {
+    "gesture": "Hände ziehen einen unsichtbaren Umhang über den Kopf",
+    "source": "MC"
+   },
+   "legacy_name": "Schattenweise"
+  },
+  {
+   "id": "K46",
+   "kind": "kern",
+   "name": {
+    "de": "Wachsklang",
+    "en": "Growth Tone"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Wachs",
+    "Quell"
+   ],
+   "unlock": 2,
+   "cost": 20,
+   "cooldown": 8,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Lässt Ranken wachsen (Klettern, Fesseln)."
+   },
+   "combo": {
+    "de": "Ranken + Glut = Feuerweg."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   },
+   "anim": {
+    "gesture": "Finger krümmen sich nach oben wie Triebe",
+    "source": "MC"
+   },
+   "legacy_name": "Wachsklang"
+  },
+  {
+   "id": "K47",
+   "kind": "kern",
+   "name": {
+    "de": "Kletterhauch",
+    "en": "Cling Breath"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Grund",
+    "Strom"
+   ],
+   "unlock": 2,
+   "cost": 5,
+   "cooldown": 0,
+   "hands": "two",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Hände haften kurz an glatten Wänden."
+   },
+   "combo": {
+    "de": "Senkrechte Wege, Abkürzungen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mina"
+   },
+   "anim": {
+    "gesture": "über die Fingerspitzen hauchen, dann an die Wand",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K48",
+   "kind": "kern",
+   "name": {
+    "de": "Echoköder",
+    "en": "Echo Lure"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Hall",
+    "Strom"
+   ],
+   "unlock": 2,
+   "cost": 15,
+   "cooldown": 10,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Wirft ein Geräusch an einen Ort. Gegner gehen nachsehen."
+   },
+   "combo": {
+    "de": "Schleichen; zwei Wachen gegeneinander ausspielen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   },
+   "anim": {
+    "gesture": "Schnippen in Wurfrichtung, Hand am Ohr",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K49",
+   "kind": "kern",
+   "name": {
+    "de": "Schrumpfklang",
+    "en": "Shrink Tone"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Firn",
+    "Grund"
+   ],
+   "unlock": 2,
+   "cost": 20,
+   "cooldown": 10,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Objekt 60 s halb oder doppelt so groß. Wirkt nicht auf Gegner."
+   },
+   "combo": {
+    "de": "Kisten als Treppe, Schlüssel durch Spalten."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   },
+   "anim": {
+    "gesture": "Finger drücken zusammen oder ziehen auseinander",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K50",
+   "kind": "kern",
+   "name": {
+    "de": "Formwandel",
+    "en": "Shapeshift"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Wachs",
+    "Hall"
+   ],
+   "unlock": 3,
+   "cost": 30,
+   "cooldown": 25,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Verwandelt einen schwachen Gegner 6 s in ein harmloses Tier, Objekte in andere."
+   },
+   "combo": {
+    "de": "Tiere fliehen, Bosse sind immun."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   },
+   "anim": {
+    "gesture": "Hand dreht sich, als würde man einen Knopf umdrehen",
+    "source": "MC"
+   },
+   "legacy_name": "Formwandel"
+  },
+  {
+   "id": "K51",
+   "kind": "kern",
+   "name": {
+    "de": "Spiegelbild",
+    "en": "Mirror Double"
+   },
+   "school": "wandel",
+   "chord": [
+    "Hall",
+    "Hall",
+    "Wachs"
+   ],
+   "unlock": 4,
+   "cost": 30,
+   "cooldown": 25,
+   "hands": "two",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Ein Doppelgänger aus Licht lenkt Gegner 6 s ab."
+   },
+   "combo": {
+    "de": "Zusammen mit Schattenweise: Gegner verfolgen das Bild."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "zappo"
+   },
+   "anim": {
+    "gesture": "Verbeugung, Hand fährt seitlich weg",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K52",
+   "kind": "kern",
+   "name": {
+    "de": "Belebung",
+    "en": "Quickening"
+   },
+   "school": "wandel",
+   "chord": [
+    "Wachs",
+    "Wachs",
+    "Grund"
+   ],
+   "unlock": 4,
+   "cost": 45,
+   "cooldown": 40,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Eine Statue oder Rüstung erwacht und kämpft 15 s mit."
+   },
+   "combo": {
+    "de": "Verteidigung der Akademie (M406)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "varga"
+   },
+   "anim": {
+    "gesture": "beide Hände heben sich, als würde man jemanden aufwecken",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K53",
+   "kind": "kern",
+   "name": {
+    "de": "Verstummen",
+    "en": "Silencing"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 1,
+   "cost": 0,
+   "cooldown": 30,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Löscht alle Weisen in einem Radius (auch gegnerische Schilde)."
+   },
+   "combo": {
+    "de": "Kosten: Urklang + Nachhall 10."
+   },
+   "learn": {
+    "how": "story",
+    "who": "nym"
+   },
+   "anim": {
+    "gesture": "Finger krampfen zur Faust, die Welt wird still",
+    "source": "MC"
+   },
+   "legacy_name": "Verstummen"
+  },
+  {
+   "id": "K54",
+   "kind": "kern",
+   "name": {
+    "de": "Nachhallschritt",
+    "en": "Afterhall Step"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 2,
+   "cost": 0,
+   "cooldown": 6,
+   "hands": "one",
+   "delivery_hint": "self",
+   "description": {
+    "de": "Kurzer Sprung durch den Nachhall (8 m, auch durch Gitter)."
+   },
+   "combo": {
+    "de": "Rätsel und Flucht. Nachhall 3."
+   },
+   "learn": {
+    "how": "story",
+    "who": "nym"
+   },
+   "anim": {
+    "gesture": "Faust, Körper zerfällt kurz in Scherben",
+    "source": "MC"
+   },
+   "legacy_name": "Nachhallschritt"
+  },
+  {
+   "id": "K55",
+   "kind": "kern",
+   "name": {
+    "de": "Seelenecho",
+    "en": "Soul Echo"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 2,
+   "cost": 0,
+   "cooldown": 20,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Zeigt Erinnerungen eines Ortes oder Objekts."
+   },
+   "combo": {
+    "de": "Detektiv-Questreihe. Nachhall 2."
+   },
+   "learn": {
+    "how": "story",
+    "who": "nym"
+   },
+   "anim": {
+    "gesture": "knien, Hand flach auf den Boden",
+    "source": "MC"
+   },
+   "legacy_name": "Seelenecho"
+  },
+  {
+   "id": "K56",
+   "kind": "kern",
+   "name": {
+    "de": "Farbraub",
+    "en": "Colour Theft"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 2,
+   "cost": 0,
+   "cooldown": 20,
+   "hands": "one",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Zieht die Farbe aus einer Fläche (6 m): Gegner verlieren Tarnung und Elementar-Schilde. Die Stelle bleibt eine Minute grau."
+   },
+   "combo": {
+    "de": "Nachhall 5. Gruseliger Moment für NPCs, die zusehen."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   },
+   "anim": {
+    "gesture": "Hand zieht etwas Unsichtbares aus der Luft",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K57",
+   "kind": "kern",
+   "name": {
+    "de": "Entklang",
+    "en": "Unsounding"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 3,
+   "cost": 0,
+   "cooldown": 25,
+   "hands": "two",
+   "delivery_hint": "beam",
+   "description": {
+    "de": "Löst Materie und Barrieren auf, enormer Schaden."
+   },
+   "combo": {
+    "de": "Nachhall 20."
+   },
+   "learn": {
+    "how": "story",
+    "who": "bruder_stumm"
+   },
+   "anim": {
+    "gesture": "Faust öffnet sich ruckartig, Strahl ohne Ton",
+    "source": "MC"
+   },
+   "legacy_name": "Entklang"
+  },
+  {
+   "id": "K58",
+   "kind": "kern",
+   "name": {
+    "de": "Rückklang",
+    "en": "Rewind"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 3,
+   "cost": 0,
+   "cooldown": 30,
+   "hands": "one",
+   "delivery_hint": "projectile",
+   "description": {
+    "de": "Setzt ein Objekt oder einen Gegner 5 s in einen früheren Zustand zurück (Brücke vor dem Einsturz, Gegner vor seinem Zauber)."
+   },
+   "combo": {
+    "de": "Nachhall 15. Rätsel in Vor-Kael."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   },
+   "anim": {
+    "gesture": "Hand dreht sich gegen den Uhrzeigersinn",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K59",
+   "kind": "kern",
+   "name": {
+    "de": "Stummer Chor",
+    "en": "Silent Choir"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 4,
+   "cost": 0,
+   "cooldown": 60,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Ruft drei Echos aus dem Nachhall, die 10 s mitkämpfen."
+   },
+   "combo": {
+    "de": "Nachhall 25."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "nym"
+   },
+   "anim": {
+    "gesture": "beide Fäuste vor die Brust, dann ausbreiten",
+    "source": "MC"
+   }
+  },
+  {
+   "id": "K60",
+   "kind": "kern",
+   "name": {
+    "de": "Grundton",
+    "en": "Root Tone"
+   },
+   "school": "ur",
+   "chord": [
+    "Urton",
+    "Urton",
+    "Urton"
+   ],
+   "unlock": 4,
+   "cost": 0,
+   "cooldown": 120,
+   "hands": "two",
+   "delivery_hint": "area",
+   "description": {
+    "de": "Ultimative Weise: Flächeneffekt, schreibt Gegner „um“."
+   },
+   "combo": {
+    "de": "Nachhall 40, nur mit vollem Urklang."
+   },
+   "learn": {
+    "how": "story",
+    "who": "nym"
+   },
+   "anim": {
+    "gesture": "Ganzkörper, 3 s, Licht von unten",
+    "source": "MC"
+   },
+   "legacy_name": "Grundton"
+  }
+ ]
+}
