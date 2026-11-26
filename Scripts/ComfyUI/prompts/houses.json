@@ -1,0 +1,102 @@
+{
+  "_kommentar": "Die vier Türme (CHARACTER_BIBLE §3): Wappen, Uniform, Gemeinschaftsraum.",
+  "style": "photorealistic, cinematic lighting, highly detailed, dark fairytale realism",
+  "groups": [
+    {
+      "id": "H1_Aschenhain",
+      "folder": "houses/H1_Aschenhain",
+      "shots": [
+        {
+          "id": "crest",
+          "prompt": "embroidered heraldic crest on a wool banner, a charred tree stump with a single green sprout growing from it, colors glowing ember orange, anthracite and brass, hanging in a stone hall, candlelight",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "id": "uniform",
+          "prompt": "full body photo of a student in a knee-length dark grey wool school coat with standing collar, scarf and trim in glowing ember orange, anthracite and brass, brooch showing a charred tree stump with a single green sprout growing from it, standing in an academy corridor",
+          "width": 832,
+          "height": 1216
+        },
+        {
+          "id": "commonroom",
+          "prompt": "interior of a student common room in an academy tower, color scheme glowing ember orange, anthracite and brass, cozy, candles, details matching the crest a charred tree stump with a single green sprout growing from it",
+          "width": 1344,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "id": "H2_Silberquell",
+      "folder": "houses/H2_Silberquell",
+      "shots": [
+        {
+          "id": "crest",
+          "prompt": "embroidered heraldic crest on a wool banner, a spring of water beneath two moons, one large and one small, colors deep blue, silver and pearl white, hanging in a stone hall, candlelight",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "id": "uniform",
+          "prompt": "full body photo of a student in a knee-length dark grey wool school coat with standing collar, scarf and trim in deep blue, silver and pearl white, brooch showing a spring of water beneath two moons, one large and one small, standing in an academy corridor",
+          "width": 832,
+          "height": 1216
+        },
+        {
+          "id": "commonroom",
+          "prompt": "interior of a student common room in an academy tower, color scheme deep blue, silver and pearl white, cozy, candles, details matching the crest a spring of water beneath two moons, one large and one small",
+          "width": 1344,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "id": "H3_Sturmkamm",
+      "folder": "houses/H3_Sturmkamm",
+      "shots": [
+        {
+          "id": "crest",
+          "prompt": "embroidered heraldic crest on a wool banner, a tern flying over a rocky ridge above a jagged lightning bolt, colors storm grey, lightning yellow and spray white, hanging in a stone hall, candlelight",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "id": "uniform",
+          "prompt": "full body photo of a student in a knee-length dark grey wool school coat with standing collar, scarf and trim in storm grey, lightning yellow and spray white, brooch showing a tern flying over a rocky ridge above a jagged lightning bolt, standing in an academy corridor",
+          "width": 832,
+          "height": 1216
+        },
+        {
+          "id": "commonroom",
+          "prompt": "interior of a student common room in an academy tower, color scheme storm grey, lightning yellow and spray white, cozy, candles, details matching the crest a tern flying over a rocky ridge above a jagged lightning bolt",
+          "width": 1344,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "id": "H4_Moosgrund",
+      "folder": "houses/H4_Moosgrund",
+      "shots": [
+        {
+          "id": "crest",
+          "prompt": "embroidered heraldic crest on a wool banner, a lantern standing between three mushrooms, colors moss green, copper and linen, hanging in a stone hall, candlelight",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "id": "uniform",
+          "prompt": "full body photo of a student in a knee-length dark grey wool school coat with standing collar, scarf and trim in moss green, copper and linen, brooch showing a lantern standing between three mushrooms, standing in an academy corridor",
+          "width": 832,
+          "height": 1216
+        },
+        {
+          "id": "commonroom",
+          "prompt": "interior of a student common room in an academy tower, color scheme moss green, copper and linen, cozy, candles, details matching the crest a lantern standing between three mushrooms",
+          "width": 1344,
+          "height": 768
+        }
+      ]
+    }
+  ]
+}

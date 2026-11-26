@@ -1,0 +1,326 @@
+{
+  "_kommentar": "Kreaturen (CHARACTER_BIBLE §6): Habitat-Bild + Design-Referenz.",
+  "style": "photorealistic, cinematic lighting, highly detailed, dark fairytale realism, national geographic style creature photography",
+  "groups": [
+    {
+      "id": "K01_Sturmschwinge",
+      "folder": "creatures/K01_Sturmschwinge",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a griffin-like flying mount: front body of a snowy owl with huge white wings, talons and feathered ear tufts, hind body of a lynx, tail ending in a feather fan, 7 meter wingspan, in its habitat: snowy mountain ridge"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a griffin-like flying mount: front body of a snowy owl with huge white wings, talons and feathered ear tufts, hind body of a lynx, tail ending in a feather fan, 7 meter wingspan, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K02_Glimmermotte",
+      "folder": "creatures/K02_Glimmermotte",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a hand-sized moth with luminous patterned wings that glow in rhythmic waves, in its habitat: dark forest at night"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a hand-sized moth with luminous patterned wings that glow in rhythmic waves, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K03_Laternenkraehe",
+      "folder": "creatures/K03_Laternenkraehe",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a crow with a glowing ember-like throat shining like a lantern, in its habitat: academy bell tower at night"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a crow with a glowing ember-like throat shining like a lantern, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K04_Nebelfuchs",
+      "folder": "creatures/K04_Nebelfuchs",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a silver grey fox whose tail and legs dissolve into mist, in its habitat: foggy forest"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a silver grey fox whose tail and legs dissolve into mist, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K05_Borkenbaer",
+      "folder": "creatures/K05_Borkenbaer",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a huge bear whose fur grows like tree bark and moss, mushrooms growing on its back, in its habitat: ancient forest"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a huge bear whose fur grows like tree bark and moss, mushrooms growing on its back, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K06_Wurzelvater",
+      "folder": "creatures/K06_Wurzelvater",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a 12 meter tall ancient tree spirit made of intertwined roots, glowing lantern mushrooms as eyes, in its habitat: heart of an old forest"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a 12 meter tall ancient tree spirit made of intertwined roots, glowing lantern mushrooms as eyes, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K07_Moosling",
+      "folder": "creatures/K07_Moosling",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a cat-sized round creature made of soft moss with big shiny eyes and leaf-shaped ears, in its habitat: mossy garden"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a cat-sized round creature made of soft moss with big shiny eyes and leaf-shaped ears, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K08_MoorlichtUnke",
+      "folder": "creatures/K08_MoorlichtUnke",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a giant toad with glowing blisters on its back that look like will-o-wisps, in its habitat: foggy bog at night"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a giant toad with glowing blisters on its back that look like will-o-wisps, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K09_Stelzreiher",
+      "folder": "creatures/K09_Stelzreiher",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a heron with three meter long legs and a crystal beak, in its habitat: misty lake shore"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a heron with three meter long legs and a crystal beak, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K10_Glasnatter",
+      "folder": "creatures/K10_Glasnatter",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a transparent snake with glowing crystal organs visible inside, in its habitat: dark crystal cave"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a transparent snake with glowing crystal organs visible inside, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K11_Kristallwal",
+      "folder": "creatures/K11_Kristallwal",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a 20 meter whale covered in crystal plates instead of skin, emitting light, in its habitat: underground lake"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a 20 meter whale covered in crystal plates instead of skin, emitting light, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K12_Salzkrake",
+      "folder": "creatures/K12_Salzkrake",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a giant octopus with salt-encrusted arms collecting old ship bells, in its habitat: stormy harbor"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a giant octopus with salt-encrusted arms collecting old ship bells, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K13_Gischtrobbe",
+      "folder": "creatures/K13_Gischtrobbe",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a seal with sail-like fins surfing on waves, in its habitat: rough coast"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a seal with sail-like fins surfing on waves, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K14_Firnwolf",
+      "folder": "creatures/K14_Firnwolf",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a white wolf with ice crystals in its fur and frosty breath, the alpha has an antler-like ice crown, in its habitat: glacier"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a white wolf with ice crystals in its fur and frosty breath, the alpha has an antler-like ice crown, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K15_Zinnadler",
+      "folder": "creatures/K15_Zinnadler",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of an eagle with metallic sheen feathers diving, in its habitat: high alpine peaks"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of an eagle with metallic sheen feathers diving, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K16_Duenengraeber",
+      "folder": "creatures/K16_Duenengraeber",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a giant sand colored worm with a trumpet shaped mouth, in its habitat: red desert canyon"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a giant sand colored worm with a trumpet shaped mouth, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K17_Runenschildkroete",
+      "folder": "creatures/K17_Runenschildkroete",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of an ancient giant tortoise with glowing carved glyphs on its shell, in its habitat: desert ruins"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of an ancient giant tortoise with glowing carved glyphs on its shell, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K18_Wolkenrochen",
+      "folder": "creatures/K18_Wolkenrochen",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a translucent flying manta ray with cloud patterns on its skin, in its habitat: above a sea of clouds"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a translucent flying manta ray with cloud patterns on its skin, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K19_Echohund",
+      "folder": "creatures/K19_Echohund",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a dog in negative colors with flickering outlines, in its habitat: grey desaturated void"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a dog in negative colors with flickering outlines, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    },
+    {
+      "id": "K20_Stummling",
+      "folder": "creatures/K20_Stummling",
+      "shots": [
+        {
+          "id": "habitat",
+          "prompt": "wildlife photograph of a faceless porcelain-smooth humanoid made of broken lost objects, a round open mouth without sound, in its habitat: grey void with floating debris"
+        },
+        {
+          "id": "sheet",
+          "prompt": "creature design reference of a faceless porcelain-smooth humanoid made of broken lost objects, a round open mouth without sound, side view, full body, neutral studio backdrop, scale reference",
+          "width": 1216,
+          "height": 832
+        }
+      ]
+    }
+  ]
+}

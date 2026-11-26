@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **0 – Setup** · Engine: UE 5.8
+Stand: 26.11.2026 · Aktuelle Phase: **1 – Bibeln** (Phase 0: erster Build beim Nutzer offen) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -9,7 +9,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Phase | Inhalt | Status |
 |---|---|---|
 | 0 | Setup, Tools, Testprojekt | 🟨 Dateien fertig, Installation + erster Build beim Nutzer offen |
-| 1 | Bibeln + Moodboards | ⬜ |
+| 1 | Bibeln + Moodboards | 🟨 Bibeln + ComfyUI-Pipeline fertig, Bilder generieren + Grundsatzentscheidungen E1–E4 bestätigen beim Nutzer |
 | 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | ⬜ |
 | 3 | Charakter & Animation | ⬜ |
 | 4 | Grafik-Benchmark-Szene | ⬜ |
@@ -33,13 +33,28 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Plugins ausgewählt | ✅ | docs/PLUGINS.md; Installation per Scripts/Tools/Install-Plugins.ps1 (beim Nutzer offen) |
 | Unreal MCP + CLAUDE.md | 🟨 | in .uproject/.mcp.json eingerichtet, Verbindung beim Nutzer noch nicht getestet |
 
+## Phase 1 im Detail
+
+| Aufgabe | Status | Notiz |
+|---|---|---|
+| docs/GDD.md | ✅ | Grundsatzentscheidungen E1–E5 mit Optionen (Empfehlung umgesetzt), 25 Weisen, 25 Gegnertypen, 15 Bosse, Systeme, Steuerung |
+| docs/STORY_BIBLE.md | ✅ | Welt Velmark, Zeitlinie, Magie „Resonanz“, Fraktionen, 50 Missionen (Liste), 6 Entscheidungen, 4 Enden, 6 Questreihen |
+| docs/CHARACTER_BIBLE.md | ✅ | Pipeline, MetaHuman-Anleitung, 4 Türme, 15 Figurenblätter, NPC-Plan, 20 Kreaturen |
+| docs/ART_BIBLE.md | ✅ | Paletten pro Region, Rendering, Post Process, Master-Materialien, Licht-Rigs, VFX, Presets, Budgets |
+| Content/Data/Art/RegionLooks.json | ✅ | Look-Werte pro Region für Phase 4 |
+| docs/ANIMATION_BIBLE.md | ✅ | AnimBP-Struktur, Checklisten aller Sets, FreeMoCap-Anleitung, Lip-Sync, Emotions-Tags, Reittier, Cutscene-Vorlage |
+| ComfyUI-Workflows + Batch-Skript | ✅ | `run_comfy.py` gegen Test-Server geprüft, in echtem ComfyUI **noch nicht** gelaufen |
+| Prompt-Listen | ✅ | 88 Moodboard-, 128 Figuren-, 40 Kreaturen-, 12 Turm-Bilder |
+| Bilder generiert | ⬜ | beim Nutzer (ca. 40–60 min), danach Key-Frames wählen |
+| Missionsdesign-Dokumente | ⬜ | pro Akt in der Umsetzungsphase (Akt 1: Phase 5) |
+
 ## Systeme
 
 | System | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|
 | _ab Phase 2_ | | | |
 
-## Quests (geschätzte Spielzeit gesamt: 0 / ~100 Std.)
+## Quests (geschätzte Spielzeit gesamt: 0 / ~100 Std. umgesetzt · geplant: 50 Hauptmissionen ≈ 45–50 Std., Liste in STORY_BIBLE §8.1)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
@@ -48,3 +63,18 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
 | Name | Rolle | Blatt | Concept | MetaHuman | Animiert |
 |---|---|---|---|---|---|
+| Edda Vornholt | Mentorin | ✅ | ⬜ | ⬜ | ⬜ |
+| Lio Vandermeer | Begleiter | ✅ | ⬜ | ⬜ | ⬜ |
+| Aurelia von Stauffen | Rivalin | ✅ | ⬜ | ⬜ | ⬜ |
+| Corvin Hale | Lehrer, Verräter | ✅ | ⬜ | ⬜ | ⬜ |
+| Tobiah Grell | Lehrer Duell | ✅ | ⬜ | ⬜ | ⬜ |
+| Saphira Lindqvist | Lehrerin Kreaturen | ✅ | ⬜ | ⬜ | ⬜ |
+| Ysolde Varga | Rektorin | ✅ | ⬜ | ⬜ | ⬜ |
+| Theodric Vaal | Antagonist | ✅ | ⬜ | ⬜ | ⬜ |
+| Nym | Nachhall | ✅ | ⬜ | ⬜ | ⬜ |
+| Ambros Kettler | Fokusmacher | ✅ | ⬜ | ⬜ | ⬜ |
+| Ruprecht von Stauffen | Kanzler | ✅ | ⬜ | ⬜ | ⬜ |
+| Nell Tiedemann | Ermittlerin | ✅ | ⬜ | ⬜ | ⬜ |
+| Fink | Widerstand | ✅ | ⬜ | ⬜ | ⬜ |
+| Mara Vandermeer | Taktgeberin | ✅ | ⬜ | ⬜ | ⬜ |
+| Mutter Quendel | Hüter | ✅ | ⬜ | ⬜ | ⬜ |

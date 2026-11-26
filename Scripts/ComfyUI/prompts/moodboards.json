@@ -1,0 +1,439 @@
+{
+  "_kommentar": "Moodboards pro Region (ART_BIBLE §2/§10). 8 Bilder je Region. Prompt = shot + context + style. Englisch, weil FLUX englische Prompts am besten versteht.",
+  "style": "cinematic film still, photorealistic, dark fairytale realism, volumetric atmosphere, physically based lighting, subtle film grain, anamorphic 35mm lens, high dynamic range, intricate detail",
+  "defaults": {
+    "width": 1344,
+    "height": 768
+  },
+  "groups": [
+    {
+      "id": "R01_Ewigfels",
+      "folder": "moodboards/R01_Ewigfels",
+      "context": "an ancient magic academy of grey granite and pale limestone towers with green oxidized copper roofs, built on a humming sea cliff above a deep dark lake, two moons in the sky (one large silver, one small rust red)",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide establishing shot of the academy on the cliff at golden hour, warm sunlight on the towers, cold blue mist over the lake, a small wooden boat with lanterns crossing the water"
+        },
+        {
+          "id": "02_great_hall",
+          "prompt": "interior of the great hall, gothic stone vaults, hundreds of floating candles, a giant bronze tuning bell hanging from the ceiling, stained glass windows casting colored light shafts through incense haze"
+        },
+        {
+          "id": "03_library",
+          "prompt": "vast candlelit library with spiral wooden staircases, dust motes in golden light beams, brass reading lamps, old leather books, a locked iron gate to a forbidden section"
+        },
+        {
+          "id": "04_courtyard_rain",
+          "prompt": "cloister courtyard at night in heavy rain, wet cobblestones reflecting warm lantern light, moss in the stone joints, puddles with rain splashes"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "macro close-up of mossy weathered granite wall with candle wax drips and an engraved brass plaque, shallow depth of field"
+        },
+        {
+          "id": "06_lake_night",
+          "prompt": "the dark lake at night under two moons, mist on the water, the academy windows glowing warm in the distance, a sunken bell visible under the clear water"
+        },
+        {
+          "id": "07_students",
+          "prompt": "students in dark grey wool coats with colored scarves walking across a stone bridge between towers, autumn leaves, morning fog"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "color key painting style but photoreal: granite grey, copper green and candle gold palette, the academy silhouette against a sunset sky"
+        }
+      ]
+    },
+    {
+      "id": "R02_Raunwald",
+      "folder": "moodboards/R02_Raunwald",
+      "context": "an ancient whispering forest of gigantic moss-covered oaks and beeches, mushroom rings, roots like cathedrals",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot deep in the forest at dawn, god rays through dense fog between enormous trunks, ferns and moss carpets"
+        },
+        {
+          "id": "02_clearing",
+          "prompt": "enchanted clearing with a ring of glowing blue mushrooms around an old standing stone, fireflies, twilight"
+        },
+        {
+          "id": "03_roots",
+          "prompt": "a path leading through a tunnel of huge twisted roots, lanterns hung by forest keepers, mist"
+        },
+        {
+          "id": "04_rain",
+          "prompt": "forest in steady rain, wet bark, droplets on spider webs, muted green and brown palette, soft overcast light"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "macro close-up of tree bark overgrown with moss, lichens and tiny mushrooms, dew drops"
+        },
+        {
+          "id": "06_night",
+          "prompt": "the forest at night lit only by bioluminescent moths with glowing wing patterns, deep blue darkness"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a silver-grey fox dissolving partly into fog on a mossy log, looking at the camera, misty forest background"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of moss green, bark brown and glimmering cyan accents, backlit forest silhouette"
+        }
+      ]
+    },
+    {
+      "id": "R03_Kesselbrunn",
+      "folder": "moodboards/R03_Kesselbrunn",
+      "context": "a mountain village in a deep valley basin with steaming hot springs, half-timbered houses with slate roofs, a market square, mine entrances in the cliffs",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of the village in the valley at golden hour, steam rising from hot springs, mountains around, smoke from chimneys"
+        },
+        {
+          "id": "02_market",
+          "prompt": "busy market square with wooden stalls, lanterns, merchants selling crystals, herbs and tuning staffs, warm afternoon light"
+        },
+        {
+          "id": "03_workshop",
+          "prompt": "cluttered workshop of an old instrument maker, crystals, brass tools, a bandoneon on a workbench, warm lamp light through dusty air"
+        },
+        {
+          "id": "04_snow",
+          "prompt": "the village in winter snowfall at dusk, warm windows, footprints in snow, steam from springs"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of a half-timbered wall with weathered oak beams, lime plaster cracks and wrought iron lantern"
+        },
+        {
+          "id": "06_night",
+          "prompt": "narrow cobblestone alley at night, lanterns, wet stones, a cat on a stair, steam drifting"
+        },
+        {
+          "id": "07_mine",
+          "prompt": "entrance of an old crystal mine with wooden supports, mine carts, glowing quartz veins in rock"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of ochre timber, slate blue roofs and lantern orange accents"
+        }
+      ]
+    },
+    {
+      "id": "R04_Graumoor",
+      "folder": "moodboards/R04_Graumoor",
+      "context": "a vast fog-covered moor with peat bogs, dead trees and the ruins of an old fortress, a stilt village of forest keepers",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of the misty moor with the broken towers of a ruined fortress in the distance, overcast cold light"
+        },
+        {
+          "id": "02_ruins",
+          "prompt": "inside crumbling fortress ruins overgrown with heather, arches half sunk in the bog, eerie green will-o-wisp lights"
+        },
+        {
+          "id": "03_stilt_village",
+          "prompt": "a village of wooden huts on stilts above black water, rope bridges, hanging herbs, lanterns in fog"
+        },
+        {
+          "id": "04_rain",
+          "prompt": "the moor in heavy rain, rippling dark water, reeds bending in wind"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of peat, wet moss, bog water and rotting wood, muted browns"
+        },
+        {
+          "id": "06_night",
+          "prompt": "night on the moor, pale green floating lights luring into the darkness, thick ground fog, moonlight"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a huge toad with glowing blisters on its back sitting in reeds, fog, ominous"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of peat brown, fog grey and sickly bright green accents"
+        }
+      ]
+    },
+    {
+      "id": "R05_Glastiefen",
+      "folder": "moodboards/R05_Glastiefen",
+      "context": "a vast underground cave system with crystal lakes, giant turquoise crystals, bioluminescent violet mushrooms and ancient mines",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of an enormous cavern with an underground lake, glowing turquoise crystals reflected in still water"
+        },
+        {
+          "id": "02_mine",
+          "prompt": "ancient carved mine tunnels with geometric reliefs, old scaffolding, crystal veins glowing"
+        },
+        {
+          "id": "03_mushrooms",
+          "prompt": "forest of giant violet bioluminescent mushrooms in a cave, spores floating"
+        },
+        {
+          "id": "04_waterfall",
+          "prompt": "underground waterfall falling into a crystal pool, mist, cold light"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "macro close-up of translucent crystal growing from dark wet rock"
+        },
+        {
+          "id": "06_whale",
+          "prompt": "silhouette of a gigantic whale with crystal plates instead of skin swimming in a glowing underground lake"
+        },
+        {
+          "id": "07_explorer",
+          "prompt": "a young mage with a glowing tuning staff exploring a narrow crystal tunnel, light only from the staff"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of near-black, crystal turquoise and violet accents"
+        }
+      ]
+    },
+    {
+      "id": "R06_Tiedmar",
+      "folder": "moodboards/R06_Tiedmar",
+      "context": "a rugged harbor town on steep chalk cliffs, whitewashed houses, fishing boats, warehouses, a lighthouse with a wind bell",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of the harbor town on chalk cliffs in stormy weather, waves crashing, gulls, dramatic clouds"
+        },
+        {
+          "id": "02_harbor",
+          "prompt": "busy harbor quay with tall sailing ships, nets, barrels, fishermen in oilskin coats, overcast light"
+        },
+        {
+          "id": "03_lighthouse",
+          "prompt": "old lighthouse on a cliff at night, sweeping light beam through fog and rain"
+        },
+        {
+          "id": "04_alley",
+          "prompt": "narrow steep alley with stairs between white houses, red doors, laundry lines, sea fog"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of salt-crusted wooden pier planks, rusty iron rings and wet ropes"
+        },
+        {
+          "id": "06_night",
+          "prompt": "harbor tavern at night with warm windows, wet cobblestones, a woman detective in an oilskin coat"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a giant octopus arm with salt-encrusted skin rising from the harbor water beside a ship"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of chalk white, sea grey-blue and signal red accents"
+        }
+      ]
+    },
+    {
+      "id": "R07_WeisseZinnen",
+      "folder": "moodboards/R07_WeisseZinnen",
+      "context": "towering snowy alpine peaks and glaciers, a remote monastery of silent monks with saffron prayer flags",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "epic wide shot of jagged snowy peaks and a glacier at sunrise, tiny monastery on a ridge"
+        },
+        {
+          "id": "02_monastery",
+          "prompt": "stone monastery courtyard with saffron flags in wind, snow, monks in heavy robes"
+        },
+        {
+          "id": "03_glacier",
+          "prompt": "blue ice cave inside a glacier, light filtering through the ice"
+        },
+        {
+          "id": "04_blizzard",
+          "prompt": "a narrow mountain path in a blizzard, low visibility, a lone traveler with a lantern"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of frost crystals on dark rock and old prayer flag cloth"
+        },
+        {
+          "id": "06_night",
+          "prompt": "snowy peaks under a starry sky with two moons, aurora-like faint glow"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a white wolf pack with ice crystals in their fur on a snowy ridge, breath steaming"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of snow white, glacier blue and saffron accents"
+        }
+      ]
+    },
+    {
+      "id": "R08_Kaelschlucht",
+      "folder": "moodboards/R08_Kaelschlucht",
+      "context": "a deep red sandstone desert canyon with the ruins of an ancient civilization, carved resonance towers and giant faceless statues",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of a monumental red canyon with ancient carved city ruins in the walls, harsh midday sun, heat haze"
+        },
+        {
+          "id": "02_towers",
+          "prompt": "tall carved stone towers with holes like flutes, sand blowing through them, golden light"
+        },
+        {
+          "id": "03_tomb",
+          "prompt": "interior of an ancient tomb with gold inlaid inscriptions glowing faintly, light shaft from above"
+        },
+        {
+          "id": "04_sandstorm",
+          "prompt": "approaching sandstorm in the canyon, orange darkness, ruins in silhouette"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of eroded sandstone with carved geometric glyphs inlaid with gold"
+        },
+        {
+          "id": "06_night",
+          "prompt": "the canyon at night under a huge silver moon, cold blue light on red rock"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a giant sand-colored worm with a trumpet-shaped mouth bursting out of dunes"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of red sandstone, dust beige and ancient gold accents"
+        }
+      ]
+    },
+    {
+      "id": "R09_TreibendeInseln",
+      "folder": "moodboards/R09_TreibendeInseln",
+      "context": "floating islands high above a sea of clouds, waterfalls falling off their edges, ancient ruins and wind currents",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "epic wide shot of floating islands above a cloud sea at sunrise, waterfalls dissolving into mist"
+        },
+        {
+          "id": "02_ruins",
+          "prompt": "overgrown ancient stone ruins on a floating island, wildflowers, wind"
+        },
+        {
+          "id": "03_flight",
+          "prompt": "a rider on a griffin-like creature (snowy owl front, lynx body) flying between floating islands, motion"
+        },
+        {
+          "id": "04_storm",
+          "prompt": "thunderstorm among the floating islands, lightning, dark clouds below"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of the underside of a floating island: roots, rocks and glowing veins"
+        },
+        {
+          "id": "06_night",
+          "prompt": "floating islands at night, stars and two moons above the cloud sea"
+        },
+        {
+          "id": "07_creature",
+          "prompt": "a school of translucent flying manta rays gliding through clouds"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of sky blue, cloud white and soft dawn pink accents"
+        }
+      ]
+    },
+    {
+      "id": "R10_Aurenburg",
+      "folder": "moodboards/R10_Aurenburg",
+      "context": "a grand capital city of white marble and gold domes, seat of a magocratic government, huge bell towers, with a dark slum quarter in a ravine below",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of the marble capital with gold domes and bell towers, bright cold sunlight, imposing"
+        },
+        {
+          "id": "02_council",
+          "prompt": "vast marble council chamber with blue banners and a golden bell, officials in white coats"
+        },
+        {
+          "id": "03_slum",
+          "prompt": "dark overcrowded slum quarter in a ravine under the marble city, laundry, smoke, graffiti of finch birds"
+        },
+        {
+          "id": "04_rain",
+          "prompt": "grand boulevard in rain, marble reflecting grey sky, guards with halberds"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of polished white marble with gold inlay and blue enamel"
+        },
+        {
+          "id": "06_night",
+          "prompt": "the capital at night, bell towers glowing faintly blue, curfew, empty squares"
+        },
+        {
+          "id": "07_archive",
+          "prompt": "endless archive halls with sealed files, a single lamp, dust"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of marble white, government blue and gold leaf accents"
+        }
+      ]
+    },
+    {
+      "id": "R10B_Nachhall",
+      "folder": "moodboards/R10B_Nachhall",
+      "context": "a parallel shadow realm of everything that was unmade, desaturated grey world, light coming from below, bright shadows, floating debris of houses and temples",
+      "shots": [
+        {
+          "id": "01_establishing",
+          "prompt": "wide shot of a desaturated ghost town floating in fragments in a grey void, inverted lighting from below"
+        },
+        {
+          "id": "02_debris",
+          "prompt": "broken houses, ships and temple pillars floating silently in the air, dust"
+        },
+        {
+          "id": "03_echo",
+          "prompt": "a translucent woman with golden glowing lines on dark skin floating, hair drifting as if underwater"
+        },
+        {
+          "id": "04_creature",
+          "prompt": "faceless porcelain-smooth humanoid figures made of broken objects, round open mouth, grey void"
+        },
+        {
+          "id": "05_material_closeup",
+          "prompt": "close-up of colorless cracked stone with a faint violet-white glow in the cracks"
+        },
+        {
+          "id": "06_path",
+          "prompt": "a path of floating stones leading to a pale violet-white light, negative-film look"
+        },
+        {
+          "id": "07_city",
+          "prompt": "the silhouette of a burned town in the void, everything grey except a single warm light"
+        },
+        {
+          "id": "08_colorkey",
+          "prompt": "palette of ash grey, negative violet and undertone white"
+        }
+      ]
+    }
+  ]
+}

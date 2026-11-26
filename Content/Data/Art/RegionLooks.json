@@ -1,0 +1,336 @@
+{
+  "_kommentar": "Look-Werte pro Region (ART_BIBLE §2/§3). Gelesen ab Phase 4 vom Look-/Wettersystem. Farben sRGB-Hex, Licht in Kelvin (0 = kein Sonnenlicht), FogDensity = Exponential Height Fog, VolumetricFogScattering = Volumetric Fog Scattering Distribution-Multiplikator, ExposureBias in EV.",
+  "version": 1,
+  "regions": [
+    {
+      "id": "R01",
+      "name": "Ewigfels & Ilsensee",
+      "palette": {
+        "primary": "#5B5F63",
+        "secondary": "#5E8C7A",
+        "accent": "#E8B04A"
+      },
+      "sunTemperatureK": {
+        "day": 5200,
+        "golden": 3200
+      },
+      "fogDensity": 0.02,
+      "volumetricFogScattering": 0.35,
+      "exposureBias": 0.0,
+      "weather": [
+        "Clear",
+        "Cloudy",
+        "Fog",
+        "Rain",
+        "Storm"
+      ],
+      "luts": {
+        "Dawn": "LUT_R01_Dawn",
+        "Day": "LUT_R01_Day",
+        "Golden": "LUT_R01_Golden",
+        "Dusk": "LUT_R01_Dusk",
+        "Night": "LUT_R01_Night",
+        "Storm": "LUT_R01_Storm"
+      },
+      "notes": "Kerzenlicht innen 1900 K"
+    },
+    {
+      "id": "R02",
+      "name": "Raunwald",
+      "palette": {
+        "primary": "#3E5A34",
+        "secondary": "#4A3A2A",
+        "accent": "#7FD3E8"
+      },
+      "sunTemperatureK": {
+        "day": 5600,
+        "golden": 3400
+      },
+      "fogDensity": 0.04,
+      "volumetricFogScattering": 0.8,
+      "exposureBias": -0.3,
+      "weather": [
+        "Fog",
+        "Rain",
+        "Clear",
+        "Cloudy"
+      ],
+      "luts": {
+        "Dawn": "LUT_R02_Dawn",
+        "Day": "LUT_R02_Day",
+        "Golden": "LUT_R02_Golden",
+        "Dusk": "LUT_R02_Dusk",
+        "Night": "LUT_R02_Night",
+        "Storm": "LUT_R02_Storm"
+      },
+      "notes": "Local Fog Volumes in Senken, Godrays durch Kronen"
+    },
+    {
+      "id": "R03",
+      "name": "Kesselbrunn",
+      "palette": {
+        "primary": "#B08A5A",
+        "secondary": "#4B5866",
+        "accent": "#F08C2E"
+      },
+      "sunTemperatureK": {
+        "day": 4800,
+        "golden": 3100
+      },
+      "fogDensity": 0.015,
+      "volumetricFogScattering": 0.3,
+      "exposureBias": 0.0,
+      "weather": [
+        "Clear",
+        "Cloudy",
+        "Snow",
+        "Rain"
+      ],
+      "luts": {
+        "Dawn": "LUT_R03_Dawn",
+        "Day": "LUT_R03_Day",
+        "Golden": "LUT_R03_Golden",
+        "Dusk": "LUT_R03_Dusk",
+        "Night": "LUT_R03_Night",
+        "Storm": "LUT_R03_Storm"
+      },
+      "notes": "Dampf aus heißen Quellen"
+    },
+    {
+      "id": "R04",
+      "name": "Graumoor",
+      "palette": {
+        "primary": "#4C4433",
+        "secondary": "#9AA0A0",
+        "accent": "#B6F27A"
+      },
+      "sunTemperatureK": {
+        "day": 7000,
+        "golden": 3800
+      },
+      "fogDensity": 0.06,
+      "volumetricFogScattering": 1.0,
+      "exposureBias": -0.5,
+      "weather": [
+        "Fog",
+        "Rain",
+        "Cloudy"
+      ],
+      "luts": {
+        "Dawn": "LUT_R04_Dawn",
+        "Day": "LUT_R04_Day",
+        "Golden": "LUT_R04_Golden",
+        "Dusk": "LUT_R04_Dusk",
+        "Night": "LUT_R04_Night",
+        "Storm": "LUT_R04_Storm"
+      },
+      "notes": "Dichter Bodennebel, Irrlichter"
+    },
+    {
+      "id": "R05",
+      "name": "Glastiefen",
+      "palette": {
+        "primary": "#15181C",
+        "secondary": "#2FB5B0",
+        "accent": "#A46BE0"
+      },
+      "sunTemperatureK": {
+        "day": 0,
+        "golden": 0
+      },
+      "fogDensity": 0.03,
+      "volumetricFogScattering": 0.6,
+      "exposureBias": 0.5,
+      "weather": [
+        "None"
+      ],
+      "luts": {
+        "Dawn": "LUT_R05_Dawn",
+        "Day": "LUT_R05_Day",
+        "Golden": "LUT_R05_Golden",
+        "Dusk": "LUT_R05_Dusk",
+        "Night": "LUT_R05_Night",
+        "Storm": "LUT_R05_Storm"
+      },
+      "notes": "Nur Biolumineszenz und Kristall-Emissive, Auto-Exposure langsam"
+    },
+    {
+      "id": "R06",
+      "name": "Tiedmar",
+      "palette": {
+        "primary": "#D8D2C4",
+        "secondary": "#3F5A6B",
+        "accent": "#C0392B"
+      },
+      "sunTemperatureK": {
+        "day": 6000,
+        "golden": 3300
+      },
+      "fogDensity": 0.025,
+      "volumetricFogScattering": 0.4,
+      "exposureBias": 0.0,
+      "weather": [
+        "Storm",
+        "Fog",
+        "Rain",
+        "Clear"
+      ],
+      "luts": {
+        "Dawn": "LUT_R06_Dawn",
+        "Day": "LUT_R06_Day",
+        "Golden": "LUT_R06_Golden",
+        "Dusk": "LUT_R06_Dusk",
+        "Night": "LUT_R06_Night",
+        "Storm": "LUT_R06_Storm"
+      },
+      "notes": "Gischt, Leuchtturm-Lichtkegel"
+    },
+    {
+      "id": "R07",
+      "name": "Weiße Zinnen",
+      "palette": {
+        "primary": "#EEF2F5",
+        "secondary": "#8FB8D8",
+        "accent": "#E39B2D"
+      },
+      "sunTemperatureK": {
+        "day": 6500,
+        "golden": 3500
+      },
+      "fogDensity": 0.01,
+      "volumetricFogScattering": 0.25,
+      "exposureBias": -0.7,
+      "weather": [
+        "Snow",
+        "Storm",
+        "Clear"
+      ],
+      "luts": {
+        "Dawn": "LUT_R07_Dawn",
+        "Day": "LUT_R07_Day",
+        "Golden": "LUT_R07_Golden",
+        "Dusk": "LUT_R07_Dusk",
+        "Night": "LUT_R07_Night",
+        "Storm": "LUT_R07_Storm"
+      },
+      "notes": "Harte Sonne, Schnee-Glitzern, Exposure-Kompensation negativ"
+    },
+    {
+      "id": "R08",
+      "name": "Kaelschlucht",
+      "palette": {
+        "primary": "#B5603A",
+        "secondary": "#D9BE95",
+        "accent": "#E2B23C"
+      },
+      "sunTemperatureK": {
+        "day": 4500,
+        "golden": 3000
+      },
+      "fogDensity": 0.012,
+      "volumetricFogScattering": 0.2,
+      "exposureBias": -0.5,
+      "weather": [
+        "Clear",
+        "Sandstorm"
+      ],
+      "luts": {
+        "Dawn": "LUT_R08_Dawn",
+        "Day": "LUT_R08_Day",
+        "Golden": "LUT_R08_Golden",
+        "Dusk": "LUT_R08_Dusk",
+        "Night": "LUT_R08_Night",
+        "Storm": "LUT_R08_Storm"
+      },
+      "notes": "Hitzeflimmern, harte Schatten"
+    },
+    {
+      "id": "R09",
+      "name": "Treibende Inseln",
+      "palette": {
+        "primary": "#8DB7E0",
+        "secondary": "#F3F1EA",
+        "accent": "#F2A28C"
+      },
+      "sunTemperatureK": {
+        "day": 5800,
+        "golden": 3300
+      },
+      "fogDensity": 0.008,
+      "volumetricFogScattering": 0.3,
+      "exposureBias": 0.0,
+      "weather": [
+        "Clear",
+        "CloudSea",
+        "Storm"
+      ],
+      "luts": {
+        "Dawn": "LUT_R09_Dawn",
+        "Day": "LUT_R09_Day",
+        "Golden": "LUT_R09_Golden",
+        "Dusk": "LUT_R09_Dusk",
+        "Night": "LUT_R09_Night",
+        "Storm": "LUT_R09_Storm"
+      },
+      "notes": "Wolkenmeer unter den Inseln"
+    },
+    {
+      "id": "R10",
+      "name": "Aurenburg",
+      "palette": {
+        "primary": "#E7E2D8",
+        "secondary": "#24406B",
+        "accent": "#C9A227"
+      },
+      "sunTemperatureK": {
+        "day": 5400,
+        "golden": 3200
+      },
+      "fogDensity": 0.018,
+      "volumetricFogScattering": 0.3,
+      "exposureBias": 0.0,
+      "weather": [
+        "Clear",
+        "Cloudy",
+        "Rain"
+      ],
+      "luts": {
+        "Dawn": "LUT_R10_Dawn",
+        "Day": "LUT_R10_Day",
+        "Golden": "LUT_R10_Golden",
+        "Dusk": "LUT_R10_Dusk",
+        "Night": "LUT_R10_Night",
+        "Storm": "LUT_R10_Storm"
+      },
+      "notes": "Marmor-Reflexionen, Bannglocken-Glühen"
+    },
+    {
+      "id": "R10B",
+      "name": "Der Nachhall",
+      "palette": {
+        "primary": "#7A7A7E",
+        "secondary": "#B8A7D9",
+        "accent": "#F4F0FF"
+      },
+      "sunTemperatureK": {
+        "day": 9000,
+        "golden": 9000
+      },
+      "fogDensity": 0.05,
+      "volumetricFogScattering": 1.2,
+      "exposureBias": 0.3,
+      "weather": [
+        "Debriswind"
+      ],
+      "luts": {
+        "Dawn": "LUT_R10B_Dawn",
+        "Day": "LUT_R10B_Day",
+        "Golden": "LUT_R10B_Golden",
+        "Dusk": "LUT_R10B_Dusk",
+        "Night": "LUT_R10B_Night",
+        "Storm": "LUT_R10B_Storm"
+      },
+      "notes": "Licht von unten, M_Master_Nachhall Intensity 1"
+    }
+  ]
+}
