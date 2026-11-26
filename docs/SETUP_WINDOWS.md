@@ -137,7 +137,7 @@ Erst wenn Schritt 4 grün ist, sonst suchen wir Fehler an zwei Stellen gleichzei
 
 ```powershell
 cd D:\Dev\Ewigfels
-.\Scripts\Tools\Install-Plugins.ps1                       # DlgSystem + Flow (Quellcode, gepinnt)
+.\Scripts\Tools\Install-Plugins.ps1                       # PCGEx, SUDS, DlgSystem, Flow (Quellcode, gepinnt)
 .\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir "D:\Epic\UE_5.8"   # Plugins werden mitkompiliert
 ```
 
@@ -146,6 +146,10 @@ cd D:\Dev\Ewigfels
 2. *Edit → Editor Preferences → Agentic Workflows → Model Context Protocol*: „Auto Start Server“ an, Port 8000.
 3. Läuft der Server nicht: Konsole (Taste `^`) → `ModelContextProtocol.StartServer`.
 4. Claude Code im Ordner `D:\Dev\Ewigfels` starten (bei offenem Editor). Die `.mcp.json` im Repo verbindet automatisch; beim ersten Mal „Erlauben“ wählen. Prüfen mit `/mcp`.
+
+**Blender → Unreal (Send to Unreal):** ZIP `send2ue` von https://github.com/EpicGamesExt/BlenderTools/releases laden → Blender *Edit → Preferences → Add-ons → Install from Disk*. In UE: *Edit → Project Settings → Plugins → Python → Enable Remote Execution* anhaken.
+
+**DLSS** kommt erst in Phase 4 (Anleitung dann; Download braucht einen kostenlosen NVIDIA-Developer-Account).
 
 > Experimentell: Epic kann die Schnittstelle ändern. Der Server hat keine Anmeldung, also nie Port 8000 in der Firewall freigeben.
 

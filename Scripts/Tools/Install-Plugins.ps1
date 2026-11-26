@@ -5,8 +5,8 @@
   Plugins liegen NICHT im Repo (.gitignore), nur diese Liste. Danach neu bauen (Build-Ewigfels.ps1),
   weil die Plugins als C++-Quellcode kommen und mit dem Projekt kompiliert werden.
 .EXAMPLE
-  .\Scripts\Tools\Install-Plugins.ps1                 # Set "empfohlen" (DlgSystem, Flow)
-  .\Scripts\Tools\Install-Plugins.ps1 -All            # auch optionale (SPUD, ImGui)
+  .\Scripts\Tools\Install-Plugins.ps1                 # Sets "empfohlen" + "phase2" (PCGEx, DlgSystem, SUDS, Flow)
+  .\Scripts\Tools\Install-Plugins.ps1 -All            # zusätzlich optionale (SPUD, ImGui)
   .\Scripts\Tools\Install-Plugins.ps1 -Name SPUD      # nur bestimmte
   .\Scripts\Tools\Install-Plugins.ps1 -Update         # vorhandene auf den Stand der Liste bringen
 #>
@@ -23,7 +23,7 @@ New-Item -ItemType Directory -Force -Path $target | Out-Null
 
 $list = $manifest.plugins
 if ($Name)        { $list = $list | Where-Object { $Name -contains $_.name } }
-elseif (-not $All) { $list = $list | Where-Object { $_.set -eq 'empfohlen' } }
+elseif (-not $All) { $list = $list | Where-Object { $_.set -ne 'optional' } }
 if (-not $list) { throw "Kein Plugin ausgewählt. Namen: $($manifest.plugins.name -join ', ')" }
 
 foreach ($p in $list) {
@@ -41,4 +41,4 @@ foreach ($p in $list) {
 }
 
 Write-Host "`nFertig. Jetzt neu bauen: .\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir <Pfad>" -ForegroundColor Green
-Write-Host 'Hinweis: Flow ist standardmäßig deaktiviert. Wir schalten es in Ewigfels.uproject ein, sobald die Phase-2-Entscheidung steht.' -ForegroundColor Yellow
+Write-Host 'Hinweis: Der erste Build mit Plugins dauert deutlich länger (PCGEx ist groß). Flow ist standardmäßig deaktiviert, bis die Phase-2-Entscheidung steht.' -ForegroundColor Yellow
