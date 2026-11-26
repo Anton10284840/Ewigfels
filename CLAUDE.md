@@ -9,7 +9,7 @@ Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidung
 - `CREDITS.md` – jede externe Ressource (Asset, Plugin, KI-Modell). Ohne Eintrag kommt nichts rein.
 - `docs/` – `SETUP_WINDOWS.md` (Installation), `KI_LIZENZEN.md` (Tool-Lizenzen), `PLUGINS.md` (Plugin-Bewertung).
 - Bibeln (Phase 1, groß, gezielt per `grep -n "^#"` lesen): `GDD.md` (Systeme, Weisen, Gegner), `STORY_BIBLE.md` (Lore, Missionen, Flags, Enden), `CHARACTER_BIBLE.md` (Figuren, Türme, Kreaturen), `ART_BIBLE.md` (Look, Budgets), `ANIMATION_BIBLE.md` (Checklisten).
-- Kernbegriffe: Akademie **Ewigfels**, Kontinent **Velmark**, Magie = Klang (**Weisen**, **Stimmstab**, **Atem**), verbotene Magie **Urton**, Schattenreich **Nachhall**, Antagonisten **Stille Hand**/**Dirigent**, Häuser = 4 **Türme**.
+- Kernbegriffe: Spiel- und Akademiename **Nocturna** (Code, Repo, Pfade, Klassen-Präfix bleiben `Ewigfels`), Kontinent **Velmark**, Magie = Klang (**Weisen**, **Stimmstab**, **Atem**), verbotene Magie **Urton**, Schattenreich **Nachhall**, Antagonisten **Stille Hand**/**Dirigent**, Häuser = 4 **Türme**.
 - `Source/Ewigfels/` – C++ (`Public/` Header, `Private/` Implementierung, `Private/Tests/` Automation-Tests).
 - `Config/` – `DefaultEngine.ini` (Rendering: Lumen HW-RT, Nanite, VSM, TSR).
 - `Content/Data/**` – JSON/CSV-Daten (Quests, Dialoge, Items, Zauber). Einziger versionierter Teil von `Content/`.

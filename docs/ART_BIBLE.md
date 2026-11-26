@@ -1,4 +1,4 @@
-# ART BIBLE – Ewigfels („Cinematic-Niveau“)
+# ART BIBLE – Nocturna („Cinematic-Niveau“)
 
 Stand: 26.11.2026 · Phase 1 · Version 0.1
 Maschinenlesbare Werte pro Region: [`Content/Data/Art/RegionLooks.json`](../Content/Data/Art/RegionLooks.json) (wird ab Phase 4 vom Wetter-/Look-System gelesen).
@@ -28,7 +28,7 @@ Primär = dominante Flächenfarbe, Sekundär = zweite Fläche, Akzent = kleine H
 
 | # | Region | Primär | Sekundär | Akzent | Licht (K) | Wetter | Stimmung |
 |---|---|---|---|---|---|---|---|
-| 1 | Ewigfels & Ilsensee | Granitgrau `#5B5F63` | Kupfergrün `#5E8C7A` | Kerzengold `#E8B04A` | 5200 (Tag), 3200 (gold. Stunde) | klar, Nebel, Regen | erhaben, heimelig |
+| 1 | Nocturna & Ilsensee | Granitgrau `#5B5F63` | Kupfergrün `#5E8C7A` | Kerzengold `#E8B04A` | 5200 (Tag), 3200 (gold. Stunde) | klar, Nebel, Regen | erhaben, heimelig |
 | 2 | Raunwald | Moosgrün `#3E5A34` | Rindenbraun `#4A3A2A` | Glimmerblau `#7FD3E8` | 5600 gefiltert | Nebel, Regen, klar | geheimnisvoll, lebendig |
 | 3 | Kesselbrunn | Fachwerk-Ocker `#B08A5A` | Schieferblau `#4B5866` | Laternenorange `#F08C2E` | 4800 | klar, bewölkt, Schnee (Winter) | gemütlich, eng |
 | 4 | Graumoor | Torfbraun `#4C4433` | Nebelgrau `#9AA0A0` | Irrlichtgrün `#B6F27A` | 7000 (bedeckt) | Nebel, Regen | trostlos, unheimlich |

@@ -34,7 +34,7 @@ Namensschema Workflows: `WF_<Zweck>_<Modell>.json`.
    ```powershell
    & $py Scripts\ComfyUI\run_comfy.py --list moodboards --only R01
    ```
-   Bilder liegen danach in `art\concepts\moodboards\R01_Ewigfels\`.
+   Bilder liegen danach in `art\concepts\moodboards\R01_Nocturna\`.
 5. Alles (268 Bilder, bei ca. 8–12 s pro Bild etwa **40–60 Minuten**):
    ```powershell
    & $py Scripts\ComfyUI\run_comfy.py --list all

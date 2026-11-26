@@ -1,4 +1,4 @@
-# Ewigfels
+# Nocturna (Projekt- und Code-Name: Ewigfels)
 
 Open-World-Zauberer-RPG in Unreal Engine 5.8 (C++). Budget 0 €, nur freie Tools und kommerziell nutzbare lokale KI.
 
