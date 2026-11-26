@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **2 – Kernsysteme** (Code geschrieben, erster Build + Tests beim Nutzer offen) · Engine: UE 5.8
+Stand: 26.11.2026 · Aktuelle Phase: **2 – Kernsysteme** (Build + Tests grün) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -10,7 +10,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 |---|---|---|
 | 0 | Setup, Tools, Testprojekt | 🟨 Dateien fertig, Installation + erster Build beim Nutzer offen |
 | 1 | Bibeln + Moodboards | 🟨 Bibeln + ComfyUI-Pipeline fertig, Bilder generieren + Grundsatzentscheidungen E1–E4 bestätigen beim Nutzer |
-| 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | 🟨 Code + Prüfskript fertig, Build + Automation-Tests beim Nutzer offen. Entscheidung: SUDS + eigenes JSON (docs/PLUGINS.md §3) |
+| 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | ✅ Build + 9/9 Automation-Tests grün auf dem PC (26.11.2026). Offen: Test im Level (Phase 3/5). Entscheidung: SUDS + eigenes JSON (docs/PLUGINS.md §3) |
 | 3 | Charakter & Animation | ⬜ |
 | 4 | Grafik-Benchmark-Szene | ⬜ |
 | 5 | Vertical Slice Akt 1 | ⬜ |
@@ -53,10 +53,10 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
 | System | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|
-| Weltstatus: Flags, Beziehungen, Ruf (`WorldState/`) | ✅ | 🟨 nicht kompiliert | ⬜ Tests `Ewigfels.WorldState.*` |
-| Quests aus JSON (`Quest/`) | ✅ | 🟨 nicht kompiliert | ⬜ Tests `Ewigfels.Quest.*` |
-| Dialoge: SUDS-Brücke (`Dialogue/`) | ✅ | 🟨 nicht kompiliert | ⬜ Test `Ewigfels.Dialogue.*`, Dialog im Editor abspielen |
-| Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | 🟨 nicht kompiliert | ⬜ Test `Ewigfels.Save.*`, PIE mit Level |
+| Weltstatus: Flags, Beziehungen, Ruf (`WorldState/`) | ✅ | ✅ | ✅ Automation-Tests |
+| Quests aus JSON (`Quest/`) | ✅ | ✅ | ✅ Automation-Tests |
+| Dialoge: SUDS-Brücke (`Dialogue/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ Dialog im Editor abspielen |
+| Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ PIE mit Level |
 | Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
