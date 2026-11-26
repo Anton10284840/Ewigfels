@@ -54,6 +54,7 @@ compile_commands.json
 !/Content/**/.gitkeep
 !/Content/Data/**/*.json
 !/Content/Data/**/*.csv
+!/Content/Data/**/*.sud
 !/Content/Localization/**/*.po
 
 # --- Concept Art / Rohdaten: nur Doku + Workflows ins Repo ---
