@@ -28,7 +28,9 @@
 		{ "Name": "PoseSearch", "Enabled": true },
 		{ "Name": "MotionWarping", "Enabled": true },
 		{ "Name": "Chooser", "Enabled": true },
-		{ "Name": "SUDS", "Enabled": true }
+		{ "Name": "SUDS", "Enabled": true },
+		{ "Name": "DlgSystem", "Enabled": false },
+		{ "Name": "Flow", "Enabled": false }
 	],
 	"TargetPlatforms": [
 		"Windows"

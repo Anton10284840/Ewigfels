@@ -60,9 +60,11 @@ UEwigfelsSaveGame* UEwigfelsSaveSubsystem::CreateSnapshot(const FString& SlotNam
 	}
 	if (USUDSSubsystem* Suds = GetGameInstance()->GetSubsystem<USUDSSubsystem>())
 	{
-		FSUDSGlobalState Globals = Suds->GetSavedGlobalState();
+		// Nur die Variablen-Map serialisieren: SUDS deklariert operator<<(FArchive&, FSUDSGlobalState&),
+		// definiert ihn aber nirgends (LNK2019 beim ersten Build, 26.11.2026). FSUDSValue hat einen echten Serializer.
+		TMap<FName, FSUDSValue> Vars = Suds->GetSavedGlobalState().GetGlobalVariables();
 		FMemoryWriter Writer(SaveGame->DialogueGlobals, true);
-		Writer << Globals;
+		Writer << Vars;
 	}
 
 	SaveGame->LevelName = GetLevelPackageName(World);
@@ -201,10 +203,11 @@ void UEwigfelsSaveSubsystem::ApplySnapshot(const UEwigfelsSaveGame* SaveGame)
 	{
 		if (SaveGame->DialogueGlobals.Num() > 0)
 		{
-			FSUDSGlobalState Globals;
+			// Gegenstück zu CreateSnapshot (nur die Map, siehe LNK2019-Hinweis dort).
+			TMap<FName, FSUDSValue> Vars;
 			FMemoryReader Reader(SaveGame->DialogueGlobals, true);
-			Reader << Globals;
-			Suds->RestoreSavedGlobalState(Globals);
+			Reader << Vars;
+			Suds->RestoreSavedGlobalState(FSUDSGlobalState(Vars));
 		}
 		else
 		{
