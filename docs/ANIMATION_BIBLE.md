@@ -22,14 +22,14 @@ Umsetzung ab Phase 3. Checklisten unten werden beim Import abgehakt (`[x]`) und 
 ```
 ABP_EwigfelsCharacter (Linked Anim Layers)
  ├─ 1. Locomotion        Motion Matching (PSD_Loco_*), Zustände: Boden, Luft, Schwimmen, Klettern, Gleiten, Reiten
- ├─ 2. Overlay-Layer     Upper-Body-Blend ab spine_01: Zaubern (Montages), Interaktion, Stimmstab-Haltung
+ ├─ 2. Overlay-Layer     Upper-Body-Blend ab spine_01: Zaubern (Montages), Interaktion, Hand- und Fingerposen
  ├─ 3. Additive          Atmung (Ruhe/Erschöpft), Treffer-Additive, Blick-Additive, Nachhall-Zittern (bei hoher Belastung)
  └─ 4. IK / Procedural   Foot IK (Control Rig, Bodenanpassung), Hand-IK (Türen, Hebel, Leitern), Look-At (Kopf + Augen),
-                         Stimmstab-Zielen (Hand-IK zum Ziel), Orientation Warping, Stride Warping
+                         Hand-Zielen (Arm-IK, Handfläche/Finger zum Ziel), Orientation Warping, Stride Warping
 ```
 
 Regeln:
-- **Linked Anim Layers** pro Zustand (Waffen-/Fokus-Typ wechselbar ohne neues AnimBP).
+- **Linked Anim Layers** pro Zustand (Kampfstil wechselbar ohne neues AnimBP).
 - Logik im **C++-AnimInstance** (`UEwigfelsAnimInstance`): Werte berechnen, AnimBP nur verdrahten. Thread-safe Update-Funktionen nutzen.
 - Foot IK und Look-At als **Control Rig** (`CR_FootIK`, `CR_LookAt`), nicht im AnimGraph nachgebaut.
 - Kleidung: Leader Pose Component, keine eigenen AnimBPs für Outfit-Teile.
@@ -53,7 +53,8 @@ Regeln:
 
 Je Weise: **Cast-Start → Halten (Loop, für kanalisierte) → Release**. Pro Schule eine Grundgeste, pro Weise eine Variante. Alle als Upper-Body-Montages, damit sie während der Bewegung funktionieren.
 
-- [ ] Grundhaltungen Stimmstab: Ruhe, Bereit, Zielen (Aim Offset 9 Posen) — KF
+- [ ] Grundhaltungen Hände: Ruhe, Bereit (Finger leicht gespreizt, Funken knistern), Zielen (Aim Offset 9 Posen, Hand nach vorne) — KF
+- [ ] **Finger-Posen-Bibliothek** (Pose Asset `PA_Hand_Chords`): 7 Grundton-Griffe pro Hand + Faust (Urton) + Schnippen. Zauber blenden zwischen diesen Posen — KF
 - [ ] Funkenstoß: 3er-Kette (schnell), Abschluss-Rückstoß — MC
 - [ ] Schlagweisen: schnelle Variante + schwere Variante (Hammerton, Splitterchor, Ziehklang, Zerrton-Loop) — MC
 - [ ] Schutzweisen: Glockenschild (Hoch, Halten, Reinklang-Konter), Spiegelklang, Haltelied (Loop), Atemwende (Selbst), Klangwand (Boden-Geste) — MC
@@ -63,8 +64,9 @@ Je Weise: **Cast-Start → Halten (Loop, für kanalisierte) → Release**. Pro S
 - [ ] Combo-Übergänge: gleiche Schule (kurz), andere Schule (Wechsel-Geste) — KF/MC
 - [ ] Zaubern im Sprung/Gleiten (Upper-Body-Blend auf Luft-Pose) — Blend
 - [ ] Zaubern auf dem Reittier (eine Hand, eingeschränkt) — KF
+- [ ] Schnippen (Funken, Licht anmachen, Gruß) und Fingerspiel-Idle (Finger trommeln, kleine Funken) — MC + KF
 
-**Signature-Stil:** Unsere Weisen sehen aus wie **Dirigieren + Instrument spielen**: Der Stimmstab zeichnet Bögen wie ein Dirigentenstab, die freie Hand „greift“ Akkorde (Finger gespreizt, Druck wie auf Akkordeontasten). Schwere Weisen: Gewicht aus der Hüfte, Atemzug vorher (sichtbar über Brust-Additive).
+**Signature-Stil:** Unsere Weisen sehen aus wie **Akkordeon spielen in der Luft**: Die Hände greifen Akkorde (Finger gespreizt, Druck wie auf Tasten), die Arme ziehen und drücken wie beim Balg, Licht bricht aus den Fingerspitzen. Leichte Weisen: eine Hand. Schwere: beide Hände ziehen auseinander und schlagen zusammen. Schwere Weisen: Gewicht aus der Hüfte, Atemzug vorher (sichtbar über Brust-Additive).
 
 ### 3.3 Kampf
 
@@ -99,14 +101,14 @@ Je Weise: **Cast-Start → Halten (Loop, für kanalisierte) → Release**. Pro S
 
 ### 3.7 NPC-Alltag
 
-- [ ] Unterrichten (an der Tafel, mit Stab vorführen), Schreiben, Lesen — MC/MX
+- [ ] Unterrichten (an der Tafel, Weise mit den Händen vorführen), Schreiben, Lesen — MC/MX
 - [ ] Essen (Sitzen am Tisch), Trinken, Unterhalten (3 Gesprächs-Loops) — MX
 - [ ] Fegen, Holz hacken, Verkaufen (Marktstand: Anpreisen, Ware zeigen), Netze flicken (Tiedmar) — MX/MC
 - [ ] Schüler: Rennen zum Unterricht, auf der Treppe sitzen, Zauber üben (fehlgeschlagen) — MC
 
 ### 3.8 Figuren-Idles (aus CHARACTER_BIBLE)
 
-- [ ] Edda: Finger-Takt am Unterarm · Lio: Fersenwippen + Mundharmonika · Aurelia: Handschuh straffen · Corvin: Glas umrühren · Grell: auf den Stab stützen · Saphira: Hocken + Summen · Varga: Siegelring drehen · Dirigent: Dirigier-Hand · Nym: Schweben + Hände · Ambros: Quarz polieren · Ruprecht: Hände auf dem Rücken · Nell: Notizbuch · Fink: verkehrt auf dem Stuhl · Mara: Taktstock-Tippen · Quendel: auf Wurzelstab wippen — alle MC
+- [ ] Edda: Finger-Takt am Unterarm · Lio: Fersenwippen + Mundharmonika · Aurelia: Handschuh straffen · Corvin: Glas umrühren · Grell: Fingerknöchel knacken · Saphira: Hocken + Summen · Varga: Siegelring drehen · Dirigent: Dirigier-Hand · Nym: Schweben + Hände · Ambros: Quarz polieren · Ruprecht: Hände auf dem Rücken · Nell: Notizbuch · Fink: verkehrt auf dem Stuhl · Mara: Taktstock-Tippen · Quendel: auf Wurzelstab wippen — alle MC
 
 ## 4. Eigene Animationen aufnehmen (FreeMoCap, Webcam)
 
@@ -125,7 +127,7 @@ FreeMoCap (AGPL-3.0, nur das Tool; die Animationen gehören dir) ist in SETUP_WI
 2. Bei mehreren Kameras: **Kalibrierung** mit dem ChArUco-Board (in FreeMoCap ausdrucken, auf Pappe kleben, langsam durch den Raum bewegen).
 3. Pro Aufnahme: **T-Pose 2 s** am Anfang (für Retargeting), dann die Bewegung, dann wieder T-Pose. Lieber viele kurze Takes (5–15 s) als lange.
 4. Benennung beim Speichern: `MC_<Kategorie>_<Aktion>_<Take>`, z. B. `MC_Magic_Hammerton_03`.
-5. Zauber: jede Weise 3–5 Takes, mit echtem Stab-Ersatz (Besenstiel gekürzt auf 60 cm), damit Hand und Arm richtig stehen.
+5. Zauber: jede Weise 3–5 Takes, ohne Requisite. Webcam-MoCap erfasst Finger nur grob: Arme und Körper aus der Aufnahme, **Finger danach per Pose-Asset/Control Rig** setzen.
 
 ### 4.3 Export und Import
 
@@ -133,7 +135,7 @@ FreeMoCap (AGPL-3.0, nur das Tool; die Animationen gehören dir) ist in SETUP_WI
 2. Blender → *File → Export → FBX*: Armature + Animation, *Apply Transform*, Skalierung 1,0, `Forward: -Y`, `Up: Z`, *Add Leaf Bones* aus.
 3. UE: Import nach `Content/Animations/Raw/MoCap/` mit eigenem Skelett `SK_FreeMoCap`.
 4. Retargeting: `RTG_FreeMoCap_to_Manny` → Rechtsklick auf Animationen → *Retarget Animations* → Ziel `Content/Animations/<Kategorie>/`.
-5. Säubern in UE: **Control Rig im Sequencer** (Animation in Level Sequence ziehen → *Bake to Control Rig* → Hände/Finger korrigieren, Stab-Griff festsetzen) → *Bake Animation Sequence*.
+5. Säubern in UE: **Control Rig im Sequencer** (Animation in Level Sequence ziehen → *Bake to Control Rig* → Hände korrigieren, Finger-Posen aus `PA_Hand_Chords` einsetzen) → *Bake Animation Sequence*.
 6. Notify-Events setzen: `Cast_Release`, `Footstep_L/R`, `VFX_Spawn`, `Sound_Whoosh`.
 
 **Ehrliche Grenze:** Webcam-MoCap ist gut für Oberkörper-Gesten und Emotes, schwächer bei schnellen Drehungen, Sprüngen und Bodenkontakt. Dafür nehmen wir GAS/Mixamo und nutzen MC für das, was das Spiel einzigartig macht: Zaubergesten und Persönlichkeit.
@@ -181,7 +183,11 @@ Die 6 Emotionen für die Ausdrucks-Sheets der Concept Art: **happy, sad, angry, 
 - Keyframe in Blender bzw. **UE Control Rig + Sequencer** (Cascadeur Free ist nicht kommerziell nutzbar, siehe KI_LIZENZEN).
 - Pro Kreatur minimal: Idle, Gehen, Laufen, Angriff (1–2), Treffer, Tod, Spezial. Bosse: eigenes Set je Phase.
 
-### 6.1 Reittier Sturmschwinge – Flug-Animationsset
+### 6.1 Reittiere – Animationssets
+
+Pro Reittier (CHARACTER_BIBLE §7) mindestens: Idle (2), Gehen, Laufen, Sprint, Drehen, Springen, Treffer, Spezialfähigkeit, Freude, Erschöpfung, Aufsteigen-Pose. Flieger zusätzlich das Flugset unten, Wasser-Reittier: Schwimmen, Tauchen, Wellensurfen; Kletter-Reittier: Wandlaufen (Control-Rig-Fußplatzierung).
+
+#### Sturmschwinge – Flug-Animationsset
 
 - [ ] Boden: Idle (Putzen, Umschauen), Gehen, Traben, Laufen, Drehen, Ducken (Aufsteigen)
 - [ ] Abheben (aus Stand, aus Lauf), Landen (sanft, hart, Steilwand-Greifen)

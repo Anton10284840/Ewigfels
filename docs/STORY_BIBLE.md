@@ -45,10 +45,10 @@ Velmark ist ein Kontinent aus Hochland, Wäldern und rauer Küste, technisch ung
 ### 3.1 Die drei Gesetze (die jede Lehrkraft im ersten Unterricht nennt)
 
 1. **Alles schwingt.** Stein, Wasser, Fleisch, Licht: Jedes Ding hat einen Klang. Wer ihn hört, kann ihn verstärken, dämpfen oder verbinden.
-2. **Jede Weise braucht Atem, einen Fokus und einen Grundton.** Der Atem ist die Kraft des Wirkers, der Fokus (Stimmstab) bündelt sie, der Grundton bestimmt, was geschieht.
+2. **Jede Weise braucht Atem, Hände und einen Grundton.** Der Atem ist die Kraft des Wirkers, die Finger formen sie (jeder Finger greift einen Ton wie eine Taste), der Grundton bestimmt, was geschieht.
 3. **Kein Klang verschwindet.** Was gewirkt wird, hallt nach. Darum gibt es Folgen. (Die Kael wussten: Was ungeschehen gemacht wird, verschwindet nicht, es fällt in den Nachhall.)
 
-**Der Urton bricht das dritte Gesetz scheinbar.** Er ist der Ton unter allen Tönen. Wer ihn spielt, braucht weder Fokus noch Grundton: er nimmt der Welt etwas weg (Klang, Farbe, Erinnerung, Existenz). Das Weggenommene landet im Nachhall. Darum wird die Welt um einen Urton-Wirker herum stiller und grauer.
+**Der Urton bricht das dritte Gesetz scheinbar.** Er ist der Ton unter allen Tönen. Wer ihn spielt, braucht weder Fingerspiel noch Grundton: er nimmt der Welt etwas weg (Klang, Farbe, Erinnerung, Existenz). Das Weggenommene landet im Nachhall. Darum wird die Welt um einen Urton-Wirker herum stiller und grauer.
 
 ### 3.2 Die sieben Grundtöne
 
@@ -68,11 +68,13 @@ Jede Weise ist ein Akkord aus drei Grundtönen. Die Namen sind alte Wörter, kei
 Beispiele: Glutweise = Glut-Glut-Strom · Glockenschild = Hall-Grund-Firn · Wiederklang = Hall-Wachs-Quell.
 Musikalisch umsetzbar: Jedem Grundton wird ein echter Ton zugeordnet (Glut = D, Firn = A, Strom = E, Quell = F♯, Grund = G, Wachs = C, Hall = B). Damit sind alle Weisen spielbare Akkorde, und du kannst die Leitmotive auf dem Akkordeon einspielen.
 
-### 3.3 Fokus: der Stimmstab
+### 3.3 Magie aus den Fingern (kein Stab)
 
-- Ein Stab aus Holz oder Metall mit einem **Klangquarz** an der Spitze. Der Quarz wird beim Fokusmacher auf den Wirker „gestimmt“ (Story: Ambros Kettler in Kesselbrunn).
-- Teile: **Griff** (Handling, Cast-Tempo), **Schaft** (Reichweite, Atemkosten), **Quarz** (Schulbonus, Partikelfarbe). Austauschbar, mit Seltenheit.
-- Später: Stimmring (Akt 3, freie Hand für Klettern + Zaubern) als Zweitfokus.
+- Klangwirker brauchen **keinen Stab**. Magie entsteht direkt an den **Fingerspitzen**: Die Hand „greift“ einen Akkord in der Luft, wie auf Akkordeontasten, und der Klang bricht als Licht aus den Fingern.
+- Einfache Weisen: eine Hand, schnelle Fingerbewegung. Schwere Weisen: beide Hände, ganzer Körper. Urweisen: die Finger krampfen sich zur Faust, die Welt wird still.
+- **Stimmringe** (bis zu 4, je ein Finger außer dem Daumen): Ringe aus Metall mit einem kleinen Klangquarz. Sie sind kein Muss, sondern verstärken: Schulbonus, Atemkosten, Partikelfarbe, Klangfarbe. Sie werden beim Ringschmied auf den Wirker „gestimmt“ (Story: Ambros Kettler in Kesselbrunn). Sammel- und Schmuckobjekt mit Seltenheit.
+- **Handschuhe** (fingerlos oder mit offenen Spitzen) und **Armreife** sind Kleidung mit Werten, damit die Hände zum Look passen.
+- Kinder üben Magie, indem sie mit den Fingern schnipsen: kleine Funken. Darum sind Schnippen und Fingerschnalzen in Velmark Grußgesten.
 
 ### 3.4 Der Nachhall (Schattenreich)
 
@@ -98,6 +100,23 @@ Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *tha
 | 9 | **Treibende Inseln** | Von den Kael gehobene Inseln über den Zinnen, verbunden durch Windströme. Nur mit Reittier. | 4 |
 | 10 | **Aurenburg + Der Nachhall** | Hauptstadt des Kollegiums: Marmor, Gold, Bannglocken, Elendsviertel „Senke“. Darunter/daneben der Nachhall mit den Trümmern von Brandheim. | 4–5 |
 
+### 4.1 Dörfer: fröhlich und gruselig
+
+Jede Region hat mindestens ein fröhliches und ein unheimliches Dorf (Design-Regeln: GDD §14). Gruseldörfer werden von **Missklingern** beherrscht (§6.1) und können befreit werden.
+
+| Region | Fröhlich | Gruselig |
+|---|---|---|
+| Nocturna & Ilsensee | **Uferlicht** (Fischerdorf, Laternenboote, Pfannkuchenfest) | **Stillwasser** (versunkene Häuser, Bewohner sprechen nur im Flüsterton) |
+| Raunwald | **Pilzhausen** (Häuser in Riesenpilzen, Waldkinder, Glimmermotten-Tanz) | **Krähenhain** (Puppen in allen Bäumen, Knochenpfeifer) |
+| Kesselbrunn | **Kesselbrunn** selbst (Markt, heiße Quellen, Musikanten) | **Russgrube** (verlassene Bergarbeitersiedlung, Rauch, der Gesichter formt) |
+| Graumoor | **Stelzenheim** (Hüter-Pfahldorf, Frösche-Chor-Fest) | **Moorwinkel** (Hexenmutter, Irrlichter, Marionetten-Bauern) |
+| Glastiefen | **Funkelgrund** (Kristallschleifer-Familien, alles glitzert, Echo-Lieder) | **Hohlstollen** (Bergleute, die nicht mehr blinzeln) |
+| Tiedmar | **Möwenkai** (Hafenviertel, Fischmarkt, Shanty-Abende) | **Ebbgrund** (Schmuggler-Weiler, Fluchsänger, ertrunkene Glocken läuten) |
+| Weiße Zinnen | **Firnhütten** (Hirten, Käserei, Schlittenrennen) | **Frostwacht** (eingefrorenes Dorf, Bewohner stehen still im Eis) |
+| Kaelschlucht | **Oase Sela** (Karawanen, Gewürzmarkt, Tanz) | **Sandgrab** (Schattenweber, Stimmen aus dem Sand) |
+| Treibende Inseln | **Windnest** (Inseldorf an Ketten, Drachenflieger-Kinder) | **Leerfall** (Insel, auf der die Schwerkraft falsch ist) |
+| Aurenburg | **Gauklergasse** (Straßenkünstler, Theater) | **Die Senke** bei Nacht (Kollegium-Sperrstunde, Puppenmeister) |
+
 **Brandheim** (verbotene Zone zwischen Kesselbrunn und Aurenburg): farblose Geisterstadt, Schauplatz von Schlüsselszenen in Akt 2 und 5.
 
 ## 5. Nocturna – Akademie
@@ -118,6 +137,11 @@ Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *tha
 
 **Gegner (keine Ruf-Fraktion):** **Die Stille Hand.** Ziel: den Urton einmal vollständig spielen und damit **alle Magie der Welt verstummen lassen**, damit nie wieder ein Brandheim geschieht. Mitglieder: Überlebende von Magie-Unglücken, enttäuschte Wirker, Fanatiker. Erkennungszeichen: schwarzer Handschuh, eine Hand mit geschlossenem Mund im Siegel. Ränge: Novize, Schweiger, Taktgeber, Choralist, Dirigent.
 
+### 6.1 Missklinger (Schwarzmagier)
+
+Im Volksmund „Schwarzmagier“. Wirker, die Weisen **absichtlich verstimmen**: Ihre Magie klingt schief, sie verflucht, lähmt, macht Menschen zu Marionetten. Sie herrschen über abgelegene Dörfer durch Angst. Sie sind **nicht** die Stille Hand (die will alle Magie beenden), sondern deren Gegenteil: Sie wollen Magie ohne Grenzen und ohne Gewissen. Ab Akt 3 versucht die Stille Hand, Missklinger als Beweis zu benutzen, dass Magie böse ist.
+Gegner-Typen: GDD §5.1. Optik: ART_BIBLE §2.1.
+
 **Untergrund (Teil der Zünfte-Questreihe):** **Die Grauen Finken**, Widerstand in Aurenburgs Senke gegen das Kollegium, Anführer **Fink**.
 
 ## 7. Figuren-Beziehungen
@@ -135,7 +159,7 @@ Grundwortschatz: *kael* = Gesang/Volk · *nym* = Echo · *rael* = Herrin · *tha
    (Verräter, Akt 4)                    ▲ beide Brandheim-Überlebende
                                         │
  Nym (Nachhall) ── kennt den Urton ── spricht zum Spieler in Träumen
- Ambros Kettler ── stimmt den Stab; kannte die Eltern des Spielers
+ Ambros Kettler ── stimmt die Ringe; kannte die Eltern des Spielers
  Tobiah Grell, Saphira Lindqvist ── Lehrkräfte, Schutzfiguren (einer kann in Akt 4 sterben)
  Nell Tiedemann (Tiedmar) · Fink (Aurenburg) · Mutter Quendel (Hüter) ── Verbündete der Regionen
 ```
@@ -157,7 +181,7 @@ Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscene
 | M101 | Das Boot über den Ilsensee 🎬 | Ankunft bei Nebel, erster Blick auf Nocturna, Treffen mit Lio. Charakter-Editor davor. Tutorial Bewegung. |
 | M102 | Die Turmwahl | Gespräche mit den vier Turmsprechern, Wahl des Turms, Führung durch die Akademie. |
 | M103 | Der erste Ton | Klangkunde bei Edda, erste Weise (Leichtklang), Duellsaal-Tutorial bei Grell. |
-| M104 | Ein Stab für dich | Reise nach Kesselbrunn, Ambros Kettler stimmt den Stimmstab. Er erkennt etwas und schweigt. Markt-Tutorial. |
+| M104 | Deine ersten Ringe | Reise nach Kesselbrunn, Ambros Kettler stimmt die ersten Stimmringe. Er erkennt etwas und schweigt. Markt-Tutorial. |
 | M105 | Das Flüstern im Raunwald | Kreaturenkunde-Ausflug mit Saphira, Lio verirrt sich, erste Kämpfe (Pilzbrut), Hüter-Begegnung. |
 | M106 | Ilsenlicht 🎬 | Herbstfest, Aurelia fordert zum Duell, Laternen auf dem See. Erster Traum von Nym. |
 | M107 | Die Stumme Kammer | Nachts mit Lio in die verbotene Bibliotheksabteilung, Kael-Buch reagiert auf den Spieler. |
@@ -264,7 +288,8 @@ Dazu laufende Werte: **Nachhall-Belastung** des Spielers (Summe über das Spiel)
 
 ## 11. Ton und Schreibstil
 
+- **Grundton: verspielt und einladend, mit echtem Grusel als Kontrast.** Die Welt darf witzig, warm und bunt sein (Dorffeste, schrullige Händler, Tiere mit Charakter). Dunkle Stellen sind dafür richtig unheimlich, nicht nur „etwas düster“.
 - Dialoge: natürlich, knapp, mit Humor in der Freundesgruppe, ernst und leise bei den Erwachsenen. Keine Pathos-Monologe ohne Grund.
 - Lehrkräfte siezen Schüler, Schüler duzen sich. Der Dirigent siezt immer (höflich, kalt).
 - Kein Fluchen über „verdammt“ hinaus. Eigene Ausrufe: „Bei beiden Monden!“, „Stimm dich ab!“ (= beruhig dich), „Hallkopf“ (= Dummkopf).
-- Englische Fassung: Begriffe übersetzen (Weise = *Air* (wie eine Melodie, nicht „Weave“) / Stimmstab = *Tuning Staff* / Nachhall = *The Afterhall* / Urton = *The Undertone* / Stille Hand = *The Silent Hand*). Glossar in Phase 2 als String Table.
+- Englische Fassung: Begriffe übersetzen (Weise = *Air* (wie eine Melodie, nicht „Weave“) / Stimmring = *Tuning Ring* / Nachhall = *The Afterhall* / Urton = *The Undertone* / Stille Hand = *The Silent Hand*). Glossar in Phase 2 als String Table.

@@ -21,7 +21,9 @@ Concept-Prompts: `Scripts/ComfyUI/prompts/characters.json`, `houses.json`, `crea
 | Körper | 3 MetaHuman-Körpertypen × Größe (Skalierung ±5 %) |
 | Outfit | **Modular:** Kopf, Oberkörper, Umhang, Hände, Beine, Schuhe = einzelne Skeletal Meshes, gemeinsames Skelett, Leader Pose Component (Kleidung folgt dem Körper ohne eigenes AnimBP) |
 | Stoff | **Chaos Cloth** auf Umhang, Robensaum, Schal (Wind, Laufen, Gleiten, Fliegen). Budget: max. 2 Cloth-Meshes pro Figur gleichzeitig |
-| Stimmstab | Attachment am Socket `hand_r_staff` (Griff/Schaft/Quarz als drei Static Meshes), Quarz bestimmt Niagara-Farbe |
+| Hände & Magie | Kein Stab. 4 Stimmringe als Static Meshes an Finger-Sockets (`ring_01_l` … `ring_04_r`), Quarzfarbe bestimmt Niagara-Farbe. Handschuhe als eigener Outfit-Slot. VFX-Sockets an allen 10 Fingerspitzen (`fx_tip_*`) |
+
+**Personalisierung nach dem Start:** Alles oben ist später in Läden änderbar (Schneider, Barbier, Tätowierer, Ringschmied, Spiegelhexe, Stallmeister). Liste und Regeln: [GDD §13](GDD.md#13-personalisierung-und-läden). Technik dafür: Kleidung mit 3 Farbzonen (RGB-Maske) + Muster-Detailtextur, Haar-Farbverlauf im Groom-Material, Tattoos/Narben als Decal-Layer im Haut-Material (Position/Skalierung per UV-Offset).
 
 ### 1.2 Story-Figuren
 
@@ -135,10 +137,10 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 | Geheimnis | hat beim Brandheim-Einsatz die Sperrzone bewacht und Befehle befolgt, die er bereut |
 | Bogen | A1 harter Ausbilder · A2 erkennt die Gefahr, trainiert den Spieler im Geheimen · A3 Turnierrichter · A4 stirbt bei der Verteidigung der Halle (E4 = Halle) oder überlebt verletzt · A5 kämpft mit Krücke im Finale |
 | Aussehen | breites, vernarbtes Gesicht, gebrochene Nase, kurzer grauer Vollbart, Glatze, ein milchiges Auge (links). Dunkle, warme Haut. 190 cm, massig. |
-| Kleidung / Palette | gepolsterte Duelljacke, Lederschienen an den Unterarmen, Stimmstab wie ein Kampfstab · Dunkelbraun, Eisen, Ochsenblut |
+| Kleidung / Palette | gepolsterte Duelljacke, Lederschienen an den Unterarmen, schwere Kampfhandschuhe mit offenen Fingerspitzen · Dunkelbraun, Eisen, Ochsenblut |
 | MetaHuman | Preset: älterer Mann, breites Gesicht, dunkle Haut · Blend: Nase breiter, Kiefer massig · Skin: dunkel-warm, Narben über Decal (Phase 3) · Eyes: braun, links milchig (Iris-Material) · Hair: Glatze, kurzer grauer Bart · Body: schwer, muskulös, 190 cm |
 | Stimme | tief, rau, laut. TTS: `de_DE-thorsten`, Tonhöhe −15 %, Tempo −10 % |
-| Körpersprache / Idle | breitbeinig, Arme verschränkt, stützt sich auf den Stab; reibt sich die Narbe am Kinn |
+| Körpersprache / Idle | breitbeinig, Arme verschränkt, knackt mit den Fingerknöcheln; reibt sich die Narbe am Kinn |
 
 ### 4.6 Dozentin Saphira Lindqvist – Lehrerin für Kreaturenkunde
 
@@ -180,7 +182,7 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 | Geheimnis | trägt die Stimmen seiner Familie als Echo in einem Glasquarz um den Hals; er hört sie jede Nacht |
 | Bogen | A1 nur Gerüchte · A2 Briefe an den Spieler · A3 erstes Treffen in Brandheim (im Traum) · A4 zeigt sich nach dem Angriff · A5 Endboss; kann im Ende A verschont werden und lebt in Stille |
 | Aussehen | schmales, blasses, sehr ruhiges Gesicht, tiefe Augenringe, graue Augen, schulterlanges schwarzes Haar mit einer silbernen Strähne, glatt rasiert. Sehr helle Haut. 185 cm, hager. |
-| Kleidung / Palette | langer schwarzer Mantel mit hohem Kragen, schwarzer Handschuh nur rechts, ein Taktstock aus weißem Knochenholz statt eines Stimmstabs · Schwarz, Knochenweiß `#E8E2D4`, Glas |
+| Kleidung / Palette | langer schwarzer Mantel mit hohem Kragen, schwarzer Handschuh nur rechts, ein Taktstock aus weißem Knochenholz (als Einziger wirkt er Magie über ein Werkzeug: er traut seinen eigenen Händen nicht) · Schwarz, Knochenweiß `#E8E2D4`, Glas |
 | MetaHuman | Preset: Mann um 40, schmales Gesicht, sehr helle Haut · Blend: Wangen eingefallen, Augen tief · Skin: sehr hell-kühl, Augenringe (Makeup) · Eyes: grau · Hair: schulterlang glatt, Schwarz mit Strähne (Phase 3 Groom-Färbung) · Body: groß, sehr schlank |
 | Stimme | leise, samtig, langsam, keine Emotion bis zum Finale. TTS: `de_DE-thorsten`, Tonhöhe −10 %, Tempo −20 % |
 | Körpersprache / Idle | steht völlig still, bewegt nur die rechte Hand wie beim Dirigieren; berührt den Glasquarz am Hals |
@@ -200,15 +202,15 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 | Stimme | weich, mehrstimmig (gleiche Aufnahme 3× leicht versetzt, Hall). TTS: weiblich, + MetaSounds-Echo-Kette |
 | Körpersprache / Idle | schwebt 10 cm über dem Boden, Kopf leicht schräg, Hände öffnen und schließen sich langsam |
 
-### 4.10 Ambros Kettler – Fokusmacher und Händler in Kesselbrunn
+### 4.10 Ambros Kettler – Ringschmied und Händler in Kesselbrunn
 
 | | |
 |---|---|
-| Alter / Rolle / Fraktion | 71 · Stimmstab-Macher, Händler für Stab-Teile · Freie Zünfte |
+| Alter / Rolle / Fraktion | 71 · Ringschmied, stimmt Stimmringe, handelt mit Quarzen · Freie Zünfte |
 | Persönlichkeit | gemütlich, schlitzohrig, redet in Musik-Metaphern, spielt Bandoneon in der Werkstatt (Akkordeon-Leitmotiv!) |
 | Ziel | in Ruhe arbeiten. Und das Versprechen halten, das er den Eltern des Spielers gab. |
 | Geheimnis | kannte die Eltern des Spielers (beide Instrumentenbauer in Brandheim) und hat Edda den Säugling abgenommen; das Waisenhaus war seine Idee |
-| Bogen | A1 stimmt den ersten Stab · A2 sein Laden brennt beim Angriff · A3 baut den Stimmring · A4 schmiedet den „Brandheim-Quarz“ aus dem Instrument der Eltern · A5 spielt im Epilog bei der Feier |
+| Bogen | A1 stimmt die ersten Ringe · A2 sein Laden brennt beim Angriff · A3 baut den Meisterring · A4 schmiedet den „Brandheim-Quarz“ aus dem Instrument der Eltern · A5 spielt im Epilog bei der Feier |
 | Aussehen | rundes, rotwangiges Gesicht, weißer, buschiger Schnurrbart, Brille auf der Nasenspitze, Glatze mit weißem Haarkranz. Helle, warme Haut. 165 cm, rundlich. |
 | Kleidung / Palette | Lederschürze, Hemdsärmel, Ärmelschoner, Lupen an einer Stirnbrille · Braun, Leder, Dunkelrot |
 | MetaHuman | Preset: alter Mann, rundes Gesicht, helle Haut · Blend: Nase knolliger, Wangen voll · Skin: hell-warm, Rötung Wangen/Nase, Falten hoch · Eyes: blau · Hair: Haarkranz weiß, großer Schnurrbart · Body: klein, rundlich |
@@ -308,7 +310,7 @@ Alle Kreaturen sind Eigenentwürfe. Regeln: keine bekannten Fabelwesen-Namen aus
 
 | # | Name | Lebensraum | Beschreibung | Verhalten | Zähmbar | Rolle im Spiel |
 |---|---|---|---|---|---|---|
-| 1 | **Sturmschwinge** (Reittier) | Weiße Zinnen, Treibende Inseln | Greifenartig: Vorderkörper einer Schnee-Eule (Kopf, Schwingen, Krallen), Hinterkörper eines Luchses, Federohren, Schwanz mit Federfächer. Spannweite 7 m. | scheu, stolz, folgt nur dem, der ihr die Federn ordnet | ja (Story, M305) | Flug-Reittier, Rennen |
+| 1 | **Sturmschwinge** (Reittier, siehe §7) | Weiße Zinnen, Treibende Inseln | Greifenartig: Vorderkörper einer Schnee-Eule (Kopf, Schwingen, Krallen), Hinterkörper eines Luchses, Federohren, Schwanz mit Federfächer. Spannweite 7 m. | scheu, stolz, folgt nur dem, der ihr die Federn ordnet | ja (Story, M305) | Flug-Reittier, Rennen |
 | 2 | **Glimmermotte** | Raunwald, Akademie-Gärten | handgroße Motte, Flügel mit Leuchtmustern, die auf Musik reagieren | schwärmt bei Kerzenlicht, harmlos | nein (anlockbar) | Ambient-VFX, Lichträtsel |
 | 3 | **Laternenkrähe** | Nocturna, Glockenturm | Krähe mit einer glühenden Kehle, die nachts wie eine Laterne leuchtet | neugierig, klaut glänzende Dinge, bringt Botschaften | ja | Haustier im Turmzimmer, Sammel-Quest |
 | 4 | **Nebelfuchs** | Raunwald | silbergrauer Fuchs, löst sich bei Gefahr in Nebel auf | verspielt, führt Verirrte im Kreis | ja (selten) | Rätsel-Führer, Sidequest |
@@ -330,3 +332,18 @@ Alle Kreaturen sind Eigenentwürfe. Regeln: keine bekannten Fabelwesen-Namen aus
 | 20 | **Stummling** | Nachhall, dünne Orte | humanoid, porzellanglatt, kein Gesicht, nur ein runder Mund ohne Ton; Körper aus zusammengesetzten Scherben verlorener Dinge | saugt Klang aus der Umgebung (Ton wird dumpf in der Nähe) | nein | Haupt-Gegner im Nachhall |
 
 **Reittier-Animationsset** (Sturmschwinge): siehe ANIMATION_BIBLE §6. Rig: eigener Vierbeiner-mit-Flügeln-Rig (Basis: Fab-Gratis-Vierbeiner + Vogelflügel-Kette in Blender, Control Rig für Flügel-IK).
+
+## 7. Reittiere
+
+Alle Reittiere sind eigene Erfindungen. Man zähmt sie in Quests, hält sie im **Stall der Akademie** und passt sie beim Stallmeister an (Sattel, Zaumzeug, Rüstung, Fellfarbe/Muster, Schmuck, Name). **Eigene Ideen vom Nutzer kommen hier dazu**, Vorlage: Name, Aussehen in 2 Sätzen, Bewegungsart, wo man es findet.
+
+| # | Reittier | Bewegung | Aussehen | Besonderheit | Freischaltung |
+|---|---|---|---|---|---|
+| R1 | **Sturmschwinge** | Fliegen | Vorderkörper Schnee-Eule, Hinterkörper Luchs, Federohren, Schwanzfächer | schnellster Flieger, Sturzflug-Boost | Akt 3, Weiße Zinnen (Story) |
+| R2 | **Perlsegler** | Fliegen + Gleiten | pferdegroß, langer Hals, vier breite Hautsegel zwischen den Beinen, Fell schimmert wie Perlmutt, Leuchtquaste am Schwanz; summt beim Fliegen | gleitet ewig ohne Ausdauer, kann aber schlecht steigen; nachts leuchtet die Quaste | Akt 2, Treibende Inseln (Sidequest) |
+| R3 | **Moosbock** | Boden, Klettern | riesiger Bock mit Moospelz, Pilzen und kleinen Pflanzen auf dem Rücken, gedrehte Rindenhörner | läuft Steilwände hoch, Pflanzen auf seinem Rücken wachsen mit (Housing-Garten zum Mitnehmen) | Akt 1, Raunwald |
+| R4 | **Dünenschreiter** | Boden, sehr schnell | Laufvogel, 3 m hoch, gepanzerte Schuppenbeine, Kopf mit Sonnenschirm-Kamm | schnellstes Bodentier, gräbt sich bei Sandsturm ein (Unterschlupf) | Akt 3, Kaelschlucht |
+| R5 | **Gischtrobbe** | Wasser, Tauchen | Robbe mit segelartigen Flossen | surft auf Wellen, taucht in Höhlenseen | Akt 2, Tiedmar |
+| R6 | **Glutdachs** | Boden, Graben | ponygroßer Dachs mit glimmenden Streifen im Fell, Funken bei jedem Schritt | gräbt verschüttete Gänge frei, wärmt im Schnee (kein Frieren) | Akt 4, Glastiefen |
+
+Regeln: 1 Reittier aktiv, Wechsel per Pfiff-Rad (Taste halten). Jedes Reittier hat Ausdauer, Tempo, Spezialfähigkeit und eine Beziehung (füttern, putzen, gemeinsam Rennen = Bonus). Rennen: Flug-, Boden- und Wasser-Rennstrecken je Region.

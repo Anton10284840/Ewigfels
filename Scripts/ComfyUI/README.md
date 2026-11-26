@@ -9,9 +9,9 @@ Erlaubte Modelle: nur die in `docs/KI_LIZENZEN.md` mit ✅ (hier: **FLUX.1-schne
 | `workflows/WF_Concept_FluxSchnell.json` | Zum **Reinziehen** in ComfyUI (manuelles Arbeiten, Prompt ändern, Queue) |
 | `workflows/WF_Concept_FluxSchnell_api.json` | API-Vorlage für das Batch-Skript (4 Steps, CFG 1, euler/simple) |
 | `workflows/WF_Concept_SDXL_api.json` | API-Vorlage SDXL (28 Steps, CFG 6, dpmpp_2m/karras, mit Negativ-Prompt) |
-| `prompts/moodboards.json` | 11 Regionen × 8 Bilder = 88 |
+| `prompts/moodboards.json` | 11 Regionen × 8 + fröhliche/gruselige Dörfer (16) + Läden (6) = 110 |
 | `prompts/characters.json` | 15 Hauptfiguren + Spieler-Beispiel × (Porträt, Ganzkörper, 6 Emotionen) = 128 |
-| `prompts/creatures.json` | 20 Kreaturen × 2 = 40 |
+| `prompts/creatures.json` | 20 Kreaturen + 4 neue Reittiere, je 2 Bilder = 48 |
 | `prompts/houses.json` | 4 Türme × (Wappen, Uniform, Gemeinschaftsraum) = 12 |
 | `run_comfy.py` | Batch: schickt alle Prompts an ComfyUI, speichert nach `art/concepts/`, schreibt `manifest.json` |
 | `make_sheets.py` | Setzt Übersichtsblätter zusammen (Moodboard-Raster, Ausdrucks-Sheet mit 6 Emotionen) |
@@ -35,7 +35,7 @@ Namensschema Workflows: `WF_<Zweck>_<Modell>.json`.
    & $py Scripts\ComfyUI\run_comfy.py --list moodboards --only R01
    ```
    Bilder liegen danach in `art\concepts\moodboards\R01_Nocturna\`.
-5. Alles (268 Bilder, bei ca. 8–12 s pro Bild etwa **40–60 Minuten**):
+5. Alles (298 Bilder, bei ca. 8–12 s pro Bild etwa **45–60 Minuten**):
    ```powershell
    & $py Scripts\ComfyUI\run_comfy.py --list all
    ```

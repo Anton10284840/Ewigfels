@@ -44,7 +44,8 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Content/Data/Art/RegionLooks.json | ✅ | Look-Werte pro Region für Phase 4 |
 | docs/ANIMATION_BIBLE.md | ✅ | AnimBP-Struktur, Checklisten aller Sets, FreeMoCap-Anleitung, Lip-Sync, Emotions-Tags, Reittier, Cutscene-Vorlage |
 | ComfyUI-Workflows + Batch-Skript | ✅ | `run_comfy.py` gegen Test-Server geprüft, in echtem ComfyUI **noch nicht** gelaufen |
-| Prompt-Listen | ✅ | 88 Moodboard-, 128 Figuren-, 40 Kreaturen-, 12 Turm-Bilder |
+| Prompt-Listen | ✅ | 110 Moodboard-, 128 Figuren-, 48 Kreaturen-, 12 Turm-Bilder |
+| Nutzer-Wünsche 26.11. | ✅ | Ton verspielt + gruselige Gegner, Magie aus den Fingern (kein Stab), Personalisierung über Läden (GDD §13), 6 eigene Reittiere, fröhliche/gruselige Dörfer + Missklinger. **Offen: Weltgröße (GDD E9)** |
 | Bilder generiert | ⬜ | beim Nutzer (ca. 40–60 min), danach Key-Frames wählen |
 | Missionsdesign-Dokumente | ⬜ | pro Akt in der Umsetzungsphase (Akt 1: Phase 5) |
 

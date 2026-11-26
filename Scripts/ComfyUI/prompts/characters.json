@@ -81,7 +81,7 @@
     {
       "id": "C05_Grell",
       "folder": "characters/C05_Grell",
-      "desc": "a 57 year old bald dueling master with a broad scarred face, broken nose, short grey full beard, one milky left eye, dark skin, massive build, padded dark brown dueling jacket, leather forearm guards, a heavy fighting staff",
+      "desc": "a 57 year old bald dueling master with a broad scarred face, broken nose, short grey full beard, one milky left eye, dark skin, massive build, padded dark brown dueling jacket, leather forearm guards, heavy fingerless fighting gloves",
       "shared_seed": true
     },
     {
@@ -141,13 +141,13 @@
     {
       "id": "C15_Quendel",
       "folder": "characters/C15_Quendel",
-      "desc": "a tiny 83 year old forest elder woman with a deeply wrinkled sun-tanned face, sparkling black eyes, one gold tooth, two thick white braids with wooden beads, dark warm skin, layered moss green linen and fur clothing, necklaces of bone and quartz, a gnarled root staff",
+      "desc": "a tiny 83 year old forest elder woman with a deeply wrinkled sun-tanned face, sparkling black eyes, one gold tooth, two thick white braids with wooden beads, dark warm skin, layered moss green linen and fur clothing, necklaces of bone and quartz, a gnarled walking stick",
       "shared_seed": true
     },
     {
       "id": "C00_Player_A",
       "folder": "characters/C00_Player_A",
-      "desc": "a 15 year old new student with an expressive face, determined eyes, practical dark grey wool school coat without tower colors yet, travel satchel, a simple wooden tuning staff with a small quartz tip",
+      "desc": "a 15 year old new student with an expressive face, determined eyes, practical dark grey wool school coat without tower colors yet, travel satchel, small sparks of light dancing on the fingertips",
       "shared_seed": true
     }
   ]

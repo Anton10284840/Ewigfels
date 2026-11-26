@@ -95,7 +95,7 @@
         },
         {
           "id": "02_market",
-          "prompt": "busy market square with wooden stalls, lanterns, merchants selling crystals, herbs and tuning staffs, warm afternoon light"
+          "prompt": "busy market square with wooden stalls, lanterns, merchants selling crystals, herbs, rings and colorful clothes, warm afternoon light"
         },
         {
           "id": "03_workshop",
@@ -193,7 +193,7 @@
         },
         {
           "id": "07_explorer",
-          "prompt": "a young mage with a glowing tuning staff exploring a narrow crystal tunnel, light only from the staff"
+          "prompt": "a young mage exploring a narrow crystal tunnel, glowing light coming directly from the fingertips of a raised hand, the only light source"
         },
         {
           "id": "08_colorkey",
@@ -432,6 +432,115 @@
         {
           "id": "08_colorkey",
           "prompt": "palette of ash grey, negative violet and undertone white"
+        }
+      ]
+    },
+    {
+      "id": "V1_FroehlicheDoerfer",
+      "folder": "moodboards/V1_FroehlicheDoerfer",
+      "context": "cheerful lively fantasy village, playful and inviting, warm colors, friendly villagers",
+      "shots": [
+        {
+          "id": "01_festival",
+          "prompt": "village square festival at dusk with string lights, bunting flags, musicians with accordion and fiddle, dancing villagers, lanterns"
+        },
+        {
+          "id": "02_mushroom_village",
+          "prompt": "houses built inside giant mushrooms in a forest, round doors, children playing, glowing moths"
+        },
+        {
+          "id": "03_fishing_village",
+          "prompt": "colorful fishing village on a lake shore with lantern boats, pancake stall, cats on piers"
+        },
+        {
+          "id": "04_market",
+          "prompt": "bustling market with colorful fabric stalls, dye pots, fruit, toys, a juggler"
+        },
+        {
+          "id": "05_tavern",
+          "prompt": "cozy tavern interior, warm fireplace, villagers laughing, wooden mugs, a dog under the table"
+        },
+        {
+          "id": "06_stilt_village",
+          "prompt": "wooden stilt village above a marsh, rope bridges, frog choir festival, warm lanterns"
+        },
+        {
+          "id": "07_mountain_hamlet",
+          "prompt": "alpine hamlet with cheese dairy, sled race in fresh snow, smoking chimneys, rosy-cheeked kids"
+        },
+        {
+          "id": "08_island_village",
+          "prompt": "village hanging on chains on a floating island, kids flying kites, colorful laundry in the wind"
+        }
+      ]
+    },
+    {
+      "id": "V2_Gruseldoerfer",
+      "folder": "moodboards/V2_Gruseldoerfer",
+      "context": "eerie cursed village ruled by dark sorcerers, unsettling and creepy, desaturated colors, thick ground fog",
+      "shots": [
+        {
+          "id": "01_puppet_trees",
+          "prompt": "forest village with old dolls and puppets hanging from every tree, crows, silent houses"
+        },
+        {
+          "id": "02_frozen_village",
+          "prompt": "village where people stand frozen in clear ice in the street, blue twilight"
+        },
+        {
+          "id": "03_drowned_bells",
+          "prompt": "half-flooded village with bells ringing underwater, black water, a single candle in a window"
+        },
+        {
+          "id": "04_marionette_farmers",
+          "prompt": "farmers moving stiffly like marionettes on invisible strings in a foggy field, a witch in the background"
+        },
+        {
+          "id": "05_sorcerer",
+          "prompt": "dark sorcerer in tattered black and violet robes casting a distorted crooked spell from his fingers, sickly green light"
+        },
+        {
+          "id": "06_street_night",
+          "prompt": "empty village street at night, shutters barred, chalk symbols on doors, a figure watching from a window"
+        },
+        {
+          "id": "07_ritual",
+          "prompt": "hidden ritual circle in a barn, candles, crow feathers, cracked mirrors"
+        },
+        {
+          "id": "08_liberated",
+          "prompt": "the same village after being freed: color returning, morning sun, villagers opening windows, flowers"
+        }
+      ]
+    },
+    {
+      "id": "S1_Laeden",
+      "folder": "moodboards/S1_Laeden",
+      "context": "cozy detailed fantasy shop interior, warm light, inviting, full of personality",
+      "shots": [
+        {
+          "id": "01_tailor",
+          "prompt": "tailor shop with fabric rolls, dye bottles, mannequins with long coats, a full-length mirror"
+        },
+        {
+          "id": "02_barber",
+          "prompt": "barber and hair salon with brass chairs, colorful hair tonics, braids on display"
+        },
+        {
+          "id": "03_tattoo",
+          "prompt": "tattoo parlor with glowing rune designs on the walls, inks, a harbor view window"
+        },
+        {
+          "id": "04_ringsmith",
+          "prompt": "ring smith workshop with tiny glowing quartz rings, anvil, magnifying loupes, a bandoneon"
+        },
+        {
+          "id": "05_stable",
+          "prompt": "magical creature stable with saddles, colorful harness, a pearl-furred long-necked flying mount"
+        },
+        {
+          "id": "06_mirror_witch",
+          "prompt": "friendly forest witch hut with a magic mirror that shows a different face, herbs, cats"
         }
       ]
     }
