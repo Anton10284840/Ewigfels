@@ -12,6 +12,7 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 | Blender | https://www.blender.org | GPL-3.0 | Modellieren, UV, Retopo |
 | Visual Studio 2022 Community | https://visualstudio.microsoft.com | Microsoft-Lizenz (Community: Einzelentwickler ok) | C++-IDE |
 | Git / Git LFS | https://git-scm.com | GPL-2.0 / MIT | Versionsverwaltung |
+| Pillow | https://python-pillow.org | MIT-CMU (HPND) | `Scripts/ComfyUI/make_sheets.py` (Übersichtsblätter, nur Tool) |
 
 ## Plugins & Code (Details: [`docs/PLUGINS.md`](docs/PLUGINS.md), Versionen: `Scripts/Tools/Plugins.json`)
 

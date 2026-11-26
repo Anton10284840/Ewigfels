@@ -1,0 +1,154 @@
+{
+  "_kommentar": "Figuren-Concepts (CHARACTER_BIBLE §4). Pro Figur: Porträt, Ganzkörper, 6 Emotionen. Gleicher Seed pro Figur (shared_seed) für möglichst gleiches Gesicht. FLUX schnell hält Gesichter nicht perfekt konstant: 2–3 Varianten erzeugen und das beste Set wählen.",
+  "style": "cinematic character concept photograph, photorealistic, realistic skin texture with pores and subsurface scattering, natural hair strands, soft key light with subtle rim light, 85mm lens, shallow depth of field, dark fairytale period setting, neutral dark background",
+  "templates": {
+    "portrait": {
+      "prompt": "head and shoulders portrait of {desc}, looking at the camera, calm expression",
+      "width": 1024,
+      "height": 1024
+    },
+    "fullbody": {
+      "prompt": "full body character turnaround reference of {desc}, standing pose, entire figure visible from head to boots, plain studio backdrop",
+      "width": 832,
+      "height": 1216
+    },
+    "emotion_happy": {
+      "prompt": "close-up facial expression study of {desc}, genuinely smiling, joyful",
+      "width": 1024,
+      "height": 1024
+    },
+    "emotion_sad": {
+      "prompt": "close-up facial expression study of {desc}, sad, eyes glistening with held-back tears",
+      "width": 1024,
+      "height": 1024
+    },
+    "emotion_angry": {
+      "prompt": "close-up facial expression study of {desc}, angry, furrowed brows, clenched jaw",
+      "width": 1024,
+      "height": 1024
+    },
+    "emotion_afraid": {
+      "prompt": "close-up facial expression study of {desc}, afraid, wide eyes, tense lips",
+      "width": 1024,
+      "height": 1024
+    },
+    "emotion_surprised": {
+      "prompt": "close-up facial expression study of {desc}, surprised, raised eyebrows, mouth slightly open",
+      "width": 1024,
+      "height": 1024
+    },
+    "emotion_disgusted": {
+      "prompt": "close-up facial expression study of {desc}, disgusted, wrinkled nose, raised upper lip",
+      "width": 1024,
+      "height": 1024
+    }
+  },
+  "use_templates": [
+    "portrait",
+    "fullbody",
+    "emotion_happy",
+    "emotion_sad",
+    "emotion_angry",
+    "emotion_afraid",
+    "emotion_surprised",
+    "emotion_disgusted"
+  ],
+  "groups": [
+    {
+      "id": "C01_Edda",
+      "folder": "characters/C01_Edda",
+      "desc": "a 64 year old woman teacher with a narrow angular face, high cheekbones, deep laugh lines, ice grey eyes, grey hair in a strict bun with one white streak, small round glasses, long dark bottle green wool robe, leather vest with many pockets, a tuning fork pendant",
+      "shared_seed": true
+    },
+    {
+      "id": "C02_Lio",
+      "folder": "characters/C02_Lio",
+      "desc": "a 15 year old boy with a round open face, many freckles, a broad gap-toothed grin, wild short dark brown curls, warm medium brown skin, hazel eyes, dark grey wool school coat worn open over a chunky knitted fisherman sweater, mustard yellow scarf, leather wristband with a net knot",
+      "shared_seed": true
+    },
+    {
+      "id": "C03_Aurelia",
+      "folder": "characters/C03_Aurelia",
+      "desc": "a 15 year old girl with an oval symmetrical face, straight narrow nose, pale blue eyes, platinum blonde hair braided into a crown, fair cool skin, perfectly tailored dark grey school coat with deep blue scarf and silver cuffs, white leather dueling glove",
+      "shared_seed": true
+    },
+    {
+      "id": "C04_Corvin",
+      "folder": "characters/C04_Corvin",
+      "desc": "a charming 38 year old man teacher with short stubble beard, warm brown eyes, laugh lines, dark blond hair swept back with grey temples, light brown skin, open waistcoat, rolled-up sleeves, leather apron with burn marks, glass vials on his belt, wine red and copper colors",
+      "shared_seed": true
+    },
+    {
+      "id": "C05_Grell",
+      "folder": "characters/C05_Grell",
+      "desc": "a 57 year old bald dueling master with a broad scarred face, broken nose, short grey full beard, one milky left eye, dark skin, massive build, padded dark brown dueling jacket, leather forearm guards, a heavy fighting staff",
+      "shared_seed": true
+    },
+    {
+      "id": "C06_Saphira",
+      "folder": "characters/C06_Saphira",
+      "desc": "a 41 year old woman creature keeper with a round freckled face, rosy cheeks, green eyes, thick strawberry blonde hair in a loose braid with feathers and twigs in it, waxed field jacket, many scarves, heavy gloves, moss green and rust colors",
+      "shared_seed": true
+    },
+    {
+      "id": "C07_Varga",
+      "folder": "characters/C07_Varga",
+      "desc": "a dignified 69 year old woman headmistress with a long noble face, aquiline nose, very dark eyes, short white pixie hair, very dark eyebrows, olive skin, high-collared black robe with violet lining, golden chain of office with four tower crests",
+      "shared_seed": true
+    },
+    {
+      "id": "C08_Dirigent",
+      "folder": "characters/C08_Dirigent",
+      "desc": "a 42 year old man with a narrow pale very calm face, deep dark circles under grey eyes, shoulder-length straight black hair with one silver streak, clean shaven, long black high-collared coat, a single black glove on the right hand, a white bone-wood conductor baton, a small glass crystal pendant",
+      "shared_seed": true
+    },
+    {
+      "id": "C09_Nym",
+      "folder": "characters/C09_Nym",
+      "desc": "an ethereal woman appearing in her mid thirties with a long face, large dark eyes, dark brown skin with fine glowing golden line tattoos, very long black hair floating as if underwater, layered translucent ivory robes, gold jewelry on forehead and neck, faint violet glow",
+      "shared_seed": true
+    },
+    {
+      "id": "C10_Ambros",
+      "folder": "characters/C10_Ambros",
+      "desc": "a cheerful 71 year old instrument maker with a round red-cheeked face, big bushy white mustache, spectacles on the tip of the nose, bald head with a ring of white hair, fair warm skin, blue eyes, leather apron, sleeve guards, magnifying loupes on a headband",
+      "shared_seed": true
+    },
+    {
+      "id": "C11_Ruprecht",
+      "folder": "characters/C11_Ruprecht",
+      "desc": "a 61 year old chancellor with a square face, silver neatly parted hair, short trimmed chin beard, pale blue eyes, fair rosy skin, broad shoulders, white official coat with gold embroidery, a small golden bell brooch, heavy rings",
+      "shared_seed": true
+    },
+    {
+      "id": "C12_Nell",
+      "folder": "characters/C12_Nell",
+      "desc": "a 34 year old harbor detective woman with a narrow weathered face, a dueling scar over one eyebrow, dark almond-shaped eyes, East Asian features, short black hair under a peaked cap, long yellow oilskin coat, neckerchief, an unlit pipe in the mouth",
+      "shared_seed": true
+    },
+    {
+      "id": "C13_Fink",
+      "folder": "characters/C13_Fink",
+      "desc": "a 26 year old resistance leader with a striking angular face, pale blue eyes, undercut ash blond messy hair, stubble, scar on the neck, fair skin, patched grey coat with a finch feather on the collar, fingerless gloves, chalk on his hands",
+      "shared_seed": true
+    },
+    {
+      "id": "C14_Mara",
+      "folder": "characters/C14_Mara",
+      "desc": "a 19 year old woman with a narrow sharp face, freckles, hazel eyes, warm medium brown skin, asymmetric short dark brown hair with one longer strand tied with a fishing net knot, black severe uniform of a secret order, a metronome pendant, a conductor baton at the hip",
+      "shared_seed": true
+    },
+    {
+      "id": "C15_Quendel",
+      "folder": "characters/C15_Quendel",
+      "desc": "a tiny 83 year old forest elder woman with a deeply wrinkled sun-tanned face, sparkling black eyes, one gold tooth, two thick white braids with wooden beads, dark warm skin, layered moss green linen and fur clothing, necklaces of bone and quartz, a gnarled root staff",
+      "shared_seed": true
+    },
+    {
+      "id": "C00_Player_A",
+      "folder": "characters/C00_Player_A",
+      "desc": "a 15 year old new student with an expressive face, determined eyes, practical dark grey wool school coat without tower colors yet, travel satchel, a simple wooden tuning staff with a small quartz tip",
+      "shared_seed": true
+    }
+  ]
+}
