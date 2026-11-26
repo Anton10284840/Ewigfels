@@ -1,0 +1,20 @@
+# M101 – Erstes Treffen mit Lio am Bootshaus.
+# Sprecher-IDs ohne Leerzeichen, Anzeigenamen im Kopf. Texte auf Deutsch, Englisch über die Lokalisierung (String Table).
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Player "Du"]
+===
+[event emotion `happy`]
+Lio: Du bist das neue Gesicht vom Nebelboot, oder? Ich hab gewettet, dass du umkippst, sobald du die Klippe siehst.
+  * Fast. Das ist ja riesig.
+    [event state `rel:Lio+5`]
+    Lio: Warte, bis du die Treppe hochmusst. Dreihundertzwölf Stufen. Ich hab sie gezählt. Zweimal.
+  * Ich kippe nicht so schnell um.
+    [event emotion `smirk`]
+    Lio: Hm. Mutig. Oder hallköpfig. Wir finden's raus.
+  * (Schweigen und nicken)
+    Lio: Auch gut. Ich red für zwei, das sagt jedenfalls meine Schwester.
+    [event emotion `sad`]
+    Lio: ... sagte sie. Egal.
+Lio: Ich bin Lio. Komm, bevor die Glocke schlägt, sonst steht die Rektorin wieder mit diesem Blick da.
+[event camera `wide`]

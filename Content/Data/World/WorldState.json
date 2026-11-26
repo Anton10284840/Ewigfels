@@ -1,0 +1,78 @@
+{
+  "_kommentar": "Alle erlaubten Weltstatus-Schlüssel. Das Prüfskript (Scripts/Tools/validate_data.py) meldet jeden Schlüssel in Quests und Dialogen, der hier fehlt (Tippfehler-Schutz). Neue Flags hier eintragen, mit kurzer Beschreibung. Quellen: STORY_BIBLE §6, §7, §8.2, GDD §7.1.",
+  "factions": {
+    "Kollegium": "Das Hohe Kollegium (Magierregierung, Aurenburg)",
+    "Hueter": "Die Hüter der Adern (Graumoor, Raunwald)",
+    "Zuenfte": "Die Freien Zünfte (Tiedmar, Kesselbrunn)"
+  },
+  "relationships": {
+    "Lio": "Lio Vandermeer, bester Freund, Begleiter",
+    "Aurelia": "Aurelia von Stauffen, Rivalin",
+    "Edda": "Magistra Edda Vornholt, Mentorin",
+    "Mara": "Mara Vandermeer, Stille Hand",
+    "Nym": "Nym, Stimme aus dem Nachhall"
+  },
+  "flags": {
+    "E1_TrustEdda": "M110: Edda die Wahrheit gesagt",
+    "E1_HidePower": "M110: Kraft verborgen",
+    "E2_KeyCollegium": "M205: Schlüssel ans Kollegium",
+    "E2_KeyKeepers": "M205: Schlüssel an die Hüter",
+    "E3_MaraKilled": "M310: Mara getötet",
+    "E3_MaraPrisoner": "M310: Mara gefangen",
+    "E3_MaraRedeemed": "M310: Mara zurückgeholt",
+    "E4_DefendHall": "M406: Halle verteidigt",
+    "E4_ChaseCorvin": "M406: Corvin verfolgt",
+    "E5_Uprising": "M409: Aufstand",
+    "E5_Negotiate": "M409: Verhandlung",
+    "E6_FreeNym": "M505: Nym befreit",
+    "E6_BindNym": "M505: Nym gebunden",
+    "NachhallLoad": "Nachhall-Belastung des Spielers (0–100, Zähler)",
+    "Tutorial_Movement": "M101: Bewegungs-Tutorial abgeschlossen",
+    "Met_Lio": "M101: Lio getroffen",
+    "Nym_Spoke": "M110: Nym hat zum ersten Mal gesprochen",
+    "E1_Decided": "M110: Entscheidung 1 getroffen (egal welche)"
+  },
+  "objective_kinds": [
+    "talk",
+    "reach",
+    "collect",
+    "defeat",
+    "interact",
+    "cast",
+    "dialogue",
+    "custom",
+    "condition"
+  ],
+  "regions": [
+    "Nocturna",
+    "Ilsensee",
+    "Raunwald",
+    "Kesselbrunn",
+    "Graumoor",
+    "Glastiefen",
+    "Tiedmar",
+    "Weisse_Zinnen",
+    "Kaelschlucht",
+    "Treibende_Inseln",
+    "Aurenburg",
+    "Nachhall"
+  ],
+  "npcs": [
+    "Edda",
+    "Lio",
+    "Aurelia",
+    "Corvin",
+    "Grell",
+    "Saphira",
+    "Varga",
+    "Vaal",
+    "Nym",
+    "Ambros",
+    "Ruprecht",
+    "Nell",
+    "Fink",
+    "Mara",
+    "Quendel",
+    "Faehrmann"
+  ]
+}

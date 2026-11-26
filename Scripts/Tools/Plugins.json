@@ -1,5 +1,5 @@
 {
-  "_kommentar": "Drittanbieter-Plugins für Ewigfels. Install-Plugins.ps1 klont sie nach Plugins/ThirdParty/<name> (nicht im Repo), jede Version fest gepinnt. set: empfohlen = fester Bestandteil, phase2 = Kandidaten, zwischen denen wir in Phase 2 entscheiden (der Verlierer fliegt wieder raus), optional = nur mit -All. Neue Einträge nur mit Zeile in CREDITS.md und Bewertung in docs/PLUGINS.md.",
+  "_kommentar": "Drittanbieter-Plugins für Ewigfels. Install-Plugins.ps1 klont sie nach Plugins/ThirdParty/<name> (nicht im Repo), jede Version fest gepinnt. set: empfohlen = fester Bestandteil, optional = nur mit -All. Neue Einträge nur mit Zeile in CREDITS.md und Bewertung in docs/PLUGINS.md.",
   "plugins": [
     {
       "name": "PCGExtendedToolkit",
@@ -11,31 +11,13 @@
       "zweck": "Erweiterte PCG-Knoten: Wege, Straßen, Pfade, Graphen, Verteilung – für Regionen, Dörfer, Wälder"
     },
     {
-      "name": "DlgSystem",
-      "repo": "https://github.com/NotYetGames/DlgSystem.git",
-      "ref": "d705231216bd64558d437b87a57928689b1e7fef",
-      "license": "MIT",
-      "ue": "5.6, 5.7, 5.8",
-      "set": "phase2",
-      "zweck": "Dialoge mit Verzweigungen, Bedingungen, Events; JSON-Import/-Export"
-    },
-    {
       "name": "SUDS",
       "repo": "https://github.com/sinbad/SUDS.git",
       "ref": "8b36640df715cfb703746bb032140bad0766f2de",
       "license": "MIT",
       "ue": "5.8 (Kompatibilitäts-Commit 19.06.2026)",
-      "set": "phase2",
-      "zweck": "Dialoge als Textskripte (.sud) mit Entscheidungen, Bedingungen, Variablen, Events, Lokalisierung"
-    },
-    {
-      "name": "Flow",
-      "repo": "https://github.com/MothCocoon/FlowGraph.git",
-      "ref": "v2.3-5.8",
-      "license": "MIT",
-      "ue": "5.8 (Tag v2.3-5.8, 11.07.2026)",
-      "set": "phase2",
-      "zweck": "Quest- und Story-Ablauf als Graph (Questlog, Trigger, Weltstatus)"
+      "set": "empfohlen",
+      "zweck": "Dialogsystem (entschieden 26.11.2026): Dialoge als Textskripte (.sud) mit Entscheidungen, Bedingungen, Variablen, Events, Lokalisierung. Ewigfels-Code hängt davon ab."
     },
     {
       "name": "SPUD",
@@ -44,7 +26,7 @@
       "license": "MIT",
       "ue": "offiziell bis 5.5, World Partition nur im Neben-Branch",
       "set": "optional",
-      "zweck": "Speichersystem-Kandidat (Weltstatus, Streaming-Level). Nur testen, nicht fest einplanen."
+      "zweck": "Nicht gebraucht: eigenes Speichersystem (UEwigfelsSaveSubsystem). Bleibt nur zum Vergleich in der Liste."
     },
     {
       "name": "ImGui",

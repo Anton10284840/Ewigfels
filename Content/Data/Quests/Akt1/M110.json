@@ -1,0 +1,61 @@
+{
+  "id": "M110",
+  "type": "main",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Edda",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": ["quest:M109"],
+  "title": { "de": "Die Doppelnacht", "en": "The Double Night" },
+  "summary": {
+    "de": "Beide Monde sind voll. In dieser Nacht spricht eine Stimme zu dir, und Edda wartet auf eine Antwort.",
+    "en": "Both moons are full. Tonight a voice speaks to you, and Edda is waiting for an answer."
+  },
+  "dialogues": ["D_M110_Edda"],
+  "stages": [
+    {
+      "id": "s1_traum",
+      "text": { "de": "Schlaf in deinem Turmzimmer. Die Doppelnacht beginnt.", "en": "Sleep in your tower room. The Double Night begins." },
+      "objectives": [
+        { "id": "o_schlafen", "kind": "interact", "target": "Bett_Turmzimmer", "marker": "Turmzimmer_Bett",
+          "text": { "de": "Leg dich schlafen", "en": "Go to sleep" } }
+      ],
+      "on_complete": ["flag:Nym_Spoke=1", "flag:NachhallLoad+5"],
+      "next": [{ "stage": "s2_edda" }]
+    },
+    {
+      "id": "s2_edda",
+      "text": { "de": "Edda erwartet dich auf dem Sternturm. Sie weiß, dass etwas passiert ist.", "en": "Edda awaits you on the Star Tower. She knows something has happened." },
+      "objectives": [
+        { "id": "o_entscheidung", "kind": "condition", "target": "flag:E1_Decided", "marker": "NPC_Edda",
+          "text": { "de": "Sprich mit Edda auf dem Sternturm", "en": "Talk to Edda on the Star Tower" } }
+      ],
+      "next": [
+        { "if": ["flag:E1_TrustEdda"], "stage": "s3a_vertrauen" },
+        { "stage": "s3b_verbergen" }
+      ]
+    },
+    {
+      "id": "s3a_vertrauen",
+      "text": { "de": "Edda will dich offen ausbilden. Triff sie im Klangsaal.", "en": "Edda wants to train you openly. Meet her in the Sound Hall." },
+      "objectives": [
+        { "id": "o_klangsaal", "kind": "reach", "target": "Klangsaal", "marker": "Klangsaal",
+          "text": { "de": "Geh in den Klangsaal", "en": "Go to the Sound Hall" } }
+      ],
+      "on_complete": ["rel:Edda+15"],
+      "next": [{ "end": "completed" }]
+    },
+    {
+      "id": "s3b_verbergen",
+      "text": { "de": "Du schweigst. Ein Lehrer hat euch belauscht und bittet dich zu sich.", "en": "You stay silent. A teacher overheard you and asks to see you." },
+      "objectives": [
+        { "id": "o_corvin", "kind": "talk", "target": "Corvin", "marker": "NPC_Corvin",
+          "text": { "de": "Sprich mit Magister Hale", "en": "Talk to Master Hale" } }
+      ],
+      "on_complete": ["rel:Edda-10", "flag:NachhallLoad+10"],
+      "next": [{ "end": "completed" }]
+    }
+  ],
+  "rewards": { "xp": 400, "gold": 50, "items": ["Ring_Doppelnacht"], "effects": [] }
+}

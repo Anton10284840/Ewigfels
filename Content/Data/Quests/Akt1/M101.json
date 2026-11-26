@@ -1,0 +1,52 @@
+{
+  "id": "M101",
+  "type": "main",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Faehrmann",
+  "duration_min": 45,
+  "auto_start": true,
+  "requires": [],
+  "title": { "de": "Das Boot über den Ilsensee", "en": "The Boat Across Lake Ilsen" },
+  "summary": {
+    "de": "Ein Boot bringt dich im Nebel nach Nocturna. Irgendwo dort wartet dein neues Leben.",
+    "en": "A boat carries you through the fog to Nocturna. Somewhere there, a new life is waiting."
+  },
+  "dialogues": ["D_M101_Lio"],
+  "stages": [
+    {
+      "id": "s1_boot",
+      "text": { "de": "Lerne auf dem Steg, dich zu bewegen.", "en": "Learn to move on the jetty." },
+      "objectives": [
+        { "id": "o_bewegen", "kind": "custom", "target": "Tutorial_Movement",
+          "text": { "de": "Laufe, springe und weiche aus", "en": "Run, jump and dodge" } },
+        { "id": "o_steg", "kind": "reach", "target": "M101_Steg", "marker": "M101_Steg",
+          "text": { "de": "Geh zum Ende des Stegs", "en": "Walk to the end of the jetty" } }
+      ],
+      "on_complete": ["flag:Tutorial_Movement=1"],
+      "next": [{ "stage": "s2_lio" }]
+    },
+    {
+      "id": "s2_lio",
+      "text": { "de": "Ein Junge mit zu großem Mantel winkt dir zu.", "en": "A boy in an oversized coat waves at you." },
+      "objectives": [
+        { "id": "o_lio", "kind": "dialogue", "target": "D_M101_Lio", "marker": "NPC_Lio",
+          "text": { "de": "Sprich mit dem Jungen am Bootshaus", "en": "Talk to the boy at the boathouse" } }
+      ],
+      "on_complete": ["flag:Met_Lio=1"],
+      "next": [{ "stage": "s3_tor" }]
+    },
+    {
+      "id": "s3_tor",
+      "text": { "de": "Folge Lio hinauf zum großen Tor.", "en": "Follow Lio up to the great gate." },
+      "objectives": [
+        { "id": "o_tor", "kind": "reach", "target": "M101_Tor", "marker": "M101_Tor",
+          "text": { "de": "Erreiche das Tor von Nocturna", "en": "Reach the gate of Nocturna" } },
+        { "id": "o_laternen", "kind": "interact", "target": "Laterne_Pfad", "count": 3, "optional": true,
+          "text": { "de": "Entzünde Laternen am Pfad (optional)", "en": "Light lanterns along the path (optional)" } }
+      ],
+      "next": [{ "end": "completed" }]
+    }
+  ],
+  "rewards": { "xp": 100, "gold": 0, "items": [], "effects": ["rel:Lio+5"] }
+}

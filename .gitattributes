@@ -22,6 +22,7 @@
 *.md    text eol=lf
 *.csv   text eol=lf
 *.po    text eol=lf
+*.sud   text eol=lf
 
 # Binär (kein Diff/Merge)
 *.uasset binary

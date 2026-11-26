@@ -2,8 +2,8 @@
 
 using UnrealBuildTool;
 
-/// Primäres Spielmodul. In Phase 2 kommen eigene Module dazu
-/// (EwigfelsCore, Magic, Combat, Quest, Dialogue, AI, UI, Save, World).
+/// Primäres Spielmodul. Systeme liegen vorerst als Unterordner hier
+/// (WorldState, Quest, Dialogue, Save) und werden zu eigenen Modulen, sobald sie groß genug sind.
 public class Ewigfels : ModuleRules
 {
 	public Ewigfels(ReadOnlyTargetRules Target) : base(Target)
@@ -16,7 +16,9 @@ public class Ewigfels : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
-			"EnhancedInput"
+			"EnhancedInput",
+			"Json",
+			"SUDS" // Dialoge (Plugins/ThirdParty/SUDS, Install-Plugins.ps1)
 		});
 	}
 }
