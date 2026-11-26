@@ -131,6 +131,26 @@ Wenn der Build fehlschlägt: Fehlerausgabe (Fenster „Ausgabe“) komplett kopi
 
 ---
 
+## 4.1 Plugins und Claude-Editor-Steuerung (nach dem ersten erfolgreichen Build)
+
+Erst wenn Schritt 4 grün ist, sonst suchen wir Fehler an zwei Stellen gleichzeitig.
+
+```powershell
+cd D:\Dev\Ewigfels
+.\Scripts\Tools\Install-Plugins.ps1                       # DlgSystem + Flow (Quellcode, gepinnt)
+.\Scripts\Tools\Build-Ewigfels.ps1 -EngineDir "D:\Epic\UE_5.8"   # Plugins werden mitkompiliert
+```
+
+**Unreal MCP (Claude steuert den Editor):**
+1. Editor öffnen. *Edit → Plugins* → suchen „Unreal MCP“ und „All Toolsets“ → beide angehakt (stehen schon in `Ewigfels.uproject`). Falls UE einen Neustart verlangt: ja.
+2. *Edit → Editor Preferences → Agentic Workflows → Model Context Protocol*: „Auto Start Server“ an, Port 8000.
+3. Läuft der Server nicht: Konsole (Taste `^`) → `ModelContextProtocol.StartServer`.
+4. Claude Code im Ordner `D:\Dev\Ewigfels` starten (bei offenem Editor). Die `.mcp.json` im Repo verbindet automatisch; beim ersten Mal „Erlauben“ wählen. Prüfen mit `/mcp`.
+
+> Experimentell: Epic kann die Schnittstelle ändern. Der Server hat keine Anmeldung, also nie Port 8000 in der Firewall freigeben.
+
+---
+
 ## 5. Blender
 
 Ist nach Schritt 2 installiert. Einmal öffnen → *Edit → Preferences*:
@@ -326,6 +346,7 @@ Register-ScheduledTask -TaskName "Ewigfels-Backup" -Action $a -Trigger $t
 - [ ] `Install-Tools.ps1` gelaufen, Neustart
 - [ ] UE 5.8 installiert
 - [ ] `Build-Ewigfels.ps1` grün, Editor zeigt „Phase 0 OK“, Smoke-Test grün
+- [ ] `Install-Plugins.ps1` gelaufen, Build mit Plugins grün, `/mcp` in Claude Code zeigt „unreal-mcp“ verbunden
 - [ ] Blender: OptiX aktiv
 - [ ] ComfyUI: Flux-Schnell-Testbild erzeugt
 - [ ] WSL2 + TripoSG: `test.glb` erzeugt und in Blender geöffnet
