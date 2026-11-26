@@ -1,48 +1,77 @@
 # Plugins – Bewertung (Stand 26.11.2026)
 
-Kriterien: kommerziell nutzbare Lizenz, läuft mit **UE 5.8**, wird gepflegt, brauchen wir wirklich (nicht nur „nice to have“).
-Installation: `.\Scripts\Tools\Install-Plugins.ps1` (Liste mit gepinnten Versionen: `Scripts/Tools/Plugins.json`). Plugins landen in `Plugins/ThirdParty/` und sind nicht im Repo.
+Kriterien: kommerziell nutzbare Lizenz, läuft mit **UE 5.8**, wird gepflegt, bringt echten Mehrwert für `GAME_PROMPT.md`. Lieber weglassen als aufblähen.
+Installation der GitHub-Plugins: `.\Scripts\Tools\Install-Plugins.ps1` (gepinnte Versionen in `Scripts/Tools/Plugins.json`, Ziel `Plugins/ThirdParty/`, nicht im Repo).
 
-## 1. Eingebaut in UE 5.8 (nur aktivieren, nichts herunterladen)
+## 1. Eingebaut in UE 5.8 – in `Ewigfels.uproject` aktiviert
 
-| Plugin | Status | Wofür | Bewertung |
-|---|---|---|---|
-| **Unreal MCP** (`ModelContextProtocol`) + **All Toolsets** (`AllToolsets`) | in `Ewigfels.uproject` aktiviert (nur Editor) | Claude steuert den Editor direkt: Actors, Blueprints, Materialien, PCG, Niagara, Sequencer, Automation-Tests | **Größter Token-Sparer.** Statt Klick-Anleitungen zu schreiben und Screenshots zu deuten, ruft Claude Editor-Funktionen auf. Von Epic, experimentell: APIs können sich ändern. Nur lokal (127.0.0.1:8000), keine Authentifizierung. |
-| PythonScriptPlugin, EditorScriptingUtilities | schon aktiv | Massen-Import, Weltaufbau, Validierung | Bleibt, ergänzt MCP für große Batch-Jobs. |
-| PCG, EnhancedInput | schon aktiv | Weltaufbau, Steuerung | – |
-| Json/JsonUtilities (Module) | in der Engine | JSON für Quests/Dialoge | Kein Plugin wie VaRest nötig. |
-| StateTree, GameplayAbilities, CommonUI, PoseSearch (Motion Matching) | noch aus | KI, Zauber, UI, Locomotion | Einschalten in der jeweiligen Phase (2/3). GAS vs. eigenes Zaubersystem ist eine Designentscheidung → Phase 3 mit Optionen. |
+| Plugin | Wofür (GAME_PROMPT) | Bemerkung |
+|---|---|---|
+| **Unreal MCP** (`ModelContextProtocol`) + `AllToolsets` | Claude steuert den Editor direkt | Größter Token-Sparer. Experimentell, nur lokal (127.0.0.1:8000), keine Anmeldung. Nur Editor. |
+| `DataValidation` | Asset-Prüfung (Namen, fehlende Referenzen, Budgets) | Basis für eigene Validatoren; ergänzt das JSON-Prüfskript aus Kap. 9. Nur Editor. |
+| `StateTree` + `GameplayStateTree` | Gegner-, Begleiter-, NPC-KI (Kap. 7.3, 7.10) | Epics moderner Ersatz für viele Behavior-Tree-Fälle. |
+| `CommonUI` | Menüs, HUD, Gamepad + Tastatur (Kap. 7.15) | Volle Eingabe-Weiterleitung braucht später `CommonGameViewportClient` in der Config (Phase 2/UI). |
+| `Water` | Seen, Flüsse, Küste, Schwimmen (Kap. 6, 7.1) | Zieht `Landmass` automatisch mit. |
+| `PoseSearch`, `MotionWarping`, `Chooser` | Motion Matching wie im Game Animation Sample (Kap. 5.1) | Genau die Plugins, die das Sample voraussetzt. |
+| PythonScriptPlugin, EditorScriptingUtilities, PCG, EnhancedInput | Automatisierung, Weltaufbau, Steuerung | waren schon aktiv |
 
-## 2. Von GitHub – empfohlen
+**Bewusst noch nicht aktiviert** (Entscheidung in der jeweiligen Phase, sonst Ballast):
+- `GameplayAbilities` (GAS) – Zaubersystem: GAS vs. eigenes System → Phase 3 mit Optionen.
+- `Mutable` – Kleidung/Transmog (Kap. 7.7) → Phase 3/5.
+- MetaHuman-Plugins inkl. **MetaHuman Animator** – kommen mit dem MetaHuman-Import (Phase 3). Lip-Sync aus reiner Audiodatei geht damit offline im Editor (Performance-Asset, Input Type = Audio), kein iPhone und keine Webcam nötig. Ob deutsche Sprache gleich gut klappt, sagt Epic nicht – testen wir in Phase 3.
+- Movie Render Queue – erst Phase 4 (Trailer-Shot).
 
-| Plugin | Lizenz | UE 5.8 | Gepflegt | Wofür | Bewertung |
+## 2. Von GitHub – fester Bestandteil (`set: empfohlen`)
+
+| Plugin | Lizenz | UE 5.8 | Gepflegt | Wofür |
+|---|---|---|---|---|
+| [PCG Extended Toolkit (PCGEx)](https://github.com/Nebukam/PCGExtendedToolkit) | MIT | ja (`.uplugin` 5.8.0) | sehr aktiv (Commit 26.11.2026) | Wege, Straßen, Flussufer, Siedlungslayouts, Graphen, bessere Verteilung. Hebt PCG für die 7 Regionen und Dörfer auf ein anderes Niveau. Nachteil: großer Quellcode, erster Build dauert länger. |
+
+## 3. Von GitHub – Kandidaten für Phase 2 (`set: phase2`)
+
+Zu Beginn von Phase 2 entscheiden wir, **welches** Dialog- und Questsystem wir nehmen. Die anderen fliegen dann wieder raus.
+
+| Plugin | Lizenz | UE 5.8 | Gepflegt | Stärke | Schwäche |
 |---|---|---|---|---|---|
-| [Not Yet: DlgSystem](https://github.com/NotYetGames/DlgSystem) | MIT | ja (5.6–5.8 laut README) | letzter Commit 22.06.2026 | Dialogsystem: Verzweigungen, Bedingungen, Events, Graph-Editor | Passt gut zu „Dialoge datengetrieben“: **JSON-Import/-Export** eingebaut. Kamera-/Emotions-Integration bauen wir selbst. |
-| [Flow Graph](https://github.com/MothCocoon/FlowGraph) | MIT | ja (Tag `v2.3-5.8`, 11.07.2026) | aktiv | Quest- und Story-Ablauf als Graph | Bewährt in großen Produktionen. Nachteil: Flows sind `.uasset`, nicht JSON. Deshalb ist **Flow vs. eigenes JSON-Questsystem** die Entscheidung zu Beginn von Phase 2. Standardmäßig deaktiviert, bis wir uns entschieden haben. |
+| [SUDS](https://github.com/sinbad/SUDS) | MIT | ja (Commit „UE 5.8 compatibility“, 19.06.2026) | aktiv (12.11.2026) | Dialoge als **Textskripte**: Entscheidungen, Bedingungen, Variablen, Events, Lokalisierung, Test-Tool im Editor. Claude kann Dialoge direkt als Text schreiben und prüfen – sehr token-effizient. | Kein Graph-Editor. |
+| [Not Yet: DlgSystem](https://github.com/NotYetGames/DlgSystem) | MIT | ja (5.6–5.8) | 22.06.2026 | Graph-Editor, JSON-Import/-Export, Bedingungen, Events | Graphen sind schwerer zu überblicken als Text. |
+| [Flow Graph](https://github.com/MothCocoon/FlowGraph) | MIT | ja (Tag `v2.3-5.8`) | aktiv | Quest-/Story-Ablauf als Graph, in großen Produktionen bewährt | Flows sind `.uasset`, nicht JSON. Standardmäßig deaktiviert. |
 
-## 3. Von GitHub – optional, erst testen
+Meine vorläufige Tendenz: **SUDS für Dialoge + eigenes JSON-Questsystem** (Flow nur, wenn uns der Graph-Editor fehlt). Entscheidung mit Optionen in Phase 2.
+Hinweis zu SUDS und SPUD: Der Autor lehnt KI-generierte Pull Requests an *sein* Repo ab. Das betrifft nur Beiträge dorthin, nicht die Nutzung (MIT).
+
+## 4. Von GitHub – optional (`set: optional`, nur mit `-All`)
 
 | Plugin | Lizenz | UE 5.8 | Bewertung |
 |---|---|---|---|
-| [SPUD](https://github.com/sinbad/SPUD) | MIT | offiziell nur bis 5.5 | Gepflegt (Commit 03.11.2026). Aber **World Partition nur in einem Neben-Branch** – wir nutzen World Partition. Darum Kandidat für Phase 2, kein fester Bestandteil. Plan B: eigenes Save-System auf `USaveGame`. |
-| [UnrealImGui](https://github.com/IDI-Systems/UnrealImGui) | MIT | offiziell nur bis 5.5 | Debug-Overlays. Praktisch, aber nicht nötig; UE hat Gameplay Debugger und Rewind Debugger eingebaut. |
+| [SPUD](https://github.com/sinbad/SPUD) | MIT | offiziell bis 5.5 | Save-System-Kandidat, aber **World Partition nur im Neben-Branch**. Plan A: eigenes Save-System auf `USaveGame`. |
+| [UnrealImGui](https://github.com/IDI-Systems/UnrealImGui) | MIT | offiziell bis 5.5 | Debug-Overlays. Gameplay Debugger und Rewind Debugger sind eingebaut. |
 
-## 4. Geprüft und verworfen
+## 5. Außerhalb von GitHub – kostenlos, manuell
+
+| Tool | Quelle | Lizenz | Wofür | Bewertung |
+|---|---|---|---|---|
+| **NVIDIA DLSS 4.5** (Plugin 8.7.2 für UE 5.8, 21.07.2026) | [NVIDIA Developer](https://developer.nvidia.com/rtx/dlss/get-started) – kostenloser NVIDIA-Entwickler-Account nötig | NVIDIA RTX SDK-Lizenz (kostenlos, kommerziell erlaubt; Hinweis-/Logo-Pflichten in der `license.txt` im ZIP vor Release lesen) | Upscaling + Multi-Frame-Generation auf deiner RTX 5070 | Lohnt sich sehr für 1440p mit Hardware-Lumen. Download geht nur mit Login, daher kein Skript. Entpacken nach `Plugins/ThirdParty/DLSS/`. **Erst Phase 4**, damit wir TSR-Werte als Vergleich haben. |
+| **Send to Unreal** (Blender-Add-on) | [EpicGamesExt/BlenderTools](https://github.com/EpicGamesExt/BlenderTools) | MIT | Ein-Klick-Export Blender → UE (Meshes, LODs, Kollision, Rigs) über Python Remote Execution | Spart bei jedem Prop den FBX-Umweg. Installation in Blender: *Edit → Preferences → Add-ons → Install from Disk* (ZIP aus den Releases). In UE: *Project Settings → Python → Enable Remote Execution* an. |
+
+## 6. Geprüft und verworfen
 
 | Kandidat | Grund |
 |---|---|
-| Fremde MCP-Brücken (chongdashu/unreal-mcp, flopperam, VibeUE u. a.) | Überflüssig, seit UE 5.8 einen eigenen MCP-Server mitbringt. Zusätzlicher C++-Code, der bei jedem Engine-Update brechen kann. |
-| Mountea Dialogue System | MPL-2.0 (Datei-Copyleft) und `.uplugin` auf 5.7. DlgSystem ist für uns einfacher. |
+| Fremde MCP-Brücken (chongdashu/unreal-mcp, flopperam, VibeUE u. a.) | Überflüssig dank eingebautem Unreal MCP. |
+| Mountea Dialogue System | MPL-2.0 (Datei-Copyleft), `.uplugin` auf 5.7. |
+| UEGitPlugin (Project Borealis) | Gut gepflegt (MIT), aber unsere Assets liegen bewusst nicht in Git – im Editor bringt es uns nichts. |
+| RuntimeAudioImporter | Letzter Commit Feb. 2025; Piper-Sprachdateien importieren wir offline als SoundWave. |
 | VaRest | JSON können die Engine-Module selbst. |
-| ALS Community | Motion Matching (Game Animation Sample) ist moderner und von Epic. |
-| Logic Driver, GAS Companion, Easy Multi Save u. Ä. | Kostenpflichtig. |
+| ALS Community | Motion Matching (Game Animation Sample) ist moderner. |
+| Ultra Dynamic Sky, Logic Driver, GAS Companion, Easy Multi Save, Runtime MetaHuman Lip Sync u. Ä. | Kostenpflichtig. Tag/Nacht + Wetter bauen wir mit Sky Atmosphere, Volumetric Clouds, Niagara und einem eigenen Zeit-Subsystem. |
+| Inkpot (Ink) | Gleiche Rolle wie SUDS, aber zusätzliche Skriptsprache außerhalb von UE. |
 
-## 5. Claude-Seite (Token sparen)
+## 7. Claude-Seite (Token sparen)
 
 | Was | Wo | Effekt |
 |---|---|---|
-| `CLAUDE.md` | Repo-Wurzel | Architektur, Pfade, Konventionen in ~50 Zeilen. Claude muss nicht jedes Mal `GAME_PROMPT.md` (23 KB) lesen. |
-| Lese-Sperren | `.claude/settings.json` | Binaries, Intermediate, Saved, DDC, `.uasset`/`.umap`, Bilder, Modelle werden nie gelesen. (`.claudeignore` gibt es in Claude Code nicht.) |
-| Skills | `.claude/skills/` | `ue-build-test` (Log gefiltert lesen), `credits-eintrag` (Lizenzcheck), `phase-abschluss` (PROGRESS + Zusammenfassung). Wiederkehrende Abläufe ohne neue Erklärung. |
+| `CLAUDE.md` | Repo-Wurzel | Architektur, Pfade, Konventionen kompakt; `GAME_PROMPT.md` nur abschnittsweise. |
+| Lese-Sperren | `.claude/settings.json` | Build-Ordner, `.uasset`/`.umap`, Bilder, Modelle werden nie gelesen (`.claudeignore` gibt es nicht). |
+| Skills | `.claude/skills/` | `ue-build-test`, `credits-eintrag`, `phase-abschluss`. |
 | `.mcp.json` | Repo-Wurzel | Claude Code verbindet sich automatisch mit dem Unreal-MCP-Server. |
-| Claude-Plugin „Unreal Engine MCP“ von Epic | claude.com/plugins | Optional. Baut auf denselben eingebauten Plugins auf; unser `.mcp.json` reicht. |

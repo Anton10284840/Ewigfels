@@ -18,10 +18,15 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 | Name | Quelle | Lizenz | Verwendung |
 |---|---|---|---|
 | Unreal MCP + All Toolsets | in UE 5.8 enthalten | UE EULA | Editor-Steuerung durch Claude (nur Editor, experimentell) |
-| Not Yet: DlgSystem | https://github.com/NotYetGames/DlgSystem | MIT | Dialogsystem (`Plugins/ThirdParty/DlgSystem`) |
-| Flow Graph | https://github.com/MothCocoon/FlowGraph | MIT | Quest-/Story-Ablauf, Kandidat Phase 2 (`Plugins/ThirdParty/Flow`) |
+| UE-Engine-Plugins (DataValidation, StateTree, CommonUI, Water, PoseSearch, MotionWarping, Chooser) | in UE 5.8 enthalten | UE EULA | KI, UI, Wasser, Motion Matching, Asset-Prüfung |
+| PCG Extended Toolkit | https://github.com/Nebukam/PCGExtendedToolkit | MIT | Prozeduraler Weltaufbau (`Plugins/ThirdParty/PCGExtendedToolkit`) |
+| SUDS | https://github.com/sinbad/SUDS | MIT | Dialog-Kandidat Phase 2 (`Plugins/ThirdParty/SUDS`) |
+| Not Yet: DlgSystem | https://github.com/NotYetGames/DlgSystem | MIT | Dialog-Kandidat Phase 2 (`Plugins/ThirdParty/DlgSystem`) |
+| Flow Graph | https://github.com/MothCocoon/FlowGraph | MIT | Quest-Kandidat Phase 2 (`Plugins/ThirdParty/Flow`) |
 | SPUD | https://github.com/sinbad/SPUD | MIT | optional, Save-System-Kandidat (`Plugins/ThirdParty/SPUD`) |
 | UnrealImGui | https://github.com/IDI-Systems/UnrealImGui | MIT | optional, Debug-Overlays (`Plugins/ThirdParty/ImGui`) |
+| NVIDIA DLSS 4.5 Plugin | https://developer.nvidia.com/rtx/dlss | NVIDIA RTX SDK-Lizenz (Hinweispflichten vor Release prüfen) | ab Phase 4, Upscaling/Frame-Gen (`Plugins/ThirdParty/DLSS`, manuell) |
+| Send to Unreal (Blender-Add-on) | https://github.com/EpicGamesExt/BlenderTools | MIT | Export Blender → UE (Tool, nicht im Spiel) |
 
 ## KI-Modelle (Inhalte, die damit erzeugt wurden, sind als „KI-generiert“ markiert)
 

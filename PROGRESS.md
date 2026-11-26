@@ -30,7 +30,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | C++-Testprojekt | 🟨 | geschrieben, **noch nie kompiliert** (erster Build beim Nutzer) |
 | GitHub-Repo | ⬜ | Nutzer legt `koelleprime-afk/ewigfels` (privat) an |
 | OneDrive-Backup-Skript | ✅ | Scripts/Tools/Backup-ToOneDrive.ps1 |
-| Plugins ausgewählt | ✅ | docs/PLUGINS.md; Installation per Scripts/Tools/Install-Plugins.ps1 (beim Nutzer offen) |
+| Plugins ausgewählt | ✅ | docs/PLUGINS.md (Runde 2: PCGEx, SUDS, Engine-Plugins für KI/UI/Wasser/Motion Matching); Installation per Install-Plugins.ps1 beim Nutzer offen |
 | Unreal MCP + CLAUDE.md | 🟨 | in .uproject/.mcp.json eingerichtet, Verbindung beim Nutzer noch nicht getestet |
 
 ## Systeme
