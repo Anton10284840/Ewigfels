@@ -52,7 +52,7 @@ GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Vorläufige Empfehl
 
 **Mehrere selbst erfundene Reittiere** (Luft, Boden, Wasser), personalisierbar. Liste: [CHARACTER_BIBLE §7](CHARACTER_BIBLE.md#7-reittiere). Wenn du eigene Tiere erfinden willst, beschreib sie mir, dann kommen sie dazu.
 
-### E9 – Weltgröße ❓ offen (Wunsch: so groß wie GTA)
+### E9 – Weltgröße ✅ entschieden: Option A (Nutzer, 26.11.2026)
 
 Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) bauen Teams aus über 1000 Leuten über viele Jahre. Allein mit 0 € kann man so eine Fläche **nicht** komplett von Hand füllen. Unreal schafft die Größe technisch (World Partition streamt nur, was nah ist), das Problem ist der Inhalt.
 
@@ -62,7 +62,7 @@ Ehrlich: GTA-Welten (GTA 5 hat grob 75–80 km², GTA 6 gilt als noch größer) 
 | B: GTA-6-Größe | 150+ km² (12 × 12 km und mehr) | fast alles per PCG, Handarbeit nur an wenigen Orten | Riesige Fläche, langes Reiten und Fliegen | Viel leere, gleich aussehende Fläche, sehr lange Bauzeit, viel Speicher (Hunderte GB), längere Ladezeiten |
 | C: Kompakt und sehr dicht | ca. 16 km² (4 × 4 km) | fast alles von Hand | Höchste Qualität pro Meter | Wirkt kleiner, Fliegen ist schnell vorbei |
 
-**Empfehlung A**, gebaut in Ringen: Phase 5 (Akt 1) startet mit ca. 16 km² rund um die Akademie, jeder Akt fügt Regionen hinzu bis ca. 64 km². Wenn es gut läuft, können wir später Richtung B erweitern, World Partition erlaubt das ohne Neubau. Bis du entscheidest, plane ich mit A (Details §15).
+**Empfehlung A**, gebaut in Ringen: Phase 5 (Akt 1) startet mit ca. 16 km² rund um die Akademie, jeder Akt fügt Regionen hinzu bis ca. 64 km². Wenn es gut läuft, können wir später Richtung B erweitern, World Partition erlaubt das ohne Neubau. Gewählt: **A** (Details §15).
 
 ---
 
@@ -333,7 +333,7 @@ Jede Region hat **mindestens ein fröhliches und ein unheimliches Dorf** (Liste:
 | Gameplay | Läden, Quests, Tiere, Housing-Deko, Rast (Bonus) | Rätsel, Schleichen, Fallen, Gruselmomente, Kampf gegen Schwarzmagier, Befreiung |
 | Nach der Befreiung | – | Gruseldorf kann sich in ein fröhliches Dorf verwandeln (Farbe kehrt zurück, Musik spielt, neuer Laden). Belohnung, die man sieht. |
 
-## 15. Weltgröße und Aufbau (Planung nach E9, Option A)
+## 15. Weltgröße und Aufbau (E9 = Option A)
 
 | Bereich | Größe | Inhalt |
 |---|---|---|
