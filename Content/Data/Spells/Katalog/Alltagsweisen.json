@@ -1,0 +1,7523 @@
+{
+ "_kommentar": "Alltagsweisen aus dem Baukasten: 1 Grundton (Farbe, Klang) × 1 Wirkart (geteilte Geste) × Wirkung (Systemtyp). Englische Beschreibungen folgen mit den String Tables. Doku: docs/WEISEN.md",
+ "spells": [
+  {
+   "id": "A001",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Funkenschnipp",
+    "en": "Spark Snap"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein kleiner Funke zündet Kerzen, Laternen und Lunten."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A002",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Wärmetupfer",
+    "en": "Warm Dab"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Ding wird warm: Tee, kalte Hände, eine Bank im Winter."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A003",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Glutstrich",
+    "en": "Ember Stroke"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine glühende Linie in der Luft oder auf dem Boden, zum Malen und Schreiben (10 s)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A004",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Herdkreis",
+    "en": "Hearth Circle"
+   },
+   "grundton": "Glut",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Wärmezone um dich: trocknet nasse Kleidung, hält Kälte ab."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A005",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Funkenpust",
+    "en": "Spark Puff"
+   },
+   "grundton": "Glut",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Schwarm Funkenfliegen tanzt aus deinen Fingern. Zündet Öl in 2 m Nähe."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A006",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Ofenbrummen",
+    "en": "Oven Hum"
+   },
+   "grundton": "Glut",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Innere Wärme, 5 Minuten Kälteschutz."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A007",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Glutpfiff",
+    "en": "Ember Whistle"
+   },
+   "grundton": "Glut",
+   "wirkart": "pfeifen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Alle Lichter im Raum flackern auf und werden heller."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A008",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Reifschnipp",
+    "en": "Frost Snap"
+   },
+   "grundton": "Firn",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Getränk wird kalt, eine kleine Eisperle fällt hinein."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A009",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Frosttupfer",
+    "en": "Frost Dab"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eisblumen auf Fenster und Gegenständen, kleine Pfützen frieren."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A010",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Raureifschrift",
+    "en": "Rime Script"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Schrift aus Reif auf jeder Fläche, schmilzt nach einer Stunde (geheime Botschaften)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A011",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Schneegestöber",
+    "en": "Snow Flurry"
+   },
+   "grundton": "Firn",
+   "wirkart": "kreisen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein kleiner Schneewirbel um dich, wie in einer Schneekugel."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A012",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Frosthauch",
+    "en": "Frost Breath"
+   },
+   "grundton": "Firn",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Atemwolke aus Eiskristallen, die kurz zu kleinen Tierfiguren wird."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A013",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Ruhelied",
+    "en": "Calm Song"
+   },
+   "grundton": "Firn",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Du wirst ruhig: Schluckauf weg, Hände zittern nicht (Präzisions-Minispiele leichter)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A014",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Eispfiff",
+    "en": "Ice Whistle"
+   },
+   "grundton": "Firn",
+   "wirkart": "pfeifen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine Pfütze oder ein Bach vor dir trägt 3 s lang (Eisscholle zum Drüberhüpfen)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A015",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Knisterschnipp",
+    "en": "Crackle Snap"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Kleiner Stromschlag: Haare stehen zu Berge, Schläfer wachen auf."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A016",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Laufklang",
+    "en": "Rolling Tone"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Gegenstand rollt oder fährt los (Wagen, Murmel, Kreisel)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A017",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Windstrich",
+    "en": "Wind Stroke"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Wind folgt deiner Hand: blättert Seiten um, bläst Staub, füllt Segel."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A018",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Laubwirbel",
+    "en": "Leaf Whirl"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Kleiner Wirbel sammelt Blätter, Federn und lose Münzen ein."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A019",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Hauchpost",
+    "en": "Breath Post"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Zettel fliegt zu jemandem in Sichtweite."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A020",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Flinkfuß",
+    "en": "Quickstep"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Du summst einen Marsch und läufst 60 s etwas schneller."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A021",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Echopfiff",
+    "en": "Echo Whistle"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Der Pfiff zeigt Wände und versteckte Hohlräume (hilft, Geheimgänge zu finden)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A022",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Tropfenschnipp",
+    "en": "Drop Snap"
+   },
+   "grundton": "Quell",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Wassertropfen: gießt eine Pflanze, löscht eine Kerze."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A023",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Waschtupfer",
+    "en": "Wash Dab"
+   },
+   "grundton": "Quell",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Reinigt Gegenstand oder Kleidung (Ruß, Schlamm, Tinte weg)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A024",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Wasserlauf",
+    "en": "Water Run"
+   },
+   "grundton": "Quell",
+   "wirkart": "streichen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Wasser folgt einer Linie: Rinnen füllen, kleine Bäche umleiten."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A025",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Tropfenschirm",
+    "en": "Drop Umbrella"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Regen perlt um dich herum ab."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A026",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Seifenblasen",
+    "en": "Soap Bubbles"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Schillernde Blasen. Kinder und Tiere lieben das."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A027",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Linderlied",
+    "en": "Soothing Song"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Heilt Kratzer und kleine Wunden außerhalb des Kampfes."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A028",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Quellpfiff",
+    "en": "Spring Whistle"
+   },
+   "grundton": "Quell",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt Wasserquellen und Fische in der Nähe (Angeln)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A029",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Kieselschnipp",
+    "en": "Pebble Flick"
+   },
+   "grundton": "Grund",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Kiesel fliegt weit (Ablenkung, ferne Glocke treffen)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A030",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Festtupfer",
+    "en": "Steady Dab"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Wackelnde Dinge stehen fest: Tisch, Leiter, Stapel."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A031",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Kreidestrich",
+    "en": "Chalk Line"
+   },
+   "grundton": "Grund",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eine Linie aus Erde und Staub am Boden (Weg markieren, Spiele aufmalen)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A032",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Sandkreis",
+    "en": "Sand Circle"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Sand ordnet sich zu einem Muster oder einer kleinen Burg."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A033",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Staubwolke",
+    "en": "Dust Cloud"
+   },
+   "grundton": "Grund",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Staub von Regalen blasen (zeigt verborgene Schrift). Alle niesen."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A034",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Wurzelstand",
+    "en": "Rooted Stance"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Du stehst fest: Wind und Glatteis schubsen dich nicht."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A035",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Steinpfiff",
+    "en": "Stone Whistle"
+   },
+   "grundton": "Grund",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Steine antworten: zeigt Erzadern und Fossilien in der Nähe."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A036",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Knospenschnipp",
+    "en": "Bud Snap"
+   },
+   "grundton": "Wachs",
+   "wirkart": "schnippen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine Knospe öffnet sich, eine Blume blüht auf."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A037",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Wachstupfer",
+    "en": "Grow Dab"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine Pflanze wächst ein Stück (Kräuter schneller ernten)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A038",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Rankenstrich",
+    "en": "Vine Stroke"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine dünne Ranke wächst entlang deiner Linie (Deko, kurzes Geländer)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A039",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Blütenkreis",
+    "en": "Blossom Ring"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Blumen sprießen im Kreis um dich (Deko, Fotomodus)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A040",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Pollenhauch",
+    "en": "Pollen Puff"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Pollenwolke lockt Bienen und Schmetterlinge."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A041",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Frischlied",
+    "en": "Freshness Song"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Essen bleibt frisch, welke Blumen richten sich auf."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A042",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Vogelpfiff",
+    "en": "Bird Whistle"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Vögel antworten und landen auf deiner Hand."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A043",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Lichtschnipp",
+    "en": "Light Snap"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein kleines Leselicht schwebt 60 s neben dir."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A044",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Klopfklang",
+    "en": "Knock Tone"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Anklopfen zeigt, was innen ist: hohl, voll, Geheimfach?"
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A045",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Spiegelstrich",
+    "en": "Mirror Stroke"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eine Fläche wird spiegelnd (Frisur prüfen, Licht umlenken)."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A046",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Stillkreis",
+    "en": "Hush Circle"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Geräusche um dich werden gedämpft, deine Schritte leise."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A047",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Flüsterhauch",
+    "en": "Whisper Breath"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Flüstern fliegt zu einer Person bis 20 m weit."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A048",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Merklied",
+    "en": "Memory Hum"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Merkt sich einen Ort als Markierung auf der Karte."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A049",
+   "kind": "alltag",
+   "heft": "grundformen",
+   "name": {
+    "de": "Rufpfiff",
+    "en": "Call Whistle"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ruft Begleiter oder Reittier zu dir."
+   },
+   "learn": {
+    "how": "entdecken",
+    "who": "probieren"
+   }
+  },
+  {
+   "id": "A050",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Stimmgabel",
+    "en": "Tuning Fork"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Summen zeigt den Grundton eines Dings, und damit, welche Weise darauf wirkt. Der Schlüssel zum Probieren."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A051",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Hörrohr",
+    "en": "Ear Trumpet"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Hört Gespräche hinter Türen und Wänden bis 10 m (Gerüchte)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A052",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Notenschrift",
+    "en": "Note Script"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Leuchtende Noten in die Luft schreiben, die sich selbst abspielen. Eigene Melodien speichern."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A053",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Klangfarbe",
+    "en": "Tone Colour"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Gegenstand klingt anders: Glas wie Holz, Holz wie Glocke."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A054",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Taktgefühl",
+    "en": "Sense of Beat"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Rhythmen von Pendeln, Fallen und Maschinen werden als Lichtpuls sichtbar."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A055",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Dämpfer",
+    "en": "Damper"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Macht einen Gegenstand stumm: Glocke, Wecker, quietschende Tür."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A056",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Stimmprobe",
+    "en": "Voice Check"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt, welche Freunde in der Nähe sind."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "edda"
+   }
+  },
+  {
+   "id": "A057",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Zielfunke",
+    "en": "Mark Spark"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Funke markiert ein Ziel für Begleiter und Mitspieler."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A058",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Kegelstoß",
+    "en": "Skittle Shove"
+   },
+   "grundton": "Grund",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein leichter Gegenstand wird kräftig weggestoßen (Kegelbahn-Minispiel)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A059",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Türklopfer",
+    "en": "Door Knocker"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Klopft laut an eine Tür in bis zu 30 m Entfernung."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A060",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Prellball",
+    "en": "Bounce Ball"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Lichtball hüpft durch den Raum, Tiere und Kinder jagen ihn."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A061",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Trefferglocke",
+    "en": "Target Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Lässt eine Zielglocke aus 30 m klingen (Übungsstand, Rätsel)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A062",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Funkenkette",
+    "en": "Spark Chain"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Funken springen von Laterne zu Laterne und zünden alle an."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A063",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Nagelklopf",
+    "en": "Nail Tap"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Schlägt Nägel ein und repariert Bretter (Turmzimmer)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A064",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Regenhaut",
+    "en": "Rain Skin"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Kleidung bleibt eine Stunde trocken."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A065",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Polsterklang",
+    "en": "Cushion Tone"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Ding wird weich wie ein Kissen, Stürze darauf tun nicht weh."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A066",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Warnglocke",
+    "en": "Alarm Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Gegenstand klingelt, wenn ihn jemand berührt (Zimmer schützen, Fallen)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A067",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Funkenzaun",
+    "en": "Spark Fence"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Glimmende Linie am Boden, Tiere bleiben dahinter."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A068",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Schienenklang",
+    "en": "Splint Tone"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Stützt ein verletztes Bein bei Mensch oder Tier (Erste Hilfe)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A069",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Windschutz",
+    "en": "Draft Guard"
+   },
+   "grundton": "Firn",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Kerzen und Lagerfeuer gehen bei Wind nicht aus."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A070",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Mutmacher",
+    "en": "Courage Hum"
+   },
+   "grundton": "Glut",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Beruhigt einen ängstlichen NPC oder Begleiter (neue Gesprächsoption)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A071",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Wetterfühler",
+    "en": "Weather Sense"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt das Wetter der nächsten Stunden."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A072",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Eiswürfel",
+    "en": "Ice Cube"
+   },
+   "grundton": "Firn",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Eiswürfel ins Glas (kleine Geschenke für NPCs im Sommer)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A073",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Glutstein",
+    "en": "Hearth Stone"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Stein glüht stundenlang (Wärmflasche, Lager)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A074",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Wolkenschäfchen",
+    "en": "Cloudlet"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine kleine Regenwolke über einem Ziel (gießen oder ärgern)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A075",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Blitzfänger",
+    "en": "Lightning Catcher"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Gegenstand zieht Blitze an (Gewitter-Rätsel)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A076",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Glasperle",
+    "en": "Glass Bead"
+   },
+   "grundton": "Glut",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Schmilzt Sand zu einer Glasperle (Handwerk)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A077",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Windfahne",
+    "en": "Wind Vane"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt die Windrichtung (Gleiten, Segeln)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A078",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Farbtausch",
+    "en": "Colour Swap"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ändert die Farbe eines Gegenstands: Kerze, Teller, Hut."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A079",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Knopfmaus",
+    "en": "Button Mouse"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Knopf wird zur Maus und wieder zurück (erste Prüfungsaufgabe)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A080",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Tassenkröte",
+    "en": "Teacup Toad"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Eine Teetasse wird kurz zur Kröte und hüpft davon."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A081",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Stuhltanz",
+    "en": "Chair Dance"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Alle Möbel im Raum tanzen einen Ringelreihen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A082",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Federleicht",
+    "en": "Featherweight"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Gegenstand wird federleicht (schwere Kisten tragen)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A083",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Knotenlied",
+    "en": "Knot Song"
+   },
+   "grundton": "Quell",
+   "wirkart": "streichen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Knoten und Schnürsenkel lösen oder binden sich."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A084",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Notenfalter",
+    "en": "Note Moth"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Papier faltet sich zu einem summenden Papierfalter, der einen Brief zustellt."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "ollendorf"
+   }
+  },
+  {
+   "id": "A085",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Rührlied",
+    "en": "Stirring Song"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Der Kessel rührt sich selbst im Takt (Tränke-Minispiel)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A086",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Flammenregler",
+    "en": "Flame Tuner"
+   },
+   "grundton": "Glut",
+   "wirkart": "kreisen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Herdflamme heller oder dunkler drehen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A087",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Duftfaden",
+    "en": "Scent Thread"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Riecht Zutaten: Kräuter in der Nähe zeigen sich als Duftfäden."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A088",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Siedepunkt",
+    "en": "Boiling Point"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Eine Flüssigkeit kocht sofort."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A089",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Kühlklang",
+    "en": "Cooling Tone"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Trank kühlt sofort ab."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A090",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Tropfenzähler",
+    "en": "Drop Counter"
+   },
+   "grundton": "Quell",
+   "wirkart": "schnippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Genau ein Tropfen, nicht mehr (Präzision im Tränkebrauen)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A091",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Blubberprobe",
+    "en": "Bubble Test"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Der Kessel blubbert bunte Blasen: die Farbe verrät, ob der Trank gelingt."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "kesselmayr"
+   }
+  },
+  {
+   "id": "A092",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Tierflüstern",
+    "en": "Beast Whisper"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Die Stimmung eines Tiers erscheint als Symbol über dem Kopf."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A093",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Futterruf",
+    "en": "Feeding Call"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Alle Tiere im Gehege kommen zum Fressen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A094",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Fellbürste",
+    "en": "Fur Brush"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Bürstet Fell und Gefieder, das Tier glänzt und mag dich mehr."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A095",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Schnurrklang",
+    "en": "Purr Tone"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ahmt Schnurren nach und beruhigt katzenartige Tiere."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A096",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Spurenlesen",
+    "en": "Track Reading"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt Tierspuren in der Umgebung."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A097",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Nestwärme",
+    "en": "Nest Warmth"
+   },
+   "grundton": "Glut",
+   "wirkart": "summen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Wärmt Eier und Nester (Brut-Quests)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A098",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Mottenlicht",
+    "en": "Moth Light"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Lockt Glimmermotten an, die dir als Licht folgen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A099",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Sternenpunkt",
+    "en": "Star Point"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Markiert einen Stern und zeigt Namen und Sternbild."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A100",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Mondmesser",
+    "en": "Moon Gauge"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt die Phasen beider Monde und wann die nächste Doppelnacht ist."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A101",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Himmelskarte",
+    "en": "Sky Map"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Projiziert eine Sternkarte an die Decke (Turmzimmer-Deko)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A102",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Nordfaden",
+    "en": "North Thread"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein leuchtender Faden zeigt die Richtung zu deiner Markierung."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A103",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Nachtaugen",
+    "en": "Night Eyes"
+   },
+   "grundton": "Firn",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "2 Minuten besser sehen im Dunkeln."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A104",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Sternstaub",
+    "en": "Stardust"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Glitzer um dich herum (Fotomodus, Wünsche)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A105",
+   "kind": "alltag",
+   "heft": "unterricht",
+   "name": {
+    "de": "Kometenschweif",
+    "en": "Comet Tail"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Deine Sprünge ziehen einen Funkenschweif hinter sich her."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "morgenroth"
+   }
+  },
+  {
+   "id": "A106",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Kitzelklang",
+    "en": "Tickle Tone"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Das Ziel muss kichern. Schwache Gegner sind 2 s abgelenkt."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A107",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Quakschluckauf",
+    "en": "Croak Hiccup"
+   },
+   "grundton": "Quell",
+   "wirkart": "schnippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Das Ziel hickst 30 s lang wie ein Frosch."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A108",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Schnürsenkelknoten",
+    "en": "Lace Knot"
+   },
+   "grundton": "Wachs",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Die Schnürsenkel von zwei Leuten verknoten sich miteinander."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A109",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Pupskissen",
+    "en": "Whoopee Tone"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Stuhl macht beim Hinsetzen ein peinliches Geräusch."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A110",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Haarsträube",
+    "en": "Hair Raiser"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Bei allen in der Nähe stehen 10 s die Haare zu Berge."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A111",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Echopapagei",
+    "en": "Echo Parrot"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Wiederholt den letzten Satz einer Person mit Piepsstimme."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A112",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Kreidequietschen",
+    "en": "Chalk Squeak"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Die Tafelkreide quietscht schrill."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A113",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Tintenklecks",
+    "en": "Ink Blot"
+   },
+   "grundton": "Quell",
+   "wirkart": "schnippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Klecks auf Pergament oder Nasenspitze."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A114",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Tanzbeine",
+    "en": "Dancing Legs"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein NPC muss 5 s tanzen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A115",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Puddingboden",
+    "en": "Pudding Floor"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Boden wird kurz wabbelig wie Pudding, alle stolpern."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A116",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Zuckersalz",
+    "en": "Sugar Salt"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Salz schmeckt nach Zucker (Große Halle!)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A117",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Konfettifalle",
+    "en": "Confetti Trap"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Buch oder eine Tür explodiert beim Öffnen in Konfetti."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A118",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Schattenfratze",
+    "en": "Shadow Face"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Dein Schatten macht etwas anderes als du und streckt die Zunge raus."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A119",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Bauchredner",
+    "en": "Ventriloquist"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eine Rüstung oder Statue spricht mit deiner Stimme."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A120",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Kohlwolke",
+    "en": "Cabbage Cloud"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Riecht nach altem Kohl. Alle fliehen, auch Wachen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A121",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Rutschsohle",
+    "en": "Slip Sole"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Boden vor einer Person wird glatt wie Eis."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A122",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Hutflug",
+    "en": "Hat Flight"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Hut des Ziels fliegt davon."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A123",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Spiegelschrift",
+    "en": "Mirror Writing"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Text steht plötzlich spiegelverkehrt."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A124",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Quietschtreppe",
+    "en": "Squeaky Stairs"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Treppen quietschen laut, wenn jemand darauf geht (warnt vor Ottilie)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A125",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Grünflacker",
+    "en": "Green Flicker"
+   },
+   "grundton": "Glut",
+   "wirkart": "kreisen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Alle Kerzen flackern grün. Perfekt für Gruselgeschichten."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A126",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Seifenmund",
+    "en": "Soap Mouth"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Wer flucht, spuckt Seifenblasen."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A127",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Blumenbart",
+    "en": "Flower Beard"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Das Ziel trägt 30 s einen Bart aus Blumen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "tilda"
+   }
+  },
+  {
+   "id": "A128",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Taubenparty",
+    "en": "Pigeon Party"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Tauben sammeln sich um das Ziel und gurren."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "tilda"
+   }
+  },
+  {
+   "id": "A129",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Glockenschluckauf",
+    "en": "Bell Hiccup"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eine Glocke läutet zur falschen Zeit. Der Unterricht endet früher (Lehrkraft merkt es manchmal)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A130",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Wanderstuhl",
+    "en": "Wandering Chair"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Stuhl rutscht weg, wenn sich jemand setzen will."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A131",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Farbregen",
+    "en": "Colour Shower"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Umhang wird bunt gesprenkelt (wäscht sich nach einem Tag aus)."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A132",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Gerüchteflüstern",
+    "en": "Rumour Whisper"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Setzt ein Gerücht ins Lauscher-Netz der Akademie. Es kommt verändert zurück."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A133",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Dampfohren",
+    "en": "Steam Ears"
+   },
+   "grundton": "Firn",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Aus den Ohren des Ziels steigt Dampf."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A134",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Klapperzähne",
+    "en": "Chattering Teeth"
+   },
+   "grundton": "Firn",
+   "wirkart": "schnippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Die Zähne des Ziels klappern wie im tiefsten Winter."
+   },
+   "learn": {
+    "how": "liedblatt",
+    "who": "bibliothek"
+   }
+  },
+  {
+   "id": "A135",
+   "kind": "alltag",
+   "heft": "streiche",
+   "name": {
+    "de": "Großes Finale",
+    "en": "Grand Finale"
+   },
+   "grundton": "Glut",
+   "wirkart": "klatschen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Feuerwerk aus allen Kaminen der Akademie gleichzeitig. Nur mit dem Club, einmal im Jahr."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "ruven"
+   }
+  },
+  {
+   "id": "A136",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Tischlied",
+    "en": "Table Song"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Alle summen, und die Teller schweben vom Küchenchor zu dir an den Tisch."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A137",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Pfannkuchenwende",
+    "en": "Pancake Flip"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Pfannkuchen fliegt hoch, dreht sich und landet perfekt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A138",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Teigknete",
+    "en": "Dough Knead"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Teig knetet sich selbst im Takt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A139",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Krustenklang",
+    "en": "Crust Tone"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Brot bekommt eine goldene Kruste."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A140",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Sahneschlag",
+    "en": "Cream Whip"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Sahne schlägt sich in Sekunden steif."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A141",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Abwaschlied",
+    "en": "Washing-up Song"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Das Geschirr wäscht sich und stellt sich ins Regal."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A142",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Kakaoschaum",
+    "en": "Cocoa Foam"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Schaumtier auf dem Kakao (jedes Mal ein anderes)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A143",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Gewürzsinn",
+    "en": "Spice Sense"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt, welches Gewürz einem Gericht fehlt (Kochen)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "gundel"
+   }
+  },
+  {
+   "id": "A144",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Seitenwender",
+    "en": "Page Turner"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Buchseiten blättern sich selbst um."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A145",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Buchrufer",
+    "en": "Book Caller"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Buch fliegt aus dem Regal zu dir."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A146",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Staubschlucker",
+    "en": "Dust Gulp"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Sammelt allen Staub zu einer kleinen Kugel."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A147",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Eselsohrglätter",
+    "en": "Dog-ear Smoother"
+   },
+   "grundton": "Grund",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Glättet Eselsohren und Knicke im Papier."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A148",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Vorleselied",
+    "en": "Reading Hum"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Buch liest sich selbst leise vor (auch als Barrierefreiheits-Hilfe)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A149",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Lesezeichenfalter",
+    "en": "Bookmark Moth"
+   },
+   "grundton": "Wachs",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Papierfalter merkt sich die Seite und schläft darauf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A150",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Tintentrockner",
+    "en": "Ink Dryer"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Frische Tinte ist sofort trocken."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "staub"
+   }
+  },
+  {
+   "id": "A151",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Bettmacher",
+    "en": "Bed Maker"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Das Bett macht sich selbst, Kissen werden aufgeschüttelt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A152",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Vorhangzug",
+    "en": "Curtain Pull"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Vorhänge öffnen oder schließen sich."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A153",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Kaminpfiff",
+    "en": "Hearth Whistle"
+   },
+   "grundton": "Glut",
+   "wirkart": "pfeifen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Pfiff zündet den Kamin an."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A154",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Sockensucher",
+    "en": "Sock Seeker"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Findet die passende zweite Socke (und andere verlorene Dinge im Zimmer)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A155",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Aufräumlied",
+    "en": "Tidy Song"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Das Zimmer räumt sich auf. Manche Dinge landen an seltsamen Orten."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A156",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Weckklang",
+    "en": "Wake Tone"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Weckt dich zu einer gewählten Uhrzeit (Zeit überspringen)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A157",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Teekesselpfiff",
+    "en": "Kettle Whistle"
+   },
+   "grundton": "Quell",
+   "wirkart": "pfeifen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Das Wasser kocht und der Kessel pfeift ein Lied."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A158",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Fensterputz",
+    "en": "Window Wipe"
+   },
+   "grundton": "Quell",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Fenster werden blitzblank."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A159",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Kissenwolke",
+    "en": "Pillow Cloud"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Alle Kissen schweben und lassen sich werfen (Kissenschlacht)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A160",
+   "kind": "alltag",
+   "heft": "haus",
+   "name": {
+    "de": "Kofferpacker",
+    "en": "Trunk Packer"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Koffer packt sich selbst ordentlich."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kessel_klaus"
+   }
+  },
+  {
+   "id": "A161",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Haarschimmer",
+    "en": "Hair Shimmer"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Haare leuchten leicht in deiner Magiefarbe."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A162",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Strähnenzauber",
+    "en": "Streak Charm"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Farbige Strähnen, frei wählbar, bis du sie wegwischst."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "barbier"
+   }
+  },
+  {
+   "id": "A163",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Lockenwirbel",
+    "en": "Curl Whirl"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Glatte Haare werden lockig."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "barbier"
+   }
+  },
+  {
+   "id": "A164",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Glatthaar",
+    "en": "Sleek Hair"
+   },
+   "grundton": "Quell",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Lockige Haare werden glatt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "barbier"
+   }
+  },
+  {
+   "id": "A165",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Augenfunkeln",
+    "en": "Eye Sparkle"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "In deinen Augen funkeln kleine Lichter."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A166",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Sternensprossen",
+    "en": "Star Freckles"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Sommersprossen werden zu kleinen Sternchen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A167",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Wangenrot",
+    "en": "Rosy Cheeks"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Frische, rote Wangen wie nach einem Winterspaziergang."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A168",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Nagelglanz",
+    "en": "Nail Gloss"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Fingernägel glänzen wie Perlmutt oder in Turmfarbe."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "barbier"
+   }
+  },
+  {
+   "id": "A169",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Umhangwehen",
+    "en": "Dramatic Cape"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Dein Umhang weht dramatisch, auch ohne Wind."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "aurelia"
+   }
+  },
+  {
+   "id": "A170",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Saumglitzer",
+    "en": "Hem Glitter"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Der Saum deiner Kleidung glitzert."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "schneiderin"
+   }
+  },
+  {
+   "id": "A171",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Blütenschritte",
+    "en": "Blossom Steps"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Bei jedem Schritt fallen kleine Blüten."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A172",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Schattenkleid",
+    "en": "Shadow Dress"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Kleidung wird für eine Stunde tiefschwarz mit Sternen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "aurelia"
+   }
+  },
+  {
+   "id": "A173",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Funkenfarbe",
+    "en": "Spark Colour"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Funken bekommen eine andere Farbe als die deiner Ringe."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ambros"
+   }
+  },
+  {
+   "id": "A174",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Seifenkrone",
+    "en": "Bubble Crown"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine Krone aus Seifenblasen schwebt über deinem Kopf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A175",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Nebelschleppe",
+    "en": "Mist Train"
+   },
+   "grundton": "Firn",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine Schleppe aus Nebel folgt dir."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "aurelia"
+   }
+  },
+  {
+   "id": "A176",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Herbstlaub",
+    "en": "Autumn Leaves"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein paar bunte Blätter kreisen langsam um dich."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A177",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Schneehaar",
+    "en": "Snow Hair"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Schneeflocken glitzern in deinen Haaren."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "barbier"
+   }
+  },
+  {
+   "id": "A178",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Leuchtzeichen",
+    "en": "Glow Mark"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein leuchtendes Zeichen auf Haut oder Kleidung (verblasst nach einem Tag)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A179",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Glöckchenschritte",
+    "en": "Bell Steps"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Schritte klingen wie kleine Glöckchen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "schneiderin"
+   }
+  },
+  {
+   "id": "A180",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Stiefelglanz",
+    "en": "Boot Shine"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Stiefel spiegeln wie frisch poliert."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "schneiderin"
+   }
+  },
+  {
+   "id": "A181",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Federwechsel",
+    "en": "Feather Swap"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Die Feder an deinem Hut wechselt Farbe und Form."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "schneiderin"
+   }
+  },
+  {
+   "id": "A182",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Musterwechsel",
+    "en": "Pattern Swap"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Das Muster eines Kleidungsstücks wechselt (Karo, Streifen, Sterne)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "schneiderin"
+   }
+  },
+  {
+   "id": "A183",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Kragenstand",
+    "en": "Collar Up"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Kragen stellt sich auf, der Schal bindet sich schick."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "aurelia"
+   }
+  },
+  {
+   "id": "A184",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Duellgruß",
+    "en": "Duel Salute"
+   },
+   "grundton": "Glut",
+   "wirkart": "klatschen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Funkenregen beim Verbeugen vor dem Duell."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "aurelia"
+   }
+  },
+  {
+   "id": "A185",
+   "kind": "alltag",
+   "heft": "stil",
+   "name": {
+    "de": "Ringklang",
+    "en": "Ring Chime"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Deine Stimmringe klingen beim Gestikulieren leise wie Glas."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ambros"
+   }
+  },
+  {
+   "id": "A186",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Laternensegen",
+    "en": "Lantern Blessing"
+   },
+   "grundton": "Glut",
+   "wirkart": "pusten",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Deine Laterne steigt sanft auf und schwebt über den See."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A187",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Lichterboot",
+    "en": "Light Boat"
+   },
+   "grundton": "Quell",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Papierboot leuchtet und fährt allein über das Wasser."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A188",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Wunschfunke",
+    "en": "Wish Spark"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Funke steigt hoch und zerplatzt in deiner Turmfarbe."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A189",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Feuerblume",
+    "en": "Fire Flower"
+   },
+   "grundton": "Glut",
+   "wirkart": "klatschen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Kleines Feuerwerk in Blumenform."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A190",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Kürbisgrinsen",
+    "en": "Pumpkin Grin"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Kürbis bekommt ein leuchtendes Gesicht, das dir nachschaut."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A191",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Schneeballformer",
+    "en": "Snowball Maker"
+   },
+   "grundton": "Firn",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Schneebälle formen sich von selbst und stapeln sich."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "firnnacht"
+   }
+  },
+  {
+   "id": "A192",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Eisfigur",
+    "en": "Ice Sculpture"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Aus einem Eisblock wird eine Figur (Wettbewerb an der Firnnacht)."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "firnnacht"
+   }
+  },
+  {
+   "id": "A193",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Schneeengel",
+    "en": "Snow Angel"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Dein Schneeengel leuchtet die ganze Nacht."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "firnnacht"
+   }
+  },
+  {
+   "id": "A194",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Frostschmuck",
+    "en": "Frost Ornament"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein Baum funkelt mit Eiskristallen."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "firnnacht"
+   }
+  },
+  {
+   "id": "A195",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Blütenregen",
+    "en": "Blossom Rain"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Blüten regnen über einen Platz."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "wachsfest"
+   }
+  },
+  {
+   "id": "A196",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Kranzflechten",
+    "en": "Wreath Weave"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Blumen flechten sich zu einem Kranz."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "wachsfest"
+   }
+  },
+  {
+   "id": "A197",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Schmetterlingswolke",
+    "en": "Butterfly Cloud"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Hunderte Schmetterlinge steigen auf."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "wachsfest"
+   }
+  },
+  {
+   "id": "A198",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Bändertanz",
+    "en": "Ribbon Dance"
+   },
+   "grundton": "Strom",
+   "wirkart": "tanzen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Bänder flechten sich von selbst um den Festbaum."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "wachsfest"
+   }
+  },
+  {
+   "id": "A199",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Mondtau",
+    "en": "Moon Dew"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Silberne Tropfen fallen in der Doppelnacht."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "doppelnacht"
+   }
+  },
+  {
+   "id": "A200",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Jahresakkord",
+    "en": "Year Chord"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Alle Schüler eines Turms singen gemeinsam, die Turmglocke antwortet."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "doppelnacht"
+   }
+  },
+  {
+   "id": "A201",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Pfannkuchenhochwurf",
+    "en": "Pancake Toss"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Der Pfannkuchen fliegt bis aufs Dach (Wettbewerb in Uferlicht)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ole"
+   }
+  },
+  {
+   "id": "A202",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Mottenreigen",
+    "en": "Moth Round"
+   },
+   "grundton": "Hall",
+   "wirkart": "tanzen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Glimmermotten tanzen in deinem Takt (Pilzhausen)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A203",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Froschdirigat",
+    "en": "Frog Conducting"
+   },
+   "grundton": "Wachs",
+   "wirkart": "spielen",
+   "wirkung": "ki",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Du dirigierst den Frösche-Chor von Stelzenheim."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "unkenrufer"
+   }
+  },
+  {
+   "id": "A204",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Shantytakt",
+    "en": "Shanty Beat"
+   },
+   "grundton": "Grund",
+   "wirkart": "stampfen",
+   "wirkung": "ton",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Stampfen im Takt: die ganze Kneipe stampft mit."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   }
+  },
+  {
+   "id": "A205",
+   "kind": "alltag",
+   "heft": "fest",
+   "name": {
+    "de": "Gewürzwirbel",
+    "en": "Spice Swirl"
+   },
+   "grundton": "Glut",
+   "wirkart": "tanzen",
+   "wirkung": "partikel",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Ein Wirbel aus bunten Gewürzen beim Tanz in Sela."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "seraya"
+   }
+  },
+  {
+   "id": "A206",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Krähenruf",
+    "en": "Crow Call"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Eine Laternenkrähe bringt dir einen Gegenstand oder eine Nachricht."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A207",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Mooslingschnurren",
+    "en": "Mossling Purr"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Moosling rollt sich bei dir zusammen und frisst Nachhall-Reste (senkt Nachhall leicht)."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A208",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Nebelfuchsspur",
+    "en": "Mist Fox Trail"
+   },
+   "grundton": "Firn",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Nebelfuchs führt dich zu einem Geheimnis (oder im Kreis, wenn er Lust hat)."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A209",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Reihergesang",
+    "en": "Heron Song"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Der zweistimmige Ruf des Stelzreihers öffnet Klangschreine."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A210",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Robbenwelle",
+    "en": "Seal Wave"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Eine Gischtrobbe schiebt dich auf einer Welle über das Wasser."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A211",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Mottenmuster",
+    "en": "Moth Pattern"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Glimmermotten zeigen auf ihren Flügeln das Muster einer Melodie (Rätselhinweis)."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A212",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Bärenbrummen",
+    "en": "Bear Hum"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein tiefes Brummen, das Borkenbären friedlich macht."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A213",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Schildkrötenschrift",
+    "en": "Tortoise Script"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Liest die Kael-Inschriften auf dem Panzer einer Runenschildkröte."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A214",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Wolfsheulen",
+    "en": "Wolf Howl"
+   },
+   "grundton": "Firn",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 3,
+   "cost": 5,
+   "description": {
+    "de": "Firnwolf-Welpen antworten und folgen dir."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A215",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Rochengleiten",
+    "en": "Ray Glide"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Ein Wolkenrochen trägt dich ein Stück durch die Luft."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A216",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Kristallwalgesang",
+    "en": "Crystal Whale Song"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "licht",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Die Höhle leuchtet, wenn du mit dem Kristallwal singst."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A217",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Unkenstille",
+    "en": "Toad Hush"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "ki",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Moorlicht-Unken bleiben ruhig und springen dich nicht an."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A218",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Katzengruß",
+    "en": "Cat Greeting"
+   },
+   "grundton": "Wachs",
+   "wirkart": "schnippen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Jede Katze kommt zum Streicheln."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "hedda"
+   }
+  },
+  {
+   "id": "A219",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Hühnerruf",
+    "en": "Chicken Call"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Entlaufene Hühner laufen zurück in den Stall (Kesselbrunn-Sidequest)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "hedda"
+   }
+  },
+  {
+   "id": "A220",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Pferdeflüstern",
+    "en": "Horse Whisper"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein scheues Pferd oder Reittier lässt sich anfassen."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "saphira"
+   }
+  },
+  {
+   "id": "A221",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Bienentanz",
+    "en": "Bee Dance"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tanzen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Bienen zeigen dir, wo Honig oder seltene Blumen sind."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A222",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Froschkuss",
+    "en": "Frog Kiss"
+   },
+   "grundton": "Quell",
+   "wirkart": "tippen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Frosch quakt dir ein Geheimnis. Herr Quaak bleibt leider ein Frosch."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "tilda"
+   }
+  },
+  {
+   "id": "A223",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Fischschwarm",
+    "en": "Fish School"
+   },
+   "grundton": "Quell",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Fische versammeln sich im Wasser vor dir (Angeln)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A224",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Adlerpfiff",
+    "en": "Eagle Whistle"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 3,
+   "cost": 5,
+   "description": {
+    "de": "Ein Zinnadler fordert dich zum Flugrennen heraus."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A225",
+   "kind": "alltag",
+   "heft": "tiere",
+   "name": {
+    "de": "Echohundbellen",
+    "en": "Echo Hound Bark"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Dein geretteter Echohund findet Dinge, die in den Nachhall gefallen sind."
+   },
+   "learn": {
+    "how": "kreatur",
+    "who": "kreatur"
+   }
+  },
+  {
+   "id": "A226",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Pflanzengespräch",
+    "en": "Plant Talk"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine Pflanze sagt dir, was ihr fehlt (Wasser, Licht, Liebe)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A227",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Unkrautweg",
+    "en": "Weed Away"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Unkraut zieht sich beleidigt zurück."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A228",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Samenflug",
+    "en": "Seed Flight"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Samen fliegen und pflanzen sich ins Beet."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A229",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Gießkreis",
+    "en": "Watering Ring"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Ein feiner Regen gießt das ganze Beet."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A230",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Fruchtreife",
+    "en": "Ripening"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Eine Frucht wird sofort reif."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A231",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Pilzlaterne",
+    "en": "Mushroom Lantern"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Pilz leuchtet die ganze Nacht."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A232",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Pilzring",
+    "en": "Fairy Ring"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Ein Kreis aus Pilzen wächst, in dem man ausruhen kann (Rast-Bonus)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A233",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Sporenschimmer",
+    "en": "Spore Shimmer"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Leuchtende Sporen zeigen den Weg durch den Raunwald."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A234",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Rindenlauschen",
+    "en": "Bark Listening"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein alter Baum erzählt, was er gesehen hat (Hinweise, Lore)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A235",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Moosbett",
+    "en": "Moss Bed"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Weiches Moos wächst als Bett zum Rasten."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A236",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Aderfühlen",
+    "en": "Vein Sense"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Spürt Aderquellen in der Nähe."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "quendel"
+   }
+  },
+  {
+   "id": "A237",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Blütenfarbe",
+    "en": "Blossom Dye"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Färbt Blumen in jeder Farbe (Farbstoff-Handwerk)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A238",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Kräutersinn",
+    "en": "Herb Sense"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Seltene Kräuter in der Nähe leuchten kurz auf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "spiegelhexe"
+   }
+  },
+  {
+   "id": "A239",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Wurzeltreppe",
+    "en": "Root Stairs"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Wurzeln bilden ein paar Stufen an einem Hang."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "morchel"
+   }
+  },
+  {
+   "id": "A240",
+   "kind": "alltag",
+   "heft": "natur",
+   "name": {
+    "de": "Honigtropfen",
+    "en": "Honey Drop"
+   },
+   "grundton": "Wachs",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Tropfen Honig aus einer Blüte (Kochzutat)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rosa"
+   }
+  },
+  {
+   "id": "A241",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Lagerfeuerlied",
+    "en": "Campfire Song"
+   },
+   "grundton": "Glut",
+   "wirkart": "singen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Entzündet ein Lagerfeuer, an dem du rasten kannst (Schnellreise-Punkt in der Wildnis)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A242",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Wegweiser",
+    "en": "Signpost"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt den kürzesten Weg zum nächsten Dorf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A243",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Proviantfrische",
+    "en": "Ration Fresh"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Proviant bleibt eine Woche frisch."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A244",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Taschenordnung",
+    "en": "Pack Order"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Deine Tasche sortiert sich (Inventar sortieren)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A245",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Stiefeltrockner",
+    "en": "Boot Dryer"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Nasse Stiefel werden sofort trocken."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A246",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Segelwind",
+    "en": "Sail Wind"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Boot bekommt Rückenwind."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A247",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Laternenboot",
+    "en": "Lantern Boat"
+   },
+   "grundton": "Glut",
+   "wirkart": "tippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Die Bootslaterne leuchtet weit über den nebligen See."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A248",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Nebellicht",
+    "en": "Fog Light"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Lichtkreis im Nebel, Wege werden sichtbar."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A249",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Ankerhalt",
+    "en": "Anchor Hold"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein Boot bleibt still auf dem Wasser liegen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A250",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Sternennavigation",
+    "en": "Star Navigation"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Die Sterne zeigen dir die Himmelsrichtungen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "wenke"
+   }
+  },
+  {
+   "id": "A251",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Brückenprobe",
+    "en": "Bridge Test"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt, ob eine Brücke oder ein Steg trägt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "steiger_ruß"
+   }
+  },
+  {
+   "id": "A252",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Grubenlicht",
+    "en": "Mine Light"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Ein Licht, das in Höhlen besonders weit leuchtet."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "steiger_ruß"
+   }
+  },
+  {
+   "id": "A253",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Luftprobe",
+    "en": "Air Test"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt, ob die Luft in einer Höhle gefährlich ist."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "steiger_ruß"
+   }
+  },
+  {
+   "id": "A254",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Fußwärmer",
+    "en": "Foot Warmer"
+   },
+   "grundton": "Glut",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Warme Füße im Schnee, du wirst nicht langsamer."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A255",
+   "kind": "alltag",
+   "heft": "reise",
+   "name": {
+    "de": "Kartenzeichner",
+    "en": "Map Sketch"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Deckt den Nebel auf der Karte im Umkreis von 200 m auf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A256",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Akkordeonbalg",
+    "en": "Bellows Charm"
+   },
+   "grundton": "Wachs",
+   "wirkart": "spielen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Dein Akkordeon spielt die Begleitung selbst, während du die Melodie spielst."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A257",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Straßenmusik",
+    "en": "Busking"
+   },
+   "grundton": "Hall",
+   "wirkart": "spielen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Leute bleiben stehen, hören zu und werfen Münzen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A258",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Tanzbodenzauber",
+    "en": "Dance Floor"
+   },
+   "grundton": "Strom",
+   "wirkart": "spielen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Alle auf dem Platz fangen an zu tanzen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A259",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Ohrwurm",
+    "en": "Earworm"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Ein NPC summt den ganzen Tag dein Lied (manche werden davon fröhlich)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A260",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Notenregen",
+    "en": "Note Rain"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Leuchtende Noten regnen über dir, wenn du spielst."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A261",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Mundharmonikawind",
+    "en": "Harmonica Wind"
+   },
+   "grundton": "Strom",
+   "wirkart": "spielen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Die Mundharmonika spielt, und der Wind spielt mit."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A262",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Kanon",
+    "en": "Round"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Dein Gesang wiederholt sich als Echo im Kanon."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A263",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Trommelherz",
+    "en": "Drum Heart"
+   },
+   "grundton": "Grund",
+   "wirkart": "klatschen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Klatschen, und ein ganzer Raum klatscht im Takt mit."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jupp"
+   }
+  },
+  {
+   "id": "A264",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Glockenspiel",
+    "en": "Glockenspiel"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Jeder Gegenstand wird zur Glocke, die du antippen kannst (eigene Melodien)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ambros"
+   }
+  },
+  {
+   "id": "A265",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Schiffsglocke",
+    "en": "Ship Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Läutet eine Schiffsglocke, die bis zum Horizont klingt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   }
+  },
+  {
+   "id": "A266",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Möwenchor",
+    "en": "Gull Choir"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pfeifen",
+   "wirkung": "ki",
+   "unlock": 3,
+   "cost": 5,
+   "description": {
+    "de": "Möwen kreischen im Takt deines Shantys."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   }
+  },
+  {
+   "id": "A267",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Wüstenflöte",
+    "en": "Desert Flute"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "ton",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Ein Flötenton, der im Canyon zehnfach widerhallt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "seraya"
+   }
+  },
+  {
+   "id": "A268",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Leierkasten",
+    "en": "Hurdy-Gurdy"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 4,
+   "cost": 4,
+   "description": {
+    "de": "Eine kleine Spieluhr aus Licht dreht sich und spielt dein Lied."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "zappo"
+   }
+  },
+  {
+   "id": "A269",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Wiegenlied der Kael",
+    "en": "Kael Lullaby"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "ton",
+   "unlock": 2,
+   "cost": 3,
+   "description": {
+    "de": "Ein altes Lied, das Echos aus dem Nachhall beruhigt."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   }
+  },
+  {
+   "id": "A270",
+   "kind": "alltag",
+   "heft": "musik",
+   "name": {
+    "de": "Glockengruß",
+    "en": "Bell Greeting"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Alle Glocken eines Dorfes läuten einmal, wenn du ankommst."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "agnes"
+   }
+  },
+  {
+   "id": "A271",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Flüsterschleier",
+    "en": "Whisper Veil"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Du und deine Begleiter sprecht so leise, dass euch niemand hört."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "agnes"
+   }
+  },
+  {
+   "id": "A272",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Stillwasserblick",
+    "en": "Stillwater Gaze"
+   },
+   "grundton": "Quell",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine Wasseroberfläche zeigt, was darunter liegt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "agnes"
+   }
+  },
+  {
+   "id": "A273",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Lebensfaden",
+    "en": "Life Thread"
+   },
+   "grundton": "Wachs",
+   "wirkart": "streichen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Eine Puppe läuft ein paar Schritte (harmlos, nach der Befreiung von Krähenhain)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "puppenmacher"
+   }
+  },
+  {
+   "id": "A274",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Fadenzieher",
+    "en": "String Puller"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Zieht einen Gegenstand an einem unsichtbaren Faden."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "puppenmacher"
+   }
+  },
+  {
+   "id": "A275",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Puppenstimme",
+    "en": "Puppet Voice"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Eine Puppe spricht ein paar freundliche Worte."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "puppenmacher"
+   }
+  },
+  {
+   "id": "A276",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Ringpolitur",
+    "en": "Ring Polish"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Stimmringe glänzen wie neu (Bonus beim Handel)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ambros"
+   }
+  },
+  {
+   "id": "A277",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Quarzlauschen",
+    "en": "Quartz Listening"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Hört, welchen Grundton ein Quarz hat (Ringe bauen)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ambros"
+   }
+  },
+  {
+   "id": "A278",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Brötchenduft",
+    "en": "Bread Scent"
+   },
+   "grundton": "Glut",
+   "wirkart": "pusten",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Duft nach frischem Brot, alle Leute werden freundlicher."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "hedda"
+   }
+  },
+  {
+   "id": "A279",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Hefelied",
+    "en": "Yeast Song"
+   },
+   "grundton": "Wachs",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Teig geht in Sekunden auf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "hedda"
+   }
+  },
+  {
+   "id": "A280",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Quellbad",
+    "en": "Spring Bath"
+   },
+   "grundton": "Quell",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "Ein Becken Wasser wird angenehm heiß (Rast-Bonus)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "badewirtin"
+   }
+  },
+  {
+   "id": "A281",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Dampfwolke",
+    "en": "Steam Cloud"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Eine Dampfwolke wie über den heißen Quellen (Sichtschutz, Wellness)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "badewirtin"
+   }
+  },
+  {
+   "id": "A282",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Butterflöckchen",
+    "en": "Butter Flake"
+   },
+   "grundton": "Firn",
+   "wirkart": "schnippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Ein Stück Butter, perfekt gekühlt, fliegt auf den Pfannkuchen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "ole"
+   }
+  },
+  {
+   "id": "A283",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Grubenfreund",
+    "en": "Mine Friend"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "ki",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Grubenponys und Bergkatzen folgen dir."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "steiger_ruß"
+   }
+  },
+  {
+   "id": "A284",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Sumpfgang",
+    "en": "Bog Walk"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "physik",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Du sinkst im Moor nicht ein."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "unkenrufer"
+   }
+  },
+  {
+   "id": "A285",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Irrlichtfang",
+    "en": "Wisp Catch"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Fängt ein Irrlicht in einer Flasche (Licht, Rätsel)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "unkenrufer"
+   }
+  },
+  {
+   "id": "A286",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Froschsprung",
+    "en": "Frog Leap"
+   },
+   "grundton": "Wachs",
+   "wirkart": "stampfen",
+   "wirkung": "physik",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Ein hoher Sprung wie ein Frosch (Moor-Wege)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "unkenrufer"
+   }
+  },
+  {
+   "id": "A287",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Schilftarnung",
+    "en": "Reed Cover"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "material",
+   "unlock": 2,
+   "cost": 3,
+   "description": {
+    "de": "Du verschmilzt mit Schilf und hohem Gras."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rieke"
+   }
+  },
+  {
+   "id": "A288",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Libellenblick",
+    "en": "Dragonfly Eye"
+   },
+   "grundton": "Strom",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Fernziele werden kurz näher herangeholt (Zoom)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rieke"
+   }
+  },
+  {
+   "id": "A289",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Ködergeruch",
+    "en": "Bait Scent"
+   },
+   "grundton": "Wachs",
+   "wirkart": "pusten",
+   "wirkung": "ki",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Lockt Wild an eine Stelle."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "rieke"
+   }
+  },
+  {
+   "id": "A290",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Kristallklang",
+    "en": "Crystal Chime"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 2,
+   "cost": 3,
+   "description": {
+    "de": "Ein Kristall singt und zeigt seinen Wert."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mina"
+   }
+  },
+  {
+   "id": "A291",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Funkelschliff",
+    "en": "Sparkle Cut"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 2,
+   "cost": 3,
+   "description": {
+    "de": "Ein Edelstein bekommt einen perfekten Schliff."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mina"
+   }
+  },
+  {
+   "id": "A292",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Lichtbrechung",
+    "en": "Light Split"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Ein Lichtstrahl teilt sich in Regenbogenfarben (Lichträtsel)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mina"
+   }
+  },
+  {
+   "id": "A293",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Kristallwuchs",
+    "en": "Crystal Growth"
+   },
+   "grundton": "Firn",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 2,
+   "cost": 4,
+   "description": {
+    "de": "Ein kleiner Kristall wächst als Deko oder Trittstein."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mina"
+   }
+  },
+  {
+   "id": "A294",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Blinzelruf",
+    "en": "Blink Call"
+   },
+   "grundton": "Hall",
+   "wirkart": "schnippen",
+   "wirkung": "ki",
+   "unlock": 2,
+   "cost": 5,
+   "description": {
+    "de": "Weckt Leute aus Trance (nach Hohlstollen eine Gruselhilfe)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "anselm"
+   }
+  },
+  {
+   "id": "A295",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Stollenecho",
+    "en": "Tunnel Echo"
+   },
+   "grundton": "Grund",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt Gänge, die hinter Geröll weitergehen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "anselm"
+   }
+  },
+  {
+   "id": "A296",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Gischtlauf",
+    "en": "Spray Run"
+   },
+   "grundton": "Quell",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 3,
+   "cost": 5,
+   "description": {
+    "de": "Ein paar Schritte über Wellen laufen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   }
+  },
+  {
+   "id": "A297",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Seemannsknoten",
+    "en": "Sailor's Knot"
+   },
+   "grundton": "Quell",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 3,
+   "cost": 4,
+   "description": {
+    "de": "Ein Tau knotet sich bombenfest."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "lotte"
+   }
+  },
+  {
+   "id": "A298",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Spurensiegel",
+    "en": "Evidence Seal"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Eine Spur bleibt sichtbar, bis der Fall gelöst ist."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "nell"
+   }
+  },
+  {
+   "id": "A299",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Lügenlauscher",
+    "en": "Lie Listener"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Eine Stimme klingt schief, wenn jemand lügt (manchmal)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "nell"
+   }
+  },
+  {
+   "id": "A300",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Fingerabdruck",
+    "en": "Fingerprint"
+   },
+   "grundton": "Grund",
+   "wirkart": "pusten",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Puder zeigt Fingerabdrücke auf Gegenständen."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "nell"
+   }
+  },
+  {
+   "id": "A301",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Tiefenatem",
+    "en": "Deep Breath"
+   },
+   "grundton": "Quell",
+   "wirkart": "summen",
+   "wirkung": "material",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Doppelt so lange unter Wasser bleiben."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "smilla"
+   }
+  },
+  {
+   "id": "A302",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Glockenruf unter Wasser",
+    "en": "Underwater Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt ertrunkene Glocken und Wracks am Meeresgrund."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "smilla"
+   }
+  },
+  {
+   "id": "A303",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Schlittenwind",
+    "en": "Sled Wind"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "physik",
+   "unlock": 3,
+   "cost": 5,
+   "description": {
+    "de": "Dein Schlitten wird schneller."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jorin"
+   }
+  },
+  {
+   "id": "A304",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Käseklang",
+    "en": "Cheese Tone"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 3,
+   "cost": 4,
+   "description": {
+    "de": "Käse reift in einer Nacht."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jorin"
+   }
+  },
+  {
+   "id": "A305",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Lawinenhören",
+    "en": "Avalanche Ear"
+   },
+   "grundton": "Firn",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Warnt vor Lawinen und brüchigem Eis."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "jorin"
+   }
+  },
+  {
+   "id": "A306",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Schweigeschritt",
+    "en": "Silent Step"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Deine Schritte machen keinen Laut (Schleichen)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "bruder_stumm"
+   }
+  },
+  {
+   "id": "A307",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Atemstille",
+    "en": "Breath Stillness"
+   },
+   "grundton": "Firn",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Senkt deine Nachhall-Belastung beim Meditieren schneller."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "bruder_stumm"
+   }
+  },
+  {
+   "id": "A308",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Klosterglocke",
+    "en": "Monastery Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "welt",
+   "unlock": 3,
+   "cost": 6,
+   "description": {
+    "de": "Eine Glocke, deren Ton Lawinen beruhigt."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "bruder_stumm"
+   }
+  },
+  {
+   "id": "A309",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Eismalerei",
+    "en": "Ice Painting"
+   },
+   "grundton": "Firn",
+   "wirkart": "streichen",
+   "wirkung": "material",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Bilder aus Eis auf Fenstern und Wänden."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "eismalerin"
+   }
+  },
+  {
+   "id": "A310",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Auftauen",
+    "en": "Thaw"
+   },
+   "grundton": "Glut",
+   "wirkart": "kreisen",
+   "wirkung": "welt",
+   "unlock": 3,
+   "cost": 6,
+   "description": {
+    "de": "Taut eingefrorene Dinge (und Menschen in Frostwacht) sanft auf."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "eismalerin"
+   }
+  },
+  {
+   "id": "A311",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Feuertanzschritt",
+    "en": "Fire Step"
+   },
+   "grundton": "Glut",
+   "wirkart": "tanzen",
+   "wirkung": "partikel",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Deine Schritte hinterlassen kurz glühende Abdrücke."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "seraya"
+   }
+  },
+  {
+   "id": "A312",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Hitzeschleier",
+    "en": "Heat Veil"
+   },
+   "grundton": "Firn",
+   "wirkart": "kreisen",
+   "wirkung": "material",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "Die Wüstenhitze macht dir nichts aus."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "seraya"
+   }
+  },
+  {
+   "id": "A313",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Sandleserei",
+    "en": "Sand Reading"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "ui",
+   "unlock": 3,
+   "cost": 2,
+   "description": {
+    "de": "Sand zeigt ein Bild der Zukunft. Liegt meistens falsch, manchmal nicht."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "sandleserin"
+   }
+  },
+  {
+   "id": "A314",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Sandstufen",
+    "en": "Sand Steps"
+   },
+   "grundton": "Grund",
+   "wirkart": "streichen",
+   "wirkung": "welt",
+   "unlock": 3,
+   "cost": 6,
+   "description": {
+    "de": "Sand verfestigt sich zu Stufen an einer Düne."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "sandleserin"
+   }
+  },
+  {
+   "id": "A315",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Drachenwind",
+    "en": "Kite Wind"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Ein Drachen steigt sofort in den Himmel."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kiki"
+   }
+  },
+  {
+   "id": "A316",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Wolkenhüpfen",
+    "en": "Cloud Hop"
+   },
+   "grundton": "Strom",
+   "wirkart": "stampfen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Kurzer Sprung von Wolke zu Wolke (nur auf den Treibenden Inseln)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "kiki"
+   }
+  },
+  {
+   "id": "A317",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Kopfüber",
+    "en": "Upside Down"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Ein Gegenstand fällt 10 s lang nach oben."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "purzel"
+   }
+  },
+  {
+   "id": "A318",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Schwebetasse",
+    "en": "Floating Cup"
+   },
+   "grundton": "Grund",
+   "wirkart": "tippen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Deine Tasse schwebt immer neben dir."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "purzel"
+   }
+  },
+  {
+   "id": "A319",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Schwerkraftschluckauf",
+    "en": "Gravity Hiccup"
+   },
+   "grundton": "Grund",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Alles im Raum hüpft einmal kurz hoch."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "purzel"
+   }
+  },
+  {
+   "id": "A320",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Jonglierklang",
+    "en": "Juggling Tone"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "Drei bis sieben Gegenstände jonglieren sich selbst."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "zappo"
+   }
+  },
+  {
+   "id": "A321",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Zauberhut",
+    "en": "Magic Hat"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 4,
+   "cost": 4,
+   "description": {
+    "de": "Aus einem Hut kommt etwas Unerwartetes (zufällig: Taube, Blumen, Socke)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "zappo"
+   }
+  },
+  {
+   "id": "A322",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Flugblattregen",
+    "en": "Leaflet Rain"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "objekt",
+   "unlock": 4,
+   "cost": 4,
+   "description": {
+    "de": "Flugblätter verteilen sich über einen ganzen Platz."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "fink"
+   }
+  },
+  {
+   "id": "A323",
+   "kind": "alltag",
+   "heft": "meister",
+   "name": {
+    "de": "Glockenstörer",
+    "en": "Bell Jammer"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ton",
+   "unlock": 4,
+   "cost": 3,
+   "description": {
+    "de": "Eine Bannglocke des Kollegiums klingt 30 s falsch (Sabotage)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "fink"
+   }
+  },
+  {
+   "id": "A324",
+   "kind": "alltag",
+   "heft": "bastel",
+   "name": {
+    "de": "Zahnradlied",
+    "en": "Gear Song"
+   },
+   "grundton": "Grund",
+   "wirkart": "summen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Zahnräder greifen ineinander und laufen."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A325",
+   "kind": "alltag",
+   "heft": "bastel",
+   "name": {
+    "de": "Schraubendreher",
+    "en": "Screw Turn"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Schrauben drehen sich rein oder raus."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A326",
+   "kind": "alltag",
+   "heft": "bastel",
+   "name": {
+    "de": "Kleberklang",
+    "en": "Glue Tone"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Zwei Teile kleben zusammen (bis zum nächsten Morgen)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A327",
+   "kind": "alltag",
+   "heft": "bastel",
+   "name": {
+    "de": "Funkenlöten",
+    "en": "Spark Solder"
+   },
+   "grundton": "Glut",
+   "wirkart": "streichen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Verbindet Metallteile mit einem heißen Funken."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A328",
+   "kind": "alltag",
+   "heft": "bastel",
+   "name": {
+    "de": "Wannenschwebe",
+    "en": "Tub Float"
+   },
+   "grundton": "Strom",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Pankis Badewanne schwebt einen Meter (meistens)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A329",
+   "kind": "alltag",
+   "heft": "echo",
+   "name": {
+    "de": "Nachklangsucher",
+    "en": "Afterecho Seeker"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt Nachklänge in der Nähe: Echo-Abdrücke früherer Schüler."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A330",
+   "kind": "alltag",
+   "heft": "echo",
+   "name": {
+    "de": "Nachklangfang",
+    "en": "Afterecho Catch"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Fängt einen Nachklang in einem Glas (Sammelobjekt, spielt ihn ab)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A331",
+   "kind": "alltag",
+   "heft": "echo",
+   "name": {
+    "de": "Stimmenspiel",
+    "en": "Voice Play"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Spielt eine gefangene Stimme an einem anderen Ort ab."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A332",
+   "kind": "alltag",
+   "heft": "echo",
+   "name": {
+    "de": "Lachkonserve",
+    "en": "Canned Laughter"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Ein altes Lachen aus der Wand macht alle im Raum fröhlich."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "mirela"
+   }
+  },
+  {
+   "id": "A333",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Glockenballwurf",
+    "en": "Bellball Throw"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Wirft den Glockenball mit Drall (Glockenball-Sport)."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A334",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Glockenballfang",
+    "en": "Bellball Catch"
+   },
+   "grundton": "Hall",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Fängt den Ball aus der Luft und hält ihn kurz fest."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A335",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Torglocke",
+    "en": "Goal Bell"
+   },
+   "grundton": "Hall",
+   "wirkart": "pfeifen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Lässt die Torglocke des Gegners klingen, wenn der Ball nah genug ist."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A336",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Duellverbeugung",
+    "en": "Duel Bow"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Startet ein freundliches Übungsduell mit einem NPC."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "grell"
+   }
+  },
+  {
+   "id": "A337",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Kerzenwettlauf",
+    "en": "Candle Race"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Wer zündet zuerst alle Kerzen der Strecke? (Minispiel)"
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A338",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Murmelweg",
+    "en": "Marble Run"
+   },
+   "grundton": "Grund",
+   "wirkart": "streichen",
+   "wirkung": "objekt",
+   "unlock": 1,
+   "cost": 4,
+   "description": {
+    "de": "Baut eine Murmelbahn aus Licht."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "panki"
+   }
+  },
+  {
+   "id": "A339",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Fangspiel",
+    "en": "Tag Spark"
+   },
+   "grundton": "Strom",
+   "wirkart": "tippen",
+   "wirkung": "partikel",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Wer berührt wird, leuchtet: der nächste Fänger."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "lio"
+   }
+  },
+  {
+   "id": "A340",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Versteckhauch",
+    "en": "Hide Breath"
+   },
+   "grundton": "Hall",
+   "wirkart": "pusten",
+   "wirkung": "material",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "Du wirst in Verstecken unauffälliger (Verstecken-Spiel, kein Kampf)."
+   },
+   "learn": {
+    "how": "mitschueler",
+    "who": "tilda"
+   }
+  },
+  {
+   "id": "A341",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Würfelglück",
+    "en": "Dice Luck"
+   },
+   "grundton": "Strom",
+   "wirkart": "schnippen",
+   "wirkung": "ui",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "Zeigt kurz, wie die Würfel fallen werden (nicht immer ehrlich)."
+   },
+   "learn": {
+    "how": "meister",
+    "who": "mirli"
+   }
+  },
+  {
+   "id": "A342",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Laternenregatta",
+    "en": "Lantern Regatta"
+   },
+   "grundton": "Strom",
+   "wirkart": "pusten",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Treibt dein Laternenboot im Rennen an."
+   },
+   "learn": {
+    "how": "fest",
+    "who": "ilsenlicht"
+   }
+  },
+  {
+   "id": "A343",
+   "kind": "alltag",
+   "heft": "spiel",
+   "name": {
+    "de": "Kegelkönig",
+    "en": "Skittle King"
+   },
+   "grundton": "Grund",
+   "wirkart": "kreisen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "Alle Kegel fallen in einer Spirale."
+   },
+   "learn": {
+    "how": "unterricht",
+    "who": "brams"
+   }
+  },
+  {
+   "id": "A344",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Vor anu",
+    "en": "Vor anu"
+   },
+   "grundton": "Wachs",
+   "wirkart": "tippen",
+   "wirkung": "welt",
+   "unlock": 1,
+   "cost": 6,
+   "description": {
+    "de": "„Der Ton ist Leben“: Ein Pflänzchen wächst aus nacktem Stein."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A345",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Ilm kor",
+    "en": "Ilm kor"
+   },
+   "grundton": "Hall",
+   "wirkart": "streichen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "„Licht-Tor“: Ein Torbogen aus Licht zeigt, wo früher eine Tür war."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A346",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Seth myr",
+    "en": "Seth myr"
+   },
+   "grundton": "Grund",
+   "wirkart": "pfeifen",
+   "wirkung": "physik",
+   "unlock": 1,
+   "cost": 5,
+   "description": {
+    "de": "„Stein-Himmel“: Ein Stein schwebt zum Himmel und bleibt dort hängen."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A347",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Nym vor",
+    "en": "Nym vor"
+   },
+   "grundton": "Hall",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "„Echo-Ton“: Du hörst, was an diesem Ort zuletzt gesagt wurde."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A348",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Thas ilm",
+    "en": "Thas ilm"
+   },
+   "grundton": "Firn",
+   "wirkart": "kreisen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "„Stilles Licht“: Ein Licht, das keinen Schatten wirft."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A349",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Kael ir",
+    "en": "Kael ir"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "ton",
+   "unlock": 1,
+   "cost": 3,
+   "description": {
+    "de": "„Die Gesänge“: Alte Inschriften singen, wenn du sie berührst."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A350",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Anu seth",
+    "en": "Anu seth"
+   },
+   "grundton": "Wachs",
+   "wirkart": "kreisen",
+   "wirkung": "objekt",
+   "unlock": 2,
+   "cost": 4,
+   "description": {
+    "de": "„Lebender Stein“: Eine Steinfigur dreht kurz den Kopf nach dir."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A351",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Myr vor",
+    "en": "Myr vor"
+   },
+   "grundton": "Strom",
+   "wirkart": "pfeifen",
+   "wirkung": "welt",
+   "unlock": 2,
+   "cost": 6,
+   "description": {
+    "de": "„Himmelston“: Die Wolken über dir öffnen sich für einen Sonnenstrahl."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  },
+  {
+   "id": "A352",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Rael ilm",
+    "en": "Rael ilm"
+   },
+   "grundton": "Glut",
+   "wirkart": "schnippen",
+   "wirkung": "licht",
+   "unlock": 1,
+   "cost": 2,
+   "description": {
+    "de": "„Herrinnen-Licht“: Ein violetter Funke, den nur Nym erkennt."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "nym"
+   }
+  },
+  {
+   "id": "A353",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Kor thas",
+    "en": "Kor thas"
+   },
+   "grundton": "Hall",
+   "wirkart": "tippen",
+   "wirkung": "ui",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "„Tor der Stille“: Zeigt dünne Orte zum Nachhall."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "nym"
+   }
+  },
+  {
+   "id": "A354",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Vor kael",
+    "en": "Vor kael"
+   },
+   "grundton": "Hall",
+   "wirkart": "singen",
+   "wirkung": "welt",
+   "unlock": 2,
+   "cost": 6,
+   "description": {
+    "de": "„Ton des Volkes“: Ein Kael-Echo singt mit dir und zeigt dir eine verlorene Erinnerung."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   }
+  },
+  {
+   "id": "A355",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Ilm nym",
+    "en": "Ilm nym"
+   },
+   "grundton": "Quell",
+   "wirkart": "pusten",
+   "wirkung": "licht",
+   "unlock": 2,
+   "cost": 2,
+   "description": {
+    "de": "„Licht-Echo“: Eine Lichtgestalt wiederholt deine Bewegungen."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   }
+  },
+  {
+   "id": "A356",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Seth anu",
+    "en": "Seth anu"
+   },
+   "grundton": "Grund",
+   "wirkart": "stampfen",
+   "wirkung": "welt",
+   "unlock": 3,
+   "cost": 6,
+   "description": {
+    "de": "„Stein-Leben“: Moos und Blumen überwachsen eine Ruine für eine Nacht."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   }
+  },
+  {
+   "id": "A357",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Thas vor",
+    "en": "Thas vor"
+   },
+   "grundton": "Firn",
+   "wirkart": "summen",
+   "wirkung": "ton",
+   "unlock": 3,
+   "cost": 3,
+   "description": {
+    "de": "„Stille-Ton“: Für einen Herzschlag hörst du den Urton, ohne ihn zu spielen. Nachhall +1."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "echos"
+   }
+  },
+  {
+   "id": "A358",
+   "kind": "alltag",
+   "heft": "kael",
+   "name": {
+    "de": "Myr kor",
+    "en": "Myr kor"
+   },
+   "grundton": "Strom",
+   "wirkart": "streichen",
+   "wirkung": "physik",
+   "unlock": 4,
+   "cost": 5,
+   "description": {
+    "de": "„Himmelstor“: Ein Windstrom trägt dich zu einer Treibenden Insel hinauf."
+   },
+   "learn": {
+    "how": "kael",
+    "who": "schrein"
+   }
+  }
+ ]
+}

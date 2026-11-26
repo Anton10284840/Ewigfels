@@ -292,7 +292,9 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 | Stimme | krächzend, lachend, singt zwischendurch. TTS: weiblich, Tonhöhe −10 %, Tempo −10 % |
 | Körpersprache / Idle | stützt beide Hände auf den Wurzelstab, wippt zu unhörbarer Musik, zeigt mit der Pfeife |
 
-**Wichtige Nebenfiguren** (ohne volles Blatt, MetaHuman „Optimized“): Ausbilder Varn (Akt-1-Boss) · Hanne Brook (Waisenhausleiterin, stirbt in M206) · Ida Brack (Hafenmeisterin, Zunftrat) · die vier Turmsprecher (Schülersprecher je Turm, einer pro Turm, Namen in Phase 5) · Großinquisitor Halmar Dräger (Regionsboss Aurenburg) · Bruder Stumm (Abt der Schweigemönche).
+**Wichtige Nebenfiguren** (ohne volles Blatt, MetaHuman „Optimized“): Ausbilder Varn (Akt-1-Boss) · Hanne Brook (Waisenhausleiterin, stirbt in M206) · Ida Brack (Hafenmeisterin, Zunftrat) · die vier Turmsprecher Greta Kohlhammer (Aschenhain), Jonte Weißdorn (Silberquell), Fenja Brise (Sturmkamm), Hannes Wurzel (Moosgrund) · Großinquisitor Halmar Dräger (Regionsboss Aurenburg) · Bruder Stumm (Abt der Schweigemönche).
+
+**Neu für den Akt-1-Schulvibe (E10, ohne volles Blatt):** Lehrkräfte Haldor Brams (Schlagweisen), Bruni Kesselmayr (Elementar/Tränke in Akt 1), Pim Ollendorf (Wandelkunde), Ilka Morgenroth (Sternkunde) · Personal Mutter Gundel (Küche), Herr Fennimore Staub (Bibliothek), Gärtnerin Rosa Dornbusch · Mitschüler Pankraz „Panki“ Holler, Mirela Sandor, Tilda Morn (mit Frosch Herr Quaak), Ruven Falk (Die Schiefen Töne) · lebendige Dinge: Ottilie (wandelnde Laterne), Kessel Klaus und Brüder (Teekessel), Sessel Barnabas, die Stimmglocke · 36 Meister in der Welt (Liste mit Ort und Bedingung: `Content/Data/Spells/Katalog/Lehrer.json`, Übersicht in WEISEN_KATALOG §5). Beschreibungen: AKT1_SCHULLEBEN.md §3 und §7.
 
 ## 5. NPCs und Crowds
 
