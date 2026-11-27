@@ -130,5 +130,12 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	S->Swallow = MakeAction(S, TEXT("IA_Swallow"), EInputActionValueType::Boolean);
 	C->MapKey(S->Swallow, EKeys::R); // Sample: Ragdoll
 	C->MapKey(S->ToggleHelp, EKeys::Gamepad_Special_Left);
+
+	// Das Sample sprintet am Controller nur mit LB (bei uns: Ziel wechseln, wird geschluckt). Damit L3 dort weiter
+	// sprintet, legen wir dessen eigene Sprint-Aktion zusätzlich auf L3 (fehlt das Sample, passiert nichts).
+	if (UInputAction* SampleSprint = LoadObject<UInputAction>(nullptr, TEXT("/Game/Input/IA_Sprint.IA_Sprint"), nullptr, LOAD_NoWarn | LOAD_Quiet))
+	{
+		C->MapKey(SampleSprint, EKeys::Gamepad_LeftThumbstick);
+	}
 	return S;
 }
