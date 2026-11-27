@@ -135,39 +135,6 @@ private:
 	int32 Regens = 3;
 };
 
-	void Rebuild();
-	void PlaceSegments(float WidthScale);
-	UStaticMeshComponent* MakePiece(const FLinearColor& Color, float Glow);
-
-	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
-	TObjectPtr<USceneComponent> Root;
-
-	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
-	TObjectPtr<UPointLightComponent> StartLight;
-
-	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
-	TObjectPtr<UPointLightComponent> EndLight;
-
-	/** Hält die Teile am Leben (FBoltSegment ist kein USTRUCT). */
-	UPROPERTY(Transient)
-	TArray<TObjectPtr<UStaticMeshComponent>> Pieces;
-
-	UPROPERTY(Transient)
-	TArray<TObjectPtr<UMaterialInstanceDynamic>> Materials;
-
-	TArray<FBoltSegment> Segments;
-	FRandomStream Rng;
-	FVector From = FVector::ZeroVector;
-	FVector To = FVector::ZeroVector;
-	FLinearColor BoltColor = FLinearColor::White;
-	float BaseWidth = 6.f;
-	float Length = 0.15f;
-	float Age = 0.f;
-	float NextJitter = 0.f;
-	float PeakStartLight = 0.f;
-	float PeakEndLight = 0.f;
-	int32 Forks = 2;
-};
 
 /** Funkenregen am Einschlag: schnelle Funken mit Schwerkraft und kurzen Leuchtspuren, prallen am Boden ab. Lokal. */
 UCLASS(NotPlaceable, Transient)
