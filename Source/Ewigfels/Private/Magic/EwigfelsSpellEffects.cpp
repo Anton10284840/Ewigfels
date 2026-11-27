@@ -3,6 +3,7 @@
 #include "Magic/EwigfelsSpellEffects.h"
 #include "Magic/EwigfelsSpellCasterComponent.h"
 #include "Combat/EwigfelsCombatComponent.h"
+#include "Combat/EwigfelsForcedMotionComponent.h"
 #include "CollisionQueryParams.h"
 #include "Engine/OverlapResult.h"
 #include "Engine/World.h"
@@ -221,9 +222,37 @@ void EwigfelsSpellEffects::ApplyEffects(const FEwigfelsSpellDef& Spell, const TA
 			break;
 
 		case EEwigfelsSpellEffectType::Knockback:
-			if (Combat)
+			if (Combat && !Combat->IsDead())
 			{
+				if (UEwigfelsForcedMotionComponent* Motion = UEwigfelsForcedMotionComponent::FindOrAdd(Target))
+				{
+					Motion->Release(); // Stoß befreit aus dem Halten
+					if (Spell.OnLand.Num() > 0)
+					{
+						Motion->ExpectLanding(Spell.Id, Hit.Caster);
+					}
+				}
 				Combat->ApplyImpulse(Push * Effect.Amount + FVector::UpVector * Effect.Up);
+			}
+			break;
+
+		case EEwigfelsSpellEffectType::Lift:
+			if (Combat && !Combat->IsDead())
+			{
+				if (UEwigfelsForcedMotionComponent* Motion = UEwigfelsForcedMotionComponent::FindOrAdd(Target))
+				{
+					Motion->Lift(Effect.Amount, Effect.Duration > 0.f ? Effect.Duration : 4.f, Spell.Id, Hit.Caster);
+				}
+			}
+			break;
+
+		case EEwigfelsSpellEffectType::Slam:
+			if (Combat && !Combat->IsDead())
+			{
+				if (UEwigfelsForcedMotionComponent* Motion = UEwigfelsForcedMotionComponent::FindOrAdd(Target))
+				{
+					Motion->Slam(Effect.Amount, Spell.Id, Hit.Caster);
+				}
 			}
 			break;
 

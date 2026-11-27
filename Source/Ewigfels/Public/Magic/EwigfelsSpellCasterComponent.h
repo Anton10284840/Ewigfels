@@ -68,6 +68,7 @@ enum class EEwigfelsCastFailReason : uint8
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsCastStarted, FName, SpellId, uint8, ChainIndex, float, CastTime);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsSpellReleased, FName, SpellId, FVector, Origin, FVector, Direction);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FEwigfelsBeamFired, FName, SpellId, FVector, Start, FVector, End, bool, bHitTarget, uint8, ChainIndex);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FEwigfelsImpactFx, FName, SpellId, FVector, Location, FVector, Normal, bool, bBig);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsCastFailed, FName, SpellId, EEwigfelsCastFailReason, Reason);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEwigfelsShieldChanged, bool, bShieldUp);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsParried, AActor*, Attacker, FVector, Location);
@@ -133,6 +134,16 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Ewigfels|Magic")
 	void SetLoadout(const TArray<FName>& NewLoadout);
+
+	/** Einschlag-Optik auf allen Maschinen (z. B. Aufprall nach Schmettern). Nur Server. */
+	void BroadcastImpactFx(FName SpellId, const FVector& Location, const FVector& Normal, bool bBig);
+
+	/** Ein Ziel wird von dieser Weise gehalten: zweiter Druck (recast) ist bis Seconds möglich. Nur Server. */
+	void NotifyHeldTarget(FName SpellId, AActor* Target, float Seconds);
+
+	/** true, wenn der nächste Druck dieser Weise die Zweitwirkung auslöst (HUD, Kosten, Abklingzeit). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	bool IsRecastReady(FName SpellId) const;
 
 	// --- Abfragen ---
 
@@ -227,6 +238,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsAtemChanged OnAtemChanged;
 
+	/** Einschlag (Aufprall nach Schmettern). Für Kamerastoß in der Nähe. */
+	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
+	FEwigfelsImpactFx OnImpactFx;
+
 protected:
 	UFUNCTION(Server, Reliable)
 	void Server_Cast(FName SpellId, FVector_NetQuantize AimPoint, AActor* Target);
@@ -244,6 +259,9 @@ protected:
 	void Multicast_BeamFired(FName SpellId, FVector_NetQuantize Start, FVector_NetQuantize End, FVector_NetQuantizeNormal Normal,
 		bool bHitTarget, uint8 ChainIndex);
 
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_ImpactFx(FName SpellId, FVector_NetQuantize Location, FVector_NetQuantizeNormal Normal, bool bBig);
+
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Parried(AActor* Attacker, FVector_NetQuantize Location);
 
@@ -258,6 +276,8 @@ protected:
 
 private:
 	void ApplyHitStop(AActor* Target, float Seconds);
+	bool TryRecast(const FEwigfelsSpellDef& Spell);
+	void BounceBeam(const FEwigfelsSpellDef& Spell, AActor* FirstTarget, const TArray<AActor*>& AlreadyHit);
 
 	EEwigfelsCastFailReason CastSpellInternal(FName SpellId, FVector AimPoint, AActor* Target, bool bSkipLoadoutCheck);
 	void ReleaseSpell(FName SpellId, uint8 ChainIndex);
@@ -289,6 +309,13 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_ShieldUp)
 	bool bShieldUp = false;
 
+	/** Weise, deren Zweitwirkung gerade bereitsteht (Haltelied hält jemanden), und bis wann (Server-Zeit). */
+	UPROPERTY(Replicated)
+	FName RecastSpell;
+
+	UPROPERTY(Replicated)
+	float RecastUntil = 0.f;
+
 	/** Server-Zeit, zu der der Schild hochging (Parierfenster). */
 	UPROPERTY(Replicated)
 	float ShieldUpTime = 0.f;
@@ -298,6 +325,7 @@ private:
 	FVector PendingAimPoint = FVector::ZeroVector;
 	TWeakObjectPtr<AActor> PendingTarget;
 	FTimerHandle ReleaseTimer;
+	TArray<TWeakObjectPtr<AActor>> RecastTargets;
 	float LastSpendTime = -100.f;
 
 	// Lokal

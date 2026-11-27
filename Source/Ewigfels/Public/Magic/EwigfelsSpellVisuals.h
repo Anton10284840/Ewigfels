@@ -68,6 +68,9 @@ public:
 	/** Width = Stärke (1 normal, 1.6 dritter Kettenschlag, 2.5 Lanze). */
 	void Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Width, float Duration, int32 Regenerations);
 
+	/** Vor Setup aufrufen: Saumfarbe (2. Grundton), Zackigkeit (1 = Blitz, 0.2 = ruhiges Band), Äste an/aus. */
+	void SetStyle(const FLinearColor& InGlowColor, float InJaggedness, bool bInBranches);
+
 	virtual void Tick(float DeltaSeconds) override;
 
 	/** Reine Rechenfunktion (getestet): Zickzack-Punkte von A nach B, Enden fest, Ausschlag in der Mitte am größten. */
@@ -117,6 +120,11 @@ private:
 	FVector From = FVector::ZeroVector;
 	FVector To = FVector::ZeroVector;
 	FLinearColor BoltColor = FLinearColor::White;
+	FLinearColor GlowColor = FLinearColor::White;
+	FLinearColor AfterglowColor = FLinearColor(0.35f, 0.5f, 1.f);
+	bool bHasGlowColor = false;
+	bool bBranches = true;
+	float Jaggedness = 1.f;
 	float BaseWidth = 1.f;
 	float Life = 0.2f;
 	float AfterLife = 0.2f;
@@ -235,6 +243,9 @@ namespace EwigfelsSpellVisuals
 	/** Strahl-Weise: Niagara (vfx.niagara mit User.BeamEnd) oder prozeduraler Blitz, dazu Mündungs- und Einschlagsblitz. Lokal. */
 	EWIGFELS_API void PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Start, const FVector& End, const FVector& Normal,
 		bool bHitTarget, uint8 ChainIndex);
+
+	/** Schwerer Aufprall am Boden (Schmettern, Wurf): Druckring, Staub-/Funkenregen, Licht. Lokal. */
+	EWIGFELS_API void PlayLandImpact(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Location, bool bBig);
 
 	/** Auslösen (Kegel-Welle, Area-Ring, Mündungsblitz an den Fingern). Lokal. */
 	EWIGFELS_API void PlayRelease(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Origin, const FVector& Direction, const AActor* Caster);

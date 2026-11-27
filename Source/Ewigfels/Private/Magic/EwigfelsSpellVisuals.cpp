@@ -247,7 +247,17 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 		if (AEwigfelsLightningBolt* Bolt = World->SpawnActor<AEwigfelsLightningBolt>(AEwigfelsLightningBolt::StaticClass(), FTransform::Identity, Params))
 		{
-			Bolt->Setup(Start, End, Spell.Visual.Color, Scale * 1.6f, bStrong ? 0.26f : FMath::FRandRange(0.18f, 0.24f), bStrong ? 4 : 2);
+			if (Spell.Visual.BeamStyle == TEXT("tether"))
+			{
+				// Klangband (Ziehklang): ruhig gewellt, ohne Äste, pulsiert länger
+				Bolt->SetStyle(Spell.Visual.GlowColor, 0.22f, false);
+				Bolt->Setup(Start, End, Spell.Visual.Color, Scale * 2.f, 0.38f, 5);
+			}
+			else
+			{
+				Bolt->SetStyle(Spell.Visual.GlowColor, 1.f, true);
+				Bolt->Setup(Start, End, Spell.Visual.Color, Scale * 1.6f, bStrong ? 0.26f : FMath::FRandRange(0.18f, 0.24f), bStrong ? 4 : 2);
+			}
 		}
 	}
 
@@ -263,16 +273,35 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 			bStrong ? 0.3f : 0.2f, bHitTarget ? 14000.f : 6000.f, bStrong ? 900.f : 550.f);
 		if (AEwigfelsSparkBurst* Sparks = World->SpawnActor<AEwigfelsSparkBurst>(AEwigfelsSparkBurst::StaticClass(), FTransform(End)))
 		{
-			Sparks->Setup(End, Normal, Spell.Visual.Color, bStrong ? 55 : (bHitTarget ? 30 : 20), bStrong ? 900.f : 650.f);
+			Sparks->Setup(End, Normal, Spell.Visual.SparkColor, bStrong ? 55 : (bHitTarget ? 30 : 20), bStrong ? 900.f : 650.f);
 		}
 		if (bStrong)
 		{
 			// flacher Ring senkrecht zur Schlagrichtung
 			const FRotator RingRot = FRotationMatrix::MakeFromZ(Dir).Rotator();
-			SpawnFlash(World, TEXT("cylinder"), End, RingRot, Spell.Visual.Color, FVector(0.2f, 0.2f, 0.01f), FVector(2.4f, 2.4f, 0.015f),
+			SpawnFlash(World, TEXT("cylinder"), End, RingRot, Spell.Visual.GlowColor, FVector(0.2f, 0.2f, 0.01f), FVector(2.4f, 2.4f, 0.015f),
 				0.28f, 0.f, 0.f);
 		}
 	}
+}
+
+void EwigfelsSpellVisuals::PlayLandImpact(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Location, bool bBig)
+{
+	if (!World || World->GetNetMode() == NM_DedicatedServer)
+	{
+		return;
+	}
+	const float Radius = FMath::Max(Spell.LandRadius, 150.f) * (bBig ? 1.f : 0.6f);
+	// flacher Druckring am Boden in Glühfarbe, heller Kern, Funken/Splitter in der Funkenfarbe
+	SpawnFlash(World, TEXT("cylinder"), Location + FVector(0.f, 0.f, 4.f), FRotator::ZeroRotator, Spell.Visual.GlowColor,
+		FVector(0.3f, 0.3f, 0.02f), FVector(Radius / 50.f, Radius / 50.f, 0.03f), 0.38f, 30000.f, Radius * 2.5f);
+	SpawnFlash(World, TEXT("sphere"), Location + FVector(0.f, 0.f, 30.f), FRotator::ZeroRotator,
+		FLinearColor::LerpUsingHSV(Spell.Visual.Color, FLinearColor::White, 0.5f), FVector(0.2f), FVector(1.6f), 0.16f, 0.f, 0.f);
+	if (AEwigfelsSparkBurst* Sparks = World->SpawnActor<AEwigfelsSparkBurst>(AEwigfelsSparkBurst::StaticClass(), FTransform(Location)))
+	{
+		Sparks->Setup(Location + FVector(0.f, 0.f, 10.f), FVector::UpVector, Spell.Visual.SparkColor, bBig ? 60 : 30, bBig ? 1000.f : 700.f);
+	}
+	FlashScreen(World, bBig ? 0.12f : 0.06f, 0.06f);
 }
 
 void EwigfelsSpellVisuals::PlayRelease(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Origin, const FVector& Direction, const AActor* Caster)
@@ -406,6 +435,18 @@ UStaticMeshComponent* AEwigfelsLightningBolt::MakePiece(const FLinearColor& Colo
 	return C;
 }
 
+void AEwigfelsLightningBolt::SetStyle(const FLinearColor& InGlowColor, float InJaggedness, bool bInBranches)
+{
+	GlowColor = InGlowColor;
+	bHasGlowColor = true;
+	Jaggedness = FMath::Clamp(InJaggedness, 0.f, 2.f);
+	bBranches = bInBranches;
+	if (Jaggedness < 0.5f)
+	{
+		AfterglowColor = InGlowColor; // ruhiges Band: Nachbild in der eigenen Farbe statt bläulich
+	}
+}
+
 void AEwigfelsLightningBolt::Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Width, float Duration, int32 Regenerations)
 {
 	From = Start;
@@ -439,7 +480,7 @@ void AEwigfelsLightningBolt::Setup(const FVector& Start, const FVector& End, con
 	for (FBoltPiece& Piece : Pool)
 	{
 		UMaterialInstanceDynamic* M = nullptr;
-		Piece.Outer = MakePiece(Color, 4.f, M);
+		Piece.Outer = MakePiece(bHasGlowColor ? GlowColor : Color, 4.f, M);
 		Piece.OuterMat = M;
 		Piece.Mid = MakePiece(Mid, 16.f, M);
 		Piece.MidMat = M;
@@ -456,9 +497,12 @@ void AEwigfelsLightningBolt::Generate()
 	const float Dist = FVector::Dist(From, To);
 	FBoltPath& Main = Paths.AddDefaulted_GetRef();
 	// 5 Ebenen = 32 Segmente; Versatz am Anfang ~12 % der Länge
-	MidpointDisplace(Rng, From, To, 5, FMath::Min(Dist * 0.12f, 160.f), Main.Points);
-	const TArray<FVector> MainPoints = Main.Points;
-	GrowBranches(MainPoints, 1);
+	MidpointDisplace(Rng, From, To, 5, FMath::Min(Dist * 0.12f, 160.f) * Jaggedness, Main.Points);
+	if (bBranches)
+	{
+		const TArray<FVector> MainPoints = Main.Points;
+		GrowBranches(MainPoints, 1);
+	}
 }
 
 void AEwigfelsLightningBolt::GrowBranches(const TArray<FVector>& Points, int32 Depth)
@@ -537,7 +581,7 @@ void AEwigfelsLightningBolt::Place(float Brightness, bool bAfterglow)
 			{
 				if (Piece.OuterMat)
 				{
-					Piece.OuterMat->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.35f, 0.5f, 1.f));
+					Piece.OuterMat->SetVectorParameterValue(TEXT("Color"), AfterglowColor);
 				}
 				Put(Piece.Outer, Piece.OuterMat, 9.f * W, 0.3f * Brightness);
 				Put(Piece.Mid, Piece.MidMat, 0.f, 0.f);

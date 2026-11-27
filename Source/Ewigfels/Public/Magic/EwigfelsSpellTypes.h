@@ -39,7 +39,11 @@ enum class EEwigfelsSpellEffectType : uint8
 	RestoreAtem,
 	Heal,
 	/** Unterbricht den Angreifer (nur in on_parry sinnvoll). */
-	StaggerAttacker
+	StaggerAttacker,
+	/** Hebt das Ziel Amount cm hoch und hält es Duration s in der Luft (Haltelied). */
+	Lift,
+	/** Schmettert das Ziel mit Amount cm/s zu Boden; beim Aufprall wirken on_land (Haltelied, zweiter Druck). */
+	Slam
 };
 
 /** Bonus, wenn das Ziel einen Status trägt: "bonus": { "if_status": "frozen", "mult": 2.5, "consume": true } */
@@ -154,6 +158,14 @@ struct EWIGFELS_API FEwigfelsSpellDeliveryDef
 	/** Schild: Anteil des Schadens, der trotz Block durchkommt. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	float BlockDamageMultiplier = 0.2f;
+
+	/** Strahl: so oft springt er vom Ziel zum nächsten Gegner weiter (Sturmweise = 2 → 3 Ziele). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	int32 Bounces = 0;
+
+	/** Strahl: maximale Sprungweite in cm. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	float BounceRange = 900.f;
 };
 
 USTRUCT(BlueprintType)
@@ -161,9 +173,25 @@ struct EWIGFELS_API FEwigfelsSpellVisual
 {
 	GENERATED_BODY()
 
-	/** Grundfarbe (Licht, Platzhalter-Kugel, Niagara-Parameter "User.Color"). */
+	/** Kernfarbe (Licht, Platzhalter-Kugel, Niagara-Parameter "User.Color"). Ohne vfx.color = 1. Grundton. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	FLinearColor Color = FLinearColor(1.f, 0.9f, 0.6f);
+
+	/** Saum/Glühen (Niagara "User.GlowColor"). Ohne vfx.glow_color = 2. Grundton. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FLinearColor GlowColor = FLinearColor(1.f, 0.9f, 0.6f);
+
+	/** Funken/Splitter (Niagara "User.SparkColor"). Ohne vfx.spark_color = 3. Grundton. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FLinearColor SparkColor = FLinearColor(1.f, 0.9f, 0.6f);
+
+	/** Strahl-Look: "bolt" (Zickzack-Blitz) oder "tether" (ruhiges, pulsierendes Klangband, z. B. Ziehklang). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FName BeamStyle = TEXT("bolt");
+
+	/** Fingergeste (flick, punch, stiff, clap, lift, slam, grab, rub, twitch). Montage-Rückfall: GestureMontagePath(). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FName Gesture;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	float Scale = 1.f;
@@ -204,6 +232,10 @@ struct EWIGFELS_API FEwigfelsSpellDef
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	FText Description;
+
+	/** Zauberwort (lateinisch klingend, selbst erfunden), z. B. "Scintivox". Wird beim Wirken eingeblendet. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FText Incantation;
 
 	/** kern, alltag, koop (Zauber-Katalog, Content/Data/Spells/Katalog). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
@@ -252,6 +284,20 @@ struct EWIGFELS_API FEwigfelsSpellDef
 	/** Nur Schild: Effekte bei gelungener Parade (Ziel = Wirker bzw. Angreifer). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	TArray<FEwigfelsSpellEffect> OnParry;
+
+	/** Zweiter Druck innerhalb RecastWindow s: RecastEffects wirken auf die noch gehaltenen Ziele (Haltelied → Schmettern). 0 = aus. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	float RecastWindow = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	TArray<FEwigfelsSpellEffect> RecastEffects;
+
+	/** Wirkt, wenn ein von dieser Weise geschleudertes/geschmettertes Ziel aufschlägt (am Ziel und im LandRadius). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	TArray<FEwigfelsSpellEffect> OnLand;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	float LandRadius = 0.f;
 
 	/** Nur Schild: Weise, die nach einer Parade automatisch auf den Angreifer geht. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
@@ -312,6 +358,10 @@ struct EWIGFELS_API FEwigfelsStatusDef
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	FLinearColor Color = FLinearColor::White;
+
+	/** Look am Ziel: "ice" (Eisblock, Animation steht), "notes" (kreisende Noten), "flames", "rings" (Schweberinge), "tint". */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	FName Look;
 };
 
 namespace EwigfelsSpells
@@ -329,4 +379,10 @@ namespace EwigfelsSpells
 
 	/** Grundton-Farbe (STORY_BIBLE §3.2), z. B. für HUD-Noten. Unbekannt = Weiß. */
 	EWIGFELS_API FLinearColor ChordNoteColor(FName Note);
+
+	/** Farbregel für alle Weisen: 1. Ton = Kern, 2. Ton = Glühen, 3. Ton = Funken. Fehlende Töne = vorheriger. */
+	EWIGFELS_API void ChordPalette(const TArray<FName>& Chord, FLinearColor& OutCore, FLinearColor& OutGlow, FLinearColor& OutSpark);
+
+	/** Rückfall-Montage einer Geste: /Game/Animations/Magic/Gesten/AM_Geste_<Gesture>. Leer bei None. */
+	EWIGFELS_API FSoftObjectPath GestureMontagePath(FName Gesture);
 }

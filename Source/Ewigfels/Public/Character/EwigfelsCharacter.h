@@ -179,6 +179,10 @@ protected:
 	void InputSpell2() { CastSlot(2); }
 	void InputSpell3() { CastSlot(3); }
 	void InputSpell4() { CastSlot(4); }
+	void InputSpell5() { CastSlot(5); }
+	void InputSpell6() { CastSlot(6); }
+	void InputSpell7() { CastSlot(7); }
+	void InputSpell8() { CastSlot(8); }
 	void InputLockOn();
 	void InputSwitchTarget(const FInputActionValue& Value);
 	void InputInteract();
@@ -230,6 +234,9 @@ protected:
 	UFUNCTION()
 	void HandleBeamFired(FName SpellId, FVector Start, FVector End, bool bHitTarget, uint8 ChainIndex);
 
+	UFUNCTION()
+	void HandleImpactFx(FName SpellId, FVector Location, FVector Normal, bool bBig);
+
 	/** Montage für die Abfang-Geste beim Fallen (optional, sonst nur Licht und Klangring). */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Look")
 	FSoftObjectPath FallCatchMontage = FSoftObjectPath(TEXT("/Game/Animations/Magic/AM_Magic_FallCatch.AM_Magic_FallCatch"));
@@ -262,7 +269,7 @@ private:
 	void UpdateInteractFocus();
 	void Respawn();
 	void NoteTutorialStep(FName Step);
-	void PlaySpellMontage(FName SpellId);
+	void PlaySpellMontage(FName SpellId, uint8 ChainIndex = 0);
 
 	UPROPERTY(Transient)
 	TObjectPtr<UEwigfelsInputSetup> InputSetup;

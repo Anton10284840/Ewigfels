@@ -60,7 +60,8 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ PIE mit Level |
 | Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
 | Weisen-Katalog + Prüfskript (`Scripts/Tools/validate_spells.py`) | ✅ | 🟨 Kernweisen K01/K02/K13/K25/K26 spielbar (eigenes System, E5); Alltagsweisen + `IEwigfelsWeiseTarget` Phase 5 | ✅ 0 Fehler (Cloud) |
-| Zaubersystem, eigenes (E5): Caster, Projektil, Effekte, Status (`Magic/`) | ✅ | ⬜ Build | ⬜ 5 Automation-Tests geschrieben |
+| Zaubersystem, eigenes (E5): Caster, Projektil, Strahl/Blitz, Effekte, Status (`Magic/`) | ✅ | 🟨 Bau grün bis Blitz-Umbau · ⬜ Bau Wirkungs-Baukasten | ⬜ Automation-Tests geschrieben |
+| Individuelle Weisen: Heben/Schmettern, Kettenblitz, Klangband, Aufprall (`on_land`), Status-Looks, Akkord-Farben, Gesten, Zauberworte (9 Weisen im Spiel) | ✅ | ⬜ Build | ⬜ Test `Ewigfels.Magic.IndividualSpells` geschrieben |
 | Kampf: Leben, Schaden, Status, Taumeln, Kampf-Regie (`Combat/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
 | Spielfigur: Laufen, Sprint, Ausweichen, Zielaufschaltung, Platzhalter-Körper, AnimInstance (`Character/`) | ✅ | ⬜ Build · ⬜ Game Animation Sample | ⬜ |
 | Gegner-KI Novize (Nahkampf) + Fluchsänger (Fernkampf) + Übungspuppe (`AI/`, `Content/Data/Creatures/`) | ✅ | ⬜ Build | ⬜ |

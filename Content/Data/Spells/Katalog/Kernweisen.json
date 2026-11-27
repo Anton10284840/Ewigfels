@@ -489,7 +489,7 @@
    "hands": "one",
    "delivery_hint": "projectile",
    "description": {
-    "de": "Hält einen Gegner 4 s in der Luft fest."
+    "de": "Hält einen Gegner 4 s in der Luft fest; nochmal wirken schmettert ihn zu Boden."
    },
    "combo": {
     "de": "Festgehaltene Gegner + Sturmweise = Kettenstrom."
@@ -856,7 +856,7 @@
    "hands": "one",
    "delivery_hint": "projectile",
    "description": {
-    "de": "Eislanze, verlangsamt, friert Wasser."
+    "de": "Eislanze, friert das Ziel kurz ein und friert Wasser."
    },
    "combo": {
     "de": "Eis + Wasser = Plattform; gefrorene Gegner zerbrechen bei Hammerton."

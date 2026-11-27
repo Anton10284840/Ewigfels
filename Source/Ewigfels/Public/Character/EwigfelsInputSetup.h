@@ -38,6 +38,10 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Spell2;
 	UPROPERTY() TObjectPtr<UInputAction> Spell3;
 	UPROPERTY() TObjectPtr<UInputAction> Spell4;
+	UPROPERTY() TObjectPtr<UInputAction> Spell5;
+	UPROPERTY() TObjectPtr<UInputAction> Spell6;
+	UPROPERTY() TObjectPtr<UInputAction> Spell7;
+	UPROPERTY() TObjectPtr<UInputAction> Spell8;
 	UPROPERTY() TObjectPtr<UInputAction> LockOn;
 	UPROPERTY() TObjectPtr<UInputAction> SwitchTarget;
 	UPROPERTY() TObjectPtr<UInputAction> Interact;

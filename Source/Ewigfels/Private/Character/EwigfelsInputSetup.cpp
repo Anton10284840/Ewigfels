@@ -59,6 +59,10 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	S->Spell2       = MakeAction(S, TEXT("IA_Spell2"), EInputActionValueType::Boolean);
 	S->Spell3       = MakeAction(S, TEXT("IA_Spell3"), EInputActionValueType::Boolean);
 	S->Spell4       = MakeAction(S, TEXT("IA_Spell4"), EInputActionValueType::Boolean);
+	S->Spell5       = MakeAction(S, TEXT("IA_Spell5"), EInputActionValueType::Boolean);
+	S->Spell6       = MakeAction(S, TEXT("IA_Spell6"), EInputActionValueType::Boolean);
+	S->Spell7       = MakeAction(S, TEXT("IA_Spell7"), EInputActionValueType::Boolean);
+	S->Spell8       = MakeAction(S, TEXT("IA_Spell8"), EInputActionValueType::Boolean);
 	S->LockOn       = MakeAction(S, TEXT("IA_LockOn"), EInputActionValueType::Boolean);
 	S->SwitchTarget = MakeAction(S, TEXT("IA_SwitchTarget"), EInputActionValueType::Axis1D);
 	S->Interact     = MakeAction(S, TEXT("IA_Interact"), EInputActionValueType::Boolean);
@@ -88,6 +92,11 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	C->MapKey(S->Spell2, EKeys::Two);
 	C->MapKey(S->Spell3, EKeys::Three);
 	C->MapKey(S->Spell4, EKeys::Four);
+	// 5–8 nur Tastatur; am Gamepad kommt später das Zauberrad
+	C->MapKey(S->Spell5, EKeys::Five);
+	C->MapKey(S->Spell6, EKeys::Six);
+	C->MapKey(S->Spell7, EKeys::Seven);
+	C->MapKey(S->Spell8, EKeys::Eight);
 	C->MapKey(S->Spell1, EKeys::Gamepad_DPad_Up);
 	C->MapKey(S->Spell2, EKeys::Gamepad_DPad_Right);
 	C->MapKey(S->Spell3, EKeys::Gamepad_DPad_Down);

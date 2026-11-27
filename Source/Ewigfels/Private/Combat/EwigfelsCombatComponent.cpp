@@ -2,7 +2,9 @@
 
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Combat/EwigfelsCombatDirector.h"
+#include "Combat/EwigfelsForcedMotionComponent.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
+#include "Magic/EwigfelsStatusLookComponent.h"
 #include "Ewigfels.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
@@ -31,6 +33,13 @@ void UEwigfelsCombatComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProper
 void UEwigfelsCombatComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	// Status-Look (Eisblock, Noten, Flammen …) nur dort, wo jemand hinschaut
+	AActor* LookOwner = GetOwner();
+	if (LookOwner && GetNetMode() != NM_DedicatedServer && !LookOwner->FindComponentByClass<UEwigfelsStatusLookComponent>())
+	{
+		UEwigfelsStatusLookComponent* Look = NewObject<UEwigfelsStatusLookComponent>(LookOwner, TEXT("EwigfelsStatusLook"));
+		Look->RegisterComponent();
+	}
 	if (GetOwner() && GetOwner()->HasAuthority())
 	{
 		MaxHealth = DefaultMaxHealth;
@@ -178,6 +187,10 @@ void UEwigfelsCombatComponent::ResetCombatState()
 	}
 	bDead = false;
 	ActiveStatuses.Reset();
+	if (UEwigfelsForcedMotionComponent* Motion = GetOwner()->FindComponentByClass<UEwigfelsForcedMotionComponent>())
+	{
+		Motion->Release();
+	}
 	StaggerEndTime = 0.f;
 	InvulnerableEndTime = 0.f;
 	SetHealth(MaxHealth);

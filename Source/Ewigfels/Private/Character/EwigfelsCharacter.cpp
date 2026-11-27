@@ -137,6 +137,7 @@ void AEwigfelsCharacter::BeginPlay()
 	Caster->OnShieldChanged.AddDynamic(this, &AEwigfelsCharacter::HandleShieldChanged);
 	Caster->OnParried.AddDynamic(this, &AEwigfelsCharacter::HandleParried);
 	Caster->OnBeamFired.AddDynamic(this, &AEwigfelsCharacter::HandleBeamFired);
+	Caster->OnImpactFx.AddDynamic(this, &AEwigfelsCharacter::HandleImpactFx);
 	Combat->OnHitFeedback.AddDynamic(this, &AEwigfelsCharacter::HandleHitFeedback);
 	Combat->OnDied.AddDynamic(this, &AEwigfelsCharacter::HandleDied);
 	Combat->OnStaggered.AddDynamic(this, &AEwigfelsCharacter::HandleStaggered);
@@ -202,6 +203,10 @@ void AEwigfelsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Input->BindAction(S->Spell2, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell2);
 	Input->BindAction(S->Spell3, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell3);
 	Input->BindAction(S->Spell4, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell4);
+	Input->BindAction(S->Spell5, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell5);
+	Input->BindAction(S->Spell6, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell6);
+	Input->BindAction(S->Spell7, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell7);
+	Input->BindAction(S->Spell8, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell8);
 	Input->BindAction(S->LockOn, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputLockOn);
 	Input->BindAction(S->SwitchTarget, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSwitchTarget);
 	Input->BindAction(S->Interact, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputInteract);
@@ -627,14 +632,22 @@ void AEwigfelsCharacter::Landed(const FHitResult& Hit)
 // ---------------------------------------------------------------------------
 // Rückmeldungen
 
-void AEwigfelsCharacter::PlaySpellMontage(FName SpellId)
+void AEwigfelsCharacter::PlaySpellMontage(FName SpellId, uint8 ChainIndex)
 {
 	const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(SpellId);
 	if (!Spell || !GetMesh() || !GetMesh()->GetAnimInstance())
 	{
 		return;
 	}
-	if (UAnimMontage* Montage = Cast<UAnimMontage>(EwigfelsSpellVisuals::LoadIfExists(Spell->Visual.Montage)))
+	// Reihenfolge: eigene Montage der Weise, sonst Montage ihrer Fingergeste (Zweitwirkung = Geste "slam")
+	const bool bRecast = Spell->RecastWindow > 0.f && ChainIndex == 1;
+	UAnimMontage* Montage = bRecast ? nullptr : Cast<UAnimMontage>(EwigfelsSpellVisuals::LoadIfExists(Spell->Visual.Montage));
+	if (!Montage)
+	{
+		const FName Gesture = bRecast ? FName(TEXT("slam")) : Spell->Visual.Gesture;
+		Montage = Cast<UAnimMontage>(EwigfelsSpellVisuals::LoadIfExists(EwigfelsSpells::GestureMontagePath(Gesture)));
+	}
+	if (Montage)
 	{
 		const float Speed = Combat->GetActionSpeedMultiplier();
 		PlayAnimMontage(Montage, Speed);
@@ -644,9 +657,16 @@ void AEwigfelsCharacter::PlaySpellMontage(FName SpellId)
 void AEwigfelsCharacter::HandleCastStarted(FName SpellId, uint8 ChainIndex, float CastTime)
 {
 	LocalCastPoseUntil = GetWorld()->GetTimeSeconds() + CastTime + 0.3f;
-	PlaySpellMontage(SpellId);
+	PlaySpellMontage(SpellId, ChainIndex);
 	if (IsLocallyControlled())
 	{
+		// Zauberwort kurz einblenden (nur beim ersten Kettenglied, sonst flackert es beim Funkenstoß)
+		const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(SpellId);
+		if (Spell && ChainIndex == 0 && !Spell->Incantation.IsEmpty())
+		{
+			ShowMessage(Spell->Incantation, Spell->Visual.GlowColor, 0.9f);
+		}
+
 		// Beim Zaubern sofort zur Kamera drehen (sonst fliegt der erste Schuss seitlich weg)
 		if (const AController* C = GetController())
 		{
@@ -657,6 +677,19 @@ void AEwigfelsCharacter::HandleCastStarted(FName SpellId, uint8 ChainIndex, floa
 			}
 		}
 		NoteTutorialStep(TEXT("cast"));
+	}
+}
+
+void AEwigfelsCharacter::HandleImpactFx(FName SpellId, FVector Location, FVector Normal, bool bBig)
+{
+	// Schwerer Aufprall in der Nähe: Kamera zittert (nur lokal)
+	if (!IsLocallyControlled())
+	{
+		return;
+	}
+	if (FVector::DistSquared(Location, GetActorLocation()) < FMath::Square(2500.f))
+	{
+		AddCameraShake(bBig ? 1.1f : 0.5f, bBig ? 0.4f : 0.2f);
 	}
 }
 

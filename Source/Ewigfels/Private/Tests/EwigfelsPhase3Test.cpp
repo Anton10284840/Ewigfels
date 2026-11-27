@@ -8,6 +8,7 @@
 #include "Camera/EwigfelsDialogueCameraComponent.h"
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Combat/EwigfelsCombatDirector.h"
+#include "Combat/EwigfelsForcedMotionComponent.h"
 #include "Magic/EwigfelsSpellCasterComponent.h"
 #include "Magic/EwigfelsSpellEffects.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
@@ -126,7 +127,20 @@ bool FEwigfelsSpellDataTest::RunTest(const FString& Parameters)
 	{
 		AddError(Error);
 	}
-	TestEqual(TEXT("Startbelegung = 5 Weisen"), Spells->GetDefaultLoadout().Num(), 5);
+	TestEqual(TEXT("Startbelegung = 9 Weisen (LMB, RMB, 1–7)"), Spells->GetDefaultLoadout().Num(), 9);
+	TestNotNull(TEXT("Status 'lifted' (Haltelied)"), Spells->FindStatus(TEXT("lifted")));
+	if (const FEwigfelsStatusDef* Frozen = Spells->FindStatus(TEXT("frozen")))
+	{
+		TestTrue(TEXT("Gefroren zeigt Eisblock"), Frozen->Look == FName(TEXT("ice")));
+	}
+	if (const FEwigfelsSpellDef* Halte = Spells->FindSpell(TEXT("haltelied")))
+	{
+		TestTrue(TEXT("Haltelied: Zweitdruck + Aufprall"), Halte->RecastWindow > 0.f && Halte->RecastEffects.Num() > 0 && Halte->OnLand.Num() > 0);
+	}
+	else
+	{
+		AddError(TEXT("haltelied fehlt"));
+	}
 	for (const FName Id : Spells->GetDefaultLoadout())
 	{
 		TestNotNull(*FString::Printf(TEXT("Weise %s existiert"), *Id.ToString()), Spells->FindSpell(Id));
@@ -140,6 +154,10 @@ bool FEwigfelsSpellDataTest::RunTest(const FString& Parameters)
 			{
 				TestNotNull(*FString::Printf(TEXT("%s: Status %s definiert"), *Id.ToString(), *E.Status.ToString()), Spells->FindStatus(E.Status));
 			}
+		}
+		if (Def->Kind != TEXT("gegner") && Def->Unlock != TEXT("hidden"))
+		{
+			TestFalse(*FString::Printf(TEXT("%s hat ein Zauberwort"), *Id.ToString()), Def->Incantation.IsEmpty());
 		}
 		if (!Def->CounterSpell.IsNone())
 		{
@@ -314,6 +332,74 @@ bool FEwigfelsCombatStatusTest::RunTest(const FString& Parameters)
 		TestFalse(TEXT("3. muss warten"), Director->RequestMeleeToken(C->GetOwner(), P));
 		Director->ReleaseMeleeToken(A->GetOwner());
 		TestTrue(TEXT("frei geworden"), Director->RequestMeleeToken(C->GetOwner(), P));
+	}
+	return true;
+}
+
+// ---------------------------------------------------------------------------
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FEwigfelsSpellIndividualTest, "Ewigfels.Magic.IndividualSpells",
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
+
+bool FEwigfelsSpellIndividualTest::RunTest(const FString& Parameters)
+{
+	// Farbregel: 1. Ton Kern, 2. Ton Glühen, 3. Ton Funken
+	FLinearColor Core;
+	FLinearColor Glow;
+	FLinearColor Spark;
+	const TArray<FName> Chord = { FName(TEXT("Firn")), FName(TEXT("Hall")), FName(TEXT("Glut")) };
+	EwigfelsSpells::ChordPalette(Chord, Core, Glow, Spark);
+	TestTrue(TEXT("Kern = Firn"), Core.Equals(EwigfelsSpells::ChordNoteColor(TEXT("Firn"))));
+	TestTrue(TEXT("Glühen = Hall"), Glow.Equals(EwigfelsSpells::ChordNoteColor(TEXT("Hall"))));
+	TestTrue(TEXT("Funken = Glut"), Spark.Equals(EwigfelsSpells::ChordNoteColor(TEXT("Glut"))));
+
+	TestTrue(TEXT("Gesten-Montage-Pfad"), EwigfelsSpells::GestureMontagePath(TEXT("clap")).ToString().EndsWith(TEXT("AM_Geste_clap.AM_Geste_clap")));
+	TestTrue(TEXT("ohne Geste kein Pfad"), EwigfelsSpells::GestureMontagePath(NAME_None).IsNull());
+
+	// Halten: steigt weich, erreicht die Höhe, schwebt danach nur leicht
+	TestEqual(TEXT("Start am Boden"), UEwigfelsForcedMotionComponent::HoldHeightAt(0.f, 0.35f, 260.f), 0.f, 0.01f);
+	TestTrue(TEXT("halb oben nach halber Zeit (ease-out: mehr als die Hälfte)"), UEwigfelsForcedMotionComponent::HoldHeightAt(0.175f, 0.35f, 260.f) > 130.f);
+	TestEqual(TEXT("oben angekommen"), UEwigfelsForcedMotionComponent::HoldHeightAt(0.35f, 0.35f, 260.f), 260.f, 0.5f);
+	TestTrue(TEXT("Schweben bleibt nahe der Höhe"), FMath::Abs(UEwigfelsForcedMotionComponent::HoldHeightAt(2.f, 0.35f, 260.f) - 260.f) <= 260.f * 0.061f);
+
+	// Parser: neue Felder
+	const FString Json = TEXT(R"({
+		"spells": [{
+			"id": "probe_halt", "name": "Probe", "incantation": "Probavox", "chord": ["Firn", "Hall", "Quell"],
+			"delivery": { "type": "beam", "bounces": 2, "bounce_range": 700 },
+			"effects": [ { "type": "lift", "amount": 200, "duration": 3 } ],
+			"recast": { "window": 3, "effects": [ { "type": "slam", "amount": 3000 } ] },
+			"on_land": [ { "type": "damage", "amount": 30 } ], "land_radius": 250,
+			"vfx": { "beam_style": "tether", "spark_color": "#FF0000" },
+			"anim": { "gesture": "lift" }
+		}],
+		"statuses": [{ "id": "probe_status", "look": "notes" }]
+	})");
+	TArray<FEwigfelsSpellDef> Spells;
+	TArray<FEwigfelsStatusDef> Statuses;
+	TArray<FName> Loadout;
+	TArray<FString> Errors;
+	EwigfelsSpells::ParseSpellFile(Json, TEXT("probe.json"), Spells, Statuses, Loadout, Errors);
+	TestEqual(TEXT("keine Fehler"), Errors.Num(), 0);
+	if (Spells.Num() == 1 && Statuses.Num() == 1)
+	{
+		const FEwigfelsSpellDef& S = Spells[0];
+		TestEqual(TEXT("Zauberwort"), S.Incantation.ToString(), FString(TEXT("Probavox")));
+		TestEqual(TEXT("lift"), static_cast<int32>(S.Effects[0].Type), static_cast<int32>(EEwigfelsSpellEffectType::Lift));
+		TestEqual(TEXT("recast window"), S.RecastWindow, 3.f);
+		TestEqual(TEXT("slam"), S.RecastEffects.Num() == 1 ? static_cast<int32>(S.RecastEffects[0].Type) : -1, static_cast<int32>(EEwigfelsSpellEffectType::Slam));
+		TestEqual(TEXT("on_land"), S.OnLand.Num(), 1);
+		TestEqual(TEXT("land_radius"), S.LandRadius, 250.f);
+		TestEqual(TEXT("bounces"), S.Delivery.Bounces, 2);
+		TestTrue(TEXT("beam_style"), S.Visual.BeamStyle == FName(TEXT("tether")));
+		TestTrue(TEXT("gesture"), S.Visual.Gesture == FName(TEXT("lift")));
+		TestTrue(TEXT("Kern aus Akkord"), S.Visual.Color.Equals(EwigfelsSpells::ChordNoteColor(TEXT("Firn"))));
+		TestTrue(TEXT("Funken überschrieben"), S.Visual.SparkColor.Equals(FLinearColor(FColor::Red)));
+		TestTrue(TEXT("Status-Look"), Statuses[0].Look == FName(TEXT("notes")));
+	}
+	else
+	{
+		AddError(TEXT("Probe nicht geparst"));
 	}
 	return true;
 }

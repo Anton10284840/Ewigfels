@@ -35,7 +35,7 @@ Lernwege: Meister in der Welt 166 · Unterricht 102 · selbst entdecken 49 · Mi
 |---|---|---|---|---|---|---|
 | K13 | **Glockenschild** (Bell Ward) | Hall-Grund-Firn | 1 | Block. Perfektes Timing = Reinklang (Konter + Atem zurück). | Basis jeder Verteidigung. | Start: Meister Tobiah Grell |
 | K14 | **Spiegelklang** (Mirror Tone) | Hall-Hall-Quell | 1 | Reflektiert 2 s lang alle Projektile. | Reflektierte Glut zündet Öl. | Unterricht: Meister Tobiah Grell |
-| K15 | **Haltelied** (Holding Song) | Firn-Hall-Quell | 1 | Hält einen Gegner 4 s in der Luft fest. | Festgehaltene Gegner + Sturmweise = Kettenstrom. | Unterricht: Meister Tobiah Grell |
+| K15 | **Haltelied** (Holding Song) | Firn-Hall-Quell | 1 | Hält einen Gegner 4 s in der Luft fest; nochmal wirken schmettert ihn zu Boden. | Festgehaltene Gegner + Sturmweise = Kettenstrom. | Unterricht: Meister Tobiah Grell |
 | K16 | **Wiegenlied** (Lullaby) | Quell-Firn-Wachs | 1 | Schläfert schwache Gegner und Tiere 8 s ein. Ein Treffer weckt sie. | Schlafende Gegner = Überraschungsangriff. Nicht bei Bossen. | Unterricht: Dozentin Saphira Lindqvist |
 | K17 | **Gleitschleier** (Glide Veil) | Strom-Hall-Wachs | 1 | Fängt Stürze ab und lässt dich 3 s sanft schweben. Grundlage für das spätere Gleiten. | Mit Windstoß nach unten springt man höher. | Unterricht: Magister Pim Ollendorf |
 | K18 | **Atemwende** (Breath Turn) | Quell-Quell-Wachs | 2 | Heilt über Zeit und füllt Atem. | Begleiter wird mitgeheilt (Talent). | Meister in der Welt: Mutter Quendel |
@@ -51,7 +51,7 @@ Lernwege: Meister in der Welt 166 · Unterricht 102 · selbst entdecken 49 · Mi
 | ID | Weise | Akkord | Akt | Effekt | Combo | Lernen bei |
 |---|---|---|---|---|---|---|
 | K25 | **Glutweise** (Ember Air) | Glut-Glut-Strom | 1 | Feuerball, Brennen-Effekt. | Feuer + Öl = Explosion, Feuer + Eis = Dampfwolke (Sichtschutz). | Unterricht: Dozentin Brunhilde „Bruni“ Kesselmayr |
-| K26 | **Frostweise** (Frost Air) | Firn-Firn-Quell | 1 | Eislanze, verlangsamt, friert Wasser. | Eis + Wasser = Plattform; gefrorene Gegner zerbrechen bei Hammerton. | Unterricht: Dozentin Brunhilde „Bruni“ Kesselmayr |
+| K26 | **Frostweise** (Frost Air) | Firn-Firn-Quell | 1 | Eislanze, friert das Ziel kurz ein und friert Wasser. | Eis + Wasser = Plattform; gefrorene Gegner zerbrechen bei Hammerton. | Unterricht: Dozentin Brunhilde „Bruni“ Kesselmayr |
 | K27 | **Windstoß** (Gust) | Strom-Strom-Quell | 1 | Windböe: schiebt Gegner, Kisten, Boote und Segel, löscht kleine Feuer, bläst Nebel weg. | Gegner über Kanten schubsen; mit Gleitschleier höher springen. | Unterricht: Dozentin Brunhilde „Bruni“ Kesselmayr |
 | K28 | **Sturmweise** (Storm Air) | Strom-Strom-Strom | 2 | Blitz springt auf 3 Ziele. | Blitz + Nässe = doppelte Reichweite und Betäubung. | Unterricht: Magister Corvin Hale |
 | K29 | **Flutweise** (Flood Air) | Quell-Quell-Strom | 2 | Wasserschwall, macht nass, löscht Feuer. | Bereitet Sturm- und Frostweise vor. | Unterricht: Magister Corvin Hale |
