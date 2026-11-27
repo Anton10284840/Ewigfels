@@ -1,0 +1,91 @@
+{
+  "_doc": "Gegnertypen für Phase 3 (GDD §5.1). Format: docs/SPELL_FORMAT.md §4. id = Ziel für Quest-Ziele {kind: defeat, target: <id>}.",
+  "creatures": [
+    {
+      "id": "Novize",
+      "name": {
+        "de": "Novize der Stillen Hand",
+        "en": "Novice of the Silent Hand"
+      },
+      "faction": "StilleHand",
+      "behavior": "melee",
+      "health": 85,
+      "walk_speed": 260,
+      "run_speed": 470,
+      "aggro_radius": 2600,
+      "attack_range": 210,
+      "preferred_range": 0,
+      "spells": [
+        "novize_hieb",
+        "novize_ansturm"
+      ],
+      "element_mult": {
+        "Hall": 1.0,
+        "Urton": 0.5
+      },
+      "stagger_threshold": 18,
+      "look": {
+        "body": "#3A3F4A",
+        "accent": "#E8E8F0",
+        "eyes": "#FFFFFF",
+        "height": 1.0,
+        "hood": true
+      }
+    },
+    {
+      "id": "Fluchsaenger",
+      "name": {
+        "de": "Fluchsänger",
+        "en": "Hexsinger"
+      },
+      "faction": "Missklinger",
+      "behavior": "ranged",
+      "health": 60,
+      "walk_speed": 240,
+      "run_speed": 420,
+      "aggro_radius": 3200,
+      "attack_range": 2200,
+      "preferred_range": 1300,
+      "flee_range": 420,
+      "spells": [
+        "fluch_kugel",
+        "fluch_kreis"
+      ],
+      "element_mult": {
+        "Glut": 1.5,
+        "Hall": 1.25
+      },
+      "stagger_threshold": 12,
+      "look": {
+        "body": "#1E1426",
+        "accent": "#8A4DFF",
+        "eyes": "#C9A2FF",
+        "height": 1.12,
+        "hood": true
+      }
+    },
+    {
+      "id": "Uebungspuppe",
+      "name": {
+        "de": "Übungspuppe",
+        "en": "Training Dummy"
+      },
+      "faction": "Akademie",
+      "behavior": "dummy",
+      "health": 250,
+      "walk_speed": 0,
+      "run_speed": 0,
+      "aggro_radius": 0,
+      "attack_range": 0,
+      "spells": [],
+      "stagger_threshold": 9999,
+      "look": {
+        "body": "#8A6A44",
+        "accent": "#FFD27A",
+        "eyes": "#FFE7B0",
+        "height": 1.0,
+        "hood": false
+      }
+    }
+  ]
+}

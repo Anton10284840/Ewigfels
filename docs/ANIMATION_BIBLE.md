@@ -33,6 +33,7 @@ Regeln:
 - Logik im **C++-AnimInstance** (`UEwigfelsAnimInstance`): Werte berechnen, AnimBP nur verdrahten. Thread-safe Update-Funktionen nutzen.
 - Foot IK und Look-At als **Control Rig** (`CR_FootIK`, `CR_LookAt`), nicht im AnimGraph nachgebaut.
 - Kleidung: Leader Pose Component, keine eigenen AnimBPs für Outfit-Teile.
+- **Stand Phase 3:** `UEwigfelsAnimInstance` liefert bereits `GroundSpeed`, `Direction`, `Lean`, `bIsSprinting`, `bIsStrafing`, `bIsDodging`, `AimPitch/AimYaw`, `bIsCasting`, `bTwoHandedCast`, `bShieldUp`, `CastSchool`, `CastNote` (wählt die Fingerpose), `HandReadyAlpha`, `bIsStaggered`, `bIsDead`, `Exhaustion`. Übergang: Game Animation Sample per Reparent auf `AEwigfelsCharacter` (docs/PHASE3_EDITOR.md §2), eigenes `ABP_EwigfelsCharacter` danach. Montages je Weise: `anim.montage` in der Weisen-JSON (SPELL_FORMAT.md).
 
 ## 3. Animationssets – Checkliste
 

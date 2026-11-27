@@ -3,7 +3,8 @@
 using UnrealBuildTool;
 
 /// Primäres Spielmodul. Systeme liegen vorerst als Unterordner hier
-/// (WorldState, Quest, Dialogue, Save) und werden zu eigenen Modulen, sobald sie groß genug sind.
+/// (WorldState, Quest, Dialogue, Save, Magic, Combat, Character, AI, Camera, World, UI)
+/// und werden zu eigenen Modulen, sobald sie groß genug sind.
 public class Ewigfels : ModuleRules
 {
 	public Ewigfels(ReadOnlyTargetRules Target) : base(Target)
@@ -18,7 +19,18 @@ public class Ewigfels : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"Json",
-			"SUDS" // Dialoge (Plugins/ThirdParty/SUDS, Install-Plugins.ps1)
+			"SUDS",              // Dialoge (Plugins/ThirdParty/SUDS, Install-Plugins.ps1)
+			"Niagara",           // Weisen-VFX
+			"AIModule",          // Gegner-KI
+			"GameplayTasks",     // von AIModule gebraucht
+			"NavigationSystem",  // Wegfindung der Gegner
+			"CinematicCamera",   // Dialog-Kamera
+			"AnimGraphRuntime"   // UKismetAnimationLibrary (AnimInstance)
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"NetCore"            // Replikation (FVector_NetQuantize, Push-Model-kompatibel)
 		});
 	}
 }

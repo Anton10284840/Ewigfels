@@ -1,0 +1,17 @@
+{
+  "_doc": "Status-Effekte (GDD §4.3). Format: docs/SPELL_FORMAT.md §3. Farben = Grundton-Farben (STORY_BIBLE §3.2).",
+  "statuses": [
+    { "id": "burning", "name": { "de": "Brennen", "en": "Burning" }, "duration": 4.0,
+      "damage_per_second": 5.0, "color": "#FF9A3C", "cancels": ["frozen", "chilled", "wet"] },
+    { "id": "chilled", "name": { "de": "Unterkühlt", "en": "Chilled" }, "duration": 3.0,
+      "move_speed_mult": 0.55, "action_speed_mult": 0.75, "color": "#9AD8FF", "cancels": ["burning"],
+      "escalate_at": 3, "escalate_to": "frozen" },
+    { "id": "frozen", "name": { "de": "Gefroren", "en": "Frozen" }, "duration": 2.5,
+      "move_speed_mult": 0.0, "stops_actions": true, "color": "#CFF1FF", "cancels": ["burning", "chilled"] },
+    { "id": "wet", "name": { "de": "Nass", "en": "Wet" }, "duration": 8.0, "color": "#3CE0D0", "cancels": ["burning"] },
+    { "id": "stunned", "name": { "de": "Betäubt", "en": "Stunned" }, "duration": 1.2,
+      "move_speed_mult": 0.0, "stops_actions": true, "color": "#FFF6B0" },
+    { "id": "cursed", "name": { "de": "Verflucht", "en": "Cursed" }, "duration": 5.0,
+      "move_speed_mult": 0.7, "atem_regen_mult": 0.3, "color": "#8A4DFF" }
+  ]
+}
