@@ -1,6 +1,7 @@
 // Copyright Ewigfels. Alle Rechte vorbehalten.
 
 #include "Quest/EwigfelsQuestTypes.h"
+#include "EwigfelsLanguage.h"
 #include "Dom/JsonObject.h"
 #include "Dom/JsonValue.h"
 #include "Serialization/JsonReader.h"
@@ -43,7 +44,7 @@ namespace
 		const TSharedPtr<FJsonObject>* LocObj = nullptr;
 		if (Value->TryGetObject(LocObj) && LocObj)
 		{
-			const FString Lang = FInternationalization::Get().GetCurrentLanguage()->GetTwoLetterISOLanguageName();
+			const FString Lang = EwigfelsLanguage::Get();
 			FString Out;
 			if ((*LocObj)->TryGetStringField(Lang, Out) || (*LocObj)->TryGetStringField(TEXT("de"), Out))
 			{

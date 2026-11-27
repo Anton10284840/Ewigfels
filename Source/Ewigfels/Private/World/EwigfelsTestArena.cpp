@@ -182,7 +182,7 @@ void AEwigfelsTestArena::OnConstruction(const FTransform& Transform)
 	for (UStaticMeshComponent* P : Pillars)    { EwigfelsSpellVisuals::ApplySurface(P, TEXT("Pillar"), StoneLight, 0.75f); }
 	for (UStaticMeshComponent* G : PillarGlows) { EwigfelsSpellVisuals::ApplyGlow(G, Amber, 18.f); }
 	for (UStaticMeshComponent* W : Walls)      { EwigfelsSpellVisuals::ApplySurface(W, TEXT("Wall"), StoneLight, 0.8f); }
-	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySurface(C, TEXT("Rock"), Stone, 0.9f); }
+	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySurface(C, TEXT("Rock"), Stone, 0.9f, FLinearColor(1.7f, 1.6f, 1.5f)); } // Fels ist sonst zu dunkel
 }
 
 FTransform AEwigfelsTestArena::GetPlayerSpawn() const

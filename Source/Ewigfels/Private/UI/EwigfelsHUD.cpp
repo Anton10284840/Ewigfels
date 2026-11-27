@@ -215,7 +215,7 @@ void AEwigfelsHUD::DrawStatuses(AEwigfelsCharacter* Player, float X, float Y)
 void AEwigfelsHUD::DrawSpellBar(AEwigfelsCharacter* Player)
 {
 	const UEwigfelsSpellCasterComponent* Caster = Player->GetCaster();
-	// Reihenfolge wie die Tasten: LMB, 1–4, RMB
+	// Reihenfolge wie die Tasten: LMB, 1–8, RMB
 	TArray<TPair<FString, FName>> Slots;
 	Slots.Emplace(TEXT("LMB"), Caster->BasicSpell);
 	int32 Index = 0;
@@ -225,7 +225,7 @@ void AEwigfelsHUD::DrawSpellBar(AEwigfelsCharacter* Player)
 		{
 			continue;
 		}
-		if (++Index > 4)
+		if (++Index > 8)
 		{
 			break;
 		}
@@ -233,8 +233,9 @@ void AEwigfelsHUD::DrawSpellBar(AEwigfelsCharacter* Player)
 	}
 	Slots.Emplace(TEXT("RMB"), Caster->ShieldSpell);
 
-	const float Size = S(68.f);
-	const float Gap = S(10.f);
+	// Bei 10 Plätzen etwas kleiner, damit Namen nicht ineinanderlaufen
+	const float Size = S(Slots.Num() > 7 ? 60.f : 68.f);
+	const float Gap = S(Slots.Num() > 7 ? 16.f : 10.f);
 	const float Total = Slots.Num() * Size + (Slots.Num() - 1) * Gap;
 	float X = (Canvas->ClipX - Total) * 0.5f;
 	const float Y = Canvas->ClipY - Size - S(40.f);
@@ -253,14 +254,19 @@ void AEwigfelsHUD::DrawSpellBar(AEwigfelsCharacter* Player)
 		const bool bShieldActive = Spell->Delivery.Type == EEwigfelsSpellDelivery::Shield && Caster->IsShieldUp();
 		const bool bNoAtem = Reason == EEwigfelsCastFailReason::NoAtem;
 
-		const FLinearColor Frame = (bActive || bShieldActive) ? Spell->Visual.Color : FLinearColor(0.35f, 0.33f, 0.3f, 0.9f);
+		const bool bRecast = Caster->IsRecastReady(Spell->Id);
+		const FLinearColor Frame = (bActive || bShieldActive || bRecast) ? Spell->Visual.GlowColor : FLinearColor(0.35f, 0.33f, 0.3f, 0.9f);
 		DrawRect(Frame, X - S(2.f), Y - S(2.f), Size + S(4.f), Size + S(4.f));
 		DrawRect(Ink, X, Y, Size, Size);
 		// Farbkern der Weise
 		const FLinearColor Core = bNoAtem ? FLinearColor(0.15f, 0.2f, 0.35f, 0.8f) : FLinearColor(Spell->Visual.Color.R, Spell->Visual.Color.G, Spell->Visual.Color.B, 0.35f);
 		DrawRect(Core, X + S(6.f), Y + S(6.f), Size - S(12.f), Size - S(26.f));
 		// Abklingzeit als von oben ablaufende Abdeckung
-		if (Cd > 0.f && Spell->Cooldown > 0.f)
+		if (bRecast)
+		{
+			Text(TEXT("nochmal!"), X + Size * 0.5f, Y + Size * 0.28f, Gold, Small(), 1.f, true);
+		}
+		else if (Cd > 0.f && Spell->Cooldown > 0.f)
 		{
 			const float Frac = FMath::Clamp(Cd / Spell->Cooldown, 0.f, 1.f);
 			DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.65f), X, Y, Size, Size * Frac);
@@ -423,19 +429,52 @@ void AEwigfelsHUD::DrawHelp(AEwigfelsCharacter* Player)
 		Text(LOCTEXT("HelpHint", "F1: Steuerung").ToString(), S(20.f), S(16.f), FLinearColor(1.f, 1.f, 1.f, 0.5f), Small(), 1.f);
 		return;
 	}
-	static const TCHAR* Lines[] = {
-		TEXT("Nocturna – Testarena (Phase 3)"),
-		TEXT("WASD  Laufen      Shift  Sprinten      Leertaste  Springen      Alt/C  Ausweichen"),
-		TEXT("Linke Maustaste  Funkenstoß (3er-Kette)      Rechte Maustaste halten  Glockenschild"),
-		TEXT("Schild genau vor dem Treffer heben = Reinklang (Konter)"),
-		TEXT("1 Hammerton   2 Glutweise   3 Frostweise      Tab/Mausrad-Klick  Ziel aufschalten, Mausrad  Ziel wechseln"),
-		TEXT("E  Sprechen      F1  Hilfe aus      Konsole: Ewigfels.Arena.Wave"),
-		TEXT("Combos: Frost x3 = Gefroren, dann Hammerton (x2,5)  ·  Glut taut Eis"),
+	// Tastenbelegung der Weisen kommt aus der Belegung, damit die Hilfe nie veraltet
+	const UEwigfelsSpellCasterComponent* Caster = Player->GetCaster();
+	auto SpellLabel = [Caster](FName Id) -> FString
+	{
+		const FEwigfelsSpellDef* Spell = Caster ? Caster->FindSpellDef(Id) : nullptr;
+		if (!Spell)
+		{
+			return Id.ToString();
+		}
+		return Spell->Incantation.IsEmpty() ? Spell->Name.ToString()
+			: FString::Printf(TEXT("%s (%s)"), *Spell->Name.ToString(), *Spell->Incantation.ToString());
 	};
+	TArray<FString> SlotTexts;
+	if (Caster)
+	{
+		int32 Index = 0;
+		for (const FName Id : Caster->GetLoadout())
+		{
+			if (Id != Caster->BasicSpell && Id != Caster->ShieldSpell && ++Index <= 8)
+			{
+				SlotTexts.Add(FString::Printf(TEXT("%d %s"), Index, *SpellLabel(Id)));
+			}
+		}
+	}
+	TArray<FString> Lines;
+	Lines.Add(TEXT("Nocturna – Testarena"));
+	Lines.Add(TEXT("WASD  Laufen      Shift  Sprinten      Leertaste  Springen      Alt/C  Ausweichen"));
+	Lines.Add(FString::Printf(TEXT("Linke Maustaste  %s (3er-Kette)      Rechte Maustaste halten  %s"),
+		Caster ? *SpellLabel(Caster->BasicSpell) : TEXT("-"), Caster ? *SpellLabel(Caster->ShieldSpell) : TEXT("-")));
+	Lines.Add(TEXT("Schild genau vor dem Treffer heben = Reinklang (Konter)"));
+	for (int32 i = 0; i < SlotTexts.Num(); i += 4)
+	{
+		FString Row;
+		for (int32 j = i; j < FMath::Min(i + 4, SlotTexts.Num()); ++j)
+		{
+			Row += (j > i ? TEXT("    ") : TEXT("")) + SlotTexts[j];
+		}
+		Lines.Add(Row);
+	}
+	Lines.Add(TEXT("Haltelied: nochmal drücken = zu Boden schmettern      Tab/Mausrad-Klick  Ziel aufschalten, Mausrad  Ziel wechseln"));
+	Lines.Add(TEXT("Combos: Frostweise friert ein, dann Hammerton oder 3. Funkenstoß = Zerspringen  ·  Glut taut Eis"));
+	Lines.Add(TEXT("E  Sprechen      F1  Hilfe aus      Konsole: Ewigfels.Arena.Wave, Ewigfels.Language en"));
 	float Y = S(16.f);
-	DrawRect(Ink, S(10.f), S(10.f), S(760.f), S(18.f) * static_cast<float>(UE_ARRAY_COUNT(Lines)) + S(14.f));
+	DrawRect(Ink, S(10.f), S(10.f), S(900.f), S(18.f) * static_cast<float>(Lines.Num()) + S(14.f));
 	bool bFirst = true;
-	for (const TCHAR* HelpLine : Lines)
+	for (const FString& HelpLine : Lines)
 	{
 		Text(HelpLine, S(20.f), Y, bFirst ? Gold : Soft, Small(), 1.f);
 		bFirst = false;
