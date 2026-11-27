@@ -24,13 +24,16 @@ MAT_DIR = "/Game/Environment/Materials"
 VFX_DIR = "/Game/VFX/Materials"
 API = "https://ambientcg.com/api/v2/full_json?type=Material&q={q}&sort=Popular&limit=8&include=downloadData"
 
-# Fläche -> (Suchbegriffe der Reihe nach, Kachelgröße in cm). Erstes Ergebnis mit 2K-JPG gewinnt.
+ID_API = "https://ambientcg.com/api/v2/full_json?id={q}&include=downloadData"
+
+# Fläche -> (feste Asset-ID "id:…" zuerst, dann Suchbegriffe als Rückfall, Kachelgröße in cm). Erstes Ergebnis mit 2K-JPG gewinnt.
+# Feste IDs nach Vorschaubild ausgesucht (Suche liefert sonst z. B. Ground111 für "rock" oder weiße Badfliesen für "tiles stone").
 SURFACES = {
-    "Ground": (["paving stones", "cobblestone", "ground"], 300.0),
-    "Wall":   (["castle wall", "bricks stone", "rock"], 260.0),
-    "Pillar": (["marble", "concrete", "plaster"], 180.0),
-    "Rock":   (["rock", "cliff"], 220.0),
-    "Paving": (["tiles stone", "paving stones"], 160.0),
+    "Ground": (["id:PavingStones150", "cobblestone", "paving stones"], 300.0),  # Kopfsteinpflaster
+    "Wall":   (["id:Bricks113A", "bricks stone"], 260.0),                       # grobe Steinquader
+    "Pillar": (["id:PavingStones128", "marble"], 180.0),                        # helle Sandstein-Quader
+    "Rock":   (["id:Rock058", "cliff"], 220.0),                                 # dunkler Fels
+    "Paving": (["id:Tiles130", "paving stones"], 160.0),                        # alte, gebrochene Steinplatten
 }
 MAPS = {"Color": "BaseColor", "NormalDX": "Normal", "Roughness": "Roughness", "AmbientOcclusion": "AO"}
 
@@ -57,7 +60,10 @@ def http_bytes(url):
 
 def find_download(queries):
     for q in queries:
-        data = http_json(API.format(q=urllib.parse.quote(q)))
+        if q.startswith("id:"):
+            data = http_json(ID_API.format(q=urllib.parse.quote(q[3:])))
+        else:
+            data = http_json(API.format(q=urllib.parse.quote(q)))
         for asset in data.get("foundAssets", []):
             cats = (asset.get("downloadFolders", {}).get("default", {}) or {}).get("downloadFiletypeCategories", {})
             for d in (cats.get("zip", {}) or {}).get("downloads", []):
@@ -128,7 +134,7 @@ def fresh(path_dir, name, cls=unreal.Material, factory=None):
     return asset_tools.create_asset(name, path_dir, cls, factory or unreal.MaterialFactoryNew())
 
 
-def make_triplanar():
+def make_triplanar(defaults):
     """Weltbezogenes PBR: drei Projektionen (oben, vorne, seitlich), nach Flächennormale überblendet."""
     mat = fresh(MAT_DIR, "M_EwigfelsTriplanar")
     wp = node(mat, unreal.MaterialExpressionWorldPosition, -2000, 0)
@@ -174,10 +180,13 @@ def make_triplanar():
         weights[k] = d
 
     def triplanar(param, x, y, sampler):
+        # Ohne passende Standard-Textur kompiliert das Material nicht ("Sampler type is Normal, should be Color").
         acc = None
         for i, k in enumerate(("xy", "xz", "yz")):
             t = node(mat, unreal.MaterialExpressionTextureSampleParameter2D, x, y + i * 180)
             t.set_editor_property("parameter_name", param)
+            if defaults.get(param):
+                t.set_editor_property("texture", defaults[param])
             t.set_editor_property("sampler_type", sampler)
             connect(uv[k], "", t, "UVs")
             mul = node(mat, unreal.MaterialExpressionMultiply, x + 250, y + i * 180)
@@ -200,11 +209,11 @@ def make_triplanar():
     connect(color, "", tinted, "A")
     connect(tint, "", tinted, "B")
     normal = triplanar("Normal", -600, -300, unreal.MaterialSamplerType.SAMPLERTYPE_NORMAL)
-    rough = triplanar("Roughness", -600, 300, unreal.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR)
+    rough = triplanar("Roughness", -600, 300, unreal.MaterialSamplerType.SAMPLERTYPE_MASKS)
     rmask = node(mat, unreal.MaterialExpressionComponentMask, 50, 300)
     rmask.set_editor_property("r", True)
     connect(rough, "", rmask, "")
-    ao = triplanar("AO", -600, 900, unreal.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR)
+    ao = triplanar("AO", -600, 900, unreal.MaterialSamplerType.SAMPLERTYPE_MASKS)
     amask = node(mat, unreal.MaterialExpressionComponentMask, 50, 900)
     amask.set_editor_property("r", True)
     connect(ao, "", amask, "")
@@ -306,7 +315,10 @@ def make_heat():
     connect(moved, "", noise, "Position")
     fres = node(mat, unreal.MaterialExpressionFresnel, -500, 300)
     fres.set_editor_property("exponent", 1.5)
-    inv = node(mat, unreal.MaterialExpressionOneMinus, -350, 300)
+    # Ohne eigene Normale nimmt Fresnel PixelNormalWS -> Kreis, weil wir hier selbst Normal ausgeben.
+    vnrm = node(mat, unreal.MaterialExpressionVertexNormalWS, -700, 350)
+    connect(vnrm, "", fres, "Normal")
+    inv =node(mat, unreal.MaterialExpressionOneMinus, -350, 300)
     connect(fres, "", inv, "")
     strength = node(mat, unreal.MaterialExpressionScalarParameter, -500, 450)
     strength.set_editor_property("parameter_name", "Strength")
@@ -338,7 +350,8 @@ def make_heat():
 
 
 def main():
-    parent = make_triplanar()
+    # Erst alle Texturen laden, dann den Master mit echten Standard-Texturen bauen (sonst kompiliert er nicht).
+    fetched = []
     for surface, (queries, tile) in SURFACES.items():
         try:
             asset_id, textures = fetch_surface(surface, queries)
@@ -346,6 +359,18 @@ def main():
             unreal.log_warning("[Ewigfels Foto] %s: Download fehlgeschlagen: %s" % (surface, e))
             continue
         if textures:
+            fetched.append((surface, asset_id, textures, tile))
+    defaults = {}
+    for _, _, textures, _ in fetched:
+        for kind, tex in textures.items():
+            defaults.setdefault(kind, tex)
+    if fetched:
+        # Alte Instanzen zuerst weg, sonst hängt der Master beim Neuanlegen noch an ihnen.
+        for surface in SURFACES:
+            if eal.does_asset_exist(MAT_DIR + "/MI_Ewigfels_" + surface):
+                eal.delete_asset(MAT_DIR + "/MI_Ewigfels_" + surface)
+        parent = make_triplanar(defaults)
+        for surface, asset_id, textures, tile in fetched:
             make_instance(parent, surface, textures, tile)
             log("%s = ambientCG %s (CC0)" % (surface, asset_id))
     make_ice()
