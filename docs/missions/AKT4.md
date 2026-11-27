@@ -25,14 +25,14 @@ Die Akademie wird in M406 angegriffen und verändert sich danach sichtbar (zerst
 
 **Ablauf**
 1. **Flug** auf der Sturmschwinge über die Wolkendecke (Höhenlimit, Windströme als Autobahnen).
-2. **Windnest:** Inseldorf an Ketten. Kinder fliegen mit Drachen, die sie selbst steuern. Der Älteste, **Ole Lenz**, kennt einen Kael-Ort: das **Himmelstor** (*myr kor*).
+2. **Windnest:** Inseldorf an Ketten. Kinder fliegen mit Drachen, die sie selbst steuern. Der Älteste, **Ansgar Lenz**, kennt einen Kael-Ort: das **Himmelstor** (*myr kor*).
 3. **Inselrätsel:** Drei Inseln müssen mit *Leichtklang* und Windweisen in eine Linie gebracht werden, damit sich ein Weg aus Licht bildet.
 4. **Das Himmelstor:** Ein Kael-Observatorium. An der Decke: eine Karte aller **Adern** Velmarks als Notenlinien. Die Kael haben die Welt **gestimmt** wie ein Instrument. Wer den Urton an den sieben großen Aderknoten gleichzeitig spielt, kann alles neu stimmen (**Grundlage für Ende A**). `flag:Has_AderMap=1`
 5. **Sturmrochen** (Regionsboss, optional jetzt, Pflicht später) kreist um die Insel.
 
 **Gegner:** Wolkenrochen-Schwarm, Klangwächter.
 **Rätsel:** Inseln ausrichten, Aderkarte lesen (Sternkunde-Minispiel).
-**Dialoge:** D_M401_OleLenz, D_M401_Lio (nur wenn Lio noch beim Spieler ist; sonst Aurelia oder Nym-Echo).
+**Dialoge:** D_M401_AnsgarLenz, D_M401_Lio (nur wenn Lio noch beim Spieler ist; sonst Aurelia oder Nym-Echo).
 **Belohnung:** 700 EP, Aderkarte, Windnest-Schnellreise, Perlsegler-Spur.
 **Haken:** Von oben sieht der Spieler auf Aurenburg: über der Stadt hängen neue, riesige **Bannglocken**.
 
