@@ -51,7 +51,7 @@ Jede Weise hat in ihrer JSON schon den Pfad (`vfx.niagara`, z. B. `/Game/VFX/Spe
 
 - [ ] Leere Karte → Arena erscheint, Nachricht „Nocturna: Phase 3 – Testarena“
 - [ ] WASD, Maus, Springen, Sprinten (Umschalt), Ausweichen (Alt/C)
-- [ ] 1–5 zaubern, rechte Maustaste Schild, Parade im richtigen Moment = Zeitlupe + Konter
+- [ ] Linke Maustaste Funkenstoß (3er-Kette), 2 Hammerton, 3 Glutweise, 4 Frostweise, rechte Maustaste Schild, Parade im richtigen Moment = Zeitlupe + Konter
 - [ ] Mittlere Maustaste/Tab: Zielaufschaltung, Mausrad wechselt Ziel
 - [ ] Lio ansprechen (E) → Dialogkamera wechselt Einstellungen
 - [ ] Gegnerwellen: Novizen greifen höchstens zu zweit an, Fluchsänger halten Abstand
