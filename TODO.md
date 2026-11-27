@@ -59,7 +59,7 @@ Geschichte und Daten (🤖, geht ohne PC):
 - ✅ Schulleben-Quests S101–S118 als JSON
 - ✅ Region Ilsensee: Uferlicht + Stillwasser, 6 Nebenquests N101–N106 als JSON + 13 Dialoge, Regionsdaten `Content/Data/World/Regions/Ilsensee.json`
 - ✅ Region Raunwald: Pilzhausen + Krähenhain, Nebenquests N111–N116 + 13 Dialoge (`docs/regionen/RAUNWALD.md`)
-- ⬜ Kesselbrunn (+ Russgrube) ausarbeiten
+- 🟨 Kesselbrunn (+ Russgrube): Beschreibung fertig (`docs/regionen/KESSELBRUNN.md`), Quests N121–N126 + Dialoge folgen
 - ✅ Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
 - ⬜ Kampfwerte (Leben, Tempo, Weisen) der Akt-1-Gegner im Phase-3-Format ableiten (nach Build von Phase 3)
 - ✅ Reittier Moosbock (Zähm-Quest N116)
