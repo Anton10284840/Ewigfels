@@ -1,113 +1,132 @@
-# TO-DO – Nocturna (Gesamtüberblick)
+# TO-DO – Nocturna (die Reihenfolge bis zum fertigen Spiel)
 
-Stand: 27.11.2026 · Diese Liste zeigt **alles**, was bis zum fertigen Spiel zu tun ist, in der Reihenfolge, in der wir es machen. Details und Status pro System stehen in [PROGRESS.md](PROGRESS.md).
+Stand: 27.11.2026, abends
 
-Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (Editor, testen, entscheiden) · 🤖 = Claude (Text/Code, geht auch ohne deinen PC)
+## 👉 Dein nächster Schritt
 
-**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Story, Dialoge, Gegner, Reittiere und die Regionen Ilsensee und Raunwald sind als Text und Daten fertig (PR #13).
+> **Schreib mir, welche Webcam du hast** (Marke und Modell, steht meist auf der Kamera oder dem Kabel). Mehr nicht.
+>
+> Lass den PC an und den Unreal-Editor in Ruhe: Claude arbeitet dort gerade per Remote Control am neuen Look.
 
----
-
-## Jetzt als Nächstes
-
-| # | Aufgabe | Wer | Status |
-|---|---|---|---|
-| 1 | Phase 3 bauen und testen (PR #10, übernommen), Fehler beheben | 👤 + 🤖 | 🟨 |
-| 2 | Charakter-Editor bauen (PR #11), Gesichts-Technik entscheiden | 👤 + 🤖 | 🟨 |
-| 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) → `docs/missions/` | 🤖 | ✅ |
-| 4 | Dialoge für Lio, Lehrkräfte und Mitschüler → `docs/DIALOG_STIMMEN.md` | 🤖 | ✅ |
-| 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten → `docs/BESTIARIUM.md` | 🤖 | ✅ |
-| 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests → `docs/regionen/` | 🤖 | ✅ |
-| 7 | Game Animation Sample einbinden (docs/PHASE3_EDITOR.md, ein Schritt pro Nachricht) | 👤 | ⬜ |
+Danach geht es mit Schritt 12 weiter. Sobald du dran bist, sagt Claude dir Bescheid, immer nur ein Schritt pro Nachricht.
 
 ---
 
-## Phase 0 – Einrichtung (fast fertig)
-- [x] 🤖 Hardware erfasst, Tools ausgewählt, Lizenzen geprüft
-- [x] 🤖 Projekt, GitHub-Repo, OneDrive-Backup-Skript
-- [x] 👤 Erster Build auf dem PC
-- [ ] 👤 Plugins installieren (Install-Plugins.ps1 per Remote Control)
-- [ ] 👤 Unreal MCP (Editor-Steuerung) einmal testen
-- [ ] 👤 Webcam-Modell nennen (für Bewegungsaufnahme)
-- [ ] 👤 Pixel 10 Pro für Gesichtsaufnahmen einrichten (PR #2)
+**Legende**
+- 🤖 = Claude macht das allein (Text, Code, Daten, geht ohne dich)
+- 👤 = du (entscheiden, etwas herunterladen, anspielen, Rückmeldung geben)
+- 🤝 = zusammen am PC (Claude steuert per Remote Control, du schaust und sagst, ob es passt)
+- `[x]` fertig · `[ ]` offen · 🟨 läuft gerade
 
-## Phase 1 – Bibeln und Bilder 🟨
-- [x] 🤖 GDD, Story-, Figuren-, Grafik-, Animations-Bibel
-- [x] 🤖 430 Weisen (Zauber) als Daten, Akt-1-Schulleben
-- [ ] 👤 Concept-Bilder mit ComfyUI erzeugen (ca. 1 Std. Rechenzeit, läuft allein), dann die besten auswählen
-- [ ] 👤 Grundsatzentscheidungen E2–E5 im GDD bestätigen
-
-## Phase 2 – Kernsysteme
-- [x] 🤖 Weltstatus, Quests aus JSON, Dialoge (SUDS), Speichern, Prüfskript, 9/9 Tests grün
-
-## Phase 3 – Spielfigur, Zaubern, Kampf 🟨
-- [x] 🤖 C++: Figur, 5 Weisen, Kampf, 2 Gegnertypen, Dialogkamera, HUD, Testarena (Koop-fähig)
-- [x] 🤖 Charakter-Editor + Personalisierung in Läden (Code)
-- [ ] 👤 Bauen + Tests auf dem PC (per Remote Control)
-- [ ] 🤖 Build-Fehler beheben, PR #10 und #11 übernehmen
-- [ ] 👤 Entscheidung Gesichts-Technik (8 Grundgesichter mischen / fertige Gesichter / Comic-Look)
-- [ ] 👤 Game Animation Sample (Bewegung), Niagara-Effekte für die 5 Weisen
-- [ ] 👤 Spieler-MetaHuman, Lip-Sync-Test
-- [ ] 👤 Testarena anspielen: Laufen, Zaubern, Kampf, Dialog – fühlt es sich gut an?
-- [ ] 🤖 Nachbessern nach deiner Rückmeldung
-
-## Phase 4 – Grafik-Benchmark-Szene
-- [ ] 🤖 Plan + Skripte für die Szene, Liste der Gratis-Assets (Fab, Quixel, Poly Haven)
-- [ ] 👤 Gratis-Assets herunterladen
-- [ ] 👤 + 🤖 Akademie-Innenhof + Waldrand, goldene Stunde und Regennacht, finales Niveau
-- [ ] 🤖 Modulares Architektur-Kit (Wände, Bögen, Fenster, Dächer)
-- [ ] 👤 Anschauen und abnehmen: Ist das der Maßstab? Sonst nachbessern
-- [ ] 👤 60-Sekunden-Trailer-Shot rendern (Movie Render Queue)
-
-## Phase 5 – Akt 1 spielbar (Vertical Slice, ca. 8–10 Std.)
-Geschichte und Daten (🤖, geht ohne PC):
-- [x] Missionsdesign aller 50 Missionen + Story-Bosse → `docs/missions/`
-- [x] Quest-JSON M101–M110 (neue Fassung)
-- [x] Dialoge Akt 1: 28 Missionsdialoge + 12 freie Gespräche, Stimmen-Leitfaden `docs/DIALOG_STIMMEN.md`
-- [x] Schulleben-Quests S101–S118 als JSON
-- [x] Region Ilsensee: Uferlicht + Stillwasser, Nebenquests N101–N106 + 13 Dialoge (`docs/regionen/ILSENSEE.md`)
-- [x] Raunwald: Pilzhausen + Krähenhain, Nebenquests N111–N116 + 13 Dialoge (`docs/regionen/RAUNWALD.md`)
-- [ ] 🟨 Kesselbrunn + Russgrube: Beschreibung fertig (`docs/regionen/KESSELBRUNN.md`), Quests N121–N126 + Dialoge fehlen
-- [x] Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
-- [ ] Kampfwerte der Akt-1-Gegner im Phase-3-Format ableiten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
-- [x] Reittier Moosbock (Zähm-Quest N116)
-
-Systeme (🤖 Code):
-- [ ] Questlog, HUD, Karte, Kompass, Inventar, Läden (UI)
-- [ ] Tag-Nacht-Zyklus und Wetter
-- [ ] Begleiter Lio mit eigener Kampf-KI und Kommentaren
-- [ ] Unterrichts-Minispiele, Glockenball, Probier-Modus für Weisen
-
-Bauen im Editor (👤 mit Anleitung von Claude):
-- [ ] Landschaft 4 × 4 km um die Akademie, PCG für Wald und Felsen
-- [ ] Akademie (Große Halle, 4 Türme, Bibliothek, Klassenräume, Geheimgänge)
-- [ ] Uferlicht, Stillwasser, Pilzhausen, Krähenhain, Kesselbrunn, Russgrube
-- [ ] Figuren als MetaHumans (Edda, Lio, Aurelia, Lehrkräfte …)
-- [ ] Stimmen: eigene Aufnahmen oder Piper/Thorsten
-- [ ] Cutscenes M101, M106, M108
-- [ ] Musik und Ton (Akkordeon-Leitmotiv!)
-- [ ] Akt 1 komplett durchspielen, Fehler melden – Claude behebt und poliert
-
-## Phase 6–10 – Akte 2 bis 5
-Pro Akt: Regionen bauen, Quests + Dialoge als Daten, Gegner/Bosse, Cutscenes, durchspielen (👤), polieren.
-- [ ] Akt 2: Graumoor, Glastiefen · Boss Mara · Entscheidung 2 · Reittiere Gischtrobbe + Glutdachs
-- [ ] Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Entscheidung 3 · Sturmschwinge + Dünenschreiter
-- [ ] Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Entscheidungen 4 + 5 · Perlsegler · Akademie zerstört
-- [ ] Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · Entscheidung 6 · 4 Enden + Epiloge
-- [ ] 6 Questreihen (48 Quests), 3 Fraktionslinien (15), 60 Sidequests, 40+ Rätselschreine
-- [ ] Sammelobjekte + Kodex, Kreaturen zähmen, Turmzimmer einrichten, Tränke/Crafting
-- [ ] Flugrennen mit Reittieren, Arena-Herausforderungen
-
-## Phase 11 – Finale
-- [ ] 🤖 Leistung optimieren (Ziel: flüssig auf deiner RTX 5070)
-- [ ] 🤖 Fehler beheben, Balancing, Schwierigkeitsstufen
-- [ ] 🤖 Englische Übersetzung über String Tables
-- [ ] 🤖 Optionen: Grafik, Ton, Steuerung, Untertitel, Barrierefreiheit
-- [ ] 👤 + 🤖 Koop für 2–4 Spieler einschalten und testen
-- [ ] 👤 Komplett durchspielen (ca. 100 Std.)
-- [ ] 🤖 CREDITS.md final prüfen (alle Lizenzen sauber)
-- [ ] 👤 + 🤖 Spiel als .exe packen 🎉
+Die Nummern sind die Reihenfolge. Wir arbeiten von oben nach unten und haken ab. Was keine Nummer vor sich warten lässt, kann Claude nebenbei schon vorziehen.
 
 ---
 
-**So pflegen wir die Liste:** Jeder Thread, der etwas fertig macht, setzt hier den Haken und trägt Details in PROGRESS.md ein.
+## A · Einrichtung und Grundlagen ✅
+
+- [x] 1. 🤖 Hardware erfasst, Tools ausgewählt, Lizenzen geprüft
+- [x] 2. 👤 Tools installiert, GitHub-Repo angelegt, OneDrive-Backup
+- [x] 3. 🤝 Erster Build auf dem PC, Plugins installiert
+- [x] 4. 🤖 Bibeln: Spielidee, Story, Figuren, Grafik, Animation
+- [x] 5. 🤖 430 Weisen (Zauber) als Daten, zauberhafter Schulstart in Akt 1
+- [x] 6. 🤖 Kernsysteme: Quests, Dialoge (SUDS), Entscheidungen, Speichern (9/9 Tests grün)
+- [x] 7. 👤 Pixel 10 Pro für Gesichtsaufnahmen: Anleitung übernommen (PR #2)
+
+## B · Spielfigur, Zaubern, Kampf 🟨
+
+- [x] 8. 🤖 Code: Spielfigur, Zaubersystem, Kampf, 2 Gegnertypen, Dialogkamera, Testarena (PR #10)
+- [x] 9. 🤝 Bauen und testen am PC (15/15 Tests grün)
+- [x] 10. 🤖 Game Animation Sample eingebaut: echte Laufbewegung (PR #14)
+- [x] 11. 👤 „Paragon: Gideon“ aus Fab hinzugefügt (Fingergesten, Gegnerkörper)
+- [x] 11a. 🤖 Zauberworte für die ersten Weisen (Scintivox, Campanimur …)
+- [ ] 12. 👤 Webcam-Modell nennen (für Bewegungsaufnahmen) ← **jetzt dran**
+- [ ] 13. 🟨 🤝 Blitz aus den Fingern, Zauber mit eigener Wirkung, magische Landung, Foto-Look (PR #15, Claude arbeitet gerade am PC)
+- [ ] 14. 👤 PR #15 übernehmen, wenn Claude „fertig“ sagt
+- [ ] 15. 👤 Testarena anspielen: Laufen, Zaubern, Kampf. Fühlt es sich gut an? Kurz sagen, was stört
+- [ ] 16. 🤖 Nachbessern nach deiner Rückmeldung
+- [ ] 17. 🤖 Weitere Weisen wirkbar machen, jede mit eigener Geste, Farbe, Wirkung und Zauberwort (Ziel: alle ~430), Zauberrad
+
+## C · Charakter-Editor 🟨
+
+- [x] 18. 🤖 Code für Charakter-Editor und Läden (PR #11)
+- [x] 19. 👤 Gesichts-Technik entschieden: 8 Grundgesichter mischen + Regler
+- [ ] 20. 🤝 Gesichter einbauen: Plugins an, Editor-Neustart (wartet, bis Schritt 13 am PC fertig ist)
+- [ ] 21. 👤 Eigene Figur im Editor zusammenstellen und sagen, ob es gefällt
+- [ ] 22. 🤝 Spieler-MetaHuman und Lippen-Test
+
+## D · Story, Dialoge, Regionen für Akt 1 (Text und Daten) 🟨
+
+- [x] 23. 🤖 Alle 50 Missionen, Bosse, Wendungen (`docs/missions/`)
+- [x] 24. 🤖 Akt 1: 10 Haupt- und 30 Nebenquests, 69 Dialoge, Stimmen-Leitfaden (PR #13)
+- [x] 25. 🤖 Gegner, Bosse und 6 Reittiere (`docs/BESTIARIUM.md`)
+- [x] 26. 🤖 Regionen Ilsensee und Raunwald
+- [ ] 27. 🟨 🤖 Region Kesselbrunn + Russgrube: Nebenquests N121–N126 und Dialoge (PR #16, läuft)
+- [ ] 28. 👤 PR #16 übernehmen, wenn Claude „fertig“ sagt
+- [ ] 29. 🤖 Kampfwerte der Akt-1-Gegner (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
+
+## E · Bilder und Grundsatzfragen
+
+- [ ] 30. 🤝 Concept-Bilder mit ComfyUI erzeugen (läuft ca. 1 Std. allein am PC)
+- [ ] 31. 👤 Die schönsten Bilder auswählen
+- [ ] 32. 👤 Grundsatzentscheidungen E2–E5 bestätigen (Claude stellt sie dir einzeln als Frage)
+
+## F · Grafik-Maßstab: eine wunderschöne Szene
+
+- [ ] 33. 🤖 Plan und Liste der Gratis-Assets (Fab, Megascans, Poly Haven)
+- [ ] 34. 👤 Gratis-Assets in Fab zur Bibliothek hinzufügen (Claude schickt dir die Links einzeln)
+- [ ] 35. 🤝 Akademie-Innenhof und Waldrand bauen, goldene Stunde und Regennacht
+- [ ] 36. 🤖 Baukasten für Architektur (Wände, Bögen, Fenster, Dächer)
+- [ ] 37. 👤 Anschauen: Ist das der Maßstab? Sonst sagen, was fehlt
+- [ ] 38. 🤝 60-Sekunden-Trailer-Shot rendern
+
+## G · Akt 1 spielbar machen (ca. 8–10 Std. Spielzeit)
+
+Systeme:
+- [ ] 39. 🤖 Questlog, HUD, Karte, Kompass, Inventar, Läden
+- [ ] 40. 🤖 Tag-Nacht-Zyklus und Wetter
+- [ ] 41. 🤖 Begleiter Lio mit eigener Kampf-KI und Sprüchen
+- [ ] 42. 🤖 Unterrichts-Minispiele, Glockenball, Probier-Modus für Weisen
+
+Welt bauen:
+- [ ] 43. 🤝 Landschaft 4 × 4 km um die Akademie, Wald und Felsen automatisch (PCG)
+- [ ] 44. 🤝 Akademie: Große Halle, 4 Türme, Bibliothek, Klassenräume, Geheimgänge
+- [ ] 45. 🤝 Dörfer: Uferlicht, Stillwasser, Pilzhausen, Krähenhain, Kesselbrunn, Russgrube
+- [ ] 46. 🤝 Figuren als MetaHumans (Edda, Lio, Aurelia, Lehrkräfte …)
+- [ ] 47. 🤝 Gruselige Gegner mit echten Körpern und Animationen
+
+Leben einhauchen:
+- [ ] 48. 👤 Stimmen: selbst aufnehmen oder Computerstimme (Piper/Thorsten) wählen
+- [ ] 49. 🤝 Zwischensequenzen M101, M106, M108
+- [ ] 50. 👤 Akkordeon-Leitmotiv einspielen (Handy-Aufnahme reicht)
+- [ ] 51. 🤖 Musik und Geräusche einbauen
+
+Testen:
+- [ ] 52. 👤 Akt 1 komplett durchspielen, alles aufschreiben, was stört
+- [ ] 53. 🤖 Fehler beheben und polieren
+
+## H · Akte 2 bis 5
+
+Pro Akt gleiche Reihenfolge: 🤖 Quests, Dialoge, Gegner als Daten → 🤝 Regionen und Zwischensequenzen bauen → 👤 durchspielen → 🤖 polieren.
+
+- [ ] 54. Akt 2: Graumoor, Glastiefen · Boss Mara · Reittiere Gischtrobbe + Glutdachs
+- [ ] 55. Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Sturmschwinge + Dünenschreiter
+- [ ] 56. Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Perlsegler · Akademie zerstört
+- [ ] 57. Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · 4 Enden
+- [ ] 58. 🤖 Questreihen, Fraktionen, 60 Nebenquests, 40+ Rätselschreine
+- [ ] 59. 🤖 Sammelobjekte, Kreaturen zähmen, Turmzimmer, Tränke und Basteln
+- [ ] 60. 🤖 Flugrennen mit Reittieren, Arena-Herausforderungen
+
+## I · Finale 🎉
+
+- [ ] 61. 🤖 Leistung optimieren (flüssig auf deiner RTX 5070)
+- [ ] 62. 🤖 Balancing und Schwierigkeitsstufen
+- [ ] 63. 🤖 Englische Übersetzung
+- [ ] 64. 🤖 Optionen: Grafik, Ton, Steuerung, Untertitel, Barrierefreiheit
+- [ ] 65. 🤝 Koop für 2–4 Spieler einschalten und testen
+- [ ] 66. 👤 Komplett durchspielen (ca. 100 Std.)
+- [ ] 67. 🤖 Lizenzen in CREDITS.md final prüfen
+- [ ] 68. 🤝 Spiel als .exe packen
+
+---
+
+**So pflegen wir die Liste:** Wer einen Schritt fertig macht, setzt den Haken und schiebt den Pfeil „← jetzt dran“ und den Kasten „Dein nächster Schritt“ ganz oben auf den nächsten 👤- oder 🤝-Schritt. Details stehen in [PROGRESS.md](PROGRESS.md).
