@@ -308,6 +308,18 @@ namespace
 			Out.Visual.Niagara = ReadPath(V, TEXT("niagara"));
 			Out.Visual.ImpactNiagara = ReadPath(V, TEXT("impact_niagara"));
 		}
+		// Fester Ablageort, falls im JSON nichts steht: /Game/VFX/Spells/NS_<id> und NS_<id>_Impact.
+		// Fehlt das Asset, bleibt der Platzhalter-Look (LoadIfExists).
+		if (Out.Visual.Niagara.IsNull())
+		{
+			const FString Name = FString::Printf(TEXT("NS_%s"), *Out.Id.ToString());
+			Out.Visual.Niagara = FSoftObjectPath(FString::Printf(TEXT("/Game/VFX/Spells/%s.%s"), *Name, *Name));
+		}
+		if (Out.Visual.ImpactNiagara.IsNull())
+		{
+			const FString Name = FString::Printf(TEXT("NS_%s_Impact"), *Out.Id.ToString());
+			Out.Visual.ImpactNiagara = FSoftObjectPath(FString::Printf(TEXT("/Game/VFX/Spells/%s.%s"), *Name, *Name));
+		}
 		if (Out.Chord.Num() == 0)
 		{
 			// Ohne Akkord (Gegnerweisen): alles in der Grundfarbe
