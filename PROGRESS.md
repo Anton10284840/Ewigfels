@@ -63,7 +63,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
-## Quests (geschätzte Spielzeit geschrieben: 21,5 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
+## Quests (geschätzte Spielzeit geschrieben: 25,0 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
@@ -101,9 +101,15 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | N104 | Das Flüsterdorf (Stillwasser befreien, Senta Grau) | Neben | 50 min | ✅ JSON + 4 Dialoge | ⬜ Level fehlt | ⬜ |
 | N105 | Die Seeglocke (Seegrotte, Regionsboss) | Neben | 45 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
 | N106 | Die Robbe im Netz (Akt 2, Reittier Gischtrobbe) | Neben | 35 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N111 | Der Fuchs, der im Kreis läuft (Raunwald) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N112 | Der Mottenreigen | Neben | 25 min | ✅ JSON + 1 Dialog | ⬜ Level fehlt | ⬜ |
+| N113 | Die Spiegelhexe (Laden Gesicht ändern) | Neben | 30 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N114 | Krähenhain (Mauritz Knochenfeld) | Neben | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| N115 | Der Wurzelvater (Regionsboss, nach M108) | Neben | 45 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N116 | Der Bock mit dem Garten (Reittier Moosbock) | Neben | 35 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
 | M201–M510 | Akte 2–5 | Main | je 40–70 min | 🟨 Missionsdesign (docs/missions/AKT2–5.md), JSON folgt pro Akt | ⬜ | ⬜ |
 | D_Schule_* | 12 freie Gespräche (Lio, Aurelia, Lehrkräfte, Mitschüler, Ottilie) | – | – | ✅ | ⬜ | ⬜ |
-| D_Dorf_* | 3 freie Gespräche Ilsensee (Wenke, Lotte, Agnes), Region: docs/regionen/ILSENSEE.md | – | – | ✅ | ⬜ | ⬜ |
+| D_Dorf_* | 4 freie Gespräche (Wenke, Lotte, Agnes, Morchel), Regionen: docs/regionen/ | – | – | ✅ | ⬜ | ⬜ |
 
 ## Charaktere
 

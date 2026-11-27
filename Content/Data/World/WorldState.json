@@ -78,6 +78,15 @@
     "Seeglocke_Healed": "N105: Seeglocke mit Wiederklang geheilt",
     "Robbe_Tor": "N106: Netze mit Robben-Tor statt Vertreiben",
     "Gischtrobbe_Tamed": "N106: Gischtrobbe ist Reittier",
+    "Mauritz_Decided": "N114: bei Mauritz entschieden (egal wie)",
+    "Mauritz_Redeemed": "N114: Mauritz mit seiner ersten Puppe erlöst",
+    "Hilde_Apologized": "N114: Hilde Span hat sich bei Mauritz entschuldigt",
+    "Kraehenhain_Freed": "N114: Krähenhain befreit",
+    "Wendeline_Reflection_Back": "N113: Spiegelbild der Hexe zurückgebracht",
+    "Told_Seline": "N115: Seline erzählt, dass der Urton den Wurzelvater krank machte",
+    "Wurzelvater_Decided": "N115: Wurzelvater gefällt oder geheilt",
+    "Wurzelvater_Healed": "N115: Wurzelvater geheilt",
+    "Moosbock_Tamed": "N116: Moosbock ist Reittier",
     "Tutorial_Movement": "M101: Bewegungs-Tutorial abgeschlossen",
     "Met_Lio": "M101: Lio getroffen",
     "Nym_Spoke": "M110: Nym hat zum ersten Mal gesprochen",
@@ -164,6 +173,16 @@
     "Agnes",
     "Linus",
     "Hinnerk",
-    "Waescherinnen"
+    "Waescherinnen",
+    "Trueffel",
+    "Hutzel",
+    "Mira",
+    "Pfiff",
+    "Gernot",
+    "Sporella",
+    "Wendeline",
+    "Edwin",
+    "Mauritz",
+    "Hilde"
   ]
 }

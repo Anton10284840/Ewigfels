@@ -1,0 +1,14 @@
+# N111 – Der Fuchs beschützt Wanderer vor Krähenhain. Trüffel lernt, dass man nicht jedes Tier haben muss.
+===
+[set SpeakerName.Trueffel "Trüffel"]
+===
+Trueffel: Und? Hast du ihn? Ist er in deiner Tasche? Darf ich?
+  * Er führt die Leute im Kreis, damit sie nicht nach Krähenhain laufen.
+    [event emotion `surprised`]
+    Trueffel: Oh. Dann ist er gar kein Schlingel. Dann ist er ... ein Wachfuchs.
+  * Er ist kein Haustier, Trüffel. Er hat eine Aufgabe.
+    Trueffel: Eine Aufgabe? Füchse haben Aufgaben?
+    Trueffel: ... Ich hab keine Aufgabe. Ich hab Knöpfe.
+[event emotion `soft`]
+Trueffel: Dann zähmen wir ihn nicht. Dann bringen wir ihm nur manchmal was. Wurst. Oder Knöpfe. Füchse mögen bestimmt Knöpfe.
+Trueffel: Hier, der zweitglänzendste. Du hast ihn verdient. Und sag dem Fuchs, ich hab nie über ihn gelacht. Nur über den Holzhändler.

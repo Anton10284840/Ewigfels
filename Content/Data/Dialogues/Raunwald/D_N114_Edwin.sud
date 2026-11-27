@@ -1,0 +1,21 @@
+# N114 – Edwin (10), einziger Wacher in Krähenhain, versteckt im Kirchturm. Hier liegt der einzige echte Schreck (Puppe fällt).
+===
+[set SpeakerName.Edwin "Edwin"]
+===
+[event camera `close`]
+[event emotion `scared`]
+Edwin: Nicht so laut. Die Krähen hören alles. Und was die Krähen hören, hört er.
+Edwin: Bist du echt? Fass mal meine Hand an. ... Warm. Du bist echt. Die Puppen sind kalt.
+  * Wer bist du? Was ist hier passiert?
+    Edwin: Edwin. Wir sind im Frühjahr hergezogen. Dann kam der Mann mit der Flöte. Er hat gespielt, und alle sind in die Bäume gegangen. Einfach so. Mama auch.
+  * Du bist ganz allein hier?
+    Edwin: Seit drei Monaten. Ich esse Zwieback aus der Sakristei. Und ich rede mit den Krähen. Die antworten nicht. Er hat's ihnen verboten.
+  * (Ihm deinen Proviant geben)
+    [event emotion `soft`]
+    Edwin: Ist das ... Brot? Echtes Brot? Mit Kruste?
+    Edwin: Danke. Danke.
+Edwin: Er heißt Mauritz. Er ist höflich. Er sagt bitte, wenn er jemanden in einen Baum hängt.
+Edwin: Warum mich nicht? Ich weiß es nicht. Er hat gesagt: Du hast nie gelacht. Aber ich lach doch oft. Nur nicht über ihn. Ich kenn ihn ja gar nicht.
+[event emotion `scared`]
+Edwin: Und er macht neue. Puppen. Die sehen aus wie Leute, die noch gar nicht hier waren.
+Edwin: Das da oben ist für dich. Er macht schon eine für dich.

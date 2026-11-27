@@ -1,0 +1,174 @@
+{
+  "id": "N116",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Morchel",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Der Bock mit dem Garten",
+    "en": "The Goat with the Garden"
+  },
+  "summary": {
+    "de": "Ein Moosbock frisst seit Wochen die Kräuterbeete von Pilzhausen leer. Großmutter Morchel hat genug.",
+    "en": "For weeks a moss goat has been eating Pilzhausen's herb beds bare. Grandmother Morchel has had enough."
+  },
+  "dialogues": [
+    "D_N116_Morchel",
+    "D_N116_Morchel_Sattel"
+  ],
+  "stages": [
+    {
+      "id": "s1_morchel",
+      "text": {
+        "de": "Hör dir Morchels Klage an und schau dir den Täter an.",
+        "en": "Hear Morchel's complaint and take a look at the culprit."
+      },
+      "objectives": [
+        {
+          "id": "o_morchel",
+          "kind": "dialogue",
+          "target": "D_N116_Morchel",
+          "marker": "NPC_Morchel",
+          "text": {
+            "de": "Sprich mit Großmutter Morchel",
+            "en": "Talk to Grandmother Morchel"
+          }
+        },
+        {
+          "id": "o_bock",
+          "kind": "custom",
+          "target": "Moosbock_Beobachten",
+          "marker": "Kraeuterbeete",
+          "text": {
+            "de": "Beobachte den Moosbock in den Beeten",
+            "en": "Watch the moss goat in the beds"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_hang"
+        }
+      ]
+    },
+    {
+      "id": "s2_hang",
+      "text": {
+        "de": "Folg dem Bock zu seinem Hang. Warum frisst er nicht dort?",
+        "en": "Follow the goat to its slope. Why doesn't it eat there?"
+      },
+      "objectives": [
+        {
+          "id": "o_hang",
+          "kind": "reach",
+          "target": "Moosbock_Hang",
+          "marker": "Moosbock_Hang",
+          "text": {
+            "de": "Erreich den Moosbock-Hang",
+            "en": "Reach the moss goat slope"
+          }
+        },
+        {
+          "id": "o_fallen",
+          "kind": "custom",
+          "target": "Wildererfallen_Entschaerfen",
+          "count": 5,
+          "text": {
+            "de": "Entschärf die Wildererfallen (Klangschloss)",
+            "en": "Disarm the poachers' traps (sound lock)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_freund"
+        }
+      ]
+    },
+    {
+      "id": "s3_freund",
+      "text": {
+        "de": "Der Hang ist sicher. Jetzt muss der Bock dir vertrauen.",
+        "en": "The slope is safe. Now the goat must trust you."
+      },
+      "objectives": [
+        {
+          "id": "o_knollen",
+          "kind": "collect",
+          "target": "Wurzelknolle",
+          "count": 3,
+          "text": {
+            "de": "Bring ihm Wurzelknollen (und Waldmeister, wenn du welchen findest)",
+            "en": "Bring it root tubers (and woodruff if you find any)"
+          }
+        },
+        {
+          "id": "o_grasen",
+          "kind": "custom",
+          "target": "Moosbock_Grasen",
+          "count": 3,
+          "text": {
+            "de": "Grase dreimal still neben ihm (nicht bewegen)",
+            "en": "Graze quietly beside it three times (don't move)"
+          }
+        },
+        {
+          "id": "o_aufsteigen",
+          "kind": "custom",
+          "target": "Moosbock_Aufsteigen",
+          "text": {
+            "de": "Steig auf",
+            "en": "Climb on"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Moosbock_Tamed=1"
+      ],
+      "next": [
+        {
+          "stage": "s4_sattel"
+        }
+      ]
+    },
+    {
+      "id": "s4_sattel",
+      "text": {
+        "de": "Reite nach Pilzhausen. Morchel wird staunen.",
+        "en": "Ride to Pilzhausen. Morchel will be amazed."
+      },
+      "objectives": [
+        {
+          "id": "o_sattel",
+          "kind": "dialogue",
+          "target": "D_N116_Morchel_Sattel",
+          "marker": "NPC_Morchel",
+          "text": {
+            "de": "Zeig Morchel deinen neuen Freund",
+            "en": "Show Morchel your new friend"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Reittier_Moosbock",
+      "Sattel_Pilzleder",
+      "Kodex_Moosbock"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,17 @@
+# N116 – Großmutter Morchel und der Moosbock in den Kräuterbeeten. Resolut, füttert alle, "Kinderchen".
+===
+[set SpeakerName.Morchel "Großmutter Morchel"]
+===
+[event emotion `angry`]
+Morchel: Kinderchen! Gut, dass du da bist! Schau dir das an! Mein Waldmeister! Meine Pilzkresse! Mein Schnittlauch, der so schön lila geblüht hat!
+Morchel: Alles weg. Gefressen. Von DEM da.
+  * Der Bock da? Der sieht doch ganz friedlich aus.
+    Morchel: Friedlich! Er frisst friedlich, er rülpst friedlich, und er tritt friedlich meinen Zaun um!
+  * Soll ich ihn verjagen?
+    Morchel: Wenn du kannst. Ich hab's mit dem Besen versucht. Er hat den Besen gefressen.
+  * (Lachen)
+    Morchel: Lach nur! Lach! Du isst heute Abend keine Kräutersuppe, und dann lachen wir mal zusammen!
+[event emotion `neutral`]
+Morchel: Komisch ist es aber schon. Die Moosböcke wohnen oben am Felshang im Nordosten. Die kommen nie runter. Nie.
+Morchel: Dieser hier kommt jeden Tag. Und er schaut immer so zurück, Richtung Hang. Als wär da was.
+Morchel: Find raus, was da ist. Dann reden wir über meinen Schnittlauch.

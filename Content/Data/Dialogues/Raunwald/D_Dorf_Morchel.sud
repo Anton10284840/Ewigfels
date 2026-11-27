@@ -1,0 +1,26 @@
+# Freies Gespräch: Großmutter Morchel, Pilzhausen. Essen, Pilzkunde, Gerüchte aus dem Wald.
+===
+[set SpeakerName.Morchel "Großmutter Morchel"]
+===
+Morchel: Kinderchen! Bücken, Kopf, Hutrand! Und dann setz dich. Du bist zu dünn.
+:themen
+Morchel: Was willst du wissen, Kind?
+  * Was gibt's zu essen?
+    Morchel: Pilzsuppe, Pilzbrot, Pilzkuchen. Und für Leute, die keine Pilze mögen: Mitleid. Und Pilze.
+    [goto themen]
+  * Welche Pilze darf man essen?
+    Morchel: Die roten mit Punkten nie. Die blauen nur nachts, die leuchten dann im Bauch, das ist lustig. Die braunen immer. Außer die braunen, die zurückschauen.
+    [goto themen]
+  [if {flag.Kraehenhain_Freed}]
+  * Wie geht es den Leuten in Krähenhain?
+    [event emotion `soft`]
+    Morchel: Sie kommen jetzt zum Markt. Sie lachen ein bisschen zu vorsichtig. Das gibt sich. Und der kleine Edwin schnitzt Puppen, die grinsen. Alle. Sogar die Krähen.
+    [goto themen]
+  [else]
+  * Was ist mit Krähenhain?
+    [event emotion `worried`]
+    Morchel: Frag nicht. Geh nicht hin. Und wenn doch, sei höflich zu den Krähen. Sie erzählen alles weiter.
+    [goto themen]
+  [endif]
+  * Danke, Großmutter Morchel.
+    Morchel: Hier, nimm noch einen Pilz mit. Für unterwegs. Für den Notfall. Für das Herz.

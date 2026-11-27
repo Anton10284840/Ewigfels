@@ -1,0 +1,14 @@
+# N116 – Der Spieler reitet auf dem Moosbock nach Pilzhausen. Morchel schenkt den Pilzleder-Sattel.
+===
+[set SpeakerName.Morchel "Großmutter Morchel"]
+===
+[event emotion `surprised`]
+Morchel: Bei beiden Monden! Du reitest ihn! Du sitzt auf dem Ding, das meinen Besen gefressen hat!
+  * Sein Hang war voller Wildererfallen. Er hatte Hunger.
+    [event emotion `soft`]
+    Morchel: Fallen. Am Moosbock-Hang. Wer macht denn so was? ... Ach, du armes, haariges Vieh.
+  * Darf ich vorstellen: dein neuer Gärtner.
+    Morchel: Gärtner! Ha! Na, auf seinem Rücken wächst ja schon mehr als in meinem Beet.
+Morchel: Warte. Nicht weglaufen. Beide nicht.
+Morchel: Hier. Ein Sattel aus Pilzleder. Hat meinem Mann gehört. Der ist auch immer auf Sachen geritten, die er nicht reiten sollte.
+Morchel: Und du, Bock, kriegst ab jetzt jeden Sonntag eine Handvoll Waldmeister. Aber aus der Hand. Nicht aus dem Beet. Verstanden?

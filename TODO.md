@@ -58,10 +58,11 @@ Geschichte und Daten (🤖, geht ohne PC):
 - ✅ Dialoge Akt 1: 28 Missionsdialoge + 12 freie Gespräche, Stimmen-Leitfaden `docs/DIALOG_STIMMEN.md`
 - ✅ Schulleben-Quests S101–S118 als JSON
 - ✅ Region Ilsensee: Uferlicht + Stillwasser, 6 Nebenquests N101–N106 als JSON + 13 Dialoge, Regionsdaten `Content/Data/World/Regions/Ilsensee.json`
-- ⬜ Raunwald (Pilzhausen + Krähenhain), Kesselbrunn (+ Russgrube) ausarbeiten
+- ✅ Region Raunwald: Pilzhausen + Krähenhain, Nebenquests N111–N116 + 13 Dialoge (`docs/regionen/RAUNWALD.md`)
+- ⬜ Kesselbrunn (+ Russgrube) ausarbeiten
 - ✅ Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
 - ⬜ Kampfwerte (Leben, Tempo, Weisen) der Akt-1-Gegner im Phase-3-Format ableiten (nach Build von Phase 3)
-- ⬜ Reittier Moosbock (Zähm-Quest)
+- ✅ Reittier Moosbock (Zähm-Quest N116)
 
 Bauen im Editor (👤 mit Anleitung):
 - ⬜ Landschaft 4 × 4 km um die Akademie, PCG für Wald und Felsen

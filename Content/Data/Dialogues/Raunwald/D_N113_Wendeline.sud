@@ -1,0 +1,16 @@
+# N113 – Spiegelhexe Wendeline, Hütte am Teich. Freundlich, eitel, theatralisch. Ändert Gesichter (Laden).
+===
+[set SpeakerName.Wendeline "Spiegelhexe Wendeline"]
+===
+[event emotion `sad`]
+Wendeline: Komm rein, komm rein. Aber schau nicht in den Spiegel. Da ist nichts. Und das ist das Problem.
+Wendeline: Mein Spiegelbild ist weg. Ausgezogen. Ohne Brief. Nach dreihundert Jahren. Es hat nicht mal den Kamm mitgenommen.
+  * Wie kann ein Spiegelbild ausziehen?
+    Wendeline: Wenn man ihm nie zuhört. Es hat immer gesagt: Ich will tanzen gehen. Und ich hab gesagt: Morgen.
+  * Sie sehen ohne Spiegelbild trotzdem gut aus.
+    [event emotion `happy`]
+    Wendeline: Oh, du Schmeichelkatze. Das weiß ich. Aber ich kann's nicht nachprüfen.
+  * (Hinter Wendeline in den Spiegel schauen)
+    Wendeline: Leer, nicht wahr? Wie ein Teller nach Morchels Suppe.
+Wendeline: Ohne Spiegelbild kann ich keine Gesichter zaubern. Keine Nasen, keine Augenfarben, nichts. Mein ganzes Geschäft. Weg.
+Wendeline: Bring mir Spiegelkraut vom Teichrand, dann zeig ich dir, wie man ein Spiegelbild findet. Es geht immer dahin, wo Musik im Wasser ist.
