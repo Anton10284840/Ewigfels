@@ -63,7 +63,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
-## Quests (geschätzte Spielzeit geschrieben: 17,9 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
+## Quests (geschätzte Spielzeit geschrieben: 21,5 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
@@ -95,8 +95,15 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | S116 | Turmmelodien | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
 | S117 | Die Stimmprobe | Neben | 60 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
 | S118 | Das Gründerzimmer | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| N101 | Das Boot, das allein fährt (Ilsensee) | Neben | 30 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N102 | Die Mutprobe der Kaimöwen | Neben | 25 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| N103 | Der Glockenwels | Neben | 30 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N104 | Das Flüsterdorf (Stillwasser befreien, Senta Grau) | Neben | 50 min | ✅ JSON + 4 Dialoge | ⬜ Level fehlt | ⬜ |
+| N105 | Die Seeglocke (Seegrotte, Regionsboss) | Neben | 45 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| N106 | Die Robbe im Netz (Akt 2, Reittier Gischtrobbe) | Neben | 35 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
 | M201–M510 | Akte 2–5 | Main | je 40–70 min | 🟨 Missionsdesign (docs/missions/AKT2–5.md), JSON folgt pro Akt | ⬜ | ⬜ |
 | D_Schule_* | 12 freie Gespräche (Lio, Aurelia, Lehrkräfte, Mitschüler, Ottilie) | – | – | ✅ | ⬜ | ⬜ |
+| D_Dorf_* | 3 freie Gespräche Ilsensee (Wenke, Lotte, Agnes), Region: docs/regionen/ILSENSEE.md | – | – | ✅ | ⬜ | ⬜ |
 
 ## Charaktere
 

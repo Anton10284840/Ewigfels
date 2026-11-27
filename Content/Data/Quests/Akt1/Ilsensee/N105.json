@@ -1,0 +1,186 @@
+{
+  "id": "N105",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:N103",
+    "quest:M107"
+  ],
+  "title": {
+    "de": "Die Seeglocke",
+    "en": "The Lake Bell"
+  },
+  "summary": {
+    "de": "Unter der Glockeninsel liegt eine Grotte. Und in der Grotte schreit etwas, das nur Fische hören. Noch.",
+    "en": "Beneath Bell Island lies a grotto. And in the grotto something is screaming that only fish can hear. For now."
+  },
+  "stages": [
+    {
+      "id": "s1_eingang",
+      "text": {
+        "de": "Find einen Weg in die Seegrotte: mit dem Schlüssel des Welses oder durch Geheimgang 11 der Akademie.",
+        "en": "Find a way into the lake grotto: with the catfish's key or through the academy's secret passage 11."
+      },
+      "objectives": [
+        {
+          "id": "o_eingang",
+          "kind": "reach",
+          "target": "Seegrotte_Eingang",
+          "marker": "Seegrotte_Eingang",
+          "text": {
+            "de": "Betritt die Seegrotte",
+            "en": "Enter the lake grotto"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_grotte"
+        }
+      ]
+    },
+    {
+      "id": "s2_grotte",
+      "text": {
+        "de": "Das Wasser in der Grotte steigt und sinkt mit dem Klang. Wer falsch singt, steht bis zum Hals drin.",
+        "en": "The water in the grotto rises and falls with sound. Sing wrong and you're up to your neck."
+      },
+      "objectives": [
+        {
+          "id": "o_pegel",
+          "kind": "custom",
+          "target": "Grotte_Wasserstand",
+          "count": 3,
+          "text": {
+            "de": "Stell den Wasserstand der drei Kammern richtig ein",
+            "en": "Set the water level of the three chambers"
+          }
+        },
+        {
+          "id": "o_echo",
+          "kind": "custom",
+          "target": "Grotte_Echogaenge",
+          "text": {
+            "de": "Find den Weg durch die Echogänge (nur der wahre Gang antwortet)",
+            "en": "Find your way through the echo passages (only the true one answers)"
+          }
+        },
+        {
+          "id": "o_golem",
+          "kind": "defeat",
+          "target": "Scherbengolem_Jung",
+          "text": {
+            "de": "Besiege den jungen Scherbengolem aus Glockenbronze",
+            "en": "Defeat the young shard golem of bell bronze"
+          }
+        },
+        {
+          "id": "o_wels",
+          "kind": "custom",
+          "target": "Glockenwels_Hilft",
+          "optional": true,
+          "text": {
+            "de": "Lass dich vom Glockenwels über den Grottensee ziehen (optional)",
+            "en": "Let the bell catfish pull you across the grotto lake (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_glocke"
+        }
+      ]
+    },
+    {
+      "id": "s3_glocke",
+      "text": {
+        "de": "Die versunkene Glocke ist gesprungen. Sie ist nicht böse. Sie schreit, weil es wehtut.",
+        "en": "The sunken bell is cracked. It isn't evil. It screams because it hurts."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "condition",
+          "target": "flag:Seeglocke_Decided",
+          "marker": "Seegrotte_Halle",
+          "text": {
+            "de": "Zerschlag die Seeglocke oder heil sie mit Wiederklang",
+            "en": "Shatter the Lake Bell or heal it with Resonance"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Seeglocke_Healed"
+          ],
+          "stage": "s4a_geheilt"
+        },
+        {
+          "stage": "s4b_zerschlagen"
+        }
+      ]
+    },
+    {
+      "id": "s4a_geheilt",
+      "text": {
+        "de": "Die Glocke ist ganz. Ab jetzt läutet sie bei jeder Vollilse, und der ganze See hört es.",
+        "en": "The bell is whole. From now on it rings at every full Ilse moon, and the whole lake hears it."
+      },
+      "objectives": [
+        {
+          "id": "o_laeuten",
+          "kind": "custom",
+          "target": "Seeglocke_Erstes_Laeuten",
+          "text": {
+            "de": "Hör der Seeglocke zu",
+            "en": "Listen to the Lake Bell"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s4b_zerschlagen",
+      "text": {
+        "de": "Die Glocke ist still. Ihre Scherben glänzen. Der Wels kommt nicht mehr an die Oberfläche.",
+        "en": "The bell is silent. Its shards glitter. The catfish no longer comes to the surface."
+      },
+      "objectives": [
+        {
+          "id": "o_scherbe",
+          "kind": "collect",
+          "target": "Glockenbronze_Scherbe",
+          "text": {
+            "de": "Nimm eine Scherbe mit",
+            "en": "Take a shard with you"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 80,
+    "items": [
+      "Ring_Seeglocke",
+      "Kodex_Seeglocke"
+    ],
+    "effects": []
+  }
+}

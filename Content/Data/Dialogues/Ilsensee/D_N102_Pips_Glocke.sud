@@ -1,0 +1,28 @@
+# N102 – Versteck der Kaimöwen. Die vierte Mutprobe: in Stillwasser eine Glocke auswickeln. Twist: Matti geht trotzdem.
+===
+[set SpeakerName.Pips "Pips"]
+[set SpeakerName.Jule "Jule"]
+[set SpeakerName.Matti "Matti"]
+===
+[event emotion `happy`]
+Pips: Du hast es geschafft. Alle drei. Du bist jetzt Kaimöwe. Hier, das Abzeichen. Es ist ein Kronkorken, aber ein heiliger.
+Jule: Elf Sekunden bei der Pfanne. Neuer Rekord.
+[event emotion `neutral`]
+Pips: Aber. Echte Kaimöwen machen noch eine. Die große. In Stillwasser sind alle Glocken eingewickelt. Wer eine auswickelt, ist der Mutigste vom ganzen See.
+Matti: Ich mach das. Ich hab keine Angst.
+Jule: Er hat siebenmal geschluckt, während er das gesagt hat.
+  * Ich komme mit. Zusammen ist es nicht so gruselig.
+    Pips: Echt? Gut. Morgen, wenn es dunkel wird.
+    Matti: Morgen. Klar. Morgen.
+  * Nein. Das ist zu gefährlich. Keiner geht da hin.
+    [set flag.Kaimoewen_Forbidden true]
+    Pips: Du bist ja wie meine Mutter.
+    Jule: Ihre Mutter ist sehr klug.
+    Pips: Jule!
+    Matti: ... Okay.
+  * Ich geh allein. Ihr wartet hier.
+    Pips: Allein? Das ist ... das ist eigentlich ziemlich mutig.
+    Matti: Ich wollte das aber machen.
+[event camera `close`]
+Matti: Ich bin mutig. Ich bin wirklich mutig.
+Pips: Klar bist du das, Matti. Geh heim, es ist spät.

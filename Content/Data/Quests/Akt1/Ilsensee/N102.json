@@ -1,0 +1,159 @@
+{
+  "id": "N102",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Pips",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Die Mutprobe der Kaimöwen",
+    "en": "The Quay Gulls' Dare"
+  },
+  "summary": {
+    "de": "Die Kinderbande von Uferlicht nimmt nur Mutige auf. Drei Mutproben, dann bist du dabei. Die vierte war nicht abgemacht.",
+    "en": "Uferlicht's gang of children only takes the brave. Three dares and you're in. The fourth one wasn't part of the deal."
+  },
+  "dialogues": [
+    "D_N102_Pips",
+    "D_N102_Pips_Glocke",
+    "D_N102_Matti_Heim"
+  ],
+  "stages": [
+    {
+      "id": "s1_proben",
+      "text": {
+        "de": "Besteh die drei Mutproben der Kaimöwen.",
+        "en": "Pass the Quay Gulls' three dares."
+      },
+      "objectives": [
+        {
+          "id": "o_pips",
+          "kind": "dialogue",
+          "target": "D_N102_Pips",
+          "marker": "NPC_Pips",
+          "text": {
+            "de": "Lass dir von Pips die Mutproben erklären",
+            "en": "Let Pips explain the dares"
+          }
+        },
+        {
+          "id": "o_leuchtsteg",
+          "kind": "custom",
+          "target": "Mutprobe_Leuchtsteg",
+          "marker": "Leuchtsteg",
+          "text": {
+            "de": "Lauf nachts ohne Licht bis zum Ende des Leuchtstegs",
+            "en": "Walk to the end of the Lantern Pier at night without light"
+          }
+        },
+        {
+          "id": "o_feder",
+          "kind": "interact",
+          "target": "Ottilie_Feder",
+          "marker": "NPC_Ottilie",
+          "text": {
+            "de": "Stibitz Ottilie eine Messingfeder, ohne erwischt zu werden",
+            "en": "Swipe a brass feather from Ottilie without getting caught"
+          }
+        },
+        {
+          "id": "o_pfanne",
+          "kind": "interact",
+          "target": "Oles_Pfanne",
+          "marker": "Pfannkuchenplatz",
+          "text": {
+            "de": "Läute Oles Riesenpfanne um Mitternacht",
+            "en": "Ring Ole's giant pan at midnight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_glocke"
+        }
+      ]
+    },
+    {
+      "id": "s2_glocke",
+      "text": {
+        "de": "Pips hat eine letzte Mutprobe: in Stillwasser eine Glocke auswickeln. Entscheide, was du dazu sagst.",
+        "en": "Pips has one last dare: unwrap a bell in Stillwasser. Decide what you say to that."
+      },
+      "objectives": [
+        {
+          "id": "o_versteck",
+          "kind": "dialogue",
+          "target": "D_N102_Pips_Glocke",
+          "marker": "Kaimoewen_Versteck",
+          "text": {
+            "de": "Triff die Kaimöwen in ihrem Versteck",
+            "en": "Meet the Quay Gulls in their hideout"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_matti"
+        }
+      ]
+    },
+    {
+      "id": "s3_matti",
+      "text": {
+        "de": "Matti ist weg. Er ist allein nach Stillwasser gegangen, um zu beweisen, dass er mutig ist.",
+        "en": "Matti is gone. He went to Stillwasser alone to prove he is brave."
+      },
+      "objectives": [
+        {
+          "id": "o_schild",
+          "kind": "reach",
+          "target": "Stillwasser_Schild",
+          "marker": "Stillwasser_Schild",
+          "text": {
+            "de": "Lauf den Uferweg bis zum Schild LEISE",
+            "en": "Follow the shore path to the sign that says QUIET"
+          }
+        },
+        {
+          "id": "o_matti",
+          "kind": "interact",
+          "target": "Matti_Versteck",
+          "text": {
+            "de": "Find Matti (hör auf leises Schluchzen)",
+            "en": "Find Matti (listen for quiet sobbing)"
+          }
+        },
+        {
+          "id": "o_heim",
+          "kind": "dialogue",
+          "target": "D_N102_Matti_Heim",
+          "marker": "NPC_Pips",
+          "text": {
+            "de": "Bring Matti nach Uferlicht zurück",
+            "en": "Bring Matti back to Uferlicht"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Matti_Voiceless=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Abzeichen_Kaimoewe"
+    ],
+    "effects": []
+  }
+}

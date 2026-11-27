@@ -1,0 +1,22 @@
+# N103 – Lotte Krabbe, Wirtin „Zum Laternenhecht“, Shanty-Sängerin. Die Legende vom Glockenwels.
+===
+[set SpeakerName.Lotte "Lotte Krabbe"]
+===
+[event emotion `happy`]
+Lotte: Setz dich, setz dich! Fischbrötchen? Geht aufs Haus. Alles geht aufs Haus, wenn du dir eine Geschichte anhörst.
+  * Was für eine Geschichte?
+    Lotte: Die beste. Die vom Glockenwels.
+  * Ich hab schon gegessen.
+    Lotte: Dann iss noch mal. Und hör zu.
+Lotte: Unten im See wohnt ein Wels, so lang wie drei Boote. Wenn er schwimmt, brummt er. Wie eine Glocke, ganz tief. Bummm.
+Lotte: Wer ihn fängt, hat einen Wunsch frei. Das sagt jeder in Uferlicht. Ich versuch's seit vierzig Jahren.
+Lotte: Dreimal hab ich ihn am Haken gehabt. Dreimal ist die Leine gerissen. Einmal mein Kleid.
+  * Was würdest du dir wünschen?
+    [event emotion `soft`]
+    Lotte: Dass Stillwasser wieder singt. Früher haben wir abends von hier aus ihre Musik gehört. Über den ganzen See.
+    Lotte: ... Und ein neues Kleid.
+  * Warum hast du ihn nie gefangen?
+    Lotte: Weil er schlauer ist als ich. Das ist bei Fischen selten. Bei Wirten auch.
+Lotte: Was er mag? Glimmwürmer vom Westufer. Morgennebel. Und die Stelle über der Glockeninsel.
+Lotte: Lass dir von Tammo das Angeln zeigen. Und frag Oma Fenna nach dem Wetter. Die riecht Nebel drei Tage vorher.
+Lotte: Und wenn's so weit ist, rudere ich. Ich will dabei sein. Vierzig Jahre, Schatz. Vierzig.

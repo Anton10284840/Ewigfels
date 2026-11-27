@@ -1,0 +1,21 @@
+# N104 – Hinnerk, alter Fischer, jede Nacht auf dem Spiegelsteg. Hat Konrad rufen hören. Gesteht hier noch nichts.
+===
+[set SpeakerName.Hinnerk "Hinnerk"]
+===
+Hinnerk: ...
+Hinnerk: Schau nicht runter. Oder doch. Ist egal. Ich schau jeden Abend.
+[event camera `wide`]
+Hinnerk: Siehst du sie? Das Fest. Die Lampions. Da vorn, das bin ich. Mit dem blauen Hut. Ich konnte tanzen damals.
+  * Was ist in der Nacht passiert?
+    Hinnerk: Konrad ist rausgerudert. Er wollte um Mitternacht die Festglocke läuten, auf der Insel. Das war Brauch.
+    Hinnerk: Nebel kam. Er kam nicht wieder.
+  * Wer ist der Mann mit dem nassen Haar? Er steht neben mir. Im Wasser.
+    [event emotion `scared`]
+    Hinnerk: ... Den siehst du auch?
+    Hinnerk: Das ist Konrad. Er steht da jeden Abend. Er zeigt immer auf die Insel.
+  * (Schweigend neben ihm stehen)
+    Hinnerk: Danke. Die meisten reden. Hier redet man nicht.
+Hinnerk: Wir haben gesungen. So laut. Das ganze Dorf. Man hat uns bis Uferlicht gehört.
+Hinnerk: Und dann ... war da was. Draußen. Ich dachte ...
+[event emotion `sad`]
+Hinnerk: Nein. Nichts. Es war der Wind. Geh heim, Kind von der Akademie. Es ist spät.

@@ -1,0 +1,22 @@
+# N102 – Matti ist zurück in Uferlicht, ohne Stimme. Er schreibt. Führt zu N104.
+===
+[set SpeakerName.Pips "Pips"]
+[set SpeakerName.Jule "Jule"]
+[set SpeakerName.Matti "Matti"]
+===
+[event emotion `sad`]
+Pips: Matti! Du Hallkopf! Du kannst doch nicht allein ...
+Jule: Er sagt nichts. Er hat seit wir hier sind kein einziges Wort gesagt. Ich hab gezählt. Null.
+Matti: (schreibt mit dem Finger in den Sand: ICH HAB NUR EINMAL LAUT GERUFEN)
+Pips: Es ist meine Schuld. Ich hab die blöde Mutprobe erfunden.
+  * Es ist niemandes Schuld. Wir holen seine Stimme zurück.
+    Pips: Versprochen?
+    Jule: Sag ja. Versprechen zählen bei uns doppelt.
+  * Ja, das war dumm. Aber er wollte mutig sein. Und das war er.
+    [event emotion `soft`]
+    Matti: (schreibt: WAR ICH?)
+    Pips: Warst du. Der Mutigste vom ganzen See.
+  * (Matti in den Arm nehmen)
+    Matti: (lehnt sich an und atmet lange aus)
+    Jule: Er weint ohne Ton. Das hab ich noch nie gesehen.
+Pips: In Stillwasser gibt's eine alte Frau. Agnes. Die flüstert immer. Vielleicht weiß die, wie es weggeht.

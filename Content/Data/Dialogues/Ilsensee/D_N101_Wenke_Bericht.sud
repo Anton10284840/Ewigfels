@@ -1,0 +1,16 @@
+# N101 – Nach der Verfolgung: Wenke hört von der Glockeninsel. Erster Hinweis auf Stillwasser (N104).
+===
+[set SpeakerName.Wenke "Kapitänin Wenke Haff"]
+===
+Wenke: Nachtwache gehabt? Du siehst aus wie Nebel mit Augen.
+  * Ein Boot ist allein zur Glockeninsel gefahren.
+    Wenke: Zur Insel. Hm.
+  * Deine Boote sind verflucht.
+    Wenke: Meine Boote sind nicht verflucht. Meine Boote sind sentimental. Wohin?
+    Wenke: ... Zur Glockeninsel. Hm.
+[event emotion `sad`]
+Wenke: Da hing mal eine Glocke. Die Festglocke von Stillwasser. Sie ist versunken, in der Nacht, als Konrad Grau nicht zurückkam.
+Wenke: Seitdem fahren manche Boote dahin. Als würden sie warten, dass jemand läutet.
+Wenke: Wetterlage: Südschilf, dauerhaft Nebel, Stimmung flüsternd. Frag Oma Fenna, wenn du mehr willst. Oder geh hin. Aber leise.
+[event emotion `happy`]
+Wenke: Gute Arbeit, übrigens. Das Ruderboot gehört dir. Bei Ostwind schöpfen.

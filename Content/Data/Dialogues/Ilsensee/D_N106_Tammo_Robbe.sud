@@ -1,0 +1,18 @@
+# N106 – Die Robbe befreit ihr Junges aus den Netzen. Entscheidung: Robben-Tor knüpfen oder vertreiben.
+===
+[set SpeakerName.Tammo "Tammo"]
+===
+[event emotion `surprised`]
+Tammo: Ein Junges. Sie hat ein Junges im Netz. Deshalb reißt sie alles auf.
+Tammo: Aber die Fischer brauchen die Netze. Ohne Netze kein Fisch, ohne Fisch kein Uferlicht. Und Bodo wird ... Bodo.
+  * Wir knüpfen Netze mit einem Tor. Fische bleiben drin, Robben kommen raus.
+    [set flag.Robbe_Tor true]
+    Tammo: Ein Robben-Tor? Das gibt's nicht.
+    Tammo: ... Noch nicht. Oma Fenna kann jeden Knoten. Und dein Freund, der Laute, der redet doch immer von Erfindungen.
+  * Wir vertreiben sie. Es geht nicht anders.
+    [event emotion `sad`]
+    Tammo: Ja. Wahrscheinlich hast du recht. Ich hol die Lärmkessel.
+  * Was meinst du, Tammo?
+    Tammo: Ich? Ich mein, wir sollten was bauen. Ein Tor. Im Netz. Geht das?
+    [set flag.Robbe_Tor true]
+    Tammo: Wenn's einer kann, dann Oma Fenna.

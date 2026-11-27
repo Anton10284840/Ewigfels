@@ -4,7 +4,7 @@ Stand: 27.11.2026 · Diese Liste zeigt **alles**, was bis zum fertigen Spiel zu 
 
 Legende: ✅ fertig · 🟨 läuft · ⬜ offen · 👤 = du am PC · 🤖 = Claude (Text/Code, geht auch ohne deinen PC)
 
-**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Parallel schreibt Claude Story, Dialoge, Gegner und die erste Region.
+**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Story, Dialoge, Gegner, Reittiere und die erste Region (Ilsensee) sind als Text und Daten fertig.
 
 ---
 
@@ -17,7 +17,7 @@ Legende: ✅ fertig · 🟨 läuft · ⬜ offen · 👤 = du am PC · 🤖 = Cla
 | 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) | 🤖 | ✅ |
 | 4 | Dialoge für Lio, Lehrkräfte und Mitschüler | 🤖 | ✅ |
 | 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten | 🤖 | ✅ |
-| 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests | 🤖 | ⬜ |
+| 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests (`docs/regionen/ILSENSEE.md`) | 🤖 | ✅ |
 | 7 | Game Animation Sample einbinden (docs/PHASE3_EDITOR.md, ein Schritt pro Nachricht) | 👤 | ⬜ |
 
 ---
@@ -57,7 +57,7 @@ Geschichte und Daten (🤖, geht ohne PC):
 - ✅ Quest-JSON M101–M110
 - ✅ Dialoge Akt 1: 28 Missionsdialoge + 12 freie Gespräche, Stimmen-Leitfaden `docs/DIALOG_STIMMEN.md`
 - ✅ Schulleben-Quests S101–S118 als JSON
-- ⬜ Region Ilsensee: Uferlicht + Stillwasser (Bewohner, Quests, Missklinger)
+- ✅ Region Ilsensee: Uferlicht + Stillwasser, 6 Nebenquests N101–N106 als JSON + 13 Dialoge, Regionsdaten `Content/Data/World/Regions/Ilsensee.json`
 - ⬜ Raunwald (Pilzhausen + Krähenhain), Kesselbrunn (+ Russgrube) ausarbeiten
 - ✅ Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
 - ⬜ Kampfwerte (Leben, Tempo, Weisen) der Akt-1-Gegner im Phase-3-Format ableiten (nach Build von Phase 3)

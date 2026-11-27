@@ -1,0 +1,213 @@
+{
+  "id": "N106",
+  "type": "side",
+  "act": 2,
+  "region": "Ilsensee",
+  "giver": "Tammo",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M201"
+  ],
+  "title": {
+    "de": "Die Robbe im Netz",
+    "en": "The Seal in the Net"
+  },
+  "summary": {
+    "de": "Seit dem Winter zerreißt eine Robbe die Netze von Uferlicht. Die Fischer wollen sie loswerden. Tammo glaubt, sie sucht etwas.",
+    "en": "Since winter a seal has been tearing Uferlicht's nets. The fishers want rid of her. Tammo thinks she's looking for something."
+  },
+  "dialogues": [
+    "D_N106_Tammo",
+    "D_N106_Tammo_Robbe"
+  ],
+  "stages": [
+    {
+      "id": "s1_tammo",
+      "text": {
+        "de": "Hör dir an, was Tammo und die Fischer erzählen.",
+        "en": "Hear what Tammo and the fishers have to say."
+      },
+      "objectives": [
+        {
+          "id": "o_tammo",
+          "kind": "dialogue",
+          "target": "D_N106_Tammo",
+          "marker": "NPC_Tammo",
+          "text": {
+            "de": "Sprich mit Tammo am Kai",
+            "en": "Talk to Tammo at the quay"
+          }
+        },
+        {
+          "id": "o_bodo",
+          "kind": "talk",
+          "target": "Bodo",
+          "marker": "NPC_Bodo",
+          "text": {
+            "de": "Hör dir Bodos Meinung an (unvermeidlich)",
+            "en": "Hear Bodo's opinion (unavoidable)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_netze"
+        }
+      ]
+    },
+    {
+      "id": "s2_netze",
+      "text": {
+        "de": "Leg dich bei den Netzen in der Nordbucht auf die Lauer.",
+        "en": "Lie in wait by the nets in the north bay."
+      },
+      "objectives": [
+        {
+          "id": "o_bucht",
+          "kind": "reach",
+          "target": "Nordbucht_Netze",
+          "marker": "Nordbucht_Netze",
+          "text": {
+            "de": "Fahr zur Nordbucht",
+            "en": "Go to the north bay"
+          }
+        },
+        {
+          "id": "o_beobachten",
+          "kind": "custom",
+          "target": "Robbe_Beobachten",
+          "text": {
+            "de": "Beobachte die Robbe, ohne sie zu verscheuchen",
+            "en": "Watch the seal without scaring her off"
+          }
+        },
+        {
+          "id": "o_junges",
+          "kind": "interact",
+          "target": "Robbenjunges_Netz",
+          "text": {
+            "de": "Schau nach, was im Netz zappelt",
+            "en": "See what's struggling in the net"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wahl"
+        }
+      ]
+    },
+    {
+      "id": "s3_wahl",
+      "text": {
+        "de": "Sie zerreißt die Netze, um ihr Junges zu befreien. Die Fischer brauchen die Netze trotzdem.",
+        "en": "She tears the nets to free her pup. The fishers still need their nets."
+      },
+      "objectives": [
+        {
+          "id": "o_wahl",
+          "kind": "dialogue",
+          "target": "D_N106_Tammo_Robbe",
+          "marker": "NPC_Tammo",
+          "text": {
+            "de": "Besprich mit Tammo, was ihr tut",
+            "en": "Decide with Tammo what to do"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Robbe_Tor"
+          ],
+          "stage": "s4a_tor"
+        },
+        {
+          "stage": "s4b_vertreiben"
+        }
+      ]
+    },
+    {
+      "id": "s4a_tor",
+      "text": {
+        "de": "Knüpft Netze mit einem Robben-Tor: Fische bleiben drin, Robben kommen raus. Lio hilft. Theoretisch.",
+        "en": "Knot nets with a seal gate: fish stay in, seals get out. Lio helps. In theory."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "talk",
+          "target": "Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Hol Lio zum Knoten",
+            "en": "Get Lio to help with the knots"
+          }
+        },
+        {
+          "id": "o_knuepfen",
+          "kind": "custom",
+          "target": "Robbentor_Knuepfen",
+          "count": 3,
+          "marker": "NPC_Fenna",
+          "text": {
+            "de": "Knüpf drei Robben-Tore (Knoten-Minispiel mit Oma Fenna)",
+            "en": "Knot three seal gates (knot minigame with Grandma Fenna)"
+          }
+        },
+        {
+          "id": "o_rennen",
+          "kind": "custom",
+          "target": "Gischtrobbe_Wettschwimmen",
+          "marker": "Leuchtsteg",
+          "text": {
+            "de": "Die Robbe fordert dich heraus: Wettschwimmen zum Leuchtsteg",
+            "en": "The seal challenges you: race to the Lantern Pier"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Gischtrobbe_Tamed=1",
+        "rel:Lio+3"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s4b_vertreiben",
+      "text": {
+        "de": "Vertreib die Robbe mit Lärm aus der Bucht. Sie geht. Ihr Junges folgt ihr nicht sofort.",
+        "en": "Drive the seal out of the bay with noise. She leaves. Her pup doesn't follow right away."
+      },
+      "objectives": [
+        {
+          "id": "o_laerm",
+          "kind": "custom",
+          "target": "Robbe_Vertreiben",
+          "marker": "Nordbucht_Netze",
+          "text": {
+            "de": "Vertreib die Robbe aus der Nordbucht",
+            "en": "Drive the seal out of the north bay"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 30,
+    "items": [
+      "Kodex_Gischtrobbe"
+    ],
+    "effects": []
+  }
+}

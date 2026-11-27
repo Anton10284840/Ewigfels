@@ -1,0 +1,40 @@
+# N104 – Senta Grau, Fluchsängerin, Herrscherin von Stillwasser. Leise, freundlich, lächelt nie mit den Augen.
+# Erlösung nur mit Konrads Ruf (Nachklang-Glas aus S111, Objective o_glas). Sonst Kampf. "Noch nicht" lässt die Entscheidung offen.
+===
+[set SpeakerName.Senta "Senta Grau"]
+===
+[event emotion `neutral`]
+Senta: Komm herein. Ich habe Tee gemacht. Zwei Tassen. Ich wusste, dass du kommst. Ich höre jeden Schritt in diesem Dorf.
+Senta: Du warst auf der Insel. Du riechst nach Nebel.
+:themen
+Senta: Was willst du von mir?
+  * Warum haben Sie das Dorf verflucht?
+    Senta: Verflucht? Ich habe es beschützt. In der Nacht, als mein Mann ertrank, hat dieses Dorf so laut gesungen, dass niemand ihn gehört hat.
+    Senta: Jetzt hört man hier jeden Atemzug. Niemand wird hier je wieder überhört. Das ist kein Fluch. Das ist ein Versprechen.
+    [goto themen]
+  * Die Leute hier leiden.
+    Senta: Sie leben. Konrad nicht. Leiden ist leise, Kind. Das lernt man.
+    [goto themen]
+  [if {quest.S111} == 2]
+  * Ich habe etwas für Sie. Konrads Ruf. Er war die ganze Zeit auf der Insel.
+    [event camera `close`]
+    [event emotion `scared`]
+    Senta: Was?
+    Senta: Nein. Das kann nicht ... Er hat nicht gerufen. Ich habe nicht ... ich habe nichts gehört.
+    Senta: Spiel es. Bitte. Nein. Doch. Spiel es.
+    [event emotion `sad`]
+    Senta: ...
+    Senta: Das ist er. Das ist seine Stimme. Er ruft meinen Namen.
+    Senta: Vierzig Jahre. Vierzig Jahre war er da draußen und hat gerufen. Und ich war hier und habe alle still gemacht, damit ich ihn nicht höre.
+    [set flag.Senta_Redeemed true]
+    [set flag.Senta_Decided true]
+    [event quest.objective `N104`, `o_senta`]
+  [endif]
+  * Lassen Sie das Dorf frei. Sonst zwinge ich Sie.
+    [event emotion `angry`]
+    Senta: Zwingen. Wie laut du bist.
+    Senta: Dann hör mal zu, wie leise ein See sein kann.
+    [set flag.Senta_Decided true]
+    [event quest.objective `N104`, `o_senta`]
+  * Ich komme wieder.
+    Senta: Natürlich. Der Tee wird nicht kalt. Hier wird nichts kalt. Hier wird nichts anders.
