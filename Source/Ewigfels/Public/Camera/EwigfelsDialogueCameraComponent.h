@@ -83,7 +83,7 @@ public:
 	void HandleCue(FName Cue, const TArray<FString>& Arguments);
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Dialogue")
-	bool IsActive() const { return bActive; }
+	bool IsDialogueActive() const { return bActive; }
 
 	/** Aktuelle Zeile für Untertitel (false, wenn keine). */
 	bool GetCurrentLine(FEwigfelsDialogueLine& OutLine) const;

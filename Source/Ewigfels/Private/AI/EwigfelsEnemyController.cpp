@@ -181,7 +181,7 @@ void AEwigfelsEnemyController::SteerTowards(const FVector& Destination, float Sc
 		return;
 	}
 	// Mit Navmesh: echte Wegfindung (um Säulen herum); ohne: direkt steuern
-	const UNavigationSystemV1* Nav = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+	UNavigationSystemV1* Nav = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
 	if (Nav && Nav->GetDefaultNavDataInstance(FNavigationSystem::DontCreate))
 	{
 		MoveToLocation(Destination, 60.f, true, true, true, true);

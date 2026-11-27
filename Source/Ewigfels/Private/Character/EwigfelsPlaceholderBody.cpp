@@ -27,6 +27,7 @@ UStaticMeshComponent* UEwigfelsPlaceholderBody::MakePart(FName Name, FName Shape
 	Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Part->SetGenerateOverlapEvents(false);
 	Part->SetCanEverAffectNavigation(false);
+	Part->SetMobility(EComponentMobility::Movable);
 	Part->SetupAttachment(Parent);
 	Part->SetRelativeLocation(Location);
 	Part->SetRelativeScale3D(Scale);

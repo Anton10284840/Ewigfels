@@ -238,6 +238,7 @@ AEwigfelsSpellFlash::AEwigfelsSpellFlash()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Mesh->SetCastShadow(false);
+	Mesh->SetMobility(EComponentMobility::Movable);
 	RootComponent = Mesh;
 
 	Light = CreateDefaultSubobject<UPointLightComponent>(TEXT("Light"));

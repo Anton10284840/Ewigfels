@@ -23,5 +23,5 @@ public:
 	FText GetInteractPrompt() const;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Ewigfels|Interaction")
-	void Interact(APawn* Instigator);
+	void Interact(APawn* InstigatorPawn);
 };

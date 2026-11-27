@@ -137,6 +137,7 @@ void AEwigfelsCharacter::BeginPlay()
 	Caster->OnParried.AddDynamic(this, &AEwigfelsCharacter::HandleParried);
 	Combat->OnHitFeedback.AddDynamic(this, &AEwigfelsCharacter::HandleHitFeedback);
 	Combat->OnDied.AddDynamic(this, &AEwigfelsCharacter::HandleDied);
+	Combat->OnStaggered.AddDynamic(this, &AEwigfelsCharacter::HandleStaggered);
 	LockOn->OnTargetChanged.AddDynamic(this, &AEwigfelsCharacter::HandleLockOnChanged);
 
 	TWeakObjectPtr<AEwigfelsCharacter> WeakThis(this);
@@ -237,7 +238,7 @@ void AEwigfelsCharacter::InputMove(const FInputActionValue& Value)
 
 void AEwigfelsCharacter::InputLook(const FInputActionValue& Value)
 {
-	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsActive())
+	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
@@ -248,7 +249,7 @@ void AEwigfelsCharacter::InputLook(const FInputActionValue& Value)
 
 void AEwigfelsCharacter::InputLookStick(const FInputActionValue& Value)
 {
-	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsActive())
+	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
@@ -402,7 +403,7 @@ void AEwigfelsCharacter::InputSwitchTarget(const FInputActionValue& Value)
 
 void AEwigfelsCharacter::InputInteract()
 {
-	if (DialogueCamera->IsActive())
+	if (DialogueCamera->IsDialogueActive())
 	{
 		DialogueCamera->Advance();
 		return;
@@ -503,7 +504,7 @@ void AEwigfelsCharacter::UpdateRotationMode()
 
 void AEwigfelsCharacter::UpdateCamera(float DeltaSeconds)
 {
-	if (DialogueCamera->IsActive())
+	if (DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
@@ -536,7 +537,6 @@ void AEwigfelsCharacter::UpdateInteractFocus()
 	float BestScore = -FLT_MAX;
 	TArray<FOverlapResult> Overlaps;
 	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsInteract), false, this);
-	GetWorld()->OverlapMultiByChannel(Overlaps, GetActorLocation(), FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(280.f), Params);
 	FCollisionObjectQueryParams Objects;
 	Objects.AddObjectTypesToQuery(ECC_Pawn);
 	Objects.AddObjectTypesToQuery(ECC_WorldDynamic);
@@ -673,6 +673,17 @@ void AEwigfelsCharacter::HandleHitFeedback(float Amount, FVector Location, EEwig
 	if (IsLocallyControlled() && Result == EEwigfelsHitResult::Ignored && Amount <= 0.f && IsDodging())
 	{
 		ShowMessage(LOCTEXT("Dodged", "Ausgewichen"), FLinearColor(0.7f, 0.85f, 1.f), 0.6f);
+	}
+}
+
+void AEwigfelsCharacter::HandleStaggered(float Seconds)
+{
+	// Schwerer Treffer unterbricht Ausholen und senkt den Schild
+	LocalCastPoseUntil = 0.f;
+	StopAnimMontage();
+	if (HasAuthority())
+	{
+		Caster->InterruptCast();
 	}
 }
 

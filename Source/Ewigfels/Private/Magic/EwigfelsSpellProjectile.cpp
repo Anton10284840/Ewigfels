@@ -39,6 +39,7 @@ AEwigfelsSpellProjectile::AEwigfelsSpellProjectile()
 	Core->SetupAttachment(Collision);
 	Core->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Core->SetCastShadow(false);
+	Core->SetMobility(EComponentMobility::Movable);
 
 	Light = CreateDefaultSubobject<UPointLightComponent>(TEXT("Light"));
 	Light->SetupAttachment(Collision);

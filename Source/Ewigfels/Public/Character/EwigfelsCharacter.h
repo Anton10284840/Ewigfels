@@ -215,6 +215,9 @@ protected:
 	UFUNCTION()
 	void HandleLockOnChanged(AActor* NewTarget);
 
+	UFUNCTION()
+	void HandleStaggered(float Seconds);
+
 private:
 	void ApplyDefaultLook();
 	void StartDodge(const FVector& Direction);
