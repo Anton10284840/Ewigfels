@@ -120,6 +120,17 @@ public:
 	/** Für Test-Befehle (Ewigfels.Test.Gesten): Zauber-Platz auslösen wie per Taste (0 = linke Maus). */
 	void TestCastSlot(int32 Slot) { CastSlot(Slot); }
 
+	/** Für Test-Befehle (Ewigfels.Test.UI): Zauberrad öffnen, Zeiger setzen (Länge 0–1), Gerät wählen. */
+	void TestOpenWheel(FVector2D Pointer, bool bGamepad)
+	{
+		SetUsingGamepad(bGamepad);
+		InputWheelOpen();
+		WheelPointer = Pointer;
+		WheelMouse = Pointer * WheelMouseRange;
+	}
+	void TestCloseWheel() { InputWheelClose(); }
+	void TestToggleSpellbook(bool bGamepad) { SetUsingGamepad(bGamepad); InputSpellbook(); }
+
 	/** Aktueller Hinweis, false wenn abgelaufen. Alpha blendet aus. */
 	bool GetMessage(FText& OutText, FLinearColor& OutColor, float& OutAlpha) const;
 
