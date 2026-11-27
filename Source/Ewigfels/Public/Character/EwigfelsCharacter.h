@@ -106,6 +106,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	bool bUseBuiltInMovementInput = true;
 
+	/** true, wenn der Blueprint eine eigene Kamera mitbringt (GameplayCameraComponent des Game Animation Sample).
+	 *  Dann wird CameraBoom/FollowCamera nicht nachgeführt; Zielaufschaltung wirkt über die Control Rotation. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Camera")
+	bool UsesExternalCamera() const { return bExternalCamera; }
+
 	/** Eigene Input-Assets statt der C++-Steuerung (optional). */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
@@ -223,6 +228,8 @@ private:
 	void StartDodge(const FVector& Direction);
 	void UpdateRotationMode();
 	void UpdateCamera(float DeltaSeconds);
+	void DetectExternalCamera();
+	bool bExternalCamera = false;
 	void UpdateInteractFocus();
 	void Respawn();
 	void NoteTutorialStep(FName Step);

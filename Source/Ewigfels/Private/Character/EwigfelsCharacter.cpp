@@ -129,6 +129,7 @@ void AEwigfelsCharacter::BeginPlay()
 	Super::BeginPlay();
 	DefaultArmLength = CameraBoom->TargetArmLength;
 	DefaultFov = FollowCamera->FieldOfView;
+	DetectExternalCamera();
 
 	Caster->OnCastStarted.AddDynamic(this, &AEwigfelsCharacter::HandleCastStarted);
 	Caster->OnSpellReleased.AddDynamic(this, &AEwigfelsCharacter::HandleSpellReleased);
@@ -514,9 +515,28 @@ void AEwigfelsCharacter::UpdateRotationMode()
 	}
 }
 
+void AEwigfelsCharacter::DetectExternalCamera()
+{
+	// Nach Klassenname suchen, damit das Modul nicht vom GameplayCameras-Plugin abhängt
+	TInlineComponentArray<UActorComponent*> Components(this);
+	for (const UActorComponent* Comp : Components)
+	{
+		if (Comp && Comp->GetClass()->GetName().Contains(TEXT("GameplayCameraComponent")))
+		{
+			bExternalCamera = true;
+			break;
+		}
+	}
+	if (bExternalCamera)
+	{
+		// FollowCamera bleibt bestehen (Probestart lief so), wird aber nicht mehr nachgeführt
+		UE_LOG(LogEwigfels, Log, TEXT("Figur: Kamera kommt aus dem Blueprint (%s)"), *GetClass()->GetName());
+	}
+}
+
 void AEwigfelsCharacter::UpdateCamera(float DeltaSeconds)
 {
-	if (DialogueCamera->IsDialogueActive())
+	if (bExternalCamera || DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
