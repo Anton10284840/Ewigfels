@@ -17,6 +17,7 @@
     "E1_HidePower": "M110: Kraft verborgen",
     "E2_KeyCollegium": "M205: Schlüssel ans Kollegium",
     "E2_KeyKeepers": "M205: Schlüssel an die Hüter",
+    "E2_Decided": "M205: Entscheidung 2 getroffen (egal welche)",
     "E3_MaraKilled": "M310: Mara getötet",
     "E3_MaraPrisoner": "M310: Mara gefangen",
     "E3_MaraRedeemed": "M310: Mara zurückgeholt",
@@ -98,7 +99,15 @@
     "Tutorial_Movement": "M101: Bewegungs-Tutorial abgeschlossen",
     "Met_Lio": "M101: Lio getroffen",
     "Nym_Spoke": "M110: Nym hat zum ersten Mal gesprochen",
-    "E1_Decided": "M110: Entscheidung 1 getroffen (egal welche)"
+    "E1_Decided": "M110: Entscheidung 1 getroffen (egal welche)",
+    "Wim_Protege": "M201: Wim Hasel ist Schützling des Spielers",
+    "Overheard_Glove": "M201: Grell und Varga über den Handschuh belauscht",
+    "Found_Borehole": "M202: Bohrloch unter der Scheune gefunden",
+    "Freed_Mooslinge": "M202: Mooslinge der Wilderer befreit (Arche-Anstoß)",
+    "Has_KaelKey": "M204: Kael-Schlüssel (Stimmstein) gefunden",
+    "Saw_TargetList": "M204: Zielliste mit Kesselbrunn gesehen",
+    "Has_Metronome": "M209: Maras Metronom-Anhänger",
+    "Draeger_Alarm": "M210: Bannglocken haben bei der Anhörung angeschlagen"
   },
   "objective_kinds": [
     "talk",
@@ -202,6 +211,10 @@
     "Kalle",
     "Egon",
     "Kuno",
-    "Fiete"
+    "Fiete",
+    "Feil",
+    "Draeger",
+    "Grimm",
+    "KaelEcho"
   ]
 }

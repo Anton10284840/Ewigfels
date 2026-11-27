@@ -1,0 +1,18 @@
+# M210 – Ende Akt 2. Edda am Steg. Sie weiß, dass der Spieler „Brandheim“ gehört hat. Versprechen für Akt 3.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+===
+[event camera `wide`]
+Edda: Setzen Sie sich. Das Wasser ist ruhig heute. Selten.
+Edda: Mara Vandermeer hat ein Wort zu Ihnen gesagt. Ein Ortsname.
+  * Brandheim. Was ist Brandheim?
+    Edda: Ein Ort, an dem ich einmal zu spät kam.
+  * Sie wussten es die ganze Zeit.
+    [event emotion `sad`]
+    Edda: Ja.
+  * (Schweigen)
+    Edda: Danke. Dass Sie nicht fragen. Das ist schwerer, als zu fragen.
+[event camera `close`]
+Edda: Nächstes Jahr zeige ich es Ihnen. Brandheim. Ich gehe mit Ihnen hin.
+Edda: Ich verspreche es.
+Edda: Dann dürfen Sie mich hassen.

@@ -1,0 +1,18 @@
+# M201 – Belauscht im Speisenaufzug (Geheimgang 8). Grell zeigt Varga den schwarzen Handschuh.
+===
+[set SpeakerName.Grell "Meister Grell"]
+[set SpeakerName.Varga "Rektorin Varga"]
+===
+[event camera `close`]
+Grell: Gefunden. In der Asche. Kesselbrunn. Scheune.
+Varga: Ein Handschuh.
+Grell: Schwarz. Fingerspitzen abgenutzt. Vom Takt-Klopfen. Wie bei Varn.
+Varga: Sie wünschen?
+Grell: Leute. Wachen. Am Bootssteg. Und eine Erlaubnis, zu suchen.
+Varga: Nein.
+Grell: Nein?
+Varga: Kein Wort davon zu den Schülern. Und kein Wort zum Kollegium.
+Grell: Das Kollegium muss ...
+Varga: Das Kollegium muss gar nichts. Wenn Aurenburg hört, dass hier Handschuhe in der Asche liegen, schickt es Bannglocken. Und dann hört es nicht bei Handschuhen auf.
+Grell: ... Verstanden. Nächste Frage.
+Varga: Gute Nacht, Grell.

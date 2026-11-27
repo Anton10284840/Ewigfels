@@ -1,0 +1,17 @@
+# M202 – Lio will nicht mehr warten. Schnell, laut, springt zwischen Witz und Wahrheit.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `angry`]
+Lio: Ich warte nicht mehr. Wenn die Leute mit dem Handschuh Varn umgedreht haben, können sie jeden umdrehen. Dich. Mich. Kessel Klaus.
+Lio: Okay, Kessel Klaus vielleicht nicht. Der ist zu stur.
+  * Was willst du machen?
+    Lio: Varns Hütte. Am Waldrand. Er ist zur Kur in Kesselbrunn, die Hütte steht leer. Wir schauen nur. Wir fassen nichts an. Wir fassen fast nichts an.
+  * Grell hat gesagt, wir sollen uns raushalten.
+    Lio: Grell hat auch gesagt, Glockenball ist kein Sport. Grell hat nicht immer recht.
+  * Ich bin dabei.
+    [event emotion `happy`]
+    Lio: Wusste ich. Du hast dieses Gesicht. Das Ich-bin-dabei-Gesicht. Hab ich dir beigebracht.
+[event emotion `neutral`]
+Lio: Und ... wenn wir was finden. Über die Stille Hand. Dann will ich es wissen. Alles. Auch wenn's blöd ist.
+Lio: Mara ist mit sechzehn weg. Ohne Brief. Ich will nur ... ich will nur wissen, wohin Leute gehen, wenn sie gehen.

@@ -1,0 +1,26 @@
+# M209 – Story-Boss Mara, die Taktgeberin. Vor dem Kampf und Kampfrufe (über [event] aus dem Kampf ausgelöst). Kühl, im Takt, bricht nur bei Lio.
+===
+[set SpeakerName.Mara "Mara Vandermeer"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+Lio: Mara!
+Mara: Eins. Zwei. Drei. Vier.
+Lio: Mara, ich bin's! Lio! Ich hab ... ich hab das Lied ...
+[event emotion `neutral`]
+Mara: Du. Nicht er. Du.
+Mara: Du bist das, wofür er uns nach Kesselbrunn geschickt hat.
+  * Wer ist er? Wer hat euch geschickt?
+    Mara: Der, der zuhört. Er hört alles. Auch dich. Besonders dich.
+  * Du warst da, als Hanne starb.
+    [event emotion `sad`]
+    Mara: ... Ich hab niemanden angefasst.
+    Mara: Das ist keine Entschuldigung. Das ist eine Tatsache. Eins. Zwei.
+  * Lio hat jeden Abend für dich gespielt. Fünf Jahre lang.
+    [event camera `close`]
+    Mara: ...
+    Mara: Drei. Vier. Takt halten. Takt halten.
+Lio: Mara, bitte.
+Mara: Geh zur Seite, Lio. Ich will dir nicht wehtun.
+[event emotion `angry`]
+Mara: Novizen. Im Takt.

@@ -1,0 +1,188 @@
+{
+  "id": "M205",
+  "type": "main",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Quendel",
+  "duration_min": 45,
+  "auto_start": true,
+  "requires": [
+    "quest:M204"
+  ],
+  "title": {
+    "de": "Der Preis des Schlüssels",
+    "en": "The Price of the Key"
+  },
+  "summary": {
+    "de": "Quendel will den Schlüssel in die kranke Ader setzen. Dann kommt das Kollegium und will ihn auch.",
+    "en": "Quendel wants to set the key into the sick vein. Then the Collegium arrives and wants it too."
+  },
+  "dialogues": [
+    "D_M205_Quendel",
+    "D_M205_Feil",
+    "D_M205_Aurelia"
+  ],
+  "stages": [
+    {
+      "id": "s1_gespraeche",
+      "text": {
+        "de": "Hör alle Seiten an.",
+        "en": "Hear all sides."
+      },
+      "objectives": [
+        {
+          "id": "o_quendel",
+          "kind": "dialogue",
+          "target": "D_M205_Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Sprich mit Mutter Quendel",
+            "en": "Talk to Mother Quendel"
+          }
+        },
+        {
+          "id": "o_feil",
+          "kind": "dialogue",
+          "target": "D_M205_Feil",
+          "marker": "NPC_Feil",
+          "text": {
+            "de": "Sprich mit Magister Feil",
+            "en": "Talk to Magister Feil"
+          }
+        },
+        {
+          "id": "o_aurelia",
+          "kind": "dialogue",
+          "target": "D_M205_Aurelia",
+          "marker": "NPC_Aurelia",
+          "text": {
+            "de": "Sprich unter vier Augen mit Aurelia",
+            "en": "Talk to Aurelia in private"
+          }
+        },
+        {
+          "id": "o_saphira",
+          "kind": "talk",
+          "target": "Saphira",
+          "marker": "NPC_Saphira",
+          "optional": true,
+          "text": {
+            "de": "Schau, was Saphira sagt (sie sagt nichts)",
+            "en": "See what Saphira says (she says nothing)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahl"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahl",
+      "text": {
+        "de": "Wem gibst du den Kael-Schlüssel?",
+        "en": "Who do you give the Kael Key to?"
+      },
+      "objectives": [
+        {
+          "id": "o_wahl",
+          "kind": "condition",
+          "target": "flag:E2_Decided",
+          "marker": "Stelzenheim",
+          "text": {
+            "de": "Gib den Schlüssel dem Kollegium oder den Hütern",
+            "en": "Give the key to the Collegium or the Keepers"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:E2_KeyCollegium"
+          ],
+          "stage": "s3a_kollegium"
+        },
+        {
+          "stage": "s3b_hueter"
+        }
+      ]
+    },
+    {
+      "id": "s3a_kollegium",
+      "text": {
+        "de": "Feil nimmt den Schlüssel. Ingenieure vermessen schon das Moor.",
+        "en": "Feil takes the key. Engineers are already surveying the moor."
+      },
+      "objectives": [
+        {
+          "id": "o_abschied",
+          "kind": "talk",
+          "target": "Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Verabschiede dich von Quendel",
+            "en": "Say goodbye to Quendel"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Kollegium+20",
+        "rep:Hueter-20",
+        "rel:Aurelia+10"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_hueter",
+      "text": {
+        "de": "Der Schlüssel sinkt in die Ader. Das Moor atmet auf. Feil schreibt deinen Namen auf.",
+        "en": "The key sinks into the vein. The moor breathes again. Feil writes down your name."
+      },
+      "objectives": [
+        {
+          "id": "o_ader",
+          "kind": "custom",
+          "target": "Kael_Schluessel_Einsetzen",
+          "marker": "Aderknoten_Moor",
+          "text": {
+            "de": "Setz den Schlüssel mit Quendel ein",
+            "en": "Set the key with Quendel"
+          }
+        },
+        {
+          "id": "o_abschied2",
+          "kind": "talk",
+          "target": "Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Verabschiede dich von Quendel",
+            "en": "Say goodbye to Quendel"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+20",
+        "rep:Kollegium-20",
+        "rel:Aurelia-5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 0,
+    "items": [
+      "Holzperle_Quendel"
+    ],
+    "effects": []
+  }
+}

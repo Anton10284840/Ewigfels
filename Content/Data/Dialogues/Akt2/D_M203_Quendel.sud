@@ -1,0 +1,18 @@
+# M203 – Mutter Quendel, Älteste der Hüter. Lacht mit Goldzahn, pustet Pfeifenrauch, spricht Kael. Weiß mehr als alle.
+===
+[set SpeakerName.Quendel "Mutter Quendel"]
+===
+[event emotion `happy`]
+Quendel: Va'el shor tan. Na'el ve.
+Quendel: Hahaha! Gesichter macht ihr! Das war Kael, Kinder. Heißt: Ihr seid spät, und ihr habt nasse Füße. Beides stimmt.
+[event emotion `neutral`]
+Quendel: Und du. Komm her. Lass dich anhören.
+Quendel: ... Hm. Du klingst wie jemand, dem ich seit sechzig Jahren nicht antworte.
+  * Was heißt das?
+    Quendel: Dass ich alt bin und rede, wenn ich nicht soll. Rauch? Nein? Ist auch besser so.
+  * Wir suchen einen Händler im grauen Mantel.
+    Quendel: Den kenn ich. Den kennt jedes Kind hier. Er kauft ihnen Kael-Splitter ab, für Bonbons. Erst die Arbeit, dann die Bonbons.
+  * Sie sprechen Kael? Niemand spricht Kael.
+    Quendel: Niemand außer mir und den Steinen. Und die Steine reden selten.
+Quendel: Erst hilfst du mir. Ein Aderknoten am Westrand ist krank. Er singt falsch. Wir singen ihn zurück. Drei Stimmen. Du hältst den Grundton. Den tiefsten.
+Quendel: Den kannst du. Das hör ich.

@@ -1,0 +1,211 @@
+{
+  "id": "M204",
+  "type": "main",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Quendel",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M203"
+  ],
+  "title": {
+    "de": "Ruinen von Altwacht",
+    "en": "Ruins of Altwacht"
+  },
+  "summary": {
+    "de": "In der versunkenen Festung Altwacht graben graue Männer. Etwas kommt von unten herauf: Licht ohne Farbe.",
+    "en": "In the sunken fortress of Altwacht grey men are digging. Something rises from below: light without colour."
+  },
+  "dialogues": [
+    "D_M204_Lio",
+    "D_M204_Nym_Echo"
+  ],
+  "stages": [
+    {
+      "id": "s1_festung",
+      "text": {
+        "de": "Komm in die Festung: über die eingestürzten Türme oder durchs Tor.",
+        "en": "Get into the fortress: over the collapsed towers or through the gate."
+      },
+      "objectives": [
+        {
+          "id": "o_altwacht",
+          "kind": "reach",
+          "target": "Altwacht",
+          "marker": "Altwacht",
+          "text": {
+            "de": "Erreich Altwacht",
+            "en": "Reach Altwacht"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M204_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Plan mit Lio den Weg hinein",
+            "en": "Plan the way in with Lio"
+          }
+        },
+        {
+          "id": "o_eingang",
+          "kind": "custom",
+          "target": "Altwacht_Eindringen",
+          "text": {
+            "de": "Dring in die Festung ein (Schleichen oder Kampf)",
+            "en": "Get into the fortress (sneak or fight)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_fluegel"
+        }
+      ]
+    },
+    {
+      "id": "s2_fluegel",
+      "text": {
+        "de": "Drei Flügel, drei Rätsel. Erst dann öffnet sich der Keller.",
+        "en": "Three wings, three puzzles. Only then does the cellar open."
+      },
+      "objectives": [
+        {
+          "id": "o_glocken",
+          "kind": "custom",
+          "target": "Altwacht_Wachglocken",
+          "text": {
+            "de": "Spiel die Klangfolge an den Wachglocken",
+            "en": "Play the sequence on the watch bells"
+          }
+        },
+        {
+          "id": "o_wasser",
+          "kind": "custom",
+          "target": "Altwacht_Wasserstand",
+          "text": {
+            "de": "Senk den Wasserstand im Ostflügel",
+            "en": "Lower the water level in the east wing"
+          }
+        },
+        {
+          "id": "o_spiegel",
+          "kind": "custom",
+          "target": "Altwacht_Spiegellicht",
+          "text": {
+            "de": "Lenk Licht durch die Schießscharten",
+            "en": "Guide light through the arrow slits"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_grabung"
+        }
+      ]
+    },
+    {
+      "id": "s3_grabung",
+      "text": {
+        "de": "Die Grabung: Novizen, Schweiger und ein Choralist, der sie stark singt.",
+        "en": "The dig site: novices, silencers and a choralist singing them strong."
+      },
+      "objectives": [
+        {
+          "id": "o_choralist",
+          "kind": "defeat",
+          "target": "Choralist",
+          "marker": "Altwacht_Grabung",
+          "text": {
+            "de": "Besiege den Choralisten",
+            "en": "Defeat the choralist"
+          }
+        },
+        {
+          "id": "o_wachen",
+          "kind": "defeat",
+          "target": "Stille_Hand_Novize",
+          "count": 5,
+          "text": {
+            "de": "Besiege die Wachen",
+            "en": "Defeat the guards"
+          }
+        },
+        {
+          "id": "o_schluessel",
+          "kind": "collect",
+          "target": "Kael_Schluessel",
+          "marker": "Altwacht_Grabung",
+          "text": {
+            "de": "Nimm den Kael-Schlüssel",
+            "en": "Take the Kael Key"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Has_KaelKey=1",
+        "flag:NachhallLoad+5"
+      ],
+      "next": [
+        {
+          "stage": "s4_nachhall"
+        }
+      ]
+    },
+    {
+      "id": "s4_nachhall",
+      "text": {
+        "de": "Der Boden bricht. Du fällst in einen Ort ohne Farbe. Die Festung steht hier heil, wie vor 800 Jahren.",
+        "en": "The ground breaks. You fall into a place without colour. Here the fortress stands whole, as it did 800 years ago."
+      },
+      "objectives": [
+        {
+          "id": "o_nym",
+          "kind": "dialogue",
+          "target": "D_M204_Nym_Echo",
+          "text": {
+            "de": "Hör auf die Stimme",
+            "en": "Listen to the voice"
+          }
+        },
+        {
+          "id": "o_stummlinge",
+          "kind": "custom",
+          "target": "Stummlingen_Ausweichen",
+          "text": {
+            "de": "Weich den Stummlingen aus",
+            "en": "Avoid the Mutes"
+          }
+        },
+        {
+          "id": "o_riss",
+          "kind": "reach",
+          "target": "Nachhall_Riss_Altwacht",
+          "text": {
+            "de": "Find den Riss zurück",
+            "en": "Find the rift back"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Saw_TargetList=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 0,
+    "items": [
+      "Weise_Nachhallschritt",
+      "Kodex_Nachhall"
+    ],
+    "effects": []
+  }
+}

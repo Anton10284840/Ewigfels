@@ -71,7 +71,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
-## Quests (geschätzte Spielzeit geschrieben: 28,4 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
+## Quests (geschätzte Spielzeit geschrieben: 37,2 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
@@ -121,7 +121,8 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | N124 | Die Rauchgesichter (Russgrube, Egon Ruß) | Neben | 50 min | ✅ JSON + 5 Dialoge | ⬜ Level fehlt | ⬜ |
 | N125 | Der Schmelzer (Alte Mine, Regionsboss) | Neben | 45 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
 | N126 | Der summende Quarz (Ambros) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
-| M201–M510 | Akte 2–5 | Main | je 40–70 min | 🟨 Missionsdesign (docs/missions/AKT2–5.md), JSON folgt pro Akt | ⬜ | ⬜ |
+| M201–M210 | Akt 2 (Neue Gesichter bis Masken) | Main | je 45–60 min | ✅ JSON + 29 Dialoge (`Content/Data/Quests/Akt2/`) | ⬜ Level fehlt | ⬜ |
+| M301–M510 | Akte 3–5 | Main | je 40–70 min | 🟨 Missionsdesign (docs/missions/AKT3–5.md), JSON folgt pro Akt | ⬜ | ⬜ |
 | D_Schule_* | 12 freie Gespräche (Lio, Aurelia, Lehrkräfte, Mitschüler, Ottilie) | – | – | ✅ | ⬜ | ⬜ |
 | D_Dorf_* | 5 freie Gespräche (Wenke, Lotte, Agnes, Morchel, Hanne), Regionen: docs/regionen/ | – | – | ✅ | ⬜ | ⬜ |
 

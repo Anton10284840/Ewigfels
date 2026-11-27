@@ -1,0 +1,16 @@
+# M204 – Vor Altwacht. Lio plant und macht Witze gegen die Angst.
+===
+[set SpeakerName.Lio "Lio"]
+===
+Lio: Altwacht. Halb versunken, voller Leute in Schwarz, die im Takt graben. Super. Genau mein Urlaubsziel.
+Lio: Zwei Wege rein. Über die eingestürzten Türme, leise. Oder durchs Tor, laut, mit viel Funkenschnipp.
+  * Leise. Wir wollen wissen, was sie graben.
+    Lio: Leise. Gut. Ich kann leise. Ich war mal eine ganze Minute leise. Mara hat die Zeit gestoppt.
+  * Durchs Tor. Bevor sie fertig sind.
+    [event emotion `happy`]
+    Lio: Ja! Endlich mal jemand, der nicht erst ein Buch liest.
+  * Was, wenn Mara hier ist?
+    [event emotion `sad`]
+    Lio: ... Dann frag ich sie, warum sie nie geschrieben hat. Und dann renn ich weg. Oder sie. Mal sehen, wer schneller ist.
+Lio: Und falls wir getrennt werden: Treffpunkt am Tor. Und falls einer von uns in ein Loch fällt: Der andere springt nicht hinterher. Okay?
+Lio: Okay. Ich spring trotzdem hinterher. Nur dass du's weißt.
