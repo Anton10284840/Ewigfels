@@ -1,0 +1,27 @@
+# N124 – Egon Ruß, Rauchschmied, Schattenweber. Spricht in Schichten. Einziger echter Schreck: Augen hinter dem Ofen.
+===
+[set SpeakerName.Egon "Egon Ruß"]
+===
+[event camera `close`]
+Egon: Zu.
+Egon: Die Ofenklappe. Mach sie zu. Danke.
+[event emotion `neutral`]
+Egon: Erste Schicht: Ich hör dir zu. Zweite Schicht: Ich glaub dir nicht. Dritte Schicht: Wir werden sehen.
+  * Lassen Sie die Bergleute nach Hause.
+    Egon: Nach Hause. Die Zunft wollte schneller fördern. Mehr Erz, weniger Balken. Jetzt fördern sie. Ohne Pause. Die Zunft kriegt, was sie wollte.
+  * Wer sind die zwölf Gesichter?
+    [event emotion `sad`]
+    Egon: Meine Männer. Stollen 4. Vor zwanzig Jahren.
+    Egon: Die Gesichter hab ich nicht gemacht. Die kamen von allein. Ich glaub, sie warten auf etwas.
+  * Lenes Vater ist hier. Sie wartet auf ihn.
+    Egon: Kuno. Guter Hauer. Sein Mädchen hat er immer auf den Schultern getragen.
+    Egon: ... Hör auf damit. Das ist die vierte Schicht. Die gibt's nicht.
+Egon: Ich hab drei Briefe geschrieben. An Zunftmeister Pfennig. Bevor der Stollen brach. Er hat nie geantwortet. Und nachher hieß es: Unglück. Niemand schuld.
+  * Wenn ich die Briefe finde, lassen Sie sie frei?
+    Egon: Wenn du sie findest und ganz Kesselbrunn hört, was drinsteht. Und wenn jemand die Namen sagt. Laut. Alle zwölf. Das hat nie einer getan.
+  * Rache macht Ihre Männer nicht lebendig.
+    Egon: Nein. Aber sie macht sie nicht vergessen.
+    Egon: Find die Briefe. Dann reden wir weiter.
+  * Ich zwinge Sie, wenn es sein muss.
+    [event emotion `angry`]
+    Egon: Dann komm wieder, wenn du so weit bist. Ich hab Zeit. Ich hab nur noch Zeit.

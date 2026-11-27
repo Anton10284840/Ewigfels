@@ -1,0 +1,22 @@
+# N121 – Bastian (12) und Lene (9) gestehen die geheime Spardose. Entscheidung: Feier oder Nägel.
+===
+[set SpeakerName.Bastian "Bastian"]
+[set SpeakerName.Lene "Lene"]
+===
+Bastian: Du hast die Dose gefunden. Mist. Das war geheim. Geheimer als geheim.
+Lene: Wir sparen seit dem Sommer. Für dich. Für eine Feier, wenn du mal wieder da bist. Mit Kuchen. Und Kerzen. Und Kalle wollte einen Stein schenken.
+Bastian: Vier Silber und zwölf Kupfer. Ich hab's dreimal gezählt.
+[event emotion `sad`]
+Lene: Aber Hanne hat kein Geld für Nägel. Ich hab's gehört. Sie hat in der Küche mit dem Topf geredet.
+  * Wir kaufen Nägel. Die Feier machen wir trotzdem, nur kleiner.
+    [event emotion `happy`]
+    Bastian: Echt? Dann sind wir die, die das Dach gerettet haben. Das ist besser als Kuchen.
+    Lene: Fast besser.
+  * Ihr feiert. Für die Nägel finde ich was anderes.
+    [set flag.Waisenhaus_Feier true]
+    Lene: Was denn?
+    Bastian: Jupp! Jupp spielt doch immer auf dem Markt. Wenn du mitspielst, geben die Leute bestimmt mehr.
+  * Fragen wir Hanne, was sie will.
+    Bastian: Hanne sagt immer: Ist doch egal. Das heißt bei ihr: Feier.
+    [set flag.Waisenhaus_Feier true]
+    Lene: Und Jupp spielt für die Nägel. Das hat er mal versprochen. Ich weiß es noch.

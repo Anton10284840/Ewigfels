@@ -1,0 +1,14 @@
+# N123 – Hedda, Bäckerin. Lacht laut, backt bei Kummer doppelt. Verdacht auf Ole aus Uferlicht.
+===
+[set SpeakerName.Hedda "Hedda"]
+===
+[event emotion `angry`]
+Hedda: Weg! Einfach weg! Das Rezept meiner Großmutter! Es lag in der Mehldose, wie seit sechzig Jahren!
+Hedda: Ich hab vor Kummer schon zwei Bleche Pflaumenkuchen gebacken. Und eins Brot. Und ich weiß nicht mal mehr, wofür.
+  * Wer könnte es genommen haben?
+    Hedda: Ich sag's dir: Ole Butterfass. Uferlicht. Der Pfannkuchenkönig. Der wollte schon immer wissen, warum meine Schnecken besser sind als seine Pfannkuchen.
+  * Kannst du es nicht auswendig?
+    Hedda: Doch. Fast. Aber das letzte Gewürz. Das Geheimnis. Das hat Oma nur aufgeschrieben, nie gesagt.
+Hedda: Fahr nach Uferlicht und frag ihn. Freundlich. Und wenn er lügt, wirf ihm einen Pfannkuchen ins Gesicht. Er hat ja genug.
+[event emotion `happy`]
+Hedda: Hier, nimm eine Schnecke mit. Die vorletzten nach Omas Rezept. Wahrscheinlich.

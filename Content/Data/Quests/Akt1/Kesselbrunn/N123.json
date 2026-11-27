@@ -1,0 +1,127 @@
+{
+  "id": "N123",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Hedda",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Heddas Geheimrezept",
+    "en": "Hedda's Secret Recipe"
+  },
+  "summary": {
+    "de": "Heddas Zimtschnecken-Rezept ist verschwunden. Sie hat einen Verdacht: Ole aus Uferlicht, der Pfannkuchenkönig.",
+    "en": "Hedda's cinnamon bun recipe has vanished. She has a suspect: Ole from Uferlicht, the pancake king."
+  },
+  "dialogues": [
+    "D_N123_Hedda",
+    "D_N123_Ole",
+    "D_N123_Hedda_Brief"
+  ],
+  "stages": [
+    {
+      "id": "s1_hedda",
+      "text": {
+        "de": "Hör dir Heddas Verdacht an.",
+        "en": "Hear Hedda's suspicion."
+      },
+      "objectives": [
+        {
+          "id": "o_hedda",
+          "kind": "dialogue",
+          "target": "D_N123_Hedda",
+          "marker": "NPC_Hedda",
+          "text": {
+            "de": "Sprich mit Hedda in der Backstube",
+            "en": "Talk to Hedda in the bakery"
+          }
+        },
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Mehlspuren_Folgen",
+          "marker": "Heddas_Backstube",
+          "text": {
+            "de": "Folg den Mehlspuren aus der Backstube",
+            "en": "Follow the flour tracks out of the bakery"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_ole"
+        }
+      ]
+    },
+    {
+      "id": "s2_ole",
+      "text": {
+        "de": "Fahr nach Uferlicht und stell Ole zur Rede. Höflich. Er wirft Pfannkuchen.",
+        "en": "Go to Uferlicht and confront Ole. Politely. He throws pancakes."
+      },
+      "objectives": [
+        {
+          "id": "o_ole",
+          "kind": "dialogue",
+          "target": "D_N123_Ole",
+          "marker": "NPC_Ole",
+          "text": {
+            "de": "Sprich mit Ole Butterfass",
+            "en": "Talk to Ole Butterfass"
+          }
+        },
+        {
+          "id": "o_kalle",
+          "kind": "interact",
+          "target": "Kalles_Steinsammlung",
+          "marker": "Waisenhaus_Schlafsaal",
+          "text": {
+            "de": "Finde das echte Rezept (jemand hat es als Unterlage benutzt)",
+            "en": "Find the real recipe (someone used it as a mat)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_brief"
+        }
+      ]
+    },
+    {
+      "id": "s3_brief",
+      "text": {
+        "de": "Auf der Rückseite von Oles Abschrift steht ein Liebesbrief. Von Heddas Großmutter an Oles Großvater.",
+        "en": "On the back of Ole's copy is a love letter. From Hedda's grandmother to Ole's grandfather."
+      },
+      "objectives": [
+        {
+          "id": "o_rueckgabe",
+          "kind": "dialogue",
+          "target": "D_N123_Hedda_Brief",
+          "marker": "NPC_Hedda",
+          "text": {
+            "de": "Bring Hedda das Rezept zurück",
+            "en": "Bring Hedda the recipe back"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Rezept_Zimtschnecke"
+    ],
+    "effects": []
+  }
+}

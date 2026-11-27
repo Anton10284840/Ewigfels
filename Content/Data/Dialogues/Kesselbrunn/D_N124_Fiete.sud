@@ -1,0 +1,13 @@
+# N124 – Fiete (14), Grubenjunge, versteckt im Lorenwagen. Hustet, kennt die Gassen.
+===
+[set SpeakerName.Fiete "Fiete"]
+===
+[event emotion `scared`]
+Fiete: Runter! Nicht stehen bleiben! Wer stehen bleibt, schaut ihn an. Und dann will er, dass man hämmert.
+Fiete: Ich bin im Wagen, seit der Rauch kam. Ich bin klein, mich sieht er nicht. Hoffentlich.
+  * Wer ist er?
+    Fiete: Egon. Der Rauchschmied. Früher war er unser Steiger. Der Beste. Er hat mir mal das Pfeifen beigebracht.
+  * Die Gesichter im Rauch. Wer sind die?
+    Fiete: Zähl sie mal. Es sind immer zwölf. Wie die Namen auf der Tafel am Förderturm.
+    Fiete: Mein Onkel ist einer davon.
+Fiete: Wenn du durch die Gasse willst: im Schatten bleiben, wenn der Rauch dreht. Er dreht immer im Takt. Hörst du das Hämmern? Zwischen zwei Schlägen ist er blind.

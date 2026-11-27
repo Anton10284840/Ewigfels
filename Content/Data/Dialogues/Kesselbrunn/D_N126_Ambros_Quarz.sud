@@ -1,0 +1,19 @@
+# N126 – Der Quarz summt sechs Töne (das Wiegenlied der Eltern). Ambros wird blass und versteckt ihn. Saat für M408.
+===
+[set SpeakerName.Ambros "Ambros Kettler"]
+===
+Ambros: Hast du ihn? Gib her, gib her.
+[event camera `close`]
+Ambros: Lass mal hören ...
+[event emotion `scared`]
+Ambros: ...
+Ambros: Sechs Töne.
+Ambros: Nein. Nein, falscher Quarz. Klingt wie eine Glocke in Watte. Taugt nichts.
+  * Er klang schön. Kennen Sie die Melodie?
+    Ambros: Melodie? Das ist keine Melodie. Das ist Gestein, das sich wichtig macht.
+    Ambros: (steckt den Quarz in die Schürzentasche, nicht in die Schublade)
+  * Sie sind ganz blass.
+    Ambros: Blass? Ich? Das ist das Licht. Werkstattlicht macht jeden blass. Sogar Hedda.
+[event emotion `happy`]
+Ambros: Hier. Nimm den. Bernsteinglut. Viel besser. Und die Gravur mach ich dir umsonst, für die Mühe.
+Ambros: Und jetzt raus mit dir, ich hab zu tun. Zu tun hab ich. Ja.

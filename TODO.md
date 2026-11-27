@@ -4,7 +4,7 @@ Stand: 27.11.2026 · Diese Liste zeigt **alles**, was bis zum fertigen Spiel zu 
 
 Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (Editor, testen, entscheiden) · 🤖 = Claude (Text/Code, geht auch ohne deinen PC)
 
-**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Story, Dialoge, Gegner, Reittiere und die Regionen Ilsensee und Raunwald sind als Text und Daten fertig (PR #13).
+**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Story, Dialoge, Gegner, Reittiere und alle drei Akt-1-Regionen (Ilsensee, Raunwald, Kesselbrunn) sind als Text und Daten fertig.
 
 ---
 
@@ -67,7 +67,7 @@ Geschichte und Daten (🤖, geht ohne PC):
 - [x] Schulleben-Quests S101–S118 als JSON
 - [x] Region Ilsensee: Uferlicht + Stillwasser, Nebenquests N101–N106 + 13 Dialoge (`docs/regionen/ILSENSEE.md`)
 - [x] Raunwald: Pilzhausen + Krähenhain, Nebenquests N111–N116 + 13 Dialoge (`docs/regionen/RAUNWALD.md`)
-- [ ] 🟨 Kesselbrunn + Russgrube: Beschreibung fertig (`docs/regionen/KESSELBRUNN.md`), Quests N121–N126 + Dialoge fehlen
+- [x] Kesselbrunn + Russgrube: Nebenquests N121–N126 + 15 Dialoge (`docs/regionen/KESSELBRUNN.md`)
 - [x] Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
 - [ ] Kampfwerte der Akt-1-Gegner im Phase-3-Format ableiten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
 - [x] Reittier Moosbock (Zähm-Quest N116)
