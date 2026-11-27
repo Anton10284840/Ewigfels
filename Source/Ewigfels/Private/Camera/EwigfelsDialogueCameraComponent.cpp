@@ -137,6 +137,7 @@ void UEwigfelsDialogueCameraComponent::ApplyCamera(const FTransform& Transform, 
 	}
 	if (PC->GetViewTarget() != Cam)
 	{
+		PreviousViewTarget = PC->GetViewTarget();
 		PC->SetViewTargetWithBlend(Cam, Blend, VTBlend_EaseInOut, 2.f);
 	}
 }
@@ -231,8 +232,11 @@ void UEwigfelsDialogueCameraComponent::EndDialogue()
 	Script.Reset();
 	if (APlayerController* PC = GetPC())
 	{
-		PC->SetViewTargetWithBlend(GetOwner(), EnterBlendTime, VTBlend_EaseInOut, 2.f);
+		// Zurück zum vorherigen Blickziel: bei der Sample-Figur ist das nicht der Pawn selbst
+		AActor* Back = PreviousViewTarget.IsValid() && PreviousViewTarget.Get() != CameraActor ? PreviousViewTarget.Get() : GetOwner();
+		PC->SetViewTargetWithBlend(Back, EnterBlendTime, VTBlend_EaseInOut, 2.f);
 	}
+	PreviousViewTarget.Reset();
 	if (AEwigfelsCharacter* Character = Cast<AEwigfelsCharacter>(GetOwner()))
 	{
 		Character->SetGameplayInputBlocked(false);

@@ -2,6 +2,7 @@
 
 #include "World/EwigfelsTestArena.h"
 #include "World/EwigfelsTestNPC.h"
+#include "World/EwigfelsMirror.h"
 #include "AI/EwigfelsEnemy.h"
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Magic/EwigfelsSpellVisuals.h"
@@ -105,6 +106,15 @@ AEwigfelsTestArena::AEwigfelsTestArena()
 	Walls.Add(MakeMesh(TEXT("WallE"), CubeMesh.Object, FVector(0.f, ArenaHalf, WallH * 50.f), FVector(ArenaHalf / 50.f, 1.f, WallH)));
 	Walls.Add(MakeMesh(TEXT("WallW"), CubeMesh.Object, FVector(0.f, -ArenaHalf, WallH * 50.f), FVector(ArenaHalf / 50.f, 1.f, WallH)));
 
+	// Sprungturm: Treppe aus 9 Stufen bis auf gut 8 m, zum Testen der magischen Landung (ab ~6 m Fallhöhe)
+	for (int32 i = 0; i < 9; ++i)
+	{
+		const float Top = (i + 1) * 90.f;
+		const float Size = i == 8 ? 3.2f : 2.3f; // oben eine größere Absprung-Fläche
+		const FVector Pos(-2600.f + i * 230.f, -2600.f, Top * 0.5f);
+		Walls.Add(MakeMesh(*FString::Printf(TEXT("JumpStep_%d"), i), CubeMesh.Object, Pos, FVector(Size, Size, Top / 100.f)));
+	}
+
 	// Deckung: zerbrochene Mauerstücke (Sichtlinien für den Fluchsänger)
 	const FVector CoverSpots[] = { {900.f, 700.f, 0.f}, {1300.f, -600.f, 0.f}, {600.f, -1500.f, 0.f}, {-800.f, 1400.f, 0.f}, {1700.f, 200.f, 0.f} };
 	int32 CoverIndex = 0;
@@ -166,13 +176,14 @@ void AEwigfelsTestArena::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 	// Materialien hier (nicht im Konstruktor), damit dynamische Instanzen auch im Editor-Vorschaubild sitzen
-	EwigfelsSpellVisuals::ApplySolid(Floor, Stone, 0.85f);
-	EwigfelsSpellVisuals::ApplySolid(Dais, DaisColor, 0.6f);
+	// Echte Oberflächen (create_photoreal.py), sonst graue Platzhalter
+	EwigfelsSpellVisuals::ApplySurface(Floor, TEXT("Ground"), Stone, 0.85f);
+	EwigfelsSpellVisuals::ApplySurface(Dais, TEXT("Paving"), DaisColor, 0.6f);
 	EwigfelsSpellVisuals::ApplyGlow(DaisRing, Amber, 3.f);
-	for (UStaticMeshComponent* P : Pillars)    { EwigfelsSpellVisuals::ApplySolid(P, StoneLight, 0.75f); }
+	for (UStaticMeshComponent* P : Pillars)    { EwigfelsSpellVisuals::ApplySurface(P, TEXT("Pillar"), StoneLight, 0.75f); }
 	for (UStaticMeshComponent* G : PillarGlows) { EwigfelsSpellVisuals::ApplyGlow(G, Amber, 18.f); }
-	for (UStaticMeshComponent* W : Walls)      { EwigfelsSpellVisuals::ApplySolid(W, StoneLight, 0.8f); }
-	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySolid(C, Stone, 0.9f); }
+	for (UStaticMeshComponent* W : Walls)      { EwigfelsSpellVisuals::ApplySurface(W, TEXT("Wall"), StoneLight, 0.8f); }
+	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySurface(C, TEXT("Rock"), Stone, 0.9f, FLinearColor(1.7f, 1.6f, 1.5f)); } // Fels ist sonst zu dunkel
 }
 
 FTransform AEwigfelsTestArena::GetPlayerSpawn() const
@@ -219,6 +230,12 @@ void AEwigfelsTestArena::SpawnStatic()
 	FActorSpawnParameters Params;
 	Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 	GetWorld()->SpawnActor<AEwigfelsTestNPC>(AEwigfelsTestNPC::StaticClass(), Base + FVector(-1100.f, 450.f, 120.f), FRotator(0.f, -150.f, 0.f), Params);
+
+	// Schneider-Spiegel zum Ausprobieren der Laden-Personalisierung (E drücken)
+	if (AEwigfelsMirror* Mirror = GetWorld()->SpawnActor<AEwigfelsMirror>(AEwigfelsMirror::StaticClass(), Base + FVector(-1250.f, -450.f, 0.f), FRotator(0.f, 110.f, 0.f), Params))
+	{
+		Mirror->ShopId = TEXT("schneiderei");
+	}
 }
 
 void AEwigfelsTestArena::CheckWave()

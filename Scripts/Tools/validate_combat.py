@@ -28,11 +28,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 TONES = {"Glut", "Firn", "Strom", "Quell", "Grund", "Wachs", "Hall", "Urton"}
-DELIVERIES = {"projectile", "cone", "shield", "area", "self"}
-EFFECTS = {"damage", "status", "knockback", "pull", "restore_atem", "heal", "stagger_attacker"}
+DELIVERIES = {"projectile", "beam", "cone", "shield", "area", "self"}
+EFFECTS = {"damage", "status", "knockback", "pull", "restore_atem", "heal", "stagger_attacker", "lift", "slam"}
+GESTURES = {"flick", "punch", "stiff", "clap", "lift", "slam", "grab", "rub", "twitch"}
+BEAM_STYLES = {"bolt", "tether"}
+STATUS_LOOKS = {"ice", "notes", "flames", "rings", "tint"}
+# Zauberworte, die nach fremden Marken klingen (CLAUDE.md: eigenständige Welt) – nie verwenden
+FORBIDDEN_WORDS = {"accio", "incendio", "glacius", "levioso", "leviosa", "depulso", "confringo", "stupefy", "expelliarmus",
+                   "petrificus", "lumos", "nox", "protego", "reducto", "bombarda", "flipendo", "diffindo", "descendo",
+                   "arresto", "immobulus", "crucio", "imperio", "avada", "obliviate", "alohomora", "wingardium", "reparo",
+                   "sectumsempra", "expecto", "patronum", "riddikulus", "aguamenti", "episkey", "finite", "silencio"}
 BEHAVIORS = {"melee", "ranged", "dummy"}
 SPELL_FIELDS = {"id", "name", "description", "kind", "catalog_id", "school", "chord", "unlock", "cost", "cooldown",
-                "cast_time", "recovery", "hands", "delivery", "effects", "on_parry", "counter_spell", "vfx", "anim", "sfx"}
+                "cast_time", "recovery", "hands", "delivery", "effects", "on_parry", "counter_spell", "vfx", "anim", "sfx",
+                "incantation", "recast", "on_land", "land_radius"}
 # Felder aus dem Katalog, die der Lader als Extra mitnimmt (kein Tippfehler-Hinweis)
 CATALOG_EXTRA = {"learn", "combo", "koop", "heft", "grundton", "wirkart", "wirkung", "act", "legacy_name", "delivery_hint"}
 COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
@@ -150,8 +159,8 @@ def check_effects(rep, where, effects, statuses, field):
         if t not in EFFECTS:
             rep.error(w, f"unbekannter Effekt-Typ '{t}' (erlaubt: {', '.join(sorted(EFFECTS))})")
             continue
-        if t in ("damage", "knockback", "pull", "restore_atem", "heal"):
-            if num(rep, w, e, "amount", 0, 5000) in (None, 0):
+        if t in ("damage", "knockback", "pull", "restore_atem", "heal", "lift", "slam"):
+            if num(rep, w, e, "amount", 0, 8000) in (None, 0):
                 rep.warn(w, f"{t} ohne amount wirkt nicht")
         if t == "damage" and e.get("element") and e["element"] not in TONES:
             rep.error(w, f"unbekanntes Element '{e['element']}'")
@@ -198,6 +207,11 @@ def check_spell(rep, sid, where, s, statuses, spells, catalog):
         num(rep, where, d, "range", 100, 10000)
         num(rep, where, d, "homing", 0, 1)
         num(rep, where, d, "chain", 1, 8)
+    if dt == "beam":
+        num(rep, where, d, "range", 100, 6000)
+        num(rep, where, d, "radius", 1, 120)
+        num(rep, where, d, "chain", 1, 8)
+        num(rep, where, d, "pierce", 0, 10)
     if dt == "cone":
         num(rep, where, d, "angle", 1, 360)
         num(rep, where, d, "range", 50, 5000)
@@ -213,12 +227,50 @@ def check_spell(rep, sid, where, s, statuses, spells, catalog):
 
     check_effects(rep, where, s.get("effects"), statuses, "effects")
     check_effects(rep, where, s.get("on_parry"), statuses, "on_parry")
+    check_effects(rep, where, s.get("on_land"), statuses, "on_land")
+    num(rep, where, s, "land_radius", 0, 2000)
+    recast = s.get("recast")
+    if recast is not None:
+        if not isinstance(recast, dict):
+            rep.error(where, "recast muss ein Objekt sein")
+        else:
+            num(rep, where + " recast", recast, "window", 0.1, 20)
+            check_effects(rep, where + " recast", recast.get("effects"), statuses, "effects")
+            if not recast.get("effects"):
+                rep.warn(where, "recast ohne effects: zweiter Druck bewirkt nichts")
+    all_effects = (s.get("effects") or []) + ((recast or {}).get("effects") or [] if isinstance(recast, dict) else [])
+    types = {e.get("type") for e in all_effects if isinstance(e, dict)}
+    if "slam" in types and not s.get("on_land"):
+        rep.warn(where, "slam ohne on_land: Aufprall macht nichts")
+    if recast and "lift" not in types:
+        rep.warn(where, "recast wirkt nur auf gehaltene Ziele: effects braucht 'lift'")
+    if dt == "beam":
+        num(rep, where, d, "bounces", 0, 8)
+        num(rep, where, d, "bounce_range", 50, 3000)
+
+    inc = s.get("incantation")
+    if inc is not None:
+        if not isinstance(inc, (str, dict)) or not inc:
+            rep.error(where, "incantation muss Text sein (gleich in allen Sprachen)")
+        words = inc.values() if isinstance(inc, dict) else [inc]
+        for text in words:
+            for word in re.findall(r"[A-Za-zÄÖÜäöü]+", str(text)):
+                if word.lower() in FORBIDDEN_WORDS:
+                    rep.error(where, f"Zauberwort '{word}' stammt aus einer fremden Marke – selbst erfinden")
+    elif s.get("kind") != "gegner" and s.get("unlock") != "hidden":
+        rep.warn(where, "kein incantation (Zauberwort)")
     cs = s.get("counter_spell")
     if cs and cs not in spells:
         rep.error(where, f"counter_spell '{cs}' gibt es nicht")
 
     vfx = s.get("vfx") or {}
-    check_color(rep, where + " vfx.color", vfx.get("color"))
+    for k in ("color", "glow_color", "spark_color"):
+        check_color(rep, f"{where} vfx.{k}", vfx.get(k))
+    if vfx.get("beam_style") and vfx["beam_style"] not in BEAM_STYLES:
+        rep.error(where, f"vfx.beam_style '{vfx['beam_style']}' unbekannt (erlaubt: {', '.join(sorted(BEAM_STYLES))})")
+    gesture = (s.get("anim") or {}).get("gesture")
+    if gesture and gesture not in GESTURES:
+        rep.error(where, f"anim.gesture '{gesture}' unbekannt (erlaubt: {', '.join(sorted(GESTURES))})")
     for k in ("niagara", "impact_niagara"):
         check_path(rep, f"{where} vfx.{k}", vfx.get(k))
     check_path(rep, where + " anim.montage", (s.get("anim") or {}).get("montage"))
@@ -255,6 +307,8 @@ def check_status(rep, sid, where, st, statuses):
     num(rep, where, st, "move_speed_mult", 0, 2)
     num(rep, where, st, "action_speed_mult", 0.05, 2)
     check_color(rep, where + " color", st.get("color"))
+    if st.get("look") and st["look"] not in STATUS_LOOKS:
+        rep.error(where, f"look '{st['look']}' unbekannt (erlaubt: {', '.join(sorted(STATUS_LOOKS))})")
     for c in st.get("cancels", []) or []:
         if c not in statuses:
             rep.error(where, f"cancels: Status '{c}' gibt es nicht")

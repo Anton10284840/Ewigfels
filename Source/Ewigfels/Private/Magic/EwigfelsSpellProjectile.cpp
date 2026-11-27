@@ -152,7 +152,8 @@ void AEwigfelsSpellProjectile::ApplyVisuals()
 	const FLinearColor Color = Spell->Visual.Color;
 	Light->SetLightColor(Color);
 
-	Trail = EwigfelsSpellVisuals::SpawnNiagaraAttached(Collision, Spell->Visual.Niagara, Color, Spell->Visual.Scale);
+	Trail = EwigfelsSpellVisuals::SpawnNiagaraAttached(Collision, Spell->Visual.Niagara, Color, Spell->Visual.Scale,
+		Spell->Visual.GlowColor, Spell->Visual.SparkColor);
 	if (Trail)
 	{
 		Core->SetVisibility(false);
@@ -173,6 +174,8 @@ void AEwigfelsSpellProjectile::ApplyVisuals()
 		Core->SetRelativeScale3D(FVector(S * 0.5f));
 	}
 	EwigfelsSpellVisuals::ApplyGlow(Core, Color, 40.f);
+	// Weicher Halo in der Glühfarbe (2. Grundton): macht aus der Kugel ein leuchtendes Licht statt Plastik
+	EwigfelsSpellVisuals::AddHalo(Collision, Spell->Visual.GlowColor, (bLance ? 90.f : 140.f) * S, 6.f);
 }
 
 void AEwigfelsSpellProjectile::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,

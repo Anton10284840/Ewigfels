@@ -6,6 +6,7 @@
 #include "Quest/EwigfelsQuestSubsystem.h"
 #include "Ewigfels.h"
 #include "SUDSSubsystem.h"
+#include "Appearance/EwigfelsAppearanceComponent.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "GameFramework/Pawn.h"
@@ -74,6 +75,14 @@ UEwigfelsSaveGame* UEwigfelsSaveSubsystem::CreateSnapshot(const FString& SlotNam
 		{
 			SaveGame->PlayerTransform = Pawn->GetActorTransform();
 			SaveGame->bHasPlayerTransform = true;
+			if (const UEwigfelsAppearanceComponent* Look = Pawn->FindComponentByClass<UEwigfelsAppearanceComponent>())
+			{
+				if (Look->IsCreated())
+				{
+					SaveGame->PlayerAppearance = Look->GetAppearance();
+					SaveGame->bHasPlayerAppearance = true;
+				}
+			}
 		}
 	}
 
@@ -252,6 +261,9 @@ void UEwigfelsSaveSubsystem::ApplyToLoadedWorld()
 		}
 	}
 
+	bHasLoadedAppearance = SaveGame->bHasPlayerAppearance;
+	LoadedAppearance = SaveGame->PlayerAppearance;
+
 	// Spielerposition: Pawn existiert evtl. erst nach BeginPlay des GameModes, daher hier ohne Garantie.
 	const UWorld* World = GetGameInstance()->GetWorld();
 	APlayerController* PC = World ? World->GetFirstPlayerController() : nullptr;
@@ -261,6 +273,13 @@ void UEwigfelsSaveSubsystem::ApplyToLoadedWorld()
 		{
 			Pawn->SetActorTransform(SaveGame->PlayerTransform, false, nullptr, ETeleportType::TeleportPhysics);
 			PC->SetControlRotation(SaveGame->PlayerTransform.Rotator());
+		}
+		if (SaveGame->bHasPlayerAppearance)
+		{
+			if (UEwigfelsAppearanceComponent* Look = Pawn->FindComponentByClass<UEwigfelsAppearanceComponent>())
+			{
+				Look->SetAppearanceAuthority(SaveGame->PlayerAppearance);
+			}
 		}
 	}
 	else if (SaveGame->bHasPlayerTransform)
@@ -279,7 +298,13 @@ bool UEwigfelsSaveSubsystem::Migrate(UEwigfelsSaveGame* SaveGame)
 		UE_LOG(LogEwigfels, Error, TEXT("Save: Spielstand ist neuer (v%d) als das Spiel (v%d)"), SaveGame->SaveVersion, EwigfelsSave::CurrentVersion);
 		return false;
 	}
-	// Hier künftig: if (SaveGame->SaveVersion < 2) { … } usw.
+	if (SaveGame->SaveVersion < 2)
+	{
+		// v1 kannte kein Aussehen: bHasPlayerAppearance bleibt false, die Figur behält ihr aktuelles Aussehen
+		// (oder der Charakter-Editor öffnet sich, falls sie noch keins hat).
+		SaveGame->bHasPlayerAppearance = false;
+	}
+	// Hier künftig: if (SaveGame->SaveVersion < 3) { … } usw.
 	SaveGame->SaveVersion = EwigfelsSave::CurrentVersion;
 	return true;
 }
@@ -328,6 +353,8 @@ void UEwigfelsSaveSubsystem::UpdateSlotIndex(const FEwigfelsSlotInfo& Info, bool
 
 void UEwigfelsSaveSubsystem::StartNewGame()
 {
+	bHasLoadedAppearance = false;
+	LoadedAppearance = FEwigfelsAppearance();
 	if (WorldState)
 	{
 		WorldState->ReplaceData(FEwigfelsWorldStateData());

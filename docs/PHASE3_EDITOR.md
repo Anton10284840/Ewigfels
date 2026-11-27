@@ -32,7 +32,7 @@ Das Game Animation Sample von Epic enthält ca. 500 Bewegungs-Animationen und fe
 - Migriert wurde `/Game/Blueprints/SandboxCharacter_CMC` (Character-Variante; `SandboxCharacter_Mover` ist die Mover-Variante) mit allen Abhängigkeiten: ca. 2.900 Dateien, 4,3 GB, ohne das Sample vorher im Editor zu öffnen (headless per Python `migrate_packages`). Pfade wie im Sample (`/Game/Blueprints`, `/Game/Characters/UEFN_Mannequin` …), Content liegt nur lokal + OneDrive.
 - 19 zusätzliche Engine-Plugins in `Ewigfels.uproject` (siehe CREDITS.md).
 - `DefaultEngine.ini`: Kollisionskanäle `Traversable`, `Mouse`, `Obstacle` (GameTraceChannel1–3) + Profile `CharacterCapsule`, `TraversalObjectPreset`, `ObstaclePreset`, Daten-Konsolenvariablen `DDCvar.*`, PoseSearch-Einstellung. `DefaultGameplayTags.ini` aus dem Sample übernommen (Foley, MotionMatching, SmartObject).
-- Elternklasse von `SandboxCharacter_CMC` = `EwigfelsCharacter`, `bUseBuiltInMovementInput=False`, als `PlayerPawnClass` eingetragen. Kamera kommt aus der GameplayCamera des Samples; unsere `FollowCamera`/`CameraBoom` sind zusätzlich da (noch prüfen, ob Zielaufschaltung/Dialogkamera richtig umschalten).
+- Elternklasse von `SandboxCharacter_CMC` = `EwigfelsCharacter`, `bUseBuiltInMovementInput=False`, als `PlayerPawnClass` eingetragen. Kamera kommt aus der GameplayCamera des Samples; unsere `FollowCamera`/`CameraBoom` sind zusätzlich da, werden aber nicht mehr nachgeführt, sobald die Figur eine `GameplayCameraComponent` hat. Zielaufschaltung dreht die Control Rotation (die Sample-Kamera folgt ihr), die Dialogkamera kehrt danach zum vorherigen Blickziel zurück statt zum Pawn.
 - Bau grün, Tests `Ewigfels.*` grün, Probestart: Testarena + Sample-Kamera aktiv, keine Blueprint-Fehler.
 
 Warum Reparent statt neuer AnimBP: Das Sample-AnimBP liest seine Werte aus dem Sample-Charakter. Wenn dieser Charakter von unserer C++-Klasse erbt, behalten wir das fertige Motion Matching und bekommen trotzdem Zauber, Kampf und Mehrspieler-Vorbereitung.
@@ -45,13 +45,15 @@ Erst wenn 2. läuft: MetaHuman-Figur nach CHARACTER_BIBLE (Nutzer wählt das Ges
 
 ## 4. Niagara-Effekte (Claude, Phase 3b)
 
-Jede Weise hat in ihrer JSON schon den Pfad (`vfx.niagara`, z. B. `/Game/VFX/Spells/NS_Funkenstoss`). Sobald es das System an diesem Pfad gibt, wird es statt des Platzhalter-Leuchtens benutzt, ohne Code-Änderung. Parameter `User.Color` bekommt die Farbe der Weise. Liste der Effekte: SPELL_FORMAT.md und Grundweisen.json.
+Jede Weise hat in ihrer JSON schon den Pfad (`vfx.niagara`, z. B. `/Game/VFX/Spells/NS_Funkenstoss`). Sobald es das System an diesem Pfad gibt, wird es statt des Platzhalter-Leuchtens benutzt, ohne Code-Änderung. Parameter `User.Color` bekommt die Farbe der Weise, Strahl-Weisen (`beam`) zusätzlich `User.BeamEnd` (Endpunkt in Weltkoordinaten).
+
+**Magische Landung:** Ab ca. 6 m Fallhöhe bremst die Bewegung kurz vor dem Boden ab (Klangring unter den Füßen, Funken an den Händen, weiches Aufsetzen). Werte in `UEwigfelsCharacterMovementComponent` (FallCatch…). Geste: Montage `/Game/Animations/Magic/AM_Magic_FallCatch`, wird benutzt, sobald es sie gibt. Liste der Effekte: SPELL_FORMAT.md und Grundweisen.json.
 
 ## 5. Prüfliste für den ersten Test
 
 - [ ] Leere Karte → Arena erscheint, Nachricht „Nocturna: Phase 3 – Testarena“
 - [ ] WASD, Maus, Springen, Sprinten (Umschalt), Ausweichen (Alt/C)
-- [ ] 1–5 zaubern, rechte Maustaste Schild, Parade im richtigen Moment = Zeitlupe + Konter
+- [ ] Linke Maustaste Funkenstoß (3er-Kette), 2 Hammerton, 3 Glutweise, 4 Frostweise, rechte Maustaste Schild, Parade im richtigen Moment = Zeitlupe + Konter
 - [ ] Mittlere Maustaste/Tab: Zielaufschaltung, Mausrad wechselt Ziel
 - [ ] Lio ansprechen (E) → Dialogkamera wechselt Einstellungen
 - [ ] Gegnerwellen: Novizen greifen höchstens zu zweit an, Fluchsänger halten Abstand

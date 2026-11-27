@@ -3,6 +3,8 @@
 #include "Character/EwigfelsCharacterMovementComponent.h"
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Magic/EwigfelsSpellCasterComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Engine/World.h"
 #include "GameFramework/Character.h"
 
 namespace
@@ -152,4 +154,82 @@ float UEwigfelsCharacterMovementComponent::GetMaxSpeed() const
 		}
 	}
 	return Speed;
+}
+
+// ---------------------------------------------------------------------------
+// Magische Landung
+
+float UEwigfelsCharacterMovementComponent::PredictImpactSpeed(float DownSpeed, float HeightAboveGround, float GravityAbs)
+{
+	// v² = v0² + 2·g·h
+	return FMath::Sqrt(FMath::Max(0.f, FMath::Square(DownSpeed) + 2.f * GravityAbs * FMath::Max(0.f, HeightAboveGround)));
+}
+
+float UEwigfelsCharacterMovementComponent::ComputeCatchDeceleration(float DownSpeed, float TargetSpeed, float HeightAboveGround, float GravityAbs)
+{
+	if (DownSpeed <= TargetSpeed)
+	{
+		return 0.f;
+	}
+	// Bremsweg mit Reserve, damit die Figur nicht erst am Boden langsam wird; Schwerkraft wirkt weiter und wird mitgebremst
+	const float Distance = FMath::Max(40.f, HeightAboveGround - 60.f);
+	const float Needed = (FMath::Square(DownSpeed) - FMath::Square(TargetSpeed)) / (2.f * Distance) + GravityAbs;
+	return FMath::Min(Needed, 9000.f);
+}
+
+float UEwigfelsCharacterMovementComponent::TraceGroundDistance(float MaxDistance) const
+{
+	const ACharacter* Char = GetCharacterOwner();
+	const UCapsuleComponent* Capsule = Char ? Char->GetCapsuleComponent() : nullptr;
+	if (!Capsule || !GetWorld())
+	{
+		return -1.f;
+	}
+	const FVector Bottom = Capsule->GetComponentLocation() - FVector(0.f, 0.f, Capsule->GetScaledCapsuleHalfHeight());
+	FHitResult Hit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsFallCatch), false, Char);
+	FCollisionResponseParams Response;
+	Capsule->InitSweepCollisionParams(Params, Response);
+	if (GetWorld()->LineTraceSingleByChannel(Hit, Bottom, Bottom - FVector(0.f, 0.f, MaxDistance), Capsule->GetCollisionObjectType(), Params, Response))
+	{
+		return Hit.Distance;
+	}
+	return -1.f;
+}
+
+FVector UEwigfelsCharacterMovementComponent::NewFallVelocity(const FVector& InitialVelocity, const FVector& Gravity, float DeltaTime) const
+{
+	FVector Result = Super::NewFallVelocity(InitialVelocity, Gravity, DeltaTime);
+	const float GravityAbs = FMath::Abs(Gravity.Z);
+	const float DownSpeed = -Result.Z;
+	if (!bFallCatchEnabled || DownSpeed <= FallCatchLandingSpeed || GravityAbs <= KINDA_SMALL_NUMBER)
+	{
+		return Result;
+	}
+	const float Height = TraceGroundDistance(FallCatchHeight);
+	if (Height < 0.f)
+	{
+		return Result;
+	}
+	if (!bFallCatching && PredictImpactSpeed(DownSpeed, Height, GravityAbs) >= FallCatchTriggerSpeed)
+	{
+		bFallCatching = true;
+	}
+	if (bFallCatching)
+	{
+		const float Decel = ComputeCatchDeceleration(DownSpeed, FallCatchLandingSpeed, Height, GravityAbs);
+		Result.Z = FMath::Min(Result.Z + Decel * DeltaTime, -FallCatchLandingSpeed);
+		Result.X *= 0.985f; // etwas Schwung raus, wirkt kontrollierter
+		Result.Y *= 0.985f;
+	}
+	return Result;
+}
+
+void UEwigfelsCharacterMovementComponent::OnMovementModeChanged(EMovementMode PreviousMovementMode, uint8 PreviousCustomMode)
+{
+	Super::OnMovementModeChanged(PreviousMovementMode, PreviousCustomMode);
+	if (MovementMode != MOVE_Falling)
+	{
+		bFallCatching = false;
+	}
 }

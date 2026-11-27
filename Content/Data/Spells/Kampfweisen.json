@@ -1,0 +1,86 @@
+{
+  "_doc": "Kampfweisen aus Vorschau 2 (jede mit eigener Wirkung, Farbe aus dem Akkord, eigener Fingergeste). Format: docs/SPELL_FORMAT.md. Ziel: am Ende ist jede der ~430 Weisen so individuell (TODO.md).",
+  "spells": [
+    {
+      "id": "paukenschlag",
+      "catalog_id": "K12",
+      "name": { "de": "Paukenschlag", "en": "Timpani Clap" },
+      "incantation": "Tympaplausus",
+      "school": "Schlag",
+      "chord": ["Grund", "Hall", "Glut"],
+      "unlock": "akt1",
+      "cost": 40, "cooldown": 16.0, "cast_time": 0.4, "recovery": 0.4, "hands": "two",
+      "_doc": "Klatschen: Druckring um den Wirker, betäubt alle 3 s (kreisende Noten über dem Kopf).",
+      "delivery": { "type": "area", "radius": 520 },
+      "effects": [
+        { "type": "damage", "amount": 12, "element": "Grund" },
+        { "type": "status", "status": "stunned", "duration": 3.0 },
+        { "type": "knockback", "amount": 320, "up": 140 }
+      ],
+      "vfx": { "scale": 1.0 },
+      "anim": { "gesture": "clap" }
+    },
+    {
+      "id": "haltelied",
+      "catalog_id": "K15",
+      "name": { "de": "Haltelied", "en": "Holding Song" },
+      "incantation": "Tenecantus",
+      "school": "Schutz",
+      "chord": ["Firn", "Hall", "Quell"],
+      "unlock": "akt1",
+      "cost": 25, "cooldown": 12.0, "cast_time": 0.3, "recovery": 0.3, "hands": "one",
+      "_doc": "Hebt das Ziel 4 s in die Luft (Schweberinge). Nochmal drücken = zu Boden schmettern: Schaden, Druckwelle, Betäubung.",
+      "delivery": { "type": "projectile", "speed": 3200, "radius": 30, "range": 3000, "homing": 0.6 },
+      "effects": [
+        { "type": "damage", "amount": 4, "element": "Hall" },
+        { "type": "lift", "amount": 260, "duration": 4.0 }
+      ],
+      "recast": { "window": 4.0, "effects": [ { "type": "slam", "amount": 3600 } ] },
+      "on_land": [
+        { "type": "damage", "amount": 34, "element": "Grund",
+          "bonus": { "if_status": "frozen", "mult": 2.0, "consume": true } },
+        { "type": "status", "status": "stunned", "duration": 1.5 }
+      ],
+      "land_radius": 280,
+      "vfx": { "scale": 0.8, "niagara": "/Game/VFX/Spells/NS_Haltelied" },
+      "anim": { "gesture": "lift" }
+    },
+    {
+      "id": "ziehklang",
+      "catalog_id": "K04",
+      "name": { "de": "Ziehklang", "en": "Pull Tone" },
+      "incantation": "Trahisonus",
+      "school": "Schlag",
+      "chord": ["Hall", "Strom", "Grund"],
+      "unlock": "akt1",
+      "cost": 15, "cooldown": 5.0, "cast_time": 0.15, "recovery": 0.3, "hands": "one",
+      "_doc": "Klangband greift das Ziel und reißt es heran. Danach Hammerton = Combo Schlagzug.",
+      "delivery": { "type": "beam", "radius": 30, "range": 2400 },
+      "effects": [
+        { "type": "damage", "amount": 6, "element": "Hall" },
+        { "type": "pull", "amount": 1500, "up": 260 }
+      ],
+      "vfx": { "scale": 0.7, "beam_style": "tether" },
+      "anim": { "gesture": "grab" }
+    },
+    {
+      "id": "sturmweise",
+      "catalog_id": "K28",
+      "name": { "de": "Sturmweise", "en": "Storm Air" },
+      "incantation": "Tempestivox",
+      "school": "Elementar",
+      "chord": ["Strom", "Strom", "Strom"],
+      "unlock": "akt1",
+      "cost": 25, "cooldown": 6.0, "cast_time": 0.25, "recovery": 0.3, "hands": "one",
+      "_doc": "Kettenblitz: springt vom ersten Ziel auf 2 weitere (bis 9 m). Nasse Ziele nehmen doppelten Schaden.",
+      "delivery": { "type": "beam", "radius": 26, "range": 2600, "bounces": 2, "bounce_range": 900 },
+      "effects": [
+        { "type": "damage", "amount": 14, "element": "Strom",
+          "bonus": { "if_status": "wet", "mult": 2.0, "consume": false } },
+        { "type": "status", "status": "stunned", "duration": 0.4 }
+      ],
+      "vfx": { "scale": 0.8, "glow_color": "#BFD8FF" },
+      "anim": { "gesture": "twitch" }
+    }
+  ]
+}

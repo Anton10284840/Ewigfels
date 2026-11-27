@@ -1,6 +1,7 @@
 // Copyright Ewigfels. Alle Rechte vorbehalten.
 
 #include "AI/EwigfelsCreatureTypes.h"
+#include "EwigfelsLanguage.h"
 #include "Magic/EwigfelsSpellTypes.h"
 #include "Ewigfels.h"
 #include "Dom/JsonObject.h"
@@ -33,7 +34,7 @@ namespace
 		const TSharedPtr<FJsonObject>* LocObj = nullptr;
 		if (Value->TryGetObject(LocObj) && LocObj)
 		{
-			const FString Lang = FInternationalization::Get().GetCurrentLanguage()->GetTwoLetterISOLanguageName();
+			const FString Lang = EwigfelsLanguage::Get();
 			FString Out;
 			if ((*LocObj)->TryGetStringField(Lang, Out) || (*LocObj)->TryGetStringField(TEXT("de"), Out))
 			{

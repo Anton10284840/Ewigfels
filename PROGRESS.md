@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **3 – Charakter, Zauber, Kampf** (Code fertig, Build auf dem PC offen) · Engine: UE 5.8
+Stand: 27.11.2026 · Aktuelle Phase: **3 – Charakter, Zauber, Kampf** (Code fertig, Build auf dem PC offen) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -60,12 +60,14 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ PIE mit Level |
 | Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
 | Weisen-Katalog + Prüfskript (`Scripts/Tools/validate_spells.py`) | ✅ | 🟨 Kernweisen K01/K02/K13/K25/K26 spielbar (eigenes System, E5); Alltagsweisen + `IEwigfelsWeiseTarget` Phase 5 | ✅ 0 Fehler (Cloud) |
-| Zaubersystem, eigenes (E5): Caster, Projektil, Effekte, Status (`Magic/`) | ✅ | ⬜ Build | ⬜ 5 Automation-Tests geschrieben |
+| Zaubersystem, eigenes (E5): Caster, Projektil, Strahl/Blitz, Effekte, Status (`Magic/`) | ✅ | 🟨 Bau grün bis Blitz-Umbau · ⬜ Bau Wirkungs-Baukasten | ⬜ Automation-Tests geschrieben |
+| Individuelle Weisen: Heben/Schmettern, Kettenblitz, Klangband, Aufprall (`on_land`), Status-Looks, Akkord-Farben, Gesten, Zauberworte (9 Weisen im Spiel) | ✅ | ⬜ Build | ⬜ Test `Ewigfels.Magic.IndividualSpells` geschrieben |
 | Kampf: Leben, Schaden, Status, Taumeln, Kampf-Regie (`Combat/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
 | Spielfigur: Laufen, Sprint, Ausweichen, Zielaufschaltung, Platzhalter-Körper, AnimInstance (`Character/`) | ✅ | ⬜ Build · ⬜ Game Animation Sample | ⬜ |
 | Gegner-KI Novize (Nahkampf) + Fluchsänger (Fernkampf) + Übungspuppe (`AI/`, `Content/Data/Creatures/`) | ✅ | ⬜ Build | ⬜ |
 | Dialogkamera (Totale/Schulter/Close-up, 180°-Regel) (`Camera/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
 | HUD Phase 3 (Leisten, Zauberleiste, Trefferzahlen, F1-Hilfe) + Testarena + Test-NPC Lio (`UI/`, `World/`) | ✅ | ⬜ Build | ⬜ |
+| Charakter-Editor + Laden-Spiegel: Aussehen-Katalog, Regeln, Vorschau-Kamera, Slate-Fenster, Spielstand v2 (`Appearance/`, `UI/EwigfelsCharacterCreator`, `World/EwigfelsMirror`, docs/CHARACTER_CREATOR.md) | ✅ | ⬜ Build · ⬜ Assets (Grundgesichter, Morphs, Kleidung) Phase 5 | ⬜ 5 Automation-Tests geschrieben · ✅ validate_appearance.py 0 Fehler (Cloud) |
 | Mehrspieler-Vorbereitung (server-autoritativ, repliziert, GDD E11) | ✅ | ⬜ | ⬜ PIE mit 2 Spielern |
 | Prüfskript Weisen/Status/Gegner (`Scripts/Tools/validate_combat.py`, Format docs/SPELL_FORMAT.md) | ✅ | ✅ | ✅ 7 Selbsttests (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |

@@ -120,6 +120,8 @@ private:
 	TObjectPtr<ACineCameraActor> CameraActor;
 
 	TWeakObjectPtr<AActor> PartnerActor;
+	/** Blickziel vor dem Dialog (eigene Figur oder Kamera-Actor des Game Animation Sample), wird danach wiederhergestellt. */
+	TWeakObjectPtr<AActor> PreviousViewTarget;
 	TArray<FEwigfelsDialogueLine> Script;
 	int32 LineIndex = INDEX_NONE;
 	float Side = 1.f;

@@ -98,7 +98,11 @@
     "Tutorial_Movement": "M101: Bewegungs-Tutorial abgeschlossen",
     "Met_Lio": "M101: Lio getroffen",
     "Nym_Spoke": "M110: Nym hat zum ersten Mal gesprochen",
-    "E1_Decided": "M110: Entscheidung 1 getroffen (egal welche)"
+    "E1_Decided": "M110: Entscheidung 1 getroffen (egal welche)",
+    "Look_Created": "Spielfigur im Charakter-Editor erstellt",
+    "Look_Uniform": "M102: Akademie-Uniform erhalten (Kleidung freigeschaltet)",
+    "Look_TowerCloak": "Turm gewählt: Turm-Umhang freigeschaltet",
+    "Look_Runes": "Akt 3: leuchtende Klang-Runen beim Tätowierer freigeschaltet"
   },
   "objective_kinds": [
     "talk",

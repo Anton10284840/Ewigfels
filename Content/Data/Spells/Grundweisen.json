@@ -1,114 +1,340 @@
 {
-  "_doc": "Die 5 Phase-3-Weisen (GDD §4.2). Format: docs/SPELL_FORMAT.md. Grundtöne/Farben: STORY_BIBLE §3.2.",
+  "_doc": "Grund-Weisen (GDD §4.2) + Belegung der Testarena (LMB, RMB, Tasten 1–7). Weitere Kampfweisen: Kampfweisen.json. Format: docs/SPELL_FORMAT.md. Grundtöne/Farben: STORY_BIBLE §3.2.",
   "spells": [
     {
       "id": "funkenstoss",
       "catalog_id": "K01",
-      "name": { "de": "Funkenstoß", "en": "Spark Burst" },
+      "name": {
+        "de": "Funkenstoß",
+        "en": "Spark Burst"
+      },
+      "incantation": "Scintivox",
       "school": "Schlag",
-      "chord": ["Glut", "Strom", "Strom"],
-      "unlock": "start",
-      "cost": 0, "cooldown": 0.0, "cast_time": 0.12, "recovery": 0.22, "hands": "one",
-      "delivery": { "type": "projectile", "speed": 4200, "radius": 14, "range": 3200,
-                    "homing": 0.35, "chain": 3, "chain_window": 0.7 },
-      "effects": [
-        { "type": "damage", "amount": 9, "element": "Strom" },
-        { "type": "damage", "amount": 8, "element": "Strom", "chain_end_only": true },
-        { "type": "knockback", "amount": 650, "chain_end_only": true }
+      "chord": [
+        "Glut",
+        "Strom",
+        "Strom"
       ],
-      "vfx": { "color": "#FFE7A0", "scale": 0.55,
-               "niagara": "/Game/VFX/Spells/NS_Funkenstoss", "impact_niagara": "/Game/VFX/Spells/NS_Funken_Impact" },
-      "anim": { "montage": "/Game/Animations/Magic/AM_Magic_Funkenstoss" }
+      "unlock": "start",
+      "cost": 0,
+      "cooldown": 0.0,
+      "cast_time": 0.12,
+      "recovery": 0.22,
+      "hands": "one",
+      "_doc": "Blitz: sofortiger Strahl aus den Fingern, 3er-Kette, der dritte Schlag knallt (mehr Schaden, Stoß, Druckring). Gefrorene Ziele zerspringen beim dritten Schlag (×2,5).",
+      "delivery": {
+        "type": "beam",
+        "radius": 22,
+        "range": 2600,
+        "chain": 3,
+        "chain_window": 0.7
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 9,
+          "element": "Strom"
+        },
+        {
+          "type": "damage",
+          "amount": 8,
+          "element": "Strom",
+          "chain_end_only": true,
+          "bonus": {
+            "if_status": "frozen",
+            "mult": 2.5,
+            "consume": true
+          }
+        },
+        {
+          "type": "knockback",
+          "amount": 650,
+          "chain_end_only": true
+        }
+      ],
+      "vfx": {
+        "color": "#FFE7A0",
+        "scale": 0.55,
+        "niagara": "/Game/VFX/Spells/NS_Funkenstoss",
+        "impact_niagara": "/Game/VFX/Spells/NS_Funken_Impact"
+      },
+      "anim": {
+        "montage": "/Game/Animations/Magic/AM_Magic_Funkenstoss",
+        "gesture": "flick"
+      }
     },
     {
       "id": "glockenschild",
       "catalog_id": "K13",
-      "name": { "de": "Glockenschild", "en": "Bell Ward" },
+      "name": {
+        "de": "Glockenschild",
+        "en": "Bell Ward"
+      },
+      "incantation": "Campanimur",
       "school": "Schutz",
-      "chord": ["Hall", "Grund", "Firn"],
+      "chord": [
+        "Hall",
+        "Grund",
+        "Firn"
+      ],
       "unlock": "start",
-      "cost": 0, "cooldown": 0.0, "cast_time": 0.0, "recovery": 0.15, "hands": "one",
-      "delivery": { "type": "shield", "parry_window": 0.2, "block_atem_per_damage": 0.6,
-                    "block_damage_mult": 0.15, "radius": 120 },
+      "cost": 0,
+      "cooldown": 0.0,
+      "cast_time": 0.0,
+      "recovery": 0.15,
+      "hands": "one",
+      "delivery": {
+        "type": "shield",
+        "parry_window": 0.2,
+        "block_atem_per_damage": 0.6,
+        "block_damage_mult": 0.15,
+        "radius": 120
+      },
       "on_parry": [
-        { "type": "restore_atem", "amount": 15 },
-        { "type": "stagger_attacker", "amount": 1.0 }
+        {
+          "type": "restore_atem",
+          "amount": 15
+        },
+        {
+          "type": "stagger_attacker",
+          "amount": 1.0
+        }
       ],
       "counter_spell": "reinklang_konter",
-      "vfx": { "color": "#E8EEFF", "scale": 1.0, "niagara": "/Game/VFX/Spells/NS_Glockenschild",
-               "impact_niagara": "/Game/VFX/Spells/NS_Reinklang" },
-      "anim": { "montage": "/Game/Animations/Magic/AM_Magic_Glockenschild" }
+      "vfx": {
+        "color": "#E8EEFF",
+        "scale": 1.0,
+        "niagara": "/Game/VFX/Spells/NS_Glockenschild",
+        "impact_niagara": "/Game/VFX/Spells/NS_Reinklang"
+      },
+      "anim": {
+        "montage": "/Game/Animations/Magic/AM_Magic_Glockenschild",
+        "gesture": "stiff"
+      }
     },
     {
       "id": "reinklang_konter",
       "catalog_id": "K13",
       "_doc": "Konter nach gelungener Parade von K13 Glockenschild, keine eigene Weise.",
-      "name": { "de": "Reinklang", "en": "Pure Chime" },
+      "name": {
+        "de": "Reinklang",
+        "en": "Pure Chime"
+      },
+      "incantation": "Purisonus",
       "school": "Schutz",
-      "chord": ["Hall", "Hall", "Strom"],
-      "unlock": "hidden",
-      "cost": 0, "cooldown": 0.0, "cast_time": 0.0, "recovery": 0.1, "hands": "one",
-      "delivery": { "type": "projectile", "speed": 5200, "radius": 22, "range": 2600, "homing": 0.9 },
-      "effects": [
-        { "type": "damage", "amount": 30, "element": "Hall" },
-        { "type": "status", "status": "stunned", "duration": 1.2 }
+      "chord": [
+        "Hall",
+        "Hall",
+        "Strom"
       ],
-      "vfx": { "color": "#F4F7FF", "scale": 0.8, "niagara": "/Game/VFX/Spells/NS_Reinklang_Konter" }
+      "unlock": "hidden",
+      "cost": 0,
+      "cooldown": 0.0,
+      "cast_time": 0.0,
+      "recovery": 0.1,
+      "hands": "one",
+      "delivery": {
+        "type": "projectile",
+        "speed": 5200,
+        "radius": 22,
+        "range": 2600,
+        "homing": 0.9
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 30,
+          "element": "Hall"
+        },
+        {
+          "type": "status",
+          "status": "stunned",
+          "duration": 1.2
+        }
+      ],
+      "vfx": {
+        "color": "#F4F7FF",
+        "scale": 0.8,
+        "niagara": "/Game/VFX/Spells/NS_Reinklang_Konter"
+      }
     },
     {
       "id": "hammerton",
       "catalog_id": "K02",
-      "name": { "de": "Hammerton", "en": "Hammer Tone" },
+      "name": {
+        "de": "Hammerton",
+        "en": "Hammer Tone"
+      },
+      "incantation": "Malletonus",
       "school": "Schlag",
-      "chord": ["Grund", "Grund", "Glut"],
-      "unlock": "akt1",
-      "cost": 22, "cooldown": 6.0, "cast_time": 0.45, "recovery": 0.45, "hands": "two",
-      "delivery": { "type": "cone", "range": 650, "angle": 70 },
-      "effects": [
-        { "type": "damage", "amount": 26, "element": "Grund",
-          "bonus": { "if_status": "frozen", "mult": 2.5, "consume": true } },
-        { "type": "knockback", "amount": 1300, "up": 350 },
-        { "type": "status", "status": "stunned", "duration": 0.6 }
+      "chord": [
+        "Grund",
+        "Grund",
+        "Glut"
       ],
-      "vfx": { "color": "#D9A25C", "scale": 1.0, "niagara": "/Game/VFX/Spells/NS_Hammerton" },
-      "anim": { "montage": "/Game/Animations/Magic/AM_Magic_Hammerton" }
+      "unlock": "akt1",
+      "cost": 22,
+      "cooldown": 6.0,
+      "cast_time": 0.45,
+      "recovery": 0.45,
+      "hands": "two",
+      "delivery": {
+        "type": "cone",
+        "range": 650,
+        "angle": 70
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 26,
+          "element": "Grund",
+          "bonus": {
+            "if_status": "frozen",
+            "mult": 2.5,
+            "consume": true
+          }
+        },
+        {
+          "type": "knockback",
+          "amount": 1300,
+          "up": 350
+        },
+        {
+          "type": "status",
+          "status": "stunned",
+          "duration": 0.6
+        }
+      ],
+      "vfx": {
+        "color": "#D9A25C",
+        "scale": 1.0,
+        "niagara": "/Game/VFX/Spells/NS_Hammerton"
+      },
+      "anim": {
+        "montage": "/Game/Animations/Magic/AM_Magic_Hammerton",
+        "gesture": "punch"
+      },
+      "_doc": "Wirft Gegner um (hoch und weit); gefrorene zerbrechen (×2,5)."
     },
     {
       "id": "glutweise",
       "catalog_id": "K25",
-      "name": { "de": "Glutweise", "en": "Ember Air" },
+      "name": {
+        "de": "Glutweise",
+        "en": "Ember Air"
+      },
+      "incantation": "Ardesonus",
       "school": "Elementar",
-      "chord": ["Glut", "Glut", "Strom"],
-      "unlock": "akt1",
-      "cost": 18, "cooldown": 3.5, "cast_time": 0.3, "recovery": 0.3, "hands": "one",
-      "delivery": { "type": "projectile", "speed": 2400, "radius": 26, "range": 3500, "homing": 0.25,
-                    "gravity": 0.15, "explode_radius": 280 },
-      "effects": [
-        { "type": "damage", "amount": 20, "element": "Glut",
-          "bonus": { "if_status": "wet", "mult": 0.5, "consume": true } },
-        { "type": "status", "status": "burning", "duration": 4.0 }
+      "chord": [
+        "Glut",
+        "Glut",
+        "Strom"
       ],
-      "vfx": { "color": "#FF8A2A", "scale": 0.9, "niagara": "/Game/VFX/Spells/NS_Glutweise",
-               "impact_niagara": "/Game/VFX/Spells/NS_Glut_Explosion" },
-      "anim": { "montage": "/Game/Animations/Magic/AM_Magic_Glutweise" }
+      "unlock": "akt1",
+      "cost": 18,
+      "cooldown": 3.5,
+      "cast_time": 0.3,
+      "recovery": 0.3,
+      "hands": "one",
+      "delivery": {
+        "type": "projectile",
+        "speed": 2400,
+        "radius": 26,
+        "range": 3500,
+        "homing": 0.25,
+        "gravity": 0.15,
+        "explode_radius": 280
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 20,
+          "element": "Glut",
+          "bonus": {
+            "if_status": "wet",
+            "mult": 0.5,
+            "consume": true
+          }
+        },
+        {
+          "type": "status",
+          "status": "burning",
+          "duration": 4.0
+        }
+      ],
+      "vfx": {
+        "color": "#FF8A2A",
+        "scale": 0.9,
+        "niagara": "/Game/VFX/Spells/NS_Glutweise",
+        "impact_niagara": "/Game/VFX/Spells/NS_Glut_Explosion"
+      },
+      "anim": {
+        "montage": "/Game/Animations/Magic/AM_Magic_Glutweise",
+        "gesture": "rub"
+      }
     },
     {
       "id": "frostweise",
       "catalog_id": "K26",
-      "name": { "de": "Frostweise", "en": "Frost Air" },
+      "name": {
+        "de": "Frostweise",
+        "en": "Frost Air"
+      },
+      "incantation": "Gelucantus",
       "school": "Elementar",
-      "chord": ["Firn", "Firn", "Quell"],
-      "unlock": "akt1",
-      "cost": 16, "cooldown": 3.0, "cast_time": 0.25, "recovery": 0.25, "hands": "one",
-      "delivery": { "type": "projectile", "speed": 5000, "radius": 12, "range": 3800, "homing": 0.2, "pierce": 1 },
-      "effects": [
-        { "type": "damage", "amount": 15, "element": "Firn" },
-        { "type": "status", "status": "chilled", "duration": 3.0 }
+      "chord": [
+        "Firn",
+        "Firn",
+        "Quell"
       ],
-      "vfx": { "color": "#8FD4FF", "scale": 0.6, "shape": "lance", "niagara": "/Game/VFX/Spells/NS_Frostweise",
-               "impact_niagara": "/Game/VFX/Spells/NS_Frost_Impact" },
-      "anim": { "montage": "/Game/Animations/Magic/AM_Magic_Frostweise" }
+      "unlock": "akt1",
+      "cost": 16,
+      "cooldown": 5.0,
+      "cast_time": 0.25,
+      "recovery": 0.25,
+      "hands": "one",
+      "delivery": {
+        "type": "projectile",
+        "speed": 5000,
+        "radius": 12,
+        "range": 3800,
+        "homing": 0.2,
+        "pierce": 1
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 15,
+          "element": "Firn"
+        },
+        {
+          "type": "status",
+          "status": "frozen",
+          "duration": 2.5
+        }
+      ],
+      "vfx": {
+        "color": "#8FD4FF",
+        "scale": 0.6,
+        "shape": "lance",
+        "niagara": "/Game/VFX/Spells/NS_Frostweise",
+        "impact_niagara": "/Game/VFX/Spells/NS_Frost_Impact"
+      },
+      "anim": {
+        "montage": "/Game/Animations/Magic/AM_Magic_Frostweise",
+        "gesture": "stiff"
+      },
+      "_doc": "Eislanze: friert das Ziel 2,5 s ein (Eisblock, keine Aktionen). Danach Hammerton oder Funkenstoß = Zerspringen."
     }
   ],
-  "loadout": ["funkenstoss", "glockenschild", "hammerton", "glutweise", "frostweise"]
+  "loadout": [
+    "funkenstoss",
+    "glockenschild",
+    "hammerton",
+    "frostweise",
+    "haltelied",
+    "ziehklang",
+    "glutweise",
+    "sturmweise"
+  ]
 }

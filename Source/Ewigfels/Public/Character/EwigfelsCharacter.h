@@ -16,6 +16,8 @@ class UEwigfelsSpellCasterComponent;
 class UEwigfelsLockOnComponent;
 class UEwigfelsPlaceholderBody;
 class UEwigfelsDialogueCameraComponent;
+class UEwigfelsAppearanceComponent;
+class UEwigfelsSpellbookComponent;
 class UEwigfelsInputSetup;
 class UEwigfelsCharacterMovementComponent;
 class UAnimMontage;
@@ -65,6 +67,14 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
 	UEwigfelsCharacterMovementComponent* GetEwigfelsMovement() const;
 
+	/** Aussehen (Charakter-Editor, Läden). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
+	UEwigfelsAppearanceComponent* GetAppearance() const { return Appearance; }
+
+	/** Zauberbuch (6 Weisen fürs Zauberrad wählen). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
+	UEwigfelsSpellbookComponent* GetSpellbook() const { return Spellbook; }
+
 	/** Strafen statt in Laufrichtung drehen (Lock-On, Zaubern, Schild). Für das AnimBP. */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
 	bool IsStrafing() const { return bStrafing; }
@@ -87,8 +97,39 @@ public:
 
 	bool IsHelpVisible() const { return bShowHelp; }
 
+	// --- Zauberrad und Eingabegerät (nur lokal, fürs HUD) ---
+
+	/** Zauberrad gerade offen (RB / Q gehalten). */
+	bool IsSpellWheelOpen() const { return bWheelOpen; }
+
+	/** Platz 1–6 unter Stick/Maus, 0 = Mitte (nichts gewählt). */
+	int32 GetWheelHover() const { return WheelHover; }
+
+	/** Richtung des Rad-Zeigers (Länge 0–1), fürs Zeichnen. */
+	FVector2D GetWheelPointer() const { return WheelPointer; }
+
+	/** Gewählte Weise (Platz 1–6), wird mit Y / F gewirkt. */
+	int32 GetSelectedSlot() const { return SelectedSlot; }
+
+	/** true = zuletzt Controller benutzt, false = Maus/Tastatur. HUD zeigt passende Tasten-Symbole. */
+	bool IsUsingGamepad() const { return bUsingGamepad; }
+
 	/** Kurzer Hinweis in der Bildmitte („Kein Atem“, „Reinklang!“). Nur lokal. */
 	void ShowMessage(const FText& Text, const FLinearColor& Color, float Seconds = 1.2f);
+
+	/** Für Test-Befehle (Ewigfels.Test.Gesten): Zauber-Platz auslösen wie per Taste (0 = linke Maus). */
+	void TestCastSlot(int32 Slot) { CastSlot(Slot); }
+
+	/** Für Test-Befehle (Ewigfels.Test.UI): Zauberrad öffnen, Zeiger setzen (Länge 0–1), Gerät wählen. */
+	void TestOpenWheel(FVector2D Pointer, bool bGamepad)
+	{
+		SetUsingGamepad(bGamepad);
+		InputWheelOpen();
+		WheelPointer = Pointer;
+		WheelMouse = Pointer * WheelMouseRange;
+	}
+	void TestCloseWheel() { InputWheelClose(); }
+	void TestToggleSpellbook(bool bGamepad) { SetUsingGamepad(bGamepad); InputSpellbook(); }
 
 	/** Aktueller Hinweis, false wenn abgelaufen. Alpha blendet aus. */
 	bool GetMessage(FText& OutText, FLinearColor& OutColor, float& OutAlpha) const;
@@ -106,6 +147,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	bool bUseBuiltInMovementInput = true;
 
+	/** true, wenn der Blueprint eine eigene Kamera mitbringt (GameplayCameraComponent des Game Animation Sample).
+	 *  Dann wird CameraBoom/FollowCamera nicht nachgeführt; Zielaufschaltung wirkt über die Control Rotation. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Camera")
+	bool UsesExternalCamera() const { return bExternalCamera; }
+
 	/** Eigene Input-Assets statt der C++-Steuerung (optional). */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
@@ -115,6 +161,10 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	float GamepadLookRate = 150.f;
+
+	/** Mausweg (Look-Werte) bis zum Rand des Zauberrads. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
+	float WheelMouseRange = 90.f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Dodge")
 	float DodgeDistance = 520.f;
@@ -159,6 +209,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
 	TObjectPtr<UEwigfelsPlaceholderBody> PlaceholderBody;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
+	TObjectPtr<UEwigfelsAppearanceComponent> Appearance;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
+	TObjectPtr<UEwigfelsSpellbookComponent> Spellbook;
+
 	// Eingabe
 	void InputMove(const FInputActionValue& Value);
 	void InputLook(const FInputActionValue& Value);
@@ -174,10 +230,21 @@ protected:
 	void InputSpell2() { CastSlot(2); }
 	void InputSpell3() { CastSlot(3); }
 	void InputSpell4() { CastSlot(4); }
+	void InputSpell5() { CastSlot(5); }
+	void InputSpell6() { CastSlot(6); }
+	void InputSpell7() { CastSlot(7); }
+	void InputSpell8() { CastSlot(8); }
 	void InputLockOn();
 	void InputSwitchTarget(const FInputActionValue& Value);
 	void InputInteract();
 	void InputToggleHelp();
+	void InputWheelOpen();
+	void InputWheelClose();
+	void InputCastSelected();
+	void InputSpellbook();
+	void InputAnyKey(FKey Key);
+	void InputWheelPointMouse(const FInputActionValue& Value);
+	void InputWheelPointStick(const FInputActionValue& Value);
 	void CastSlot(int32 Slot);
 
 	// Netzwerk
@@ -189,6 +256,10 @@ protected:
 
 	UFUNCTION(Server, Reliable)
 	void Server_ReportTutorial(FName Step);
+
+	/** Magische Landung für alle anderen sichtbar machen (Server und eigener Client spielen sie selbst). */
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_FallCatchFx();
 
 	// Ereignisse aus den Komponenten
 	UFUNCTION()
@@ -218,15 +289,48 @@ protected:
 	UFUNCTION()
 	void HandleStaggered(float Seconds);
 
+	UFUNCTION()
+	void HandleBeamFired(FName SpellId, FVector Start, FVector End, bool bHitTarget, uint8 ChainIndex);
+
+	UFUNCTION()
+	void HandleImpactFx(FName SpellId, FVector Location, FVector Normal, bool bBig);
+
+	/** Montage für die Abfang-Geste beim Fallen (optional, sonst nur Licht und Klangring). */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Look")
+	FSoftObjectPath FallCatchMontage = FSoftObjectPath(TEXT("/Game/Animations/Magic/AM_Magic_FallCatch.AM_Magic_FallCatch"));
+
+	/** Kamerastoß beim Zaubern/Treffer (Grad Nicken). 0 = aus. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ewigfels|Camera")
+	float CameraPunchStrength = 1.f;
+
 private:
 	void ApplyDefaultLook();
 	void StartDodge(const FVector& Direction);
 	void UpdateRotationMode();
 	void UpdateCamera(float DeltaSeconds);
+	void DetectExternalCamera();
+	bool bExternalCamera = false;
+	/** Kurzer Kamerastoß über die Control Rotation (wirkt mit jeder Kamera, auch der des Samples). Nur lokal. */
+	void AddCameraPunch(float PitchDeg, float YawDeg);
+	void UpdateCameraPunch(float DeltaSeconds);
+	/** Abklingendes Zittern (Grad), 150–400 ms. */
+	void AddCameraShake(float AmplitudeDeg, float Seconds);
+	float ShakeAmp = 0.f;
+	float ShakeDuration = 0.f;
+	float ShakeAge = -1.f;
+	void PlayFallCatchFx(bool bLanding);
+	FRotator PunchApplied = FRotator::ZeroRotator;
+	FRotator PunchPeak = FRotator::ZeroRotator;
+	float PunchAge = -1.f;
+	bool bWasFallCatching = false;
+	float LastFallCatchFxTime = -10.f;
 	void UpdateInteractFocus();
+	void UpdateSpellWheel();
+	void UpdateInputDevice();
+	void SetUsingGamepad(bool bGamepad);
 	void Respawn();
 	void NoteTutorialStep(FName Step);
-	void PlaySpellMontage(FName SpellId);
+	void PlaySpellMontage(FName SpellId, uint8 ChainIndex = 0);
 
 	UPROPERTY(Transient)
 	TObjectPtr<UEwigfelsInputSetup> InputSetup;
@@ -237,6 +341,12 @@ private:
 	bool bStrafing = false;
 	bool bInputBlocked = false;
 	bool bShowHelp = true;
+	bool bWheelOpen = false;
+	int32 WheelHover = 0;
+	int32 SelectedSlot = 1;
+	FVector2D WheelPointer = FVector2D::ZeroVector;
+	FVector2D WheelMouse = FVector2D::ZeroVector;
+	bool bUsingGamepad = false;
 	float LastDodgeTime = -100.f;
 	float LocalCastPoseUntil = 0.f;
 	float DefaultArmLength = 340.f;

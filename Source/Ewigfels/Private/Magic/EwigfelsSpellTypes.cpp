@@ -1,6 +1,7 @@
 // Copyright Ewigfels. Alle Rechte vorbehalten.
 
 #include "Magic/EwigfelsSpellTypes.h"
+#include "EwigfelsLanguage.h"
 #include "Dom/JsonObject.h"
 #include "Dom/JsonValue.h"
 #include "Serialization/JsonReader.h"
@@ -39,7 +40,7 @@ namespace
 		const TSharedPtr<FJsonObject>* LocObj = nullptr;
 		if (Value->TryGetObject(LocObj) && LocObj)
 		{
-			const FString Lang = FInternationalization::Get().GetCurrentLanguage()->GetTwoLetterISOLanguageName();
+			const FString Lang = EwigfelsLanguage::Get();
 			FString Out;
 			if ((*LocObj)->TryGetStringField(Lang, Out) || (*LocObj)->TryGetStringField(TEXT("de"), Out))
 			{
@@ -125,6 +126,7 @@ namespace
 		if (S == TEXT("shield"))     { Out = EEwigfelsSpellDelivery::Shield; return true; }
 		if (S == TEXT("area"))       { Out = EEwigfelsSpellDelivery::Area; return true; }
 		if (S == TEXT("self"))       { Out = EEwigfelsSpellDelivery::Self; return true; }
+		if (S == TEXT("beam"))       { Out = EEwigfelsSpellDelivery::Beam; return true; }
 		return false;
 	}
 
@@ -137,6 +139,8 @@ namespace
 		if (S == TEXT("restore_atem"))     { Out = EEwigfelsSpellEffectType::RestoreAtem; return true; }
 		if (S == TEXT("heal"))             { Out = EEwigfelsSpellEffectType::Heal; return true; }
 		if (S == TEXT("stagger_attacker")) { Out = EEwigfelsSpellEffectType::StaggerAttacker; return true; }
+		if (S == TEXT("lift"))             { Out = EEwigfelsSpellEffectType::Lift; return true; }
+		if (S == TEXT("slam"))             { Out = EEwigfelsSpellEffectType::Slam; return true; }
 		return false;
 	}
 
@@ -188,7 +192,8 @@ namespace
 		static const TSet<FString> Known = {
 			TEXT("id"), TEXT("name"), TEXT("description"), TEXT("kind"), TEXT("catalog_id"), TEXT("school"), TEXT("chord"), TEXT("unlock"), TEXT("cost"), TEXT("cooldown"),
 			TEXT("cast_time"), TEXT("recovery"), TEXT("hands"), TEXT("delivery"), TEXT("effects"), TEXT("on_parry"),
-			TEXT("counter_spell"), TEXT("vfx"), TEXT("anim"), TEXT("sfx")
+			TEXT("counter_spell"), TEXT("vfx"), TEXT("anim"), TEXT("sfx"), TEXT("incantation"), TEXT("recast"), TEXT("on_land"),
+			TEXT("land_radius")
 		};
 		return Known;
 	}
@@ -209,6 +214,7 @@ namespace
 			Out.Name = FText::FromName(Out.Id);
 		}
 		Out.Description = ReadSpellLocText(S, TEXT("description"));
+		Out.Incantation = ReadSpellLocText(S, TEXT("incantation"));
 		Out.Kind = ReadSpellName(S, TEXT("kind"));
 		if (Out.Kind.IsNone())
 		{
@@ -252,16 +258,46 @@ namespace
 		Del.ParryWindow = FMath::Max(0.f, ReadFloat(D, TEXT("parry_window"), Del.ParryWindow));
 		Del.BlockAtemPerDamage = FMath::Max(0.f, ReadFloat(D, TEXT("block_atem_per_damage"), Del.BlockAtemPerDamage));
 		Del.BlockDamageMultiplier = FMath::Clamp(ReadFloat(D, TEXT("block_damage_mult"), Del.BlockDamageMultiplier), 0.f, 1.f);
+		Del.Bounces = FMath::Clamp(ReadInt(D, TEXT("bounces"), Del.Bounces), 0, 8);
+		Del.BounceRange = FMath::Max(0.f, ReadFloat(D, TEXT("bounce_range"), Del.BounceRange));
 
 		ReadSpellEffects(S, TEXT("effects"), Where, Ctx, Out.Effects);
 		ReadSpellEffects(S, TEXT("on_parry"), Where, Ctx, Out.OnParry);
+		ReadSpellEffects(S, TEXT("on_land"), Where, Ctx, Out.OnLand);
+		Out.LandRadius = FMath::Max(0.f, ReadFloat(S, TEXT("land_radius"), 0.f));
+		if (const TSharedPtr<FJsonObject> R = ReadObject(S, TEXT("recast")))
+		{
+			Out.RecastWindow = FMath::Max(0.f, ReadFloat(R, TEXT("window"), 0.f));
+			ReadSpellEffects(R, TEXT("effects"), Where + TEXT(".recast"), Ctx, Out.RecastEffects);
+		}
 
+		// Farben: Standard aus dem Akkord, vfx.color / glow_color / spark_color überschreiben einzeln
+		EwigfelsSpells::ChordPalette(Out.Chord, Out.Visual.Color, Out.Visual.GlowColor, Out.Visual.SparkColor);
+		bool bGlowSet = false;
+		bool bSparkSet = false;
 		if (const TSharedPtr<FJsonObject> V = ReadObject(S, TEXT("vfx")))
 		{
-			FString Hex;
-			if (V->TryGetStringField(TEXT("color"), Hex) && !EwigfelsSpells::ParseHexColor(Hex, Out.Visual.Color))
+			auto ReadColor = [&](const TCHAR* FieldName, FLinearColor& Target) -> bool
 			{
-				Ctx.Error(Where + TEXT(".vfx.color"), FString::Printf(TEXT("'%s' ist kein #RRGGBB"), *Hex));
+				FString Hex;
+				if (!V->TryGetStringField(FieldName, Hex))
+				{
+					return false;
+				}
+				if (!EwigfelsSpells::ParseHexColor(Hex, Target))
+				{
+					Ctx.Error(Where + TEXT(".vfx.") + FieldName, FString::Printf(TEXT("'%s' ist kein #RRGGBB"), *Hex));
+					return false;
+				}
+				return true;
+			};
+			ReadColor(TEXT("color"), Out.Visual.Color);
+			bGlowSet = ReadColor(TEXT("glow_color"), Out.Visual.GlowColor);
+			bSparkSet = ReadColor(TEXT("spark_color"), Out.Visual.SparkColor);
+			const FName BeamStyle = ReadSpellName(V, TEXT("beam_style"));
+			if (!BeamStyle.IsNone())
+			{
+				Out.Visual.BeamStyle = BeamStyle;
 			}
 			Out.Visual.Scale = ReadFloat(V, TEXT("scale"), 1.f);
 			const FName Shape = ReadSpellName(V, TEXT("shape"));
@@ -272,9 +308,28 @@ namespace
 			Out.Visual.Niagara = ReadPath(V, TEXT("niagara"));
 			Out.Visual.ImpactNiagara = ReadPath(V, TEXT("impact_niagara"));
 		}
+		// Fester Ablageort, falls im JSON nichts steht: /Game/VFX/Spells/NS_<id> und NS_<id>_Impact.
+		// Fehlt das Asset, bleibt der Platzhalter-Look (LoadIfExists).
+		if (Out.Visual.Niagara.IsNull())
+		{
+			const FString Name = FString::Printf(TEXT("NS_%s"), *Out.Id.ToString());
+			Out.Visual.Niagara = FSoftObjectPath(FString::Printf(TEXT("/Game/VFX/Spells/%s.%s"), *Name, *Name));
+		}
+		if (Out.Visual.ImpactNiagara.IsNull())
+		{
+			const FString Name = FString::Printf(TEXT("NS_%s_Impact"), *Out.Id.ToString());
+			Out.Visual.ImpactNiagara = FSoftObjectPath(FString::Printf(TEXT("/Game/VFX/Spells/%s.%s"), *Name, *Name));
+		}
+		if (Out.Chord.Num() == 0)
+		{
+			// Ohne Akkord (Gegnerweisen): alles in der Grundfarbe
+			if (!bGlowSet) { Out.Visual.GlowColor = Out.Visual.Color; }
+			if (!bSparkSet) { Out.Visual.SparkColor = Out.Visual.Color; }
+		}
 		if (const TSharedPtr<FJsonObject> A = ReadObject(S, TEXT("anim")))
 		{
 			Out.Visual.Montage = ReadPath(A, TEXT("montage"));
+			Out.Visual.Gesture = ReadSpellName(A, TEXT("gesture"));
 		}
 		if (const TSharedPtr<FJsonObject> Sfx = ReadObject(S, TEXT("sfx")))
 		{
@@ -311,6 +366,7 @@ namespace
 		Out.Cancels = ReadNameArray(S, TEXT("cancels"));
 		Out.EscalateAt = FMath::Max(0, ReadInt(S, TEXT("escalate_at"), 0));
 		Out.EscalateTo = ReadSpellName(S, TEXT("escalate_to"));
+		Out.Look = ReadSpellName(S, TEXT("look"));
 		FString Hex;
 		if (S->TryGetStringField(TEXT("color"), Hex) && !EwigfelsSpells::ParseHexColor(Hex, Out.Color))
 		{
@@ -354,6 +410,27 @@ FLinearColor EwigfelsSpells::ChordNoteColor(FName Note)
 	};
 	const FColor* Found = Colors.Find(Note);
 	return Found ? FLinearColor(*Found) : FLinearColor::White;
+}
+
+void EwigfelsSpells::ChordPalette(const TArray<FName>& Chord, FLinearColor& OutCore, FLinearColor& OutGlow, FLinearColor& OutSpark)
+{
+	if (Chord.Num() == 0)
+	{
+		return; // Standardfarben behalten
+	}
+	OutCore = ChordNoteColor(Chord[0]);
+	OutGlow = Chord.Num() > 1 ? ChordNoteColor(Chord[1]) : OutCore;
+	OutSpark = Chord.Num() > 2 ? ChordNoteColor(Chord[2]) : OutGlow;
+}
+
+FSoftObjectPath EwigfelsSpells::GestureMontagePath(FName Gesture)
+{
+	if (Gesture.IsNone())
+	{
+		return FSoftObjectPath();
+	}
+	const FString Name = FString::Printf(TEXT("AM_Geste_%s"), *Gesture.ToString());
+	return FSoftObjectPath(FString::Printf(TEXT("/Game/Animations/Magic/Gesten/%s.%s"), *Name, *Name));
 }
 
 bool EwigfelsSpells::ParseSpellFile(const FString& JsonText, const FString& SourceName,

@@ -67,6 +67,8 @@ enum class EEwigfelsCastFailReason : uint8
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsCastStarted, FName, SpellId, uint8, ChainIndex, float, CastTime);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsSpellReleased, FName, SpellId, FVector, Origin, FVector, Direction);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FEwigfelsBeamFired, FName, SpellId, FVector, Start, FVector, End, bool, bHitTarget, uint8, ChainIndex);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FEwigfelsImpactFx, FName, SpellId, FVector, Location, FVector, Normal, bool, bBig);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsCastFailed, FName, SpellId, EEwigfelsCastFailReason, Reason);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEwigfelsShieldChanged, bool, bShieldUp);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsParried, AActor*, Attacker, FVector, Location);
@@ -133,6 +135,31 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Ewigfels|Magic")
 	void SetLoadout(const TArray<FName>& NewLoadout);
 
+	/** Plätze im Zauberrad (Inventar der Weisen, die man gerade dabeihat). Basis-Weise und Schild kommen dazu. */
+	static constexpr int32 WheelSlotCount = 6;
+
+	/** Zauberbuch: Weise auf Platz 1–6 legen. Liegt sie schon woanders, tauschen die Plätze. Lokal aufrufen, läuft auf dem Server. */
+	UFUNCTION(BlueprintCallable, Category = "Ewigfels|Magic")
+	void RequestSetWheelSlot(int32 SlotIndex, FName SpellId);
+
+	/** Alle Weisen, die die Figur kann (Zauberbuch). Basis und Schild eingeschlossen. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	TArray<FName> GetKnownSpells() const { return KnownSpells; }
+
+	/** Neue Weise gelernt (Unterricht, Meister). Nur Server. */
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Ewigfels|Magic")
+	void LearnSpell(FName SpellId);
+
+	/** Einschlag-Optik auf allen Maschinen (z. B. Aufprall nach Schmettern). Nur Server. */
+	void BroadcastImpactFx(FName SpellId, const FVector& Location, const FVector& Normal, bool bBig);
+
+	/** Ein Ziel wird von dieser Weise gehalten: zweiter Druck (recast) ist bis Seconds möglich. Nur Server. */
+	void NotifyHeldTarget(FName SpellId, AActor* Target, float Seconds);
+
+	/** true, wenn der nächste Druck dieser Weise die Zweitwirkung auslöst (HUD, Kosten, Abklingzeit). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	bool IsRecastReady(FName SpellId) const;
+
 	// --- Abfragen ---
 
 	/** Prüfung ohne Wirkung (HUD: Slot ausgegraut). */
@@ -147,6 +174,10 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
 	TArray<FName> GetLoadout() const { return Loadout; }
+
+	/** Weise auf Platz 1–8 (Belegung ohne Basis- und Schild-Weise), 0 = Basis. NAME_None, wenn leer. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	FName GetSlotSpell(int32 SlotIndex) const;
 
 	/** Restzeit in s bis die Weise wieder geht (0 = bereit). */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
@@ -209,6 +240,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsSpellReleased OnSpellReleased;
 
+	/** Strahl-Weise ausgelöst (Start an den Fingern, End = Ziel/Wand). Für Blitz-Optik, Kamerastoß, Treff-Stopp. */
+	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
+	FEwigfelsBeamFired OnBeamFired;
+
 	/** Nur lokal beim Wirker (HUD-Hinweis „Kein Atem“). */
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsCastFailed OnCastFailed;
@@ -222,6 +257,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsAtemChanged OnAtemChanged;
 
+	/** Einschlag (Aufprall nach Schmettern). Für Kamerastoß in der Nähe. */
+	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
+	FEwigfelsImpactFx OnImpactFx;
+
 protected:
 	UFUNCTION(Server, Reliable)
 	void Server_Cast(FName SpellId, FVector_NetQuantize AimPoint, AActor* Target);
@@ -229,11 +268,24 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_SetShield(bool bUp);
 
+	UFUNCTION(Server, Reliable)
+	void Server_SetWheelSlot(int32 SlotIndex, FName SpellId);
+
+	/** Belegung neu ordnen: Basis, Schild, dann Platz 1–6 (fehlende = leer). Nur Server. */
+	void ApplyWheel(const TArray<FName>& Wheel);
+
 	UFUNCTION(Client, Reliable)
 	void Client_CastRejected(FName SpellId, EEwigfelsCastFailReason Reason);
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void Multicast_SpellReleased(FName SpellId, FVector_NetQuantize Origin, FVector_NetQuantizeNormal Direction);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_BeamFired(FName SpellId, FVector_NetQuantize Start, FVector_NetQuantize End, FVector_NetQuantizeNormal Normal,
+		bool bHitTarget, uint8 ChainIndex);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_ImpactFx(FName SpellId, FVector_NetQuantize Location, FVector_NetQuantizeNormal Normal, bool bBig);
 
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Parried(AActor* Attacker, FVector_NetQuantize Location);
@@ -248,6 +300,10 @@ protected:
 	void OnRep_Atem();
 
 private:
+	void ApplyHitStop(AActor* Target, float Seconds);
+	bool TryRecast(const FEwigfelsSpellDef& Spell);
+	void BounceBeam(const FEwigfelsSpellDef& Spell, AActor* FirstTarget, const TArray<AActor*>& AlreadyHit);
+
 	EEwigfelsCastFailReason CastSpellInternal(FName SpellId, FVector AimPoint, AActor* Target, bool bSkipLoadoutCheck);
 	void ReleaseSpell(FName SpellId, uint8 ChainIndex);
 	void ExecuteDelivery(const FEwigfelsSpellDef& Spell, uint8 ChainIndex, const FVector& Origin, const FVector& Direction);
@@ -270,6 +326,9 @@ private:
 	TArray<FName> Loadout;
 
 	UPROPERTY(Replicated)
+	TArray<FName> KnownSpells;
+
+	UPROPERTY(Replicated)
 	TArray<FEwigfelsSpellCooldown> Cooldowns;
 
 	UPROPERTY(ReplicatedUsing = OnRep_CastState)
@@ -277,6 +336,13 @@ private:
 
 	UPROPERTY(ReplicatedUsing = OnRep_ShieldUp)
 	bool bShieldUp = false;
+
+	/** Weise, deren Zweitwirkung gerade bereitsteht (Haltelied hält jemanden), und bis wann (Server-Zeit). */
+	UPROPERTY(Replicated)
+	FName RecastSpell;
+
+	UPROPERTY(Replicated)
+	float RecastUntil = 0.f;
 
 	/** Server-Zeit, zu der der Schild hochging (Parierfenster). */
 	UPROPERTY(Replicated)
@@ -287,6 +353,7 @@ private:
 	FVector PendingAimPoint = FVector::ZeroVector;
 	TWeakObjectPtr<AActor> PendingTarget;
 	FTimerHandle ReleaseTimer;
+	TArray<TWeakObjectPtr<AActor>> RecastTargets;
 	float LastSpendTime = -100.f;
 
 	// Lokal

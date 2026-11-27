@@ -1,0 +1,124 @@
+{
+ "_info": "Läden, die das Aussehen ändern. categories = was der Spiegel dort anbietet. Preise in Kronen. Format: docs/CHARACTER_CREATOR.md",
+ "shops": [
+  {
+   "id": "schneiderei",
+   "name": {
+    "de": "Schneiderei",
+    "en": "Tailor"
+   },
+   "npc": "",
+   "regions": [
+    "Kesselbrunn",
+    "Tiedmar",
+    "Aurenburg"
+   ],
+   "categories": [
+    "outfit"
+   ],
+   "base_price": 10
+  },
+  {
+   "id": "haarstube",
+   "name": {
+    "de": "Barbier & Haarstube",
+    "en": "Barber"
+   },
+   "npc": "",
+   "regions": [
+    "Kesselbrunn",
+    "Tiedmar",
+    "Aurenburg"
+   ],
+   "categories": [
+    "hair",
+    "beard",
+    "brows"
+   ],
+   "base_price": 15
+  },
+  {
+   "id": "taetowierer",
+   "name": {
+    "de": "Tätowierer & Malerin",
+    "en": "Tattoo & paint"
+   },
+   "npc": "",
+   "regions": [
+    "Tiedmar",
+    "Kaelschlucht"
+   ],
+   "categories": [
+    "marks"
+   ],
+   "base_price": 20
+  },
+  {
+   "id": "ringschmied",
+   "name": {
+    "de": "Ringschmied",
+    "en": "Ringsmith"
+   },
+   "npc": "Ambros",
+   "regions": [
+    "Kesselbrunn"
+   ],
+   "categories": [
+    "rings"
+   ],
+   "base_price": 25
+  },
+  {
+   "id": "handschuhmacher",
+   "name": {
+    "de": "Handschuhmacher",
+    "en": "Glovemaker"
+   },
+   "npc": "",
+   "regions": [
+    "Aurenburg"
+   ],
+   "categories": [
+    "outfit:handschuhe"
+   ],
+   "base_price": 10
+  },
+  {
+   "id": "spiegelhexe",
+   "name": {
+    "de": "Spiegelhexe",
+    "en": "Mirror witch"
+   },
+   "npc": "",
+   "regions": [
+    "Raunwald"
+   ],
+   "categories": [
+    "face",
+    "eyes",
+    "skin",
+    "voice",
+    "body",
+    "name"
+   ],
+   "base_price": 0,
+   "price_item": "kraeuter_bund",
+   "price_item_count": 5
+  },
+  {
+   "id": "turmzimmer",
+   "name": {
+    "de": "Spiegel im Turmzimmer",
+    "en": "Tower room mirror"
+   },
+   "npc": "",
+   "regions": [
+    "Nocturna"
+   ],
+   "categories": [
+    "outfit_colors"
+   ],
+   "base_price": 0
+  }
+ ]
+}

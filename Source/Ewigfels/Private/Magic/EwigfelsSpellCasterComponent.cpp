@@ -4,7 +4,9 @@
 #include "Magic/EwigfelsSpellEffects.h"
 #include "Magic/EwigfelsSpellProjectile.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
+#include "Magic/EwigfelsSpellVisuals.h"
 #include "Combat/EwigfelsCombatComponent.h"
+#include "Combat/EwigfelsForcedMotionComponent.h"
 #include "Ewigfels.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/GameInstance.h"
@@ -41,10 +43,13 @@ void UEwigfelsSpellCasterComponent::GetLifetimeReplicatedProps(TArray<FLifetimeP
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, Atem);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, MaxAtem);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, Loadout);
+	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, KnownSpells, COND_OwnerOnly);
 	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, Cooldowns, COND_OwnerOnly);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, CastState);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, bShieldUp);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, ShieldUpTime);
+	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, RecastSpell, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, RecastUntil, COND_OwnerOnly);
 }
 
 void UEwigfelsSpellCasterComponent::BeginPlay()
@@ -55,11 +60,26 @@ void UEwigfelsSpellCasterComponent::BeginPlay()
 	{
 		MaxAtem = DefaultMaxAtem;
 		Atem = MaxAtem;
-		if (Loadout.Num() == 0)
+		const UEwigfelsSpellSubsystem* Spells = GetSpells();
+		if (Loadout.Num() == 0 && Spells)
 		{
-			if (const UEwigfelsSpellSubsystem* Spells = GetSpells())
+			Loadout = Spells->GetDefaultLoadout();
+		}
+		// Testarena: alle spielbaren Weisen gelten als gelernt (später aus dem Spielstand / Unterricht)
+		const APawn* Pawn = Cast<APawn>(Owner);
+		if (KnownSpells.Num() == 0 && Spells && Pawn && Pawn->IsPlayerControlled())
+		{
+			for (const FName Id : Loadout)
 			{
-				Loadout = Spells->GetDefaultLoadout();
+				KnownSpells.AddUnique(Id);
+			}
+			for (const FName Id : Spells->GetAllSpellIds())
+			{
+				const FEwigfelsSpellDef* Def = Spells->FindSpell(Id);
+				if (Def && Def->Unlock != FName(TEXT("hidden")) && Def->Kind != FName(TEXT("gegner")))
+				{
+					KnownSpells.AddUnique(Id);
+				}
 			}
 		}
 	}
@@ -212,6 +232,10 @@ EEwigfelsCastFailReason UEwigfelsSpellCasterComponent::CanCast(FName SpellId) co
 	{
 		return EEwigfelsCastFailReason::Busy;
 	}
+	if (IsRecastReady(SpellId))
+	{
+		return EEwigfelsCastFailReason::None; // Zweitwirkung: ohne Abklingzeit und Atem
+	}
 	if (GetCooldownRemaining(SpellId) > 0.f)
 	{
 		return EEwigfelsCastFailReason::Cooldown;
@@ -226,14 +250,17 @@ EEwigfelsCastFailReason UEwigfelsSpellCasterComponent::CanCast(FName SpellId) co
 // ---------------------------------------------------------------------------
 // Lokaler Spieler → Server
 
-void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
+FName UEwigfelsSpellCasterComponent::GetSlotSpell(int32 SlotIndex) const
 {
 	if (SlotIndex == 0)
 	{
-		RequestCast(BasicSpell);
-		return;
+		return BasicSpell;
 	}
-	// Slot 1–4 = Loadout ohne Basis- und Schild-Weise
+	if (SlotIndex < 0 || SlotIndex > WheelSlotCount)
+	{
+		return NAME_None;
+	}
+	// Platz 1–8 = Belegung ohne Basis- und Schild-Weise
 	int32 Slot = 0;
 	for (const FName Id : Loadout)
 	{
@@ -243,9 +270,18 @@ void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
 		}
 		if (++Slot == SlotIndex)
 		{
-			RequestCast(Id);
-			return;
+			return Id;
 		}
+	}
+	return NAME_None;
+}
+
+void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
+{
+	const FName Id = GetSlotSpell(SlotIndex);
+	if (!Id.IsNone())
+	{
+		RequestCast(Id);
 	}
 }
 
@@ -349,6 +385,10 @@ EEwigfelsCastFailReason UEwigfelsSpellCasterComponent::CastSpellInternal(FName S
 	if (Reason != EEwigfelsCastFailReason::None)
 	{
 		return Reason;
+	}
+	if (IsRecastReady(SpellId) && TryRecast(*Spell))
+	{
+		return EEwigfelsCastFailReason::None;
 	}
 
 	// Schild senkt sich beim Wirken
@@ -505,6 +545,30 @@ void UEwigfelsSpellCasterComponent::ExecuteDelivery(const FEwigfelsSpellDef& Spe
 		EwigfelsSpellEffects::ApplyEffects(Spell, Spell.Effects, Hit);
 		break;
 	}
+	case EEwigfelsSpellDelivery::Beam:
+	{
+		FVector End;
+		FVector Normal;
+		const TArray<AActor*> Targets = EwigfelsSpellEffects::TraceBeam(Owner, Origin, Direction, Spell.Delivery.Range,
+			Spell.Delivery.Radius, 1 + Spell.Delivery.Pierce, End, Normal);
+		for (AActor* Target : Targets)
+		{
+			FEwigfelsSpellHit Hit;
+			Hit.Caster = Owner;
+			Hit.Target = Target;
+			Hit.Location = FMath::ClosestPointOnSegment(Target->GetActorLocation(), Origin, End);
+			Hit.Direction = Direction;
+			Hit.bChainEnd = bChainEnd;
+			EwigfelsSpellEffects::ApplyEffects(Spell, Spell.Effects, Hit);
+			ApplyHitStop(Target, bChainEnd ? 0.09f : 0.05f);
+		}
+		Multicast_BeamFired(Spell.Id, Origin, End, Normal, Targets.Num() > 0, ChainIndex);
+		if (Spell.Delivery.Bounces > 0 && Targets.Num() > 0)
+		{
+			BounceBeam(Spell, Targets.Last(), Targets);
+		}
+		break;
+	}
 	case EEwigfelsSpellDelivery::Shield:
 		break;
 	}
@@ -512,9 +576,161 @@ void UEwigfelsSpellCasterComponent::ExecuteDelivery(const FEwigfelsSpellDef& Spe
 	Multicast_SpellReleased(Spell.Id, Origin, Direction);
 }
 
+void UEwigfelsSpellCasterComponent::BounceBeam(const FEwigfelsSpellDef& Spell, AActor* FirstTarget, const TArray<AActor*>& AlreadyHit)
+{
+	// Kettenblitz: vom Ziel zum nächsten noch nicht getroffenen Gegner springen (Sturmweise)
+	AActor* Owner = GetOwner();
+	TArray<AActor*> Hit = AlreadyHit;
+	AActor* From = FirstTarget;
+	for (int32 Jump = 0; Jump < Spell.Delivery.Bounces && From; ++Jump)
+	{
+		const FVector FromLoc = From->GetActorLocation();
+		AActor* Best = nullptr;
+		float BestDist = TNumericLimits<float>::Max();
+		for (AActor* Candidate : EwigfelsSpellEffects::GatherSphere(Owner, FromLoc, Spell.Delivery.BounceRange, From))
+		{
+			const float D = FVector::DistSquared(FromLoc, Candidate->GetActorLocation());
+			if (!Hit.Contains(Candidate) && D < BestDist)
+			{
+				Best = Candidate;
+				BestDist = D;
+			}
+		}
+		if (!Best)
+		{
+			break;
+		}
+		const FVector ToLoc = Best->GetActorLocation();
+		FEwigfelsSpellHit HitInfo;
+		HitInfo.Caster = Owner;
+		HitInfo.Target = Best;
+		HitInfo.Location = ToLoc;
+		HitInfo.Direction = (ToLoc - FromLoc).GetSafeNormal();
+		EwigfelsSpellEffects::ApplyEffects(Spell, Spell.Effects, HitInfo);
+		ApplyHitStop(Best, 0.05f);
+		Multicast_BeamFired(Spell.Id, FromLoc, ToLoc, -HitInfo.Direction, true, 0);
+		Hit.Add(Best);
+		From = Best;
+	}
+}
+
+bool UEwigfelsSpellCasterComponent::IsRecastReady(FName SpellId) const
+{
+	return !SpellId.IsNone() && RecastSpell == SpellId && Now() < RecastUntil;
+}
+
+void UEwigfelsSpellCasterComponent::NotifyHeldTarget(FName SpellId, AActor* Target, float Seconds)
+{
+	const FEwigfelsSpellDef* Spell = FindSpellDef(SpellId);
+	if (!Spell || Spell->RecastWindow <= 0.f || !GetOwner()->HasAuthority())
+	{
+		return;
+	}
+	if (RecastSpell != SpellId || Now() >= RecastUntil)
+	{
+		RecastTargets.Reset();
+	}
+	RecastTargets.AddUnique(Target);
+	RecastSpell = SpellId;
+	RecastUntil = Now() + FMath::Min(Seconds, Spell->RecastWindow);
+}
+
+bool UEwigfelsSpellCasterComponent::TryRecast(const FEwigfelsSpellDef& Spell)
+{
+	AActor* Owner = GetOwner();
+	TArray<AActor*> Targets;
+	for (const TWeakObjectPtr<AActor>& Weak : RecastTargets)
+	{
+		AActor* A = Weak.Get();
+		const UEwigfelsForcedMotionComponent* Motion = A ? A->FindComponentByClass<UEwigfelsForcedMotionComponent>() : nullptr;
+		if (Motion && Motion->IsHeldBy(Owner, Spell.Id))
+		{
+			Targets.Add(A);
+		}
+	}
+	RecastSpell = NAME_None;
+	RecastUntil = 0.f;
+	RecastTargets.Reset();
+	if (Targets.Num() == 0)
+	{
+		return false; // niemand mehr gehalten → normales Wirken
+	}
+
+	const float T = Now();
+	CastState.SpellId = Spell.Id;
+	CastState.StartTime = T;
+	CastState.ReleaseTime = T;
+	CastState.BusyUntil = T + Spell.Recovery;
+	CastState.ChainIndex = 1; // 1 = Zweitwirkung (Animation: Schmettern)
+	CastState.Serial++;
+	OnCastStarted.Broadcast(Spell.Id, 1, 0.f);
+	for (AActor* Target : Targets)
+	{
+		FEwigfelsSpellHit Hit;
+		Hit.Caster = Owner;
+		Hit.Target = Target;
+		Hit.Location = Target->GetActorLocation();
+		Hit.Direction = (Target->GetActorLocation() - Owner->GetActorLocation()).GetSafeNormal2D();
+		EwigfelsSpellEffects::ApplyEffects(Spell, Spell.RecastEffects, Hit);
+	}
+	return true;
+}
+
+void UEwigfelsSpellCasterComponent::BroadcastImpactFx(FName SpellId, const FVector& Location, const FVector& Normal, bool bBig)
+{
+	if (GetOwner() && GetOwner()->HasAuthority())
+	{
+		Multicast_ImpactFx(SpellId, Location, Normal, bBig);
+	}
+}
+
+void UEwigfelsSpellCasterComponent::Multicast_ImpactFx_Implementation(FName SpellId, FVector_NetQuantize Location,
+	FVector_NetQuantizeNormal Normal, bool bBig)
+{
+	if (const FEwigfelsSpellDef* Spell = FindSpellDef(SpellId))
+	{
+		EwigfelsSpellVisuals::PlayLandImpact(GetWorld(), *Spell, Location, bBig);
+		OnImpactFx.Broadcast(SpellId, Location, Normal, bBig);
+	}
+}
+
 void UEwigfelsSpellCasterComponent::Multicast_SpellReleased_Implementation(FName SpellId, FVector_NetQuantize Origin, FVector_NetQuantizeNormal Direction)
 {
 	OnSpellReleased.Broadcast(SpellId, Origin, Direction);
+}
+
+void UEwigfelsSpellCasterComponent::ApplyHitStop(AActor* Target, float Seconds)
+{
+	// Treff-Stopp: das getroffene Ziel friert kurz ein (Wucht-Gefühl). Nur für KI-Ziele auf dem Server,
+	// Spielerfiguren nicht (deren Bewegung sagt der Client voraus, ein Stopp nur auf dem Server würde ruckeln).
+	const APawn* Pawn = Cast<APawn>(Target);
+	if (!Target || !GetOwner()->HasAuthority() || (Pawn && Pawn->IsPlayerControlled()) || Seconds <= 0.f)
+	{
+		return;
+	}
+	Target->CustomTimeDilation = 0.03f;
+	FTimerHandle Handle;
+	TWeakObjectPtr<AActor> Weak(Target);
+	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateLambda([Weak]()
+	{
+		if (AActor* A = Weak.Get())
+		{
+			A->CustomTimeDilation = 1.f;
+		}
+	}), Seconds, false);
+}
+
+void UEwigfelsSpellCasterComponent::Multicast_BeamFired_Implementation(FName SpellId, FVector_NetQuantize Start, FVector_NetQuantize End,
+	FVector_NetQuantizeNormal Normal, bool bHitTarget, uint8 ChainIndex)
+{
+	if (const FEwigfelsSpellDef* Spell = FindSpellDef(SpellId))
+	{
+		// Start lokal an den Fingern neu bestimmen: auf Clients steht die Hand minimal anders als auf dem Server
+		const FVector LocalStart = GetOwner() ? GetCastOrigin(Spell->bTwoHanded) : FVector(Start);
+		const FVector From = FVector::DistSquared(LocalStart, Start) < FMath::Square(80.f) ? LocalStart : FVector(Start);
+		EwigfelsSpellVisuals::PlayBeam(GetWorld(), *Spell, From, End, Normal, bHitTarget, ChainIndex);
+		OnBeamFired.Broadcast(SpellId, From, End, bHitTarget, ChainIndex);
+	}
 }
 
 void UEwigfelsSpellCasterComponent::OnRep_CastState()
@@ -581,6 +797,68 @@ void UEwigfelsSpellCasterComponent::SetLoadout(const TArray<FName>& NewLoadout)
 	{
 		Loadout = NewLoadout;
 	}
+}
+
+void UEwigfelsSpellCasterComponent::LearnSpell(FName SpellId)
+{
+	if (GetOwner() && GetOwner()->HasAuthority() && FindSpellDef(SpellId))
+	{
+		KnownSpells.AddUnique(SpellId);
+	}
+}
+
+void UEwigfelsSpellCasterComponent::RequestSetWheelSlot(int32 SlotIndex, FName SpellId)
+{
+	if (GetOwner() && GetOwner()->HasAuthority())
+	{
+		Server_SetWheelSlot_Implementation(SlotIndex, SpellId);
+	}
+	else
+	{
+		Server_SetWheelSlot(SlotIndex, SpellId);
+	}
+}
+
+void UEwigfelsSpellCasterComponent::Server_SetWheelSlot_Implementation(int32 SlotIndex, FName SpellId)
+{
+	if (SlotIndex < 1 || SlotIndex > WheelSlotCount || !KnownSpells.Contains(SpellId)
+		|| SpellId == BasicSpell || SpellId == ShieldSpell || IsCasting())
+	{
+		return;
+	}
+	TArray<FName> Wheel;
+	for (int32 i = 1; i <= WheelSlotCount; ++i)
+	{
+		Wheel.Add(GetSlotSpell(i));
+	}
+	const int32 Old = Wheel.IndexOfByKey(SpellId);
+	if (Old != INDEX_NONE)
+	{
+		Wheel[Old] = Wheel[SlotIndex - 1]; // tauschen
+	}
+	Wheel[SlotIndex - 1] = SpellId;
+	ApplyWheel(Wheel);
+}
+
+void UEwigfelsSpellCasterComponent::ApplyWheel(const TArray<FName>& Wheel)
+{
+	TArray<FName> NewLoadout;
+	NewLoadout.Add(BasicSpell);
+	if (!ShieldSpell.IsNone())
+	{
+		NewLoadout.Add(ShieldSpell);
+	}
+	// Leere Plätze bleiben als NAME_None stehen, damit die Nummern stimmen; hinten abschneiden
+	int32 Last = Wheel.Num() - 1;
+	while (Last >= 0 && Wheel[Last].IsNone())
+	{
+		--Last;
+	}
+	for (int32 i = 0; i <= Last; ++i)
+	{
+		NewLoadout.Add(Wheel[i]);
+	}
+	Loadout = NewLoadout;
 }
 
 void UEwigfelsSpellCasterComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
