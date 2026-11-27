@@ -8,7 +8,7 @@
 
 ---
 
-## 0. Speicherplatz planen (noch offen: wie viel hast du frei?)
+## 0. Speicherplatz planen (du hast 2 TB SSD: reicht für alles)
 
 | Was | Größe ca. | Laufwerk |
 |---|---|---|
@@ -258,7 +258,41 @@ Es öffnet sich die FreeMoCap-Oberfläche.
 
 **Ehrlich zur Qualität:** Mit **einer** Webcam bekommst du brauchbare, aber wackelige Daten (Tiefe wird geschätzt). Gut wird es mit **2–3 Kameras** aus verschiedenen Winkeln. Dein **Android-Handy** kann eine davon sein: Windows 11 → *Einstellungen → Bluetooth und Geräte → Mobile Geräte* → Handy über „Smartphone-Link“ koppeln → „Als verbundene Kamera verwenden“. Aufnahme-Setup (Licht, Kleidung, Kalibrierung mit ChArUco-Board) beschreibe ich in Phase 3.
 
-**Noch offen:** Welche Webcam hast du, und welches Android-Handy (Modell)?
+**Noch offen:** Welche Webcam hast du? Dein Pixel 10 Pro kann als zweite Kamera dienen (USB-Webcam-Modus, siehe 8a).
+
+---
+
+## 8a. Gesichtsanimation mit dem Pixel 10 Pro (MetaHuman Animator, UE 5.8)
+
+Geprüft am 26.11.2026 gegen die Epic-Doku zu MetaHuman 5.8. **Kurz: Echtzeit-Gesichtstracking am Handy geht mit dem Pixel nicht. Offline-Aufnahmen gehen, am sichersten mit dem Pixel als USB-Webcam.**
+
+| Weg | Pixel 10 Pro | Warum |
+|---|---|---|
+| Live Link Face (Android), **Echtzeit**-Tracking | ❌ geht nicht | Epic: „Real-time facial tracking works only on devices with a Qualcomm Snapdragon 8 Gen 1 (or later) processor.“ Das Pixel 10 Pro hat einen Google **Tensor G5**. Pixel-Geräte stehen auf keiner Liste, ein Forumsnutzer meldet beim Pixel 9a „hardware acceleration not supported“. |
+| Live Link Face (Android), **Takes aufnehmen** (neu in 5.8) für die Offline-Verarbeitung am PC | ⚠️ unsicher | Neu in 5.8 sind Take-Aufnahme mit Video und Ton und der Export per WLAN an Unreal. Epic garantiert das aber nur für getestete Snapdragon-Geräte. Installieren und ausprobieren kostet nichts, verlassen würde ich mich darauf nicht. |
+| **Pixel als USB-Webcam** → MetaHuman Animator „Mono Video“ (offline) | ✅ **empfohlen** | MetaHuman Animator nimmt jede UVC-Kamera unter Windows. Das Pixel meldet sich im Webcam-Modus als UVC-Kamera. Die Verarbeitung läuft auf deiner RTX 5070, nicht auf dem Handy. |
+| Video mit der normalen Pixel-Kamera-App filmen, später am PC importieren | ⚠️ wahrscheinlich | Die Mono-Video-Verarbeitung ist kamera-unabhängig. Den genauen Import-Weg (Capture Manager) testen wir in Phase 3 mit einer Probeaufnahme. |
+| **Audio-driven** Lip-Sync (Ton → Gesicht), in 5.8 mit neuem Echtzeit-Modell | ✅ | Braucht nur ein Mikrofon oder eine WAV-Datei. Erzeugt auch Blinzeln und Emotionen aus dem Ton. Das ist unser Standardweg für die vielen NPC-Dialoge (TTS-WAV → Gesicht). |
+| Körper + Gesicht aus **einer** Kamera (Plugin „MetaHuman Animator Markerless Motion Capture“, Meshcapade, Fab) | ⚠️ experimentell | Ist in 5.8 neu und als *Experimental* markiert, nur unter Windows. Preis und Lizenz des Plugins auf Fab prüfen, bevor wir es einplanen. |
+
+**Ehrlich zur Qualität:** Ein iPhone liefert Tiefendaten (TrueDepth), ein Pixel nur ein normales Videobild. MetaHuman Animator 5.8 kann die Tiefe beim Verarbeiten zwar automatisch schätzen. Lippen, Kiefer und feine Mimik werden aus Mono-Video aber etwas ungenauer als mit Tiefendaten. Für Hauptfiguren in Nahaufnahmen planen wir in Phase 3 Nacharbeit per Control Rig ein.
+
+### 8a.1 Pixel 10 Pro als USB-Webcam einrichten
+1. Pixel entsperren und mit einem **USB-C-Datenkabel** an den PC anschließen (am besten das mitgelieferte, reine Ladekabel gehen nicht).
+2. Am Handy die Benachrichtigung **„Gerät wird über USB geladen“** antippen → unter „USB verwenden für“ **„Webcam“** wählen.
+3. Die Webcam-Benachrichtigung antippen → Vorschau öffnet sich → **HQ** einschalten (bessere Bildqualität). Rückkamera wählen, die ist schärfer als die Frontkamera.
+4. Prüfen in Windows: *Einstellungen → Bluetooth und Geräte → Kameras* → das Pixel muss dort auftauchen.
+5. In UE 5.8: *Edit → Plugins* → nach „MetaHuman“ suchen → **MetaHuman Animator** aktivieren → Editor neu starten. Die eigentliche Aufnahme und Verarbeitung (MetaHuman Performance Asset) zeige ich dir Schritt für Schritt in Phase 3.
+
+Alternativ ohne Kabel: Windows 11 *Smartphone-Link* → „Als verbundene Kamera verwenden“. Das ist eine virtuelle Kamera, braucht laut Epic Windows 11 (hast du) und läuft per WLAN. Sie ist weniger stabil als USB.
+
+### 8a.2 Aufnahme-Tipps (gilt für alle Mono-Video-Wege)
+- Handy auf ein **Stativ in Augenhöhe**, 50–70 cm vor dem Gesicht, Gesicht füllt etwa die Hälfte des Bildes.
+- **Weiches Licht von vorne** (Fenster oder Lampe hinter einem Bettlaken), kein Gegenlicht, keine harten Schatten.
+- Epic empfiehlt, **Autofokus und automatische Belichtung abzuschalten**. Im Pixel-Webcam-Modus geht das nicht direkt. Darum gleichmäßiges Licht und während der Aufnahme nicht stark vor- und zurückbewegen.
+- Ton: separates USB-Mikro oder Headset ist besser als das Handy-Mikro, wenn du den Ton für Audio-driven nutzen willst.
+
+Quellen: [MetaHuman 5.8 Release Notes](https://dev.epicgames.com/documentation/metahuman/metahuman-5-8-release-notes-in-unreal-engine) · [Live Link Face App](https://dev.epicgames.com/documentation/metahuman/live-link-face-application-for-metahuman-animator-in-unreal-engine) · [Capture Device Requirements](https://dev.epicgames.com/documentation/metahuman/capture-device-requirements) · [MetaHuman 5.8 Ankündigung](https://www.metahuman.com/news/metahuman-5-8-is-now-available) · [Forum: Live Link Face für Android](https://forums.unrealengine.com/t/live-link-face-is-now-available-on-android/2540637)
 
 ---
 
@@ -311,7 +345,7 @@ Register-ScheduledTask -TaskName "Ewigfels-Backup" -Action $a -Trigger $t
 
 ## 10. Checkliste Phase 0
 
-- [ ] Freier Speicher geklärt (≥ 250 GB NVMe)
+- [x] Freier Speicher geklärt (2 TB SSD)
 - [ ] NVIDIA Studio-Treiber, `nvidia-smi` ok
 - [ ] `Install-Tools.ps1` gelaufen, Neustart
 - [ ] UE 5.8 installiert
@@ -321,6 +355,7 @@ Register-ScheduledTask -TaskName "Ewigfels-Backup" -Action $a -Trigger $t
 - [ ] ComfyUI: Flux-Schnell-Testbild erzeugt
 - [ ] WSL2 + TripoSG: `test.glb` erzeugt und in Blender geöffnet
 - [ ] FreeMoCap startet
+- [ ] Pixel 10 Pro im USB-Webcam-Modus unter *Einstellungen → Kameras* sichtbar
 - [ ] GitHub-Repo `ewigfels` angelegt, erster Push, Claude-App freigegeben
 - [ ] Erstes OneDrive-Backup gelaufen
 
