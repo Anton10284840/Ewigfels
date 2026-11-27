@@ -29,9 +29,9 @@ Verworfen: Ewigfels, Stimmhorn, Ilsenhall, Hallwacht, Glockenklippe, Echospire, 
 **Empfehlung:** 4 **Türme** statt „Häuser“-Begriff, Spieler **wählt** nach Gesprächen mit den vier Turmsprechern (keine magische Zuteilung). Details: [CHARACTER_BIBLE §3](CHARACTER_BIBLE.md#3-die-vier-türme-häuser).
 Alternative: zufällige Zuteilung durch die Glocke der Akademie. Nachteil: nimmt dem Spieler die Wahl und erinnert zu stark an bekannte Vorbilder.
 
-### E4 – Spielerfigur
+### E4 – Spielerfigur ✅ umgesetzt (27.11.2026, Code ungebaut)
 
-**Empfehlung:** Frei gestaltbar (männlich/weiblich/divers über Körper- und Stimmwahl), Name frei, Alter 15 zu Beginn, 20 am Ende. Stimme: 3 Varianten (TTS-Platzhalter, später Sprecher).
+Frei gestaltbar über den **Charakter-Editor** zu Spielbeginn (Spiegelbild auf dem Nebelboot) und später in Läden (§13). Name frei, Anrede frei wählbar (nur Name · sie · er), unabhängig von Körper und Stimme. Alter 15 zu Beginn, 20 am Ende. Stimme: 3 Varianten + Tonhöhe (TTS-Platzhalter, später Sprecher). Gesicht: 8 MetaHuman-Grundgesichter mischen + 30 Regler (vom Nutzer gewählt, 27.11.2026). Alles Details: [CHARACTER_CREATOR.md](CHARACTER_CREATOR.md).
 Alternative: feste Figur mit Namen. Vorteil: stärkere Cutscenes. Nachteil: widerspricht dem Charakter-Editor im Master-Prompt.
 
 ### E5 – Zaubersystem-Technik ✅ entschieden: eigenes System (Nutzer, 26.11.2026)

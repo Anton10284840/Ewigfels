@@ -16,6 +16,7 @@ class UEwigfelsSpellCasterComponent;
 class UEwigfelsLockOnComponent;
 class UEwigfelsPlaceholderBody;
 class UEwigfelsDialogueCameraComponent;
+class UEwigfelsAppearanceComponent;
 class UEwigfelsInputSetup;
 class UEwigfelsCharacterMovementComponent;
 class UAnimMontage;
@@ -64,6 +65,10 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
 	UEwigfelsCharacterMovementComponent* GetEwigfelsMovement() const;
+
+	/** Aussehen (Charakter-Editor, Läden). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
+	UEwigfelsAppearanceComponent* GetAppearance() const { return Appearance; }
 
 	/** Strafen statt in Laufrichtung drehen (Lock-On, Zaubern, Schild). Für das AnimBP. */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
@@ -163,6 +168,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
 	TObjectPtr<UEwigfelsPlaceholderBody> PlaceholderBody;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
+	TObjectPtr<UEwigfelsAppearanceComponent> Appearance;
 
 	// Eingabe
 	void InputMove(const FInputActionValue& Value);

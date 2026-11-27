@@ -6,12 +6,14 @@
 #include "GameFramework/SaveGame.h"
 #include "WorldState/EwigfelsWorldStateTypes.h"
 #include "Quest/EwigfelsQuestTypes.h"
+#include "Appearance/EwigfelsAppearanceTypes.h"
 #include "EwigfelsSaveGame.generated.h"
 
 /** Version des Spielstand-Formats. Erhöhen, wenn sich Felder ändern, und in UEwigfelsSaveSubsystem::Migrate nachziehen. */
 namespace EwigfelsSave
 {
-	constexpr int32 CurrentVersion = 1;
+	/** v2 (27.11.2026): Aussehen der Spielfigur. */
+	constexpr int32 CurrentVersion = 2;
 }
 
 /** Gespeicherter Zustand eines Actors mit UEwigfelsSaveableComponent (Truhe, Tür, Sammelobjekt, NPC …). */
@@ -98,6 +100,13 @@ public:
 
 	UPROPERTY(SaveGame)
 	bool bHasPlayerTransform = false;
+
+	/** Aussehen der Figur des speichernden Spielers (Koop-Gäste bringen ihr Aussehen aus ihrem eigenen Profil mit). */
+	UPROPERTY(SaveGame)
+	FEwigfelsAppearance PlayerAppearance;
+
+	UPROPERTY(SaveGame)
+	bool bHasPlayerAppearance = false;
 
 	/** Schlüssel = SaveId des Actors (siehe UEwigfelsSaveableComponent). */
 	UPROPERTY(SaveGame)

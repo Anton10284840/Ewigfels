@@ -1,0 +1,1709 @@
+{
+ "version": 1,
+ "_info": "Auswahl für Charakter-Editor und Läden. Format: docs/CHARACTER_CREATOR.md. Prüfen: python Scripts/Tools/validate_appearance.py",
+ "limits": {
+  "height_min": 0.95,
+  "height_max": 1.05,
+  "max_marks": 8,
+  "name_min": 2,
+  "name_max": 20
+ },
+ "outfit_slots": [
+  "kopf",
+  "gesicht",
+  "hals",
+  "oberkoerper",
+  "umhang",
+  "guertel",
+  "handschuhe",
+  "beine",
+  "schuhe",
+  "tasche"
+ ],
+ "body_types": [
+  {
+   "id": "koerper_schmal",
+   "name": {
+    "de": "Schmal",
+    "en": "Slender"
+   },
+   "asset": "/Game/Characters/Player/Body/SK_Body_Schmal.SK_Body_Schmal",
+   "unlock": "start"
+  },
+  {
+   "id": "koerper_mittel",
+   "name": {
+    "de": "Mittel",
+    "en": "Average"
+   },
+   "asset": "/Game/Characters/Player/Body/SK_Body_Mittel.SK_Body_Mittel",
+   "unlock": "start"
+  },
+  {
+   "id": "koerper_kraeftig",
+   "name": {
+    "de": "Kräftig",
+    "en": "Sturdy"
+   },
+   "asset": "/Game/Characters/Player/Body/SK_Body_Kraeftig.SK_Body_Kraeftig",
+   "unlock": "start"
+  }
+ ],
+ "face_presets": [
+  {
+   "id": "gesicht_01",
+   "name": {
+    "de": "Rund und offen",
+    "en": "Round and open"
+   },
+   "morph": "",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_02",
+   "name": {
+    "de": "Schmal und fein",
+    "en": "Narrow and fine"
+   },
+   "morph": "Preset_02",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_03",
+   "name": {
+    "de": "Kantig",
+    "en": "Angular"
+   },
+   "morph": "Preset_03",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_04",
+   "name": {
+    "de": "Weich",
+    "en": "Soft"
+   },
+   "morph": "Preset_04",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_05",
+   "name": {
+    "de": "Lang und edel",
+    "en": "Long and noble"
+   },
+   "morph": "Preset_05",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_06",
+   "name": {
+    "de": "Breit und herzlich",
+    "en": "Broad and warm"
+   },
+   "morph": "Preset_06",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_07",
+   "name": {
+    "de": "Spitzbübisch",
+    "en": "Impish"
+   },
+   "morph": "Preset_07",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_08",
+   "name": {
+    "de": "Ernst",
+    "en": "Serious"
+   },
+   "morph": "Preset_08",
+   "unlock": "start"
+  }
+ ],
+ "sliders": [
+  {
+   "id": "kopf_breite",
+   "group": "kopf",
+   "group_name": {
+    "de": "Kopf",
+    "en": "Head"
+   },
+   "name": {
+    "de": "Kopfbreite",
+    "en": "Head width"
+   },
+   "morph_pos": "KopfBreite_Pos",
+   "morph_neg": "KopfBreite_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "kopf_hoehe",
+   "group": "kopf",
+   "group_name": {
+    "de": "Kopf",
+    "en": "Head"
+   },
+   "name": {
+    "de": "Kopfhöhe",
+    "en": "Head height"
+   },
+   "morph_pos": "KopfHoehe_Pos",
+   "morph_neg": "KopfHoehe_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "stirn_hoehe",
+   "group": "kopf",
+   "group_name": {
+    "de": "Kopf",
+    "en": "Head"
+   },
+   "name": {
+    "de": "Stirnhöhe",
+    "en": "Forehead height"
+   },
+   "morph_pos": "StirnHoehe_Pos",
+   "morph_neg": "StirnHoehe_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "brauen_hoehe",
+   "group": "brauen",
+   "group_name": {
+    "de": "Brauen",
+    "en": "Brows"
+   },
+   "name": {
+    "de": "Brauenhöhe",
+    "en": "Brow height"
+   },
+   "morph_pos": "BrauenHoehe_Pos",
+   "morph_neg": "BrauenHoehe_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "brauen_winkel",
+   "group": "brauen",
+   "group_name": {
+    "de": "Brauen",
+    "en": "Brows"
+   },
+   "name": {
+    "de": "Brauenwinkel",
+    "en": "Brow angle"
+   },
+   "morph_pos": "BrauenWinkel_Pos",
+   "morph_neg": "BrauenWinkel_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "brauen_bogen",
+   "group": "brauen",
+   "group_name": {
+    "de": "Brauen",
+    "en": "Brows"
+   },
+   "name": {
+    "de": "Brauenbogen",
+    "en": "Brow ridge"
+   },
+   "morph_pos": "BrauenBogen_Pos",
+   "morph_neg": "BrauenBogen_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "augen_groesse",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Augengröße",
+    "en": "Eye size"
+   },
+   "morph_pos": "AugenGroesse_Pos",
+   "morph_neg": "AugenGroesse_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "augen_abstand",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Augenabstand",
+    "en": "Eye spacing"
+   },
+   "morph_pos": "AugenAbstand_Pos",
+   "morph_neg": "AugenAbstand_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "augen_hoehe",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Augenhöhe",
+    "en": "Eye height"
+   },
+   "morph_pos": "AugenHoehe_Pos",
+   "morph_neg": "AugenHoehe_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "augen_neigung",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Augenneigung",
+    "en": "Eye tilt"
+   },
+   "morph_pos": "AugenNeigung_Pos",
+   "morph_neg": "AugenNeigung_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "augen_tiefe",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Augentiefe",
+    "en": "Eye depth"
+   },
+   "morph_pos": "AugenTiefe_Pos",
+   "morph_neg": "AugenTiefe_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "lider_schwer",
+   "group": "augen",
+   "group_name": {
+    "de": "Augen",
+    "en": "Eyes"
+   },
+   "name": {
+    "de": "Schwere Lider",
+    "en": "Heavy lids"
+   },
+   "morph_pos": "LiderSchwer_Pos",
+   "morph_neg": "LiderSchwer_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "nase_laenge",
+   "group": "nase",
+   "group_name": {
+    "de": "Nase",
+    "en": "Nose"
+   },
+   "name": {
+    "de": "Nasenlänge",
+    "en": "Nose length"
+   },
+   "morph_pos": "NaseLaenge_Pos",
+   "morph_neg": "NaseLaenge_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "nase_breite",
+   "group": "nase",
+   "group_name": {
+    "de": "Nase",
+    "en": "Nose"
+   },
+   "name": {
+    "de": "Nasenbreite",
+    "en": "Nose width"
+   },
+   "morph_pos": "NaseBreite_Pos",
+   "morph_neg": "NaseBreite_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "nase_ruecken",
+   "group": "nase",
+   "group_name": {
+    "de": "Nase",
+    "en": "Nose"
+   },
+   "name": {
+    "de": "Nasenrücken",
+    "en": "Nose bridge"
+   },
+   "morph_pos": "NaseRuecken_Pos",
+   "morph_neg": "NaseRuecken_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "nase_spitze",
+   "group": "nase",
+   "group_name": {
+    "de": "Nase",
+    "en": "Nose"
+   },
+   "name": {
+    "de": "Nasenspitze",
+    "en": "Nose tip"
+   },
+   "morph_pos": "NaseSpitze_Pos",
+   "morph_neg": "NaseSpitze_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "nase_hoecker",
+   "group": "nase",
+   "group_name": {
+    "de": "Nase",
+    "en": "Nose"
+   },
+   "name": {
+    "de": "Höcker",
+    "en": "Nose hump"
+   },
+   "morph_pos": "NaseHoecker_Pos",
+   "morph_neg": "NaseHoecker_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "wangen_knochen",
+   "group": "wangen",
+   "group_name": {
+    "de": "Wangen",
+    "en": "Cheeks"
+   },
+   "name": {
+    "de": "Wangenknochen",
+    "en": "Cheekbones"
+   },
+   "morph_pos": "WangenKnochen_Pos",
+   "morph_neg": "WangenKnochen_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "wangen_fuelle",
+   "group": "wangen",
+   "group_name": {
+    "de": "Wangen",
+    "en": "Cheeks"
+   },
+   "name": {
+    "de": "Wangenfülle",
+    "en": "Cheek fullness"
+   },
+   "morph_pos": "WangenFuelle_Pos",
+   "morph_neg": "WangenFuelle_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "mund_breite",
+   "group": "mund",
+   "group_name": {
+    "de": "Mund",
+    "en": "Mouth"
+   },
+   "name": {
+    "de": "Mundbreite",
+    "en": "Mouth width"
+   },
+   "morph_pos": "MundBreite_Pos",
+   "morph_neg": "MundBreite_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "lippe_oben",
+   "group": "mund",
+   "group_name": {
+    "de": "Mund",
+    "en": "Mouth"
+   },
+   "name": {
+    "de": "Oberlippe",
+    "en": "Upper lip"
+   },
+   "morph_pos": "LippeOben_Pos",
+   "morph_neg": "LippeOben_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "lippe_unten",
+   "group": "mund",
+   "group_name": {
+    "de": "Mund",
+    "en": "Mouth"
+   },
+   "name": {
+    "de": "Unterlippe",
+    "en": "Lower lip"
+   },
+   "morph_pos": "LippeUnten_Pos",
+   "morph_neg": "LippeUnten_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "mundwinkel",
+   "group": "mund",
+   "group_name": {
+    "de": "Mund",
+    "en": "Mouth"
+   },
+   "name": {
+    "de": "Mundwinkel",
+    "en": "Mouth corners"
+   },
+   "morph_pos": "Mundwinkel_Pos",
+   "morph_neg": "Mundwinkel_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "kiefer_breite",
+   "group": "kiefer",
+   "group_name": {
+    "de": "Kiefer und Kinn",
+    "en": "Jaw and chin"
+   },
+   "name": {
+    "de": "Kieferbreite",
+    "en": "Jaw width"
+   },
+   "morph_pos": "KieferBreite_Pos",
+   "morph_neg": "KieferBreite_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "kinn_laenge",
+   "group": "kiefer",
+   "group_name": {
+    "de": "Kiefer und Kinn",
+    "en": "Jaw and chin"
+   },
+   "name": {
+    "de": "Kinnlänge",
+    "en": "Chin length"
+   },
+   "morph_pos": "KinnLaenge_Pos",
+   "morph_neg": "KinnLaenge_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "kinn_breite",
+   "group": "kiefer",
+   "group_name": {
+    "de": "Kiefer und Kinn",
+    "en": "Jaw and chin"
+   },
+   "name": {
+    "de": "Kinnbreite",
+    "en": "Chin width"
+   },
+   "morph_pos": "KinnBreite_Pos",
+   "morph_neg": "KinnBreite_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "kinn_vor",
+   "group": "kiefer",
+   "group_name": {
+    "de": "Kiefer und Kinn",
+    "en": "Jaw and chin"
+   },
+   "name": {
+    "de": "Kinn vor/zurück",
+    "en": "Chin depth"
+   },
+   "morph_pos": "KinnVor_Pos",
+   "morph_neg": "KinnVor_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "ohren_groesse",
+   "group": "ohren",
+   "group_name": {
+    "de": "Ohren",
+    "en": "Ears"
+   },
+   "name": {
+    "de": "Ohrengröße",
+    "en": "Ear size"
+   },
+   "morph_pos": "OhrenGroesse_Pos",
+   "morph_neg": "OhrenGroesse_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "ohren_abstehend",
+   "group": "ohren",
+   "group_name": {
+    "de": "Ohren",
+    "en": "Ears"
+   },
+   "name": {
+    "de": "Abstehende Ohren",
+    "en": "Ear angle"
+   },
+   "morph_pos": "OhrenAbstehend_Pos",
+   "morph_neg": "OhrenAbstehend_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "ohren_spitz",
+   "group": "ohren",
+   "group_name": {
+    "de": "Ohren",
+    "en": "Ears"
+   },
+   "name": {
+    "de": "Spitze Ohren",
+    "en": "Pointed ears"
+   },
+   "morph_pos": "OhrenSpitz_Pos",
+   "morph_neg": "OhrenSpitz_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "koerper_schultern",
+   "group": "koerper",
+   "group_name": {
+    "de": "Körper",
+    "en": "Body"
+   },
+   "name": {
+    "de": "Schultern",
+    "en": "Shoulders"
+   },
+   "morph_pos": "KoerperSchultern_Pos",
+   "morph_neg": "KoerperSchultern_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "koerper_statur",
+   "group": "koerper",
+   "group_name": {
+    "de": "Körper",
+    "en": "Body"
+   },
+   "name": {
+    "de": "Statur",
+    "en": "Build"
+   },
+   "morph_pos": "KoerperStatur_Pos",
+   "morph_neg": "KoerperStatur_Neg",
+   "default": 0.0
+  },
+  {
+   "id": "koerper_muskeln",
+   "group": "koerper",
+   "group_name": {
+    "de": "Körper",
+    "en": "Body"
+   },
+   "name": {
+    "de": "Muskeln",
+    "en": "Muscles"
+   },
+   "morph_pos": "KoerperMuskeln_Pos",
+   "morph_neg": "KoerperMuskeln_Neg",
+   "default": 0.0
+  }
+ ],
+ "palettes": {
+  "skin": [
+   "#F6DCC8",
+   "#EFC9AE",
+   "#E3B28F",
+   "#D49E78",
+   "#C08560",
+   "#A86E4A",
+   "#8E5A3B",
+   "#74472D",
+   "#5B3622",
+   "#432719",
+   "#F2D5C4",
+   "#C9967A"
+  ],
+  "hair": [
+   "#0E0C0B",
+   "#2A1D16",
+   "#4A3020",
+   "#6B4428",
+   "#8C5E36",
+   "#B07D4A",
+   "#D2A66B",
+   "#E8CF9C",
+   "#F3E6C8",
+   "#A8402A",
+   "#C9652F",
+   "#8A8A88",
+   "#D8D8D6",
+   "#FFFFFF"
+  ],
+  "eyes": [
+   "#3B2A1E",
+   "#5C3B22",
+   "#7A5A2E",
+   "#8E7B3C",
+   "#5E7F3A",
+   "#3E6A57",
+   "#4C7A8C",
+   "#5E8DB8",
+   "#8FA9C4",
+   "#6E6E78",
+   "#9B6FB0",
+   "#C9A227"
+  ],
+  "dye": [
+   "#1B1E2B",
+   "#2E3A5C",
+   "#3F6EA8",
+   "#7FB3D5",
+   "#2F5D3A",
+   "#6E9B4A",
+   "#C9B458",
+   "#D98E2B",
+   "#A8402A",
+   "#6B1E2A",
+   "#B5658B",
+   "#5D3E7A",
+   "#E8E1D0",
+   "#8C7A66",
+   "#4A3A2E",
+   "#2B2B2B"
+  ],
+  "quartz": [
+   "#FFD27A",
+   "#FF7A4A",
+   "#E83A3A",
+   "#6EC8FF",
+   "#3A7BFF",
+   "#7AFFB0",
+   "#3ACB6E",
+   "#C77AFF",
+   "#FF7AD9",
+   "#F5F5FF",
+   "#9AA4B0",
+   "#FFB13A"
+  ],
+  "makeup": [
+   "#1A1414",
+   "#5A2A2A",
+   "#A83A4A",
+   "#D97A8A",
+   "#3A2A5A",
+   "#2A4A6A",
+   "#C9A227",
+   "#E8E1D0"
+  ]
+ },
+ "hair_styles": [
+  {
+   "id": "haar_kahl",
+   "name": {
+    "de": "Kahl",
+    "en": "Bald"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_kurz",
+   "name": {
+    "de": "Kurz geschoren",
+    "en": "Buzz cut"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_kurz.haar_kurz",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_kurz_wirr",
+   "name": {
+    "de": "Kurz und wirr",
+    "en": "Short messy"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_kurz_wirr.haar_kurz_wirr",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_locken_kurz",
+   "name": {
+    "de": "Kurze Locken",
+    "en": "Short curls"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_locken_kurz.haar_locken_kurz",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_locken_lang",
+   "name": {
+    "de": "Lange Locken",
+    "en": "Long curls"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_locken_lang.haar_locken_lang",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_afro",
+   "name": {
+    "de": "Afro",
+    "en": "Afro"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_afro.haar_afro",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_zopf",
+   "name": {
+    "de": "Zopf",
+    "en": "Braid"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_zopf.haar_zopf",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_knoten",
+   "name": {
+    "de": "Knoten",
+    "en": "Bun"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_knoten.haar_knoten",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_schulter",
+   "name": {
+    "de": "Schulterlang",
+    "en": "Shoulder length"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_schulter.haar_schulter",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_lang_glatt",
+   "name": {
+    "de": "Lang und glatt",
+    "en": "Long straight"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_lang_glatt.haar_lang_glatt",
+   "unlock": "start"
+  },
+  {
+   "id": "haar_seitenscheitel",
+   "name": {
+    "de": "Seitenscheitel",
+    "en": "Side part"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_seitenscheitel.haar_seitenscheitel",
+   "unlock": "shop",
+   "price": 40
+  },
+  {
+   "id": "haar_flechtkranz",
+   "name": {
+    "de": "Flechtkranz",
+    "en": "Braided crown"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_flechtkranz.haar_flechtkranz",
+   "unlock": "shop",
+   "price": 60
+  },
+  {
+   "id": "haar_zwei_zoepfe",
+   "name": {
+    "de": "Zwei Zöpfe",
+    "en": "Twin braids"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_zwei_zoepfe.haar_zwei_zoepfe",
+   "unlock": "shop",
+   "price": 50
+  },
+  {
+   "id": "haar_rasiert_seite",
+   "name": {
+    "de": "Seite rasiert",
+    "en": "Undercut"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_rasiert_seite.haar_rasiert_seite",
+   "unlock": "shop",
+   "price": 55
+  },
+  {
+   "id": "haar_dreadlocks",
+   "name": {
+    "de": "Dreadlocks",
+    "en": "Locs"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_dreadlocks.haar_dreadlocks",
+   "unlock": "shop",
+   "price": 70
+  },
+  {
+   "id": "haar_wild_lang",
+   "name": {
+    "de": "Lang und wild",
+    "en": "Long wild"
+   },
+   "asset": "/Game/Characters/Player/Hair/haar_wild_lang.haar_wild_lang",
+   "unlock": "shop",
+   "price": 65
+  }
+ ],
+ "beards": [
+  {
+   "id": "bart_keiner",
+   "name": {
+    "de": "Kein Bart",
+    "en": "No beard"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "bart_flaum",
+   "name": {
+    "de": "Flaum",
+    "en": "Fuzz"
+   },
+   "asset": "/Game/Characters/Player/Beard/bart_flaum.bart_flaum",
+   "unlock": "start"
+  },
+  {
+   "id": "bart_dreitage",
+   "name": {
+    "de": "Dreitagebart",
+    "en": "Stubble"
+   },
+   "asset": "/Game/Characters/Player/Beard/bart_dreitage.bart_dreitage",
+   "unlock": "start"
+  },
+  {
+   "id": "bart_kinn",
+   "name": {
+    "de": "Kinnbart",
+    "en": "Goatee"
+   },
+   "asset": "/Game/Characters/Player/Beard/bart_kinn.bart_kinn",
+   "unlock": "shop",
+   "price": 30
+  },
+  {
+   "id": "bart_voll_kurz",
+   "name": {
+    "de": "Kurzer Vollbart",
+    "en": "Short full beard"
+   },
+   "asset": "/Game/Characters/Player/Beard/bart_voll_kurz.bart_voll_kurz",
+   "unlock": "shop",
+   "price": 40
+  },
+  {
+   "id": "bart_schnurr",
+   "name": {
+    "de": "Schnurrbart",
+    "en": "Moustache"
+   },
+   "asset": "/Game/Characters/Player/Beard/bart_schnurr.bart_schnurr",
+   "unlock": "shop",
+   "price": 35
+  }
+ ],
+ "brows": [
+  {
+   "id": "brauen_fein",
+   "name": {
+    "de": "Fein",
+    "en": "Thin"
+   },
+   "asset": "/Game/Characters/Player/Brows/brauen_fein.brauen_fein",
+   "unlock": "start"
+  },
+  {
+   "id": "brauen_mittel",
+   "name": {
+    "de": "Mittel",
+    "en": "Medium"
+   },
+   "asset": "/Game/Characters/Player/Brows/brauen_mittel.brauen_mittel",
+   "unlock": "start"
+  },
+  {
+   "id": "brauen_buschig",
+   "name": {
+    "de": "Buschig",
+    "en": "Bushy"
+   },
+   "asset": "/Game/Characters/Player/Brows/brauen_buschig.brauen_buschig",
+   "unlock": "start"
+  },
+  {
+   "id": "brauen_gerade",
+   "name": {
+    "de": "Gerade",
+    "en": "Straight"
+   },
+   "asset": "/Game/Characters/Player/Brows/brauen_gerade.brauen_gerade",
+   "unlock": "shop",
+   "price": 15
+  },
+  {
+   "id": "brauen_geteilt",
+   "name": {
+    "de": "Mit Kerbe",
+    "en": "Slit"
+   },
+   "asset": "/Game/Characters/Player/Brows/brauen_geteilt.brauen_geteilt",
+   "unlock": "shop",
+   "price": 20
+  }
+ ],
+ "marks": [
+  {
+   "id": "mal_sommersprossen",
+   "name": {
+    "de": "Sommersprossen",
+    "en": "Freckles"
+   },
+   "kind": "freckles",
+   "asset": "/Game/Characters/Player/Marks/T_mal_sommersprossen.T_mal_sommersprossen",
+   "unlock": "start"
+  },
+  {
+   "id": "mal_muttermal",
+   "name": {
+    "de": "Muttermal",
+    "en": "Beauty mark"
+   },
+   "kind": "freckles",
+   "asset": "/Game/Characters/Player/Marks/T_mal_muttermal.T_mal_muttermal",
+   "unlock": "start"
+  },
+  {
+   "id": "narbe_wange",
+   "name": {
+    "de": "Narbe an der Wange",
+    "en": "Cheek scar"
+   },
+   "kind": "scar",
+   "asset": "/Game/Characters/Player/Marks/T_narbe_wange.T_narbe_wange",
+   "unlock": "start"
+  },
+  {
+   "id": "narbe_braue",
+   "name": {
+    "de": "Narbe über der Braue",
+    "en": "Brow scar"
+   },
+   "kind": "scar",
+   "asset": "/Game/Characters/Player/Marks/T_narbe_braue.T_narbe_braue",
+   "unlock": "start"
+  },
+  {
+   "id": "narbe_lippe",
+   "name": {
+    "de": "Narbe an der Lippe",
+    "en": "Lip scar"
+   },
+   "kind": "scar",
+   "asset": "/Game/Characters/Player/Marks/T_narbe_lippe.T_narbe_lippe",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "narbe_kreuz",
+   "name": {
+    "de": "Kreuznarbe",
+    "en": "Cross scar"
+   },
+   "kind": "scar",
+   "asset": "/Game/Characters/Player/Marks/T_narbe_kreuz.T_narbe_kreuz",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "schminke_lidstrich",
+   "name": {
+    "de": "Lidstrich",
+    "en": "Eyeliner"
+   },
+   "kind": "makeup",
+   "asset": "/Game/Characters/Player/Marks/T_schminke_lidstrich.T_schminke_lidstrich",
+   "unlock": "start"
+  },
+  {
+   "id": "schminke_lippen",
+   "name": {
+    "de": "Lippenfarbe",
+    "en": "Lip colour"
+   },
+   "kind": "makeup",
+   "asset": "/Game/Characters/Player/Marks/T_schminke_lippen.T_schminke_lippen",
+   "unlock": "start"
+  },
+  {
+   "id": "schminke_rouge",
+   "name": {
+    "de": "Rouge",
+    "en": "Blush"
+   },
+   "kind": "makeup",
+   "asset": "/Game/Characters/Player/Marks/T_schminke_rouge.T_schminke_rouge",
+   "unlock": "start"
+  },
+  {
+   "id": "tattoo_noten_hals",
+   "name": {
+    "de": "Notenranke am Hals",
+    "en": "Note vine (neck)"
+   },
+   "kind": "tattoo",
+   "asset": "/Game/Characters/Player/Marks/T_tattoo_noten_hals.T_tattoo_noten_hals",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "tattoo_mond_schlaefe",
+   "name": {
+    "de": "Mondsichel an der Schläfe",
+    "en": "Crescent (temple)"
+   },
+   "kind": "tattoo",
+   "asset": "/Game/Characters/Player/Marks/T_tattoo_mond_schlaefe.T_tattoo_mond_schlaefe",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "tattoo_wellen_arm",
+   "name": {
+    "de": "Klangwellen am Arm",
+    "en": "Sound waves (arm)"
+   },
+   "kind": "tattoo",
+   "asset": "/Game/Characters/Player/Marks/T_tattoo_wellen_arm.T_tattoo_wellen_arm",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "bemalung_streifen",
+   "name": {
+    "de": "Kampfstreifen",
+    "en": "War stripes"
+   },
+   "kind": "paint",
+   "asset": "/Game/Characters/Player/Marks/T_bemalung_streifen.T_bemalung_streifen",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "bemalung_punkte",
+   "name": {
+    "de": "Festpunkte",
+    "en": "Festival dots"
+   },
+   "kind": "paint",
+   "asset": "/Game/Characters/Player/Marks/T_bemalung_punkte.T_bemalung_punkte",
+   "unlock": "shop",
+   "price": 25
+  },
+  {
+   "id": "rune_klang",
+   "name": {
+    "de": "Leuchtende Klangrune",
+    "en": "Glowing sound rune"
+   },
+   "kind": "rune",
+   "asset": "/Game/Characters/Player/Marks/T_rune_klang.T_rune_klang",
+   "unlock": "flag:Look_Runes"
+  }
+ ],
+ "voices": [
+  {
+   "id": "stimme_hell",
+   "name": {
+    "de": "Hell",
+    "en": "Light"
+   },
+   "asset": "/Game/Characters/Player/Voice/VS_Hell.VS_Hell",
+   "unlock": "start"
+  },
+  {
+   "id": "stimme_mittel",
+   "name": {
+    "de": "Mittel",
+    "en": "Medium"
+   },
+   "asset": "/Game/Characters/Player/Voice/VS_Mittel.VS_Mittel",
+   "unlock": "start"
+  },
+  {
+   "id": "stimme_tief",
+   "name": {
+    "de": "Tief",
+    "en": "Deep"
+   },
+   "asset": "/Game/Characters/Player/Voice/VS_Tief.VS_Tief",
+   "unlock": "start"
+  }
+ ],
+ "outfit": [
+  {
+   "id": "kopf_nichts",
+   "slot": "kopf",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_reisemuetze",
+   "slot": "kopf",
+   "name": {
+    "de": "Reisemütze",
+    "en": "Travel cap"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_kopf_reisemuetze.SK_kopf_reisemuetze",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_kapuze",
+   "slot": "kopf",
+   "name": {
+    "de": "Kapuze",
+    "en": "Hood"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_kopf_kapuze.SK_kopf_kapuze",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_spitzhut",
+   "slot": "kopf",
+   "name": {
+    "de": "Spitzhut",
+    "en": "Pointed hat"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_kopf_spitzhut.SK_kopf_spitzhut",
+   "unlock": "shop",
+   "price": 80
+  },
+  {
+   "id": "kopf_federhut",
+   "slot": "kopf",
+   "name": {
+    "de": "Federhut",
+    "en": "Feathered hat"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_kopf_federhut.SK_kopf_federhut",
+   "unlock": "shop",
+   "price": 95
+  },
+  {
+   "id": "gesicht_nichts",
+   "slot": "gesicht",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_runde_brille",
+   "slot": "gesicht",
+   "name": {
+    "de": "Runde Brille",
+    "en": "Round glasses"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_gesicht_runde_brille.SK_gesicht_runde_brille",
+   "unlock": "start"
+  },
+  {
+   "id": "gesicht_halbmaske",
+   "slot": "gesicht",
+   "name": {
+    "de": "Halbmaske",
+    "en": "Half mask"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_gesicht_halbmaske.SK_gesicht_halbmaske",
+   "unlock": "shop",
+   "price": 70
+  },
+  {
+   "id": "hals_nichts",
+   "slot": "hals",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "hals_schal",
+   "slot": "hals",
+   "name": {
+    "de": "Wollschal",
+    "en": "Wool scarf"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_hals_schal.SK_hals_schal",
+   "unlock": "start"
+  },
+  {
+   "id": "hals_kette_quarz",
+   "slot": "hals",
+   "name": {
+    "de": "Quarzkette",
+    "en": "Quartz necklace"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_hals_kette_quarz.SK_hals_kette_quarz",
+   "unlock": "shop",
+   "price": 60
+  },
+  {
+   "id": "ober_reisehemd",
+   "slot": "oberkoerper",
+   "name": {
+    "de": "Reisehemd",
+    "en": "Travel shirt"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_ober_reisehemd.SK_ober_reisehemd",
+   "unlock": "start"
+  },
+  {
+   "id": "ober_strickpulli",
+   "slot": "oberkoerper",
+   "name": {
+    "de": "Strickpulli",
+    "en": "Knit sweater"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_ober_strickpulli.SK_ober_strickpulli",
+   "unlock": "start"
+  },
+  {
+   "id": "ober_weste",
+   "slot": "oberkoerper",
+   "name": {
+    "de": "Weste mit Hemd",
+    "en": "Vest and shirt"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_ober_weste.SK_ober_weste",
+   "unlock": "start"
+  },
+  {
+   "id": "ober_uniform",
+   "slot": "oberkoerper",
+   "name": {
+    "de": "Akademie-Uniform",
+    "en": "Academy uniform"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_ober_uniform.SK_ober_uniform",
+   "unlock": "flag:Look_Uniform"
+  },
+  {
+   "id": "ober_samtjacke",
+   "slot": "oberkoerper",
+   "name": {
+    "de": "Samtjacke",
+    "en": "Velvet jacket"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_ober_samtjacke.SK_ober_samtjacke",
+   "unlock": "shop",
+   "price": 120
+  },
+  {
+   "id": "umhang_nichts",
+   "slot": "umhang",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "umhang_reise",
+   "slot": "umhang",
+   "name": {
+    "de": "Reiseumhang",
+    "en": "Travel cloak"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_umhang_reise.SK_umhang_reise",
+   "unlock": "start"
+  },
+  {
+   "id": "umhang_turm",
+   "slot": "umhang",
+   "name": {
+    "de": "Turm-Umhang",
+    "en": "Tower cloak"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_umhang_turm.SK_umhang_turm",
+   "unlock": "flag:Look_TowerCloak"
+  },
+  {
+   "id": "umhang_mantel_lang",
+   "slot": "umhang",
+   "name": {
+    "de": "Langer Mantel",
+    "en": "Long coat"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_umhang_mantel_lang.SK_umhang_mantel_lang",
+   "unlock": "shop",
+   "price": 150
+  },
+  {
+   "id": "guertel_nichts",
+   "slot": "guertel",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "guertel_leder",
+   "slot": "guertel",
+   "name": {
+    "de": "Ledergürtel",
+    "en": "Leather belt"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_guertel_leder.SK_guertel_leder",
+   "unlock": "start"
+  },
+  {
+   "id": "guertel_schaerpe",
+   "slot": "guertel",
+   "name": {
+    "de": "Schärpe",
+    "en": "Sash"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_guertel_schaerpe.SK_guertel_schaerpe",
+   "unlock": "shop",
+   "price": 40
+  },
+  {
+   "id": "handschuhe_nichts",
+   "slot": "handschuhe",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "handschuhe_fingerlos",
+   "slot": "handschuhe",
+   "name": {
+    "de": "Fingerlose Handschuhe",
+    "en": "Fingerless gloves"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_handschuhe_fingerlos.SK_handschuhe_fingerlos",
+   "unlock": "start"
+  },
+  {
+   "id": "handschuhe_leder",
+   "slot": "handschuhe",
+   "name": {
+    "de": "Lederhandschuhe",
+    "en": "Leather gloves"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_handschuhe_leder.SK_handschuhe_leder",
+   "unlock": "shop",
+   "price": 50
+  },
+  {
+   "id": "beine_reisehose",
+   "slot": "beine",
+   "name": {
+    "de": "Reisehose",
+    "en": "Travel trousers"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_beine_reisehose.SK_beine_reisehose",
+   "unlock": "start"
+  },
+  {
+   "id": "beine_rock",
+   "slot": "beine",
+   "name": {
+    "de": "Faltenrock",
+    "en": "Pleated skirt"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_beine_rock.SK_beine_rock",
+   "unlock": "start"
+  },
+  {
+   "id": "beine_kniehose",
+   "slot": "beine",
+   "name": {
+    "de": "Kniebundhose",
+    "en": "Breeches"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_beine_kniehose.SK_beine_kniehose",
+   "unlock": "start"
+  },
+  {
+   "id": "beine_samthose",
+   "slot": "beine",
+   "name": {
+    "de": "Samthose",
+    "en": "Velvet trousers"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_beine_samthose.SK_beine_samthose",
+   "unlock": "shop",
+   "price": 90
+  },
+  {
+   "id": "schuhe_stiefel",
+   "slot": "schuhe",
+   "name": {
+    "de": "Wanderstiefel",
+    "en": "Hiking boots"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_schuhe_stiefel.SK_schuhe_stiefel",
+   "unlock": "start"
+  },
+  {
+   "id": "schuhe_halbschuhe",
+   "slot": "schuhe",
+   "name": {
+    "de": "Halbschuhe",
+    "en": "Low shoes"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_schuhe_halbschuhe.SK_schuhe_halbschuhe",
+   "unlock": "start"
+  },
+  {
+   "id": "schuhe_reitstiefel",
+   "slot": "schuhe",
+   "name": {
+    "de": "Reitstiefel",
+    "en": "Riding boots"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_schuhe_reitstiefel.SK_schuhe_reitstiefel",
+   "unlock": "shop",
+   "price": 85
+  },
+  {
+   "id": "tasche_nichts",
+   "slot": "tasche",
+   "name": {
+    "de": "Nichts",
+    "en": "Nothing"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "tasche_umhaenge",
+   "slot": "tasche",
+   "name": {
+    "de": "Umhängetasche",
+    "en": "Shoulder bag"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_tasche_umhaenge.SK_tasche_umhaenge",
+   "unlock": "start"
+  },
+  {
+   "id": "tasche_notenmappe",
+   "slot": "tasche",
+   "name": {
+    "de": "Notenmappe",
+    "en": "Sheet-music satchel"
+   },
+   "asset": "/Game/Characters/Player/Outfit/SK_tasche_notenmappe.SK_tasche_notenmappe",
+   "unlock": "shop",
+   "price": 45
+  }
+ ],
+ "patterns": [
+  {
+   "id": "muster_keins",
+   "name": {
+    "de": "Uni",
+    "en": "Plain"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "muster_streifen",
+   "name": {
+    "de": "Streifen",
+    "en": "Stripes"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "muster_karo",
+   "name": {
+    "de": "Karo",
+    "en": "Check"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "muster_stickerei",
+   "name": {
+    "de": "Stickerei",
+    "en": "Embroidery"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 30
+  },
+  {
+   "id": "muster_sterne",
+   "name": {
+    "de": "Sterne",
+    "en": "Stars"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 30
+  }
+ ],
+ "fabrics": [
+  {
+   "id": "stoff_wolle",
+   "name": {
+    "de": "Wolle",
+    "en": "Wool"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "stoff_leinen",
+   "name": {
+    "de": "Leinen",
+    "en": "Linen"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "stoff_leder",
+   "name": {
+    "de": "Leder",
+    "en": "Leather"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "stoff_samt",
+   "name": {
+    "de": "Samt",
+    "en": "Velvet"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 40
+  }
+ ],
+ "ring_metals": [
+  {
+   "id": "metall_messing",
+   "name": {
+    "de": "Messing",
+    "en": "Brass"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "metall_kupfer",
+   "name": {
+    "de": "Kupfer",
+    "en": "Copper"
+   },
+   "asset": "",
+   "unlock": "start"
+  },
+  {
+   "id": "metall_silber",
+   "name": {
+    "de": "Silber",
+    "en": "Silver"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 60
+  },
+  {
+   "id": "metall_gold",
+   "name": {
+    "de": "Gold",
+    "en": "Gold"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 120
+  },
+  {
+   "id": "metall_schwarzeisen",
+   "name": {
+    "de": "Schwarzeisen",
+    "en": "Black iron"
+   },
+   "asset": "",
+   "unlock": "shop",
+   "price": 90
+  }
+ ],
+ "defaults": {
+  "body_type": "koerper_mittel",
+  "height": 1.0,
+  "face_a": "gesicht_01",
+  "face_b": "gesicht_04",
+  "face_blend": 0.3,
+  "skin_color": "#C08560",
+  "eye_color_l": "#5C3B22",
+  "eye_color_r": "#5C3B22",
+  "hair_style": "haar_kurz_wirr",
+  "hair_color": "#4A3020",
+  "hair_tip_color": "#4A3020",
+  "beard": "bart_keiner",
+  "brows": "brauen_mittel",
+  "voice": "stimme_mittel",
+  "voice_pitch": 0.0,
+  "pronouns": "neutral",
+  "outfit": {
+   "kopf": "kopf_nichts",
+   "gesicht": "gesicht_nichts",
+   "hals": "hals_schal",
+   "oberkoerper": "ober_strickpulli",
+   "umhang": "umhang_reise",
+   "guertel": "guertel_leder",
+   "handschuhe": "handschuhe_nichts",
+   "beine": "beine_reisehose",
+   "schuhe": "schuhe_stiefel",
+   "tasche": "tasche_umhaenge"
+  },
+  "outfit_colors": [
+   "#2E3A5C",
+   "#E8E1D0",
+   "#C9B458"
+  ],
+  "outfit_pattern": "muster_keins",
+  "outfit_fabric": "stoff_wolle",
+  "ring_metal": "metall_messing",
+  "quartz": "#FFD27A"
+ }
+}
