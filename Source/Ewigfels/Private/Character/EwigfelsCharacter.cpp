@@ -1,0 +1,756 @@
+// Copyright Ewigfels. Alle Rechte vorbehalten.
+
+#include "Character/EwigfelsCharacter.h"
+#include "Character/EwigfelsCharacterMovementComponent.h"
+#include "Character/EwigfelsInputSetup.h"
+#include "Character/EwigfelsLockOnComponent.h"
+#include "Character/EwigfelsPlaceholderBody.h"
+#include "Camera/EwigfelsDialogueCameraComponent.h"
+#include "Combat/EwigfelsCombatComponent.h"
+#include "Magic/EwigfelsSpellCasterComponent.h"
+#include "Magic/EwigfelsSpellVisuals.h"
+#include "Quest/EwigfelsQuestSubsystem.h"
+#include "World/EwigfelsInteractable.h"
+#include "Ewigfels.h"
+#include "Animation/AnimInstance.h"
+#include "Animation/AnimMontage.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/GameInstance.h"
+#include "Engine/LocalPlayer.h"
+#include "Engine/OverlapResult.h"
+#include "Engine/SkeletalMesh.h"
+#include "Engine/World.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "GameFramework/GameModeBase.h"
+#include "GameFramework/PlayerController.h"
+#include "GameFramework/RootMotionSource.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "InputActionValue.h"
+#include "Net/UnrealNetwork.h"
+#include "TimerManager.h"
+
+#define LOCTEXT_NAMESPACE "EwigfelsCharacter"
+
+namespace
+{
+	const FName DodgeSourceName(TEXT("EwigfelsDodge"));
+	const FName StepMove(TEXT("move"));
+	const FName StepJump(TEXT("jump"));
+	const FName StepDodge(TEXT("dodge"));
+	const FName TutorialMovement(TEXT("Tutorial_Movement"));
+}
+
+AEwigfelsCharacter::AEwigfelsCharacter(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer.SetDefaultSubobjectClass<UEwigfelsCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
+{
+	PrimaryActorTick.bCanEverTick = true;
+
+	GetCapsuleComponent()->InitCapsuleSize(38.f, 90.f);
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
+
+	// Mannequin/MetaHuman-Standard: Füße am Kapselboden, Blick entlang +X
+	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -90.f), FRotator(0.f, -90.f, 0.f));
+	GetMesh()->VisibilityBasedAnimTickOption = EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones; // Fingerspitzen auch auf dem Server
+
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->SetupAttachment(RootComponent);
+	CameraBoom->TargetArmLength = DefaultArmLength;
+	CameraBoom->SocketOffset = FVector(0.f, 55.f, 55.f); // über die rechte Schulter
+	CameraBoom->bUsePawnControlRotation = true;
+	CameraBoom->bEnableCameraLag = true;
+	CameraBoom->CameraLagSpeed = 14.f;
+	CameraBoom->ProbeSize = 14.f;
+	DefaultSocketOffset = CameraBoom->SocketOffset;
+
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->bUsePawnControlRotation = false;
+	FollowCamera->SetFieldOfView(DefaultFov);
+
+	Combat = CreateDefaultSubobject<UEwigfelsCombatComponent>(TEXT("Combat"));
+	Combat->SetTeam(EEwigfelsTeam::Player);
+	Combat->DefaultMaxHealth = 120.f;
+	Combat->StaggerThreshold = 25.f;
+
+	Caster = CreateDefaultSubobject<UEwigfelsSpellCasterComponent>(TEXT("Caster"));
+	LockOn = CreateDefaultSubobject<UEwigfelsLockOnComponent>(TEXT("LockOn"));
+	DialogueCamera = CreateDefaultSubobject<UEwigfelsDialogueCameraComponent>(TEXT("DialogueCamera"));
+
+	PlaceholderBody = CreateDefaultSubobject<UEwigfelsPlaceholderBody>(TEXT("PlaceholderBody"));
+	PlaceholderBody->SetupAttachment(RootComponent);
+	PlaceholderBody->SetLook(FLinearColor(0.035f, 0.05f, 0.11f), FLinearColor(1.f, 0.78f, 0.42f), FLinearColor(0.75f, 0.9f, 1.f), 1.f, false);
+}
+
+void AEwigfelsCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME_CONDITION(AEwigfelsCharacter, bLockedOnReplicated, COND_SkipOwner);
+}
+
+UEwigfelsCharacterMovementComponent* AEwigfelsCharacter::GetEwigfelsMovement() const
+{
+	return Cast<UEwigfelsCharacterMovementComponent>(GetCharacterMovement());
+}
+
+void AEwigfelsCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	ApplyDefaultLook();
+}
+
+void AEwigfelsCharacter::ApplyDefaultLook()
+{
+	USkeletalMeshComponent* SkelMesh = GetMesh();
+	if (!SkelMesh || SkelMesh->GetSkeletalMeshAsset() || DefaultMesh.IsNull())
+	{
+		return;
+	}
+	if (USkeletalMesh* Asset = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(DefaultMesh)))
+	{
+		SkelMesh->SetSkeletalMesh(Asset);
+		if (UClass* AnimClass = DefaultAnimClass.TryLoadClass<UAnimInstance>())
+		{
+			SkelMesh->SetAnimInstanceClass(AnimClass);
+		}
+	}
+	else
+	{
+		UE_LOG(LogEwigfels, Log, TEXT("Figur: %s nicht gefunden, nutze Platzhalter-Koerper"), *DefaultMesh.ToString());
+	}
+}
+
+void AEwigfelsCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	DefaultArmLength = CameraBoom->TargetArmLength;
+	DefaultFov = FollowCamera->FieldOfView;
+
+	Caster->OnCastStarted.AddDynamic(this, &AEwigfelsCharacter::HandleCastStarted);
+	Caster->OnSpellReleased.AddDynamic(this, &AEwigfelsCharacter::HandleSpellReleased);
+	Caster->OnCastFailed.AddDynamic(this, &AEwigfelsCharacter::HandleCastFailed);
+	Caster->OnShieldChanged.AddDynamic(this, &AEwigfelsCharacter::HandleShieldChanged);
+	Caster->OnParried.AddDynamic(this, &AEwigfelsCharacter::HandleParried);
+	Combat->OnHitFeedback.AddDynamic(this, &AEwigfelsCharacter::HandleHitFeedback);
+	Combat->OnDied.AddDynamic(this, &AEwigfelsCharacter::HandleDied);
+	LockOn->OnTargetChanged.AddDynamic(this, &AEwigfelsCharacter::HandleLockOnChanged);
+
+	TWeakObjectPtr<AEwigfelsCharacter> WeakThis(this);
+	Caster->SetAimPointProvider([WeakThis]()
+	{
+		return WeakThis.IsValid() ? WeakThis->ComputeAimPoint() : FVector::ZeroVector;
+	});
+}
+
+// ---------------------------------------------------------------------------
+// Eingabe
+
+void AEwigfelsCharacter::NotifyControllerChanged()
+{
+	Super::NotifyControllerChanged();
+	const APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!PC || !PC->IsLocalController())
+	{
+		return;
+	}
+	if (!InputSetup)
+	{
+		InputSetup = UEwigfelsInputSetup::Create(this);
+	}
+	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
+	{
+		Subsystem->AddMappingContext(DefaultMappingContext ? DefaultMappingContext.Get() : InputSetup->Context.Get(), 0);
+	}
+}
+
+void AEwigfelsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	UEnhancedInputComponent* Input = Cast<UEnhancedInputComponent>(PlayerInputComponent);
+	if (!Input)
+	{
+		UE_LOG(LogEwigfels, Error, TEXT("Figur: Enhanced Input fehlt (DefaultInput.ini)"));
+		return;
+	}
+	if (!InputSetup)
+	{
+		InputSetup = UEwigfelsInputSetup::Create(this);
+	}
+	const UEwigfelsInputSetup* S = InputSetup;
+	if (bUseBuiltInMovementInput)
+	{
+		Input->BindAction(S->Move, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputMove);
+		Input->BindAction(S->Look, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputLook);
+		Input->BindAction(S->LookStick, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputLookStick);
+		Input->BindAction(S->Jump, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputJump);
+		Input->BindAction(S->Jump, ETriggerEvent::Completed, this, &AEwigfelsCharacter::InputJumpReleased);
+		Input->BindAction(S->Sprint, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSprint);
+		Input->BindAction(S->Sprint, ETriggerEvent::Completed, this, &AEwigfelsCharacter::InputSprint);
+	}
+	Input->BindAction(S->Dodge, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputDodge);
+	Input->BindAction(S->CastBasic, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputCastBasic);
+	Input->BindAction(S->Shield, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputShieldStart);
+	Input->BindAction(S->Shield, ETriggerEvent::Completed, this, &AEwigfelsCharacter::InputShieldEnd);
+	Input->BindAction(S->Spell1, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell1);
+	Input->BindAction(S->Spell2, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell2);
+	Input->BindAction(S->Spell3, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell3);
+	Input->BindAction(S->Spell4, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpell4);
+	Input->BindAction(S->LockOn, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputLockOn);
+	Input->BindAction(S->SwitchTarget, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSwitchTarget);
+	Input->BindAction(S->Interact, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputInteract);
+	Input->BindAction(S->ToggleHelp, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputToggleHelp);
+}
+
+void AEwigfelsCharacter::SetGameplayInputBlocked(bool bBlocked)
+{
+	bInputBlocked = bBlocked;
+	if (bBlocked)
+	{
+		if (UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement())
+		{
+			Move->SetSprinting(false);
+		}
+		Caster->RequestShield(false);
+		LockOn->Release();
+	}
+}
+
+void AEwigfelsCharacter::InputMove(const FInputActionValue& Value)
+{
+	const FVector2D Axis = Value.Get<FVector2D>();
+	if (bInputBlocked || !Controller || Combat->IsDead())
+	{
+		return;
+	}
+	const FRotator Yaw(0.f, Controller->GetControlRotation().Yaw, 0.f);
+	AddMovementInput(FRotationMatrix(Yaw).GetUnitAxis(EAxis::X), Axis.Y);
+	AddMovementInput(FRotationMatrix(Yaw).GetUnitAxis(EAxis::Y), Axis.X);
+	if (Axis.SizeSquared() > 0.25f && GetVelocity().SizeSquared2D() > FMath::Square(200.f))
+	{
+		NoteTutorialStep(StepMove);
+	}
+}
+
+void AEwigfelsCharacter::InputLook(const FInputActionValue& Value)
+{
+	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsActive())
+	{
+		return;
+	}
+	const FVector2D Axis = Value.Get<FVector2D>();
+	AddControllerYawInput(Axis.X * MouseSensitivity);
+	AddControllerPitchInput(-Axis.Y * MouseSensitivity);
+}
+
+void AEwigfelsCharacter::InputLookStick(const FInputActionValue& Value)
+{
+	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsActive())
+	{
+		return;
+	}
+	const FVector2D Axis = Value.Get<FVector2D>();
+	const float Dt = GetWorld()->GetDeltaSeconds();
+	AddControllerYawInput(Axis.X * GamepadLookRate * Dt);
+	AddControllerPitchInput(-Axis.Y * GamepadLookRate * 0.7f * Dt);
+}
+
+void AEwigfelsCharacter::InputJump()
+{
+	if (bInputBlocked || !Combat->CanAct())
+	{
+		return;
+	}
+	Jump();
+	NoteTutorialStep(StepJump);
+}
+
+void AEwigfelsCharacter::InputJumpReleased()
+{
+	StopJumping();
+}
+
+void AEwigfelsCharacter::InputSprint(const FInputActionValue& Value)
+{
+	if (UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement())
+	{
+		Move->SetSprinting(Value.Get<bool>() && !bInputBlocked);
+	}
+}
+
+void AEwigfelsCharacter::InputDodge()
+{
+	if (bInputBlocked || !Combat->CanAct() || !GetCharacterMovement()->IsMovingOnGround() || IsDodging())
+	{
+		return;
+	}
+	const float Now = GetWorld()->GetTimeSeconds();
+	if (Now - LastDodgeTime < DodgeCooldown)
+	{
+		return;
+	}
+	if (Caster->GetAtem() < DodgeAtemCost)
+	{
+		ShowMessage(LOCTEXT("NoAtemDodge", "Kein Atem zum Ausweichen"), FLinearColor(0.45f, 0.7f, 1.f));
+		return;
+	}
+	FVector Dir = GetLastMovementInputVector().GetSafeNormal2D();
+	if (Dir.IsNearlyZero())
+	{
+		Dir = -GetActorForwardVector(); // ohne Richtung: Schritt zurück
+	}
+	LastDodgeTime = Now;
+	if (!HasAuthority())
+	{
+		StartDodge(Dir); // Vorhersage
+	}
+	Server_Dodge(Dir);
+	NoteTutorialStep(StepDodge);
+}
+
+void AEwigfelsCharacter::Server_Dodge_Implementation(FVector_NetQuantizeNormal Direction)
+{
+	if (!Combat->CanAct() || IsDodging() || !Caster->TrySpendAtem(DodgeAtemCost))
+	{
+		return; // der Client korrigiert sich über die normale Bewegungskorrektur
+	}
+	Caster->InterruptCast();
+	Caster->RequestShield(false);
+	Combat->SetInvulnerableFor(DodgeInvulnerability);
+	StartDodge(FVector(Direction).GetSafeNormal2D());
+}
+
+void AEwigfelsCharacter::StartDodge(const FVector& Direction)
+{
+	TSharedPtr<FRootMotionSource_ConstantForce> Force = MakeShared<FRootMotionSource_ConstantForce>();
+	Force->InstanceName = DodgeSourceName;
+	Force->AccumulateMode = ERootMotionAccumulateMode::Override;
+	Force->Priority = 5;
+	Force->Force = Direction * (DodgeDistance / DodgeDuration);
+	Force->Duration = DodgeDuration;
+	Force->FinishVelocityParams.Mode = ERootMotionFinishVelocityMode::ClampVelocity;
+	Force->FinishVelocityParams.ClampVelocity = GetCharacterMovement()->MaxWalkSpeed;
+	GetCharacterMovement()->ApplyRootMotionSource(Force);
+
+	// Kosmetik: kurzer Lichtschweif am Boden
+	if (PlaceholderBody->IsActiveBody() || GetNetMode() != NM_DedicatedServer)
+	{
+		EwigfelsSpellVisuals::SpawnFlash(GetWorld(), TEXT("sphere"), GetActorLocation() - FVector(0.f, 0.f, 70.f), Direction.Rotation(),
+			FLinearColor(0.6f, 0.75f, 1.f), FVector(0.3f, 0.3f, 0.05f), FVector(2.5f, 0.6f, 0.05f), 0.3f, 1500.f, 300.f);
+	}
+}
+
+bool AEwigfelsCharacter::IsDodging() const
+{
+	const UCharacterMovementComponent* Move = GetCharacterMovement();
+	return Move && Move->GetRootMotionSource(DodgeSourceName).IsValid();
+}
+
+void AEwigfelsCharacter::InputCastBasic()
+{
+	CastSlot(0);
+}
+
+void AEwigfelsCharacter::CastSlot(int32 Slot)
+{
+	if (bInputBlocked || Combat->IsDead())
+	{
+		return;
+	}
+	// Ziel: Lock-On, sonst weiche Zielhilfe (kleiner Kegel um die Bildmitte)
+	AActor* Target = LockOn->GetTarget();
+	if (!Target)
+	{
+		Target = LockOn->FindSoftTarget(7.f);
+	}
+	Caster->SetAimTarget(Target);
+	Caster->RequestCastSlot(Slot);
+}
+
+void AEwigfelsCharacter::InputShieldStart()
+{
+	if (!bInputBlocked)
+	{
+		Caster->RequestShield(true);
+	}
+}
+
+void AEwigfelsCharacter::InputShieldEnd()
+{
+	Caster->RequestShield(false);
+}
+
+void AEwigfelsCharacter::InputLockOn()
+{
+	if (!bInputBlocked)
+	{
+		LockOn->Toggle();
+	}
+}
+
+void AEwigfelsCharacter::InputSwitchTarget(const FInputActionValue& Value)
+{
+	const float Axis = Value.Get<float>();
+	if (!FMath::IsNearlyZero(Axis))
+	{
+		LockOn->Switch(Axis > 0.f ? 1 : -1);
+	}
+}
+
+void AEwigfelsCharacter::InputInteract()
+{
+	if (DialogueCamera->IsActive())
+	{
+		DialogueCamera->Advance();
+		return;
+	}
+	AActor* Focus = FocusedInteractable.Get();
+	if (!bInputBlocked && Focus && Focus->Implements<UEwigfelsInteractable>())
+	{
+		IEwigfelsInteractable::Execute_Interact(Focus, this);
+	}
+}
+
+void AEwigfelsCharacter::InputToggleHelp()
+{
+	bShowHelp = !bShowHelp;
+}
+
+void AEwigfelsCharacter::HandleLockOnChanged(AActor* NewTarget)
+{
+	Caster->SetAimTarget(NewTarget);
+	if (IsLocallyControlled())
+	{
+		bLockedOnReplicated = NewTarget != nullptr;
+		Server_SetLockedOn(NewTarget != nullptr);
+	}
+}
+
+void AEwigfelsCharacter::Server_SetLockedOn_Implementation(bool bLocked)
+{
+	bLockedOnReplicated = bLocked;
+}
+
+FVector AEwigfelsCharacter::ComputeAimPoint() const
+{
+	if (const AActor* Target = LockOn->GetTarget())
+	{
+		return Target->GetActorLocation();
+	}
+	const APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!PC)
+	{
+		return GetActorLocation() + GetActorForwardVector() * 3000.f;
+	}
+	FVector ViewLoc;
+	FRotator ViewRot;
+	PC->GetPlayerViewPoint(ViewLoc, ViewRot);
+	const FVector Dir = ViewRot.Vector();
+	// Ab der Figur messen, damit nichts zwischen Kamera und Figur getroffen wird
+	const float Skip = FVector::DotProduct(GetActorLocation() - ViewLoc, Dir);
+	const FVector Start = ViewLoc + Dir * FMath::Max(0.f, Skip);
+	const FVector End = ViewLoc + Dir * 12000.f;
+	FHitResult Hit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsAim), false, this);
+	if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params))
+	{
+		return Hit.ImpactPoint;
+	}
+	return End;
+}
+
+// ---------------------------------------------------------------------------
+// Tick
+
+void AEwigfelsCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	UpdateRotationMode();
+	if (IsLocallyControlled() && IsPlayerControlled())
+	{
+		UpdateCamera(DeltaSeconds);
+		UpdateInteractFocus();
+	}
+	// Platzhalter: Hände zeigen, solange gezaubert wird
+	if (PlaceholderBody->IsActiveBody())
+	{
+		const bool bCasting = Caster->IsCasting() || GetWorld()->GetTimeSeconds() < LocalCastPoseUntil;
+		const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(Caster->GetCastState().SpellId);
+		PlaceholderBody->SetCastPose(bCasting || Caster->IsShieldUp() ? 1.f : 0.f,
+			Spell ? Spell->Visual.Color : FLinearColor(1.f, 0.85f, 0.5f), Caster->IsShieldUp() || (Spell && Spell->bTwoHanded));
+		if (PlaceholderBody->IsPlayingDeath() && !Combat->IsDead())
+		{
+			PlaceholderBody->Revive();
+		}
+	}
+}
+
+void AEwigfelsCharacter::UpdateRotationMode()
+{
+	const bool bLocked = IsLocallyControlled() ? LockOn->GetTarget() != nullptr : bLockedOnReplicated;
+	const bool bCasting = Caster->IsCasting() || GetWorld()->GetTimeSeconds() < LocalCastPoseUntil;
+	const bool bNewStrafe = (bLocked || bCasting || Caster->IsShieldUp()) && !IsDodging();
+	if (bNewStrafe != bStrafing)
+	{
+		bStrafing = bNewStrafe;
+		GetCharacterMovement()->bOrientRotationToMovement = !bStrafing;
+		GetCharacterMovement()->bUseControllerDesiredRotation = bStrafing;
+	}
+}
+
+void AEwigfelsCharacter::UpdateCamera(float DeltaSeconds)
+{
+	if (DialogueCamera->IsActive())
+	{
+		return;
+	}
+	const UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement();
+	float TargetArm = DefaultArmLength;
+	float TargetFov = DefaultFov;
+	FVector TargetOffset = DefaultSocketOffset;
+	if (Move && Move->IsSprinting())
+	{
+		TargetFov = DefaultFov + 8.f;
+		TargetArm = DefaultArmLength + 30.f;
+	}
+	if (Caster->IsShieldUp())
+	{
+		TargetArm = DefaultArmLength - 50.f;
+	}
+	if (LockOn->GetTarget())
+	{
+		TargetArm = DefaultArmLength + 60.f;
+		TargetOffset = DefaultSocketOffset + FVector(0.f, 15.f, 20.f);
+	}
+	CameraBoom->TargetArmLength = FMath::FInterpTo(CameraBoom->TargetArmLength, TargetArm, DeltaSeconds, 5.f);
+	CameraBoom->SocketOffset = FMath::VInterpTo(CameraBoom->SocketOffset, TargetOffset, DeltaSeconds, 5.f);
+	FollowCamera->SetFieldOfView(FMath::FInterpTo(FollowCamera->FieldOfView, TargetFov, DeltaSeconds, 6.f));
+}
+
+void AEwigfelsCharacter::UpdateInteractFocus()
+{
+	AActor* Best = nullptr;
+	float BestScore = -FLT_MAX;
+	TArray<FOverlapResult> Overlaps;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsInteract), false, this);
+	GetWorld()->OverlapMultiByChannel(Overlaps, GetActorLocation(), FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(280.f), Params);
+	FCollisionObjectQueryParams Objects;
+	Objects.AddObjectTypesToQuery(ECC_Pawn);
+	Objects.AddObjectTypesToQuery(ECC_WorldDynamic);
+	Objects.AddObjectTypesToQuery(ECC_WorldStatic);
+	GetWorld()->OverlapMultiByObjectType(Overlaps, GetActorLocation(), FQuat::Identity, Objects, FCollisionShape::MakeSphere(280.f), Params);
+	for (const FOverlapResult& O : Overlaps)
+	{
+		AActor* A = O.GetActor();
+		if (!A || A == this || !A->Implements<UEwigfelsInteractable>())
+		{
+			continue;
+		}
+		const FVector To = (A->GetActorLocation() - GetActorLocation()).GetSafeNormal2D();
+		const float Score = FVector::DotProduct(GetActorForwardVector(), To) - FVector::Dist(A->GetActorLocation(), GetActorLocation()) / 280.f;
+		if (Score > BestScore)
+		{
+			BestScore = Score;
+			Best = A;
+		}
+	}
+	FocusedInteractable = Best;
+}
+
+void AEwigfelsCharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	if (PlaceholderBody->IsActiveBody())
+	{
+		PlaceholderBody->PlayHit(); // kleiner Federeffekt beim Landen
+	}
+}
+
+// ---------------------------------------------------------------------------
+// Rückmeldungen
+
+void AEwigfelsCharacter::PlaySpellMontage(FName SpellId)
+{
+	const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(SpellId);
+	if (!Spell || !GetMesh() || !GetMesh()->GetAnimInstance())
+	{
+		return;
+	}
+	if (UAnimMontage* Montage = Cast<UAnimMontage>(EwigfelsSpellVisuals::LoadIfExists(Spell->Visual.Montage)))
+	{
+		const float Speed = Combat->GetActionSpeedMultiplier();
+		PlayAnimMontage(Montage, Speed);
+	}
+}
+
+void AEwigfelsCharacter::HandleCastStarted(FName SpellId, uint8 ChainIndex, float CastTime)
+{
+	LocalCastPoseUntil = GetWorld()->GetTimeSeconds() + CastTime + 0.3f;
+	PlaySpellMontage(SpellId);
+	if (IsLocallyControlled())
+	{
+		// Beim Zaubern sofort zur Kamera drehen (sonst fliegt der erste Schuss seitlich weg)
+		if (const AController* C = GetController())
+		{
+			const FRotator Yaw(0.f, C->GetControlRotation().Yaw, 0.f);
+			if (LockOn->GetTarget() == nullptr && FMath::Abs(FRotator::NormalizeAxis(Yaw.Yaw - GetActorRotation().Yaw)) > 60.f)
+			{
+				SetActorRotation(Yaw);
+			}
+		}
+		NoteTutorialStep(TEXT("cast"));
+	}
+}
+
+void AEwigfelsCharacter::HandleSpellReleased(FName SpellId, FVector Origin, FVector Direction)
+{
+	if (const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(SpellId))
+	{
+		EwigfelsSpellVisuals::PlayRelease(GetWorld(), *Spell, Origin, Direction, this);
+	}
+}
+
+void AEwigfelsCharacter::HandleCastFailed(FName SpellId, EEwigfelsCastFailReason Reason)
+{
+	LocalCastPoseUntil = 0.f;
+	StopAnimMontage();
+	if (!IsLocallyControlled())
+	{
+		return;
+	}
+	switch (Reason)
+	{
+	case EEwigfelsCastFailReason::NoAtem:
+		ShowMessage(LOCTEXT("NoAtem", "Kein Atem"), FLinearColor(0.45f, 0.7f, 1.f));
+		break;
+	case EEwigfelsCastFailReason::Cooldown:
+		ShowMessage(LOCTEXT("Cooldown", "Weise klingt noch nach"), FLinearColor(0.8f, 0.8f, 0.85f), 0.8f);
+		break;
+	case EEwigfelsCastFailReason::CannotAct:
+		ShowMessage(LOCTEXT("CannotAct", "Gerade nicht möglich"), FLinearColor(0.8f, 0.8f, 0.85f), 0.8f);
+		break;
+	default:
+		break;
+	}
+}
+
+void AEwigfelsCharacter::HandleShieldChanged(bool bUp)
+{
+	const FEwigfelsSpellDef* Shield = Caster->FindSpellDef(Caster->ShieldSpell);
+	const FLinearColor Color = Shield ? Shield->Visual.Color : FLinearColor::White;
+	PlaceholderBody->SetShieldVisible(bUp, Color);
+	if (bUp && Shield)
+	{
+		EwigfelsSpellVisuals::SpawnFlash(GetWorld(), TEXT("sphere"), Caster->GetCastOrigin(true), GetActorRotation(), Color,
+			FVector(0.1f), FVector(0.9f), 0.18f, 3000.f, 400.f);
+	}
+}
+
+void AEwigfelsCharacter::HandleParried(AActor* Attacker, FVector Location)
+{
+	const FEwigfelsSpellDef* Shield = Caster->FindSpellDef(Caster->ShieldSpell);
+	const FLinearColor Color = Shield ? Shield->Visual.Color : FLinearColor::White;
+	if (!Shield || !EwigfelsSpellVisuals::SpawnNiagaraAt(GetWorld(), Shield->Visual.ImpactNiagara, Location, GetActorRotation(), Color, 1.f))
+	{
+		EwigfelsSpellVisuals::SpawnFlash(GetWorld(), TEXT("sphere"), GetActorLocation(), FRotator::ZeroRotator, Color,
+			FVector(0.5f), FVector(5.f), 0.45f, 30000.f, 1200.f);
+	}
+	if (IsLocallyControlled())
+	{
+		ShowMessage(LOCTEXT("Parry", "Reinklang!"), FLinearColor(1.f, 0.95f, 0.7f), 1.f);
+	}
+}
+
+void AEwigfelsCharacter::HandleHitFeedback(float Amount, FVector Location, EEwigfelsHitResult Result, AActor* InstigatorActor)
+{
+	if (Result == EEwigfelsHitResult::Hit || Result == EEwigfelsHitResult::Blocked || Result == EEwigfelsHitResult::Killed)
+	{
+		PlaceholderBody->PlayHit();
+	}
+	if (IsLocallyControlled() && Result == EEwigfelsHitResult::Ignored && Amount <= 0.f && IsDodging())
+	{
+		ShowMessage(LOCTEXT("Dodged", "Ausgewichen"), FLinearColor(0.7f, 0.85f, 1.f), 0.6f);
+	}
+}
+
+void AEwigfelsCharacter::HandleDied(AActor* Killer)
+{
+	PlaceholderBody->PlayDeath();
+	StopAnimMontage();
+	if (IsLocallyControlled())
+	{
+		LockOn->Release();
+		ShowMessage(LOCTEXT("Died", "Du sinkst zu Boden …"), FLinearColor(1.f, 0.5f, 0.45f), RespawnDelay);
+	}
+	if (HasAuthority())
+	{
+		GetWorldTimerManager().SetTimer(RespawnTimer, this, &AEwigfelsCharacter::Respawn, RespawnDelay, false);
+	}
+}
+
+void AEwigfelsCharacter::Respawn()
+{
+	AGameModeBase* GM = GetWorld()->GetAuthGameMode();
+	if (GM && GetController())
+	{
+		if (AActor* Start = GM->FindPlayerStart(GetController()))
+		{
+			TeleportTo(Start->GetActorLocation(), Start->GetActorRotation());
+		}
+	}
+	Combat->ResetCombatState();
+	Caster->RestoreAtem(Caster->GetMaxAtem());
+}
+
+void AEwigfelsCharacter::NoteTutorialStep(FName Step)
+{
+	if (bTutorialReported)
+	{
+		return;
+	}
+	TutorialSteps.Add(Step);
+	if (TutorialSteps.Contains(StepMove) && TutorialSteps.Contains(StepJump) && TutorialSteps.Contains(StepDodge))
+	{
+		bTutorialReported = true;
+		Server_ReportTutorial(TutorialMovement);
+	}
+}
+
+void AEwigfelsCharacter::Server_ReportTutorial_Implementation(FName Step)
+{
+	// Nur bekannte Schritte annehmen (Schutz gegen beliebige Quest-Ereignisse vom Client)
+	if (Step != TutorialMovement)
+	{
+		return;
+	}
+	if (UEwigfelsQuestSubsystem* Quests = GetGameInstance() ? GetGameInstance()->GetSubsystem<UEwigfelsQuestSubsystem>() : nullptr)
+	{
+		Quests->ReportEvent(TEXT("custom"), Step.ToString());
+	}
+}
+
+void AEwigfelsCharacter::ShowMessage(const FText& Text, const FLinearColor& Color, float Seconds)
+{
+	MessageText = Text;
+	MessageColor = Color;
+	MessageStart = GetWorld()->GetRealTimeSeconds();
+	MessageLength = FMath::Max(0.2f, Seconds);
+}
+
+bool AEwigfelsCharacter::GetMessage(FText& OutText, FLinearColor& OutColor, float& OutAlpha) const
+{
+	const float Age = GetWorld()->GetRealTimeSeconds() - MessageStart;
+	if (Age > MessageLength || MessageText.IsEmpty())
+	{
+		return false;
+	}
+	OutText = MessageText;
+	OutColor = MessageColor;
+	OutAlpha = FMath::Clamp((MessageLength - Age) / 0.3f, 0.f, 1.f);
+	return true;
+}
+
+#undef LOCTEXT_NAMESPACE
