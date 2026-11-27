@@ -20,6 +20,7 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 |---|---|---|---|
 | Unreal MCP + All Toolsets | in UE 5.8 enthalten | UE EULA | Editor-Steuerung durch Claude (nur Editor, experimentell) |
 | UE-Engine-Plugins (DataValidation, StateTree, CommonUI, Water, PoseSearch, MotionWarping, Chooser) | in UE 5.8 enthalten | UE EULA | KI, UI, Wasser, Motion Matching, Asset-Prüfung |
+| UE-Engine-Plugins für das Game Animation Sample (AnimationWarping, AnimationLocomotionLibrary, AnimationLayering, BlendStack, FullBodyIK, CurveExpression, GameplayCameras, RigLogic, HairStrands, LiveLink, LiveLinkControlRig, Mover, NetworkPrediction, ChaosMover, Locomotor, MovieSceneAnimMixer, DrawDebugLibrary, SmartObjects, GameplayInteractions) | in UE 5.8 enthalten | UE EULA | Laufen, Klettern, Kamera und Geräusche der Sample-Figur |
 | PCG Extended Toolkit | https://github.com/Nebukam/PCGExtendedToolkit | MIT | Prozeduraler Weltaufbau (`Plugins/ThirdParty/PCGExtendedToolkit`) |
 | SUDS | https://github.com/sinbad/SUDS | MIT | Dialogsystem (`Plugins/ThirdParty/SUDS`), Ewigfels-Modul hängt davon ab |
 | SPUD | https://github.com/sinbad/SPUD | MIT | optional, nicht im Einsatz (eigenes Save-System) |
@@ -42,7 +43,7 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 
 | Name | Quelle | Lizenz | Verwendung (Pfad im Projekt) |
 |---|---|---|---|
-| _noch keine_ | | | |
+| Game Animation Sample (Epic Games, UE 5.8) | Fab / Epic Games Launcher | UE-Content (Fab Standard-Lizenz, nur in Unreal-Projekten) | Sandbox-Figur mit Motion Matching, ca. 2.900 Dateien: `Content/Blueprints`, `Content/Characters/{UEFN_Mannequin,UE5_Mannequins,UE4_Mannequin,Echo,Paragon}`, `Content/MetaHumans/{Common,Kellan}`, `Content/Audio/Foley`, `Content/Input`, `Content/Levels/LevelPrototyping`, `Content/Misc` |
 
 ## Audio & Musik
 
