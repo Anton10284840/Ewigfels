@@ -95,6 +95,9 @@ public:
 	/** Kurzer Hinweis in der Bildmitte („Kein Atem“, „Reinklang!“). Nur lokal. */
 	void ShowMessage(const FText& Text, const FLinearColor& Color, float Seconds = 1.2f);
 
+	/** Für Test-Befehle (Ewigfels.Test.Gesten): Zauber-Platz auslösen wie per Taste (0 = linke Maus). */
+	void TestCastSlot(int32 Slot) { CastSlot(Slot); }
+
 	/** Aktueller Hinweis, false wenn abgelaufen. Alpha blendet aus. */
 	bool GetMessage(FText& OutText, FLinearColor& OutColor, float& OutAlpha) const;
 
