@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **3 – Charakter, Zauber, Kampf** (Code fertig, Build auf dem PC offen) · Engine: UE 5.8
+Stand: 27.11.2026 · Aktuelle Phase: **3 – Charakter, Zauber, Kampf** (Code fertig, Build auf dem PC offen) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -66,6 +66,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Gegner-KI Novize (Nahkampf) + Fluchsänger (Fernkampf) + Übungspuppe (`AI/`, `Content/Data/Creatures/`) | ✅ | ⬜ Build | ⬜ |
 | Dialogkamera (Totale/Schulter/Close-up, 180°-Regel) (`Camera/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
 | HUD Phase 3 (Leisten, Zauberleiste, Trefferzahlen, F1-Hilfe) + Testarena + Test-NPC Lio (`UI/`, `World/`) | ✅ | ⬜ Build | ⬜ |
+| Charakter-Editor + Laden-Spiegel: Aussehen-Katalog, Regeln, Vorschau-Kamera, Slate-Fenster, Spielstand v2 (`Appearance/`, `UI/EwigfelsCharacterCreator`, `World/EwigfelsMirror`, docs/CHARACTER_CREATOR.md) | ✅ | ⬜ Build · ⬜ Assets (Grundgesichter, Morphs, Kleidung) Phase 5 | ⬜ 5 Automation-Tests geschrieben · ✅ validate_appearance.py 0 Fehler (Cloud) |
 | Mehrspieler-Vorbereitung (server-autoritativ, repliziert, GDD E11) | ✅ | ⬜ | ⬜ PIE mit 2 Spielern |
 | Prüfskript Weisen/Status/Gegner (`Scripts/Tools/validate_combat.py`, Format docs/SPELL_FORMAT.md) | ✅ | ✅ | ✅ 7 Selbsttests (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
