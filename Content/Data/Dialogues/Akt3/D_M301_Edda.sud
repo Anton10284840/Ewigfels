@@ -1,0 +1,58 @@
+# M301 – Eddas Geständnis im Glockenkreis von Brandheim. Zwei Fassungen nach E1: Vertrauen (ruhig, alles) oder Kraft verborgen (Streit, Brief von T. V.).
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+===
+[event camera `wide`]
+Edda: Hier. Genau hier stand ich. In jener Nacht.
+[if {flag.E1_TrustEdda}]
+[event camera `close`]
+[event emotion `neutral`]
+Edda: Sie haben mir einmal die Wahrheit gesagt, als es Sie viel gekostet hat. Jetzt bin ich dran.
+Edda: Ich habe das Experiment geleitet. Nicht beobachtet. Geleitet. Kanzler Ruprecht hat es befohlen, und ich habe Ja gesagt, weil ich neugierig war.
+Edda: Wir wollten wissen, ob man den Urton bändigen kann. In Glocken. Diese Glocken.
+[event emotion `sad`]
+Edda: Er ließ sich nicht bändigen. Die Stadt wurde still. Erst die Farben, dann die Stimmen, dann alles.
+Edda: In einer Werkstatt am Markt hat ein Kind geweint. Das Einzige, was noch Ton hatte. Ich habe es aufgehoben und bin gelaufen. Bis Kesselbrunn. Zu Ambros.
+Edda: Ich habe Sie nicht gerettet. Ich habe Sie übrig gelassen.
+  * Sie hätten es mir früher sagen müssen.
+    Edda: Ja. Jedes Jahr ein bisschen früher. Und jedes Jahr habe ich es verschoben.
+    [event state `rel:Edda+5`]
+  * Sie haben mich getragen. Das zählt.
+    [event emotion `soft`]
+    Edda: Sagen Sie das nicht so schnell. Sie wissen noch nicht alles, was ich weiß.
+    [event state `rel:Edda+15`]
+  * Wer war ich? Wer waren meine Eltern?
+    Edda: Instrumentenbauer. Mehr weiß ich nicht. Aber die Werkstatt steht noch. Dort drüben.
+    [event state `rel:Edda+10`]
+[else]
+[event camera `close`]
+[event emotion `neutral`]
+Edda: Es gab ein Experiment. Das Kollegium wollte den Urton in Glocken fassen. Es ging schief. Die Stadt ...
+  * Ich habe einen Brief. Von T. V. Er schreibt, Sie haben es geleitet.
+    [event emotion `angry`]
+    Edda: Vaal schreibt Ihnen Briefe. Natürlich tut er das.
+  * Sie lassen Dinge aus. Ich höre es.
+    Edda: Sie hören zu viel. Das war immer Ihr Problem.
+  * „Es ging schief“? Eine ganze Stadt?
+    Edda: Was wollen Sie hören? Dass ich schuld bin?
+[event emotion `angry`]
+Edda: Ich hatte meine Gründe. Ruprecht hat befohlen, und ich ...
+  * Hören Sie auf, sich hinter ihm zu verstecken.
+    [event emotion `sad`]
+    Edda: ...
+    Edda: Gut. Gut. Ich habe es geleitet. Ich war neugierig. Ich wollte wissen, ob es geht.
+  * Ich gehe, wenn Sie weiterlügen.
+    [event emotion `sad`]
+    Edda: Bleiben Sie. Bitte. Ich kann nicht mehr.
+    Edda: Ich habe es geleitet. Nicht Ruprecht. Ich.
+Edda: In einer Werkstatt am Markt hat ein Kind geweint. Ich habe es aufgehoben und bin gelaufen. Bis zu Ambros.
+Edda: Ich habe Sie nicht gerettet. Ich habe Sie übrig gelassen.
+  * Ich weiß nicht, ob ich Ihnen das verzeihen kann.
+    Edda: Das müssen Sie nicht. Das war nie die Abmachung.
+    [event state `rel:Edda-15`]
+  * Danke, dass Sie es endlich gesagt haben.
+    Edda: Viel zu spät. Aber ja.
+    [event state `rel:Edda+5`]
+[endif]
+[event camera `wide`]
+Edda: Gehen Sie in die Werkstatt. Allein. Ich warte hier. Ich habe dort nichts zu suchen.

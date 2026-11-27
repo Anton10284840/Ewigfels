@@ -1,0 +1,217 @@
+{
+  "id": "M310",
+  "type": "main",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Lio",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M309"
+  ],
+  "title": {
+    "de": "Mara",
+    "en": "Mara"
+  },
+  "summary": {
+    "de": "Am Ausgang der Schlucht warten schwarze Gestalten. In der Mitte, ohne Maske: Mara. Heute entscheidet sich, was aus ihr wird. Und aus Lio.",
+    "en": "At the mouth of the gorge black figures are waiting. In the middle, without a mask: Mara. Today decides what becomes of her. And of Lio."
+  },
+  "dialogues": [
+    "D_M310_Mara",
+    "D_M310_Lio"
+  ],
+  "stages": [
+    {
+      "id": "s1_kampf",
+      "text": {
+        "de": "Maras Einheit ist müde, verletzt, halb verdurstet. Einer der Novizen ist ein Kind.",
+        "en": "Mara's unit is tired, wounded, half dying of thirst. One of the novices is a child."
+      },
+      "objectives": [
+        {
+          "id": "o_einheit",
+          "kind": "defeat",
+          "target": "Stille_Hand_Novize",
+          "count": 5,
+          "text": {
+            "de": "Besiege die Einheit (das Kind nicht verletzen)",
+            "en": "Defeat the unit (don't hurt the child)"
+          }
+        },
+        {
+          "id": "o_mara",
+          "kind": "defeat",
+          "target": "Mara_Erschoepft",
+          "marker": "NPC_Mara",
+          "text": {
+            "de": "Besiege Mara",
+            "en": "Defeat Mara"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahrheit"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahrheit",
+      "text": {
+        "de": "Mara liegt im Sand. Lio stellt sich zwischen euch.",
+        "en": "Mara lies in the sand. Lio stands between you."
+      },
+      "objectives": [
+        {
+          "id": "o_dialog",
+          "kind": "dialogue",
+          "target": "D_M310_Mara",
+          "marker": "NPC_Mara",
+          "text": {
+            "de": "Hör Mara zu. Und entscheide.",
+            "en": "Listen to Mara. And decide."
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:E3_Decided",
+          "text": {
+            "de": "Entscheide über Mara",
+            "en": "Decide Mara's fate"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:E3_MaraKilled"
+          ],
+          "stage": "s3a_allein"
+        },
+        {
+          "if": [
+            "flag:E3_MaraRedeemed"
+          ],
+          "stage": "s3c_lied"
+        },
+        {
+          "stage": "s3b_gefangen"
+        }
+      ]
+    },
+    {
+      "id": "s3a_allein",
+      "text": {
+        "de": "Lio sagt kein Wort. Er geht allein zur Oase.",
+        "en": "Lio says nothing. He walks to the oasis alone."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M310_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sieh Lio nach",
+            "en": "Watch Lio go"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Lio-40"
+      ],
+      "next": [
+        {
+          "stage": "s4_heim"
+        }
+      ]
+    },
+    {
+      "id": "s3b_gefangen",
+      "text": {
+        "de": "Mara ist gefangen. Oder geflohen. Lio ist erleichtert und gebrochen zugleich.",
+        "en": "Mara is captured. Or has fled. Lio is relieved and broken at once."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M310_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio",
+            "en": "Talk to Lio"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Lio-10"
+      ],
+      "next": [
+        {
+          "stage": "s4_heim"
+        }
+      ]
+    },
+    {
+      "id": "s3c_lied",
+      "text": {
+        "de": "Lio spielt das Lied. Mara kennt es.",
+        "en": "Lio plays the song. Mara knows it."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M310_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Hör zu",
+            "en": "Listen"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Lio+20",
+        "rel:Mara+20"
+      ],
+      "next": [
+        {
+          "stage": "s4_heim"
+        }
+      ]
+    },
+    {
+      "id": "s4_heim",
+      "text": {
+        "de": "Rückflug nach Nocturna auf der Sturmschwinge.",
+        "en": "Flight back to Nocturna on the stormwing."
+      },
+      "objectives": [
+        {
+          "id": "o_flug",
+          "kind": "reach",
+          "target": "Nocturna_Landeplatz",
+          "marker": "Nocturna_Landeplatz",
+          "text": {
+            "de": "Flieg nach Nocturna",
+            "en": "Fly to Nocturna"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 700,
+    "gold": 0,
+    "items": [],
+    "effects": []
+  }
+}

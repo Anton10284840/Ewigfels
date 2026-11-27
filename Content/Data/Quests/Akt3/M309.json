@@ -1,0 +1,127 @@
+{
+  "id": "M309",
+  "type": "main",
+  "act": 3,
+  "region": "Nachhall",
+  "giver": "Nym",
+  "duration_min": 45,
+  "auto_start": true,
+  "requires": [
+    "quest:M308"
+  ],
+  "title": {
+    "de": "Die Wahrheit über den Urton",
+    "en": "The Truth about the Urtone"
+  },
+  "summary": {
+    "de": "Nym nimmt dich mit in den Nachhall und zeigt dir alles. Was vor 2000 Jahren geschah. Und was in Brandheim geschah.",
+    "en": "Nym takes you into the echo realm and shows you everything. What happened 2000 years ago. And what happened in Brandheim."
+  },
+  "dialogues": [
+    "D_M309_Nym",
+    "D_M309_Lio"
+  ],
+  "stages": [
+    {
+      "id": "s1_nachhall",
+      "text": {
+        "de": "Nym hält dich. Vor-Kael schwebt in Stücken, Licht von unten.",
+        "en": "Nym holds you. Fore-Kael floats in pieces, light from below."
+      },
+      "objectives": [
+        {
+          "id": "o_hand",
+          "kind": "custom",
+          "target": "Nym_Hand",
+          "marker": "Grab_Letzte_Kammer",
+          "text": {
+            "de": "Nimm Nyms Hand",
+            "en": "Take Nym's hand"
+          }
+        },
+        {
+          "id": "o_vision",
+          "kind": "custom",
+          "target": "Vision_Verstummen",
+          "text": {
+            "de": "Sieh das Verstummen durch Nymraels Augen",
+            "en": "See the Silencing through Nymrael's eyes"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahrheit"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahrheit",
+      "text": {
+        "de": "Nym erzählt dir die Wahrheit.",
+        "en": "Nym tells you the truth."
+      },
+      "objectives": [
+        {
+          "id": "o_nym",
+          "kind": "dialogue",
+          "target": "D_M309_Nym",
+          "marker": "NPC_Nym",
+          "text": {
+            "de": "Hör Nym zu",
+            "en": "Listen to Nym"
+          }
+        },
+        {
+          "id": "o_rueckklang",
+          "kind": "cast",
+          "target": "K58",
+          "text": {
+            "de": "Wirk Rückklang zum ersten Mal",
+            "en": "Cast Returning Sound for the first time"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Knows_Retune=1"
+      ],
+      "next": [
+        {
+          "stage": "s3_zurueck"
+        }
+      ]
+    },
+    {
+      "id": "s3_zurueck",
+      "text": {
+        "de": "Zurück in der Welt. Lio hat drei Stunden gewartet.",
+        "en": "Back in the world. Lio has waited three hours."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M309_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio",
+            "en": "Talk to Lio"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 600,
+    "gold": 0,
+    "items": [
+      "Weise_Rueckklang"
+    ],
+    "effects": []
+  }
+}

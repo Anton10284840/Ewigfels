@@ -1,0 +1,42 @@
+# M302 – Abendessen bei Joost und Marit Vandermeer (Netzmacher, laut und liebevoll). Marit deckt einen Teller zu viel. Lio entscheidet, ob er von Mara erzählt.
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Joost "Joost Vandermeer"]
+[set SpeakerName.Marit "Marit Vandermeer"]
+===
+[event camera `wide`]
+[event emotion `happy`]
+Marit: Setzen, setzen, alle setzen! Du bist also der Mensch, von dem Lio in jedem Brief schreibt. Drei Seiten über dich, eine halbe über den Unterricht.
+Joost: Eine Viertelseite. Ich hab nachgezählt.
+Lio: Papa!
+Joost: Iss. Du bist dünn. Die füttern euch da nicht. Zaubern macht hungrig, das weiß jeder.
+  * Die Suppe ist wunderbar.
+    Marit: Siehst du, Joost? Höflich. Nicht so wie unser Bengel.
+  * Lio isst bei uns für drei.
+    Joost: Das ist mein Junge!
+[event camera `close`]
+Marit: Noch jemand Brot? Ich hab ... ich hab noch einen Teller ...
+[event emotion `sad`]
+Marit: Ach. Ich hab einen zu viel gedeckt. Wie dumm von mir. Das passiert mir manchmal noch.
+Joost: Marit.
+Marit: Ist ja gut. Ist ja gut.
+Lio: ...
+Lio: Mama. Papa. Ich muss euch was sagen.
+  * (Lio leise zunicken: Sag es ihnen.)
+    Lio: Ich hab Mara gesehen. Im Frühling. In den Glastiefen. Sie lebt.
+    [event emotion `surprised`]
+    Marit: Sie ... lebt?
+    Joost: Wo? Wo ist sie? Warum ist sie nicht ...
+    Lio: Sie ist bei den Leuten, die Kesselbrunn angegriffen haben. Ich weiß nicht, warum. Aber ich hol sie zurück. Versprochen.
+    [event emotion `sad`]
+    Marit: Sie lebt. Joost, sie lebt.
+    [set flag.Lio_ToldParents true]
+    [event state `rel:Lio+10`]
+  * (Lio unter dem Tisch anstoßen: Noch nicht.)
+    Lio: ... Ich hab in Duellkunde ein Ausreichend. Das wollte ich sagen.
+    Joost: Ausreichend! Das ist doch was! Ausreichend ist besser als ich je war!
+    [event emotion `sad`]
+    Lio: Danke. Du hattest recht. Nicht heute. Nicht, solange ich sie nicht mitbringen kann.
+    [event state `rel:Lio+5`]
+[event camera `wide`]
+Marit: Du schläfst im Zimmer unterm Dach. Die Möwen sind laut, aber man gewöhnt sich dran. Oder auch nicht.

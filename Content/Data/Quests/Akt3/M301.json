@@ -1,0 +1,268 @@
+{
+  "id": "M301",
+  "type": "main",
+  "act": 3,
+  "region": "Kesselbrunn",
+  "giver": "Edda",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M210"
+  ],
+  "title": {
+    "de": "Brandheim",
+    "en": "Brandheim"
+  },
+  "summary": {
+    "de": "Das dritte Jahr ist ein Reisejahr. Edda bringt dich dorthin, wo alles angefangen hat: in die Stadt ohne Ton.",
+    "en": "The third year is a year of travel. Edda takes you to where it all began: the town without sound."
+  },
+  "dialogues": [
+    "D_M301_Edda_Reise",
+    "D_M301_Edda",
+    "D_M301_Vaal_Traum"
+  ],
+  "stages": [
+    {
+      "id": "s1_reise",
+      "text": {
+        "de": "Reis mit Edda über Kesselbrunn nach Osten.",
+        "en": "Travel east with Edda by way of Kesselbrunn."
+      },
+      "objectives": [
+        {
+          "id": "o_kessel",
+          "kind": "reach",
+          "target": "Kesselbrunn_Marktbrunnen",
+          "marker": "Marktbrunnen",
+          "text": {
+            "de": "Mach Halt in Kesselbrunn",
+            "en": "Stop in Kesselbrunn"
+          }
+        },
+        {
+          "id": "o_ambros",
+          "kind": "talk",
+          "target": "Ambros",
+          "marker": "NPC_Ambros",
+          "optional": true,
+          "text": {
+            "de": "Besuch Ambros in seiner neuen Werkstatt",
+            "en": "Visit Ambros in his new workshop"
+          }
+        },
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M301_Edda_Reise",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Geh mit Edda weiter nach Osten",
+            "en": "Walk on east with Edda"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_zaun"
+        }
+      ]
+    },
+    {
+      "id": "s2_zaun",
+      "text": {
+        "de": "Alte Kollegiumszäune, verrostete Bannglocken. Dahinter: Brandheim.",
+        "en": "Old Collegium fences, rusted ban bells. Behind them: Brandheim."
+      },
+      "objectives": [
+        {
+          "id": "o_zaun",
+          "kind": "reach",
+          "target": "Brandheim_Sperrzone",
+          "marker": "Brandheim_Sperrzone",
+          "text": {
+            "de": "Geh durch den Zaun der Sperrzone",
+            "en": "Go through the fence of the exclusion zone"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_stadt"
+        }
+      ]
+    },
+    {
+      "id": "s3_stadt",
+      "text": {
+        "de": "Die Stadt ist farblos wie eine Bleistiftzeichnung. Kein Ton. Hör, was vom letzten Abend übrig ist.",
+        "en": "The town is colourless like a pencil drawing. No sound. Listen to what is left of the last evening."
+      },
+      "objectives": [
+        {
+          "id": "o_echo",
+          "kind": "cast",
+          "target": "K55",
+          "count": 3,
+          "marker": "Brandheim_Markt",
+          "text": {
+            "de": "Hör mit Seelenecho die Bruchstücke vom letzten Abend",
+            "en": "Use Soul Echo to hear the fragments of the last evening"
+          }
+        },
+        {
+          "id": "o_stille",
+          "kind": "custom",
+          "target": "Stille_Passage",
+          "text": {
+            "de": "Schleich durch die Stille-Passagen, ohne einen Ton zu machen",
+            "en": "Sneak through the silent passages without making a sound"
+          }
+        },
+        {
+          "id": "o_stummlinge",
+          "kind": "defeat",
+          "target": "Stummling",
+          "count": 4,
+          "optional": true,
+          "text": {
+            "de": "Stummlinge (oder schleich vorbei)",
+            "en": "Silent Ones (or sneak past)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_labor"
+        }
+      ]
+    },
+    {
+      "id": "s4_labor",
+      "text": {
+        "de": "Ein Kreis aus geborstenen Bannglocken auf dem Marktplatz. Hier war das Labor. Hier redet Edda.",
+        "en": "A ring of shattered ban bells on the market square. This was the laboratory. Here Edda talks."
+      },
+      "objectives": [
+        {
+          "id": "o_labor",
+          "kind": "reach",
+          "target": "Brandheim_Labor",
+          "marker": "Brandheim_Labor",
+          "text": {
+            "de": "Geh zum Glockenkreis",
+            "en": "Go to the ring of bells"
+          }
+        },
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M301_Edda",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Hör Edda zu",
+            "en": "Listen to Edda"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Knows_Origin=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_werkstatt"
+        }
+      ]
+    },
+    {
+      "id": "s5_werkstatt",
+      "text": {
+        "de": "Folg den Echo-Spuren zu einem Instrumentenbauer-Laden.",
+        "en": "Follow the echo traces to an instrument maker's shop."
+      },
+      "objectives": [
+        {
+          "id": "o_spur",
+          "kind": "custom",
+          "target": "Seelenecho_Spur_Werkstatt",
+          "marker": "Brandheim_Werkstatt",
+          "text": {
+            "de": "Folg der Seelenecho-Spur",
+            "en": "Follow the Soul Echo trail"
+          }
+        },
+        {
+          "id": "o_wiegenlied",
+          "kind": "interact",
+          "target": "Wiegenlied_Schnitzerei",
+          "marker": "Brandheim_Werkstatt",
+          "text": {
+            "de": "Sieh dir die Melodie an der Wand an",
+            "en": "Look at the melody on the wall"
+          }
+        },
+        {
+          "id": "o_bandoneon",
+          "kind": "interact",
+          "target": "Halbes_Bandoneon",
+          "text": {
+            "de": "Sieh dir das halbfertige Bandoneon an",
+            "en": "Look at the half-finished bandoneon"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Heard_Lullaby=1"
+      ],
+      "next": [
+        {
+          "stage": "s6_traum"
+        }
+      ]
+    },
+    {
+      "id": "s6_traum",
+      "text": {
+        "de": "Nacht im Lager. Du träumst von Brandheim, in Farbe, am letzten Abend. Jemand wartet auf dich.",
+        "en": "Night in camp. You dream of Brandheim, in colour, on the last evening. Someone is waiting for you."
+      },
+      "objectives": [
+        {
+          "id": "o_lager",
+          "kind": "interact",
+          "target": "Lager_Brandheim",
+          "marker": "Lager_Brandheim",
+          "text": {
+            "de": "Leg dich im Lager schlafen",
+            "en": "Lie down to sleep in camp"
+          }
+        },
+        {
+          "id": "o_vaal",
+          "kind": "dialogue",
+          "target": "D_M301_Vaal_Traum",
+          "text": {
+            "de": "Hör dem Mann in Schwarz zu",
+            "en": "Listen to the man in black"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:NachhallLoad+5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 600,
+    "gold": 0,
+    "items": [
+      "Werkstattschild_Brandheim"
+    ],
+    "effects": []
+  }
+}

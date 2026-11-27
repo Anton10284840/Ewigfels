@@ -1,0 +1,198 @@
+{
+  "id": "M302",
+  "type": "main",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M301"
+  ],
+  "title": {
+    "de": "Salz und Nebel",
+    "en": "Salt and Fog"
+  },
+  "summary": {
+    "de": "Tiedmar: Möwen, Shantys, Fischsuppe. Lio ist zu Hause. Und eine Hafenkommissarin sucht sieben verschwundene Wirker.",
+    "en": "Tiedmar: gulls, shanties, fish soup. Lio is home. And a harbour inspector is looking for seven missing casters."
+  },
+  "dialogues": [
+    "D_M302_Lio_Kai",
+    "D_M302_Lio_Eltern",
+    "D_M302_Nell",
+    "D_M302_Olga"
+  ],
+  "stages": [
+    {
+      "id": "s1_kai",
+      "text": {
+        "de": "Lio führt dich durch Möwenkai. Er übertreibt alles.",
+        "en": "Lio shows you around Gullquay. He exaggerates everything."
+      },
+      "objectives": [
+        {
+          "id": "o_ankunft",
+          "kind": "reach",
+          "target": "Moewenkai",
+          "marker": "Moewenkai",
+          "text": {
+            "de": "Komm in Tiedmar an",
+            "en": "Arrive in Tiedmar"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M302_Lio_Kai",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Lass dich von Lio herumführen",
+            "en": "Let Lio show you around"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_eltern"
+        }
+      ]
+    },
+    {
+      "id": "s2_eltern",
+      "text": {
+        "de": "Abendessen bei Lios Eltern. Niemand sagt Maras Namen.",
+        "en": "Dinner at Lio's parents'. Nobody says Mara's name."
+      },
+      "objectives": [
+        {
+          "id": "o_haus",
+          "kind": "reach",
+          "target": "Haus_Vandermeer",
+          "marker": "Haus_Vandermeer",
+          "text": {
+            "de": "Geh zum Haus der Vandermeers",
+            "en": "Go to the Vandermeer house"
+          }
+        },
+        {
+          "id": "o_essen",
+          "kind": "dialogue",
+          "target": "D_M302_Lio_Eltern",
+          "marker": "Haus_Vandermeer",
+          "text": {
+            "de": "Iss mit der Familie",
+            "en": "Eat with the family"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_nell"
+        }
+      ]
+    },
+    {
+      "id": "s3_nell",
+      "text": {
+        "de": "Nell Tiedemann, Hafenkommissarin, braucht einen Wirker.",
+        "en": "Nell Tiedemann, harbour inspector, needs a caster."
+      },
+      "objectives": [
+        {
+          "id": "o_nell",
+          "kind": "dialogue",
+          "target": "D_M302_Nell",
+          "marker": "NPC_Nell",
+          "text": {
+            "de": "Sprich mit Nell im Hafenamt",
+            "en": "Talk to Nell at the harbour office"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_ermittlung"
+        }
+      ]
+    },
+    {
+      "id": "s4_ermittlung",
+      "text": {
+        "de": "Ermittle am Tatort Pier 9 und befrag die Fischhändlerin.",
+        "en": "Investigate the scene at Pier 9 and question the fishmonger."
+      },
+      "objectives": [
+        {
+          "id": "o_pier",
+          "kind": "cast",
+          "target": "K55",
+          "marker": "Pier_9",
+          "text": {
+            "de": "Hör mit Seelenecho, was an Pier 9 passiert ist",
+            "en": "Use Soul Echo to hear what happened at Pier 9"
+          }
+        },
+        {
+          "id": "o_olga",
+          "kind": "dialogue",
+          "target": "D_M302_Olga",
+          "marker": "NPC_Olga",
+          "text": {
+            "de": "Befrag Olga und find die Widersprüche",
+            "en": "Question Olga and find the contradictions"
+          }
+        },
+        {
+          "id": "o_ebbgrund",
+          "kind": "reach",
+          "target": "Ebbgrund_Rand",
+          "marker": "Ebbgrund_Rand",
+          "text": {
+            "de": "Folg der Spur bis an den Rand von Ebbgrund",
+            "en": "Follow the trail to the edge of Ebbgrund"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s5_bericht"
+        }
+      ]
+    },
+    {
+      "id": "s5_bericht",
+      "text": {
+        "de": "Erzähl Nell, was du weißt: ein schwarzes Schiff am alten Leuchtturm.",
+        "en": "Tell Nell what you know: a black ship at the old lighthouse."
+      },
+      "objectives": [
+        {
+          "id": "o_bericht",
+          "kind": "talk",
+          "target": "Nell",
+          "marker": "NPC_Nell",
+          "text": {
+            "de": "Bring Nell die Spur",
+            "en": "Bring Nell the lead"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 0,
+    "items": [
+      "Schnellreise_Tiedmar"
+    ],
+    "effects": [
+      "rep:Zuenfte+10"
+    ]
+  }
+}

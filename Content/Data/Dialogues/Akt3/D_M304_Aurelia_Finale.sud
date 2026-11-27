@@ -1,0 +1,25 @@
+# M304 – Direkt nach dem Finale. Zwei Fassungen: Spieler gewinnt (Aurelia reicht die Hand) oder verliert (sie merkt, dass man sich zurückgehalten hat).
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+===
+[event camera `close`]
+[if {flag.Aurelia_TournamentWon}]
+[event emotion `neutral`]
+Aurelia: ...
+Aurelia: Steh nicht so da. Hilf mir hoch.
+  * (Die Hand reichen)
+    [event emotion `soft`]
+    Aurelia: Nein. So. Erst die Hand schütteln. Dann hochziehen. Das macht man so.
+    Aurelia: Gut gekämpft. Ich sage das genau einmal.
+    [event state `rel:Aurelia+5`]
+  * Du hättest fast gewonnen.
+    Aurelia: Fast ist das hässlichste Wort, das es gibt. Aber danke.
+[else]
+[event emotion `angry`]
+Aurelia: Du hast dich zurückgehalten.
+  * Habe ich nicht.
+    Aurelia: Lüg mich nicht an. Ich hab gesehen, wie du die letzte Weise abgebrochen hast.
+  * Ich wollte dir nicht wehtun.
+    Aurelia: Das entscheide ich. Nicht du.
+Aurelia: Tu das nie wieder bei mir. Nie wieder. Ich will gegen dich gewinnen, nicht gegen deine Rücksicht.
+[endif]

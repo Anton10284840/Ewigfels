@@ -1,0 +1,23 @@
+# M304 – Pause im Turnier. Grell redet am Rand der Arena über die Sperrzone von Brandheim. Siezt, knapp.
+===
+[set SpeakerName.Grell "Meister Grell"]
+===
+[event camera `medium`]
+Grell: Nicht schlecht. Die Deckung links ist zu tief. Aber nicht schlecht.
+[event camera `close`]
+Grell: Sie waren in Brandheim. Vornholt hat es mir erzählt.
+  * Sie wussten davon?
+    Grell: Ich war da.
+  * Ich will jetzt nicht darüber reden.
+    Grell: Dann rede ich. Sie hören nur zu.
+[event emotion `sad`]
+Grell: Ich war achtzehn. Kollegiumswache. Mein erster Einsatz. Ich stand an der Sperrzone.
+Grell: Der Befehl war: niemanden raus. Ich ließ niemanden raus.
+Grell: Ich hab gehört, wie sie drinnen leiser wurden. Erst laut. Dann leiser. Dann gar nicht mehr.
+  * Das war nicht Ihre Schuld.
+    Grell: Doch. Ein bisschen. Genug.
+  * Darum lehren Sie Schutzweisen.
+    Grell: Darum lehre ich. Punkt.
+[event emotion `neutral`]
+Grell: Den Befehl befolge ich nie wieder. Egal, wer ihn gibt.
+Grell: So. Pause vorbei. Deckung links höher. Los.

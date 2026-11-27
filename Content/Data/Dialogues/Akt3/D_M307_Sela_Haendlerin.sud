@@ -1,0 +1,19 @@
+# M307 – Saffa, Gewürzhändlerin in der Oase Sela. Gastfreundlich, handelt mit allem, auch mit Geschichten.
+===
+[set SpeakerName.Saffa "Saffa"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Saffa: Ah! Leute vom Himmel! Seit wann kommen Gäste geflogen? Setzt euch, trinkt Minze, sonst verdorrt ihr.
+  * Wir suchen den Weg nach Vor-Kael.
+    Saffa: Niemand sucht den Weg nach Vor-Kael. Man sucht den Weg drumherum.
+  * Was kosten die Gewürze?
+    Saffa: Für Fremde das Doppelte. Für Fremde mit so einem Vogel das Dreifache. Aber ihr bekommt Minze umsonst.
+[event camera `close`]
+Saffa: Vor zwei Wochen kamen Leute in Grau. Viele. Sie haben nicht gehandelt, nicht getrunken, nicht gelacht. Sie sind einfach durch.
+Saffa: Und der Sand ist seitdem unruhig. Der Dünengräber kommt bis an die Palmen.
+  * Wie kommt man an ihm vorbei?
+    Saffa: Leise. Er hört Schritte, nicht Augen. Spring über Felsen. Sing nicht. Und wenn du doch singen musst, dann sehr, sehr gut.
+  * Was ist ein Dünengräber?
+    Saffa: Ein Wurm, so lang wie eine Karawane. Er schläft unter dem Sand und frisst, was laut ist.
+Saffa: Geht durch den Canyon. Am Ende stehen Türme, die singen, wenn der Wind gut ist. Wenn sie nicht singen, ist der Wind schlecht. Oder sie sind verstimmt.

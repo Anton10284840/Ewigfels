@@ -1,0 +1,13 @@
+# M308 – Der Sarkophag ist leer. Nyms Stimme hinter dem Spieler, diesmal ohne Echo.
+===
+[set SpeakerName.Nym "Nym"]
+===
+[event camera `closeup`]
+Nym: Ich bin nicht hier.
+Nym: Ich war nie hier.
+[event camera `close`]
+  * Nym?
+    Nym: Du hörst mich ohne Echo. Das heißt, du bist nah. Näher als je.
+  * Wo bist du dann?
+    Nym: Da, wo der Ton hinfällt, wenn er bricht. Ich zeig es dir.
+Nym: Komm.

@@ -1,0 +1,22 @@
+# M307 – Rast im Schatten im Canyon. Lio und der Spieler reden. Wüste nach Schnee.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+Lio: Vor einer Woche hab ich gefroren. Jetzt schmelze ich. Velmark kann sich nicht entscheiden.
+[event camera `close`]
+Lio: Darf ich dich was fragen? Was ernstes. Ich kann auch ernst.
+  * Frag.
+    Lio: Hast du Angst vor dem, was da unten ist? Vor der Wahrheit über das, was du bist?
+  * Du und ernst?
+    Lio: Ich hab geübt. Im Schnee. Zwölf Minuten.
+    Lio: Hast du Angst vor dem, was da unten ist? Vor dem, was du bist?
+[event emotion `sad`]
+Lio: Ich hab Angst. Nicht vor Monstern. Davor, dass Mara da ist. Und dass sie nicht mehr Mara ist.
+  * Sie hat dich in den Glastiefen rausgezogen. Sie ist noch da.
+    [event emotion `soft`]
+    Lio: Ja. Das denk ich mir jeden Abend. Damit ich einschlafen kann.
+    [event state `rel:Lio+5`]
+  * Egal was passiert, ich bin da.
+    Lio: Das weiß ich. Deshalb bin ich mitgekommen. Nicht wegen der Wüste. Die ist furchtbar.
+Lio: Gut. Genug ernst. Mein Gesicht tut weh davon.

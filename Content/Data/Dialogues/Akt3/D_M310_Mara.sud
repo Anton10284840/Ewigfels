@@ -1,0 +1,64 @@
+# M310 – Nach dem Kampf, Mara im Sand. Lio stellt sich dazwischen. Maras Wahrheit (das Boot, zwei Fischer). Entscheidung 3. Erlösung gelingt nur mit LioSong_Part4 oder rel:Lio >= 60, sonst flieht Mara.
+===
+[set SpeakerName.Mara "Mara Vandermeer"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+Mara: Mach schon. Du hast gewonnen. Zähl nicht so lange.
+Lio: Nein!
+[event camera `close`]
+Lio: Nein. Erst redet sie. Fünf Jahre, Mara. Fünf Jahre hab ich geglaubt, du bist wegen mir weg. Wegen dem Streit.
+[event emotion `sad`]
+Mara: ... Wegen dir? Du Dummkopf. Doch nicht wegen dir.
+Mara: Erinnerst du dich an den Sturm im Herbst? An das Boot der Brüder Kaars?
+Lio: Das ist gesunken. Im Sturm. Alle haben gesagt ...
+Mara: Es war kein Sturm. Das war ich. Ich hab am Kai geübt. Allein. Ich wollte nur eine Welle machen. Eine kleine.
+Mara: Zwei Fischer, Lio. Ich hab sie schreien gehört. Dann nicht mehr.
+Mara: Ich bin weggelaufen, weil ich nicht wusste, wie ich Mama in die Augen sehen soll.
+Mara: Und dann kam einer, der mir zugehört hat. Er hat gesagt: Es war nicht deine Schuld. Es war die Magie. Die Magie ist das Gift. Nicht du.
+  * Er hat dich benutzt.
+    Mara: Er hat mich aufgefangen. Das ist mehr, als das Kollegium je für mich getan hätte.
+  * Es war ein Unfall, Mara.
+    Mara: Unfall. Zwei Tote. Sag das ihren Kindern.
+  * (Schweigen und zuhören)
+    Mara: ... Danke. Dass du nicht sofort redest.
+Mara: Mein Befehl ist, dich zum Dirigenten zu bringen. Lebend. Ich kann ihn nicht mehr ausführen. Was jetzt?
+  * (Es beenden)
+    [event emotion `scared`]
+    Lio: Nein ... nicht ... bitte ...
+    Mara: Takt halten, Lio. Takt halten.
+    [set flag.E3_MaraKilled true]
+    [set flag.E3_Decided true]
+  * Ich übergebe dich der Hafenwache.
+    Mara: Dem Kollegium also. Gut. Wenigstens ist es ehrlich.
+    [event emotion `sad`]
+    Lio: Sie werden ihr nichts tun. Oder? Sag mir, dass sie ihr nichts tun.
+    [set flag.E3_MaraPrisoner true]
+    [set flag.E3_Decided true]
+  * (Die Einheit gehen lassen und Mara die Hand hinhalten)
+    [goto hand]
+[goto end]
+:hand
+Mara: Was soll das? Glaubst du, eine Hand macht zwei Tote wieder lebendig?
+[if {flag.LioSong_Part4} or {rel.Lio} >= 60]
+Lio: Warte. Warte, Mara. Hör zu.
+[event camera `closeup`]
+Lio: (Er zieht die Mundharmonika heraus. Seine Hände zittern. Dann spielt er. Langsam, ein bisschen schief, jeden Ton mit Mühe.)
+[event emotion `surprised`]
+Mara: ... Das ist ... das hab ich dir beigebracht. Am Kai. Da warst du sieben.
+Lio: Jeden Abend. Fünf Jahre lang. Damit du es hörst, wo auch immer du bist.
+[event emotion `sad`]
+Mara: Lio ...
+Mara: (Sie nimmt die Hand. Dann weint sie. Zum ersten Mal ohne Takt.)
+[set flag.E3_MaraRedeemed true]
+[set flag.E3_Decided true]
+[else]
+[event emotion `angry`]
+Mara: Nein. Nicht so. Nicht mit Mitleid.
+Lio: Mara, warte!
+Mara: Pass auf ihn auf. Das kannst du besser als ich.
+Mara: (Ein einziger Taktschlag. Sand wirbelt auf. Als er sich legt, ist sie fort.)
+[set flag.Mara_Fled true]
+[set flag.E3_MaraPrisoner true]
+[set flag.E3_Decided true]
+[endif]

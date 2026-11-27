@@ -1,0 +1,19 @@
+# M306 – Abschied am Klostertor. Bruder Stumm spricht ein einziges Wort, das erste seit 40 Jahren.
+===
+[set SpeakerName.Stumm "Bruder Stumm"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `medium`]
+Stumm: *Du hast den Ton gehalten. Er wird dich nicht mehr so oft beißen.*
+Stumm: *Entklang ist kein Werkzeug. Es ist ein Ausatmen. Für dich und für die, die zu viel Nachhall tragen.*
+  * (Geste: Danken)
+    Stumm: (Er legt dir die Hand auf den Kopf. Kurz. Wie ein Großvater.)
+  * (Geste: Fragen, wohin der Weg führt)
+    Stumm: (Er legt die Kreide weg.)
+[event camera `extreme_closeup`]
+Stumm: (Er öffnet den Mund. Die Stimme ist rau, wie eine Tür, die lange nicht benutzt wurde.)
+Stumm: Kaelschlucht.
+[event camera `wide`]
+Lio: ... Er hat gesprochen. Hast du das gehört? Er hat gesprochen!
+Stumm: (Er schreibt noch etwas auf die Tafel, dreht sie um und zeigt sie Lio.)
+Stumm: *Die Schneemänner bleiben.*

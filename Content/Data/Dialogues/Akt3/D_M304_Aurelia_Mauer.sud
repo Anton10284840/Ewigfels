@@ -1,0 +1,33 @@
+# M304 – Abends auf der Mauer. Erstes ehrliches Gespräch mit Aurelia: Vater, Brandheim (nur offizielle Version), Angst. Ab rel 40: der Bruder, der eine Lücke im Stammbaum ist.
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+===
+[event camera `wide`]
+Aurelia: Du hast mich gefunden. Ich hab mich extra hier oben versteckt.
+Aurelia: Setz dich. Aber nicht zu nah. Ich bin immer noch Aurelia von Stauffen.
+[event camera `close`]
+Aurelia: Mein Vater hat geschrieben. Glückwunsch zum Turnier. Drei Zeilen. Die dritte war: „Halte Abstand zu dem Kind aus Kesselbrunn.“
+  * Wirst du das tun?
+    Aurelia: Sitze ich gerade auf einer Mauer mit dir? Dann beantwortet das die Frage.
+  * Er weiß, wer ich bin.
+    Aurelia: Er weiß alles über alle. Das ist sein Beruf.
+Aurelia: Du warst in Brandheim, oder? Man sieht es dir an.
+  * Was weißt du über Brandheim?
+    Aurelia: Was im Lehrbuch steht. Ein Unfall. Ein Missklinger aus der Stadt. Das Kollegium hat die Zone gesichert und Schlimmeres verhindert.
+    Aurelia: So, wie du schaust, stimmt davon kein Wort.
+  * Ich erzähl es dir. Irgendwann.
+    Aurelia: Irgendwann ist gut. Ich bin geduldig. Nein, bin ich nicht. Aber ich versuch es.
+[event emotion `sad`]
+Aurelia: Weißt du, wovor ich Angst habe? Nicht vor Duellen. Davor, dass ich so werde wie er. Und es nicht merke.
+[if {rel.Aurelia} >= 40]
+Aurelia: Ich sag dir was, das ich noch niemandem gesagt habe.
+Aurelia: Ich hätte einen Bruder haben können. Älter als ich. Meine Mutter hat es einmal gesagt, als sie betrunken war. Am nächsten Tag hat sie es abgestritten.
+Aurelia: In unserem Stammbaum gibt es eine Lücke. Ein Jahr, in dem nichts steht. Das Jahr von Brandheim.
+  * Wir finden heraus, was dahinter steckt.
+    Aurelia: Wir. Hm. Das Wort klingt komisch aus deinem Mund. Aber nicht schlecht.
+    [event state `rel:Aurelia+5`]
+  * Vielleicht willst du es nicht wissen.
+    Aurelia: Doch. Genau deshalb will ich es wissen.
+[endif]
+[event camera `wide`]
+Aurelia: Geh schlafen. Und morgen sind wir wieder Rivalen. Klar?

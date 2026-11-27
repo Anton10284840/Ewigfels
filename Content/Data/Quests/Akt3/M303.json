@@ -1,0 +1,192 @@
+{
+  "id": "M303",
+  "type": "main",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Nell",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M302"
+  ],
+  "title": {
+    "de": "Der Leuchtturm",
+    "en": "The Lighthouse"
+  },
+  "summary": {
+    "de": "Die Windglocke auf dem alten Leuchtturm schweigt. Das ist das Signal der Stillen Hand. Heute Nacht holt ihr die Gefangenen.",
+    "en": "The wind bell on the old lighthouse is silent. That's the Silent Hand's signal. Tonight you fetch the prisoners."
+  },
+  "dialogues": [
+    "D_M303_Nell",
+    "D_M303_Raue"
+  ],
+  "stages": [
+    {
+      "id": "s1_nacht",
+      "text": {
+        "de": "Nachts mit Nell und Lio zum alten Leuchtturm.",
+        "en": "To the old lighthouse at night with Nell and Lio."
+      },
+      "objectives": [
+        {
+          "id": "o_nell",
+          "kind": "dialogue",
+          "target": "D_M303_Nell",
+          "marker": "NPC_Nell",
+          "text": {
+            "de": "Triff Nell am Kai",
+            "en": "Meet Nell at the quay"
+          }
+        },
+        {
+          "id": "o_turm",
+          "kind": "reach",
+          "target": "Alter_Leuchtturm",
+          "marker": "Alter_Leuchtturm",
+          "text": {
+            "de": "Schleich zum Leuchtturm",
+            "en": "Sneak to the lighthouse"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_aufstieg"
+        }
+      ]
+    },
+    {
+      "id": "s2_aufstieg",
+      "text": {
+        "de": "Schmuggler im Sold der Stillen Hand. Oben hängt die stumme Windglocke.",
+        "en": "Smugglers paid by the Silent Hand. At the top hangs the silent wind bell."
+      },
+      "objectives": [
+        {
+          "id": "o_schmuggler",
+          "kind": "defeat",
+          "target": "Schmugglerwirker",
+          "count": 6,
+          "text": {
+            "de": "Kämpf dich durch den Turm",
+            "en": "Fight your way up the tower"
+          }
+        },
+        {
+          "id": "o_glocke",
+          "kind": "custom",
+          "target": "Windglocke_Stimmen",
+          "marker": "Windglocke",
+          "text": {
+            "de": "Bring die Windglocke wieder zum Klingen (Strom-Rätsel)",
+            "en": "Make the wind bell ring again (current puzzle)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_schiff"
+        }
+      ]
+    },
+    {
+      "id": "s3_schiff",
+      "text": {
+        "de": "Rüber zur Schweigenden Möwe. Unter Deck: Wirker in Taktstein-Trance.",
+        "en": "Over to the Silent Gull. Below deck: casters in beat-stone trance."
+      },
+      "objectives": [
+        {
+          "id": "o_ueberfahrt",
+          "kind": "reach",
+          "target": "Schweigende_Moewe",
+          "marker": "Schweigende_Moewe",
+          "text": {
+            "de": "Erreich das Schiff (mit Gischtrobbe oder Ruderboot)",
+            "en": "Reach the ship (by spray seal or rowing boat)"
+          }
+        },
+        {
+          "id": "o_laderaum",
+          "kind": "custom",
+          "target": "Laderaum_Schleichen",
+          "text": {
+            "de": "Schleich durch den Laderaum",
+            "en": "Sneak through the hold"
+          }
+        },
+        {
+          "id": "o_wirker",
+          "kind": "custom",
+          "target": "Wirker_Befreien",
+          "count": 3,
+          "text": {
+            "de": "Befrei die gefangenen Wirker",
+            "en": "Free the captive casters"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_kapitaen"
+        }
+      ]
+    },
+    {
+      "id": "s4_kapitaen",
+      "text": {
+        "de": "Der Kapitän, Choralist Raue, stellt sich dir. Dann flieht er.",
+        "en": "The captain, Choralist Raue, faces you. Then he flees."
+      },
+      "objectives": [
+        {
+          "id": "o_raue",
+          "kind": "dialogue",
+          "target": "D_M303_Raue",
+          "marker": "NPC_Raue",
+          "text": {
+            "de": "Stell dich dem Kapitän",
+            "en": "Face the captain"
+          }
+        },
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Choralist_Raue",
+          "text": {
+            "de": "Kämpf gegen Choralist Raue, bis er flieht",
+            "en": "Fight Choralist Raue until he flees"
+          }
+        },
+        {
+          "id": "o_karte",
+          "kind": "collect",
+          "target": "Seekarte_Raue",
+          "text": {
+            "de": "Heb die Seekarte auf, die er verliert",
+            "en": "Pick up the sea chart he drops"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Has_SeaChart=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "gold": 0,
+    "items": [
+      "Seekarte_Raue"
+    ],
+    "effects": [
+      "rep:Zuenfte+5"
+    ]
+  }
+}

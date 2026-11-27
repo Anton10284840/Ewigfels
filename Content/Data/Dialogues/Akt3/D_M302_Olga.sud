@@ -1,0 +1,22 @@
+# M302 – Olga, Fischhändlerin. Lügt aus Angst. Der Spieler findet die Widersprüche (Seelenecho von Pier 9 als Beweis).
+===
+[set SpeakerName.Olga "Olga"]
+===
+[event camera `medium`]
+Olga: Hering! Makrele! Frisch von heute früh! Für die Akademie mach ich einen Sonderpreis.
+Olga: Pier 9? Nein. Da war ich nicht. Da bin ich nie. Mein Stand ist hier.
+  * Ich habe am Pier Ihre Stimme gehört. Im Echo.
+    [event emotion `scared`]
+    Olga: Meine ... das kann nicht sein. Man hört doch nicht, was vor vier Tagen ...
+    Olga: Ich war nur kurz da. Wegen der Kisten. Mehr nicht.
+  * Sie waren also die ganze Nacht hier?
+    Olga: Die ganze Nacht. Ich schlafe am Stand. Das machen alle.
+    Olga: Na ja. Bis Mitternacht. Dann bin ich ... Kisten holen. Am Pier. Neun.
+[event camera `close`]
+[event emotion `scared`]
+Olga: Da waren Männer. In Grau. Sie hatten Ronny, den Netzflicker. Er ist einfach mitgegangen. Mit offenen Augen. Wie ein Schlafwandler.
+  * Wohin?
+    Olga: Ruderboot. Richtung Ebbgrund. Und dann weiter raus, zum alten Leuchtturm. Da liegt nachts ein Schiff. Ganz schwarz. Ohne Licht.
+  * Warum haben Sie das niemandem gesagt?
+    Olga: Weil sie mich gesehen haben. Einer hat mir zugenickt. Ganz freundlich. Das war das Schlimmste.
+Olga: Sagen Sie Nell nicht, dass ich gelogen hab. Bitte. Ich geb Ihnen einen Hering umsonst.

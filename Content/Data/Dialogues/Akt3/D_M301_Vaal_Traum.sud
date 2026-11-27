@@ -1,0 +1,27 @@
+# M301 – Traum: Brandheim in Farbe am letzten Abend. Theodric Vaal auf dem Marktplatz. Höflich, leise, siezt.
+===
+[set SpeakerName.Vaal "Theodric Vaal"]
+===
+[event camera `wide`]
+Vaal: Guten Abend. Bitte erschrecken Sie nicht. Es ist nur ein Traum. Meiner, um genau zu sein. Ich leihe ihn Ihnen.
+Vaal: Riechen Sie das? Gebrannte Mandeln. Der Kerzenzieher dort drüben hat sich mit seiner Frau über den Preis gestritten. Drei Pfennig. Sie hatte recht.
+[event camera `close`]
+Vaal: Sie waren ein Jahr alt. Ich war neunzehn. Wir haben beide alles verloren, aber nur einer von uns weiß, wer schuld ist.
+  * Wer sind Sie?
+    Vaal: Theodric Vaal. Ich habe Ihnen geschrieben. Sie haben nie geantwortet. Das respektiere ich.
+  * Sie haben Hanne getötet.
+    [event emotion `sad`]
+    Vaal: Ich habe den Befehl gegeben, Kesselbrunn zu betreten. Was dort geschah, trage ich. Ich weiche dem nicht aus.
+  * Lassen Sie mich aufwachen.
+    Vaal: Gleich. Ich halte Sie nicht fest. Ich halte niemanden fest.
+Vaal: Ich lade Sie nicht ein, sich mir anzuschließen. Ich lade Sie ein, zuzuhören.
+Vaal: Das hier war meine Stadt. Dort oben hat meine Schwester gewohnt. Hören Sie ihr Lachen? Das ist das Letzte, was ich von ihr habe.
+[event emotion `neutral`]
+Vaal: Magie hat das getan. Nicht ein Mensch. Die Magie selbst. Solange es sie gibt, wird es wieder ein Brandheim geben.
+  * Nicht die Magie. Das Kollegium.
+    Vaal: Das Kollegium ist nur die Hand. Ich spreche von dem, was die Hand hält.
+  * Und Sie wollen sie abschaffen. Für alle.
+    Vaal: Ich will, dass es still wird. Still ist nicht schlimm. Still ist nur still.
+Vaal: Schlafen Sie gut. Wir sehen uns wieder.
+[event camera `wide`]
+Vaal: Und grüßen Sie Magistra Vornholt von mir. Sie weiß, wofür.

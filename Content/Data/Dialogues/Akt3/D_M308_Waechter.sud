@@ -1,0 +1,16 @@
+# M308 – Der Wächter von Kael erwacht. 8 m Konstrukt aus Stein, Glas und Saiten. Spricht in Akkorden, Untertitel übersetzen. Nicht böse, prüft.
+===
+[set SpeakerName.Waechter "Wächter von Kael"]
+===
+[event camera `wide`]
+Waechter: (Ein tiefer Orgelakkord. Staub rieselt von der Decke.)
+Waechter: WER ... HÖRT?
+[event camera `close`]
+Waechter: DIE IN GRAU HABEN NICHT GEHÖRT. SIE HABEN NUR GEZÄHLT. ICH HABE SIE ANGEHALTEN.
+  * Sie leben noch?
+    Waechter: SIE SCHLAFEN IM TAKT. ICH TÖTE NICHT GERN. ICH TÖTE NICHT OFT.
+  * Ich will zu Nymrael.
+    Waechter: VIELE WOLLTEN. KEINER KONNTE ANTWORTEN.
+Waechter: ICH SPIELE. DU ANTWORTEST. WENN DEINE ANTWORT FALSCH IST, ANTWORTET DAS ECHO FÜR DICH.
+Waechter: (Drei Farben leuchten auf seiner Brust auf. Rot. Blau. Gold.)
+Waechter: HÖRE.

@@ -1,0 +1,21 @@
+# M309 – Zurück in der Welt. Lio hat drei Stunden am Sarkophag gewartet und den ganzen Proviant gegessen.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `medium`]
+[event emotion `surprised`]
+Lio: Da bist du! Du warst drei Stunden weg! Einfach weg! Du hast so geflimmert und dann war da nur noch Luft!
+Lio: Ich hab gewartet. Und gewartet. Und dann hab ich den Proviant gegessen. Den ganzen. Tut mir leid. Ich esse, wenn ich nervös bin.
+[event camera `close`]
+[event emotion `happy`]
+Lio: Und? Bist du jetzt ein Gott?
+  * Nein. Eine Stimmgabel.
+    Lio: Eine ... was? Das klingt weniger beeindruckend als Gott.
+    Lio: Aber nützlich. Stimmgabeln sind nützlich. Mara hatte eine. Für die Mundharmonika.
+  * Ich erzähl's dir unterwegs.
+    Lio: Gut. Aber ehrlich. Kein „später“. Ich hab drei Stunden auf einen Glaskasten gestarrt.
+  * Fast. Aber ich habe immer noch Hunger.
+    Lio: Dann sind wir schon zwei. Ich hab nämlich alles aufgegessen. Hab ich das schon gesagt?
+[event emotion `neutral`]
+Lio: ... Du siehst anders aus. Nicht schlecht anders. Leichter.
+Lio: Komm. Raus hier. Ich will die Sonne wiedersehen. Sogar die Wüstensonne.

@@ -1,0 +1,41 @@
+# M310 – Lio nach Entscheidung 3. Drei Fassungen: getötet (geht allein, kein Wort), gefangen oder geflohen (erleichtert und gebrochen), erlöst (Rückreise mit Mara).
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Mara "Mara Vandermeer"]
+===
+[if {flag.E3_MaraKilled}]
+[event camera `wide`]
+Lio: (Er kniet neben ihr. Lange. Dann löst er den Netzknoten aus ihrer Haarsträhne und steckt ihn ein.)
+  * Lio ...
+    Lio: (Er sieht dich nicht an.)
+  * Es musste sein.
+    Lio: (Er steht auf.)
+[event camera `close`]
+Lio: (Er dreht sich um und geht. Allein. Richtung Oase. Er sieht sich nicht ein einziges Mal um.)
+[elseif {flag.E3_MaraRedeemed}]
+[event camera `wide`]
+[event emotion `happy`]
+Lio: Sie ist da. Sie ist wirklich da. Ich hab die ganze Zeit Angst, dass ich gleich aufwache.
+Mara: Du wachst nicht auf. Du schnarchst nur gleich wieder. Das hast du immer.
+  * Was jetzt, Mara?
+    [event emotion `sad`]
+    Mara: Jetzt fahre ich nach Hause. Und sehe Mama in die Augen. Das ist schwerer als jeder Kampf.
+  * Willkommen zurück.
+    Mara: Zurück ist ein großes Wort. Sagen wir: unterwegs.
+[event camera `close`]
+Mara: Der Dirigent wird merken, dass ich fehle. Bald. Ich weiß Dinge, die ihr wissen müsst.
+Lio: Später. Erst fliegen wir. Du nimmst den Dünenschreiter. Der mag dich, hab ich gesehen.
+[event emotion `happy`]
+Lio: Danke. Dafür, dass du ihr die Hand hingehalten hast. Ich hätte mich das nie getraut.
+[else]
+[event camera `close`]
+[event emotion `sad`]
+Lio: Sie lebt. Das ist gut. Oder? Das ist gut.
+Lio: Warum fühlt es sich dann so an, als hätte ich sie noch mal verloren?
+  * Du hast sie nicht verloren. Sie weiß jetzt, dass du sie suchst.
+    Lio: Das wusste sie vorher auch. Sie wollte nur nicht gefunden werden.
+    [event state `rel:Lio+5`]
+  * Es war die richtige Entscheidung.
+    Lio: Kann sein. Ich weiß es nicht. Frag mich in einem Jahr.
+Lio: Lass uns fliegen. Ich will nach Hause. Ich will nichts mehr hören. Nur Wind.
+[endif]
