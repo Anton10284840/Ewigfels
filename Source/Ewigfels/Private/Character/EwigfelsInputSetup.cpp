@@ -118,6 +118,17 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	C->MapKey(S->Interact, EKeys::E);
 	C->MapKey(S->Interact, EKeys::Gamepad_FaceButton_Left);
 	C->MapKey(S->ToggleHelp, EKeys::F1);
+
+	// Zusammenspiel mit dem Game Animation Sample (IMC_Sandbox, niedrigere Priorität):
+	// Bewegung/Kamera/Springen/Sprinten durchreichen, damit dessen Blueprint die Figur weiter bewegt.
+	// Alle übrigen Tasten verschlucken unsere Aktionen (Standard bConsumeInput), so lösen RB „Gehen“,
+	// Y „Interagieren“, LMB/RT „Takedown“, C/B „Ducken“, X/R „Ragdoll“ usw. dort nichts mehr aus.
+	for (UInputAction* PassThrough : { S->Move.Get(), S->Look.Get(), S->LookStick.Get(), S->Jump.Get(), S->Sprint.Get() })
+	{
+		PassThrough->bConsumeInput = false;
+	}
+	S->Swallow = MakeAction(S, TEXT("IA_Swallow"), EInputActionValueType::Boolean);
+	C->MapKey(S->Swallow, EKeys::R); // Sample: Ragdoll
 	C->MapKey(S->ToggleHelp, EKeys::Gamepad_Special_Left);
 	return S;
 }

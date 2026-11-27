@@ -171,7 +171,7 @@ void AEwigfelsCharacter::NotifyControllerChanged()
 	}
 	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
 	{
-		Subsystem->AddMappingContext(DefaultMappingContext ? DefaultMappingContext.Get() : InputSetup->Context.Get(), 0);
+		Subsystem->AddMappingContext(DefaultMappingContext ? DefaultMappingContext.Get() : InputSetup->Context.Get(), UEwigfelsInputSetup::ContextPriority);
 	}
 }
 

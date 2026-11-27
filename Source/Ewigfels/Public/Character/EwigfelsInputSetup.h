@@ -55,4 +55,9 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> SwitchTarget;
 	UPROPERTY() TObjectPtr<UInputAction> Interact;
 	UPROPERTY() TObjectPtr<UInputAction> ToggleHelp;
+	/** Ohne Bindung: schluckt Tasten, die im Game Animation Sample sonst Unsinn auslösen. */
+	UPROPERTY() TObjectPtr<UInputAction> Swallow;
+
+	/** Priorität unseres Kontexts: über IMC_Sandbox (0), unter Menüs wie dem Zauberbuch (100). */
+	static constexpr int32 ContextPriority = 10;
 };
