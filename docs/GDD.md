@@ -31,7 +31,7 @@ Alternative: zufällige Zuteilung durch die Glocke der Akademie. Nachteil: nimmt
 
 ### E4 – Spielerfigur ✅ umgesetzt (27.11.2026, Code ungebaut)
 
-Frei gestaltbar über den **Charakter-Editor** zu Spielbeginn (Spiegelbild auf dem Nebelboot) und später in Läden (§13). Name frei, Anrede frei wählbar (nur Name · sie · er), unabhängig von Körper und Stimme. Alter 15 zu Beginn, 20 am Ende. Stimme: 3 Varianten + Tonhöhe (TTS-Platzhalter, später Sprecher). Gesicht: 8 MetaHuman-Grundgesichter mischen + 30 Regler (Empfehlung, Entscheidung beim Nutzer angefragt). Alles Details: [CHARACTER_CREATOR.md](CHARACTER_CREATOR.md).
+Frei gestaltbar über den **Charakter-Editor** zu Spielbeginn (Spiegelbild auf dem Nebelboot) und später in Läden (§13). Name frei, Anrede frei wählbar (nur Name · sie · er), unabhängig von Körper und Stimme. Alter 15 zu Beginn, 20 am Ende. Stimme: 3 Varianten + Tonhöhe (TTS-Platzhalter, später Sprecher). Gesicht: 8 MetaHuman-Grundgesichter mischen + 30 Regler (vom Nutzer gewählt, 27.11.2026). Alles Details: [CHARACTER_CREATOR.md](CHARACTER_CREATOR.md).
 Alternative: feste Figur mit Namen. Vorteil: stärkere Cutscenes. Nachteil: widerspricht dem Charakter-Editor im Master-Prompt.
 
 ### E5 – Zaubersystem-Technik ✅ entschieden: eigenes System (Nutzer, 26.11.2026)
