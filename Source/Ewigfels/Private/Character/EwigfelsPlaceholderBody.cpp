@@ -153,13 +153,13 @@ void UEwigfelsPlaceholderBody::Revive()
 	}
 }
 
-void UEwigfelsPlaceholderBody::SetShieldVisible(bool bVisible, const FLinearColor& Color)
+void UEwigfelsPlaceholderBody::SetShieldVisible(bool bShow, const FLinearColor& Color)
 {
 	if (!bBuilt)
 	{
 		return;
 	}
-	Shield->SetVisibility(bVisible);
+	Shield->SetVisibility(bShow);
 	if (ShieldMat)
 	{
 		ShieldMat->SetVectorParameterValue(TEXT("Color"), Color);
