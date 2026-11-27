@@ -1,0 +1,169 @@
+{
+  "id": "M103",
+  "type": "main",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Edda",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M102"
+  ],
+  "title": {
+    "de": "Der erste Ton",
+    "en": "The First Note"
+  },
+  "summary": {
+    "de": "Dein erster Unterricht in Klangkunde. Und dein erster Nachmittag im Duellsaal.",
+    "en": "Your first lesson in Sound Lore. And your first afternoon in the duelling hall."
+  },
+  "dialogues": [
+    "D_M103_Edda",
+    "D_M103_Grell",
+    "D_M103_Lio"
+  ],
+  "stages": [
+    {
+      "id": "s1_klangkunde",
+      "text": {
+        "de": "Klangkunde bei Magistra Vornholt. Sie fängt ohne Begrüßung an.",
+        "en": "Sound Lore with Magistra Vornholt. She starts without a greeting."
+      },
+      "objectives": [
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M103_Edda",
+          "marker": "Klangsaal",
+          "text": {
+            "de": "Folge dem Unterricht",
+            "en": "Follow the lesson"
+          }
+        },
+        {
+          "id": "o_stimmgabel",
+          "kind": "cast",
+          "target": "K_Stimmgabel",
+          "text": {
+            "de": "Ordne die Töne mit der Stimmgabel zu",
+            "en": "Match the tones with the tuning fork"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_tische"
+        }
+      ]
+    },
+    {
+      "id": "s2_tische",
+      "text": {
+        "de": "Ollendorfs Tische sind ausgebüxt. Fang sie mit Leichtklang ein.",
+        "en": "Ollendorf's tables have run off. Catch them with Lightsound."
+      },
+      "objectives": [
+        {
+          "id": "o_tische",
+          "kind": "custom",
+          "target": "Tische_Eingefangen",
+          "count": 4,
+          "marker": "Wandelstube",
+          "text": {
+            "de": "Bring die Tische zurück",
+            "en": "Bring the tables back"
+          }
+        },
+        {
+          "id": "o_probieren",
+          "kind": "custom",
+          "target": "Probier_Erste_Grundform",
+          "text": {
+            "de": "Entdecke im Probier-Modus deine erste Weise",
+            "en": "Discover your first air in Tinker Mode"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_duell"
+        }
+      ]
+    },
+    {
+      "id": "s3_duell",
+      "text": {
+        "de": "Nachmittags im Duellsaal. Meister Grell lobt nie.",
+        "en": "Afternoon in the duelling hall. Master Grell never praises."
+      },
+      "objectives": [
+        {
+          "id": "o_grell",
+          "kind": "dialogue",
+          "target": "D_M103_Grell",
+          "marker": "Duellsaal",
+          "text": {
+            "de": "Hör Meister Grell zu",
+            "en": "Listen to Master Grell"
+          }
+        },
+        {
+          "id": "o_puppen",
+          "kind": "defeat",
+          "target": "Uebungspuppe",
+          "count": 6,
+          "text": {
+            "de": "Besiege die Übungspuppen",
+            "en": "Defeat the training dummies"
+          }
+        },
+        {
+          "id": "o_reinklang",
+          "kind": "custom",
+          "target": "Reinklang_Erfolg",
+          "text": {
+            "de": "Pariere einmal perfekt (Reinklang)",
+            "en": "Parry perfectly once (Pure Tone)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_abend"
+        }
+      ]
+    },
+    {
+      "id": "s4_abend",
+      "text": {
+        "de": "Abend im Gemeinschaftsraum. Lio hat etwas vor.",
+        "en": "Evening in the common room. Lio is up to something."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M103_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio am Kamin",
+            "en": "Talk to Lio by the fireplace"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rel:Edda+5"
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "M105",
+  "type": "main",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Saphira",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Das Flüstern im Raunwald",
+    "en": "Whispers in the Raunwald"
+  },
+  "summary": {
+    "de": "Ein Ausflug in den uralten Wald, in dem die Bäume raunen. Was soll schon schiefgehen?",
+    "en": "A trip into the ancient forest where the trees whisper. What could possibly go wrong?"
+  },
+  "dialogues": [
+    "D_M105_Saphira",
+    "D_M105_Lio_Fuchs",
+    "D_M105_Morchel"
+  ],
+  "stages": [
+    {
+      "id": "s1_wald",
+      "text": {
+        "de": "Kreaturenkunde im Raunwald. Dozentin Lindqvist summt den Bäumen zu.",
+        "en": "Creature Lore in the Raunwald. Lecturer Lindqvist hums to the trees."
+      },
+      "objectives": [
+        {
+          "id": "o_saphira",
+          "kind": "dialogue",
+          "target": "D_M105_Saphira",
+          "marker": "NPC_Saphira",
+          "text": {
+            "de": "Folge Dozentin Lindqvist",
+            "en": "Follow Lecturer Lindqvist"
+          }
+        },
+        {
+          "id": "o_wiegenlied",
+          "kind": "cast",
+          "target": "K_Wiegenlied",
+          "marker": "M105_Baerchen",
+          "text": {
+            "de": "Beruhige das Borkenbär-Junge",
+            "en": "Calm the barkbear cub"
+          }
+        },
+        {
+          "id": "o_motten",
+          "kind": "cast",
+          "target": "K_Lockruf",
+          "marker": "M105_Mottenwiese",
+          "text": {
+            "de": "Locke die Glimmermotten zu einem Bild",
+            "en": "Lure the glimmer moths into a picture"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_fuchs"
+        }
+      ]
+    },
+    {
+      "id": "s2_fuchs",
+      "text": {
+        "de": "Lio ist weg. Irgendwo kichert ein Fuchs.",
+        "en": "Lio is gone. Somewhere, a fox giggles."
+      },
+      "objectives": [
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Spuren_Lio",
+          "marker": "M105_Spuren",
+          "text": {
+            "de": "Folge den Spuren",
+            "en": "Follow the tracks"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M105_Lio_Fuchs",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Hol Lio aus dem Kreis",
+            "en": "Get Lio out of the circle"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_pilzhausen"
+        }
+      ]
+    },
+    {
+      "id": "s3_pilzhausen",
+      "text": {
+        "de": "Pilzhausen. Etwas frisst sich durch die Vorratskammer.",
+        "en": "Pilzhausen. Something is eating its way through the larder."
+      },
+      "objectives": [
+        {
+          "id": "o_morchel",
+          "kind": "dialogue",
+          "target": "D_M105_Morchel",
+          "marker": "NPC_Morchel",
+          "text": {
+            "de": "Sprich mit Großmutter Morchel",
+            "en": "Talk to Grandmother Morchel"
+          }
+        },
+        {
+          "id": "o_pilzbrut",
+          "kind": "defeat",
+          "target": "Pilzbrut",
+          "count": 12,
+          "text": {
+            "de": "Vertreibe die Pilzbrut",
+            "en": "Drive off the sporelings"
+          }
+        },
+        {
+          "id": "o_mutter",
+          "kind": "defeat",
+          "target": "Pilzbrut_Mutter",
+          "text": {
+            "de": "Besiege die Pilzbrut-Mutter",
+            "en": "Defeat the Sporeling Mother"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_rand"
+        }
+      ]
+    },
+    {
+      "id": "s4_rand",
+      "text": {
+        "de": "Auf dem Rückweg führt der Pfad am Waldrand entlang. Etwas hängt in den Bäumen.",
+        "en": "On the way back the path skirts the forest edge. Something hangs in the trees."
+      },
+      "objectives": [
+        {
+          "id": "o_kraehenhain",
+          "kind": "reach",
+          "target": "M105_Blick_Kraehenhain",
+          "marker": "M105_Waldrand",
+          "text": {
+            "de": "Geh zum Aussichtspunkt am Waldrand",
+            "en": "Go to the lookout at the forest edge"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 20,
+    "items": [],
+    "effects": [
+      "rep:Hueter+5"
+    ]
+  }
+}

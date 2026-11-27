@@ -1,0 +1,34 @@
+# M107 – Nachsitzen bei Edda, 50 Notenfalter falten. Edda schaut zu lange auf das Kael-Buch.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `neutral`]
+Edda: Fünfzig Notenfalter. Jeder muss fliegen. Wer einen entkommen lässt, faltet zehn neue.
+Lio: Das ist ...
+Edda: Fünfzig, Herr Vandermeer.
+[event camera `wide`]
+Edda: Was haben Sie in der Stummen Kammer gesucht?
+  * Ein Zeichen. Es stand im Raureif auf meiner Fensterbank.
+    [event emotion `thoughtful`]
+    Edda: Raureif. Im Herbst. Zeigen Sie es mir.
+    Edda: ...
+    Edda: *Nym.* Das heißt Echo.
+  * Nichts. Wir wollten nur gucken.
+    Edda: Niemand schleicht nachts an Ottilie vorbei, um nur zu gucken. Nicht einmal Herr Vandermeer.
+    Lio: Ich wäre beleidigt, wenn das nicht stimmen würde.
+[if {flag.Saw_KaelBook} > 0]
+    Edda: Herr Staub hat mir heute Morgen ein Buch gebracht. Es lag offen auf dem Pult der Kammer. Es summt.
+    [event camera `closeup`]
+    Edda: Haben Sie es angefasst?
+      * Ja. Es hat ... im Takt meines Herzens gesummt.
+        [event emotion `shocked`]
+        Edda: ...
+        Edda: Manche Bücher lesen zurück. Fassen Sie es nicht noch einmal an.
+        [set rel.Edda {rel.Edda} + 5]
+      * Nein.
+        [event emotion `sad`]
+        Edda: Gut. Dann bleibt das so.
+[endif]
+[event emotion `neutral`]
+Edda: Falten Sie. Und Herr Vandermeer: Ihr Falter fliegt rückwärts. Das ist eine eigene Kunst. Leider keine nützliche.

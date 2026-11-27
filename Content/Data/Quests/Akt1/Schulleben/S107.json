@@ -1,0 +1,96 @@
+{
+  "id": "S107",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Barnabas",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Barnabas",
+    "en": "Barnabas"
+  },
+  "summary": {
+    "de": "Der lebendige Ohrensessel im Aschenhain will einen neuen Bezug. Aber er schmollt bei jedem Stoff, den man ihm zeigt.",
+    "en": "The living wingchair in Aschenhain wants new upholstery. But he sulks at every fabric he's shown."
+  },
+  "stages": [
+    {
+      "id": "s1_wunsch",
+      "text": {
+        "de": "Find heraus, welchen Stoff Barnabas wirklich will. Er sagt es nicht direkt.",
+        "en": "Find out which fabric Barnabas really wants. He won't say it directly."
+      },
+      "objectives": [
+        {
+          "id": "o_beobachten",
+          "kind": "talk",
+          "target": "Barnabas",
+          "marker": "NPC_Barnabas",
+          "text": {
+            "de": "Setz dich zu Barnabas (wenn er dich lässt)",
+            "en": "Sit with Barnabas (if he lets you)"
+          }
+        },
+        {
+          "id": "o_hinweis",
+          "kind": "talk",
+          "target": "Greta",
+          "marker": "NPC_Greta",
+          "text": {
+            "de": "Frag Greta, was Barnabas früher getragen hat",
+            "en": "Ask Greta what Barnabas used to wear"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_stoff"
+        }
+      ]
+    },
+    {
+      "id": "s2_stoff",
+      "text": {
+        "de": "Barnabas trug vor 200 Jahren grünen Samt mit Eicheln. Den gibt es nur noch bei der Schneiderin in Kesselbrunn, ganz hinten.",
+        "en": "Two hundred years ago Barnabas wore green velvet with acorns. Only the tailor in Kesselbrunn still has it, way at the back."
+      },
+      "objectives": [
+        {
+          "id": "o_samt",
+          "kind": "collect",
+          "target": "Samt_Eicheln",
+          "marker": "Kesselbrunn_Schneiderei",
+          "text": {
+            "de": "Kauf den Eichelsamt in Kesselbrunn",
+            "en": "Buy the acorn velvet in Kesselbrunn"
+          }
+        },
+        {
+          "id": "o_beziehen",
+          "kind": "talk",
+          "target": "Barnabas",
+          "marker": "NPC_Barnabas",
+          "text": {
+            "de": "Bring den Stoff zu Barnabas",
+            "en": "Bring the fabric to Barnabas"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [],
+    "effects": []
+  }
+}

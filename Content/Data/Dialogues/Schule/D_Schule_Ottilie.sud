@@ -1,0 +1,19 @@
+# Ottilie, die wandelnde Laterne auf Messingbeinchen. Nachtwache, grantig, verpetzt jeden. Wird nach S103 (Lampenöl) zur Freundin.
+===
+[set SpeakerName.Ottilie "Ottilie"]
+===
+[if {quest.S103} == 2]
+    [event emotion `happy`]
+    Ottilie: Ach, du bist's, mein Öltröpfchen. Ich hab dich nicht gesehen. Ich hab dich NIE gesehen, verstanden? Husch.
+[else]
+    [event emotion `angry`]
+    Ottilie: HALT! Sperrstunde! Name, Turm, Ausrede! In dieser Reihenfolge!
+      * Ich ... schlafwandle.
+        Ottilie: Mit offenen Augen und Schuhen an? Neue Ausrede, bitte. Die hatte ich schon 412 Mal.
+      * Ich hab mich verlaufen.
+        Ottilie: In SIEBEN Monaten? Die Notentreppe hat ein Schild! Ich hab das Schild selbst aufgehängt!
+      * Du bist eine sehr schöne Laterne.
+        [event emotion `surprised`]
+        Ottilie: ... Was? Ich ... das ... Schmeichelei! Schmeichelei ist ein Vergehen! Ich hab nur kurz ein bisschen heller geleuchtet, das heißt GAR nichts!
+    Ottilie: AB INS BETT! Ich sing jetzt die Sperrstunde, und wenn ich am Ende bin und du noch hier stehst, hol ich Magistra Vornholt!
+[endif]

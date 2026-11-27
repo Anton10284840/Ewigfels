@@ -1,0 +1,25 @@
+# M106 – Corvin Hale als Gast im Gefolge des Kanzlers. Charmant, hört zu, fragt zu genau.
+# Setzt Corvin_Drink (Dialogcheck in M201). Faden: Corvin (docs/missions/README.md §3).
+===
+[set SpeakerName.Corvin "Magister Hale"]
+===
+[event emotion `happy`]
+Corvin: Sie sehen aus wie jemand, der gerade eine Regatta gefahren ist und so tut, als wäre das nichts gewesen.
+Corvin: Corvin Hale. Ich prüfe für das Kollegium Tränke. Klingt langweilig. Ist es auch. Darum bin ich lieber hier am Wasser als da vorne bei den Reden.
+Corvin: Funkensaft? Kesselbrunner Apfel mit einem Hauch Glut. Kitzelt in der Nase.
+  * Gern, danke.
+    [set flag.Corvin_Drink true]
+    [event emotion `smirk`]
+    Corvin: Vorsicht, der erste Schluck niest zurück.
+  * Nein danke.
+    Corvin: Kluger Mensch. Nehmen Sie nie etwas von Fremden an. Ich vergesse das selbst ständig.
+Corvin: Sie sind spätberufen, nicht wahr? Die Lauscher reden von nichts anderem.
+  * Woher wissen Sie das?
+    Corvin: Wer am Ilsenlicht in der zu großen Uniform steht und alles anstarrt, als hätte er es noch nie gesehen ... das ist ein guter Tipp.
+  * Ist das schlimm?
+    Corvin: Schlimm? Im Gegenteil. Spätberufene sind oft die Interessantesten. Bei denen hat die Magie lange gewartet. Und was lange wartet ...
+    Corvin: ... na ja. Ist meistens lauter.
+[event emotion `thoughtful`]
+Corvin: Merken Sie sich meinen Namen. Wenn Ihnen in Nocturna mal ein Kessel um die Ohren fliegt, und das wird passieren, schreiben Sie mir. Ich kenne mich mit Explosionen aus.
+[event emotion `happy`]
+Corvin: Oh, und jetzt muss ich klatschen. Der Kanzler hat einen Satz gesagt, bei dem man klatscht. Viel Glück beim Duell.

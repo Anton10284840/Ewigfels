@@ -1,0 +1,200 @@
+{
+  "id": "M106",
+  "type": "main",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Varga",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Ilsenlicht",
+    "en": "Ilsenlight"
+  },
+  "summary": {
+    "de": "Das Herbstfest. Tausend Laternen auf dem See, eine Regatta, eine Rede, ein Duell. Und ein Traum.",
+    "en": "The autumn festival. A thousand lanterns on the lake, a regatta, a speech, a duel. And a dream."
+  },
+  "dialogues": [
+    "D_M106_Corvin",
+    "D_M106_Aurelia_Duell",
+    "D_M106_Aurelia_Nachher",
+    "D_M106_Lio_Laterne"
+  ],
+  "stages": [
+    {
+      "id": "s1_fest",
+      "text": {
+        "de": "Das Ilsenlicht beginnt. Genieß das Fest.",
+        "en": "Ilsenlight begins. Enjoy the festival."
+      },
+      "objectives": [
+        {
+          "id": "o_fest",
+          "kind": "reach",
+          "target": "Ilsenlicht_Festplatz",
+          "marker": "Ilsenlicht_Festplatz",
+          "text": {
+            "de": "Geh zum Festplatz am Ufer",
+            "en": "Go to the festival grounds on the shore"
+          }
+        },
+        {
+          "id": "o_kuerbis",
+          "kind": "custom",
+          "target": "Kuerbisgrinsen",
+          "optional": true,
+          "text": {
+            "de": "Schnitz einen Kürbis mit Weisen (optional)",
+            "en": "Carve a pumpkin with airs (optional)"
+          }
+        },
+        {
+          "id": "o_regatta",
+          "kind": "custom",
+          "target": "Laternenregatta",
+          "marker": "Regatta_Start",
+          "text": {
+            "de": "Fahr die Laternenregatta für deinen Turm",
+            "en": "Sail the lantern regatta for your tower"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_rede"
+        }
+      ]
+    },
+    {
+      "id": "s2_rede",
+      "text": {
+        "de": "Der Kanzler spricht auf dem Steg. In seinem Gefolge: ein freundlicher Mann mit weinrotem Schal.",
+        "en": "The Chancellor speaks on the jetty. In his retinue: a friendly man with a wine-red scarf."
+      },
+      "objectives": [
+        {
+          "id": "o_rede",
+          "kind": "reach",
+          "target": "Steg_Rede",
+          "marker": "Steg_Rede",
+          "text": {
+            "de": "Hör dir die Rede an",
+            "en": "Listen to the speech"
+          }
+        },
+        {
+          "id": "o_corvin",
+          "kind": "dialogue",
+          "target": "D_M106_Corvin",
+          "marker": "NPC_Corvin",
+          "text": {
+            "de": "Sprich mit dem Mann mit dem Schal",
+            "en": "Talk to the man with the scarf"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Met_Corvin=1"
+      ],
+      "next": [
+        {
+          "stage": "s3_duell"
+        }
+      ]
+    },
+    {
+      "id": "s3_duell",
+      "text": {
+        "de": "Aurelia von Stauffen fordert dich heraus. Vor allen.",
+        "en": "Aurelia von Stauffen challenges you. In front of everyone."
+      },
+      "objectives": [
+        {
+          "id": "o_duell",
+          "kind": "dialogue",
+          "target": "D_M106_Aurelia_Duell",
+          "marker": "NPC_Aurelia",
+          "text": {
+            "de": "Nimm die Herausforderung an",
+            "en": "Accept the challenge"
+          }
+        },
+        {
+          "id": "o_kampf",
+          "kind": "custom",
+          "target": "Duell_Aurelia",
+          "marker": "Festduell_Ring",
+          "text": {
+            "de": "Gewinn das Festduell (drei Glocken) oder verlier mit Anstand",
+            "en": "Win the festival duel (three bells) or lose with dignity"
+          }
+        },
+        {
+          "id": "o_nachher",
+          "kind": "dialogue",
+          "target": "D_M106_Aurelia_Nachher",
+          "marker": "NPC_Aurelia",
+          "text": {
+            "de": "Sprich nach dem Duell mit Aurelia",
+            "en": "Talk to Aurelia after the duel"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_laterne"
+        }
+      ]
+    },
+    {
+      "id": "s4_laterne",
+      "text": {
+        "de": "Spät in der Nacht lassen alle ihre Laternen steigen.",
+        "en": "Late at night everyone lets their lanterns rise."
+      },
+      "objectives": [
+        {
+          "id": "o_laterne",
+          "kind": "dialogue",
+          "target": "D_M106_Lio_Laterne",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Lass mit Lio eine Laterne steigen",
+            "en": "Release a lantern with Lio"
+          }
+        },
+        {
+          "id": "o_schlafen",
+          "kind": "interact",
+          "target": "Bett_Turmzimmer",
+          "marker": "Turmzimmer_Bett",
+          "text": {
+            "de": "Geh schlafen",
+            "en": "Go to sleep"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Nym_FirstDream=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 30,
+    "items": [
+      "Wimpel_Regatta"
+    ],
+    "effects": [
+      "rel:Lio+5"
+    ]
+  }
+}

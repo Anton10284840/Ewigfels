@@ -6,56 +6,212 @@
   "giver": "Edda",
   "duration_min": 55,
   "auto_start": true,
-  "requires": ["quest:M109"],
-  "title": { "de": "Die Doppelnacht", "en": "The Double Night" },
-  "summary": {
-    "de": "Beide Monde sind voll. In dieser Nacht spricht eine Stimme zu dir, und Edda wartet auf eine Antwort.",
-    "en": "Both moons are full. Tonight a voice speaks to you, and Edda is waiting for an answer."
+  "requires": [
+    "quest:M109"
+  ],
+  "title": {
+    "de": "Die Doppelnacht",
+    "en": "The Double Night"
   },
-  "dialogues": ["D_M110_Edda"],
+  "summary": {
+    "de": "Das Jahr ist um. Beide Monde sind voll. In dieser Nacht spricht eine Stimme zu dir, und Edda wartet auf eine Antwort.",
+    "en": "The year is over. Both moons are full. Tonight a voice speaks to you, and Edda is waiting for an answer."
+  },
+  "dialogues": [
+    "D_M110_Freunde_Dach",
+    "D_M110_Nym",
+    "D_M110_Edda"
+  ],
   "stages": [
     {
-      "id": "s1_traum",
-      "text": { "de": "Schlaf in deinem Turmzimmer. Die Doppelnacht beginnt.", "en": "Sleep in your tower room. The Double Night begins." },
+      "id": "s1_jahresakkord",
+      "text": {
+        "de": "Die Stimmprobe ist vorbei. Heute wird gezählt, welcher Turm den Jahresakkord spielt.",
+        "en": "The exams are over. Today the towers' notes are counted to see who plays the Year Chord."
+      },
       "objectives": [
-        { "id": "o_schlafen", "kind": "interact", "target": "Bett_Turmzimmer", "marker": "Turmzimmer_Bett",
-          "text": { "de": "Leg dich schlafen", "en": "Go to sleep" } }
-      ],
-      "on_complete": ["flag:Nym_Spoke=1", "flag:NachhallLoad+5"],
-      "next": [{ "stage": "s2_edda" }]
-    },
-    {
-      "id": "s2_edda",
-      "text": { "de": "Edda erwartet dich auf dem Sternturm. Sie weiß, dass etwas passiert ist.", "en": "Edda awaits you on the Star Tower. She knows something has happened." },
-      "objectives": [
-        { "id": "o_entscheidung", "kind": "condition", "target": "flag:E1_Decided", "marker": "NPC_Edda",
-          "text": { "de": "Sprich mit Edda auf dem Sternturm", "en": "Talk to Edda on the Star Tower" } }
+        {
+          "id": "o_halle",
+          "kind": "reach",
+          "target": "Grosse_Halle_Fest",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Geh zum Jahresabschluss in die Große Halle",
+            "en": "Go to the end-of-year feast in the Great Hall"
+          }
+        },
+        {
+          "id": "o_akkord",
+          "kind": "cast",
+          "target": "A_Jahresakkord",
+          "text": {
+            "de": "Sing den Jahresakkord mit",
+            "en": "Sing along to the Year Chord"
+          }
+        }
       ],
       "next": [
-        { "if": ["flag:E1_TrustEdda"], "stage": "s3a_vertrauen" },
-        { "stage": "s3b_verbergen" }
+        {
+          "stage": "s2_dach"
+        }
       ]
     },
     {
-      "id": "s3a_vertrauen",
-      "text": { "de": "Edda will dich offen ausbilden. Triff sie im Klangsaal.", "en": "Edda wants to train you openly. Meet her in the Sound Hall." },
+      "id": "s2_dach",
+      "text": {
+        "de": "Mondtau fällt nur in Doppelnächten. Deine Freunde warten auf dem Nordturm.",
+        "en": "Moondew only falls on Double Nights. Your friends are waiting on the North Tower."
+      },
       "objectives": [
-        { "id": "o_klangsaal", "kind": "reach", "target": "Klangsaal", "marker": "Klangsaal",
-          "text": { "de": "Geh in den Klangsaal", "en": "Go to the Sound Hall" } }
+        {
+          "id": "o_dach",
+          "kind": "dialogue",
+          "target": "D_M110_Freunde_Dach",
+          "marker": "Nordturm_Dach",
+          "text": {
+            "de": "Sammle mit deinen Freunden Mondtau",
+            "en": "Gather moondew with your friends"
+          }
+        }
       ],
-      "on_complete": ["rel:Edda+15"],
-      "next": [{ "end": "completed" }]
+      "next": [
+        {
+          "stage": "s3_traum"
+        }
+      ]
     },
     {
-      "id": "s3b_verbergen",
-      "text": { "de": "Du schweigst. Ein Lehrer hat euch belauscht und bittet dich zu sich.", "en": "You stay silent. A teacher overheard you and asks to see you." },
+      "id": "s3_traum",
+      "text": {
+        "de": "Schlaf in deinem Turmzimmer. Diesmal ist der Traum klar.",
+        "en": "Sleep in your tower room. This time the dream is clear."
+      },
       "objectives": [
-        { "id": "o_corvin", "kind": "talk", "target": "Corvin", "marker": "NPC_Corvin",
-          "text": { "de": "Sprich mit Magister Hale", "en": "Talk to Master Hale" } }
+        {
+          "id": "o_schlafen",
+          "kind": "interact",
+          "target": "Bett_Turmzimmer",
+          "marker": "Turmzimmer_Bett",
+          "text": {
+            "de": "Leg dich schlafen",
+            "en": "Go to sleep"
+          }
+        },
+        {
+          "id": "o_nym",
+          "kind": "dialogue",
+          "target": "D_M110_Nym",
+          "text": {
+            "de": "Hör der Stimme zu",
+            "en": "Listen to the voice"
+          }
+        }
       ],
-      "on_complete": ["rel:Edda-10", "flag:NachhallLoad+10"],
-      "next": [{ "end": "completed" }]
+      "on_complete": [
+        "flag:Nym_Spoke=1",
+        "flag:NachhallLoad+5"
+      ],
+      "next": [
+        {
+          "stage": "s4_edda"
+        }
+      ]
+    },
+    {
+      "id": "s4_edda",
+      "text": {
+        "de": "Fünf Uhr morgens. Edda wartet vor deinem Turm. Sie weiß, dass etwas passiert ist.",
+        "en": "Five in the morning. Edda is waiting outside your tower. She knows something happened."
+      },
+      "objectives": [
+        {
+          "id": "o_entscheidung",
+          "kind": "condition",
+          "target": "flag:E1_Decided",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Sprich mit Edda",
+            "en": "Talk to Edda"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:E1_TrustEdda"
+          ],
+          "stage": "s5a_vertrauen"
+        },
+        {
+          "stage": "s5b_verbergen"
+        }
+      ]
+    },
+    {
+      "id": "s5a_vertrauen",
+      "text": {
+        "de": "Edda wird dich ab dem nächsten Jahr offen ausbilden. Jetzt fährt erst einmal das Boot in die Ferien.",
+        "en": "Edda will train you openly from next year. But first, the boat leaves for the holidays."
+      },
+      "objectives": [
+        {
+          "id": "o_boot",
+          "kind": "reach",
+          "target": "Bootssteg_Abschied",
+          "marker": "Bootssteg",
+          "text": {
+            "de": "Geh zum Bootssteg",
+            "en": "Go to the jetty"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Edda+15",
+        "flag:NachhallLoad-5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s5b_verbergen",
+      "text": {
+        "de": "Du hast geschwiegen. Edda hat genickt, als hätte sie es erwartet. Das Boot wartet.",
+        "en": "You stayed silent. Edda nodded as if she'd expected it. The boat is waiting."
+      },
+      "objectives": [
+        {
+          "id": "o_boot",
+          "kind": "reach",
+          "target": "Bootssteg_Abschied",
+          "marker": "Bootssteg",
+          "text": {
+            "de": "Geh zum Bootssteg",
+            "en": "Go to the jetty"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Edda-10",
+        "flag:NachhallLoad+10"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
     }
   ],
-  "rewards": { "xp": 400, "gold": 50, "items": ["Ring_Doppelnacht"], "effects": [] }
+  "rewards": {
+    "xp": 400,
+    "gold": 50,
+    "items": [
+      "Ring_Doppelnacht"
+    ],
+    "effects": [
+      "rep:Hueter+5"
+    ]
+  }
 }

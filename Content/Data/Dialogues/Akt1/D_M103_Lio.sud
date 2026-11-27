@@ -1,0 +1,25 @@
+# M103 – Abend im Gemeinschaftsraum. Lio zeigt seinen ersten Streich am Teekessel.
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.KesselKlaus "Kessel Klaus"]
+===
+[event emotion `smirk`]
+Lio: Pssst. Komm her. Ich hab heute was gelernt. Nicht im Unterricht. Von einem Drittklässler. Gegen Rosinenschnecke.
+Lio: Kitzelklang. Wachs und Strom, ganz leicht, mit dem kleinen Finger. Schau.
+[event camera `closeup`]
+KesselKlaus: Was machst du da mit deinem Fi... hihi... HIHIHI... hör auf... HÖR AUF... ich koche über... HIHIHI...
+[event emotion `happy`]
+Lio: Ich bin ein Genie. Sag, dass ich ein Genie bin.
+  * Du bist ein Genie.
+    [set rel.Lio {rel.Lio} + 3]
+    Lio: Ich weiß. Danke. Das musste nur mal jemand laut sagen.
+  * Du bist ein Hallkopf. Er kocht über!
+    Lio: Ein genialer Hallkopf. Ich nehm beides.
+  * Zeig's mir.
+    [set rel.Lio {rel.Lio} + 5]
+    Lio: Ha! Ich wusste, du bist einer von den Guten. Kleiner Finger. Leicht. Nicht wie Grell.
+KesselKlaus: Ich merk mir eure Gesichter. Ich merk mir ALLE Gesichter.
+Lio: Er sagt das jeden Abend. Glaub ich. Ich bin seit zwei Tagen hier.
+[event emotion `sad`]
+Lio: Weißt du ... meine Schwester hat mir das Schnippen beigebracht. Mit sechs. Ich hab mir dabei fast die Augenbrauen abgefackelt.
+Lio: Egal. Morgen ist Schlagweisen. Brams brüllt angeblich so laut, dass die Glocken mitschwingen.

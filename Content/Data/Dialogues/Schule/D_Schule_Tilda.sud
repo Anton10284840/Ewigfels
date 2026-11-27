@@ -1,0 +1,26 @@
+# Tilda Morn, Moosgrund, mit Herrn Quaak (Frosch). Ernsthaft, stur, sehr lieb. Questreihe S108 → Auflösung Akt 2 (M203).
+===
+[set SpeakerName.Tilda "Tilda Morn"]
+===
+[event emotion `neutral`]
+Tilda: Psst. Leise. Herr Quaak meditiert.
+:themen
+Tilda: Herr Quaak hört zu.
+  * Wer ist Herr Quaak?
+    Tilda: Ein verzauberter Prinz. Wahrscheinlich. Er hat eine Krone auf dem Rücken. Also, einen Fleck, der aussieht wie eine Krone. Wenn man schielt.
+    Tilda: Und er hat Würde. Normale Frösche haben keine Würde.
+    [goto themen]
+  * Kann ich ihn mal halten?
+    [if {quest.S108} == 2]
+        [event emotion `happy`]
+        Tilda: Er mag dich. Er hat geblinzelt. Er blinzelt nur bei Leuten, die er für würdig hält.
+    [else]
+        Tilda: Nein. Er kennt dich noch nicht. Erst mal vorstellen. Mit Verbeugung.
+    [endif]
+    [goto themen]
+  * Und wenn er doch nur ein Frosch ist?
+    [event emotion `thoughtful`]
+    Tilda: Dann ist er immer noch Herr Quaak. Und er hat mich als Einziger nicht ausgelacht, als ich am ersten Tag in den See gefallen bin.
+    [goto themen]
+  * Tschüss, Tilda. Tschüss, Herr Quaak.
+    Tilda: Er sagt tschüss. ... Das war ein Rülpser. Aber ein höflicher.

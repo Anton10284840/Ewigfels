@@ -1,0 +1,198 @@
+{
+  "id": "M107",
+  "type": "main",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M106"
+  ],
+  "title": {
+    "de": "Die Stumme Kammer",
+    "en": "The Mute Chamber"
+  },
+  "summary": {
+    "de": "Ein Zeichen aus Raureif, das nur in verbotenen Büchern steht. Lio hat einen Plan. Lios Pläne sind schlecht.",
+    "en": "A sign made of hoarfrost that only appears in forbidden books. Lio has a plan. Lio's plans are bad."
+  },
+  "dialogues": [
+    "D_M107_Lio_Nacht",
+    "D_M107_Ruven",
+    "D_M107_Edda_Nachsitzen"
+  ],
+  "stages": [
+    {
+      "id": "s1_plan",
+      "text": {
+        "de": "Zeig Lio das Zeichen aus dem Raureif.",
+        "en": "Show Lio the sign from the hoarfrost."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M107_Lio_Nacht",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Besprich den Plan mit Lio",
+            "en": "Discuss the plan with Lio"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_nacht"
+        }
+      ]
+    },
+    {
+      "id": "s2_nacht",
+      "text": {
+        "de": "Nach der Sperrstunde. Ottilie singt durch die Gänge.",
+        "en": "After curfew. Ottilie sings through the corridors."
+      },
+      "objectives": [
+        {
+          "id": "o_kreuzgang",
+          "kind": "reach",
+          "target": "Kreuzgang_Nacht",
+          "marker": "Kreuzgang",
+          "text": {
+            "de": "Schleich zum Kreuzgang, ohne dass Ottilie dich sieht",
+            "en": "Sneak to the cloister without Ottilie seeing you"
+          }
+        },
+        {
+          "id": "o_ruven",
+          "kind": "dialogue",
+          "target": "D_M107_Ruven",
+          "marker": "NPC_Ruven",
+          "text": {
+            "de": "Handle mit Ruven Falk",
+            "en": "Make a deal with Ruven Falk"
+          }
+        },
+        {
+          "id": "o_streich",
+          "kind": "interact",
+          "target": "Brams_Stuhl",
+          "marker": "Schlaghof_Stuhl",
+          "text": {
+            "de": "Präpariere Brams' Stuhl",
+            "en": "Rig Brams' chair"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_bibliothek"
+        }
+      ]
+    },
+    {
+      "id": "s3_bibliothek",
+      "text": {
+        "de": "Die Bibliothek bei Nacht. Ein Buch fehlt in Regal K.",
+        "en": "The library at night. A book is missing from shelf K."
+      },
+      "objectives": [
+        {
+          "id": "o_buch",
+          "kind": "interact",
+          "target": "Verlorenes_Buch_K",
+          "marker": "Bibliothek",
+          "text": {
+            "de": "Fang das verlorene Buch und stell es zurück",
+            "en": "Catch the lost book and put it back"
+          }
+        },
+        {
+          "id": "o_klinke",
+          "kind": "cast",
+          "target": "K_Klinkenlied",
+          "marker": "Regal_K",
+          "text": {
+            "de": "Öffne den Bücherschlund mit dem Klinkenlied",
+            "en": "Open the Book Maw with the Latch Song"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_kammer"
+        }
+      ]
+    },
+    {
+      "id": "s4_kammer",
+      "text": {
+        "de": "Die Stumme Kammer. Hier macht nichts ein Geräusch. Außer einem Buch.",
+        "en": "The Mute Chamber. Nothing makes a sound here. Except one book."
+      },
+      "objectives": [
+        {
+          "id": "o_kaelbuch",
+          "kind": "interact",
+          "target": "Buch_der_Vorhoerung",
+          "marker": "Stumme_Kammer_Buch",
+          "text": {
+            "de": "Berühre das summende Buch",
+            "en": "Touch the humming book"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Saw_KaelBook=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_erwischt"
+        }
+      ]
+    },
+    {
+      "id": "s5_erwischt",
+      "text": {
+        "de": "Ottilie hat euch erwischt. Nachsitzen bei Magistra Vornholt.",
+        "en": "Ottilie caught you. Detention with Magistra Vornholt."
+      },
+      "objectives": [
+        {
+          "id": "o_nachsitzen",
+          "kind": "dialogue",
+          "target": "D_M107_Edda_Nachsitzen",
+          "marker": "Klangsaal",
+          "text": {
+            "de": "Sitz das Nachsitzen ab",
+            "en": "Serve your detention"
+          }
+        },
+        {
+          "id": "o_falter",
+          "kind": "custom",
+          "target": "Notenfalter_Gefaltet",
+          "count": 50,
+          "text": {
+            "de": "Falte 50 Notenfalter",
+            "en": "Fold 50 paper moths"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rel:Lio+5"
+    ]
+  }
+}

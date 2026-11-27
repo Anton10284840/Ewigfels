@@ -1,0 +1,64 @@
+{
+  "id": "S105",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Gundel",
+  "duration_min": 20,
+  "auto_start": false,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Speisefluss in Not",
+    "en": "Floating Supper in Trouble"
+  },
+  "summary": {
+    "de": "Der Küchenchor ist heiser, und ohne Gesang fällt das Abendessen vom Himmel. Jemand muss das Tischlied anstimmen. Laut.",
+    "en": "The kitchen choir is hoarse, and without singing dinner falls out of the sky. Someone has to start the Table Song. Loudly."
+  },
+  "stages": [
+    {
+      "id": "s1_heiser",
+      "text": {
+        "de": "Hilf Mutter Gundel: Honig für den Chor und dann selbst singen.",
+        "en": "Help Mother Gundel: honey for the choir, then sing yourself."
+      },
+      "objectives": [
+        {
+          "id": "o_honig",
+          "kind": "collect",
+          "target": "Honig_Gewaechshaus",
+          "marker": "Gewaechshaus",
+          "text": {
+            "de": "Hol Honig aus dem Gewächshaus",
+            "en": "Fetch honey from the greenhouse"
+          }
+        },
+        {
+          "id": "o_singen",
+          "kind": "custom",
+          "target": "Tischlied_Vorsingen",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Sing das Tischlied vor der ganzen Halle (Rhythmus)",
+            "en": "Lead the Table Song in front of the whole hall (rhythm)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Rezept_Knoedel"
+    ],
+    "effects": []
+  }
+}

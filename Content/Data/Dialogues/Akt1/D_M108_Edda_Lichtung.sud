@@ -1,0 +1,28 @@
+# M108 – Nach dem Verstummen. Edda kommt durch den grauen Wald. Sie nimmt die Schuld auf sich.
+# Schlüsselszene: kurze Sätze, leise. Kein Wahl-Zwang, nur Reaktion.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+[event emotion `shocked`]
+Edda: ...
+Edda: Nein. Nein, nein, nein.
+[event camera `closeup`]
+[event emotion `worried`]
+Edda: Sehen Sie mich an. Sehen Sie mich an. Sind Sie verletzt?
+  * Was ... was hab ich gemacht?
+    Edda: Nichts. Sie haben nichts gemacht.
+  * Lio. Ist Lio okay?
+    Lio: ... Bin da. Bin da. Alles weh, aber da.
+  * (Nicht antworten können)
+    Edda: Schon gut. Nicht sprechen. Atmen. Einatmen. Ausatmen.
+[event emotion `sad`]
+Edda: Hören Sie mir zu. Beide. Hier war ein Aderbruch. Die Ader unter dem Hain klingt seit dem Frühjahr falsch, das weiß jeder.
+Edda: Ich bin Ihnen gefolgt, und ich habe ihn gebannt. Das war ich. Hören Sie? Das war ich.
+Lio: Aber das war nicht Sie. Das war ...
+Edda: Das. War. Ich. Herr Vandermeer.
+Lio: ... Ja, Magistra.
+[event emotion `soft`]
+Edda: Kommen Sie. Nehmen Sie meinen Mantel. Sie zittern.
+Edda: Die Farbe kommt zurück. Sehen Sie? Von außen nach innen. Kein Klang verschwindet.

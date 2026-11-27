@@ -1,0 +1,24 @@
+# Mirela Sandor, Silberquell. Sammelt Nachklänge (S111). Etwas unheimlich, sehr lieb. Ahnt früh etwas über den Spieler.
+===
+[set SpeakerName.Mirela "Mirela Sandor"]
+===
+[event emotion `thoughtful`]
+Mirela: Hallo. Du stehst auf einem Nachklang. Nicht schlimm. Er ist nur ein Lachen von 581. Es kitzelt ein bisschen.
+:themen
+Mirela: Ich hör dir zu.
+  * Was sind Nachklänge?
+    Mirela: Wenn jemand etwas fühlt, ganz stark, und es laut sagt, dann bleibt manchmal ein Abdruck. Wie ein Fußabdruck im Schnee. Nur aus Klang.
+    Mirela: Der hier sagt "Ich hab bestanden!" Seit zweihundert Jahren. Ich finde, er hat es verdient, dass ihm jemand zuhört.
+    [goto themen]
+  * Wie viele hast du gesammelt?
+    Mirela: Einundvierzig. Mein Lieblingsnachklang sagt "Ich liebe dich, Mathilda" im Kreuzgang. Mathilda hat nie geantwortet. Ich antworte ihm manchmal. Damit er nicht so allein ist.
+    [goto themen]
+  [if {quest.S111} == 2]
+  * Der Nachklang aus Brandheim ...
+    [event emotion `sad`]
+    Mirela: Das Wiegenlied. Ja. Ich höre es manchmal nachts, obwohl ich weit weg bin.
+    Mirela: Er klingt wie du. Nicht die Stimme. Die Art, wie er zittert. Ich weiß nicht, was das heißt. Ich wollte es dir nur sagen.
+    [goto themen]
+  [endif]
+  * Bis bald, Mirela.
+    Mirela: Bis bald. Ich höre, wenn du kommst. Du klingst anders als die anderen.

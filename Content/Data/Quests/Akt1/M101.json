@@ -3,50 +3,188 @@
   "type": "main",
   "act": 1,
   "region": "Ilsensee",
-  "giver": "Faehrmann",
+  "giver": "Hanne",
   "duration_min": 45,
   "auto_start": true,
   "requires": [],
-  "title": { "de": "Das Boot über den Ilsensee", "en": "The Boat Across Lake Ilsen" },
-  "summary": {
-    "de": "Ein Boot bringt dich im Nebel nach Nocturna. Irgendwo dort wartet dein neues Leben.",
-    "en": "A boat carries you through the fog to Nocturna. Somewhere there, a new life is waiting."
+  "title": {
+    "de": "Das Boot über den Ilsensee",
+    "en": "The Boat Across Lake Ilsen"
   },
-  "dialogues": ["D_M101_Lio"],
+  "summary": {
+    "de": "Ein Notenfalter bringt dir eine Einladung nach Nocturna. Ein Boot bringt dich im Nebel dorthin.",
+    "en": "A paper moth brings you an invitation to Nocturna. A boat carries you there through the fog."
+  },
+  "dialogues": [
+    "D_M101_Hanne",
+    "D_M101_Lio"
+  ],
   "stages": [
     {
-      "id": "s1_boot",
-      "text": { "de": "Lerne auf dem Steg, dich zu bewegen.", "en": "Learn to move on the jetty." },
+      "id": "s0_falter",
+      "text": {
+        "de": "Ein Notenfalter summt durch den Schlafsaal des Waisenhauses.",
+        "en": "A paper moth hums through the orphanage dormitory."
+      },
       "objectives": [
-        { "id": "o_bewegen", "kind": "custom", "target": "Tutorial_Movement",
-          "text": { "de": "Laufe, springe und weiche aus", "en": "Run, jump and dodge" } },
-        { "id": "o_steg", "kind": "reach", "target": "M101_Steg", "marker": "M101_Steg",
-          "text": { "de": "Geh zum Ende des Stegs", "en": "Walk to the end of the jetty" } }
+        {
+          "id": "o_falter",
+          "kind": "interact",
+          "target": "Notenfalter_Einladung",
+          "marker": "M101_Falter",
+          "text": {
+            "de": "Fang den Notenfalter",
+            "en": "Catch the paper moth"
+          }
+        },
+        {
+          "id": "o_hanne",
+          "kind": "dialogue",
+          "target": "D_M101_Hanne",
+          "marker": "NPC_Hanne",
+          "text": {
+            "de": "Hör dir an, was Hanne vorliest",
+            "en": "Listen to what Hanne reads out"
+          }
+        }
       ],
-      "on_complete": ["flag:Tutorial_Movement=1"],
-      "next": [{ "stage": "s2_lio" }]
+      "next": [
+        {
+          "stage": "s1_boot"
+        }
+      ]
+    },
+    {
+      "id": "s1_boot",
+      "text": {
+        "de": "Lerne auf dem Steg, dich zu bewegen.",
+        "en": "Learn to move on the jetty."
+      },
+      "objectives": [
+        {
+          "id": "o_bewegen",
+          "kind": "custom",
+          "target": "Tutorial_Movement",
+          "text": {
+            "de": "Laufe, springe und weiche aus",
+            "en": "Run, jump and dodge"
+          }
+        },
+        {
+          "id": "o_steg",
+          "kind": "reach",
+          "target": "M101_Steg",
+          "marker": "M101_Steg",
+          "text": {
+            "de": "Geh zum Ende des Stegs",
+            "en": "Walk to the end of the jetty"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Tutorial_Movement=1"
+      ],
+      "next": [
+        {
+          "stage": "s2_lio"
+        }
+      ]
     },
     {
       "id": "s2_lio",
-      "text": { "de": "Ein Junge mit zu großem Mantel winkt dir zu.", "en": "A boy in an oversized coat waves at you." },
+      "text": {
+        "de": "Ein Junge mit zu großem Mantel winkt dir aus dem Boot zu.",
+        "en": "A boy in an oversized coat waves at you from the boat."
+      },
       "objectives": [
-        { "id": "o_lio", "kind": "dialogue", "target": "D_M101_Lio", "marker": "NPC_Lio",
-          "text": { "de": "Sprich mit dem Jungen am Bootshaus", "en": "Talk to the boy at the boathouse" } }
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M101_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit dem Jungen im Boot",
+            "en": "Talk to the boy in the boat"
+          }
+        }
       ],
-      "on_complete": ["flag:Met_Lio=1"],
-      "next": [{ "stage": "s3_tor" }]
+      "on_complete": [
+        "flag:Met_Lio=1"
+      ],
+      "next": [
+        {
+          "stage": "s3_laterne"
+        }
+      ]
     },
     {
-      "id": "s3_tor",
-      "text": { "de": "Folge Lio hinauf zum großen Tor.", "en": "Follow Lio up to the great gate." },
+      "id": "s3_laterne",
+      "text": {
+        "de": "Mitten auf dem See geht die Bootslaterne aus. Lio zeigt dir, wie man schnippt.",
+        "en": "In the middle of the lake the boat lantern goes out. Lio shows you how to snap."
+      },
       "objectives": [
-        { "id": "o_tor", "kind": "reach", "target": "M101_Tor", "marker": "M101_Tor",
-          "text": { "de": "Erreiche das Tor von Nocturna", "en": "Reach the gate of Nocturna" } },
-        { "id": "o_laternen", "kind": "interact", "target": "Laterne_Pfad", "count": 3, "optional": true,
-          "text": { "de": "Entzünde Laternen am Pfad (optional)", "en": "Light lanterns along the path (optional)" } }
+        {
+          "id": "o_schnipp",
+          "kind": "cast",
+          "target": "A_Funkenschnipp",
+          "marker": "M101_Bootslaterne",
+          "text": {
+            "de": "Zünde die Laterne mit einem Schnippen an",
+            "en": "Light the lantern with a snap"
+          }
+        }
       ],
-      "next": [{ "end": "completed" }]
+      "next": [
+        {
+          "stage": "s4_tor"
+        }
+      ]
+    },
+    {
+      "id": "s4_tor",
+      "text": {
+        "de": "Folge Lio die 312 Stufen hinauf zum großen Tor.",
+        "en": "Follow Lio up the 312 steps to the great gate."
+      },
+      "objectives": [
+        {
+          "id": "o_tor",
+          "kind": "reach",
+          "target": "M101_Tor",
+          "marker": "M101_Tor",
+          "text": {
+            "de": "Erreiche das Tor von Nocturna",
+            "en": "Reach the gate of Nocturna"
+          }
+        },
+        {
+          "id": "o_laternen",
+          "kind": "interact",
+          "target": "Laterne_Pfad",
+          "count": 3,
+          "optional": true,
+          "text": {
+            "de": "Entzünde Laternen am Pfad (optional)",
+            "en": "Light lanterns along the path (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
     }
   ],
-  "rewards": { "xp": 100, "gold": 0, "items": [], "effects": ["rel:Lio+5"] }
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Schal_Hanne"
+    ],
+    "effects": [
+      "rel:Lio+5"
+    ]
+  }
 }

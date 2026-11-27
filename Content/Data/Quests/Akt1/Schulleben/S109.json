@@ -1,0 +1,97 @@
+{
+  "id": "S109",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Panki",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Die fliegende Badewanne",
+    "en": "The Flying Bathtub"
+  },
+  "summary": {
+    "de": "Panki baut eine Badewanne, die fliegt. Er braucht Teile, einen Testpiloten und viel Glück.",
+    "en": "Panki is building a bathtub that flies. He needs parts, a test pilot and a lot of luck."
+  },
+  "stages": [
+    {
+      "id": "s1_teile",
+      "text": {
+        "de": "Sammle die Teile für Pankis Badewanne.",
+        "en": "Collect the parts for Panki's bathtub."
+      },
+      "objectives": [
+        {
+          "id": "o_teile",
+          "kind": "collect",
+          "target": "Badewannen_Teil",
+          "count": 3,
+          "text": {
+            "de": "Besorg Kupferrohr, Segeltuch und einen Glut-Quarz",
+            "en": "Get copper pipe, sailcloth and an ember quartz"
+          }
+        },
+        {
+          "id": "o_bauen",
+          "kind": "talk",
+          "target": "Panki",
+          "marker": "NPC_Panki",
+          "text": {
+            "de": "Bau mit Panki die Wanne zusammen",
+            "en": "Assemble the tub with Panki"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_flug"
+        }
+      ]
+    },
+    {
+      "id": "s2_flug",
+      "text": {
+        "de": "Testflug über dem Ilsensee. Was soll schon passieren?",
+        "en": "Test flight over Lake Ilsen. What could possibly happen?"
+      },
+      "objectives": [
+        {
+          "id": "o_flug",
+          "kind": "custom",
+          "target": "Badewanne_Testflug",
+          "marker": "Ilsensee_Mitte",
+          "text": {
+            "de": "Fliege die Badewanne über den See",
+            "en": "Fly the bathtub across the lake"
+          }
+        },
+        {
+          "id": "o_bruch",
+          "kind": "custom",
+          "target": "Badewanne_Bruchlandung",
+          "text": {
+            "de": "Überlebe die Bruchlandung (und rette Panki)",
+            "en": "Survive the crash landing (and save Panki)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Badewannen_Stoepsel"
+    ],
+    "effects": []
+  }
+}

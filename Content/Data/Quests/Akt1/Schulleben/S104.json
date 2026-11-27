@@ -1,0 +1,98 @@
+{
+  "id": "S104",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Staub",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Die verlorenen Bücher",
+    "en": "The Lost Books"
+  },
+  "summary": {
+    "de": "Drei Bücher sind aus dem Gehör ausgebüxt. Herr Staub ist untröstlich. Eines hat sich im Kamin versteckt.",
+    "en": "Three books have run away from the library. Mr Staub is inconsolable. One has hidden in the fireplace."
+  },
+  "stages": [
+    {
+      "id": "s1_suchen",
+      "text": {
+        "de": "Finde die drei entlaufenen Bücher. Sie summen, wenn man ihnen nahe kommt.",
+        "en": "Find the three runaway books. They hum when you get close."
+      },
+      "objectives": [
+        {
+          "id": "o_buecher",
+          "kind": "collect",
+          "target": "Buch_Entlaufen",
+          "count": 3,
+          "text": {
+            "de": "Fang die entlaufenen Bücher",
+            "en": "Catch the runaway books"
+          }
+        },
+        {
+          "id": "o_kamin",
+          "kind": "interact",
+          "target": "Kamin_Aschenhain",
+          "marker": "Kamin_Aschenhain",
+          "text": {
+            "de": "Lock das Buch aus dem Kamin, ohne es zu verbrennen",
+            "en": "Coax the book out of the fireplace without burning it"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_zurueck"
+        }
+      ]
+    },
+    {
+      "id": "s2_zurueck",
+      "text": {
+        "de": "Das dritte Buch will nicht zurück. Es ist ein Reisebuch und war noch nie draußen. Entscheide: zurückbringen oder einmal zum See tragen.",
+        "en": "The third book doesn't want to go back. It's a travel book and has never been outside. Decide: return it or carry it to the lake once."
+      },
+      "objectives": [
+        {
+          "id": "o_staub",
+          "kind": "talk",
+          "target": "Staub",
+          "marker": "NPC_Staub",
+          "text": {
+            "de": "Bring die Bücher zu Herrn Staub",
+            "en": "Bring the books to Mr Staub"
+          }
+        },
+        {
+          "id": "o_see",
+          "kind": "reach",
+          "target": "Ilsensee_Ufer",
+          "optional": true,
+          "text": {
+            "de": "Zeig dem Reisebuch den See (optional)",
+            "en": "Show the travel book the lake (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Lesezeichen_Staub"
+    ],
+    "effects": []
+  }
+}

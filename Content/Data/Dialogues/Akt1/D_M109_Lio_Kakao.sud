@@ -1,0 +1,29 @@
+# M109 – Wichtigster Lio-Dialog in Akt 1. Nachts mit zwei Tassen Kakao vor der Tür.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `sad`]
+Lio: Hi.
+Lio: Ich hab Kakao. Mit Schaumtier. Deins ist ein Hase. Glaub ich. Es sollte ein Hase sein. Jetzt ist es eher eine Kartoffel mit Ohren.
+  * Komm rein.
+    Lio: Danke.
+  * Du hast zwei Tage nicht mit mir geredet.
+    Lio: Ich weiß. Darum steh ich ja jetzt hier. Mit Kartoffelhasen.
+  * (Die Tasse nehmen und nichts sagen)
+    Lio: ... Ja. Gut. Schweigen geht auch.
+[event camera `closeup`]
+Lio: Ich hab nachgedacht. Ich bin nicht gut im Nachdenken, deswegen hat's so lang gedauert.
+Lio: Du hast mich gerettet. Da im Wald. Varn hätte mich ... ich weiß nicht, was er hätte. Und dann hast du ... den Wald ...
+Lio: Ich hab einfach nicht gewusst, wie man danke sagt zu jemandem, der den Wald grau macht.
+  * Ich weiß selbst nicht, was das war.
+    Lio: Ich auch nicht. Edda auch nicht, glaub ich. Sie tut nur so.
+  * Hast du Angst vor mir?
+    [event emotion `thoughtful`]
+    Lio: Ein bisschen. Am ersten Tag. Jetzt hab ich mehr Angst, dass du allein hier oben sitzt und denkst, du bist ein Monster.
+  * Ich hab Angst, dass es wieder passiert.
+    Lio: Dann bin ich da. Und wenn's wieder passiert, sag ich allen, ich war's. Ich bin eh der Chaos-Typ.
+[event emotion `happy`]
+Lio: Also. Danke. Für den Wald. Also nicht für den Wald. Für mich. Ohne den Wald.
+Lio: Und übermorgen ist Firnnacht. Schneeballschlacht der Türme. Du kommst mit. Keine Diskussion. Ich hab schon Mirela und Panki gefragt.
+[set rel.Lio {rel.Lio} + 10]
+Lio: Und trink den Kakao, bevor die Kartoffel ertrinkt.

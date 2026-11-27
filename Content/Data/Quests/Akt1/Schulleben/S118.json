@@ -1,0 +1,78 @@
+{
+  "id": "S118",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:S116",
+    "quest:M109"
+  ],
+  "title": {
+    "de": "Das Gründerzimmer",
+    "en": "The Founders' Room"
+  },
+  "summary": {
+    "de": "Hinter der Stimmglocke soll ein Raum liegen, den seit 400 Jahren niemand betreten hat. Er öffnet sich nur auf alle vier Turmmelodien.",
+    "en": "Behind the Tuning Bell there is said to be a room nobody has entered in 400 years. It only opens to all four tower melodies."
+  },
+  "stages": [
+    {
+      "id": "s1_glocke",
+      "text": {
+        "de": "Summe alle vier Turmmelodien hintereinander an der Stimmglocke.",
+        "en": "Hum all four tower melodies in a row at the Tuning Bell."
+      },
+      "objectives": [
+        {
+          "id": "o_melodien",
+          "kind": "custom",
+          "target": "Gruenderzimmer_Melodien",
+          "marker": "Stimmglocke",
+          "text": {
+            "de": "Summe die vier Turmmelodien",
+            "en": "Hum the four tower melodies"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_zimmer"
+        }
+      ]
+    },
+    {
+      "id": "s2_zimmer",
+      "text": {
+        "de": "Das Gründerzimmer. Ein Nachklang der Gründer spricht von einem Ton unter allen Tönen.",
+        "en": "The Founders' Room. An afterecho of the founders speaks of a note beneath all notes."
+      },
+      "objectives": [
+        {
+          "id": "o_nachklang",
+          "kind": "interact",
+          "target": "Gruender_Nachklang",
+          "marker": "Gruenderzimmer",
+          "text": {
+            "de": "Hör dem Gründer-Nachklang zu",
+            "en": "Listen to the founders' afterecho"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Gruenderwappen"
+    ],
+    "effects": []
+  }
+}

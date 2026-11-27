@@ -1,0 +1,86 @@
+{
+  "id": "S103",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Ottilie",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M102"
+  ],
+  "title": {
+    "de": "Ottilie",
+    "en": "Ottilie"
+  },
+  "summary": {
+    "de": "Die Laterne auf Messingbeinen hat dich zum dritten Mal erwischt. Vielleicht will sie gar nicht petzen. Vielleicht ist ihr nur das Öl ausgegangen.",
+    "en": "The lantern on brass legs has caught you for the third time. Maybe she doesn't want to tell on you. Maybe she's just run out of oil."
+  },
+  "stages": [
+    {
+      "id": "s1_erwischt",
+      "text": {
+        "de": "Lass dich von Ottilie dreimal nach der Sperrstunde erwischen.",
+        "en": "Get caught by Ottilie three times after curfew."
+      },
+      "objectives": [
+        {
+          "id": "o_erwischt",
+          "kind": "custom",
+          "target": "Ottilie_Erwischt",
+          "count": 3,
+          "text": {
+            "de": "Werde nachts von Ottilie erwischt",
+            "en": "Get caught by Ottilie at night"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_oel"
+        }
+      ]
+    },
+    {
+      "id": "s2_oel",
+      "text": {
+        "de": "Ottilie flackert. Mutter Gundel sagt, nur das Öl aus Uferlicht macht sie froh.",
+        "en": "Ottilie is flickering. Mother Gundel says only oil from Uferlicht makes her happy."
+      },
+      "objectives": [
+        {
+          "id": "o_oel",
+          "kind": "collect",
+          "target": "Lampenoel_Uferlicht",
+          "marker": "Uferlicht_Laden",
+          "text": {
+            "de": "Besorg Lampenöl in Uferlicht",
+            "en": "Get lamp oil in Uferlicht"
+          }
+        },
+        {
+          "id": "o_schenken",
+          "kind": "talk",
+          "target": "Ottilie",
+          "marker": "NPC_Ottilie",
+          "text": {
+            "de": "Schenk Ottilie das Öl, nachts, ohne erwischt zu werden",
+            "en": "Give Ottilie the oil at night without getting caught"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [],
+    "effects": []
+  }
+}

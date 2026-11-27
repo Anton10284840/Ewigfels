@@ -1,0 +1,37 @@
+# Freies Gespräch mit Aurelia in Akt 1. Kalt, präzise, ehrlich bis zur Grausamkeit. Taut langsam auf (rel).
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+===
+[if {rel.Aurelia} >= 20]
+    [event emotion `neutral`]
+    Aurelia: Ach, du. Setz dich, wenn du willst. Aber red nicht beim Lesen.
+[else]
+    [event emotion `annoyed`]
+    Aurelia: Was?
+[endif]
+:themen
+Aurelia: Noch etwas?
+  * Warum bist du immer so ...?
+    Aurelia: So was? Pünktlich? Vorbereitet? Besser?
+    Aurelia: Wenn dein Vater der Kanzler ist, hat jeder eine Meinung über dich, bevor du ein Wort sagst. Ich sorge dafür, dass die Meinung stimmt.
+    [goto themen]
+  * Wie war dein Sommer?
+    [if {rel.Aurelia} >= 20]
+        Aurelia: Drei Empfänge, zwei Bälle, ein Gutachten über Bannglocken. Und ich hab einmal heimlich im Brunnen gebadet. Das war der beste Tag.
+        Aurelia: Wenn du das weitererzählst, behaupte ich, du lügst. Und mir glaubt man.
+    [else]
+        Aurelia: Lehrreich.
+    [endif]
+    [goto themen]
+  * Bring mir was über Duelle bei.
+    [if {flag.Aurelia_DuelFair} > 0]
+        Aurelia: Du hast fair gekämpft. Also gut. Eine Regel: Schau nicht auf die Hand, schau auf die Schulter. Die Schulter lügt nie.
+    [else]
+        Aurelia: Warum sollte ich meinem Gegner etwas beibringen?
+    [endif]
+    [goto themen]
+  * Schon gut, ich lass dich lesen.
+    Aurelia: Danke.
+    [if {rel.Aurelia} >= 20]
+        Aurelia: ... Das war ernst gemeint. Danke.
+    [endif]

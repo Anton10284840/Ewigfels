@@ -1,0 +1,78 @@
+{
+  "id": "S116",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Lio",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M102"
+  ],
+  "title": {
+    "de": "Turmmelodien",
+    "en": "Tower Melodies"
+  },
+  "summary": {
+    "de": "Jeder Turm öffnet sich nur auf eine Melodie, die jede Woche wechselt. Lio will alle vier kennen. Einfach so. Natürlich nur einfach so.",
+    "en": "Each tower only opens to a melody that changes every week. Lio wants to know all four. Just because. Of course just because."
+  },
+  "stages": [
+    {
+      "id": "s1_melodien",
+      "text": {
+        "de": "Finde die Turmmelodien der anderen drei Türme heraus.",
+        "en": "Find out the tower melodies of the other three towers."
+      },
+      "objectives": [
+        {
+          "id": "o_melodie",
+          "kind": "custom",
+          "target": "Turmmelodie_Gefunden",
+          "count": 3,
+          "text": {
+            "de": "Find eine fremde Turmmelodie (Lauscher, Kessel, Beobachten)",
+            "en": "Find another tower's melody (Listeners, kettles, observation)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_korridor"
+        }
+      ]
+    },
+    {
+      "id": "s2_korridor",
+      "text": {
+        "de": "Mit allen Melodien zeigt ein Echopfiff einen Gang zwischen den Türmen.",
+        "en": "With all the melodies, an echo whistle reveals a passage between the towers."
+      },
+      "objectives": [
+        {
+          "id": "o_korridor",
+          "kind": "reach",
+          "target": "Fluesterkorridor",
+          "marker": "Fluesterkorridor",
+          "text": {
+            "de": "Find den Flüsterkorridor",
+            "en": "Find the Whispering Corridor"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rel:Lio+5"
+    ]
+  }
+}

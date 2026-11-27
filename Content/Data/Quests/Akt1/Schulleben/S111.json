@@ -1,0 +1,78 @@
+{
+  "id": "S111",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Mirela",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M107"
+  ],
+  "title": {
+    "de": "Nachklänge",
+    "en": "Afterechoes"
+  },
+  "summary": {
+    "de": "Mirela sammelt Nachklänge, leuchtende Echos früherer Schüler. Sie braucht Hilfe. Einer ist anders als alle anderen.",
+    "en": "Mirela collects afterechoes, glowing echoes of former students. She needs help. One is different from all the others."
+  },
+  "stages": [
+    {
+      "id": "s1_sammeln",
+      "text": {
+        "de": "Finde zehn Nachklänge in der Akademie. Manche verraten Geheimgänge.",
+        "en": "Find ten afterechoes in the academy. Some reveal secret passages."
+      },
+      "objectives": [
+        {
+          "id": "o_nachklang",
+          "kind": "interact",
+          "target": "Nachklang",
+          "count": 10,
+          "text": {
+            "de": "Lausche einem Nachklang",
+            "en": "Listen to an afterecho"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_brandheim"
+        }
+      ]
+    },
+    {
+      "id": "s2_brandheim",
+      "text": {
+        "de": "Der zehnte Nachklang singt ein Wiegenlied. Er kommt nicht aus Nocturna. Mirela sagt, er kommt aus einer Stadt namens Brandheim.",
+        "en": "The tenth afterecho sings a lullaby. It doesn't come from Nocturna. Mirela says it comes from a town called Brandheim."
+      },
+      "objectives": [
+        {
+          "id": "o_mirela",
+          "kind": "talk",
+          "target": "Mirela",
+          "marker": "NPC_Mirela",
+          "text": {
+            "de": "Erzähl Mirela vom Wiegenlied",
+            "en": "Tell Mirela about the lullaby"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Nachklang_Glas"
+    ],
+    "effects": []
+  }
+}

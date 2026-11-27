@@ -1,0 +1,46 @@
+# M104 – Ambros Kettler stimmt den ersten Ring. Der Quarz flackert violett. Er weiß Bescheid und schweigt.
+# Faden: das Wiegenlied (6 Töne). Siehe docs/missions/README.md §3.
+===
+[set SpeakerName.Ambros "Ambros Kettler"]
+===
+[event emotion `happy`]
+Ambros: Na, wer stört mich denn beim ... ach. Ach so. Du.
+Ambros: Komm rein, komm rein. Fass nichts an, was tickt. Und nichts, was summt. Eigentlich fass gar nichts an.
+Ambros: Erste Ringe, hm? Zeig mal die Hände.
+[event camera `closeup`]
+Ambros: Hm. Hmhm. Gute Finger. Lang. Da passt ein Akkord rein. Mal klopfen.
+Ambros: ... Klingst wie eine Glocke, die man in Watte gepackt hat. Das wird sich geben.
+Ambros: Metall? Silber ist kühl, Messing ist warm, Kupfer ist ehrlich, Eisen ist stur.
+  * Silber.
+    Ambros: Silber. Klar und kalt. Wie Bergwasser.
+  * Messing.
+    Ambros: Messing. Warm wie Jupps Akkordeon. Gute Wahl.
+  * Kupfer.
+    Ambros: Kupfer. Nimmt jeden Ton an und gibt ihn ehrlich zurück.
+  * Eisen.
+    Ambros: Eisen. Hält, was man ihm sagt. Auch wenn man's sich anders überlegt.
+Ambros: Und jetzt der Quarz. Der entscheidet, welche Farbe deine Magie hat. Für immer. Na ja. Bis du einen neuen kaufst.
+[event emotion `surprised`]
+Ambros: Jetzt halt still, ich stimm ihn auf dich ...
+[event camera `extreme_closeup`]
+Ambros: ...
+Ambros: ... Billigquarz. Aus Tiedmar. Flackert manchmal. Hab ich dir gar nicht gesehen. Nichts passiert.
+  * Der war gerade violett.
+    [set flag.Ambros_Flicker true]
+    Ambros: Violett? Nee. Lila. Das ist was ganz anderes. Lila ist Tiedmar. Billig. Sag ich doch.
+  * Ist alles in Ordnung?
+    [set flag.Ambros_Flicker true]
+    Ambros: Alles bestens. Meine Hände sind nur alt. Hier. Fertig.
+[event emotion `soft`]
+Ambros: Und den hier nimmst du auch. Zweiter Ring. Geschenk. Für den Weg.
+Ambros: Nein, keine Widerrede. Alte Männer schenken gern. Das hält uns jung.
+[event emotion `sad`]
+Ambros: Geh ruhig zum Spiegel, probier aus. Ich spiel solange was.
+[event emotion `thoughtful`]
+Ambros: ...
+  * Was war das für eine Melodie?
+    [set flag.Asked_Lullaby true]
+    Ambros: Altes Lied. Hab vergessen, wie's weitergeht. Ist schon lange her, dass ich's gehört hab.
+    Ambros: Komm wieder, wenn die Ringe drücken. Oder einfach so.
+  * (Nichts sagen)
+    Ambros: Na los, ab mit dir. Die Boote warten nicht auf alte Männer.

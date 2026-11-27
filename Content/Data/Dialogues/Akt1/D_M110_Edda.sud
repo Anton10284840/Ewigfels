@@ -1,24 +1,33 @@
 # M110 – Die Doppelnacht, Entscheidung 1: Edda die Wahrheit sagen oder die Kraft verbergen.
 # Setzt E1_TrustEdda oder E1_HidePower und immer E1_Decided (Ziel o_entscheidung in M110).
+# Edda siezt immer. Fünf Uhr morgens vor dem Turm, Mondtau liegt noch auf den Steinen.
 ===
 [set SpeakerName.Edda "Magistra Vornholt"]
 ===
 [event camera `closeup`]
 [event emotion `worried`]
-Edda: Beide Monde. Weißt du, wie selten das ist? Und weißt du, was man in solchen Nächten hört?
+Edda: Beide Monde. Wissen Sie, wie selten das ist? Alle dreihundertneunzehn Tage. Und wissen Sie, was man in solchen Nächten hört?
 [if {rel.Edda} >= 20]
-    Edda: Du kannst mir vertrauen. Das weißt du inzwischen, oder?
+    Edda: Sie können mir vertrauen. Das wissen Sie inzwischen, oder?
 [else]
-    Edda: Ich weiß, dass du mir nicht traust. Ich frage trotzdem.
+    Edda: Ich weiß, dass Sie mir nicht trauen. Ich frage trotzdem.
 [endif]
-Edda: Hat heute Nacht jemand zu dir gesprochen?
+Edda: Hat heute Nacht jemand zu Ihnen gesprochen?
   * Ja. Eine Stimme. Sie kannte meinen Namen.
     [set flag.E1_TrustEdda true]
     [event emotion `shocked`]
-    Edda: Dann ist es also wahr ... Gut. Ab morgen lernst du nicht mehr nur Weisen. Ab morgen lernst du, sie zu halten.
+    Edda: Dann ist es also wahr ...
+    Edda: Was hat sie gesagt?
+      * "Du bist nicht falsch gestimmt. Du bist zu früh."
+        [event emotion `sad`]
+        Edda: Zu früh. Ja. Das sind wir alle.
+    [event emotion `neutral`]
+    Edda: Gut. Nächstes Jahr lernen Sie nicht mehr nur Weisen. Nächstes Jahr lernen Sie, sie zu halten. Jeden Abend, in der Seegrotte. Niemand erfährt davon.
   * Nein. Ich hab nur schlecht geschlafen.
     [set flag.E1_HidePower true]
     [event emotion `sad`]
-    Edda: Natürlich. Schlaf gut. Und falls die Stimme doch kommt: Hör ihr nicht zu lange zu.
+    Edda: Natürlich. Die Doppelnacht ist laut. Schlafen Sie in den Ferien gut.
+    Edda: Und falls die Stimme doch kommt: Hören Sie ihr nicht zu lange zu.
 [set flag.E1_Decided true]
 [event camera `wide`]
+Edda: Das Boot geht um acht. Grüßen Sie Kesselbrunn von mir.

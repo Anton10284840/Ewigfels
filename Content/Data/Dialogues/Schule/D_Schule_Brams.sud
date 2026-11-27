@@ -1,0 +1,26 @@
+# Magister Haldor Brams, Schlagweisen. Ehemaliger Glockengießer, spricht immer etwas zu laut. Herz aus Bronze.
+===
+[set SpeakerName.Brams "Magister Brams"]
+===
+[event emotion `happy`]
+Brams: AH! DER NEUE JAHRGANG! Gut. Verzeihung. Gut. Ich bin zu laut. Dreißig Jahre Glockengießerei. Das Ohr ist nicht mehr, was es war.
+:themen
+Brams: NOCH WAS? Verzeihung. Noch was?
+  * Was lernt man bei Ihnen?
+    Brams: Schlagweisen! Hammerton, Prellschlag, Kegelstoß. Klang, der zuschlägt. Wie ein Glockenklöppel, nur mit Fingern.
+    Brams: Wichtigste Regel: Ein guter Schlag ist nicht der härteste. Ein guter Schlag trifft die richtige Stelle. Jede Glocke hat eine. Jeder Gegner auch.
+    [goto themen]
+  * Warum haben Sie aufgehört, Glocken zu gießen?
+    [event emotion `sad`]
+    Brams: Weil ich eine gegossen hab, die zu gut war. Sie hängt heute in Aurenburg. Das Kollegium benutzt sie als Bannglocke. Sie bringt Leute zum Schweigen.
+    Brams: Glocken sollen rufen, nicht schweigen machen. Seitdem bringe ich lieber Kindern das Rufen bei.
+    [goto themen]
+  [if {quest.M107} == 2]
+  * Ihr Stuhl hat neulich gesungen.
+    [event emotion `smirk`]
+    Brams: HA! Der Stuhl! Ich hab mich so erschrocken, dass ich zwei Töne höher gesprochen hab! Eine Quietschnote, sauber gestimmt. Wer immer das war ...
+    Brams: ... bekommt eine Zwei in Schlagweisen. Für Präzision. Und eine Strafarbeit. Für Frechheit.
+    [goto themen]
+  [endif]
+  * Danke, Magister.
+    Brams: GERN! Verzeihung. Gern.

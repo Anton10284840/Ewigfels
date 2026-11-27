@@ -14,8 +14,8 @@ Legende: ✅ fertig · 🟨 läuft · ⬜ offen · 👤 = du am PC · 🤖 = Cla
 |---|---|---|---|
 | 1 | Phase 3 bauen und testen (PR #10), Fehler beheben | 👤 + 🤖 | 🟨 |
 | 2 | Charakter-Editor bauen (PR #11), Gesichts-Technik entscheiden | 👤 + 🤖 | 🟨 |
-| 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) | 🤖 | 🟨 |
-| 4 | Dialoge für Lio, Lehrkräfte und Mitschüler | 🤖 | ⬜ |
+| 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) | 🤖 | ✅ |
+| 4 | Dialoge für Lio, Lehrkräfte und Mitschüler | 🤖 | ✅ |
 | 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten | 🤖 | ⬜ |
 | 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests | 🤖 | ⬜ |
 | 7 | Game Animation Sample einbinden (docs/PHASE3_EDITOR.md, ein Schritt pro Nachricht) | 👤 | ⬜ |
@@ -53,10 +53,10 @@ Legende: ✅ fertig · 🟨 läuft · ⬜ offen · 👤 = du am PC · 🤖 = Cla
 
 ## Phase 5 – Akt 1 spielbar (Vertical Slice) ⬜
 Geschichte und Daten (🤖, geht ohne PC):
-- 🟨 Missionsdesign Akt 1 (M101–M110) → `docs/STORY_AKTE.md`
-- ⬜ Quest-JSON M102–M109, M101/M110 an die neue Fassung anpassen
-- ⬜ Dialoge Akt 1 (Lio, Edda, Grell, Saphira, Brams, Kesselmayr, Ollendorf, Morgenroth, Varga, Aurelia, Panki, Mirela, Tilda, Ruven, Turmsprecher, Kessel Klaus, Ottilie)
-- ⬜ Schulleben-Quests S101–S118 als JSON
+- ✅ Missionsdesign aller 50 Missionen + Story-Bosse → `docs/missions/`
+- ✅ Quest-JSON M101–M110
+- ✅ Dialoge Akt 1: 28 Missionsdialoge + 12 freie Gespräche, Stimmen-Leitfaden `docs/DIALOG_STIMMEN.md`
+- ✅ Schulleben-Quests S101–S118 als JSON
 - ⬜ Region Ilsensee: Uferlicht + Stillwasser (Bewohner, Quests, Missklinger)
 - ⬜ Raunwald (Pilzhausen + Krähenhain), Kesselbrunn (+ Russgrube) ausarbeiten
 - ⬜ Gegner und Bosse Akt 1 als Daten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)

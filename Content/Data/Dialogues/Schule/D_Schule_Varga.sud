@@ -1,0 +1,25 @@
+# Rektorin Ysolde Varga. Würdevoll, kontrolliert, politisch. Liebt die Akademie mehr als jeden Menschen. Kurz, jedes Wort gesetzt.
+===
+[set SpeakerName.Varga "Rektorin Varga"]
+===
+[event emotion `neutral`]
+Varga: Sie wünschen?
+:themen
+Varga: Noch etwas?
+  * Warum heißt die Akademie Nocturna?
+    Varga: Weil der Fels nachts unter den Monden am lautesten summt. Die Gründer haben ihn gehört und gesagt: Hier. Hier hört man am besten.
+    Varga: Über dem Tor steht: "Hier lernt man hören, bevor man spricht." Die meisten Schüler lesen es. Wenige verstehen es.
+    [goto themen]
+  * Ist Nocturna Teil des Kollegiums?
+    Varga: Nocturna gehört niemandem. Nicht dem Kollegium, nicht den Hütern, nicht den Zünften. Das kostet mich jeden Tag einen Brief, ein Lächeln und ein Zugeständnis.
+    Varga: Es ist jeden davon wert.
+    [goto themen]
+  [if {quest.M108} == 2]
+  * Was passiert jetzt mit mir?
+    [event emotion `thoughtful`]
+    Varga: Magistra Vornholt sagt, es war ein Aderbruch.
+    Varga: Ich habe beschlossen, ihr zu glauben. Sorgen Sie dafür, dass ich das nicht bereue.
+    [goto themen]
+  [endif]
+  * Entschuldigung, ich gehe schon.
+    Varga: Gut.

@@ -1,0 +1,159 @@
+{
+  "id": "M104",
+  "type": "main",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Deine ersten Ringe",
+    "en": "Your First Rings"
+  },
+  "summary": {
+    "de": "Zurück in Kesselbrunn, diesmal als Schüler von Nocturna. Ein alter Ringschmied stimmt deine ersten Stimmringe.",
+    "en": "Back in Kesselbrunn, this time as a student of Nocturna. An old ringsmith tunes your first tuning rings."
+  },
+  "dialogues": [
+    "D_M104_Jupp",
+    "D_M104_Ambros",
+    "D_M104_Lio_Mara"
+  ],
+  "stages": [
+    {
+      "id": "s1_markt",
+      "text": {
+        "de": "Kesselbrunn erkennt dich wieder. Schau dich auf dem Markt um.",
+        "en": "Kesselbrunn recognises you. Look around the market."
+      },
+      "objectives": [
+        {
+          "id": "o_ankunft",
+          "kind": "reach",
+          "target": "Kesselbrunn_Markt",
+          "marker": "Kesselbrunn_Markt",
+          "text": {
+            "de": "Geh zum Marktplatz",
+            "en": "Go to the market square"
+          }
+        },
+        {
+          "id": "o_hedda",
+          "kind": "talk",
+          "target": "Hedda",
+          "marker": "NPC_Hedda",
+          "text": {
+            "de": "Hol dir eine Zimtschnecke bei Hedda",
+            "en": "Get a cinnamon roll from Hedda"
+          }
+        },
+        {
+          "id": "o_spiegel",
+          "kind": "interact",
+          "target": "Spiegel_Schneiderei",
+          "optional": true,
+          "text": {
+            "de": "Probier etwas beim Spiegel der Schneiderin (optional)",
+            "en": "Try something on at the tailor's mirror (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_jupp"
+        }
+      ]
+    },
+    {
+      "id": "s2_jupp",
+      "text": {
+        "de": "Jupp spielt Akkordeon auf dem Platz. Er lehrt nur, wer ihm etwas zurückspielt.",
+        "en": "Jupp plays the accordion on the square. He only teaches those who play something back."
+      },
+      "objectives": [
+        {
+          "id": "o_jupp",
+          "kind": "dialogue",
+          "target": "D_M104_Jupp",
+          "marker": "NPC_Jupp",
+          "text": {
+            "de": "Spiel Jupps Lied nach",
+            "en": "Play Jupp's song back"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_ringe"
+        }
+      ]
+    },
+    {
+      "id": "s3_ringe",
+      "text": {
+        "de": "Ambros Kettler, der Ringschmied, wartet in seiner Werkstatt.",
+        "en": "Ambros Kettler, the ringsmith, is waiting in his workshop."
+      },
+      "objectives": [
+        {
+          "id": "o_ambros",
+          "kind": "dialogue",
+          "target": "D_M104_Ambros",
+          "marker": "NPC_Ambros",
+          "text": {
+            "de": "Lass deinen ersten Ring stimmen",
+            "en": "Have your first ring tuned"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Ambros_Flicker=1"
+      ],
+      "next": [
+        {
+          "stage": "s4_rueckweg"
+        }
+      ]
+    },
+    {
+      "id": "s4_rueckweg",
+      "text": {
+        "de": "Auf dem Rückweg zum Boot ist Lio ungewohnt still.",
+        "en": "On the way back to the boat Lio is unusually quiet."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M104_Lio_Mara",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio am Steg",
+            "en": "Talk to Lio at the jetty"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 50,
+    "items": [
+      "Stimmring_Erster",
+      "Stimmring_Ambros",
+      "Liederheft_Jupp"
+    ],
+    "effects": [
+      "rel:Lio+5",
+      "rep:Zuenfte+5"
+    ]
+  }
+}

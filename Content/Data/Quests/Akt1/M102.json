@@ -1,0 +1,160 @@
+{
+  "id": "M102",
+  "type": "main",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Varga",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M101"
+  ],
+  "title": {
+    "de": "Die Turmwahl",
+    "en": "Choosing a Tower"
+  },
+  "summary": {
+    "de": "Willkommensabend in der Großen Halle. Vier Türme, vier Sprecher, eine Wahl, die nur du triffst.",
+    "en": "Welcome evening in the Great Hall. Four towers, four speakers, a choice only you can make."
+  },
+  "dialogues": [
+    "D_M102_Turmsprecher",
+    "D_M102_KesselKlaus"
+  ],
+  "stages": [
+    {
+      "id": "s1_halle",
+      "text": {
+        "de": "Setz dich in der Großen Halle an den Tisch der Neuen.",
+        "en": "Take a seat at the newcomers' table in the Great Hall."
+      },
+      "objectives": [
+        {
+          "id": "o_halle",
+          "kind": "reach",
+          "target": "Grosse_Halle_Neue",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Geh in die Große Halle",
+            "en": "Go to the Great Hall"
+          }
+        },
+        {
+          "id": "o_tischlied",
+          "kind": "cast",
+          "target": "A_Tischlied",
+          "text": {
+            "de": "Summe das Tischlied mit",
+            "en": "Hum along to the Table Song"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_sprecher"
+        }
+      ]
+    },
+    {
+      "id": "s2_sprecher",
+      "text": {
+        "de": "Die vier Turmsprecher stellen ihre Türme vor. Wähle deinen Turm.",
+        "en": "The four tower speakers present their towers. Choose your tower."
+      },
+      "objectives": [
+        {
+          "id": "o_wahl",
+          "kind": "dialogue",
+          "target": "D_M102_Turmsprecher",
+          "marker": "Turmsprecher",
+          "text": {
+            "de": "Sprich mit den Turmsprechern und wähle",
+            "en": "Talk to the tower speakers and choose"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_treppe"
+        }
+      ]
+    },
+    {
+      "id": "s3_treppe",
+      "text": {
+        "de": "Dein Turmsprecher führt dich über die Notentreppe.",
+        "en": "Your tower speaker leads you across the Note Stair."
+      },
+      "objectives": [
+        {
+          "id": "o_treppe",
+          "kind": "custom",
+          "target": "Notentreppe_Melodie",
+          "marker": "Notentreppe",
+          "text": {
+            "de": "Lauf die Melodie der Notentreppe",
+            "en": "Walk the melody of the Note Stair"
+          }
+        },
+        {
+          "id": "o_melodie",
+          "kind": "cast",
+          "target": "A_Turmmelodie",
+          "marker": "Turmtuer",
+          "text": {
+            "de": "Summe die Turmmelodie an der Tür",
+            "en": "Hum the tower melody at the door"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_zimmer"
+        }
+      ]
+    },
+    {
+      "id": "s4_zimmer",
+      "text": {
+        "de": "Dein Turm, dein Zimmer. Begrüße den Teekessel und richte dich ein.",
+        "en": "Your tower, your room. Greet the kettle and settle in."
+      },
+      "objectives": [
+        {
+          "id": "o_klaus",
+          "kind": "dialogue",
+          "target": "D_M102_KesselKlaus",
+          "marker": "NPC_KesselKlaus",
+          "text": {
+            "de": "Sprich mit dem Teekessel",
+            "en": "Talk to the kettle"
+          }
+        },
+        {
+          "id": "o_zimmer",
+          "kind": "reach",
+          "target": "Turmzimmer",
+          "marker": "Turmzimmer_Bett",
+          "text": {
+            "de": "Geh in dein Turmzimmer",
+            "en": "Go to your tower room"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Uniform_Grund",
+      "Turmschal"
+    ],
+    "effects": []
+  }
+}

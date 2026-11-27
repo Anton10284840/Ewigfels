@@ -1,0 +1,88 @@
+{
+  "id": "S101",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Lio",
+  "duration_min": 20,
+  "auto_start": false,
+  "requires": [
+    "quest:M102"
+  ],
+  "title": {
+    "de": "Der erste Brief",
+    "en": "The First Letter"
+  },
+  "summary": {
+    "de": "Ein Notenfalter hat sich in der Großen Halle verflogen und will sich nicht fangen lassen. Er trägt einen Brief für dich.",
+    "en": "A paper moth has got lost in the Great Hall and refuses to be caught. It carries a letter for you."
+  },
+  "stages": [
+    {
+      "id": "s1_jagen",
+      "text": {
+        "de": "Fang den Notenfalter mit Lio, ohne den Speisefluss umzuwerfen.",
+        "en": "Catch the paper moth with Lio without upsetting the floating dinner."
+      },
+      "objectives": [
+        {
+          "id": "o_falter",
+          "kind": "interact",
+          "target": "Notenfalter_Verflogen",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Fang den Notenfalter (er fliegt zum Licht)",
+            "en": "Catch the paper moth (it flies towards light)"
+          }
+        },
+        {
+          "id": "o_teller",
+          "kind": "custom",
+          "target": "Speisefluss_Unberuehrt",
+          "optional": true,
+          "text": {
+            "de": "Kein Teller darf fallen (optional)",
+            "en": "No plate may fall (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_brief"
+        }
+      ]
+    },
+    {
+      "id": "s2_brief",
+      "text": {
+        "de": "Der Brief ist von Hanne. Sie will wissen, ob du warm genug angezogen bist. Antworte ihr.",
+        "en": "The letter is from Hanne. She wants to know if you're dressed warmly enough. Write back."
+      },
+      "objectives": [
+        {
+          "id": "o_antwort",
+          "kind": "custom",
+          "target": "Notenfalter_Senden",
+          "marker": "Turmzimmer_Schreibtisch",
+          "text": {
+            "de": "Schick einen Notenfalter zurück nach Kesselbrunn",
+            "en": "Send a paper moth back to Kesselbrunn"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 80,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rel:Lio+3"
+    ]
+  }
+}

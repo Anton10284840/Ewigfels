@@ -1,0 +1,21 @@
+# Pankraz "Panki" Holler, Aschenhain. Erfinder, fliegende Badewanne (S109). Begeistert, chaotisch, unkaputtbar optimistisch.
+===
+[set SpeakerName.Panki "Panki Holler"]
+===
+[event emotion `happy`]
+Panki: Du! Genau dich hab ich gebraucht! Halt mal das hier. Nein, nicht da anfassen, das ist heiß. Und das auch. Eigentlich alles.
+:themen
+Panki: Noch was? Schnell, bevor's raucht.
+  * Was baust du da?
+    Panki: Eine Badewanne, die fliegt! Stell dir vor: Du badest, und gleichzeitig reist du. Warum hat das noch niemand erfunden?
+    Panki: Okay, es haben's schon vier Leute versucht. Aber die hatten keinen Leichtklang-Motor mit Glut-Nachbrenner.
+    [goto themen]
+  * Funktioniert irgendwas davon?
+    Panki: Alles funktioniert! Nur nicht immer in die Richtung, die ich will. Das ist ein Unterschied.
+    [goto themen]
+  * Warum bist du in Aschenhain?
+    [event emotion `soft`]
+    Panki: Weil mein Opa Köhler war. Und weil Aschenhain-Leute nicht aufhören, wenn was kaputtgeht. Bei mir geht ständig was kaputt. Also passt das perfekt.
+    [goto themen]
+  * Ich muss los.
+    Panki: Komm zum Testflug! Freitag, über dem See! Bring ein Handtuch mit. Nicht wegen der Badewanne. Wegen dem See.

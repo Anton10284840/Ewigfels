@@ -48,7 +48,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Nutzer-Wünsche 26.11. | ✅ | Ton verspielt + gruselige Gegner, Magie aus den Fingern (kein Stab), Personalisierung über Läden (GDD §13), 6 eigene Reittiere, fröhliche/gruselige Dörfer + Missklinger. Weltgröße: Option A, ca. 64 km² mit dichten Kernen (GDD E9) |
 | E10 Hunderte Weisen (Option C) + Akt-1-Schulvibe | ✅ | 430 Weisen (60 Kern, 358 Alltag, 12 Koop) in `Content/Data/Spells/Katalog/`, docs/WEISEN.md, docs/WEISEN_KATALOG.md, docs/AKT1_SCHULLEBEN.md (Tagesablauf, lebendige Akademie, 15 Geheimgänge, Feste, Glockenball, 18 Schulleben-Quests S101–S118), Akt-1-Missionen in STORY_BIBLE §8.1 überarbeitet, Prüfskript validate_spells.py. Offen Phase 5: M101/M110-JSON an die neue Beschreibung anpassen, S101–S118 als JSON |
 | Bilder generiert | ⬜ | beim Nutzer (ca. 40–60 min), danach Key-Frames wählen |
-| Missionsdesign-Dokumente | ⬜ | pro Akt in der Umsetzungsphase (Akt 1: Phase 5) |
+| Missionsdesign-Dokumente | ✅ | alle 50 Missionen + 5 Story-Bosse in docs/missions/ (27.11.2026); Akt 1 komplett als JSON + SUDS, Stimmen-Leitfaden docs/DIALOG_STIMMEN.md |
 
 ## Systeme
 
@@ -63,12 +63,40 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
-## Quests (geschätzte Spielzeit gesamt: 0 / ~100 Std. umgesetzt · geplant: 50 Hauptmissionen ≈ 45–50 Std., Liste in STORY_BIBLE §8.1)
+## Quests (geschätzte Spielzeit geschrieben: 17,9 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
-| M101 | Das Boot über den Ilsensee | Main | 45 min | ✅ JSON + Dialog D_M101_Lio (Beispiel) | ⬜ Level fehlt | ⬜ |
-| M110 | Die Doppelnacht ⚖ E1 | Main | 55 min | ✅ JSON + Dialog D_M110_Edda (Beispiel) | ⬜ Level fehlt | ⬜ |
+| M101 | Das Boot über den Ilsensee | Main | 45 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| M102 | Die Turmwahl | Main | 50 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| M103 | Der erste Ton | Main | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| M104 | Deine ersten Ringe | Main | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| M105 | Das Flüstern im Raunwald | Main | 55 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| M106 | Ilsenlicht | Main | 55 min | ✅ JSON + 4 Dialoge | ⬜ Level fehlt | ⬜ |
+| M107 | Die Stumme Kammer | Main | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| M108 | Erwachen | Main | 60 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| M109 | Was hast du getan? | Main | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| M110 | Die Doppelnacht ⚖ E1 | Main | 55 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| S101 | Der erste Brief | Neben | 20 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S102 | Kessel Klaus ist beleidigt | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S103 | Ottilie | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S104 | Die verlorenen Bücher | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S105 | Speisefluss in Not | Neben | 20 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S106 | Schiefe Töne | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S107 | Barnabas | Neben | 30 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S108 | Herr Quaak | Neben | 30 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S109 | Die fliegende Badewanne | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S110 | Glockenball: Turmrunde | Neben | 40 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S111 | Nachklänge | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S112 | Die Pfannkuchen-Meisterschaft | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S113 | Firnnacht | Neben | 30 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S114 | Jupps Melodie | Neben | 30 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S115 | Wachsfest | Neben | 30 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S116 | Turmmelodien | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S117 | Die Stimmprobe | Neben | 60 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| S118 | Das Gründerzimmer | Neben | 25 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| M201–M510 | Akte 2–5 | Main | je 40–70 min | 🟨 Missionsdesign (docs/missions/AKT2–5.md), JSON folgt pro Akt | ⬜ | ⬜ |
+| D_Schule_* | 12 freie Gespräche (Lio, Aurelia, Lehrkräfte, Mitschüler, Ottilie) | – | – | ✅ | ⬜ | ⬜ |
 
 ## Charaktere
 

@@ -1,0 +1,23 @@
+# Mutter Gundel, Küche und Küchenchor. Resolut, mütterlich, singt beim Kochen. Speisefluss.
+===
+[set SpeakerName.Gundel "Mutter Gundel"]
+===
+[event emotion `happy`]
+Gundel: Raus aus meiner Küche! ... Ach, du bist's. Komm rein, aber nichts anfassen. Probieren darfst du. Das ist was anderes.
+:themen
+Gundel: Noch was, Schatz?
+  * Wie fliegen die Teller?
+    Gundel: Gesungen, mein Schatz. Der Küchenchor hält sie in der Luft. Zwölf Stimmen, drei Grundtöne, und keiner darf husten. Einmal hat Gerhard gehustet. Wir haben es nie wieder Suppe genannt. Wir nannten es Regen.
+    [goto themen]
+  * Was gibt's heute?
+    Gundel: Kesselbrunner Knödel, Rotkraut und für Nachtisch Pfannkuchen mit Ilsenbeeren. Und Kakao mit Schaumtier, aber nur, wenn das Tischlied ordentlich gesummt wird.
+    [goto themen]
+  [if {quest.M108} == 2]
+  * Die anderen reden über mich.
+    [event emotion `soft`]
+    Gundel: Die anderen reden über alles. Letzte Woche haben sie geredet, dass mein Gulasch lebt. Mein Gulasch lebt nicht. Meistens.
+    Gundel: Hier. Ein Knödel extra. Wer viel geredet bekommt, braucht viel zu essen.
+    [goto themen]
+  [endif]
+  * Danke, Mutter Gundel.
+    Gundel: Bitte, Schatz. Und Hände waschen!

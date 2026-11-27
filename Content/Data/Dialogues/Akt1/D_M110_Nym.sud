@@ -1,0 +1,19 @@
+# M110 – Nym spricht im Traum zum ersten Mal klar. Echos: letzte Worte wiederholen sich leise (Kursiv = Echo).
+===
+[set SpeakerName.Nym "Die Stimme"]
+===
+[event camera `wide`]
+[event emotion `neutral`]
+Nym: Du hörst mich. *... hörst mich ... mich ...*
+Nym: Endlich. *... endlich ...*
+  * Wer bist du?
+    Nym: Jemand, der zu lange gesungen hat. *... gesungen hat ...*
+  * Wo bin ich?
+    Nym: Unten. Wo alles hinfällt, was jemand ungeschehen macht. *... ungeschehen ...*
+  * (Nach dem Kinderwagen schauen)
+    Nym: Er ist leer. Er war es nicht immer. *... nicht immer ...*
+[event camera `closeup`]
+Nym: Du hast den Wald stumm gemacht. Du hast Angst vor dir. *... vor dir ...*
+Nym: Hab keine Angst. Du bist nicht falsch gestimmt. *... gestimmt ...*
+Nym: Du bist zu früh. *... zu früh ... zu früh ...*
+[set flag.Nym_Spoke true]

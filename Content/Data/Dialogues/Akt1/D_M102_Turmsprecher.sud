@@ -1,0 +1,109 @@
+# M102 – Die vier Turmsprecher stellen ihre Türme vor. Der Spieler wählt frei.
+# Setzt flag.Tower_<Name> und flag.Tower_Chosen. Reihenfolge der Gespräche frei.
+===
+[set SpeakerName.Greta "Greta Kohlhammer"]
+[set SpeakerName.Jonte "Jonte Weißdorn"]
+[set SpeakerName.Fenja "Fenja Brise"]
+[set SpeakerName.Hannes "Hannes Wurzel"]
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+[set SpeakerName.Lio "Lio"]
+[set AureliaSpoke false]
+===
+:menue
+[event camera `wide`]
+Lio: Vier Tische, vier Türme. Ich bin schon Sturmkamm, aber du musst nicht, nur weil ich unwiderstehlich bin.
+  * Zu Greta (Aschenhain, Glutorange)
+    [goto greta]
+  * Zu Jonte (Silberquell, Tiefblau)
+    [goto jonte]
+  * Zu Fenja (Sturmkamm, Sturmgrau und Gelb)
+    [goto fenja]
+  * Zu Hannes (Moosgrund, Moosgrün)
+    [goto hannes]
+  * Ich weiß, wo ich hingehöre.
+    [goto wahl]
+
+:greta
+[event emotion `happy`]
+Greta: Na endlich! Komm her!
+Greta: ... Entschuldige. Ich umarm zu fest. Sagen alle. Ich bin Greta, Aschenhain, Ostturm.
+Greta: Unser Turm wurde von Köhlern und Schmieden gestiftet, nachdem ihr Wald abgebrannt war. Sie haben ihn wieder aufgeforstet. Mit bloßen Händen.
+Greta: Bei uns gibt man nicht auf. Wir haben einen offenen Kamin, Ambosse als Tische und einen Sessel, der beißt, wenn er dich nicht mag.
+Greta: Frage an dich: Dein Haus brennt ab. Was machst du am nächsten Morgen?
+  * Ich bau es wieder auf. Besser.
+    Greta: Ha! Siehst du, das ist Aschenhain-Gerede.
+  * Ich such mir ein neues.
+    Greta: Auch ehrlich. Wir würden dir trotzdem beim Tragen helfen.
+  * Ich frag, wer es angezündet hat.
+    Greta: Hm. Das klingt eher nach Silberquell. Oder nach Ärger.
+[goto menue]
+
+:jonte
+Jonte: Moment, ich bin gleich am Ende der Seite.
+Jonte: ... So. Jonte Weißdorn, Silberquell, Nordturm. Gestiftet von Gelehrten und Sternkundigen.
+Jonte: Unser Gemeinschaftsraum liegt unter der Kuppel des Observatoriums. Nachts sieht man beide Monde durch das Glas. Es ist der schönste Raum der Akademie. Das ist keine Meinung, ich habe es gemessen.
+[if {AureliaSpoke} == false]
+    [set AureliaSpoke true]
+    Aurelia: Er braucht nicht weiterzureden, Jonte. Silberquell nimmt die Besten. Spätberufene sind selten die Besten.
+    Jonte: Aurelia, bitte. Das war unhöflich und statistisch falsch.
+[endif]
+Jonte: Meine Frage: Wenn du etwas nicht verstehst, was tust du?
+  * Ich lese, bis ich es verstehe.
+    Jonte: Wunderbar. Du kannst mein Lesezeichen haben. Ich habe vierzehn.
+  * Ich probier es aus, bis es klappt.
+    Jonte: Das nennt man auch Experiment. Wir mögen Experimente. Nur nicht in der Bibliothek.
+  * Ich frag jemanden, der es weiß.
+    Jonte: Kluge Wahl. Am besten mich.
+[goto menue]
+
+:fenja
+[event emotion `smirk`]
+Fenja: Ich wette zwei Rosinenschnecken, dass du am Ende zu uns kommst.
+Fenja: Fenja Brise. Sturmkamm, Westturm. Gestiftet von Seeleuten und Bergführern aus Tiedmar.
+Fenja: Wir haben Hängematten statt Betten, Fenster, die nie zugehen, und ein Windglockenspiel, das man bis Uferlicht hört.
+Lio: Und mich. Ihr habt mich.
+Fenja: Ja. Das steht auch im Kleingedruckten.
+Fenja: Meine Frage: Jemand sagt dir, du darfst etwas nicht. Kein Grund. Einfach nicht.
+  * Dann mach ich's erst recht.
+    Fenja: Eine von uns! Ich hab's gewusst. Gib mir die Schnecken, Lio.
+  * Ich frag nach dem Grund.
+    Fenja: Auch gut. Laut fragen ist bei uns schon halber Widerstand.
+  * Dann lass ich's.
+    Fenja: Ehrlich? Na gut. Du bist trotzdem eingeladen. Unsere Hängematten sind nicht nachtragend.
+[goto menue]
+
+:hannes
+Hannes: Hier, nimm eine. Die mit der Rosine obendrauf ist die beste. Hab ich heute Morgen gebacken.
+Hannes: Hannes Wurzel, Moosgrund, Südturm. Gestiftet von Hütern und Bauern. Unser Gemeinschaftsraum ist halb in der Erde. Da riecht's nach Kräutern und frischem Brot.
+Hannes: Bei uns muss keiner der Beste sein. Man muss nur da sein, wenn einer fällt.
+Hannes: Meine Frage: Ein Freund hat Mist gebaut. Großen Mist. Was machst du?
+  * Ich halte zu ihm.
+    [event emotion `happy`]
+    Hannes: Das ist Moosgrund. So einfach ist das.
+  * Ich sag ihm die Wahrheit, auch wenn's wehtut.
+    Hannes: Das auch. Danach backt man was zusammen.
+  * Kommt drauf an, wie groß der Mist ist.
+    Hannes: Hm. Fair. Ein bisschen Moos bleibt trotzdem an dir hängen.
+[goto menue]
+
+:wahl
+[event camera `closeup`]
+Lio: Und? Leg die Hand auf die Glocke. Sie gibt dann einen Ton dazu. Das ist die ganze Zeremonie. Kein Hut, keine Rede, nur ein Ton.
+  * Aschenhain.
+    [set flag.Tower_Aschenhain true]
+    Greta: JA! Komm her, ich muss dich jetzt umarmen, das ist Pflicht.
+  * Silberquell.
+    [set flag.Tower_Silberquell true]
+    Jonte: Herzlich willkommen. Ich hab dir schon ein Lesezeichen reserviert.
+    Aurelia: ... Na schön. Dann sitzen wir eben am selben Tisch.
+  * Sturmkamm.
+    [set flag.Tower_Sturmkamm true]
+    [set rel.Lio {rel.Lio} + 5]
+    Fenja: Schnecken, Lio. Her damit.
+    Lio: Ich hab nie gegen dich gewettet! Ich hab auf dich gewettet!
+  * Moosgrund.
+    [set flag.Tower_Moosgrund true]
+    Hannes: Schön! Ich mach dir heute Abend ein Bett direkt am Ofen klar.
+[set flag.Tower_Chosen true]
+[event emotion `happy`]
+Lio: Hörst du? Die Glocke klingt jetzt ein bisschen nach dir.

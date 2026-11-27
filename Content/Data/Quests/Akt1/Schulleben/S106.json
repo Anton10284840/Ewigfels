@@ -1,0 +1,100 @@
+{
+  "id": "S106",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Ruven",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M107"
+  ],
+  "title": {
+    "de": "Schiefe Töne",
+    "en": "Off-Key Notes"
+  },
+  "summary": {
+    "de": "Ruven Falk lädt dich zur Aufnahmeprüfung ein: drei Streiche in einer Nacht, ohne dass Ottilie dich erwischt. Regel: nie gemein.",
+    "en": "Ruven Falk invites you to the entrance test: three pranks in one night without Ottilie catching you. Rule: never mean."
+  },
+  "stages": [
+    {
+      "id": "s1_streiche",
+      "text": {
+        "de": "Drei Streiche, eine Nacht. Wähle aus der Liste der Schiefen Töne.",
+        "en": "Three pranks, one night. Choose from the Off-Key Notes' list."
+      },
+      "objectives": [
+        {
+          "id": "o_streich",
+          "kind": "custom",
+          "target": "Streich_Erledigt",
+          "count": 3,
+          "text": {
+            "de": "Spiel einen Streich (Zuckersalz, Echopapagei, Seifenblasen-Rüstung, Turmmelodie vertauschen …)",
+            "en": "Pull a prank (sugar salt, echo parrot, bubble armour, swapped tower melody …)"
+          }
+        },
+        {
+          "id": "o_ottilie",
+          "kind": "custom",
+          "target": "Ottilie_Nicht_Erwischt",
+          "optional": true,
+          "text": {
+            "de": "Bleib die ganze Nacht unentdeckt (Bonus-Ton für den Turm)",
+            "en": "Stay unseen all night (bonus note for your tower)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_club"
+        }
+      ]
+    },
+    {
+      "id": "s2_club",
+      "text": {
+        "de": "Die Melodie aus dem Stundenspiel um Mitternacht öffnet die Clubtür auf der Notentreppe.",
+        "en": "The midnight melody from the hour chimes opens the club door on the Note Stair."
+      },
+      "objectives": [
+        {
+          "id": "o_clubtuer",
+          "kind": "custom",
+          "target": "Notentreppe_Clubmelodie",
+          "marker": "Notentreppe_Absatz3",
+          "text": {
+            "de": "Lauf die Mitternachtsmelodie auf der Notentreppe",
+            "en": "Walk the midnight melody on the Note Stair"
+          }
+        },
+        {
+          "id": "o_ruven",
+          "kind": "talk",
+          "target": "Ruven",
+          "marker": "Clubraum",
+          "text": {
+            "de": "Lass dich im Clubraum aufnehmen",
+            "en": "Get initiated in the club room"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Abzeichen_SchiefeToene"
+    ],
+    "effects": [
+      "rel:Lio+5"
+    ]
+  }
+}

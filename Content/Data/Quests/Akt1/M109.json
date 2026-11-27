@@ -1,0 +1,201 @@
+{
+  "id": "M109",
+  "type": "main",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M108"
+  ],
+  "title": {
+    "de": "Was hast du getan?",
+    "en": "What Have You Done?"
+  },
+  "summary": {
+    "de": "Die Lauscher erzählen es jedem. Die Stimmglocke klingt schief. Und Lio redet nicht mehr mit dir.",
+    "en": "The Listeners tell everyone. The Tuning Bell sounds off-key. And Lio isn't talking to you anymore."
+  },
+  "dialogues": [
+    "D_M109_Lio_Kakao",
+    "D_M109_Mirela",
+    "D_M109_Grell_Handschuh"
+  ],
+  "stages": [
+    {
+      "id": "s1_geruechte",
+      "text": {
+        "de": "Die ganze Akademie flüstert über dich.",
+        "en": "The whole academy is whispering about you."
+      },
+      "objectives": [
+        {
+          "id": "o_halle",
+          "kind": "reach",
+          "target": "Grosse_Halle",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Geh trotzdem zum Essen in die Große Halle",
+            "en": "Go to dinner in the Great Hall anyway"
+          }
+        },
+        {
+          "id": "o_lauscher",
+          "kind": "interact",
+          "target": "Lauscher",
+          "count": 3,
+          "optional": true,
+          "text": {
+            "de": "Hör den Lauschern zu (optional)",
+            "en": "Listen to the Listeners (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_kakao"
+        }
+      ]
+    },
+    {
+      "id": "s2_kakao",
+      "text": {
+        "de": "Es ist spät. Jemand klopft an dein Turmzimmer.",
+        "en": "It's late. Someone knocks on your tower room door."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M109_Lio_Kakao",
+          "marker": "Turmzimmer_Tuer",
+          "text": {
+            "de": "Mach die Tür auf",
+            "en": "Open the door"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_firnnacht"
+        }
+      ]
+    },
+    {
+      "id": "s3_firnnacht",
+      "text": {
+        "de": "Firnnacht! Die Freunde holen dich raus in den Schnee.",
+        "en": "Frostnight! Your friends drag you out into the snow."
+      },
+      "objectives": [
+        {
+          "id": "o_schneeball",
+          "kind": "custom",
+          "target": "Firnnacht_Schneeballschlacht",
+          "marker": "Innenhof_Winter",
+          "text": {
+            "de": "Gewinn die Schneeballschlacht der Türme",
+            "en": "Win the towers' snowball fight"
+          }
+        },
+        {
+          "id": "o_eisball",
+          "kind": "custom",
+          "target": "Firnnacht_Eisglockenball",
+          "marker": "Ilsensee_Eis",
+          "text": {
+            "de": "Spiel Eis-Glockenball auf dem See",
+            "en": "Play ice bellball on the lake"
+          }
+        },
+        {
+          "id": "o_eisfigur",
+          "kind": "custom",
+          "target": "Firnnacht_Eisfigur",
+          "optional": true,
+          "text": {
+            "de": "Bau eine Eisfigur (optional)",
+            "en": "Build an ice sculpture (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_spur"
+        }
+      ]
+    },
+    {
+      "id": "s4_spur",
+      "text": {
+        "de": "Mirela will wissen, was mit Varn wirklich los war. Der Krankenflügel ist nachts unbewacht. Fast.",
+        "en": "Mirela wants to know what really happened to Varn. The infirmary is unguarded at night. Almost."
+      },
+      "objectives": [
+        {
+          "id": "o_mirela",
+          "kind": "dialogue",
+          "target": "D_M109_Mirela",
+          "marker": "NPC_Mirela",
+          "text": {
+            "de": "Plan mit Mirela",
+            "en": "Plan with Mirela"
+          }
+        },
+        {
+          "id": "o_handschuh",
+          "kind": "interact",
+          "target": "Varn_Sachen",
+          "marker": "Krankenfluegel",
+          "text": {
+            "de": "Durchsuch Varns Sachen im Krankenflügel",
+            "en": "Search Varn's belongings in the infirmary"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Found_BlackGlove=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_grell"
+        }
+      ]
+    },
+    {
+      "id": "s5_grell",
+      "text": {
+        "de": "Meister Grell steht in der Tür.",
+        "en": "Master Grell is standing in the doorway."
+      },
+      "objectives": [
+        {
+          "id": "o_grell",
+          "kind": "dialogue",
+          "target": "D_M109_Grell_Handschuh",
+          "marker": "NPC_Grell",
+          "text": {
+            "de": "Erklär dich",
+            "en": "Explain yourself"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 0,
+    "items": [
+      "Winterumhang"
+    ],
+    "effects": [
+      "rel:Lio+15"
+    ]
+  }
+}

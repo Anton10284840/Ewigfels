@@ -1,0 +1,19 @@
+# M105 – Lio ist einem Nebelfuchs gefolgt und läuft im Kreis.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `surprised`]
+Lio: Oh! Du! Gut. Sehr gut. Ich hab nämlich einen Pilz gefunden, der genauso aussieht wie der Pilz von vorhin.
+Lio: Und noch einen. Und noch einen. Der Raunwald hat sehr viele identische Pilze.
+  * Lio, das ist derselbe Pilz.
+    Lio: Nein. Unmöglich. Der hier hat ... na gut, das ist derselbe Pilz.
+  * Wie bist du hier gelandet?
+    Lio: Da war ein Fuchs! So ein silberner, ganz flauschig. Er hat mich angeguckt, als würde er was wissen.
+    Lio: Er wusste was. Nämlich, wie man Leute verarscht.
+  * Ich hab dich drei Mal vorbeilaufen sehen.
+    Lio: DREI Mal? Und du hast nichts gesagt?
+    Lio: ... Okay, das hätt ich auch gemacht.
+[event emotion `happy`]
+Lio: Da! Da ist er wieder! Der kichert. Füchse können nicht kichern. Der kichert!
+Lio: Weißt du was, Fuchs? Du hast gewonnen. Ich geh jetzt zurück. Mit Begleitung. Mit kluger Begleitung. Und du bekommst nie, nie wieder Pausenbrot von mir.
+[event state `rel:Lio+5`]

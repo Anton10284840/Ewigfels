@@ -1,0 +1,25 @@
+# M107 – Lio plant den nächtlichen Einbruch in die Stumme Kammer. Schabernack, Lio übernimmt sich.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `surprised`]
+Lio: Zeig noch mal. ... Das ist Kael. Das ist echtes Kael. Wo hast du das her?
+  * Raureif. Auf meiner Fensterbank.
+    Lio: Im Herbst. Raureif. In Kael. Auf DEINER Fensterbank. Klar. Völlig normal.
+  * Hab ich geträumt. Glaub ich.
+    Lio: Du träumst Kael? Ich träum, dass ich in Unterhose in Brams' Unterricht sitze.
+[event emotion `smirk`]
+Lio: So was steht nur in der Stummen Kammer. Verbotene Abteilung. Da kommt keiner rein.
+Lio: ...
+Lio: Also heute Nacht?
+  * Natürlich heute Nacht.
+    [set rel.Lio {rel.Lio} + 5]
+    Lio: Ich wusste, dass ich dich mag.
+  * Lio, das ist eine furchtbare Idee.
+    Lio: Furchtbare Ideen sind die besten. Hat meine Schwester immer gesagt. Kurz bevor sie das Boot vom Nachbarn versenkt hat.
+    Lio: Okay, schlechtes Beispiel. Aber trotzdem heute Nacht.
+Lio: Der Plan: Nach der Sperrstunde. Ottilie umgehen. Die Notentreppe leise laufen. Durch den Flüsterkorridor. In die Bibliothek. Durch den Bücherschlund. Rein. Raus. Niemand merkt was.
+  * Wie kommt man durch den Bücherschlund?
+    Lio: Das ist ... der Teil, den ich noch nicht weiß. Aber ich kenne jemanden, der jemanden kennt.
+  * Was ist der Bücherschlund?
+    Lio: Ein Regal, das Leute frisst. Auf eine gute Art. Glaub ich.

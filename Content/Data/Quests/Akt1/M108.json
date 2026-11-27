@@ -1,0 +1,165 @@
+{
+  "id": "M108",
+  "type": "main",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Varn",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M107"
+  ],
+  "title": {
+    "de": "Erwachen",
+    "en": "Awakening"
+  },
+  "summary": {
+    "de": "Winterübung im Raunwald mit Ausbilder Varn. Der erste Schnee ist gefallen, und der Wald ist zu still.",
+    "en": "Winter exercise in the Raunwald with Instructor Varn. The first snow has fallen, and the forest is too quiet."
+  },
+  "dialogues": [
+    "D_M108_Varn",
+    "D_M108_Edda_Lichtung"
+  ],
+  "stages": [
+    {
+      "id": "s1_uebung",
+      "text": {
+        "de": "Ausbilder Varn leitet die Winterübung. Er blinzelt zu selten.",
+        "en": "Instructor Varn leads the winter exercise. He blinks too rarely."
+      },
+      "objectives": [
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Winter_Spuren",
+          "marker": "M108_Spuren",
+          "text": {
+            "de": "Lies die Spuren im Schnee",
+            "en": "Read the tracks in the snow"
+          }
+        },
+        {
+          "id": "o_feuer",
+          "kind": "cast",
+          "target": "A_Glut_Schnippen",
+          "marker": "M108_Lager",
+          "text": {
+            "de": "Mach ein Feuer",
+            "en": "Light a fire"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_nordpfad"
+        }
+      ]
+    },
+    {
+      "id": "s2_nordpfad",
+      "text": {
+        "de": "Varn schickt dich und Lio den Nordpfad entlang. Kein Vogel singt.",
+        "en": "Varn sends you and Lio along the north path. No bird sings."
+      },
+      "objectives": [
+        {
+          "id": "o_lichtung",
+          "kind": "reach",
+          "target": "M108_Lichtung",
+          "marker": "M108_Lichtung",
+          "text": {
+            "de": "Folge dem Nordpfad",
+            "en": "Follow the north path"
+          }
+        },
+        {
+          "id": "o_fuechse",
+          "kind": "defeat",
+          "target": "Firnfuchs_Takt",
+          "count": 4,
+          "text": {
+            "de": "Wehr die Füchse mit den blinkenden Augen ab",
+            "en": "Fend off the foxes with blinking eyes"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_varn"
+        }
+      ]
+    },
+    {
+      "id": "s3_varn",
+      "text": {
+        "de": "Varn wartet auf der Lichtung. Er tippt einen Takt, der nicht aufhört.",
+        "en": "Varn is waiting in the clearing. He taps a beat that won't stop."
+      },
+      "objectives": [
+        {
+          "id": "o_varn",
+          "kind": "dialogue",
+          "target": "D_M108_Varn",
+          "marker": "NPC_Varn",
+          "text": {
+            "de": "Stell dich Varn",
+            "en": "Confront Varn"
+          }
+        },
+        {
+          "id": "o_boss",
+          "kind": "defeat",
+          "target": "Boss_Varn",
+          "text": {
+            "de": "Überlebe",
+            "en": "Survive"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Urton_Awakened=1",
+        "flag:NachhallLoad+10"
+      ],
+      "next": [
+        {
+          "stage": "s4_edda"
+        }
+      ]
+    },
+    {
+      "id": "s4_edda",
+      "text": {
+        "de": "Der Wald ist grau. Jemand kommt durch den Schnee gerannt.",
+        "en": "The forest is grey. Someone comes running through the snow."
+      },
+      "objectives": [
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M108_Edda_Lichtung",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Bleib bei Lio",
+            "en": "Stay with Lio"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 0,
+    "items": [
+      "Taktstein_Splitter"
+    ],
+    "effects": [
+      "rel:Edda+10"
+    ]
+  }
+}

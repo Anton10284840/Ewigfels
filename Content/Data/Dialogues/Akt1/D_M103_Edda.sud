@@ -1,0 +1,30 @@
+# M103 – Erste Stunde Klangkunde. Edda siezt, kurze Sätze, kein Lob, dann doch eins.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Ollendorf "Magister Ollendorf"]
+===
+[event camera `wide`]
+Edda: Setzen. Hände auf den Tisch. Nicht auf den Nachbarn, Herr Vandermeer.
+Edda: Drei Gesetze. Wer sie heute nicht lernt, lernt sie später schmerzhaft.
+Edda: Erstens: Alles schwingt. Zweitens: Jede Weise braucht Atem, Hände und einen Grundton. Drittens: Kein Klang verschwindet.
+Lio: Und was passiert mit dem Klang, wenn er nicht verschwindet?
+[event emotion `thoughtful`]
+Edda: Er hallt nach. Irgendwo. Darum denkt man nach, bevor man spielt.
+Edda: Sie da. Spätberufen, nicht wahr? Nehmen Sie die Stimmgabel. Schlagen Sie sie an. Und sagen Sie mir, welcher Grundton das ist.
+  * Firn. Er klingt kalt und hell.
+    [event emotion `neutral`]
+    Edda: Richtig. Woher wissen Sie das?
+    Edda: ... Gleichgültig. Weiter.
+  * Keine Ahnung. Glut?
+    Edda: Falsch. Aber Sie haben geraten, statt zu schweigen. Das ist ein Anfang.
+  * Er klingt wie ... Wasser, das gefriert.
+    Edda: Firn. Hübsch formuliert. Nächstes Mal bitte nur der Name.
+[event quest.objective `M103`, `o_stimmgabel`]
+Edda: Nun: Leichtklang. Drei Grundtöne. Strom, Hall, Wachs. Mit dieser Weise heben Sie eine Feder an. Nur eine Feder. Nicht den Tisch.
+[event camera `closeup`]
+Ollendorf: Verzeihung! Verzeihung, Edda, meine Tische sind ... ach du liebe Güte, die sind hier?
+Edda: Ihre Tische stehen auf meinen Schülern, Pim.
+Ollendorf: Sie langweilen sich so schnell! Ich hab nur kurz über Grenzflächenwandlung gesprochen!
+Edda: Klasse. Leichtklang. Nicht auf die Feder. Auf die Tische. Bringen Sie sie Magister Ollendorf zurück.
+Lio: Das ist die beste erste Stunde aller Zeiten.

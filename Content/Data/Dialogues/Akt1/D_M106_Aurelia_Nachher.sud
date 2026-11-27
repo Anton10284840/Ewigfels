@@ -1,0 +1,24 @@
+# M106 – Nach dem Festduell. Wie gewonnen wurde, bestimmt Aurelias Respekt (Stilweisen später).
+# Setzt Aurelia_DuelWon / Aurelia_DuelFair.
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+[set SpeakerName.Lio "Lio"]
+===
+Lio: Und? Wer hat gewonnen? Ich hab nicht hingeguckt, ich hatte Angst.
+  * Ich hab gewonnen. Fair.
+    [set flag.Aurelia_DuelWon true]
+    [set flag.Aurelia_DuelFair true]
+    [set rel.Aurelia {rel.Aurelia} + 10]
+    [event emotion `surprised`]
+    Aurelia: ... Guter Parierer. Glück gehabt. Nein. Kein Glück. Das war gut.
+    Aurelia: Das nächste Mal nicht.
+  * Sie hat gewonnen. Fair.
+    [set flag.Aurelia_DuelFair true]
+    [set rel.Aurelia {rel.Aurelia} + 10]
+    Aurelia: Du hast nicht aufgegeben, als es klar war. Das machen die meisten. Ich merk mir das.
+  * Ich hab gewonnen. Mit einem kleinen Kitzelklang.
+    [set flag.Aurelia_DuelWon true]
+    [set rel.Aurelia {rel.Aurelia} - 10]
+    [event emotion `angry`]
+    Aurelia: Ein Streich. In einem Duell. Vor meinem Vater.
+    Aurelia: Glückwunsch. Du hast gewonnen und nichts bewiesen.
