@@ -1,0 +1,34 @@
+# N214 – Meister Lidlos im Dunklen Stollen. Panische Angst vor Dunkelheit. Erlösung nur mit der ewigen Laterne (N213), sonst Kampf.
+===
+[set SpeakerName.Lidlos "Meister Lidlos"]
+===
+[event camera `close`]
+[event emotion `scared`]
+Lidlos: Nicht dunkel machen. Bitte. Bitte nicht dunkel machen.
+Lidlos: Hahaha, entschuldigen Sie, ich bin etwas ... Sie sind hier drin. Hier ist es dunkel. Warum sind Sie hier drin?
+Lidlos: Drei Tage. Ich lag drei Tage hier. Ich war zwölf. Ich hab meine Hand nicht gesehen. Ich hab gedacht, ich bin schon tot.
+  * Deshalb dürfen die anderen nie mehr die Augen schließen?
+    Lidlos: Damit keiner mehr im Dunkeln liegt! Keiner! Ich passe auf! Das ist ... das ist doch gut?
+  * Die Stille Hand benutzt Sie.
+    [event emotion `angry`]
+    Lidlos: Die haben mir einen Stein versprochen, der die Nacht fernhält. Mehr will ich nicht wissen. Ich will nicht wissen!
+[if {flag.Lantern_Kept}]
+  * (Ihm die Laterne geben, die nie ausgeht)
+    [event emotion `surprised`]
+    Lidlos: Die ... ist warm. Die geht nicht aus? Nie? Auch nicht, wenn ich schlafe?
+    Lidlos: Grimms Laterne. Er hat immer davon geredet. Ich hab ihn ausgelacht.
+    [event emotion `sad`]
+    Lidlos: Ich halte sie. Ich halte sie fest. Dann brauch ich die Fäden nicht mehr. Dann ... dürfen sie zumachen.
+    [set flag.Lidlos_Redeemed true]
+    [set flag.Lidlos_Decided true]
+    Lidlos: Augen zu, alle. Es bleibt hell. Ich versprech's.
+  * (Kämpfen)
+    [event emotion `angry`]
+    Lidlos: Nein! Nein, nein, nein! Nicht näher! Ich mach die Lichter aus, wenn Sie näher kommen! Ich mach sie AUS!
+    [set flag.Lidlos_Decided true]
+[else]
+  * (Kämpfen)
+    [event emotion `angry`]
+    Lidlos: Nein! Nein, nein, nein! Nicht näher! Ich mach die Lichter aus, wenn Sie näher kommen! Ich mach sie AUS!
+    [set flag.Lidlos_Decided true]
+[endif]

@@ -1,0 +1,140 @@
+{
+  "id": "M209",
+  "type": "main",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Die Taktgeberin",
+    "en": "The Beatkeeper"
+  },
+  "summary": {
+    "de": "Tief in der Kael-Mine wartet Mara. Lio ruft ihren Namen. Sie antwortet nicht ihm.",
+    "en": "Deep in the Kael mine Mara is waiting. Lio calls her name. She doesn't answer him."
+  },
+  "dialogues": [
+    "D_M209_Mara",
+    "D_M209_Lio_Nachher"
+  ],
+  "stages": [
+    {
+      "id": "s1_klangraum",
+      "text": {
+        "de": "Geh in den Kael-Klangraum.",
+        "en": "Enter the Kael sound chamber."
+      },
+      "objectives": [
+        {
+          "id": "o_raum",
+          "kind": "reach",
+          "target": "Kael_Klangraum",
+          "marker": "Kael_Klangraum",
+          "text": {
+            "de": "Erreich den Klangraum",
+            "en": "Reach the sound chamber"
+          }
+        },
+        {
+          "id": "o_mara",
+          "kind": "dialogue",
+          "target": "D_M209_Mara",
+          "marker": "NPC_Mara",
+          "text": {
+            "de": "Stell dich Mara",
+            "en": "Face Mara"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s2_kampf",
+      "text": {
+        "de": "Mara kämpft im Takt. Wenn Lio getroffen wird, zögert sie.",
+        "en": "Mara fights in rhythm. When Lio is hit, she hesitates."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "defeat",
+          "target": "Mara_Taktgeberin",
+          "marker": "NPC_Mara",
+          "text": {
+            "de": "Besiege Mara",
+            "en": "Defeat Mara"
+          }
+        },
+        {
+          "id": "o_novizen",
+          "kind": "defeat",
+          "target": "Stille_Hand_Novize",
+          "count": 6,
+          "text": {
+            "de": "Brich den Takt der Novizen",
+            "en": "Break the novices' rhythm"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_nachher"
+        }
+      ]
+    },
+    {
+      "id": "s3_nachher",
+      "text": {
+        "de": "Der Raum bricht ein. Mara zieht dich raus. Dann ist sie weg.",
+        "en": "The chamber collapses. Mara pulls you out. Then she's gone."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M209_Lio_Nachher",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio",
+            "en": "Talk to Lio"
+          }
+        },
+        {
+          "id": "o_metronom",
+          "kind": "collect",
+          "target": "Maras_Metronom",
+          "text": {
+            "de": "Heb Maras Metronom-Anhänger auf",
+            "en": "Pick up Mara's metronome pendant"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Heard_Brandheim=1",
+        "flag:Has_Metronome=1",
+        "rel:Mara+5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 600,
+    "gold": 0,
+    "items": [
+      "Maras_Metronom"
+    ],
+    "effects": []
+  }
+}

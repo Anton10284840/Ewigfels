@@ -1,0 +1,16 @@
+# M203 – Saphira am Moorrand. Weich, singend, redet über Tiere wie über Menschen. „Hört ihr das?“
+===
+[set SpeakerName.Saphira "Dozentin Lindqvist"]
+===
+[event emotion `happy`]
+Saphira: Hört ihr das? Die Frösche singen zweistimmig. Das machen sie nur, wenn sie verliebt sind. Oder Angst haben.
+Saphira: Heute ... beides, glaube ich.
+  * Ist das Moor gefährlich?
+    Saphira: Für Leute, die nicht zuhören. Die Moorlicht-Unken locken mit kleinen Lichtern. Wer folgt, steht bis zur Hüfte im Schlamm. Die Unken lachen dann. Leise.
+  * Was ist in Ihrem Bündel? Es bewegt sich.
+    [event emotion `scared`]
+    Saphira: Mein Bündel? Proviant. Lebendiger Proviant. Brot, das gern wackelt.
+    Saphira: ... Nicht fragen. Bitte.
+  * Wie finden wir den Weg im Nebel?
+    Saphira: Den Fröschen nach. Sie sitzen nur da, wo der Boden trägt. Frösche sind sehr vernünftige Leute.
+Saphira: Stelzenheim liegt in der Mitte. Mutter Quendel wird uns erwarten. Sie erwartet immer jemanden. Meistens den Falschen.

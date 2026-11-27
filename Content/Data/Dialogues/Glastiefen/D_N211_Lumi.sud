@@ -1,0 +1,25 @@
+# N211 – Lumi (7) am Echobrunnen. Glaubt, im Schacht wohnt ein Freund. Kiko (9) lacht sie aus.
+===
+[set SpeakerName.Lumi "Lumi"]
+[set SpeakerName.Kiko "Kiko"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Lumi: Psst! Nicht so laut. Sonst erschrickt er.
+Kiko: Da unten ist niemand. Das ist ein Echo. Ein E-cho. Das hab ich ihr schon hundertmal gesagt.
+[event emotion `angry`]
+Lumi: Ein Echo singt dasselbe zurück. Er singt aber was anderes! Andere Wörter. Komische Wörter.
+  * Sing mir vor, was er singt.
+    Lumi: La, mi, la ... und dann sagt er „Kael-a, Kael-o“. Das kenn ich nicht. Das hab ich nicht erfunden.
+    Kiko: ... Das hat sie wirklich nicht erfunden. Sie kann nicht mal „Kristall“ richtig schreiben.
+  * Vielleicht hat Kiko recht.
+    [event emotion `sad`]
+    Lumi: Du auch? Dann sing doch selber rein. Dann hörst du es.
+  * Ich glaube dir.
+    [event emotion `happy`]
+    Lumi: Echt? Du bist die erste große Person, die das sagt.
+Lumi: Sing mit mir. Erst ich, dann du, dann warten wir.
+[event camera `close`]
+Lumi: Und wenn er antwortet, bist du ganz still. Versprochen?
+  * Versprochen.
+    Lumi: Gut. Auf drei. Eins, zwei ...

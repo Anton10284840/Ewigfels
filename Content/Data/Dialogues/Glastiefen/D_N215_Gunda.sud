@@ -1,0 +1,19 @@
+# N215 – Bergfrau Gunda Schacht am Bergtor. Sehr groß, sehr leise, Glocke am Gürtel. Der Wal schreit.
+===
+[set SpeakerName.Gunda "Bergfrau Gunda Schacht"]
+===
+[event camera `medium`]
+Gunda: Läuten.
+  * (Die Glocke am Tor läuten)
+    Gunda: Gut. Wer läutet, kommt wieder raus. So ist das hier.
+  * Warum?
+    Gunda: Damit der Berg weiß, dass du da bist. Er zählt mit.
+[event camera `close`]
+[event emotion `sad`]
+Gunda: Hörst du das? Das Beben.
+Gunda: Das ist der Wal. Vierzig Jahre hör ich ihn singen. So hat er nie geklungen. Das ist kein Lied. Das ist Schmerz.
+  * Was ist mit ihm?
+    Gunda: Seit die Leute in Schwarz unten graben, schreit er. Ich glaub, sie haben ihm was getan.
+  * Ich sehe nach ihm.
+    Gunda: Dann spring über die Inseln. Nicht ins Wasser fallen. Das Wasser ist kalt genug, um zu vergessen, wie man schwimmt.
+Gunda: Und tu ihm nicht weh, wenn's geht. Er hat diese Höhle geleuchtet, bevor es uns gab.

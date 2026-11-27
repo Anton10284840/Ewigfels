@@ -1,0 +1,25 @@
+# M206 – Hanne stirbt. Leise, im Schnee, mit den Kindern um sich. Kein Pathos in Worten, nur in der Szene (Cutscene 50 s).
+# Sie weint nicht vor Kindern. Sie tut so, als wäre alles egal. Bis zum letzten Satz.
+===
+[set SpeakerName.Hanne "Hanne Brook"]
+[set SpeakerName.Lene "Lene"]
+===
+[event camera `close`]
+[event emotion `sad`]
+Hanne: Da bist du ja. Hast lange gebraucht. Typisch.
+Hanne: Sind alle draußen? Zähl sie. Laut.
+  * Alle sechs. Lene, Bastian, Kalle, Ida, Tom und Tim.
+    Hanne: Gut. Gut. Tom und Tim sind sicher vertauscht. Ist egal. Hauptsache zwei.
+  * (Hanne die Hand halten)
+    Hanne: Warm. Du warst immer warm. Selbst als Säugling. Wie ein kleiner Ofen.
+Lene: Hanne, steh auf. Bitte. Der Schnee ist kalt.
+Hanne: Ich lieg gern im Schnee, Lenchen. Weiß doch jeder.
+  * Ich hol Hilfe. Halt durch.
+    Hanne: Hilfe. Ja. Hol Hilfe. Ich warte hier. Ich lauf nicht weg.
+  * Danke. Für alles. Für das Bett, das du nicht weggegeben hast.
+    [event emotion `soft`]
+    Hanne: Hab's nur nicht geschafft. Hab ich doch gesagt.
+[event camera `closeup`]
+Hanne: Hör zu, Kind. Wer pfeifen kann, kann zaubern.
+Hanne: Pfeif laut, hab ich gesagt.
+Hanne: ... Schief, aber laut.

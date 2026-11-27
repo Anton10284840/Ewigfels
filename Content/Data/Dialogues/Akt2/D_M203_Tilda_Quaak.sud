@@ -1,0 +1,19 @@
+# M203 (optional, nach S108) – Herr Quaak ist der Froschkönig von Stelzenheim. Tilda übersetzt, ernst und würdevoll.
+===
+[set SpeakerName.Tilda "Tilda Morn"]
+===
+[if {quest.S108} == 2]
+[event emotion `surprised`]
+Tilda: Sie verbeugen sich. Alle. Vor Herrn Quaak.
+Tilda: Hunderte. Hört ihr? Sie quaken seinen Namen.
+  * Tilda, ist Herr Quaak ... ein König?
+    Tilda: Natürlich ist er ein König. Ich hab's immer gesagt.
+    Tilda: ... Ich hab gesagt, er ist ein Prinz. Das ist fast dasselbe.
+  * Ich glaube, er hat Heimweh.
+    [event emotion `sad`]
+    Tilda: Er sagt, er bleibt bei mir. Er sagt, Könige können überall wohnen. Er sagt, das Bett in Moosgrund ist besser als jeder Seerosenthron.
+Tilda: Er sagt, er kommt jeden Sommer zu Besuch. Mit mir. Wegen der Regierungsgeschäfte.
+Tilda: Er sagt tschüss. Zu ihnen. Nicht zu mir. Zu mir sagt er nie tschüss.
+[else]
+Tilda: Die Frösche hier sind sehr ... vornehm. Herr Quaak hätte sie gemocht. Er wäre gern mitgekommen.
+[endif]

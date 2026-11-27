@@ -1,0 +1,13 @@
+# N204 – Martha Ackerlein, Marionette, früher Dorfvorsteherin. Spricht im Schlaf, wenn ihr Faden lockert.
+===
+[set SpeakerName.Martha "Martha Ackerlein"]
+===
+[event camera `close`]
+Martha: ... Agathe? Bist du das? Komm rein. Der Tee ist ... der Tee ist kalt.
+Martha: Sie haben dich weggeschickt, damals. Die Hüter. Weil du mit den Toten geredet hast.
+Martha: Quendel hat als Letzte Ja gesagt. Sie hat geweint dabei. Du hast es nicht gesehen. Ich schon.
+  * Martha, hören Sie mich? Was ist passiert?
+    Martha: Die Ernte ... ist abgesoffen. Wir wollten gehen. Du hast geweint. Du hast gesagt: Nicht du auch noch.
+  * (Den Faden noch etwas lockern)
+    Martha: Agathe ... wir wären zurückgekommen. Wir wollten nur zu meiner Schwester. Für einen Winter.
+Martha: ... Ringel, Ringel, Reihe ...

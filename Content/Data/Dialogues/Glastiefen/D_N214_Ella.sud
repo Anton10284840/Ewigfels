@@ -1,0 +1,20 @@
+# N214 – Ella (8), Fels' Tochter. Blinzelt heimlich. Hat Angst, dass es jemand merkt.
+===
+[set SpeakerName.Ella "Ella"]
+===
+[event camera `close`]
+Ella: Nicht so laut. Und schau mich an. Ganz normal anschauen.
+Ella: Die anderen gucken jetzt nicht, oder? Gut.
+[event emotion `sad`]
+Ella: Ich blinzle noch. Heimlich. Wenn keiner hinsieht. Wenn das Meister Lidlos merkt ...
+  * Was passiert dann?
+    Ella: Dann bekomm ich die Tropfen. Wie Papa. Papa hat ganz lange nicht mehr geblinzelt.
+  * Blinzeln ist doch normal.
+    Ella: Hier nicht. Hier ist nichts mehr normal. Papa erzählt mir jeden Morgen dieselbe Geschichte. Als wär sie neu.
+Ella: Die Leute schlafen nicht mehr. Sie sitzen nachts am Tisch. Mit offenen Augen. Und gucken.
+Ella: Kannst du machen, dass es wieder dunkel wird? Nur einmal? Ich will so gern mal wieder richtig schlafen.
+  * Ich mach das Licht aus. Versprochen.
+    [event emotion `happy`]
+    Ella: ... Okay. Dann blinzle ich jetzt einmal. Für dich. Damit du weißt, dass ich noch da bin.
+  * Erst muss ich wissen, was hier los ist.
+    Ella: Frag Papa. Und dann geh in die Werkstatt. Aber schau nicht zu lange auf die Augen an den Fäden.

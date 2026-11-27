@@ -1,0 +1,20 @@
+# N201 – Fips und Fino (12), Froschhüter-Zwillinge. Streiten, wer Frösche besser versteht.
+===
+[set SpeakerName.Fips "Fips"]
+[set SpeakerName.Fino "Fino"]
+===
+[event emotion `happy`]
+Fips: Du! Du bist in meinem Team!
+Fino: Nein, in meinem! Ich hab zuerst geguckt!
+Fips: Gucken zählt nicht. Zeigen zählt. Ich hab gezeigt.
+  * Worum geht's überhaupt?
+    Fino: Ums Froschrennen! Einmal über alle Stege, quer durch Stelzenheim. Wer gewinnt, ist Froschmeister. Für ein Jahr.
+    Fips: Ich war's letztes Jahr.
+    Fino: Weil mein Frosch geniest hat!
+  * Ich helfe beiden.
+    Fips: Das geht nicht. Das ist wie zwei Köpfe auf einem Hut.
+    Fino: Das sagt Oma immer. Keiner weiß, was es heißt.
+  * Wie bringt man Frösche zum Laufen?
+    Fino: Man singt. Das Lauflied. Quak-quak-hopp, quak-quak-hopp. Dann rennen sie.
+    Fips: Meiner rennt in letzter Zeit nicht. Aber das ist Taktik.
+Fino: Probier's aus. Sing einem vor. Du wirst sehen, meiner ist schneller.

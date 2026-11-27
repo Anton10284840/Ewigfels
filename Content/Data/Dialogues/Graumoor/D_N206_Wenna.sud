@@ -1,0 +1,13 @@
+# N206 – Wenna Bult, Schnitzerin. Schnitzt beim Reden, die Figur sieht am Ende aus wie der Gesprächspartner.
+===
+[set SpeakerName.Wenna "Wenna Bult"]
+===
+[event emotion `happy`]
+Wenna: Halt still. Nein, schau mich an. So. Gleich fertig.
+Wenna: Siehst du? Das bist du. Die Nase hab ich etwas netter gemacht. Bitte.
+  * Danke ... glaube ich.
+    Wenna: Gern. Die Nase war kostenlos.
+  * Was ist heute Abend los?
+    Wenna: Nebelnacht! Alle Laternen aus, der Nebel kommt rein, und man findet seine Leute nur über ihr Lied.
+Wenna: Jeder hat ein Lied, weißt du. Das, was man summt, wenn man nicht nachdenkt. Deine Freunde auch. Hör hin, dann findest du sie.
+Wenna: Und wenn du jemanden hörst, den du nicht kennst: geh hin. In der Nebelnacht ist jeder eingeladen.

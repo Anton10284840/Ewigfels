@@ -1,0 +1,19 @@
+# N213 – Die Laterne ist fertig. Behalten (Weg zur Erlösung von Lidlos) oder an Grimm verkaufen.
+===
+[set SpeakerName.Grimm "Grimm Glanz"]
+===
+[event camera `close`]
+[event emotion `surprised`]
+Grimm: Sie brennt. Sie brennt wirklich. Kein Docht, kein Öl. Nur Licht, das bleibt.
+[event emotion `happy`]
+Grimm: Dreihundert Gold. Sofort, auf die Hand. Das ist mehr, als ich im Jahr verdiene. Ich lüge nicht, sehen Sie, ich leuchte nicht.
+  * (Die Laterne behalten)
+    [set flag.Lantern_Kept true]
+    Grimm: Behalten? Hm. Ja. Ehrlich gesagt ... ich hätte sie auch nicht hergegeben.
+    Grimm: Wissen Sie, wer so eine bräuchte? Der kleine Lidlos. War ein Schleifer hier, früher. Hatte immer Angst im Dunkeln. Ist nach Hohlstollen gegangen. Seitdem hört man nichts mehr.
+  * (Für 300 Gold verkaufen)
+    [set flag.Lantern_Sold true]
+    [event emotion `sad`]
+    Grimm: Gemacht. Ich stell sie ins Fenster. Nicht zum Verkaufen. Nur zum Anschauen.
+    Grimm: Ist komisch. Dreißig Jahre gewollt, und jetzt fühlt es sich an, als hätte ich etwas vergessen.
+Grimm: Danke, Akademie. Sie haben einem alten Schreihals einen Traum gebaut.

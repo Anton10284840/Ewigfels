@@ -1,0 +1,17 @@
+# M206 – Varga verkündet die Wintersperre. Wenige, gesetzte Worte. Nie mehr als drei Sätze am Stück.
+===
+[set SpeakerName.Varga "Rektorin Varga"]
+===
+[event camera `wide`]
+[event emotion `neutral`]
+Varga: Kesselbrunn wurde angegriffen. Hanne Brook ist tot. Sie hat sechs Kinder gerettet.
+Varga: Ab heute ist Nocturna geschlossen. Niemand verlässt den Fels bis zum Frühling.
+Varga: Die Kinder aus dem Warmen Ofen wohnen jetzt hier. Wer ihnen nicht hilft, hat mit mir zu tun.
+[event camera `close`]
+Varga: Für Hanne Brook.
+  * (Die Hand heben, wie alle anderen)
+    Varga: ...
+  * (Eine Kerze anzünden)
+    [event emotion `soft`]
+    Varga: Gut.
+Varga: Geht schlafen. Morgen wird es schwer. Übermorgen auch.

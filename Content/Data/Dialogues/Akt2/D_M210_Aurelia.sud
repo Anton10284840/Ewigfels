@@ -1,0 +1,22 @@
+# M210 – Nach der Anhörung. Aurelia weiß es seit der Mine (oder ahnt es) und schweigt. Sagt Dinge zweimal, wenn sie sie ernst meint.
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+===
+[if {flag.Draeger_Alarm}]
+[event emotion `neutral`]
+Aurelia: Mein Handschuh ist mir runtergefallen. Genau, als die Glocke sauer klang. Dräger hat sich umgedreht. Zufall.
+Aurelia: Ich lasse nie etwas fallen. Nie.
+[else]
+Aurelia: Du hast gut geantwortet. Nicht gelogen und nichts gesagt. Das ist eine Kunst. Mein Vater kann das. Ich dachte, nur er.
+[endif]
+Aurelia: Ich weiß, was du bist. Ich hab's in der Mine gesehen. Oder in deinen Augen beim Duell. Egal.
+  * Warum hast du mir geholfen?
+    Aurelia: Frag nicht, warum. Ich weiß es selbst nicht genau.
+    [event emotion `sad`]
+    Aurelia: Vielleicht, weil du der Einzige bist, der mich nie wie die Kanzlerstochter behandelt hat. Nur wie eine Rivalin. Das ist ehrlicher.
+  * Wirst du es deinem Vater sagen?
+    Aurelia: Nein.
+    Aurelia: ... Nein. Das war ernst gemeint. Nein.
+  * Danke, Aurelia.
+    Aurelia: Danke nicht. Du schuldest mir ein Duell. Ein faires. Ohne das, was du bist.
+Aurelia: Und jetzt geh. Wenn jemand uns zusammen sieht, denken sie, wir sind Freunde. Das wäre peinlich.

@@ -1,0 +1,158 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/GRAUMOOR.md. Marker-IDs = Quest-Marker.",
+  "id": "Graumoor",
+  "act_from": 2,
+  "size_km": [
+    3,
+    3
+  ],
+  "villages": [
+    {
+      "id": "Stelzenheim",
+      "mood": "froehlich",
+      "music": "Froschchor, Holzflöten, Trommeln auf Hohlbirken",
+      "fast_travel": "Froschsteg",
+      "npcs": [
+        "Quendel",
+        "Ilmo",
+        "Wenna",
+        "Fips",
+        "Fino",
+        "Seline"
+      ],
+      "shops": [
+        {
+          "npc": "Ilmo",
+          "sells": [
+            "Nachhall-Reinigung",
+            "Moorbäder",
+            "Moorkräuter"
+          ]
+        },
+        {
+          "npc": "Wenna",
+          "sells": [
+            "Holzperlen",
+            "Masken",
+            "Stimmring-Fassungen Mooreiche"
+          ]
+        },
+        {
+          "npc": "Fips",
+          "sells": [
+            "Mooslinge (Haustiere)"
+          ]
+        }
+      ],
+      "pois": [
+        "Froschsteg",
+        "Quendels_Haus",
+        "Ratskreis",
+        "Heilerhuette",
+        "Schnitzerplattform",
+        "Aderknoten",
+        "Stelzenheim"
+      ],
+      "minigames": [
+        "Froschrennen",
+        "Steg-Tanz",
+        "Aderknoten-Gesang",
+        "Moorangeln"
+      ]
+    },
+    {
+      "id": "Moorwinkel",
+      "mood": "gruselig",
+      "music": "verstimmte Drehleier, Kinderreim im Dreivierteltakt",
+      "fast_travel": "Dorfbrunnen",
+      "npcs": [
+        "Agathe",
+        "Martha",
+        "Tobi"
+      ],
+      "shops": [],
+      "pois": [
+        "Moorwinkel_Gatter",
+        "Moorwinkel_Felder",
+        "Moorwinkel_Friedhof",
+        "Moorwinkel_Muehle"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Altwacht",
+      "kind": "dungeon",
+      "quest": "M204"
+    },
+    {
+      "id": "Koeniginnenteich",
+      "kind": "boss",
+      "quest": "N205",
+      "boss": "Moorkoenigin"
+    },
+    {
+      "id": "Irrlichtsenke",
+      "kind": "gefahr",
+      "quest": "N203"
+    },
+    {
+      "id": "Birkenhain",
+      "kind": "lager",
+      "quest": "N202"
+    },
+    {
+      "id": "Wilderer_Zelt",
+      "kind": "lager",
+      "quest": "N202"
+    },
+    {
+      "id": "Torfstich",
+      "kind": "ort",
+      "quest": "M205"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Aderknoten",
+      "at": "Aderknoten",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Birkenorgel",
+      "at": "Birkenhain",
+      "reward": "Quarz_Irrlichtgruen"
+    },
+    {
+      "id": "Schrein_Wachglocke",
+      "at": "Altwacht",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Irrlicht_im_Glas": 10,
+    "Hueterperle": 12,
+    "Nachklang": 5
+  },
+  "enemies": {
+    "act2": [
+      "Moorlicht_Unke",
+      "Irrlicht",
+      "Wilderer",
+      "Wildererhund",
+      "Stille_Hand",
+      "Stummling",
+      "Agathe_Dornfeld",
+      "Marionetten_Bauer",
+      "Moorkoenigin"
+    ]
+  },
+  "quests": [
+    "N201",
+    "N202",
+    "N203",
+    "N204",
+    "N205",
+    "N206"
+  ]
+}

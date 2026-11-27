@@ -1,0 +1,37 @@
+# M207 – Wichtigster Dialog des Akts. Lio erkennt, dass Mara bei der Stillen Hand ist. Wut, Weinen, Schweigen.
+# Jede Wahl ist richtig, verändert Lio leicht: bitter (Wut teilen), mutig (festhalten), weich (zuhören), Witz (er lacht unter Tränen).
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+Lio: Geh weg.
+Lio: ... Nein. Bleib. Aber sag nichts.
+[event emotion `sad`]
+Lio: Das hier. Hab ich im Schnee gefunden. Gestern. Neben dem Waisenhaus.
+Lio: Eine Haarsträhne mit einem Netzknoten. Den Knoten hab ich ihr beigebracht. Mit sieben. Den kann sonst keiner. Den hab ich erfunden.
+Lio: Sie war da. Mara. Sie war bei denen. Sie hat zugeschaut, wie Hanne ...
+[event emotion `angry`]
+Lio: Fünf Jahre! Fünf Jahre hab ich jeden Brief aufgemacht, ob er von ihr ist! Und sie ist bei DENEN!
+  * (Zuhören)
+    [event emotion `sad`]
+    Lio: ... Sie hat mir Mundharmonika beigebracht. Das Lied für Mara. Das hab ich ihr geschrieben. Mit acht. Es hat drei Töne. Mehr konnte ich nicht.
+    Lio: Ich spiel es jeden Abend. Dachtest du, ich übe? Ich hab ihr geantwortet. Jeden Abend.
+    [event state `rel:Lio+15`]
+  * (Lio festhalten)
+    Lio: Lass ... lass los. Nein. Nicht loslassen.
+    [event emotion `sad`]
+    Lio: Ich hol sie zurück. Hörst du? Ich hol sie zurück. Und dann schrei ich sie an. Und dann umarm ich sie. In der Reihenfolge.
+    [event state `rel:Lio+20`]
+  * Ich bin auch wütend. Auf sie. Auf alle.
+    Lio: Gut. Gut. Dann sind wir zu zweit wütend. Das ist besser als allein.
+    Lio: Aber hass sie nicht. Das darf nur ich.
+    [event state `rel:Lio+10`]
+  * Dreihundertzwölf Stufen bist du barfuß hochgelaufen, du Hallkopf.
+    [event emotion `happy`]
+    Lio: Dreihundertzwölf. Ich hab gezählt. Ich zähl immer, wenn ich nicht denken will.
+    [event emotion `sad`]
+    Lio: Meine Füße sind blau. Sag's keinem.
+    [event state `rel:Lio+10`]
+[event emotion `neutral`]
+Lio: ...
+Lio: Danke, dass du da bist. Ich sag das nur einmal. Danach machen wir wieder Witze. Okay?

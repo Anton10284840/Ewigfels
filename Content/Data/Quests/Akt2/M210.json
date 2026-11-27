@@ -1,0 +1,142 @@
+{
+  "id": "M210",
+  "type": "main",
+  "act": 2,
+  "region": "Nocturna",
+  "giver": "Varga",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M209"
+  ],
+  "title": {
+    "de": "Masken",
+    "en": "Masks"
+  },
+  "summary": {
+    "de": "Das Kollegium inspiziert Nocturna. Bannglocken hängen über dem See, und sie reagieren auf Urton.",
+    "en": "The Collegium inspects Nocturna. Ban bells hang over the lake, and they react to the Urtone."
+  },
+  "dialogues": [
+    "D_M210_Draeger",
+    "D_M210_Aurelia",
+    "D_M210_Edda_Steg"
+  ],
+  "stages": [
+    {
+      "id": "s1_verstecken",
+      "text": {
+        "de": "Bring Maras Metronom und deine Notizen aus dem Turmzimmer, bevor die Ediktwachen dort sind.",
+        "en": "Get Mara's metronome and your notes out of your tower room before the edict guards get there."
+      },
+      "objectives": [
+        {
+          "id": "o_zimmer",
+          "kind": "interact",
+          "target": "Turmzimmer_Versteck",
+          "marker": "Turmzimmer",
+          "text": {
+            "de": "Hol die Sachen aus dem Turmzimmer",
+            "en": "Get the things from your tower room"
+          }
+        },
+        {
+          "id": "o_gaenge",
+          "kind": "custom",
+          "target": "Durchsuchung_Umgehen",
+          "text": {
+            "de": "Bring sie über die Geheimgänge in Sicherheit, ohne erwischt zu werden",
+            "en": "Get them to safety through the secret passages without being caught"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_anhoerung"
+        }
+      ]
+    },
+    {
+      "id": "s2_anhoerung",
+      "text": {
+        "de": "Die Anhörung. Die Stimmglocke klingt sauer bei Lügen. Sag die Wahrheit, ohne etwas zu verraten.",
+        "en": "The hearing. The Tuning Bell sounds sour at lies. Tell the truth without giving anything away."
+      },
+      "objectives": [
+        {
+          "id": "o_draeger",
+          "kind": "dialogue",
+          "target": "D_M210_Draeger",
+          "marker": "NPC_Draeger",
+          "text": {
+            "de": "Antworte Großinquisitor Dräger",
+            "en": "Answer Grand Inquisitor Dräger"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_aurelia"
+        }
+      ]
+    },
+    {
+      "id": "s3_aurelia",
+      "text": {
+        "de": "Aurelia war Zeugin. Sie will mit dir reden.",
+        "en": "Aurelia was a witness. She wants to talk to you."
+      },
+      "objectives": [
+        {
+          "id": "o_aurelia",
+          "kind": "dialogue",
+          "target": "D_M210_Aurelia",
+          "marker": "NPC_Aurelia",
+          "text": {
+            "de": "Sprich mit Aurelia",
+            "en": "Talk to Aurelia"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Aurelia_Knows=1",
+        "rel:Aurelia+15"
+      ],
+      "next": [
+        {
+          "stage": "s4_steg"
+        }
+      ]
+    },
+    {
+      "id": "s4_steg",
+      "text": {
+        "de": "Das Jahr ist um. Edda wartet am Steg.",
+        "en": "The year is over. Edda is waiting at the jetty."
+      },
+      "objectives": [
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M210_Edda_Steg",
+          "marker": "Bootssteg_Nocturna",
+          "text": {
+            "de": "Geh zu Edda an den Steg",
+            "en": "Go to Edda at the jetty"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "gold": 0,
+    "items": [],
+    "effects": []
+  }
+}

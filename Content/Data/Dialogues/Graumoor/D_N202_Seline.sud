@@ -1,0 +1,13 @@
+# N202 – Seline in Stelzenheim. Knapp, misstrauisch, ehrlich. Wilderer am Birkenhain.
+===
+[set SpeakerName.Seline "Seline"]
+===
+[event emotion `angry`]
+Seline: Akademie. Gut, dass du da bist. Ich sag das nicht oft.
+Seline: Am Birkenhain fehlen Mooslinge. Zwölf in einer Woche. Und drei Stelzreiher. Stelzreiher lassen sich nicht fangen. Außer man weiß, wie.
+  * Wilderer?
+    Seline: Wilderer. Aber keine gewöhnlichen. Die lassen das Fell liegen und nehmen das Tier. Lebend.
+  * Was wollen sie mit lebenden Tieren?
+    Seline: Das frag ich mich auch. Und die Antwort wird mir nicht gefallen.
+Seline: Ich hab Käfigspuren gefunden. Tief, schwer. Mit Eisen beschlagen. Folg ihnen. Ich komm mit.
+Seline: Und wenn Hunde dabei sind: nicht töten. Wiegenlied. Die Hunde können nichts dafür.

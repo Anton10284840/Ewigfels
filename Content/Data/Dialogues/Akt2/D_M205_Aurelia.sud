@@ -1,0 +1,18 @@
+# M205 – Aurelia als Praktikantin ihres Vaters. Kontrolliert, knapp, ehrlich. Sagt „bitte“ zum ersten Mal (Bruch der Regel: bis Akt 2).
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+===
+[event emotion `neutral`]
+Aurelia: Nicht hier. Hinter den Netzen. Feil muss uns nicht sehen.
+Aurelia: Mein Vater hat mich mitgeschickt. Praktikum. Er sagt, ich soll lernen, wie das Kollegium arbeitet.
+Aurelia: Ich lerne gerade, dass das Kollegium Frösche zählt, bevor es sie trockenlegt.
+  * Was willst du von mir?
+    Aurelia: Gib ihm den Schlüssel.
+    [event emotion `sad`]
+    Aurelia: Bitte.
+    Aurelia: Ich muss hier was beweisen. Wenn Feil ohne Schlüssel zurückkommt, heißt es, ich war nutzlos. Und das stimmt dann sogar.
+  * Du findest das auch falsch, oder?
+    Aurelia: Was ich finde, ist egal. Ich bin die Tochter des Kanzlers. Was ich finde, steht morgen in der Zeitung.
+  * (Schweigen)
+    Aurelia: Du schaust mich an, als würdest du mich bemitleiden. Lass das.
+Aurelia: Entscheide, was du willst. Ich sag nichts mehr dazu. Ich hab schon zu viel gesagt. Das ist neu für mich.

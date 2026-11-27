@@ -1,0 +1,258 @@
+{
+  "id": "M201",
+  "type": "main",
+  "act": 2,
+  "region": "Nocturna",
+  "giver": "Varga",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M110"
+  ],
+  "title": {
+    "de": "Neue Gesichter",
+    "en": "New Faces"
+  },
+  "summary": {
+    "de": "Das zweite Jahr beginnt. Neue Erstklässler, ein neuer Lehrer, und Grell hat etwas in der Tasche, das niemand sehen soll.",
+    "en": "The second year begins. New first-years, a new teacher, and Grell has something in her pocket no one is meant to see."
+  },
+  "dialogues": [
+    "D_M201_Wim",
+    "D_M201_Corvin",
+    "D_M201_Edda_Grotte",
+    "D_M201_Corvin_Keller",
+    "D_M201_Grell_Varga"
+  ],
+  "stages": [
+    {
+      "id": "s1_ueberfahrt",
+      "text": {
+        "de": "Fahr mit den neuen Erstklässlern über den See. Einer von ihnen hat Angst vor Wasser.",
+        "en": "Cross the lake with the new first-years. One of them is afraid of water."
+      },
+      "objectives": [
+        {
+          "id": "o_boot",
+          "kind": "reach",
+          "target": "Bootssteg_Nocturna",
+          "marker": "Bootssteg_Nocturna",
+          "text": {
+            "de": "Fahr mit dem Akademieboot nach Nocturna",
+            "en": "Take the academy boat to Nocturna"
+          }
+        },
+        {
+          "id": "o_wim",
+          "kind": "dialogue",
+          "target": "D_M201_Wim",
+          "marker": "NPC_Wim",
+          "text": {
+            "de": "Kümmere dich um Wim",
+            "en": "Look after Wim"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Wim_Protege=1"
+      ],
+      "next": [
+        {
+          "stage": "s2_abend"
+        }
+      ]
+    },
+    {
+      "id": "s2_abend",
+      "text": {
+        "de": "Willkommensabend in der Großen Halle. Varga stellt den neuen Lehrer vor.",
+        "en": "Welcome evening in the Great Hall. Varga introduces the new teacher."
+      },
+      "objectives": [
+        {
+          "id": "o_halle",
+          "kind": "reach",
+          "target": "Grosse_Halle",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Geh zum Willkommensabend",
+            "en": "Go to the welcome evening"
+          }
+        },
+        {
+          "id": "o_kuchen",
+          "kind": "custom",
+          "target": "Kesselmayr_Abschiedskuchen",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Überlebe Kesselmayrs Abschiedskuchen",
+            "en": "Survive Kesselmayr's farewell cake"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_corvin"
+        }
+      ]
+    },
+    {
+      "id": "s3_corvin",
+      "text": {
+        "de": "Erste Stunde bei Corvin Hale im Kesselkeller. Er will, dass ein Kessel explodiert.",
+        "en": "First lesson with Corvin Hale in the Cauldron Cellar. He wants a cauldron to explode."
+      },
+      "objectives": [
+        {
+          "id": "o_stunde",
+          "kind": "custom",
+          "target": "Unterricht_Corvin_Kessel",
+          "marker": "Kesselkeller",
+          "text": {
+            "de": "Lass den Kessel kontrolliert explodieren",
+            "en": "Make the cauldron explode in a controlled way"
+          }
+        },
+        {
+          "id": "o_corvin",
+          "kind": "dialogue",
+          "target": "D_M201_Corvin",
+          "marker": "NPC_Corvin",
+          "text": {
+            "de": "Bleib nach der Stunde",
+            "en": "Stay after class"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:E1_TrustEdda"
+          ],
+          "stage": "s4a_grotte"
+        },
+        {
+          "stage": "s4b_keller"
+        }
+      ]
+    },
+    {
+      "id": "s4a_grotte",
+      "text": {
+        "de": "Edda holt dich nachts ab. Durch Geheimgang 11 in die Seegrotte. Erste Stunde: Halten.",
+        "en": "Edda fetches you at night. Through secret passage 11 into the lake grotto. First lesson: holding."
+      },
+      "objectives": [
+        {
+          "id": "o_gang",
+          "kind": "reach",
+          "target": "Seegrotte_Eingang",
+          "marker": "Geheimgang_11",
+          "text": {
+            "de": "Folg Edda durch Geheimgang 11",
+            "en": "Follow Edda through secret passage 11"
+          }
+        },
+        {
+          "id": "o_halten",
+          "kind": "custom",
+          "target": "Urton_Halten",
+          "text": {
+            "de": "Spür den Urton, ohne ihn rauszulassen (Herzschlag-Rhythmus)",
+            "en": "Feel the Urtone without letting it out (heartbeat rhythm)"
+          }
+        },
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M201_Edda_Grotte",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Sprich mit Edda",
+            "en": "Talk to Edda"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Edda+5"
+      ],
+      "next": [
+        {
+          "stage": "s5_lauschen"
+        }
+      ]
+    },
+    {
+      "id": "s4b_keller",
+      "text": {
+        "de": "Corvin hat die graue Flamme gesehen. Er sagt, er hat nichts gesehen.",
+        "en": "Corvin saw the grey flame. He says he saw nothing."
+      },
+      "objectives": [
+        {
+          "id": "o_keller",
+          "kind": "dialogue",
+          "target": "D_M201_Corvin_Keller",
+          "marker": "NPC_Corvin",
+          "text": {
+            "de": "Sprich mit Corvin im warmen Keller",
+            "en": "Talk to Corvin in the warm cellar"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Corvin_Confidant=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_lauschen"
+        }
+      ]
+    },
+    {
+      "id": "s5_lauschen",
+      "text": {
+        "de": "Grell und Varga reden im Speisesaal. Der Speisenaufzug trägt jedes Wort nach unten.",
+        "en": "Grell and Varga are talking in the dining hall. The dumbwaiter carries every word down."
+      },
+      "objectives": [
+        {
+          "id": "o_aufzug",
+          "kind": "reach",
+          "target": "Geheimgang_8",
+          "marker": "Kueche",
+          "text": {
+            "de": "Kriech in den Speisenaufzug (Geheimgang 8)",
+            "en": "Crawl into the dumbwaiter (secret passage 8)"
+          }
+        },
+        {
+          "id": "o_lauschen",
+          "kind": "dialogue",
+          "target": "D_M201_Grell_Varga",
+          "text": {
+            "de": "Belausche Grell und Varga",
+            "en": "Eavesdrop on Grell and Varga"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Overheard_Glove=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 0,
+    "items": [
+      "Abzeichen_Jahr2",
+      "Weise_Siedepunkt_Corvin"
+    ],
+    "effects": []
+  }
+}

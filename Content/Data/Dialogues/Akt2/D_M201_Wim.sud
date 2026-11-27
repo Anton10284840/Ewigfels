@@ -1,0 +1,22 @@
+# M201 – Wim Hasel (11), Moosgrund-Anwärter, Angst vor Wasser. Wird Schützling des Spielers.
+===
+[set SpeakerName.Wim "Wim Hasel"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `scared`]
+Wim: Ist das Boot dicht? Ganz sicher dicht? Wie tief ist der See? Bitte nicht sagen, wie tief.
+Lio: Neunzig Meter.
+Wim: Ich hab gesagt, nicht sagen!
+  * Warte, bis du die Treppe siehst. Dann vergisst du den See.
+    Wim: Welche Treppe?
+    Lio: Dreihundertzwölf Stufen. Ich hab sie zweimal gezählt. Einmal davon rückwärts.
+  * Halt dich an mir fest. Ich lass dich nicht los.
+    [event emotion `soft`]
+    Wim: Echt? Auch wenn ich spucke?
+    Lio: Dann lässt er dich vielleicht doch los.
+  * Ich hatte auch Angst. Letztes Jahr.
+    Wim: Wirklich? Du siehst nicht aus wie jemand, der Angst hat.
+    Lio: Doch. Sieht man an den Augenbrauen. Guck.
+[event emotion `neutral`]
+Wim: Ich heiße Wim. Ich komm nach Moosgrund, hoffe ich. Meine Oma sagt, da sind die Netten.
+Wim: Darf ich ... darf ich mich beim Essen neben dich setzen? Nur die erste Woche. Oder zwei.

@@ -1,0 +1,20 @@
+# N214 – Steiger Bruno Fels. Schläft nicht, erzählt dasselbe Gespräch jeden Tag neu. Starrt ohne Blinzeln.
+===
+[set SpeakerName.Fels "Steiger Bruno Fels"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Fels: Willkommen in Hohlstollen! Gute Luft, gutes Licht. Heute hab ich was Schönes erlebt. Wollen Sie es hören?
+Fels: Meine Ella hat mir heute früh einen Stein geschenkt. Rund wie ein Ei. Ich hab ihn in die Tasche gesteckt.
+  * Wann war das?
+    Fels: Heute früh. ... Oder gestern. Ist das wichtig? Hier ist immer früh. Hier ist immer hell.
+  * Zeigen Sie mir den Stein.
+    Fels: Hier, in der Tasche ... da sind viele Steine. Runde. So viele. Hat sie mir die alle heute geschenkt?
+[event camera `close`]
+Fels: Sie blinzeln. Merken Sie das? Sie sollten das nicht tun. Man verpasst was.
+  * Wann haben Sie zuletzt geschlafen?
+    [event emotion `surprised`]
+    Fels: Geschlafen. Das Wort kenn ich. Das war ... dunkel. Nein. Dunkel mögen wir hier nicht. Meister Lidlos sagt, dunkel ist das Ende.
+  * Wer ist Meister Lidlos?
+    Fels: Der hat uns das Licht geschenkt. Er wohnt in der Werkstatt. Er arbeitet immer. Wie wir.
+Fels: Willkommen in Hohlstollen! Gute Luft, gutes Licht. Heute hab ich was Schönes erlebt ...

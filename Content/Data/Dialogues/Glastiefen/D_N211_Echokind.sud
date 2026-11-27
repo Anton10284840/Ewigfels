@@ -1,0 +1,26 @@
+# N211 – Kael-Echo eines Kindes, das vor 800 Jahren in der Mine sang. Nur mit Seelenecho hörbar. Freisingen oder bei Lumi lassen.
+===
+[set SpeakerName.Echokind "Kind im Schacht"]
+[set SpeakerName.Lumi "Lumi"]
+===
+[event camera `close`]
+Echokind: Kael-a ... Kael-o ... Wer singt da oben mit? Du bist nicht das kleine Mädchen.
+Echokind: Ich heiß Oren. Mein Vater hat unten Stein geschlagen. Ich hab gesungen, damit er den Weg zurück findet.
+[event emotion `sad`]
+Echokind: Dann kam der große Knall. Und dann war nur noch Singen. Sehr lange. Wie lange?
+  * Achthundert Jahre.
+    Echokind: Oh. Dann ist Papa bestimmt schon raus. Oder?
+  * Lange genug.
+    Echokind: Das sagen die Großen immer, wenn es zu lange war.
+Echokind: Das kleine Mädchen singt schön. Schief, aber schön. Sie ist meine Freundin.
+Lumi: Du kannst ihn hören? Echt jetzt? Was sagt er?
+  * (Mit Lumi das letzte Lied singen, damit Oren gehen kann)
+    [set flag.Echokind_Freed true]
+    [event emotion `happy`]
+    Echokind: Das ist das Lied, das Papa immer gepfiffen hat ... Ich glaub, ich hör ihn. Tschüss, Lumi. Sing weiter.
+    [event emotion `sad`]
+    Lumi: Tschüss, Oren. ... Ich sing jeden Tag. Damit du's hörst. Da, wo du jetzt bist.
+  * (Lumi weiter mit ihm singen lassen)
+    Echokind: Bleiben ist auch schön. Ich bring ihr meine Wörter bei. Kael-a heißt „hier bin ich“.
+    [event emotion `happy`]
+    Lumi: Kael-a! Kael-a! Hörst du, Kiko? Ich kann eine echte alte Sprache!

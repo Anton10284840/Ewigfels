@@ -1,0 +1,18 @@
+# N201 – Fips' Frosch ist taub. Entscheidung: Klopfrhythmus zeigen (fair) oder Fino helfen.
+===
+[set SpeakerName.Fips "Fips"]
+===
+[event emotion `sad`]
+Fips: Du hast es gemerkt. Oder? Dass er nicht hört.
+Fips: Er heißt Brummer. Er ist taub, seit er klein ist. Letztes Jahr hab ich gewonnen, weil Fino nicht aufgepasst hat. Nicht weil Brummer gelaufen ist.
+  * Frösche spüren den Boden. Klopf ihm den Rhythmus auf den Steg.
+    [set flag.Fips_Fair true]
+    [event emotion `surprised`]
+    Fips: Klopfen? ... Klopf-klopf-hopp. Klopf-klopf-hopp.
+    Fips: Er bewegt sich! Er hört es mit dem Bauch! Brummer, du hörst mit dem Bauch!
+  * Dann tritt nicht an. Das ist ehrlicher.
+    Fips: Nicht antreten? Dann gewinnt Fino. Für ein ganzes Jahr. Er wird unerträglich.
+    Fips: ... Na gut. Aber du sagst ihm nicht, warum.
+  * Ich helfe Fino. Tut mir leid.
+    Fips: Schon gut. Fino hat einen guten Frosch. Ich sag's nur nicht laut.
+Fips: Danke, dass du nichts gesagt hast. Vor allen. Das war nett.

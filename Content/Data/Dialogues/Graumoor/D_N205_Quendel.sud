@@ -1,0 +1,19 @@
+# N205 – Die Moorkönigin greift Stelzenheim an. Ihr Zustand hängt von Entscheidung 2 ab.
+===
+[set SpeakerName.Quendel "Mutter Quendel"]
+===
+[event emotion `scared`]
+Quendel: Halt die Pfähle! Ankerhalt! Bei allen Fröschen, halt sie fest!
+Quendel: Das ist sie. Die Königin. Seit dreihundert Jahren im Teich. Sie kommt nie raus. Nie.
+[if {flag.E2_KeyKeepers}]
+Quendel: Sie ist krank. Das Bohren bei Altwacht. Der Ton hat sie vergiftet. Sie greift nicht an, sie sucht Hilfe. Wie ein Kind, das an die Tür schlägt.
+Quendel: Bring mich zum Teich. Lösch die Irrlichter, sie fressen ihre Kraft. Dann sing ich sie gesund.
+[else]
+[event emotion `angry`]
+Quendel: Die Pumpen. Die verdammten Pumpen von Aurenburg. Sie haben ihr den halben Teich genommen. Sie hat Angst. Wer Angst hat, schlägt.
+Quendel: Ich kann sie nicht mehr gesund singen. Da ist nichts mehr, wo man singen könnte. Vertreib sie. Bitte nicht töten. Vertreib sie in den Süden.
+[endif]
+  * Ich mach das.
+    Quendel: Ich weiß. Darum hab ich dich gerufen.
+  * Das ist meine Schuld, oder?
+    Quendel: Schuld ist ein Wort für später. Jetzt ist Wasser.

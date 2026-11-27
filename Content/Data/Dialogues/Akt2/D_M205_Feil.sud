@@ -1,0 +1,27 @@
+# M205 – Magister Lorenz Feil, Kollegiumsgesandter. Höflich, logisch, droht leise. Hier fällt Entscheidung 2.
+===
+[set SpeakerName.Feil "Magister Feil"]
+===
+[event emotion `neutral`]
+Feil: Ah. Sie müssen die junge Person sein, die in fremde Festungen fällt. Lorenz Feil, Hohes Kollegium. Sehr erfreut.
+Feil: Edikt 4, Absatz 2: Artefakte aus der Kael-Zeit gehören dem Kollegium. Nicht aus Bosheit. Aus Vorsicht. Sie haben gesehen, wer sonst danach gräbt.
+  * Die Hüter brauchen ihn für die Ader.
+    Feil: Die Hüter brauchen vieles. Wege, Ärzte, Schulen. Das Kollegium bietet ihnen das alles. Wir legen das Moor trocken. Die Ader wird dann sicher verwaltet.
+  * Und wenn ich Nein sage?
+    Feil: Dann sagen Sie Nein. Das ist Ihr gutes Recht.
+    Feil: Und ich schreibe Ihren Namen auf. Das ist meins.
+  * Was passiert mit dem Moor, wenn es trocken ist?
+    Feil: Es wird nützlich. Felder, Straßen, Ordnung. Weniger Nebel. Weniger Frösche, vermutlich. Ein Preis.
+Feil: Nun? Ich habe Zeit. Nicht unendlich viel, aber genug.
+  * (Feil den Kael-Schlüssel geben)
+    [event emotion `happy`]
+    Feil: Sehr vernünftig. Ich werde Ihren Namen trotzdem aufschreiben. Auf die andere Liste.
+    [set flag.E2_KeyCollegium true]
+    [set flag.E2_Decided true]
+  * (Den Schlüssel Quendel geben)
+    [event emotion `neutral`]
+    Feil: Bedauerlich. Aber ehrlich. Ich schätze Ehrlichkeit. Ich notiere sie mir.
+    [set flag.E2_KeyKeepers true]
+    [set flag.E2_Decided true]
+  * Ich brauche noch einen Moment.
+    Feil: Nehmen Sie sich einen. Reden Sie mit Ihren Freunden. Ich warte hier und zähle Frösche.

@@ -1,0 +1,24 @@
+# M201 (E1_TrustEdda) – Edda in der Seegrotte. Erste Stunde „Halten“. Leise, trocken, siezt.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+===
+[event camera `wide`]
+Edda: Hier unten hört uns niemand. Nur der Wels. Und der redet nicht.
+Edda: Setzen Sie sich. Augen zu. Hören Sie auf Ihren Herzschlag.
+Edda: Der Ton, der im Winter aus Ihnen kam, ist noch da. Er schläft. Wir wecken ihn heute ein kleines bisschen. Und dann legen Sie ihn wieder hin.
+  * Was ist das für ein Ton?
+    Edda: Später.
+  * Ich habe Angst davor.
+    Edda: Gut. Wer keine Angst davor hat, sollte ihn nicht tragen.
+  * (Augen schließen)
+    Edda: Gut.
+[event emotion `neutral`]
+Edda: Atmen. Nicht festhalten. Halten. Das ist ein Unterschied. Festhalten tut weh. Halten trägt.
+Edda: ...
+Edda: Gut.
+  * Haben Sie so etwas schon einmal gehört?
+    [event camera `close`]
+    Edda: ... Ja. Einmal.
+    Edda: Fragen Sie mich nicht wo. Noch nicht. Ich verspreche Ihnen, dass ich es Ihnen sage. Nur nicht heute.
+  * Danke, Magistra.
+    Edda: Danken Sie mir, wenn es funktioniert.

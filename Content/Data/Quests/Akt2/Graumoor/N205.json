@@ -1,0 +1,159 @@
+{
+  "id": "N205",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Quendel",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M205"
+  ],
+  "title": {
+    "de": "Die Moorkönigin",
+    "en": "The Moor Queen"
+  },
+  "summary": {
+    "de": "Etwas Riesiges schlägt gegen die Pfähle von Stelzenheim. Die Irrlichter am Königinnenteich sind so hell wie nie.",
+    "en": "Something huge is striking Stelzenheim's stilts. The wisps at the Queen's Pond are brighter than ever."
+  },
+  "dialogues": [
+    "D_N205_Quendel"
+  ],
+  "stages": [
+    {
+      "id": "s1_angriff",
+      "text": {
+        "de": "Verteidige Stelzenheim.",
+        "en": "Defend Stelzenheim."
+      },
+      "objectives": [
+        {
+          "id": "o_pfaehle",
+          "kind": "custom",
+          "target": "Pfaehle_Halten",
+          "count": 3,
+          "marker": "Stelzenheim",
+          "text": {
+            "de": "Halte die Pfähle mit Ankerhalt, bis die Königin abtaucht",
+            "en": "Hold the stilts with Anchorhold until the queen dives"
+          }
+        },
+        {
+          "id": "o_quendel",
+          "kind": "dialogue",
+          "target": "D_N205_Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Sprich mit Quendel",
+            "en": "Talk to Quendel"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_teich"
+        }
+      ]
+    },
+    {
+      "id": "s2_teich",
+      "text": {
+        "de": "Am Königinnenteich: im Nebel nur über Ton orten.",
+        "en": "At the Queen's Pond: in the fog, locate only by sound."
+      },
+      "objectives": [
+        {
+          "id": "o_teich",
+          "kind": "reach",
+          "target": "Koeniginnenteich",
+          "marker": "Koeniginnenteich",
+          "text": {
+            "de": "Erreich den Königinnenteich",
+            "en": "Reach the Queen's Pond"
+          }
+        },
+        {
+          "id": "o_irrlichter",
+          "kind": "custom",
+          "target": "Irrlichter_Loeschen",
+          "count": 6,
+          "text": {
+            "de": "Lösch die Irrlichter mit Frost",
+            "en": "Put out the wisps with Frost"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:E2_KeyKeepers"
+          ],
+          "stage": "s3a_heilen"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_heilen",
+      "text": {
+        "de": "Die Königin ist krank, nicht böse. Halt die Irrlichter fern, während Quendel singt.",
+        "en": "The queen is sick, not evil. Keep the wisps away while Quendel sings."
+      },
+      "objectives": [
+        {
+          "id": "o_singen",
+          "kind": "custom",
+          "target": "Koenigin_Gesundsingen",
+          "text": {
+            "de": "Schütz Quendel, bis ihr Lied fertig ist",
+            "en": "Protect Quendel until her song is done"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Moorqueen_Healed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Die Pumpen des Kollegiums haben ihr den Teich genommen. Sie kämpft um ihr Leben.",
+        "en": "The Collegium's pumps have taken her pond. She is fighting for her life."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Moorkoenigin",
+          "marker": "Koeniginnenteich",
+          "text": {
+            "de": "Vertreib die Moorkönigin",
+            "en": "Drive off the Moor Queen"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 80,
+    "items": [
+      "Ring_Moorkrone",
+      "Kodex_Moorkoenigin"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "M206",
+  "type": "main",
+  "act": 2,
+  "region": "Kesselbrunn",
+  "giver": "Varga",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M205"
+  ],
+  "title": {
+    "de": "Wintersperre",
+    "en": "Winter Lockdown"
+  },
+  "summary": {
+    "de": "Wintersonnenwende in Kesselbrunn. Lichterfest, Glühwein, Jupp spielt. Dann verstummen die Glocken, eine nach der anderen.",
+    "en": "Winter solstice in Kesselbrunn. Festival of lights, mulled wine, Jupp is playing. Then the bells fall silent, one after another."
+  },
+  "dialogues": [
+    "D_M206_Hanne",
+    "D_M206_Ambros",
+    "D_M206_Varga_Sperre"
+  ],
+  "stages": [
+    {
+      "id": "s1_fest",
+      "text": {
+        "de": "Feier mit Kesselbrunn das Lichterfest.",
+        "en": "Celebrate the festival of lights with Kesselbrunn."
+      },
+      "objectives": [
+        {
+          "id": "o_markt",
+          "kind": "reach",
+          "target": "Marktbrunnen",
+          "marker": "Marktbrunnen",
+          "text": {
+            "de": "Geh auf den Marktplatz",
+            "en": "Go to the market square"
+          }
+        },
+        {
+          "id": "o_hanne",
+          "kind": "talk",
+          "target": "Hanne",
+          "marker": "NPC_Hanne",
+          "text": {
+            "de": "Wink Hanne am Waisenhaus zu",
+            "en": "Wave to Hanne at the orphanage"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_angriff"
+        }
+      ]
+    },
+    {
+      "id": "s2_angriff",
+      "text": {
+        "de": "Die Stille Hand kommt den Hang herunter. Alle im selben Schritt. Verteidige das Dorf.",
+        "en": "The Silent Hand comes down the slope. All in step. Defend the village."
+      },
+      "objectives": [
+        {
+          "id": "o_markt2",
+          "kind": "custom",
+          "target": "Zivilisten_Retten",
+          "count": 8,
+          "marker": "Marktbrunnen",
+          "text": {
+            "de": "Bring die Leute vom Marktplatz in Sicherheit",
+            "en": "Get the people on the market square to safety"
+          }
+        },
+        {
+          "id": "o_taktgeber",
+          "kind": "defeat",
+          "target": "Taktgeber",
+          "count": 2,
+          "text": {
+            "de": "Besiege die Taktgeber, die die Gruppen synchronisieren",
+            "en": "Defeat the beatkeepers synchronising the groups"
+          }
+        },
+        {
+          "id": "o_ambros",
+          "kind": "dialogue",
+          "target": "D_M206_Ambros",
+          "marker": "Kettler_Werkstatt",
+          "text": {
+            "de": "Hilf Ambros aus der brennenden Werkstatt",
+            "en": "Help Ambros out of the burning workshop"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_waisenhaus"
+        }
+      ]
+    },
+    {
+      "id": "s3_waisenhaus",
+      "text": {
+        "de": "Das Waisenhaus brennt. Hanne hält die Tür.",
+        "en": "The orphanage is burning. Hanne is holding the door."
+      },
+      "objectives": [
+        {
+          "id": "o_rauch",
+          "kind": "custom",
+          "target": "Waisenhaus_Rauch",
+          "marker": "Waisenhaus",
+          "text": {
+            "de": "Mach den Weg durch den Rauch frei",
+            "en": "Clear a path through the smoke"
+          }
+        },
+        {
+          "id": "o_kinder",
+          "kind": "custom",
+          "target": "Kinder_Retten",
+          "count": 6,
+          "text": {
+            "de": "Hol die Kinder raus",
+            "en": "Get the children out"
+          }
+        },
+        {
+          "id": "o_hanne2",
+          "kind": "dialogue",
+          "target": "D_M206_Hanne",
+          "marker": "NPC_Hanne",
+          "text": {
+            "de": "Bleib bei Hanne",
+            "en": "Stay with Hanne"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_sperre"
+        }
+      ]
+    },
+    {
+      "id": "s4_sperre",
+      "text": {
+        "de": "Die Stille Hand zieht sich im Takt zurück. Varga schließt Nocturna.",
+        "en": "The Silent Hand withdraws in step. Varga closes Nocturna."
+      },
+      "objectives": [
+        {
+          "id": "o_varga",
+          "kind": "dialogue",
+          "target": "D_M206_Varga_Sperre",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Hör Vargas Ansprache",
+            "en": "Hear Varga's address"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "gold": 0,
+    "items": [
+      "Hannes_Kochloeffel"
+    ],
+    "effects": [
+      "rep:Zuenfte+10"
+    ]
+  }
+}
