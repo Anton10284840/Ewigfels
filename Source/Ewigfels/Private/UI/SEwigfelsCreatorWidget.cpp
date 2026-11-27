@@ -756,7 +756,7 @@ void SEwigfelsCreatorWidget::BuildRing()
 		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Metal : NAME_None; },
 		[](FEwigfelsAppearance& L, FName V) { if (L.Rings.Num() == 0) { L.Rings.AddDefaulted(); } L.Rings[0].Metal = V; });
 	AddColor(LOCTEXT("Quartz", "Quarzfarbe"), TEXT("quartz"),
-		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Quartz : FColor::CrWhite; },
+		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Quartz : FColor::White; },
 		[](FEwigfelsAppearance& L, FColor V) { if (L.Rings.Num() == 0) { L.Rings.AddDefaulted(); } L.Rings[0].Quartz = V; });
 }
 
