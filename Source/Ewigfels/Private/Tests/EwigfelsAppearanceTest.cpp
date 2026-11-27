@@ -88,9 +88,14 @@ bool FEwigfelsLookCatalogTest::RunTest(const FString& Parameters)
 		AddError(Error);
 	}
 	const FEwigfelsLookCatalog& Cat = Game.Catalog();
-	TestEqual(TEXT("8 Grundgesichter"), Cat.GetOptions(EwigfelsLook::Cat::Face).Num(), 8);
+	TestEqual(TEXT("12 fertige Köpfe"), Cat.GetOptions(EwigfelsLook::Cat::Face).Num(), 12);
 	TestEqual(TEXT("10 Kleidungs-Slots"), Cat.OutfitSlots.Num(), 10);
-	TestTrue(TEXT("mind. 30 Regler"), Cat.Sliders.Num() >= 30);
+	TestEqual(TEXT("keine Feinregler"), Cat.Sliders.Num(), 0);
+	TestTrue(TEXT("Würfel-Namen"), Cat.RandomNames.Num() >= 10);
+	for (const FEwigfelsLookOption& Head : Cat.GetOptions(EwigfelsLook::Cat::Face))
+	{
+		TestTrue(*FString::Printf(TEXT("Kopf %s hat Mesh und Hautton"), *Head.Id.ToString()), !Head.Asset.IsNull() && Head.bHasTint);
+	}
 	TestTrue(TEXT("mind. 7 Läden"), Cat.Shops.Num() >= 7);
 	TestTrue(TEXT("Hautpalette"), Cat.Palettes.Contains(TEXT("skin")) && Cat.Palettes[TEXT("skin")].Num() >= 8);
 
@@ -144,8 +149,7 @@ bool FEwigfelsLookSanitizeTest::RunTest(const FString& Parameters)
 	TestEqual(TEXT("Größe begrenzt"), L.Height, Cat.HeightMax);
 	TestEqual(TEXT("NaN repariert"), L.FaceBlend, 0.f);
 	TestEqual(TEXT("Frisur auf Standard"), L.HairStyle, Cat.Defaults.HairStyle);
-	TestEqual(TEXT("ein Regler übrig"), L.Sliders.Num(), 1);
-	TestEqual(TEXT("Regler begrenzt"), L.GetSlider(TEXT("nase_laenge")), 1.f);
+	TestEqual(TEXT("alte Regler entfernt (Katalog hat keine)"), L.Sliders.Num(), 0);
 	TestEqual(TEXT("Male begrenzt"), L.Marks.Num(), Cat.MaxMarks);
 	TestEqual(TEXT("Deckkraft begrenzt"), L.Marks[0].Opacity, 1.f);
 	TestEqual(TEXT("genau 10 Slots"), L.Outfit.Num(), Cat.OutfitSlots.Num());
@@ -222,7 +226,7 @@ bool FEwigfelsLookRulesTest::RunTest(const FString& Parameters)
 	TestFalse(TEXT("Handschuhmacher: Umhang umfärben nicht"), CheckChange(Created, Recolor, Cat, Ctx(TEXT("handschuhmacher")), Price, Reason));
 
 	FEwigfelsAppearance NewFace = Created;
-	NewFace.SetSlider(TEXT("nase_laenge"), 0.5f);
+	NewFace.FaceA = NewFace.FaceB = Created.FaceA == FName(TEXT("kopf_02")) ? FName(TEXT("kopf_03")) : FName(TEXT("kopf_02"));
 	TestFalse(TEXT("Barbier ändert kein Gesicht"), CheckChange(Created, NewFace, Cat, Ctx(TEXT("haarstube")), Price, Reason));
 	TestTrue(TEXT("Spiegelhexe ändert Gesicht"), CheckChange(Created, NewFace, Cat, Ctx(TEXT("spiegelhexe")), Price, Reason));
 
@@ -254,6 +258,15 @@ bool FEwigfelsLookRandomTest::RunTest(const FString& Parameters)
 		if (EwigfelsLook::Sanitize(Copy, Cat, &Fixes) > 0)
 		{
 			AddError(FString::Printf(TEXT("Zufall %d braucht Korrektur: %s"), Seed, *FString::Join(Fixes, TEXT("; "))));
+		}
+		if (L.FaceB != L.FaceA || L.FaceBlend != 0.f)
+		{
+			AddError(FString::Printf(TEXT("Zufall %d mischt Köpfe (soll fertigen Kopf nehmen)"), Seed));
+		}
+		const FString Name = EwigfelsLook::RandomName(Cat, Random, TEXT("Elowen"));
+		if (Name.Len() < Cat.NameMin || Name.Len() > Cat.NameMax || Name == TEXT("Elowen"))
+		{
+			AddError(FString::Printf(TEXT("Würfel-Name '%s' ungültig"), *Name));
 		}
 		int32 Price = 0;
 		FText Reason;

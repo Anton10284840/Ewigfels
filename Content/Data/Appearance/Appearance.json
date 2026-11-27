@@ -1,6 +1,6 @@
 {
  "version": 1,
- "_info": "Auswahl für Charakter-Editor und Läden. Format: docs/CHARACTER_CREATOR.md. Prüfen: python Scripts/Tools/validate_appearance.py",
+ "_info": "Auswahl für Charakter-Editor und Läden: fertige Köpfe, keine Feinregler. Format: docs/CHARACTER_CREATOR.md. Prüfen: python Scripts/Tools/validate_appearance.py",
  "limits": {
   "height_min": 0.95,
   "height_max": 1.05,
@@ -49,575 +49,126 @@
    "unlock": "start"
   }
  ],
- "face_presets": [
+ "heads": [
   {
-   "id": "gesicht_01",
+   "id": "kopf_01",
    "name": {
-    "de": "Rund und offen",
-    "en": "Round and open"
+    "de": "Sonnig",
+    "en": "Sunny"
    },
-   "morph": "",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_01.SK_Kopf_01",
+   "skin": "#F6DCC8",
    "unlock": "start"
   },
   {
-   "id": "gesicht_02",
+   "id": "kopf_02",
    "name": {
-    "de": "Schmal und fein",
-    "en": "Narrow and fine"
+    "de": "Verträumt",
+    "en": "Dreamy"
    },
-   "morph": "Preset_02",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_02.SK_Kopf_02",
+   "skin": "#EFC9AE",
    "unlock": "start"
   },
   {
-   "id": "gesicht_03",
+   "id": "kopf_03",
    "name": {
-    "de": "Kantig",
-    "en": "Angular"
+    "de": "Frech",
+    "en": "Cheeky"
    },
-   "morph": "Preset_03",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_03.SK_Kopf_03",
+   "skin": "#E3B28F",
    "unlock": "start"
   },
   {
-   "id": "gesicht_04",
+   "id": "kopf_04",
    "name": {
-    "de": "Weich",
-    "en": "Soft"
+    "de": "Sanft",
+    "en": "Gentle"
    },
-   "morph": "Preset_04",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_04.SK_Kopf_04",
+   "skin": "#D49E78",
    "unlock": "start"
   },
   {
-   "id": "gesicht_05",
+   "id": "kopf_05",
    "name": {
-    "de": "Lang und edel",
-    "en": "Long and noble"
+    "de": "Mutig",
+    "en": "Brave"
    },
-   "morph": "Preset_05",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_05.SK_Kopf_05",
+   "skin": "#C08560",
    "unlock": "start"
   },
   {
-   "id": "gesicht_06",
+   "id": "kopf_06",
    "name": {
-    "de": "Breit und herzlich",
-    "en": "Broad and warm"
+    "de": "Neugierig",
+    "en": "Curious"
    },
-   "morph": "Preset_06",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_06.SK_Kopf_06",
+   "skin": "#A86E4A",
    "unlock": "start"
   },
   {
-   "id": "gesicht_07",
+   "id": "kopf_07",
+   "name": {
+    "de": "Gelassen",
+    "en": "Calm"
+   },
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_07.SK_Kopf_07",
+   "skin": "#8E5A3B",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_08",
+   "name": {
+    "de": "Strahlend",
+    "en": "Radiant"
+   },
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_08.SK_Kopf_08",
+   "skin": "#74472D",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_09",
+   "name": {
+    "de": "Wild",
+    "en": "Wild"
+   },
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_09.SK_Kopf_09",
+   "skin": "#5B3622",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_10",
+   "name": {
+    "de": "Edel",
+    "en": "Noble"
+   },
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_10.SK_Kopf_10",
+   "skin": "#432719",
+   "unlock": "start"
+  },
+  {
+   "id": "kopf_11",
    "name": {
     "de": "Spitzbübisch",
     "en": "Impish"
    },
-   "morph": "Preset_07",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_11.SK_Kopf_11",
+   "skin": "#F2D5C4",
    "unlock": "start"
   },
   {
-   "id": "gesicht_08",
+   "id": "kopf_12",
    "name": {
     "de": "Ernst",
     "en": "Serious"
    },
-   "morph": "Preset_08",
+   "asset": "/Game/Characters/Player/Heads/SK_Kopf_12.SK_Kopf_12",
+   "skin": "#C9967A",
    "unlock": "start"
-  }
- ],
- "sliders": [
-  {
-   "id": "kopf_breite",
-   "group": "kopf",
-   "group_name": {
-    "de": "Kopf",
-    "en": "Head"
-   },
-   "name": {
-    "de": "Kopfbreite",
-    "en": "Head width"
-   },
-   "morph_pos": "KopfBreite_Pos",
-   "morph_neg": "KopfBreite_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "kopf_hoehe",
-   "group": "kopf",
-   "group_name": {
-    "de": "Kopf",
-    "en": "Head"
-   },
-   "name": {
-    "de": "Kopfhöhe",
-    "en": "Head height"
-   },
-   "morph_pos": "KopfHoehe_Pos",
-   "morph_neg": "KopfHoehe_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "stirn_hoehe",
-   "group": "kopf",
-   "group_name": {
-    "de": "Kopf",
-    "en": "Head"
-   },
-   "name": {
-    "de": "Stirnhöhe",
-    "en": "Forehead height"
-   },
-   "morph_pos": "StirnHoehe_Pos",
-   "morph_neg": "StirnHoehe_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "brauen_hoehe",
-   "group": "brauen",
-   "group_name": {
-    "de": "Brauen",
-    "en": "Brows"
-   },
-   "name": {
-    "de": "Brauenhöhe",
-    "en": "Brow height"
-   },
-   "morph_pos": "BrauenHoehe_Pos",
-   "morph_neg": "BrauenHoehe_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "brauen_winkel",
-   "group": "brauen",
-   "group_name": {
-    "de": "Brauen",
-    "en": "Brows"
-   },
-   "name": {
-    "de": "Brauenwinkel",
-    "en": "Brow angle"
-   },
-   "morph_pos": "BrauenWinkel_Pos",
-   "morph_neg": "BrauenWinkel_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "brauen_bogen",
-   "group": "brauen",
-   "group_name": {
-    "de": "Brauen",
-    "en": "Brows"
-   },
-   "name": {
-    "de": "Brauenbogen",
-    "en": "Brow ridge"
-   },
-   "morph_pos": "BrauenBogen_Pos",
-   "morph_neg": "BrauenBogen_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "augen_groesse",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Augengröße",
-    "en": "Eye size"
-   },
-   "morph_pos": "AugenGroesse_Pos",
-   "morph_neg": "AugenGroesse_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "augen_abstand",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Augenabstand",
-    "en": "Eye spacing"
-   },
-   "morph_pos": "AugenAbstand_Pos",
-   "morph_neg": "AugenAbstand_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "augen_hoehe",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Augenhöhe",
-    "en": "Eye height"
-   },
-   "morph_pos": "AugenHoehe_Pos",
-   "morph_neg": "AugenHoehe_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "augen_neigung",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Augenneigung",
-    "en": "Eye tilt"
-   },
-   "morph_pos": "AugenNeigung_Pos",
-   "morph_neg": "AugenNeigung_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "augen_tiefe",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Augentiefe",
-    "en": "Eye depth"
-   },
-   "morph_pos": "AugenTiefe_Pos",
-   "morph_neg": "AugenTiefe_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "lider_schwer",
-   "group": "augen",
-   "group_name": {
-    "de": "Augen",
-    "en": "Eyes"
-   },
-   "name": {
-    "de": "Schwere Lider",
-    "en": "Heavy lids"
-   },
-   "morph_pos": "LiderSchwer_Pos",
-   "morph_neg": "LiderSchwer_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "nase_laenge",
-   "group": "nase",
-   "group_name": {
-    "de": "Nase",
-    "en": "Nose"
-   },
-   "name": {
-    "de": "Nasenlänge",
-    "en": "Nose length"
-   },
-   "morph_pos": "NaseLaenge_Pos",
-   "morph_neg": "NaseLaenge_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "nase_breite",
-   "group": "nase",
-   "group_name": {
-    "de": "Nase",
-    "en": "Nose"
-   },
-   "name": {
-    "de": "Nasenbreite",
-    "en": "Nose width"
-   },
-   "morph_pos": "NaseBreite_Pos",
-   "morph_neg": "NaseBreite_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "nase_ruecken",
-   "group": "nase",
-   "group_name": {
-    "de": "Nase",
-    "en": "Nose"
-   },
-   "name": {
-    "de": "Nasenrücken",
-    "en": "Nose bridge"
-   },
-   "morph_pos": "NaseRuecken_Pos",
-   "morph_neg": "NaseRuecken_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "nase_spitze",
-   "group": "nase",
-   "group_name": {
-    "de": "Nase",
-    "en": "Nose"
-   },
-   "name": {
-    "de": "Nasenspitze",
-    "en": "Nose tip"
-   },
-   "morph_pos": "NaseSpitze_Pos",
-   "morph_neg": "NaseSpitze_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "nase_hoecker",
-   "group": "nase",
-   "group_name": {
-    "de": "Nase",
-    "en": "Nose"
-   },
-   "name": {
-    "de": "Höcker",
-    "en": "Nose hump"
-   },
-   "morph_pos": "NaseHoecker_Pos",
-   "morph_neg": "NaseHoecker_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "wangen_knochen",
-   "group": "wangen",
-   "group_name": {
-    "de": "Wangen",
-    "en": "Cheeks"
-   },
-   "name": {
-    "de": "Wangenknochen",
-    "en": "Cheekbones"
-   },
-   "morph_pos": "WangenKnochen_Pos",
-   "morph_neg": "WangenKnochen_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "wangen_fuelle",
-   "group": "wangen",
-   "group_name": {
-    "de": "Wangen",
-    "en": "Cheeks"
-   },
-   "name": {
-    "de": "Wangenfülle",
-    "en": "Cheek fullness"
-   },
-   "morph_pos": "WangenFuelle_Pos",
-   "morph_neg": "WangenFuelle_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "mund_breite",
-   "group": "mund",
-   "group_name": {
-    "de": "Mund",
-    "en": "Mouth"
-   },
-   "name": {
-    "de": "Mundbreite",
-    "en": "Mouth width"
-   },
-   "morph_pos": "MundBreite_Pos",
-   "morph_neg": "MundBreite_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "lippe_oben",
-   "group": "mund",
-   "group_name": {
-    "de": "Mund",
-    "en": "Mouth"
-   },
-   "name": {
-    "de": "Oberlippe",
-    "en": "Upper lip"
-   },
-   "morph_pos": "LippeOben_Pos",
-   "morph_neg": "LippeOben_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "lippe_unten",
-   "group": "mund",
-   "group_name": {
-    "de": "Mund",
-    "en": "Mouth"
-   },
-   "name": {
-    "de": "Unterlippe",
-    "en": "Lower lip"
-   },
-   "morph_pos": "LippeUnten_Pos",
-   "morph_neg": "LippeUnten_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "mundwinkel",
-   "group": "mund",
-   "group_name": {
-    "de": "Mund",
-    "en": "Mouth"
-   },
-   "name": {
-    "de": "Mundwinkel",
-    "en": "Mouth corners"
-   },
-   "morph_pos": "Mundwinkel_Pos",
-   "morph_neg": "Mundwinkel_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "kiefer_breite",
-   "group": "kiefer",
-   "group_name": {
-    "de": "Kiefer und Kinn",
-    "en": "Jaw and chin"
-   },
-   "name": {
-    "de": "Kieferbreite",
-    "en": "Jaw width"
-   },
-   "morph_pos": "KieferBreite_Pos",
-   "morph_neg": "KieferBreite_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "kinn_laenge",
-   "group": "kiefer",
-   "group_name": {
-    "de": "Kiefer und Kinn",
-    "en": "Jaw and chin"
-   },
-   "name": {
-    "de": "Kinnlänge",
-    "en": "Chin length"
-   },
-   "morph_pos": "KinnLaenge_Pos",
-   "morph_neg": "KinnLaenge_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "kinn_breite",
-   "group": "kiefer",
-   "group_name": {
-    "de": "Kiefer und Kinn",
-    "en": "Jaw and chin"
-   },
-   "name": {
-    "de": "Kinnbreite",
-    "en": "Chin width"
-   },
-   "morph_pos": "KinnBreite_Pos",
-   "morph_neg": "KinnBreite_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "kinn_vor",
-   "group": "kiefer",
-   "group_name": {
-    "de": "Kiefer und Kinn",
-    "en": "Jaw and chin"
-   },
-   "name": {
-    "de": "Kinn vor/zurück",
-    "en": "Chin depth"
-   },
-   "morph_pos": "KinnVor_Pos",
-   "morph_neg": "KinnVor_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "ohren_groesse",
-   "group": "ohren",
-   "group_name": {
-    "de": "Ohren",
-    "en": "Ears"
-   },
-   "name": {
-    "de": "Ohrengröße",
-    "en": "Ear size"
-   },
-   "morph_pos": "OhrenGroesse_Pos",
-   "morph_neg": "OhrenGroesse_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "ohren_abstehend",
-   "group": "ohren",
-   "group_name": {
-    "de": "Ohren",
-    "en": "Ears"
-   },
-   "name": {
-    "de": "Abstehende Ohren",
-    "en": "Ear angle"
-   },
-   "morph_pos": "OhrenAbstehend_Pos",
-   "morph_neg": "OhrenAbstehend_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "ohren_spitz",
-   "group": "ohren",
-   "group_name": {
-    "de": "Ohren",
-    "en": "Ears"
-   },
-   "name": {
-    "de": "Spitze Ohren",
-    "en": "Pointed ears"
-   },
-   "morph_pos": "OhrenSpitz_Pos",
-   "morph_neg": "OhrenSpitz_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "koerper_schultern",
-   "group": "koerper",
-   "group_name": {
-    "de": "Körper",
-    "en": "Body"
-   },
-   "name": {
-    "de": "Schultern",
-    "en": "Shoulders"
-   },
-   "morph_pos": "KoerperSchultern_Pos",
-   "morph_neg": "KoerperSchultern_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "koerper_statur",
-   "group": "koerper",
-   "group_name": {
-    "de": "Körper",
-    "en": "Body"
-   },
-   "name": {
-    "de": "Statur",
-    "en": "Build"
-   },
-   "morph_pos": "KoerperStatur_Pos",
-   "morph_neg": "KoerperStatur_Neg",
-   "default": 0.0
-  },
-  {
-   "id": "koerper_muskeln",
-   "group": "koerper",
-   "group_name": {
-    "de": "Körper",
-    "en": "Body"
-   },
-   "name": {
-    "de": "Muskeln",
-    "en": "Muscles"
-   },
-   "morph_pos": "KoerperMuskeln_Pos",
-   "morph_neg": "KoerperMuskeln_Neg",
-   "default": 0.0
   }
  ],
  "palettes": {
@@ -1625,7 +1176,8 @@
     "en": "Brass"
    },
    "asset": "",
-   "unlock": "start"
+   "unlock": "start",
+   "color": "#C9A24A"
   },
   {
    "id": "metall_kupfer",
@@ -1634,7 +1186,8 @@
     "en": "Copper"
    },
    "asset": "",
-   "unlock": "start"
+   "unlock": "start",
+   "color": "#B87333"
   },
   {
    "id": "metall_silber",
@@ -1644,7 +1197,8 @@
    },
    "asset": "",
    "unlock": "shop",
-   "price": 60
+   "price": 60,
+   "color": "#C8CCD4"
   },
   {
    "id": "metall_gold",
@@ -1654,7 +1208,8 @@
    },
    "asset": "",
    "unlock": "shop",
-   "price": 120
+   "price": 120,
+   "color": "#E8C14A"
   },
   {
    "id": "metall_schwarzeisen",
@@ -1664,15 +1219,16 @@
    },
    "asset": "",
    "unlock": "shop",
-   "price": 90
+   "price": 90,
+   "color": "#3A3A44"
   }
  ],
  "defaults": {
   "body_type": "koerper_mittel",
   "height": 1.0,
-  "face_a": "gesicht_01",
-  "face_b": "gesicht_04",
-  "face_blend": 0.3,
+  "face_a": "kopf_05",
+  "face_b": "kopf_05",
+  "face_blend": 0.0,
   "skin_color": "#C08560",
   "eye_color_l": "#5C3B22",
   "eye_color_r": "#5C3B22",
@@ -1705,5 +1261,27 @@
   "outfit_fabric": "stoff_wolle",
   "ring_metal": "metall_messing",
   "quartz": "#FFD27A"
- }
+ },
+ "names": [
+  "Elowen",
+  "Fenric",
+  "Liora",
+  "Marek",
+  "Sunniva",
+  "Tamsin",
+  "Ilian",
+  "Wren",
+  "Odalie",
+  "Kasimir",
+  "Mirella",
+  "Joren",
+  "Nele",
+  "Aurin",
+  "Talvi",
+  "Corvin",
+  "Isolde",
+  "Pim",
+  "Ysra",
+  "Lumen"
+ ]
 }

@@ -29,8 +29,7 @@ namespace
 
 	bool CreatorIsFaceTab(EEwigfelsCreatorTab Tab)
 	{
-		return Tab == EEwigfelsCreatorTab::Face || Tab == EEwigfelsCreatorTab::SkinEyes || Tab == EEwigfelsCreatorTab::Hair
-			|| Tab == EEwigfelsCreatorTab::Marks;
+		return Tab == EEwigfelsCreatorTab::Head || Tab == EEwigfelsCreatorTab::Hair || Tab == EEwigfelsCreatorTab::Marks;
 	}
 }
 
@@ -93,17 +92,9 @@ bool UEwigfelsCreatorSubsystem::Open(UEwigfelsAppearanceComponent* InTarget, FNa
 	OrbitYaw = 0.f;
 	OrbitPitch = -5.f;
 	ZoomAlpha = 0.f;
-	CurrentTab = EEwigfelsCreatorTab::Identity;
-	if (!IsCreation())
 	{
-		for (uint8 i = 0; i <= static_cast<uint8>(EEwigfelsCreatorTab::Ring); ++i)
-		{
-			if (IsTabVisible(static_cast<EEwigfelsCreatorTab>(i)))
-			{
-				CurrentTab = static_cast<EEwigfelsCreatorTab>(i);
-				break;
-			}
-		}
+		const TArray<EEwigfelsCreatorTab> Tabs = GetVisibleTabs();
+		CurrentTab = Tabs.Num() ? Tabs[0] : EEwigfelsCreatorTab::Head;
 	}
 
 	InTarget->OnChangeResult.AddDynamic(this, &UEwigfelsCreatorSubsystem::HandleChangeResult);
@@ -273,6 +264,16 @@ void UEwigfelsCreatorSubsystem::Randomize()
 	});
 }
 
+void UEwigfelsCreatorSubsystem::RandomizeName()
+{
+	FRandomStream Random(FPlatformTime::Cycles());
+	const FString NewName = EwigfelsLook::RandomName(GetCatalog(), Random, Working.Name);
+	if (!NewName.IsEmpty())
+	{
+		Edit([&NewName](FEwigfelsAppearance& L) { L.Name = NewName; });
+	}
+}
+
 void UEwigfelsCreatorSubsystem::ResetToOriginal()
 {
 	const UEwigfelsAppearanceSubsystem* Sub = GetLookSubsystem();
@@ -308,10 +309,9 @@ bool UEwigfelsCreatorSubsystem::IsTabVisible(EEwigfelsCreatorTab Tab) const
 	using namespace EwigfelsLook;
 	switch (Tab)
 	{
-	case EEwigfelsCreatorTab::Identity: return IsAreaEditable(Change::Name);
+	case EEwigfelsCreatorTab::Name: return IsAreaEditable(Change::Name);
 	case EEwigfelsCreatorTab::Body: return IsAreaEditable(Change::Body);
-	case EEwigfelsCreatorTab::Face: return IsAreaEditable(Change::Face);
-	case EEwigfelsCreatorTab::SkinEyes: return IsAreaEditable(Change::Skin) || IsAreaEditable(Change::Eyes);
+	case EEwigfelsCreatorTab::Head: return IsAreaEditable(Change::Face) || IsAreaEditable(Change::Skin) || IsAreaEditable(Change::Eyes);
 	case EEwigfelsCreatorTab::Hair: return IsAreaEditable(Change::Hair) || IsAreaEditable(Change::Beard) || IsAreaEditable(Change::Brows);
 	case EEwigfelsCreatorTab::Marks: return IsAreaEditable(Change::Marks);
 	case EEwigfelsCreatorTab::Voice: return IsAreaEditable(Change::Voice);
@@ -325,6 +325,7 @@ bool UEwigfelsCreatorSubsystem::IsTabVisible(EEwigfelsCreatorTab Tab) const
 			}
 		}
 		return false;
+	case EEwigfelsCreatorTab::Count: return false;
 	}
 	return false;
 }
@@ -438,6 +439,61 @@ void UEwigfelsCreatorSubsystem::SetTab(EEwigfelsCreatorTab Tab)
 	UpdateCamera(false);
 }
 
+TArray<EEwigfelsCreatorTab> UEwigfelsCreatorSubsystem::GetVisibleTabs() const
+{
+	TArray<EEwigfelsCreatorTab> Tabs;
+	for (uint8 i = 0; i < static_cast<uint8>(EEwigfelsCreatorTab::Count); ++i)
+	{
+		if (IsTabVisible(static_cast<EEwigfelsCreatorTab>(i)))
+		{
+			Tabs.Add(static_cast<EEwigfelsCreatorTab>(i));
+		}
+	}
+	return Tabs;
+}
+
+bool UEwigfelsCreatorSubsystem::StepTab(int32 Direction, bool bWrap)
+{
+	const TArray<EEwigfelsCreatorTab> Tabs = GetVisibleTabs();
+	const int32 Index = Tabs.IndexOfByKey(CurrentTab);
+	if (Tabs.Num() < 2 || Index == INDEX_NONE)
+	{
+		return false;
+	}
+	int32 Next = Index + Direction;
+	if (bWrap)
+	{
+		Next = (Next + Tabs.Num()) % Tabs.Num();
+	}
+	if (!Tabs.IsValidIndex(Next))
+	{
+		return false;
+	}
+	SetTab(Tabs[Next]);
+	return true;
+}
+
+bool UEwigfelsCreatorSubsystem::IsFirstTab() const
+{
+	const TArray<EEwigfelsCreatorTab> Tabs = GetVisibleTabs();
+	return Tabs.Num() == 0 || Tabs[0] == CurrentTab;
+}
+
+bool UEwigfelsCreatorSubsystem::IsLastTab() const
+{
+	const TArray<EEwigfelsCreatorTab> Tabs = GetVisibleTabs();
+	return Tabs.Num() == 0 || Tabs.Last() == CurrentTab;
+}
+
+void UEwigfelsCreatorSubsystem::FocusWidget(const TSharedRef<SWidget>& InWidget) const
+{
+	// Über die Slate-Befehle des lokalen Spielers, damit im Koop jeder seinen eigenen Fokus behält
+	if (ULocalPlayer* LP = GetLocalPlayer())
+	{
+		LP->GetSlateOperations().SetUserFocus(InWidget, EFocusCause::Navigation);
+	}
+}
+
 void UEwigfelsCreatorSubsystem::Orbit(float DeltaYaw, float DeltaPitch)
 {
 	OrbitYaw = FMath::Fmod(OrbitYaw + DeltaYaw + 360.f, 360.f);
@@ -531,8 +587,8 @@ void UEwigfelsCreatorSubsystem::UpdateCamera(bool bInstant)
 	const FVector Focus = Owner->GetActorLocation() + FVector(0.f, 0.f, bFace ? HalfHeight * 0.8f * Working.Height : HalfHeight * 0.05f);
 	const float Distance = FMath::Lerp(bFace ? 95.f : 330.f, bFace ? 55.f : 170.f, ZoomAlpha);
 	const FRotator View(OrbitPitch, Owner->GetActorRotation().Yaw + 180.f + OrbitYaw, 0.f);
-	// Leicht nach rechts versetzt, damit die Figur neben dem Bedienfeld steht
-	const FVector Side = FRotationMatrix(View).GetUnitAxis(EAxis::Y) * (bFace ? 14.f : 55.f);
+	// Kamera nach links versetzt: die Figur steht rechts neben dem Bedienfeld (links)
+	const FVector Side = FRotationMatrix(View).GetUnitAxis(EAxis::Y) * (bFace ? -16.f : -60.f);
 	Camera->SetActorLocationAndRotation(Focus - View.Vector() * Distance + Side, View);
 }
 

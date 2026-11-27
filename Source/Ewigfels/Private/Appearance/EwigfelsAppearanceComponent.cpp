@@ -29,6 +29,7 @@
 
 namespace
 {
+	const FName LookPieceHead(TEXT("head"));
 	const FName LookPieceHair(TEXT("hair"));
 	const FName LookPieceBeard(TEXT("beard"));
 	const FName LookPieceBrows(TEXT("brows"));
@@ -381,9 +382,40 @@ void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 		ApplyMorphs(Body, Look);
 		ApplyBodyParams(Body, Look);
 
-		// Kinder des Körpers, die nicht von uns stammen (z. B. MetaHuman-Gesicht): Morphs + Haut/Augen
 		TArray<USceneComponent*> Children;
 		Body->GetChildrenComponents(false, Children);
+
+		// Fertiger Kopf: hat die Figur ein Gesichts-Kind (MetaHuman-Blueprint: "Face"), bekommt es das Kopf-Mesh,
+		// sonst hängt der Kopf als eigenes Teil am Körper. Ohne Asset bleibt alles, wie es ist.
+		const FSoftObjectPath HeadAsset = LookAssetOf(Catalog, EwigfelsLook::Cat::Face, Look.FaceA);
+		if (!HeadAsset.IsNull())
+		{
+			USkeletalMeshComponent* FaceComp = nullptr;
+			for (USceneComponent* Child : Children)
+			{
+				USkeletalMeshComponent* ChildMesh = Cast<USkeletalMeshComponent>(Child);
+				if (ChildMesh && !Pieces.FindKey(ChildMesh) && ChildMesh->GetName().Contains(TEXT("Face")))
+				{
+					FaceComp = ChildMesh;
+					break;
+				}
+			}
+			if (FaceComp)
+			{
+				USkeletalMesh* HeadMesh = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(HeadAsset));
+				if (HeadMesh && FaceComp->GetSkeletalMeshAsset() != HeadMesh)
+				{
+					FaceComp->SetSkeletalMeshAsset(HeadMesh);
+				}
+			}
+			else if (USkeletalMeshComponent* HeadPiece = UpdateAttachedPiece(LookPieceHead, HeadAsset, Body))
+			{
+				ApplyMorphs(HeadPiece, Look);
+				ApplyBodyParams(HeadPiece, Look);
+			}
+		}
+
+		// Kinder des Körpers, die nicht von uns stammen (z. B. MetaHuman-Gesicht): Morphs + Haut/Augen
 		for (USceneComponent* Child : Children)
 		{
 			USkeletalMeshComponent* ChildMesh = Cast<USkeletalMeshComponent>(Child);
@@ -445,7 +477,7 @@ void UEwigfelsAppearanceComponent::ApplyMorphs(USkeletalMeshComponent* Mesh, con
 	}
 	const FEwigfelsLookCatalog& Catalog = Sub->GetCatalog();
 
-	// Grundgesichter: Preset_02 … Preset_08 sind Morphs relativ zu Gesicht 1
+	// Optional: Köpfe als Morph-Targets statt eigener Meshes (heute leer, alle Köpfe sind eigene Meshes)
 	for (const FEwigfelsLookOption& Face : Catalog.GetOptions(EwigfelsLook::Cat::Face))
 	{
 		if (Face.Morph.IsNone())

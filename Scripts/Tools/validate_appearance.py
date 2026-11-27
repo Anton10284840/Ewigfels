@@ -32,7 +32,7 @@ DATA = ROOT / "Content" / "Data" / "Appearance"
 WORLD = ROOT / "Content" / "Data" / "World" / "WorldState.json"
 
 LISTS = {
-    "body_types": "body", "face_presets": "face", "hair_styles": "hair", "beards": "beard", "brows": "brows",
+    "body_types": "body", "heads": "face", "face_presets": "face", "hair_styles": "hair", "beards": "beard", "brows": "brows",
     "marks": "marks", "voices": "voice", "outfit": "outfit", "patterns": "pattern", "fabrics": "fabric",
     "ring_metals": "metal",
 }
@@ -106,6 +106,9 @@ def validate(rep: Report):
         if "outfit_slots" in data:
             slots += [s for s in data["outfit_slots"] if s not in slots]
         limits.update(data.get("limits", {}))
+        for n in data.get("names", []):
+            if not isinstance(n, str) or not 2 <= len(n) <= 20:
+                rep.error(f"{src}/names", f"'{n}' muss Text mit 2–20 Zeichen sein (Würfel-Namen)")
         for key, cat in LISTS.items():
             for i, opt in enumerate(data.get(key, [])):
                 oid = opt.get("id")
@@ -189,8 +192,17 @@ def validate(rep: Report):
     for p in PALETTES:
         if not palettes.get(p):
             rep.error("palettes", f"Palette '{p}' fehlt oder ist leer")
-    if len(options["face"]) and sum(1 for o in options["face"].values() if not o.get("morph")) != 1:
-        rep.error("face_presets", "genau ein Grundgesicht braucht \"morph\": \"\" (die Grundform)")
+    for oid, o in options["face"].items():
+        if not o.get("asset") and not o.get("morph"):
+            rep.warn(f"heads/{oid}", "weder asset (Kopf-Mesh) noch morph – Kopf wäre nicht sichtbar")
+    for cat, opts in options.items():
+        for oid, o in opts.items():
+            for field in ("skin", "color"):
+                if field in o and not COLOR_RE.match(str(o[field])):
+                    rep.error(f"{cat}/{oid}", f"{field} ist kein #RRGGBB")
+            thumb = o.get("thumb", "")
+            if thumb and not thumb.startswith("/Game/"):
+                rep.error(f"{cat}/{oid}", "thumb muss mit /Game/ beginnen")
 
     # Standard-Aussehen
     if defaults is None:
@@ -218,6 +230,8 @@ def validate(rep: Report):
             elif opt.get("unlock", "start") != "start":
                 rep.error(f"defaults/outfit/{slot}", f"'{oid}' ist nicht 'start'")
         hmin, hmax = limits.get("height_min", 0.95), limits.get("height_max", 1.05)
+        if defaults.get("face_a") != defaults.get("face_b") or defaults.get("face_blend", 0) != 0:
+            rep.warn("defaults", "face_b sollte gleich face_a sein und face_blend 0 (fertige Köpfe, kein Mischen)")
         if not hmin <= defaults.get("height", 1.0) <= hmax:
             rep.error("defaults/height", "außerhalb der Grenzen")
 
@@ -231,7 +245,7 @@ def summary(info):
         return sum(1 for o in opts[cat].values() if str(o.get("unlock", "start")).startswith(unlock))
 
     print("\nÜbersicht            Editor   Läden   Freischaltung")
-    names = {"body": "Körperbau", "face": "Grundgesichter", "hair": "Frisuren", "beard": "Bärte", "brows": "Brauen",
+    names = {"body": "Körperbau", "face": "Köpfe", "hair": "Frisuren", "beard": "Bärte", "brows": "Brauen",
              "marks": "Male/Tattoos", "voice": "Stimmen", "outfit": "Kleidung", "pattern": "Muster", "fabric": "Stoffe",
              "metal": "Ring-Metalle"}
     for cat, label in names.items():

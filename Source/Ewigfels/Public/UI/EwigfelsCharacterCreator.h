@@ -14,19 +14,19 @@ class SEwigfelsCreatorWidget;
 class UEwigfelsAppearanceComponent;
 class UEwigfelsAppearanceSubsystem;
 
-/** Seiten des Editors (Reiter links). */
+/** Bereiche des Editors (Reiter oben). Reihenfolge = Reihenfolge der geführten Erstellung. */
 UENUM()
 enum class EEwigfelsCreatorTab : uint8
 {
-	Identity,  // Name + Anrede
-	Body,
-	Face,
-	SkinEyes,
-	Hair,
-	Marks,
-	Voice,
+	Head,      // fertiger Kopf, Hautton, Augenfarbe
+	Hair,      // Frisur, Haarfarbe, Brauen, Bart
+	Body,      // Körperbau, Größe
+	Marks,     // Sommersprossen, Schminke, Tattoos …
 	Outfit,
-	Ring
+	Ring,      // Stimmring = Farbe der Magie
+	Voice,
+	Name,      // Name + Anrede (zuletzt)
+	Count UMETA(Hidden)
 };
 
 /**
@@ -53,6 +53,8 @@ public:
 
 	bool IsOpen() const { return Target.IsValid(); }
 	bool IsCreation() const { return ShopId.IsNone(); }
+	/** Geführt (Spielbeginn): Schritt für Schritt mit „Weiter“. Im Laden frei wie ein Kleiderschrank. */
+	bool IsGuided() const { return IsCreation(); }
 	FName GetShopId() const { return ShopId; }
 
 	// --- Für das Fenster ---
@@ -73,6 +75,8 @@ public:
 	bool CanRedo() const { return RedoStack.Num() > 0; }
 	void Randomize();
 	void ResetToOriginal();
+	/** Zufälligen Namen aus dem Katalog setzen (am Controller statt Tippen). */
+	void RandomizeName();
 
 	/** Darf der Bereich (EwigfelsLook::Change / "outfit:<slot>") hier geändert werden? */
 	bool IsAreaEditable(FName Area) const;
@@ -91,6 +95,12 @@ public:
 
 	void SetTab(EEwigfelsCreatorTab Tab);
 	EEwigfelsCreatorTab GetTab() const { return CurrentTab; }
+	/** Sichtbare Bereiche in Reihenfolge. */
+	TArray<EEwigfelsCreatorTab> GetVisibleTabs() const;
+	/** Nächster/voriger sichtbarer Bereich (LB/RB, Weiter/Zurück). Rückgabe: ob gewechselt wurde. */
+	bool StepTab(int32 Direction, bool bWrap);
+	bool IsFirstTab() const;
+	bool IsLastTab() const;
 
 	/** Kamera: drehen (Maus ziehen) und zoomen (Mausrad). */
 	void Orbit(float DeltaYaw, float DeltaPitch);
@@ -98,6 +108,9 @@ public:
 
 	/** Stimmprobe der aktuellen Stimme abspielen. */
 	void PlayVoiceSample() const;
+
+	/** Fokus für den Spieler dieses Editors setzen (Controller-Navigation, auch im Koop am selben Bildschirm). */
+	void FocusWidget(const TSharedRef<SWidget>& InWidget) const;
 
 	/** Änderungszähler, damit das Fenster weiß, wann es neu zeichnen muss (Rückgängig, Zufall). */
 	uint32 GetRevision() const { return Revision; }
@@ -123,7 +136,7 @@ private:
 	FEwigfelsAppearance Working;
 	TArray<FEwigfelsAppearance> UndoStack;
 	TArray<FEwigfelsAppearance> RedoStack;
-	EEwigfelsCreatorTab CurrentTab = EEwigfelsCreatorTab::Identity;
+	EEwigfelsCreatorTab CurrentTab = EEwigfelsCreatorTab::Head;
 	bool bWaiting = false;
 	FText StatusText;
 	uint32 Revision = 0;
