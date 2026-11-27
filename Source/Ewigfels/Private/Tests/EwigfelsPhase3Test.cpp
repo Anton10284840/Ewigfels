@@ -127,7 +127,7 @@ bool FEwigfelsSpellDataTest::RunTest(const FString& Parameters)
 	{
 		AddError(Error);
 	}
-	TestEqual(TEXT("Startbelegung = 9 Weisen (LMB, RMB, 1–7)"), Spells->GetDefaultLoadout().Num(), 9);
+	TestEqual(TEXT("Startbelegung = 8 Weisen (Basis, Schild, Zauberrad 1–6)"), Spells->GetDefaultLoadout().Num(), 8);
 	TestNotNull(TEXT("Status 'lifted' (Haltelied)"), Spells->FindStatus(TEXT("lifted")));
 	if (const FEwigfelsStatusDef* Frozen = Spells->FindStatus(TEXT("frozen")))
 	{

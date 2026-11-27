@@ -43,6 +43,7 @@ void UEwigfelsSpellCasterComponent::GetLifetimeReplicatedProps(TArray<FLifetimeP
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, Atem);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, MaxAtem);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, Loadout);
+	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, KnownSpells, COND_OwnerOnly);
 	DOREPLIFETIME_CONDITION(UEwigfelsSpellCasterComponent, Cooldowns, COND_OwnerOnly);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, CastState);
 	DOREPLIFETIME(UEwigfelsSpellCasterComponent, bShieldUp);
@@ -59,11 +60,26 @@ void UEwigfelsSpellCasterComponent::BeginPlay()
 	{
 		MaxAtem = DefaultMaxAtem;
 		Atem = MaxAtem;
-		if (Loadout.Num() == 0)
+		const UEwigfelsSpellSubsystem* Spells = GetSpells();
+		if (Loadout.Num() == 0 && Spells)
 		{
-			if (const UEwigfelsSpellSubsystem* Spells = GetSpells())
+			Loadout = Spells->GetDefaultLoadout();
+		}
+		// Testarena: alle spielbaren Weisen gelten als gelernt (später aus dem Spielstand / Unterricht)
+		const APawn* Pawn = Cast<APawn>(Owner);
+		if (KnownSpells.Num() == 0 && Spells && Pawn && Pawn->IsPlayerControlled())
+		{
+			for (const FName Id : Loadout)
 			{
-				Loadout = Spells->GetDefaultLoadout();
+				KnownSpells.AddUnique(Id);
+			}
+			for (const FName Id : Spells->GetAllSpellIds())
+			{
+				const FEwigfelsSpellDef* Def = Spells->FindSpell(Id);
+				if (Def && Def->Unlock != FName(TEXT("hidden")) && Def->Kind != FName(TEXT("gegner")))
+				{
+					KnownSpells.AddUnique(Id);
+				}
 			}
 		}
 	}
@@ -234,14 +250,17 @@ EEwigfelsCastFailReason UEwigfelsSpellCasterComponent::CanCast(FName SpellId) co
 // ---------------------------------------------------------------------------
 // Lokaler Spieler → Server
 
-void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
+FName UEwigfelsSpellCasterComponent::GetSlotSpell(int32 SlotIndex) const
 {
 	if (SlotIndex == 0)
 	{
-		RequestCast(BasicSpell);
-		return;
+		return BasicSpell;
 	}
-	// Slot 1–4 = Loadout ohne Basis- und Schild-Weise
+	if (SlotIndex < 0 || SlotIndex > WheelSlotCount)
+	{
+		return NAME_None;
+	}
+	// Platz 1–8 = Belegung ohne Basis- und Schild-Weise
 	int32 Slot = 0;
 	for (const FName Id : Loadout)
 	{
@@ -251,9 +270,18 @@ void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
 		}
 		if (++Slot == SlotIndex)
 		{
-			RequestCast(Id);
-			return;
+			return Id;
 		}
+	}
+	return NAME_None;
+}
+
+void UEwigfelsSpellCasterComponent::RequestCastSlot(int32 SlotIndex)
+{
+	const FName Id = GetSlotSpell(SlotIndex);
+	if (!Id.IsNone())
+	{
+		RequestCast(Id);
 	}
 }
 
@@ -769,6 +797,68 @@ void UEwigfelsSpellCasterComponent::SetLoadout(const TArray<FName>& NewLoadout)
 	{
 		Loadout = NewLoadout;
 	}
+}
+
+void UEwigfelsSpellCasterComponent::LearnSpell(FName SpellId)
+{
+	if (GetOwner() && GetOwner()->HasAuthority() && FindSpellDef(SpellId))
+	{
+		KnownSpells.AddUnique(SpellId);
+	}
+}
+
+void UEwigfelsSpellCasterComponent::RequestSetWheelSlot(int32 SlotIndex, FName SpellId)
+{
+	if (GetOwner() && GetOwner()->HasAuthority())
+	{
+		Server_SetWheelSlot_Implementation(SlotIndex, SpellId);
+	}
+	else
+	{
+		Server_SetWheelSlot(SlotIndex, SpellId);
+	}
+}
+
+void UEwigfelsSpellCasterComponent::Server_SetWheelSlot_Implementation(int32 SlotIndex, FName SpellId)
+{
+	if (SlotIndex < 1 || SlotIndex > WheelSlotCount || !KnownSpells.Contains(SpellId)
+		|| SpellId == BasicSpell || SpellId == ShieldSpell || IsCasting())
+	{
+		return;
+	}
+	TArray<FName> Wheel;
+	for (int32 i = 1; i <= WheelSlotCount; ++i)
+	{
+		Wheel.Add(GetSlotSpell(i));
+	}
+	const int32 Old = Wheel.IndexOfByKey(SpellId);
+	if (Old != INDEX_NONE)
+	{
+		Wheel[Old] = Wheel[SlotIndex - 1]; // tauschen
+	}
+	Wheel[SlotIndex - 1] = SpellId;
+	ApplyWheel(Wheel);
+}
+
+void UEwigfelsSpellCasterComponent::ApplyWheel(const TArray<FName>& Wheel)
+{
+	TArray<FName> NewLoadout;
+	NewLoadout.Add(BasicSpell);
+	if (!ShieldSpell.IsNone())
+	{
+		NewLoadout.Add(ShieldSpell);
+	}
+	// Leere Plätze bleiben als NAME_None stehen, damit die Nummern stimmen; hinten abschneiden
+	int32 Last = Wheel.Num() - 1;
+	while (Last >= 0 && Wheel[Last].IsNone())
+	{
+		--Last;
+	}
+	for (int32 i = 0; i <= Last; ++i)
+	{
+		NewLoadout.Add(Wheel[i]);
+	}
+	Loadout = NewLoadout;
 }
 
 void UEwigfelsSpellCasterComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

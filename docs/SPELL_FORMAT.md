@@ -94,7 +94,7 @@ Jeder Effekt kann `"chain_end_only": true` haben: wirkt nur beim letzten Schlag 
 
 ## 3. Start-Ausrüstung (`loadout`)
 
-`"loadout": ["funkenstoss", "glockenschild", "hammerton", "frostweise", "paukenschlag", "haltelied", "ziehklang", "glutweise", "sturmweise"]` – die Basis-Weise liegt auf der linken Maustaste (Gamepad: rechter Trigger), die übrigen der Reihe nach auf den Tasten 1–8 (Gamepad: 1–4 auf dem Steuerkreuz, mehr später übers Zauberrad). Ein Schild im Loadout wird mit der rechten Maustaste gehalten. Später kommt die Auswahl aus dem Spielstand.
+`"loadout": ["funkenstoss", "glockenschild", "hammerton", "frostweise", "haltelied", "ziehklang", "glutweise", "sturmweise"]` – Start-Belegung: Basis-Weise (linke Maus / RT), Schild (rechte Maus / LT), danach die **6 Plätze des Zauberrads** (Tasten 1–6, Controller: Rad mit RB, Plätze 1–4 auch aufs Steuerkreuz). Mehr als 6 werden ignoriert. Im Spiel wählt der Spieler im **Zauberbuch** (B / Menü-Taste) aus allen gelernten Weisen seine 6 (`UEwigfelsSpellCasterComponent::RequestSetWheelSlot`, server-autoritativ; gelernt = `KnownSpells`, in der Testarena alle Weisen ohne `"unlock": "hidden"` und ohne `"kind": "gegner"`). Steuerung: `docs/STEUERUNG.md`.
 
 ## 4. Gegner (`creatures[]` in `Content/Data/Creatures/`)
 

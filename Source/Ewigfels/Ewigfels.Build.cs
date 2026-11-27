@@ -31,6 +31,7 @@ public class Ewigfels : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"NetCore",           // Replikation (FVector_NetQuantize, Push-Model-kompatibel)
+			"RenderCore",        // HUD: runde Formen (GWhiteTexture)
 			"Slate",             // Charakter-Editor-Fenster (ohne UMG-Asset)
 			"SlateCore",
 			"JsonUtilities",     // Look-Code (FJsonObjectConverter)

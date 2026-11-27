@@ -135,6 +135,21 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Ewigfels|Magic")
 	void SetLoadout(const TArray<FName>& NewLoadout);
 
+	/** Plätze im Zauberrad (Inventar der Weisen, die man gerade dabeihat). Basis-Weise und Schild kommen dazu. */
+	static constexpr int32 WheelSlotCount = 6;
+
+	/** Zauberbuch: Weise auf Platz 1–6 legen. Liegt sie schon woanders, tauschen die Plätze. Lokal aufrufen, läuft auf dem Server. */
+	UFUNCTION(BlueprintCallable, Category = "Ewigfels|Magic")
+	void RequestSetWheelSlot(int32 SlotIndex, FName SpellId);
+
+	/** Alle Weisen, die die Figur kann (Zauberbuch). Basis und Schild eingeschlossen. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	TArray<FName> GetKnownSpells() const { return KnownSpells; }
+
+	/** Neue Weise gelernt (Unterricht, Meister). Nur Server. */
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Ewigfels|Magic")
+	void LearnSpell(FName SpellId);
+
 	/** Einschlag-Optik auf allen Maschinen (z. B. Aufprall nach Schmettern). Nur Server. */
 	void BroadcastImpactFx(FName SpellId, const FVector& Location, const FVector& Normal, bool bBig);
 
@@ -159,6 +174,10 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
 	TArray<FName> GetLoadout() const { return Loadout; }
+
+	/** Weise auf Platz 1–8 (Belegung ohne Basis- und Schild-Weise), 0 = Basis. NAME_None, wenn leer. */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
+	FName GetSlotSpell(int32 SlotIndex) const;
 
 	/** Restzeit in s bis die Weise wieder geht (0 = bereit). */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
@@ -249,6 +268,12 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_SetShield(bool bUp);
 
+	UFUNCTION(Server, Reliable)
+	void Server_SetWheelSlot(int32 SlotIndex, FName SpellId);
+
+	/** Belegung neu ordnen: Basis, Schild, dann Platz 1–6 (fehlende = leer). Nur Server. */
+	void ApplyWheel(const TArray<FName>& Wheel);
+
 	UFUNCTION(Client, Reliable)
 	void Client_CastRejected(FName SpellId, EEwigfelsCastFailReason Reason);
 
@@ -299,6 +324,9 @@ private:
 
 	UPROPERTY(Replicated)
 	TArray<FName> Loadout;
+
+	UPROPERTY(Replicated)
+	TArray<FName> KnownSpells;
 
 	UPROPERTY(Replicated)
 	TArray<FEwigfelsSpellCooldown> Cooldowns;

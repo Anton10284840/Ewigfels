@@ -12,7 +12,10 @@ class UInputMappingContext;
 /**
  * Steuerung nach GDD §8, in C++ gebaut (keine Input-Assets nötig, sofort spielbar).
  * Später durch Assets ersetzbar: In der Figur DefaultMappingContext setzen, dann wird dieses hier nicht benutzt.
- * Gamepad: Weisen 1–4 vorerst auf dem Steuerkreuz (RB + Taste kommt mit dem Optionsmenü).
+ * Controller und Maus/Tastatur sind gleichwertig:
+ *   Zauberrad halten (RB / Q), mit rechtem Stick bzw. Maus wählen, loslassen = Weise gewählt.
+ *   Gewählte Weise wirken (Y / F). Direkt: Steuerkreuz = Plätze 1–4, Tasten 1–6 = Plätze 1–6.
+ *   Zauberbuch (B / Menü): aus allen gelernten Weisen die 6 fürs Rad wählen.
  */
 UCLASS()
 class EWIGFELS_API UEwigfelsInputSetup : public UObject
@@ -42,6 +45,12 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Spell6;
 	UPROPERTY() TObjectPtr<UInputAction> Spell7;
 	UPROPERTY() TObjectPtr<UInputAction> Spell8;
+	/** Halten = Zauberrad offen. */
+	UPROPERTY() TObjectPtr<UInputAction> SpellWheel;
+	/** Im Rad gewählte Weise wirken. */
+	UPROPERTY() TObjectPtr<UInputAction> CastSelected;
+	/** Zauberbuch auf/zu (B / Menü-Taste): 6 Weisen fürs Zauberrad wählen. */
+	UPROPERTY() TObjectPtr<UInputAction> Spellbook;
 	UPROPERTY() TObjectPtr<UInputAction> LockOn;
 	UPROPERTY() TObjectPtr<UInputAction> SwitchTarget;
 	UPROPERTY() TObjectPtr<UInputAction> Interact;
