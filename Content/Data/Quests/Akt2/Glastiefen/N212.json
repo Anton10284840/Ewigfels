@@ -1,0 +1,124 @@
+{
+  "id": "N212",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Prisma",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Großmutter Prismas Augen",
+    "en": "Grandmother Prisma's Eyes"
+  },
+  "summary": {
+    "de": "Großmutter Prisma ist blind, seit sie vierzig ist. Sie will ein letztes Mal das Licht des Kristallsees sehen. Auf ihre Art.",
+    "en": "Grandmother Prisma has been blind since she was forty. She wants to see the light of the crystal lake one last time. In her own way."
+  },
+  "dialogues": [
+    "D_N212_Prisma",
+    "D_N212_Prisma_See"
+  ],
+  "stages": [
+    {
+      "id": "s1_prisma",
+      "text": {
+        "de": "Hör dir Prismas Wunsch an.",
+        "en": "Hear Prisma's wish."
+      },
+      "objectives": [
+        {
+          "id": "o_prisma",
+          "kind": "dialogue",
+          "target": "D_N212_Prisma",
+          "marker": "NPC_Prisma",
+          "text": {
+            "de": "Sprich mit Großmutter Prisma",
+            "en": "Talk to Grandmother Prisma"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_weg"
+        }
+      ]
+    },
+    {
+      "id": "s2_weg",
+      "text": {
+        "de": "Führ sie über den Leitersteig zum Kristallsee. Sie geht langsam und redet viel.",
+        "en": "Lead her down the ladder path to the crystal lake. She walks slowly and talks a lot."
+      },
+      "objectives": [
+        {
+          "id": "o_fuehren",
+          "kind": "custom",
+          "target": "Prisma_Fuehren",
+          "marker": "Leitersteig",
+          "text": {
+            "de": "Führ Prisma sicher nach unten (Glasnattern meiden)",
+            "en": "Lead Prisma safely down (avoid glass adders)"
+          }
+        },
+        {
+          "id": "o_see",
+          "kind": "reach",
+          "target": "Kristallsee",
+          "marker": "Kristallsee",
+          "text": {
+            "de": "Erreich den Großen Kristallsee",
+            "en": "Reach the Great Crystal Lake"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wal"
+        }
+      ]
+    },
+    {
+      "id": "s3_wal",
+      "text": {
+        "de": "Bring den Kristallwal zum Singen. Sein Gesang macht Licht.",
+        "en": "Get the crystal whale to sing. His song makes light."
+      },
+      "objectives": [
+        {
+          "id": "o_lockruf",
+          "kind": "custom",
+          "target": "Kristallwal_Locken",
+          "text": {
+            "de": "Lock den Wal mit einer tiefen Lockruf-Melodie",
+            "en": "Lure the whale with a deep Lure Call melody"
+          }
+        },
+        {
+          "id": "o_licht",
+          "kind": "dialogue",
+          "target": "D_N212_Prisma_See",
+          "text": {
+            "de": "Bleib bei Prisma, während sie das Licht hört",
+            "en": "Stay with Prisma while she hears the light"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Quarzschliff_Walgesang"
+    ],
+    "effects": []
+  }
+}

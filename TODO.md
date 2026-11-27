@@ -92,7 +92,7 @@ Bauen im Editor (👤 mit Anleitung von Claude):
 Pro Akt: Regionen bauen, Quests + Dialoge als Daten, Gegner/Bosse, Cutscenes, durchspielen (👤), polieren.
 - [ ] Akt 2: Graumoor, Glastiefen · Boss Mara · Entscheidung 2 · Reittiere Gischtrobbe + Glutdachs
   - [x] 🤖 Hauptmissionen M201–M210 als Quest-JSON + 29 Dialoge
-  - [ ] 🤖 Regionen Graumoor + Glastiefen ausarbeiten (Dörfer, Nebenquests), Glutdachs-Zähmquest
+  - [x] 🤖 Regionen Graumoor + Glastiefen ausarbeiten: N201–N216 + 23 Dialoge, Glutdachs-Zähmquest N216 (`docs/regionen/GRAUMOOR.md`, `GLASTIEFEN.md`)
 - [ ] Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Entscheidung 3 · Sturmschwinge + Dünenschreiter
 - [ ] Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Entscheidungen 4 + 5 · Perlsegler · Akademie zerstört
 - [ ] Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · Entscheidung 6 · 4 Enden + Epiloge

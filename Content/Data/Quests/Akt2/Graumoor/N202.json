@@ -1,0 +1,141 @@
+{
+  "id": "N202",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Seline",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M203"
+  ],
+  "title": {
+    "de": "Die Wilderer am Birkenhain",
+    "en": "The Poachers of the Birch Grove"
+  },
+  "summary": {
+    "de": "Am Birkenhain verschwinden Mooslinge und Stelzreiher. Seline hat Spuren von Käfigen gefunden.",
+    "en": "Mosslings and stilt herons are vanishing at the birch grove. Seline has found traces of cages."
+  },
+  "dialogues": [
+    "D_N202_Seline",
+    "D_N202_Wildererbrief"
+  ],
+  "stages": [
+    {
+      "id": "s1_spuren",
+      "text": {
+        "de": "Folg mit Seline den Spuren.",
+        "en": "Follow the tracks with Seline."
+      },
+      "objectives": [
+        {
+          "id": "o_seline",
+          "kind": "dialogue",
+          "target": "D_N202_Seline",
+          "marker": "NPC_Seline",
+          "text": {
+            "de": "Sprich mit Seline in Stelzenheim",
+            "en": "Talk to Seline in Stelzenheim"
+          }
+        },
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Wildererspuren_Folgen",
+          "marker": "Birkenhain",
+          "text": {
+            "de": "Folg den Spuren zum Birkenhain (Seelenecho hilft)",
+            "en": "Follow the tracks to the birch grove (Soul Echo helps)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_lager"
+        }
+      ]
+    },
+    {
+      "id": "s2_lager",
+      "text": {
+        "de": "Das Lager der Wilderer. Hunde, Käfige, ein Zelt mit Papieren.",
+        "en": "The poachers' camp. Dogs, cages, a tent with papers."
+      },
+      "objectives": [
+        {
+          "id": "o_hunde",
+          "kind": "custom",
+          "target": "Wildererhunde_Beruhigen",
+          "count": 3,
+          "text": {
+            "de": "Beruhige die Wildererhunde mit Wiegenlied (oder kämpfe)",
+            "en": "Calm the poachers' dogs with Lullaby (or fight)"
+          }
+        },
+        {
+          "id": "o_kaefige",
+          "kind": "custom",
+          "target": "Kaefige_Oeffnen",
+          "count": 6,
+          "text": {
+            "de": "Öffne die Käfige",
+            "en": "Open the cages"
+          }
+        },
+        {
+          "id": "o_brief",
+          "kind": "dialogue",
+          "target": "D_N202_Wildererbrief",
+          "marker": "Wilderer_Zelt",
+          "text": {
+            "de": "Lies die Papiere im Zelt",
+            "en": "Read the papers in the tent"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Poacher_Contract=1"
+      ],
+      "next": [
+        {
+          "stage": "s3_bericht"
+        }
+      ]
+    },
+    {
+      "id": "s3_bericht",
+      "text": {
+        "de": "Die Wilderer arbeiten für jemanden in Aurenburg. Bring es Seline.",
+        "en": "The poachers work for someone in Aurenburg. Take it to Seline."
+      },
+      "objectives": [
+        {
+          "id": "o_bericht",
+          "kind": "talk",
+          "target": "Seline",
+          "marker": "NPC_Seline",
+          "text": {
+            "de": "Zeig Seline den Vertrag",
+            "en": "Show Seline the contract"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Kodex_Wilderer"
+    ],
+    "effects": [
+      "rep:Hueter+10"
+    ]
+  }
+}

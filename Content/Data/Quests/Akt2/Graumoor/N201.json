@@ -1,0 +1,124 @@
+{
+  "id": "N201",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Fips",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M203"
+  ],
+  "title": {
+    "de": "Das große Froschrennen",
+    "en": "The Great Frog Race"
+  },
+  "summary": {
+    "de": "Fips und Fino streiten seit Wochen, wer die schnellsten Frösche hat. Heute wird es entschieden. Beide wollen dich im Team.",
+    "en": "Fips and Fino have argued for weeks about who has the fastest frogs. Today it gets settled. Both want you on their team."
+  },
+  "dialogues": [
+    "D_N201_Zwillinge",
+    "D_N201_Fips"
+  ],
+  "stages": [
+    {
+      "id": "s1_zwillinge",
+      "text": {
+        "de": "Hör dir beide Zwillinge an.",
+        "en": "Hear both twins out."
+      },
+      "objectives": [
+        {
+          "id": "o_zwillinge",
+          "kind": "dialogue",
+          "target": "D_N201_Zwillinge",
+          "marker": "Froschsteg",
+          "text": {
+            "de": "Sprich mit Fips und Fino am Froschsteg",
+            "en": "Talk to Fips and Fino at the frog jetty"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_training"
+        }
+      ]
+    },
+    {
+      "id": "s2_training",
+      "text": {
+        "de": "Frösche laufen nur, wenn man ihnen vorsingt. Fips' Frosch rührt sich nicht.",
+        "en": "Frogs only run if you sing to them. Fips's frog won't budge."
+      },
+      "objectives": [
+        {
+          "id": "o_singen",
+          "kind": "custom",
+          "target": "Frosch_Ansingen",
+          "text": {
+            "de": "Sing einem Frosch das Lauflied vor",
+            "en": "Sing the running song to a frog"
+          }
+        },
+        {
+          "id": "o_taub",
+          "kind": "custom",
+          "target": "Frosch_Taub_Erkennen",
+          "text": {
+            "de": "Find heraus, warum Fips' Frosch nicht reagiert",
+            "en": "Find out why Fips's frog doesn't react"
+          }
+        },
+        {
+          "id": "o_fips",
+          "kind": "dialogue",
+          "target": "D_N201_Fips",
+          "marker": "NPC_Fips",
+          "text": {
+            "de": "Sprich allein mit Fips",
+            "en": "Talk to Fips alone"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_rennen"
+        }
+      ]
+    },
+    {
+      "id": "s3_rennen",
+      "text": {
+        "de": "Das Rennen über die Stege.",
+        "en": "The race across the walkways."
+      },
+      "objectives": [
+        {
+          "id": "o_rennen",
+          "kind": "custom",
+          "target": "Froschrennen",
+          "marker": "Stelzenheim",
+          "text": {
+            "de": "Lauf das Froschrennen (Rhythmus und Steg-Balance)",
+            "en": "Run the frog race (rhythm and walkway balance)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 20,
+    "items": [
+      "Froschpfeife"
+    ],
+    "effects": []
+  }
+}

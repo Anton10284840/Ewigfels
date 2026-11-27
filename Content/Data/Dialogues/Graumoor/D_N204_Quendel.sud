@@ -1,0 +1,25 @@
+# N204 – Quendel über Agathe. Versöhnung nur bei Ruf Hüter >= 30 (Hüter vertrauen dem Spieler genug).
+===
+[set SpeakerName.Quendel "Mutter Quendel"]
+===
+[event emotion `neutral`]
+Quendel: Du warst in Moorwinkel. Ich rieche die Fäden an dir.
+Quendel: Agathe. Ja. Ich weiß, wer sie ist.
+  * Sie war Ihre beste Freundin.
+    [event emotion `sad`]
+    Quendel: Woher ... ach. Die Zeichnung. Die hab ich mit neun gemalt. Zwei Mädchen Hand in Hand. Ich hab sie nie weggeworfen.
+  * Sie haben sie verstoßen.
+    Quendel: Ich hab als Letzte Ja gesagt. Ich hab gedacht, wenn ich Nein sage, verstoßen sie uns beide.
+    Quendel: Feige. So heißt das. Ich bin alt genug, das Wort zu sagen.
+[if {rep.Hueter} >= 30]
+  * Gehen Sie zu ihr. Sagen Sie es ihr selbst.
+    Quendel: Die Hüter hören auf dich. Seit Altwacht, seit der Ader. Wenn du sagst, sie gehört zurück, dann gehört sie zurück.
+    [event emotion `happy`]
+    Quendel: Gut. Gut. Fünfzig Jahre zu spät. Aber Moor ist geduldig.
+    [set flag.Agathe_Reconciled true]
+  * Ich gehe allein.
+    Quendel: Dann geh. Und sei nicht grausam zu ihr. Das war ich schon.
+[else]
+Quendel: Die Hüter würden sie nicht zurücknehmen. Nicht auf mein Wort. Und auf deins noch nicht. Sie kennen dich zu wenig.
+Quendel: Hilf ihnen. Dann hören sie dir zu. Oder geh allein. Aber sei nicht grausam zu ihr.
+[endif]

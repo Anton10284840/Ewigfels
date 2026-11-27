@@ -1,0 +1,126 @@
+{
+  "id": "N206",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Wenna",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M203"
+  ],
+  "title": {
+    "de": "Die Nebelnacht",
+    "en": "The Night of Fog"
+  },
+  "summary": {
+    "de": "In der Nebelnacht gehen in Stelzenheim alle Laternen aus. Man findet seine Leute nur über ihre Lieder.",
+    "en": "On the Night of Fog every lantern in Stelzenheim goes out. You find your people only by their songs."
+  },
+  "dialogues": [
+    "D_N206_Wenna",
+    "D_N206_Quendel_Steg"
+  ],
+  "stages": [
+    {
+      "id": "s1_wenna",
+      "text": {
+        "de": "Wenna erklärt die Regeln.",
+        "en": "Wenna explains the rules."
+      },
+      "objectives": [
+        {
+          "id": "o_wenna",
+          "kind": "dialogue",
+          "target": "D_N206_Wenna",
+          "marker": "NPC_Wenna",
+          "text": {
+            "de": "Sprich mit Wenna Bult",
+            "en": "Talk to Wenna Bult"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_lieder"
+        }
+      ]
+    },
+    {
+      "id": "s2_lieder",
+      "text": {
+        "de": "Finde deine Freunde im Nebel, nur über ihr Lied.",
+        "en": "Find your friends in the fog, only by their song."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "custom",
+          "target": "Lied_Lio_Finden",
+          "text": {
+            "de": "Find Lio (drei Töne auf der Mundharmonika)",
+            "en": "Find Lio (three notes on the harmonica)"
+          }
+        },
+        {
+          "id": "o_wim",
+          "kind": "custom",
+          "target": "Lied_Wim_Finden",
+          "text": {
+            "de": "Find Wim (er summt falsch, aber tapfer)",
+            "en": "Find Wim (he hums off-key, but bravely)"
+          }
+        },
+        {
+          "id": "o_aurelia",
+          "kind": "custom",
+          "target": "Lied_Aurelia_Finden",
+          "optional": true,
+          "text": {
+            "de": "Find Aurelia (sie pfeift ein Duellsignal)",
+            "en": "Find Aurelia (she whistles a duel signal)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_fremd"
+        }
+      ]
+    },
+    {
+      "id": "s3_fremd",
+      "text": {
+        "de": "Ein Lied, das du nicht kennst. Auf Kael.",
+        "en": "A song you don't know. In Kael."
+      },
+      "objectives": [
+        {
+          "id": "o_steg",
+          "kind": "dialogue",
+          "target": "D_N206_Quendel_Steg",
+          "marker": "Froschsteg",
+          "text": {
+            "de": "Folg dem fremden Lied zum Steg",
+            "en": "Follow the strange song to the jetty"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Nebellaterne"
+    ],
+    "effects": [
+      "rel:Lio+3"
+    ]
+  }
+}

@@ -107,7 +107,23 @@
     "Has_KaelKey": "M204: Kael-Schlüssel (Stimmstein) gefunden",
     "Saw_TargetList": "M204: Zielliste mit Kesselbrunn gesehen",
     "Has_Metronome": "M209: Maras Metronom-Anhänger",
-    "Draeger_Alarm": "M210: Bannglocken haben bei der Anhörung angeschlagen"
+    "Draeger_Alarm": "M210: Bannglocken haben bei der Anhörung angeschlagen",
+    "Fips_Fair": "N201: Fips mit Klopfrhythmus geholfen (fair gewonnen)",
+    "Poacher_Contract": "N202: Vertrag der Wilderer mit Aurenburg gefunden (Arche)",
+    "Irrlicht_Freed": "N203: Kind-Irrlicht aus Moorwinkel freigelassen",
+    "Agathe_Decided": "N204: bei Agathe entschieden (egal wie)",
+    "Agathe_Reconciled": "N204: Quendel und Agathe versöhnt",
+    "Moorwinkel_Freed": "N204: Moorwinkel befreit",
+    "Moorqueen_Healed": "N205: Moorkönigin gesund gesungen",
+    "Echokind_Freed": "N211: Kael-Echokind freigesungen",
+    "Lantern_Kept": "N213: ewige Laterne behalten (für Lidlos)",
+    "Lantern_Sold": "N213: ewige Laterne verkauft",
+    "Lidlos_Decided": "N214: bei Lidlos entschieden (egal wie)",
+    "Lidlos_Redeemed": "N214: Lidlos mit der ewigen Laterne erlöst",
+    "Hohlstollen_Freed": "N214: Hohlstollen befreit",
+    "Whale_Decided": "N215: Kristallwal befreit oder bezwungen",
+    "Whale_Freed": "N215: Ketten des Kristallwals gelöst",
+    "Glutdachs_Tamed": "N216: Glutdachs ist Reittier"
   },
   "objective_kinds": [
     "talk",
@@ -215,6 +231,21 @@
     "Feil",
     "Draeger",
     "Grimm",
-    "KaelEcho"
+    "KaelEcho",
+    "Fips",
+    "Fino",
+    "Ilmo",
+    "Wenna",
+    "Tobi",
+    "Martha",
+    "Agathe",
+    "Lumi",
+    "Kiko",
+    "Prisma",
+    "Facett",
+    "Gunda",
+    "Ella",
+    "Fels",
+    "Lidlos"
   ]
 }

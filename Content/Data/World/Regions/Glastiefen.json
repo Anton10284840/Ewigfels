@@ -1,0 +1,180 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/GLASTIEFEN.md. Marker-IDs = Quest-Marker. Drei Ebenen (levels).",
+  "id": "Glastiefen",
+  "act_from": 2,
+  "size_km": [
+    3,
+    3
+  ],
+  "depth_m": 600,
+  "levels": {
+    "1": [
+      "Bergtor",
+      "Funkelgrund",
+      "Leitersteig"
+    ],
+    "2": [
+      "Pilzwald",
+      "Kristallsee",
+      "Hohlstollen"
+    ],
+    "3": [
+      "Kael_Halle",
+      "Kael_Mine",
+      "Klangraum",
+      "Glutstollen"
+    ]
+  },
+  "villages": [
+    {
+      "id": "Funkelgrund",
+      "mood": "froehlich",
+      "music": "Glasharfe, Kinderchöre mit Echo, helle Glöckchen",
+      "fast_travel": "Schleifplatz",
+      "npcs": [
+        "Grimm",
+        "Prisma",
+        "Kiko",
+        "Lumi",
+        "Facett",
+        "Gunda"
+      ],
+      "shops": [
+        {
+          "npc": "Grimm",
+          "sells": [
+            "Höhlenlaternen",
+            "Kristalllinsen"
+          ]
+        },
+        {
+          "npc": "Prisma",
+          "sells": [
+            "Quarzschleifen (Stimmring-Farbe und Werte)"
+          ]
+        },
+        {
+          "npc": "Facett",
+          "sells": [
+            "Brillen",
+            "Schmuck"
+          ]
+        }
+      ],
+      "pois": [
+        "Bergtor",
+        "Schleifplatz",
+        "Echobrunnen",
+        "Grimms_Laden",
+        "Prismas_Haus",
+        "Leitersteig",
+        "Funkelgrund"
+      ],
+      "minigames": [
+        "Echolieder",
+        "Kristallschleifen",
+        "Pilzfahrten"
+      ]
+    },
+    {
+      "id": "Hohlstollen",
+      "mood": "gruselig",
+      "music": "Stille, leises Metronom-Ticken, Wassertropfen",
+      "fast_travel": "Foerderkorb",
+      "npcs": [
+        "Lidlos",
+        "Fels",
+        "Ella"
+      ],
+      "shops": [
+        {
+          "npc": "Fels",
+          "sells": [
+            "Bergmannsessen (Wärme-Buffs)"
+          ],
+          "after": "flag:Hohlstollen_Freed"
+        }
+      ],
+      "pois": [
+        "Laternenbruecke",
+        "Baracken",
+        "Augentropfen_Kammer",
+        "Lidlos_Werkstatt",
+        "Dunkler_Stollen"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Kristallsee",
+      "kind": "boss",
+      "quest": "N215",
+      "boss": "Kristallwal"
+    },
+    {
+      "id": "Glutstollen",
+      "kind": "dungeon",
+      "quest": "N216"
+    },
+    {
+      "id": "Kael_Halle",
+      "kind": "dungeon",
+      "quest": "M208"
+    },
+    {
+      "id": "Klangraum",
+      "kind": "boss",
+      "quest": "M209",
+      "boss": "Mara"
+    },
+    {
+      "id": "Pilzwald",
+      "kind": "ort",
+      "quest": null
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Pilzwald_Lichter",
+      "at": "Pilzwald",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Prismenhalle",
+      "at": "Funkelgrund",
+      "reward": "Quarz_Kristalltuerkis"
+    },
+    {
+      "id": "Schrein_Kael_Hammerstein",
+      "at": "Kael_Mine",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Kael_Splitter": 15,
+    "Echolied": 8,
+    "Nachklang": 5
+  },
+  "enemies": {
+    "act2": [
+      "Glasnatter",
+      "Kristallkriecher",
+      "Stille_Hand",
+      "Meister_Lidlos",
+      "Marionetten_Bergmann",
+      "Glasauge",
+      "Kristallwal"
+    ]
+  },
+  "mechanics": {
+    "Kaelte": "ohne Wärme regeneriert Atem langsamer; Wärme lockt Glasnattern; Glutdachs (R6) löst beides"
+  },
+  "quests": [
+    "N211",
+    "N212",
+    "N213",
+    "N214",
+    "N215",
+    "N216"
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "id": "N214",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Ella",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Hohlstollen",
+    "en": "Hollowshaft"
+  },
+  "summary": {
+    "de": "In Hohlstollen blinzelt niemand mehr. Niemand schläft. Ein Mädchen blinzelt heimlich, wenn keiner hinsieht, und hat Angst, dass es jemand merkt.",
+    "en": "In Hollowshaft no one blinks any more. No one sleeps. A girl blinks in secret when no one is looking, and is afraid someone will notice."
+  },
+  "dialogues": [
+    "D_N214_Ella",
+    "D_N214_Fels",
+    "D_N214_Lidlos"
+  ],
+  "stages": [
+    {
+      "id": "s1_dorf",
+      "text": {
+        "de": "Geh über die Laternenbrücke nach Hohlstollen.",
+        "en": "Cross the lantern bridge to Hollowshaft."
+      },
+      "objectives": [
+        {
+          "id": "o_bruecke",
+          "kind": "reach",
+          "target": "Laternenbruecke",
+          "marker": "Laternenbruecke",
+          "text": {
+            "de": "Geh über die Laternenbrücke",
+            "en": "Cross the lantern bridge"
+          }
+        },
+        {
+          "id": "o_ella",
+          "kind": "dialogue",
+          "target": "D_N214_Ella",
+          "marker": "NPC_Ella",
+          "text": {
+            "de": "Sprich mit Ella",
+            "en": "Talk to Ella"
+          }
+        },
+        {
+          "id": "o_fels",
+          "kind": "dialogue",
+          "target": "D_N214_Fels",
+          "marker": "NPC_Fels",
+          "text": {
+            "de": "Sprich mit Steiger Bruno Fels",
+            "en": "Talk to Foreman Bruno Fels"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_werkstatt"
+        }
+      ]
+    },
+    {
+      "id": "s2_werkstatt",
+      "text": {
+        "de": "Lidlos' Werkstatt. Hunderte Glasaugen.",
+        "en": "Lidlos's workshop. Hundreds of glass eyes."
+      },
+      "objectives": [
+        {
+          "id": "o_werkstatt",
+          "kind": "interact",
+          "target": "Lidlos_Werkstatt",
+          "marker": "Lidlos_Werkstatt",
+          "text": {
+            "de": "Durchsuch die Werkstatt",
+            "en": "Search the workshop"
+          }
+        },
+        {
+          "id": "o_stollen",
+          "kind": "reach",
+          "target": "Dunkler_Stollen",
+          "marker": "Dunkler_Stollen",
+          "text": {
+            "de": "Brich in den zugemauerten Dunklen Stollen ein",
+            "en": "Break into the walled-up Dark Shaft"
+          }
+        },
+        {
+          "id": "o_lidlos",
+          "kind": "dialogue",
+          "target": "D_N214_Lidlos",
+          "marker": "NPC_Lidlos",
+          "text": {
+            "de": "Stell dich Meister Lidlos",
+            "en": "Face Master Lidlos"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Lidlos_Decided",
+          "text": {
+            "de": "Schenk ihm Licht oder kämpfe",
+            "en": "Give him light or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Lidlos_Redeemed"
+          ],
+          "stage": "s3a_licht"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_licht",
+      "text": {
+        "de": "Lidlos hält die Laterne. Und dann blinzeln alle. Auf einmal.",
+        "en": "Lidlos holds the lantern. And then everyone blinks. All at once."
+      },
+      "objectives": [
+        {
+          "id": "o_blinzeln",
+          "kind": "custom",
+          "target": "Hohlstollen_Blinzelt",
+          "text": {
+            "de": "Hör, wie das Dorf blinzelt",
+            "en": "Hear the village blink"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Zuenfte+10"
+      ],
+      "next": [
+        {
+          "stage": "s4_nacht"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Lidlos löscht in Panik die Lichter. Der Kampf wird dunkel.",
+        "en": "In panic Lidlos puts out the lights. The fight goes dark."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Meister_Lidlos",
+          "marker": "NPC_Lidlos",
+          "text": {
+            "de": "Besiege Meister Lidlos",
+            "en": "Defeat Master Lidlos"
+          }
+        },
+        {
+          "id": "o_marionetten",
+          "kind": "custom",
+          "target": "Marionetten_Faeden",
+          "count": 2,
+          "text": {
+            "de": "Trenn die Fäden der Bergleute",
+            "en": "Cut the miners' strings"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_nacht"
+        }
+      ]
+    },
+    {
+      "id": "s4_nacht",
+      "text": {
+        "de": "Zum ersten Mal seit einem Jahr: Licht aus in Hohlstollen.",
+        "en": "For the first time in a year: lights out in Hollowshaft."
+      },
+      "objectives": [
+        {
+          "id": "o_licht_aus",
+          "kind": "custom",
+          "target": "Hohlstollen_Licht_Aus",
+          "marker": "NPC_Ella",
+          "text": {
+            "de": "Mach mit Ella die erste Laterne aus",
+            "en": "Put out the first lantern with Ella"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Hohlstollen_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Kodex_Hohlstollen"
+    ],
+    "effects": []
+  }
+}

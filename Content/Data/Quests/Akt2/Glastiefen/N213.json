@@ -1,0 +1,124 @@
+{
+  "id": "N213",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Grimm",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Die Laterne, die nie ausgeht",
+    "en": "The Lantern That Never Goes Out"
+  },
+  "summary": {
+    "de": "Grimm Glanz träumt seit dreißig Jahren von einer Laterne, die nie ausgeht. Er hat einen Plan. Er braucht Hilfe. Und Hände.",
+    "en": "Grimm Glanz has dreamed for thirty years of a lantern that never goes out. He has a plan. He needs help. And hands."
+  },
+  "dialogues": [
+    "D_N213_Grimm",
+    "D_N213_Grimm_Fertig"
+  ],
+  "stages": [
+    {
+      "id": "s1_plan",
+      "text": {
+        "de": "Hör Grimms Plan.",
+        "en": "Hear Grimm's plan."
+      },
+      "objectives": [
+        {
+          "id": "o_grimm",
+          "kind": "dialogue",
+          "target": "D_N213_Grimm",
+          "marker": "NPC_Grimm",
+          "text": {
+            "de": "Sprich mit Grimm Glanz",
+            "en": "Talk to Grimm Glanz"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_teile"
+        }
+      ]
+    },
+    {
+      "id": "s2_teile",
+      "text": {
+        "de": "Drei Teile: ein Walkristall, ein ewiger Funke, Prismas Schliff.",
+        "en": "Three parts: a whale crystal, an everlasting spark, Prisma's cut."
+      },
+      "objectives": [
+        {
+          "id": "o_walkristall",
+          "kind": "collect",
+          "target": "Walkristall",
+          "marker": "Kristallsee",
+          "text": {
+            "de": "Hol einen Kristall, den der Wal abgestoßen hat",
+            "en": "Get a crystal the whale has shed"
+          }
+        },
+        {
+          "id": "o_funke",
+          "kind": "collect",
+          "target": "Glutfunke",
+          "marker": "Glutstollen",
+          "text": {
+            "de": "Hol einen ewigen Funken (vom Glutdachs oder eine Glutwurzel)",
+            "en": "Get an everlasting spark (from the ember badger or a glow root)"
+          }
+        },
+        {
+          "id": "o_schliff",
+          "kind": "talk",
+          "target": "Prisma",
+          "marker": "NPC_Prisma",
+          "text": {
+            "de": "Lass Prisma den Kristall schleifen",
+            "en": "Have Prisma cut the crystal"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_fertig"
+        }
+      ]
+    },
+    {
+      "id": "s3_fertig",
+      "text": {
+        "de": "Die Laterne brennt. Grimm will sie verkaufen. Sie ist viel wert.",
+        "en": "The lantern burns. Grimm wants to sell it. It's worth a lot."
+      },
+      "objectives": [
+        {
+          "id": "o_fertig",
+          "kind": "dialogue",
+          "target": "D_N213_Grimm_Fertig",
+          "marker": "NPC_Grimm",
+          "text": {
+            "de": "Entscheide, was mit der Laterne passiert",
+            "en": "Decide what happens to the lantern"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [],
+    "effects": []
+  }
+}

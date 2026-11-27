@@ -1,0 +1,17 @@
+# N204 – Tobi (10) versteckt sich als Vogelscheuche. Bewegt sich nur, wenn niemand hinsieht.
+===
+[set SpeakerName.Tobi "Tobi"]
+===
+[event emotion `scared`]
+Tobi: Nicht hingucken! Guck weg! Wenn du guckst, sieht sie es!
+Tobi: ... Okay. Jetzt bin ich wieder eine Vogelscheuche. Du kannst reden. Leise.
+  * Wer bist du?
+    Tobi: Tobi. Die anderen Kinder sind in Stelzenheim. Sie hat sie weggeschickt. Mich hat sie vergessen. Ich war im Heu.
+  * Wer ist sie?
+    Tobi: Tante Agathe. Sie wohnt in der Mühle. Sie war nett. Sie hat uns Wetterlieder beigebracht.
+    Tobi: Dann ist das Feld abgesoffen, und alle wollten weg. Und dann hat sie die Fäden gemacht.
+  * (Weggucken)
+    Tobi: Danke. Du bist gut im Weggucken. Besser als die anderen.
+[event emotion `sad`]
+Tobi: Papa ist da drüben. Der mit der roten Mütze. Er hackt seit dem Frühling. Er hat mich nicht mal angeguckt.
+Tobi: Kannst du ihn losmachen? Ohne dass er kaputtgeht?
