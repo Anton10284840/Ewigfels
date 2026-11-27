@@ -71,7 +71,7 @@ FTransform UEwigfelsDialogueCameraComponent::ComputeShot(EEwigfelsDialogueShot S
 		Axis = FVector::ForwardVector;
 	}
 	// Seiten-Normale: alle Kameras auf derselben Seite der Achse (180°-Regel)
-	const FVector Side = FVector::CrossProduct(FVector::UpVector, Axis) * (SideSign >= 0.f ? 1.f : -1.f);
+	const FVector SideDir = FVector::CrossProduct(FVector::UpVector, Axis) * (SideSign >= 0.f ? 1.f : -1.f);
 
 	FVector CamLoc;
 	FVector LookAt;
@@ -80,21 +80,21 @@ FTransform UEwigfelsDialogueCameraComponent::ComputeShot(EEwigfelsDialogueShot S
 	case EEwigfelsDialogueShot::Wide:
 	{
 		const FVector Mid = (ListenerEye + SpeakerEye) * 0.5f;
-		CamLoc = Mid + Side * (Dist * 1.1f + 180.f) - Axis * (Dist * 0.15f) + FVector(0.f, 0.f, 25.f);
+		CamLoc = Mid + SideDir * (Dist * 1.1f + 180.f) - Axis * (Dist * 0.15f) + FVector(0.f, 0.f, 25.f);
 		LookAt = Mid - FVector(0.f, 0.f, 15.f);
 		OutFocal = 24.f;
 		break;
 	}
 	case EEwigfelsDialogueShot::OverShoulder:
 		// Hinter dem Zuhörer, leicht zur Seite, Schulter im Vordergrund
-		CamLoc = ListenerEye - Axis * 95.f + Side * 42.f + FVector(0.f, 0.f, 6.f);
+		CamLoc = ListenerEye - Axis * 95.f + SideDir * 42.f + FVector(0.f, 0.f, 6.f);
 		LookAt = SpeakerEye;
 		OutFocal = 40.f;
 		break;
 	case EEwigfelsDialogueShot::CloseUp:
 	default:
 		// Zwischen den beiden, auf der Seite der Achse, nah am Sprecher
-		CamLoc = SpeakerEye - Axis * FMath::Min(Dist * 0.55f, 160.f) + Side * 38.f + FVector(0.f, 0.f, -2.f);
+		CamLoc = SpeakerEye - Axis * FMath::Min(Dist * 0.55f, 160.f) + SideDir * 38.f + FVector(0.f, 0.f, -2.f);
 		LookAt = SpeakerEye - FVector(0.f, 0.f, 4.f);
 		OutFocal = 85.f;
 		break;

@@ -78,9 +78,9 @@ void AEwigfelsEnemy::ApplyCreatureDef()
 	bDefApplied = true;
 
 	// Optik: echtes Mesh oder Platzhalter
-	if (USkeletalMesh* Mesh = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(Def->Look.Mesh)))
+	if (USkeletalMesh* SkelMesh = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(Def->Look.Mesh)))
 	{
-		GetMesh()->SetSkeletalMesh(Mesh);
+		GetMesh()->SetSkeletalMesh(SkelMesh);
 		if (UClass* AnimClass = Def->Look.AnimClass.TryLoadClass<UAnimInstance>())
 		{
 			GetMesh()->SetAnimInstanceClass(AnimClass);

@@ -49,7 +49,7 @@ public:
 	bool IsPlayingDeath() const { return DeathTime >= 0.f; }
 
 	/** Schild-Glocke vor der Figur. */
-	void SetShieldVisible(bool bVisible, const FLinearColor& Color);
+	void SetShieldVisible(bool bShow, const FLinearColor& Color);
 
 	bool IsActiveBody() const { return bActive; }
 
