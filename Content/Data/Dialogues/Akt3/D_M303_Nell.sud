@@ -1,0 +1,20 @@
+# M303 – Nacht am Kai. Nell, Lio und der Spieler vor dem Leuchtturm. Die Windglocke schweigt.
+===
+[set SpeakerName.Nell "Nell Tiedemann"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+Nell: Hören Sie das?
+Lio: Ich hör gar nichts.
+Nell: Eben. Die Windglocke oben auf dem Turm läutet bei jedem Wind. Seit hundert Jahren. Heute nicht.
+[event camera `close`]
+Nell: Das ist ihr Signal. Wenn die Glocke schweigt, kommt das Schiff.
+  * Was ist der Plan?
+    Nell: Sie gehen hoch und bringen die Glocke wieder zum Läuten. Dann kommt die Hafenwache. Ich halte unten die Tür.
+  * Und wenn es zu viele sind?
+    Nell: Dann rennen Sie. Ich bin schon da unten und renne mit. Ich bin schnell für mein Alter.
+Lio: Und ich?
+Nell: Sie, junger Mann, machen nichts kaputt.
+[event emotion `happy`]
+Lio: Ich mach nie was kaputt. Fast nie. Selten.
+Nell: Ich hab Ihre Akte gelesen, Vandermeer.

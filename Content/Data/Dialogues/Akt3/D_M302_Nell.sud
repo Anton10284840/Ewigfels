@@ -1,0 +1,19 @@
+# M302 – Nell Tiedemann, Hafenkommissarin. Trocken, müde, genau. Kalte Pfeife. Sieben Wirker verschwunden. Siezt den Spieler.
+===
+[set SpeakerName.Nell "Nell Tiedemann"]
+===
+[event camera `medium`]
+Nell: Sie sind die Akademie-Leute. Gut. Setzen Sie sich. Nicht auf den Stuhl, der wackelt. Auf den anderen.
+Nell: Ich bin Nell Tiedemann. Hafenkommissarin. Das heißt, ich bin für alles zuständig, was nass ist und Ärger macht.
+[event camera `close`]
+Nell: Sieben Wirker. Drei Monate. Alle weg. Keine Leiche, kein Brief, kein Boot, das fehlt.
+  * Warum brauchen Sie dafür uns?
+    Nell: Weil ich keine Magie habe, und das hier stinkt nach Magie. Und weil das Kollegium meine Briefe nicht beantwortet.
+  * Wer waren die sieben?
+    Nell: Ein Netzflicker. Zwei Schiffsheiler. Eine Wetterleserin. Drei andere. Ganz normale Leute. Das ist das Unheimliche.
+Nell: Der letzte verschwand an Pier 9. Vor vier Tagen. Seitdem riecht der Pier nach nichts. Nicht nach Fisch, nicht nach Teer. Nach gar nichts.
+Nell: Und die Fischhändlerin Olga hat was gesehen. Sie sagt, sie hat nichts gesehen. Das ist das Gleiche, nur mit mehr Angst.
+  * Wir sehen uns den Pier an.
+    Nell: Gut. Fassen Sie nichts an. Außer mit Magie. Dann fassen Sie ruhig alles an.
+  * Was springt für uns raus?
+    Nell: Mein Dank. Und eine Schnellreisemarke der Zunft. Mehr hab ich nicht. Ich bin Beamtin.

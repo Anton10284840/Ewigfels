@@ -94,6 +94,8 @@ Pro Akt: Regionen bauen, Quests + Dialoge als Daten, Gegner/Bosse, Cutscenes, du
   - [x] 🤖 Hauptmissionen M201–M210 als Quest-JSON + 29 Dialoge
   - [x] 🤖 Regionen Graumoor + Glastiefen ausarbeiten: N201–N216 + 23 Dialoge, Glutdachs-Zähmquest N216 (`docs/regionen/GRAUMOOR.md`, `GLASTIEFEN.md`)
 - [ ] Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Entscheidung 3 · Sturmschwinge + Dünenschreiter
+  - [x] 🤖 Hauptmissionen M301–M310 als Quest-JSON + 26 Dialoge
+  - [ ] 🤖 Regionen Tiedmar, Weiße Zinnen, Kaelschlucht ausarbeiten (Dörfer, Nebenquests), Dünenschreiter-Zähmquest
 - [ ] Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Entscheidungen 4 + 5 · Perlsegler · Akademie zerstört
 - [ ] Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · Entscheidung 6 · 4 Enden + Epiloge
 - [ ] 6 Questreihen (48 Quests), 3 Fraktionslinien (15), 60 Sidequests, 40+ Rätselschreine

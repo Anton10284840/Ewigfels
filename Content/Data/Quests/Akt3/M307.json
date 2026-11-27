@@ -1,0 +1,203 @@
+{
+  "id": "M307",
+  "type": "main",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Lio",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M306"
+  ],
+  "title": {
+    "de": "Kaelschlucht",
+    "en": "Kael Gorge"
+  },
+  "summary": {
+    "de": "Von Schnee in die Wüste. Die Oase Sela, und dahinter die Ruinen der Kael. Die Stille Hand ist schon da.",
+    "en": "From snow to desert. The oasis of Sela, and beyond it the ruins of the Kael. The Silent Hand is already there."
+  },
+  "dialogues": [
+    "D_M307_Sela_Haendlerin",
+    "D_M307_Lio_Wueste",
+    "D_M307_Tor"
+  ],
+  "stages": [
+    {
+      "id": "s1_sela",
+      "text": {
+        "de": "Flieg in die Wüste. Oase Sela: Karawanen, Gewürze, Tänzer.",
+        "en": "Fly into the desert. The oasis of Sela: caravans, spices, dancers."
+      },
+      "objectives": [
+        {
+          "id": "o_sela",
+          "kind": "reach",
+          "target": "Oase_Sela",
+          "marker": "Oase_Sela",
+          "text": {
+            "de": "Lande in der Oase Sela",
+            "en": "Land at the oasis of Sela"
+          }
+        },
+        {
+          "id": "o_haendlerin",
+          "kind": "dialogue",
+          "target": "D_M307_Sela_Haendlerin",
+          "marker": "NPC_Saffa",
+          "text": {
+            "de": "Frag die Gewürzhändlerin nach dem Weg",
+            "en": "Ask the spice trader for the way"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_canyon"
+        }
+      ]
+    },
+    {
+      "id": "s2_canyon",
+      "text": {
+        "de": "Durch den Canyon. Der Dünengräber hört jeden Schritt.",
+        "en": "Through the canyon. The dune digger hears every step."
+      },
+      "objectives": [
+        {
+          "id": "o_graeber",
+          "kind": "custom",
+          "target": "Duenengraeber_Schleichen",
+          "text": {
+            "de": "Spring über die Felsen und halt Stille",
+            "en": "Leap across the rocks and keep silent"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M307_Lio_Wueste",
+          "text": {
+            "de": "Rast mit Lio im Schatten",
+            "en": "Rest with Lio in the shade"
+          }
+        },
+        {
+          "id": "o_schreiter",
+          "kind": "custom",
+          "target": "Duenenschreiter_Sichten",
+          "optional": true,
+          "text": {
+            "de": "Sieh den Dünenschreiter",
+            "en": "Spot the dune strider"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_vorkael"
+        }
+      ]
+    },
+    {
+      "id": "s3_vorkael",
+      "text": {
+        "de": "Vor-Kael, die Ruinenstadt. Drei Klangtürme müssen gestimmt werden.",
+        "en": "Fore-Kael, the ruined city. Three sound towers must be tuned."
+      },
+      "objectives": [
+        {
+          "id": "o_ruinen",
+          "kind": "reach",
+          "target": "Vor_Kael",
+          "marker": "Vor_Kael",
+          "text": {
+            "de": "Erreich Vor-Kael",
+            "en": "Reach Fore-Kael"
+          }
+        },
+        {
+          "id": "o_tuerme",
+          "kind": "custom",
+          "target": "Klangturm_Stimmen",
+          "count": 3,
+          "text": {
+            "de": "Stimm die Klangtürme (jeder ein Grundton, der Wind spielt sie)",
+            "en": "Tune the sound towers (each a root note, the wind plays them)"
+          }
+        },
+        {
+          "id": "o_sandsaenger",
+          "kind": "defeat",
+          "target": "Sandsaenger",
+          "count": 5,
+          "text": {
+            "de": "Wehr die Sandsänger ab",
+            "en": "Fend off the sand singers"
+          }
+        },
+        {
+          "id": "o_inschriften",
+          "kind": "collect",
+          "target": "Kael_Inschrift",
+          "count": 5,
+          "optional": true,
+          "text": {
+            "de": "Sammle Kael-Inschriften",
+            "en": "Collect Kael inscriptions"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_tor"
+        }
+      ]
+    },
+    {
+      "id": "s4_tor",
+      "text": {
+        "de": "Das Lager der Stillen Hand am Grabeingang ist leer. Am Tor steht etwas auf Kael.",
+        "en": "The Silent Hand's camp at the tomb entrance is empty. Something is written in Kael on the gate."
+      },
+      "objectives": [
+        {
+          "id": "o_lager",
+          "kind": "interact",
+          "target": "Lager_Stille_Hand_Leer",
+          "marker": "Grabeingang",
+          "text": {
+            "de": "Durchsuch das leere Lager",
+            "en": "Search the empty camp"
+          }
+        },
+        {
+          "id": "o_tor",
+          "kind": "dialogue",
+          "target": "D_M307_Tor",
+          "marker": "Grabeingang",
+          "text": {
+            "de": "Lies die Inschrift am Tor",
+            "en": "Read the inscription on the gate"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Read_KaelGate=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "gold": 0,
+    "items": [
+      "Schnellreise_Sela"
+    ],
+    "effects": []
+  }
+}

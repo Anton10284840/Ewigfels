@@ -1,0 +1,196 @@
+{
+  "id": "M304",
+  "type": "main",
+  "act": 3,
+  "region": "Nocturna",
+  "giver": "Grell",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M303"
+  ],
+  "title": {
+    "de": "Turnier von Nocturna",
+    "en": "The Nocturna Tournament"
+  },
+  "summary": {
+    "de": "Grell hat euch zum großen Duellturnier gemeldet. Ob ihr wollt oder nicht. Für einen Tag ist Nocturna wieder wie früher.",
+    "en": "Grell has entered you in the great duelling tournament. Whether you like it or not. For one day Nocturna feels like it used to."
+  },
+  "dialogues": [
+    "D_M304_Fenja",
+    "D_M304_Grell",
+    "D_M304_Aurelia_Finale",
+    "D_M304_Aurelia_Mauer"
+  ],
+  "stages": [
+    {
+      "id": "s1_fest",
+      "text": {
+        "de": "Buden, Gäste aus ganz Velmark, Fenjas Wettbüro.",
+        "en": "Stalls, guests from all over Velmark, Fenja's betting office."
+      },
+      "objectives": [
+        {
+          "id": "o_arena",
+          "kind": "reach",
+          "target": "Duellarena",
+          "marker": "Duellarena",
+          "text": {
+            "de": "Geh zur Arena",
+            "en": "Go to the arena"
+          }
+        },
+        {
+          "id": "o_fenja",
+          "kind": "dialogue",
+          "target": "D_M304_Fenja",
+          "marker": "NPC_Fenja",
+          "optional": true,
+          "text": {
+            "de": "Schau beim Wettbüro vorbei",
+            "en": "Drop by the betting office"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_runden"
+        }
+      ]
+    },
+    {
+      "id": "s2_runden",
+      "text": {
+        "de": "Drei Runden. Jeder Gegner hat eine eigene Taktik.",
+        "en": "Three rounds. Every opponent has their own tactics."
+      },
+      "objectives": [
+        {
+          "id": "o_jonte",
+          "kind": "defeat",
+          "target": "Duellant_Jonte",
+          "text": {
+            "de": "Runde 1: Jonte (liest während des Duells und kontert alles)",
+            "en": "Round 1: Jonte (reads during the duel and counters everything)"
+          }
+        },
+        {
+          "id": "o_greta",
+          "kind": "defeat",
+          "target": "Duellant_Greta",
+          "text": {
+            "de": "Runde 2: Greta (Nahkampf mit Glutweisen)",
+            "en": "Round 2: Greta (close combat with ember spells)"
+          }
+        },
+        {
+          "id": "o_kadett",
+          "kind": "defeat",
+          "target": "Duellant_Kadett",
+          "text": {
+            "de": "Runde 3: Kollegiums-Kadett aus Aurenburg (Bannweisen)",
+            "en": "Round 3: Collegium cadet from Aurenburg (ban spells)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_pause"
+        }
+      ]
+    },
+    {
+      "id": "s3_pause",
+      "text": {
+        "de": "Pause. Grell steht am Rand der Arena und redet. Das tut er sonst nie.",
+        "en": "Break. Grell stands at the edge of the arena and talks. He never does that."
+      },
+      "objectives": [
+        {
+          "id": "o_grell",
+          "kind": "dialogue",
+          "target": "D_M304_Grell",
+          "marker": "NPC_Grell",
+          "text": {
+            "de": "Sprich mit Grell",
+            "en": "Talk to Grell"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_finale"
+        }
+      ]
+    },
+    {
+      "id": "s4_finale",
+      "text": {
+        "de": "Finale gegen Aurelia. Sie kämpft perfekt.",
+        "en": "Final against Aurelia. She fights perfectly."
+      },
+      "objectives": [
+        {
+          "id": "o_aurelia",
+          "kind": "defeat",
+          "target": "Duellant_Aurelia",
+          "marker": "Duellarena",
+          "text": {
+            "de": "Duell gegen Aurelia (gewinnen oder verlieren)",
+            "en": "Duel against Aurelia (win or lose)"
+          }
+        },
+        {
+          "id": "o_nachher",
+          "kind": "dialogue",
+          "target": "D_M304_Aurelia_Finale",
+          "text": {
+            "de": "Nach dem Duell",
+            "en": "After the duel"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s5_mauer"
+        }
+      ]
+    },
+    {
+      "id": "s5_mauer",
+      "text": {
+        "de": "Abends auf der Mauer. Aurelia wartet.",
+        "en": "Evening on the wall. Aurelia is waiting."
+      },
+      "objectives": [
+        {
+          "id": "o_mauer",
+          "kind": "dialogue",
+          "target": "D_M304_Aurelia_Mauer",
+          "marker": "Akademiemauer",
+          "text": {
+            "de": "Sprich mit Aurelia auf der Mauer",
+            "en": "Talk to Aurelia on the wall"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Aurelia+10"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "gold": 0,
+    "items": [
+      "Turnier_Schaerpe"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,29 @@
+# M305 – Nach der Lawine. Lio hat sie ausgelöst. Zwei Fassungen: Spieler hat Lio gerettet oder die Lawine abgelenkt. Lio wird ernster.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `close`]
+[if {flag.Saved_Lio_Avalanche}]
+[event emotion `scared`]
+Lio: Du hast mich ... du hast mich da rausgezogen. Ich war ganz unten. Es war so still.
+Lio: So still wie in Brandheim.
+  * Du lebst. Das reicht.
+    Lio: Ja. Ja. Danke. Ich schulde dir was. Ich schulde dir eigentlich schon ziemlich viel.
+    [event state `rel:Lio+5`]
+  * Was hast du da oben gemacht?
+    Lio: Ich hab gerufen. Ein Echo ausprobiert. Dumm. Ich weiß.
+[else]
+[event emotion `surprised`]
+Lio: Du hast die ganze Lawine einfach ... weggeweht. Weggeweht! Wie ein Blatt!
+Lio: Und ich hab sie losgetreten. Mit einem Juchzer. Großartig, Lio. Wirklich großartig.
+[endif]
+[event emotion `sad`]
+Lio: Weißt du, was ich gedacht hab, als der Schnee kam? Nicht an Mama. Nicht an dich. An Mara.
+Lio: Dass ich sie nie mehr finde, wenn ich jetzt hier liegen bleibe.
+  * Wir finden sie. Zusammen.
+    [event emotion `soft`]
+    Lio: Zusammen. Okay. Dann pass ich ab jetzt besser auf. Kein Juchzen mehr. Höchstens leise.
+  * Dann hör auf, Dummheiten zu machen.
+    Lio: Du klingst wie Grell. Aber du hast recht. Ich trainier ab jetzt jeden Abend. Ernsthaft.
+[event camera `wide`]
+Lio: Hörst du das? Da hinten. Das klingt wie ein Vogel. Ein sehr großer, sehr wütender Vogel.

@@ -1,0 +1,179 @@
+{
+  "id": "M308",
+  "type": "main",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Lio",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Der Wächter von Kael",
+    "en": "The Warden of Kael"
+  },
+  "summary": {
+    "de": "Das Grab der Nymrael. Hallen wie das Innere eines Instruments. Und etwas, das prüft, ob du würdig bist.",
+    "en": "The tomb of Nymrael. Halls like the inside of an instrument. And something that tests whether you are worthy."
+  },
+  "dialogues": [
+    "D_M308_Waechter",
+    "D_M308_Nym"
+  ],
+  "stages": [
+    {
+      "id": "s1_grab",
+      "text": {
+        "de": "Hallen aus gespannten Steinsaiten. Drei Kammern mit Kael-Rätseln.",
+        "en": "Halls of taut stone strings. Three chambers with Kael puzzles."
+      },
+      "objectives": [
+        {
+          "id": "o_echo",
+          "kind": "custom",
+          "target": "Echo_Labyrinth",
+          "marker": "Grab_Kammer1",
+          "text": {
+            "de": "Echo-Labyrinth: find den Weg blind, nur nach Ton",
+            "en": "Echo maze: find the way blind, by sound alone"
+          }
+        },
+        {
+          "id": "o_zeit",
+          "kind": "custom",
+          "target": "Zeitplatten",
+          "marker": "Grab_Kammer2",
+          "text": {
+            "de": "Zeitplatten: wechsel mit Nachhallschritt zwischen zwei Zuständen der Kammer",
+            "en": "Time plates: switch between two states of the chamber with Echo Step"
+          }
+        },
+        {
+          "id": "o_spiegel",
+          "kind": "custom",
+          "target": "Spiegel_Nachhall",
+          "marker": "Grab_Kammer3",
+          "text": {
+            "de": "Licht von unten: richte die Spiegel im Nachhall aus",
+            "en": "Light from below: align the mirrors in the echo realm"
+          }
+        },
+        {
+          "id": "o_waechter_klein",
+          "kind": "defeat",
+          "target": "Klangwaechter",
+          "count": 6,
+          "text": {
+            "de": "Klangwächter und Scherbengolems",
+            "en": "Sound wardens and shard golems"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_vorkammer"
+        }
+      ]
+    },
+    {
+      "id": "s2_vorkammer",
+      "text": {
+        "de": "In der Vorkammer schlafen die Leute der Stillen Hand in Trance. Angehalten, nicht getötet.",
+        "en": "In the antechamber the Silent Hand's people sleep in trance. Halted, not killed."
+      },
+      "objectives": [
+        {
+          "id": "o_vorkammer",
+          "kind": "reach",
+          "target": "Grab_Vorkammer",
+          "marker": "Grab_Vorkammer",
+          "text": {
+            "de": "Geh in die Vorkammer",
+            "en": "Enter the antechamber"
+          }
+        },
+        {
+          "id": "o_waechter",
+          "kind": "dialogue",
+          "target": "D_M308_Waechter",
+          "text": {
+            "de": "Der Wächter erwacht",
+            "en": "The Warden awakens"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_boss"
+        }
+      ]
+    },
+    {
+      "id": "s3_boss",
+      "text": {
+        "de": "Der Wächter spielt Akkorde. Antworte mit Gegenakkorden.",
+        "en": "The Warden plays chords. Answer with counter-chords."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "defeat",
+          "target": "Waechter_von_Kael",
+          "marker": "Grab_Vorkammer",
+          "text": {
+            "de": "Besiege den Wächter von Kael",
+            "en": "Defeat the Warden of Kael"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_sarkophag"
+        }
+      ]
+    },
+    {
+      "id": "s4_sarkophag",
+      "text": {
+        "de": "Der Wächter kniet und öffnet die letzte Kammer. In der Mitte: ein Sarkophag aus Glas. Leer.",
+        "en": "The Warden kneels and opens the last chamber. In the middle: a glass sarcophagus. Empty."
+      },
+      "objectives": [
+        {
+          "id": "o_kammer",
+          "kind": "reach",
+          "target": "Grab_Letzte_Kammer",
+          "marker": "Grab_Letzte_Kammer",
+          "text": {
+            "de": "Geh in die letzte Kammer",
+            "en": "Enter the last chamber"
+          }
+        },
+        {
+          "id": "o_nym",
+          "kind": "dialogue",
+          "target": "D_M308_Nym",
+          "text": {
+            "de": "Dreh dich um",
+            "en": "Turn around"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 700,
+    "gold": 0,
+    "items": [
+      "Waechterkern",
+      "Kodex_Nymrael"
+    ],
+    "effects": []
+  }
+}

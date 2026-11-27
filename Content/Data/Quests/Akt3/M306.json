@@ -1,0 +1,184 @@
+{
+  "id": "M306",
+  "type": "main",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Stumm",
+  "duration_min": 45,
+  "auto_start": true,
+  "requires": [
+    "quest:M305"
+  ],
+  "title": {
+    "de": "Das Schweigen der Mönche",
+    "en": "The Silence of the Monks"
+  },
+  "summary": {
+    "de": "Im Kloster spricht niemand. Die Mönche halten den Urton seit 600 Jahren unter der Zunge. Als Gebet.",
+    "en": "In the monastery no one speaks. The monks have held the Urtone under their tongues for 600 years. As a prayer."
+  },
+  "dialogues": [
+    "D_M306_BruderStumm",
+    "D_M306_Lio_Schneemann",
+    "D_M306_Abschied"
+  ],
+  "stages": [
+    {
+      "id": "s1_kloster",
+      "text": {
+        "de": "Verständige dich ohne Worte, nur mit Gesten und Glocken.",
+        "en": "Make yourself understood without words, only with gestures and bells."
+      },
+      "objectives": [
+        {
+          "id": "o_gesten",
+          "kind": "custom",
+          "target": "Gesten_Rad",
+          "marker": "Kloster_Tor",
+          "text": {
+            "de": "Grüß die Mönche mit dem Gesten-Rad",
+            "en": "Greet the monks with the gesture wheel"
+          }
+        },
+        {
+          "id": "o_abt",
+          "kind": "dialogue",
+          "target": "D_M306_BruderStumm",
+          "marker": "NPC_Stumm",
+          "text": {
+            "de": "Lies, was Bruder Stumm auf die Tafel schreibt",
+            "en": "Read what Brother Stumm writes on the slate"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_pruefungen"
+        }
+      ]
+    },
+    {
+      "id": "s2_pruefungen",
+      "text": {
+        "de": "Drei Prüfungen.",
+        "en": "Three trials."
+      },
+      "objectives": [
+        {
+          "id": "o_kerze",
+          "kind": "custom",
+          "target": "Pruefung_Kerze",
+          "marker": "Kerzenkammer",
+          "text": {
+            "de": "Lösch eine Kerze mit dem Urton, ohne den Raum grau zu machen",
+            "en": "Put out a candle with the Urtone without turning the room grey"
+          }
+        },
+        {
+          "id": "o_schnee",
+          "kind": "custom",
+          "target": "Pruefung_Schnee",
+          "marker": "Klosterhof",
+          "text": {
+            "de": "Sitz eine Stunde reglos im Schnee",
+            "en": "Sit motionless in the snow for an hour"
+          }
+        },
+        {
+          "id": "o_glocke",
+          "kind": "custom",
+          "target": "Pruefung_Glockenschlag",
+          "marker": "Glockenturm_Kloster",
+          "text": {
+            "de": "Mach einen Glockenschlag ungeschehen",
+            "en": "Undo the stroke of a bell"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M306_Lio_Schneemann",
+          "optional": true,
+          "text": {
+            "de": "Schau nach, was Lio während der Stunde gemacht hat",
+            "en": "See what Lio did during the hour"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_entklang"
+        }
+      ]
+    },
+    {
+      "id": "s3_entklang",
+      "text": {
+        "de": "Das Ritual. Die Mönche ziehen den Nachhall aus dir und lehren dich Entklang.",
+        "en": "The ritual. The monks draw the echo-shadow out of you and teach you Unsounding."
+      },
+      "objectives": [
+        {
+          "id": "o_ritual",
+          "kind": "custom",
+          "target": "Ritual_Entklang",
+          "marker": "Klosterhalle",
+          "text": {
+            "de": "Halte still beim Ritual",
+            "en": "Hold still during the ritual"
+          }
+        },
+        {
+          "id": "o_cast",
+          "kind": "cast",
+          "target": "K57",
+          "text": {
+            "de": "Wirk Entklang zum ersten Mal",
+            "en": "Cast Unsounding for the first time"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:NachhallLoad-10"
+      ],
+      "next": [
+        {
+          "stage": "s4_abschied"
+        }
+      ]
+    },
+    {
+      "id": "s4_abschied",
+      "text": {
+        "de": "Abschied am Tor.",
+        "en": "Farewell at the gate."
+      },
+      "objectives": [
+        {
+          "id": "o_abschied",
+          "kind": "dialogue",
+          "target": "D_M306_Abschied",
+          "marker": "Kloster_Tor",
+          "text": {
+            "de": "Verabschiede dich von Bruder Stumm",
+            "en": "Say goodbye to Brother Stumm"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 0,
+    "items": [
+      "Weise_Entklang",
+      "Moenchskutte"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "id": "M305",
+  "type": "main",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Lio",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M304"
+  ],
+  "title": {
+    "de": "Die Weißen Zinnen",
+    "en": "The White Pinnacles"
+  },
+  "summary": {
+    "de": "Hoch in die Berge, zum Kloster der Schweigemönche. Schnee, Wölfe, und in einer Felsnische etwas mit Federn.",
+    "en": "High into the mountains, to the monastery of the silent monks. Snow, wolves, and something with feathers in a rock niche."
+  },
+  "dialogues": [
+    "D_M305_Lio_Berg",
+    "D_M305_Sturmschwinge"
+  ],
+  "stages": [
+    {
+      "id": "s1_firnhuetten",
+      "text": {
+        "de": "Firnhütten, das Hirtendorf. Kauft Fellmäntel.",
+        "en": "Firnhütten, the herders' village. Buy fur coats."
+      },
+      "objectives": [
+        {
+          "id": "o_dorf",
+          "kind": "reach",
+          "target": "Firnhuetten",
+          "marker": "Firnhuetten",
+          "text": {
+            "de": "Erreich Firnhütten",
+            "en": "Reach Firnhütten"
+          }
+        },
+        {
+          "id": "o_mantel",
+          "kind": "collect",
+          "target": "Fellmantel",
+          "marker": "Firnhuetten_Kuerschner",
+          "text": {
+            "de": "Kauf einen Fellmantel",
+            "en": "Buy a fur coat"
+          }
+        },
+        {
+          "id": "o_schlitten",
+          "kind": "custom",
+          "target": "Schlittenrennen",
+          "optional": true,
+          "text": {
+            "de": "Schlittenrennen gegen Lio",
+            "en": "Sledge race against Lio"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_aufstieg"
+        }
+      ]
+    },
+    {
+      "id": "s2_aufstieg",
+      "text": {
+        "de": "Der Aufstieg. Eisbrücken, Schneesturm, zehn Meter Sicht. Folg dem Glockenklang des Klosters.",
+        "en": "The climb. Ice bridges, snowstorm, ten metres of visibility. Follow the sound of the monastery bell."
+      },
+      "objectives": [
+        {
+          "id": "o_eis",
+          "kind": "custom",
+          "target": "Reifpfad_Bruecken",
+          "text": {
+            "de": "Mach mit Reifpfad Brücken aus Eis",
+            "en": "Make ice bridges with Rime Path"
+          }
+        },
+        {
+          "id": "o_sturm",
+          "kind": "custom",
+          "target": "Schneesturm_Navigation",
+          "text": {
+            "de": "Find durch den Sturm, indem du der Glocke folgst",
+            "en": "Find your way through the storm by following the bell"
+          }
+        },
+        {
+          "id": "o_woelfe",
+          "kind": "defeat",
+          "target": "Firnwolf",
+          "count": 8,
+          "text": {
+            "de": "Wehr die Firnwölfe ab",
+            "en": "Fend off the frost wolves"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_lawine"
+        }
+      ]
+    },
+    {
+      "id": "s3_lawine",
+      "text": {
+        "de": "Lio löst aus Versehen eine Lawine aus.",
+        "en": "Lio accidentally sets off an avalanche."
+      },
+      "objectives": [
+        {
+          "id": "o_lawine",
+          "kind": "custom",
+          "target": "Lawine_Lio_Retten",
+          "text": {
+            "de": "Lenk die Lawine mit Sturmweise ab oder rette Lio",
+            "en": "Divert the avalanche with a storm spell or save Lio"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M305_Lio_Berg",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio",
+            "en": "Talk to Lio"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_schwinge"
+        }
+      ]
+    },
+    {
+      "id": "s4_schwinge",
+      "text": {
+        "de": "In einer Felsnische liegt eine verletzte Sturmschwinge, ein Pfeil im Flügel.",
+        "en": "In a rock niche lies an injured stormwing, an arrow in its wing."
+      },
+      "objectives": [
+        {
+          "id": "o_wilderer",
+          "kind": "defeat",
+          "target": "Wilderer",
+          "count": 2,
+          "text": {
+            "de": "Vertreib die Wilderer",
+            "en": "Drive off the poachers"
+          }
+        },
+        {
+          "id": "o_naehern",
+          "kind": "custom",
+          "target": "Zaehmen_Summen",
+          "marker": "Felsnische_Sturmschwinge",
+          "text": {
+            "de": "Näher dich langsam und summ",
+            "en": "Approach slowly and hum"
+          }
+        },
+        {
+          "id": "o_federn",
+          "kind": "custom",
+          "target": "Zaehmen_Federn_Ordnen",
+          "text": {
+            "de": "Ordne ihre Federn (Rhythmus)",
+            "en": "Smooth her feathers (rhythm)"
+          }
+        },
+        {
+          "id": "o_pfeil",
+          "kind": "custom",
+          "target": "Zaehmen_Pfeil_Ziehen",
+          "text": {
+            "de": "Zieh den Pfeil (Atem anhalten)",
+            "en": "Pull out the arrow (hold your breath)"
+          }
+        },
+        {
+          "id": "o_schwinge",
+          "kind": "dialogue",
+          "target": "D_M305_Sturmschwinge",
+          "text": {
+            "de": "Lass sie entscheiden",
+            "en": "Let her decide"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Sturmschwinge_Tamed=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_flug"
+        }
+      ]
+    },
+    {
+      "id": "s5_flug",
+      "text": {
+        "de": "Der erste Flug. Über die Gletscher zum Kloster.",
+        "en": "The first flight. Over the glaciers to the monastery."
+      },
+      "objectives": [
+        {
+          "id": "o_flug",
+          "kind": "reach",
+          "target": "Kloster_Schweigemoenche",
+          "marker": "Kloster_Schweigemoenche",
+          "text": {
+            "de": "Flieg zum Kloster",
+            "en": "Fly to the monastery"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 600,
+    "gold": 0,
+    "items": [
+      "Reittier_Sturmschwinge",
+      "Fellmantel",
+      "Schnellreise_Weisse_Zinnen"
+    ],
+    "effects": []
+  }
+}

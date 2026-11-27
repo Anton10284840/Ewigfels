@@ -1,0 +1,13 @@
+# M304 – Fenja Brise (Turmsprecherin Sturmkamm) betreibt das Wettbüro beim Turnier. Schnell, frech, zählt Quoten.
+===
+[set SpeakerName.Fenja "Fenja Brise"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Fenja: Wetten, Wetten, Wetten! Quoten frisch wie Brötchen!
+Fenja: Oh, du! Du stehst bei drei zu eins. Aurelia bei eins zu zwei. Jonte bei sieben zu eins, weil er beim Aufwärmen gelesen hat.
+  * Ich setze auf mich.
+    Fenja: Mutig! Zehn Silber auf dich. Wenn du gewinnst, gibt's dreißig zurück. Wenn du verlierst, gibt's Mitleid. Gratis.
+  * Ich wette nicht.
+    Fenja: Langweilig. Aber klug. Grell hat gesagt, er schaut sich das Wettbuch an. Ich hab's natürlich zweimal.
+Fenja: Viel Glück. Und wenn du gegen Aurelia antrittst: Sie wartet immer einen Atemzug, bevor sie zuschlägt. Hab ich nicht gesagt.

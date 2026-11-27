@@ -1,0 +1,15 @@
+# M303 – Choralist Benedikt Raue, Kapitän der Schweigenden Möwe. Fromm wirkend, singt Choräle, flieht nach Phase 1 und verliert seine Seekarte.
+===
+[set SpeakerName.Raue "Choralist Benedikt Raue"]
+===
+[event camera `wide`]
+Raue: Ein Gast an Bord. Und ohne Fahrkarte.
+[event camera `close`]
+Raue: Ich weiß, wer Sie sind. Jeder auf diesem Schiff weiß es. Der Dirigent hat uns ein Bild von Ihnen gezeigt.
+  * Lassen Sie die Gefangenen frei.
+    Raue: Gefangene? Sie sind freiwillig hier. Sie haben nur vergessen, dass sie es nicht wollten.
+  * Wohin bringen Sie sie?
+    Raue: Dahin, wo Arbeit auf sie wartet. Und wo man nicht so viel Lärm macht wie hier.
+[event emotion `angry`]
+Raue: Der Dirigent sagt, man soll Ihnen zuhören. Ich sage, man soll Ihnen nicht zu nahe kommen.
+Raue: Matrosen. Im Takt.

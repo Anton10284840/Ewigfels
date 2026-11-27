@@ -1,0 +1,52 @@
+# M309 – Der längste Nym-Dialog. Im Nachhall, nach der Vision. Der Urton stimmt um statt zu löschen. Nym hat den Urton in Brandheim zum Spieler gelenkt. Wahl: wütend, dankbar, schweigen (rel:Nym).
+===
+[set SpeakerName.Nym "Nym"]
+===
+[event camera `wide`]
+Nym: Jetzt hast du es gesehen. Mit meinen Augen. *... meinen Augen ...*
+[event camera `close`]
+[event emotion `sad`]
+Nym: Sie hieß Elin. Sie war vier. Sie hatte Fieber, drei Nächte lang. In der vierten hat sie aufgehört zu atmen. *... aufgehört ...*
+Nym: Ich war die Hohe Sängerin der Kael. Ich konnte Flüsse umlenken. Ich konnte Steine zum Blühen singen. Und ich konnte nichts tun. *... nichts tun ...*
+Nym: Also habe ich den Ton gespielt, den niemand spielen darf. Gegen den Tod. Gegen alles, was ihn möglich macht.
+Nym: Der Ton ist gebrochen. Mein Volk ist in den Nachhall gefallen. Das Becken ist verdorrt. Elin ist trotzdem tot geblieben. *... tot geblieben ...*
+  * Das tut mir leid.
+    Nym: Zweitausend Jahre hat das niemand gesagt. Danke. *... danke ...*
+  * Du hast ein ganzes Volk ausgelöscht.
+    Nym: Ja. Ich trage jeden von ihnen. Du hast sie gehört, in den Steinen. Das sind sie. *... das sind sie ...*
+[event emotion `neutral`]
+Nym: Aber hör, was ich in zweitausend Jahren gelernt habe. Hör gut zu. *... hör zu ...*
+Nym: Der Urton löscht nicht. Das glauben alle. Das Kollegium. Die Stille Hand. Vaal. *... Vaal ...*
+Nym: Der Urton stimmt um. Er nimmt die Welt, wie sie klingt, und stimmt sie neu.
+Nym: Ich habe ihn gegen etwas gespielt. Voller Angst. Darum hat er alles gegen sich gestimmt. Darum ist alles verstummt. *... verstummt ...*
+Nym: Wer ihn für etwas spielt, kann die Welt neu stimmen. Ohne etwas wegzunehmen. *... ohne wegzunehmen ...*
+  * Für etwas? Für was?
+    Nym: Für eine Melodie, an der du hängst. Für Menschen. Das kann ich dir nicht sagen. Das musst du wissen, wenn es so weit ist.
+  * Und warum kannst du es dann nicht selbst?
+    Nym: Weil ich nur noch Angst bin. Zweitausend Jahre Angst. Ich kann ihn nicht mehr für etwas spielen. *... nicht mehr ...*
+[event camera `closeup`]
+[event emotion `sad`]
+Nym: Ich muss dir noch etwas sagen. Das Schwerste.
+Nym: In der Nacht von Brandheim hat das Kollegium den Urton gerufen. Er ist gebrochen, wie bei mir. Er wollte alles verschlucken.
+Nym: Ich habe ihn gehört. Von hier unten. Und ich habe ihn umgelenkt. Weg von der Stadt. In ein einziges kleines Herz. *... ein kleines Herz ...*
+Nym: In dich.
+Nym: Du warst das Einzige, das nicht stumm wurde. Du hast gesungen. Ein Lied aus sechs Tönen. Das Lied deiner Mutter. *... deiner Mutter ...*
+Nym: Ich habe dich vorhergehört. Lange vorher. Ich wusste, du würdest es halten können. Ich wusste nicht, wie schwer es sein würde.
+Nym: Du bist kein Fehler. Du bist eine Stimmgabel. *... Stimmgabel ...*
+  * Du hast mir das angetan. Du hast mich ausgesucht, ohne zu fragen.
+    [event emotion `sad`]
+    Nym: Ja. Ich habe nicht gefragt. Ein Säugling kann nicht antworten. Ich hätte es trotzdem nicht tun dürfen. *... nicht dürfen ...*
+    Nym: Sei wütend. Du hast das Recht dazu. Ich bin trotzdem da, wenn du mich rufst.
+    [event state `rel:Nym-10`]
+  * Ohne dich wäre Brandheim ganz verschwunden. Und ich mit.
+    [event emotion `soft`]
+    Nym: Du bist freundlicher zu mir, als ich es verdiene. *... verdiene ...*
+    Nym: Dann lass uns zusammen etwas gutmachen. Ich habe so lange darauf gewartet, das sagen zu dürfen.
+    [event state `rel:Nym+15`]
+  * (Schweigen)
+    Nym: ...
+    Nym: Schweigen ist auch eine Antwort. Die Mönche wussten das. Ich warte, bis du eine andere hast. *... ich warte ...*
+    [event state `rel:Nym+5`]
+[event camera `wide`]
+Nym: Eine Weise schenke ich dir noch. Rückklang. Sie holt zurück, was verklungen ist. Nur ein bisschen. Nur für einen Atemzug. Übe sie. Du wirst sie brauchen.
+Nym: Und jetzt geh. Dein Freund hat Hunger. Ich höre ihn bis hier unten. *... bis hier unten ...*

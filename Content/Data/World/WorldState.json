@@ -123,7 +123,16 @@
     "Hohlstollen_Freed": "N214: Hohlstollen befreit",
     "Whale_Decided": "N215: Kristallwal befreit oder bezwungen",
     "Whale_Freed": "N215: Ketten des Kristallwals gelöst",
-    "Glutdachs_Tamed": "N216: Glutdachs ist Reittier"
+    "Glutdachs_Tamed": "N216: Glutdachs ist Reittier",
+    "Has_SeaChart": "M303: Seekarte von Choralist Raue",
+    "Lio_ToldParents": "M302: Lio erzählt den Eltern von Mara",
+    "Aurelia_TournamentWon": "M304: Spieler hat das Finale gegen Aurelia gewonnen",
+    "Saved_Lio_Avalanche": "M305: Lio aus der Lawine gerettet statt abgelenkt",
+    "Sturmschwinge_Tamed": "M305: Reittier Sturmschwinge",
+    "Read_KaelGate": "M307: Kael-Inschrift am Tor gelesen",
+    "E3_Decided": "M310: Entscheidung 3 getroffen",
+    "Mara_Fled": "M310: Erlösung gescheitert, Mara geflohen (zählt wie Gefangen, taucht in M407 auf)",
+    "LioSong_Part4": "Questreihe Lied für Lio: Teil 4 erreicht (Bedingung Erlösung Mara)"
   },
   "objective_kinds": [
     "talk",
@@ -246,6 +255,14 @@
     "Gunda",
     "Ella",
     "Fels",
-    "Lidlos"
+    "Lidlos",
+    "Stumm",
+    "Olga",
+    "Raue",
+    "Joost",
+    "Marit",
+    "Saffa",
+    "Waechter",
+    "Novizenkind"
   ]
 }

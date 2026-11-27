@@ -1,0 +1,22 @@
+# M301 – Unterwegs nach Osten. Edda redet fast nichts. Summt einmal das Wiegenlied und bricht ab.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+===
+[event camera `wide`]
+Edda: Wir gehen zu Fuß. Die letzten zwei Tage. Ich möchte, dass Sie den Weg kennen.
+[event camera `close`]
+Edda: ... Mm-hm, hm-hm, hm ...
+[event emotion `sad`]
+Edda: Verzeihung. Eine alte Gewohnheit.
+  * Das Lied kenne ich.
+    Edda: Ich weiß. Ich weiß, dass Sie es kennen.
+  * Was ist das für ein Lied?
+    Edda: Eines, das ich nicht zu Ende summen kann. Fragen Sie mich morgen noch einmal.
+  * (Nichts sagen und weitergehen)
+    Edda: ...
+[event emotion `neutral`]
+Edda: Hinter dem nächsten Hügel stehen Zäune. Wenn Sie umkehren wollen, dann jetzt. Ich würde es verstehen.
+  * Ich kehre nicht um.
+    Edda: Nein. Das haben Sie nie getan.
+  * Gehen Sie vor.
+    Edda: Das ist das Mindeste.

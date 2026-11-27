@@ -1,0 +1,19 @@
+# M305 – Die Sturmschwinge nach dem Zähmen. Spricht nicht: ihre Laute werden als Untertitel beschrieben. Lio kommentiert.
+===
+[set SpeakerName.Sturmschwinge "Sturmschwinge"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `close`]
+Sturmschwinge: (Ein tiefer, rauer Ruf. Sie legt den Kopf schräg und sieht dich an.)
+Lio: Sie guckt dich an, als wärst du ein besonders interessanter Fisch.
+Sturmschwinge: (Sie schnaubt. Die Federn an ihrem Hals stellen sich auf und legen sich wieder.)
+  * (Die Hand ausstrecken)
+    Sturmschwinge: (Sie drückt die Stirn gegen deine Handfläche. Warm. Schwer.)
+  * (Leise summen)
+    Sturmschwinge: (Sie summt zurück. Tiefer als du. Es klingt wie Wind in einem hohlen Baum.)
+[event camera `wide`]
+Sturmschwinge: (Sie senkt den Flügel bis zum Boden. Eine Einladung.)
+Lio: Das ist ... das heißt, du darfst aufsteigen. Oder? Das heißt das? Darf ich auch?
+Sturmschwinge: (Sie sieht Lio an. Lange. Dann schnaubt sie wieder. Es klingt fast wie ein Lachen.)
+[event emotion `happy`]
+Lio: Ich nehm das als Ja!

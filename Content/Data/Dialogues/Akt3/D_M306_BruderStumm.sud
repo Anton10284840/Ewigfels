@@ -1,0 +1,22 @@
+# M306 – Bruder Stumm, Abt der Schweigemönche. Spricht nicht, schreibt auf eine Schiefertafel (Text in Kursiv-Darstellung). Antworten des Spielers über das Gesten-Rad.
+===
+[set SpeakerName.Stumm "Bruder Stumm"]
+===
+[event camera `medium`]
+Stumm: (Er verneigt sich. Dann wischt er mit dem Ärmel über die Tafel und schreibt.)
+Stumm: *Willkommen. Hier spricht man nicht. Hier hört man.*
+  * (Geste: Verneigen)
+    Stumm: (Er nickt zufrieden und schreibt weiter.)
+  * (Geste: Auf die eigene Brust zeigen, dann auf ihn)
+    Stumm: *Ja. Wir wissen, was du in dir trägst. Man hört es. Wie ein Summen hinter einer Tür.*
+[event camera `close`]
+Stumm: *Wir halten den Urton seit sechshundert Jahren unter der Zunge. Als Gebet. Nicht als Waffe.*
+Stumm: *Jeder von uns trägt einen Ton, den er nie ausspricht. Das Schweigen ist kein Verzicht. Es ist ein Halten.*
+  * (Geste: Fragend die Hände öffnen)
+    Stumm: *Wie man ihn hält, ohne zu zerbrechen? Drei Prüfungen. Dann weißt du es.*
+  * (Geste: Den Kopf schütteln)
+    Stumm: *Du glaubst, du kannst es nicht. Das glaubt jeder am Anfang. Das Glauben ist die erste Prüfung.*
+Stumm: *Eine Kerze. Eine Stunde im Schnee. Ein Glockenschlag.*
+Stumm: *Dein Freund darf zuschauen. Wenn er leise ist.*
+Stumm: (Er schaut lange zu Lio. Dann schreibt er etwas dazu.)
+Stumm: *Wir werden sehen.*

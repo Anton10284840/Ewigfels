@@ -1,0 +1,16 @@
+# M307 – Inschrift am Tor zum Grab der Nymrael. Der Spieler kann Kael lesen, ohne es gelernt zu haben. Lio staunt.
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Inschrift "Inschrift"]
+===
+[event camera `closeup`]
+Inschrift: *Vor anu, thas kor.*
+Lio: Was steht da? Sieht aus wie Grells Handschrift nach dem dritten Kaffee.
+  * „Wer zuhört, darf eintreten.“
+    [event emotion `surprised`]
+    Lio: Woher ... du kannst das lesen? Seit wann kannst du Kael lesen?
+  * (Schweigend die Hand auf die Zeichen legen)
+    Lio: Die leuchten. Wenn du sie anfasst, leuchten die.
+[event camera `close`]
+Lio: Du hast das nie gelernt. Ich war in jeder Stunde dabei. Das hast du nie gelernt.
+Lio: ... Okay. Gruselig. Aber praktisch. Dann geh du vor.

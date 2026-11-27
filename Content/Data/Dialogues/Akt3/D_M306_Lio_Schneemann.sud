@@ -1,0 +1,15 @@
+# M306 – Lio hat die Stunde im Schnee nicht durchgehalten und Schneemänner gebaut. Die Mönche haben sie stehen lassen.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+[event emotion `happy`]
+Lio: Bevor du was sagst: Ich hab's versucht. Ehrlich. Zwölf Minuten. Dann hat meine Nase gejuckt.
+Lio: Darf ich vorstellen: Bruder Kalt, Bruder Frost und Bruder Karotte. Karotte war meine Idee.
+  * Die Mönche werden dich rauswerfen.
+    Lio: Das dachte ich auch. Aber einer hat sich daneben gestellt. Ganz lang. Dann hat er Bruder Frost einen Schal umgebunden.
+  * Die sind wirklich gut.
+    Lio: Danke! Endlich jemand, der Kunst erkennt.
+[event emotion `soft`]
+Lio: Ich kann das nicht, weißt du. Still sein. Wenn's still wird, kommt alles hoch. Mara. Brandheim. Die Fischer, von denen Mama nicht redet.
+Lio: Also bau ich Schneemänner. Die halten still für mich.

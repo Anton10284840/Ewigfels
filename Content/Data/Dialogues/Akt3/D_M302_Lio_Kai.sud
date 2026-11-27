@@ -1,0 +1,19 @@
+# M302 – Lio führt durch Möwenkai wie ein Fremdenführer und übertreibt alles. Er ist zu Hause.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `wide`]
+[event emotion `happy`]
+Lio: Meine Damen und Herren und alle dazwischen: Tiedmar! Die schönste Stadt von Velmark! Und die lauteste!
+Lio: Da links: der Fischmarkt. Größter Fischmarkt der Welt. Ungefähr.
+Lio: Da rechts: die Möwe Gustav. Hat mir mit sechs ein Brötchen geklaut. Wir reden seitdem nicht mehr.
+  * Du kennst die Möwe persönlich?
+    Lio: Jeder hier kennt Gustav. Gustav ist eine Institution. Und ein Verbrecher.
+  * Nach Brandheim tut das gut.
+    [event emotion `soft`]
+    Lio: Ja. Deswegen rede ich so viel. Wenn ich aufhöre zu reden, denk ich an die Farben. Also red ich.
+[event camera `close`]
+Lio: Und da hinten, das Haus mit den Netzen am Fenster. Da wohnen meine Eltern.
+[event emotion `sad`]
+Lio: Die wissen nicht, dass ich Mara gesehen hab. Ich hab's ihnen nicht geschrieben. Ich wusste nicht, wie.
+Lio: Komm. Mama kocht Fischsuppe. Wenn du nicht zwei Teller isst, nimmt sie das persönlich.
