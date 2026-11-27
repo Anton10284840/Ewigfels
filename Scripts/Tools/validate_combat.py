@@ -236,6 +236,10 @@ def check_spell(rep, sid, where, s, statuses, spells, catalog):
             sn = (s.get("name") or {}).get("de") if isinstance(s.get("name"), dict) else s.get("name")
             if kn and sn and kn != sn:
                 rep.warn(where, f"Name '{sn}' weicht vom Katalog {cid} '{kn}' ab")
+            ke = (k.get("name") or {}).get("en")
+            se = (s.get("name") or {}).get("en") if isinstance(s.get("name"), dict) else None
+            if ke and se and ke != se:
+                rep.warn(where, f"englischer Name '{se}' weicht vom Katalog {cid} '{ke}' ab")
             if k.get("hands") and k["hands"] != s.get("hands", "one"):
                 rep.warn(where, f"hands '{s.get('hands', 'one')}' weicht vom Katalog ({k['hands']}) ab")
 

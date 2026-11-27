@@ -47,7 +47,7 @@
       "school": "Schutz",
       "chord": ["Hall", "Hall", "Strom"],
       "unlock": "hidden",
-      "cost": 0, "cooldown": 0.0, "cast_time": 0.0, "recovery": 0.1, "hands": "two",
+      "cost": 0, "cooldown": 0.0, "cast_time": 0.0, "recovery": 0.1, "hands": "one",
       "delivery": { "type": "projectile", "speed": 5200, "radius": 22, "range": 2600, "homing": 0.9 },
       "effects": [
         { "type": "damage", "amount": 30, "element": "Hall" },
@@ -76,7 +76,7 @@
     {
       "id": "glutweise",
       "catalog_id": "K25",
-      "name": { "de": "Glutweise", "en": "Ember Song" },
+      "name": { "de": "Glutweise", "en": "Ember Air" },
       "school": "Elementar",
       "chord": ["Glut", "Glut", "Strom"],
       "unlock": "akt1",
@@ -95,7 +95,7 @@
     {
       "id": "frostweise",
       "catalog_id": "K26",
-      "name": { "de": "Frostweise", "en": "Frost Song" },
+      "name": { "de": "Frostweise", "en": "Frost Air" },
       "school": "Elementar",
       "chord": ["Firn", "Firn", "Quell"],
       "unlock": "akt1",

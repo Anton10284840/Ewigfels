@@ -1,6 +1,6 @@
 # PROGRESS – Ewigfels
 
-Stand: 26.11.2026 · Aktuelle Phase: **2 – Kernsysteme** (Build + Tests grün) · Engine: UE 5.8
+Stand: 26.11.2026 · Aktuelle Phase: **3 – Charakter, Zauber, Kampf** (Code fertig, Build auf dem PC offen) · Engine: UE 5.8
 
 Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 
@@ -11,7 +11,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | 0 | Setup, Tools, Testprojekt | 🟨 Dateien fertig, Installation + erster Build beim Nutzer offen |
 | 1 | Bibeln + Moodboards | 🟨 Bibeln + ComfyUI-Pipeline fertig, Bilder generieren + Grundsatzentscheidungen E1–E4 bestätigen beim Nutzer |
 | 2 | Kernsysteme (Quest, Dialog, Entscheidung, Save) | ✅ Build + 9/9 Automation-Tests grün auf dem PC (26.11.2026). Offen: Test im Level (Phase 3/5). Entscheidung: SUDS + eigenes JSON (docs/PLUGINS.md §3) |
-| 3 | Charakter & Animation | ⬜ |
+| 3 | Charakter & Animation | 🟨 C++ komplett (Figur, 5 Weisen, Kampf, 2 Gegnertypen, Dialogkamera, HUD, Testarena), Koop-fähig gebaut (GDD E11). Offen: Build + Tests auf dem PC, Game Animation Sample einbinden, Niagara-Effekte (docs/PHASE3_EDITOR.md) |
 | 4 | Grafik-Benchmark-Szene | ⬜ |
 | 5 | Vertical Slice Akt 1 | ⬜ |
 | 6–10 | Akte 2–5 | ⬜ |
@@ -59,7 +59,15 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Dialoge: SUDS-Brücke (`Dialogue/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ Dialog im Editor abspielen |
 | Speichern/Laden, Autosave, Saveable-Komponente (`Save/`) | ✅ | ✅ | ✅ Automation-Test · ⬜ PIE mit Level |
 | Prüfskript Quests/Dialoge + Spielzeit (`Scripts/Tools/validate_data.py`) | ✅ | ✅ | ✅ 9 Selbsttests (Cloud) |
-| Weisen-Katalog + Prüfskript (`Scripts/Tools/validate_spells.py`) | ✅ | ⬜ Phase 3/5 (GAS, `GA_Alltag`, `IEwigfelsWeiseTarget`) | ✅ 0 Fehler (Cloud) |
+| Weisen-Katalog + Prüfskript (`Scripts/Tools/validate_spells.py`) | ✅ | 🟨 Kernweisen K01/K02/K13/K25/K26 spielbar (eigenes System, E5); Alltagsweisen + `IEwigfelsWeiseTarget` Phase 5 | ✅ 0 Fehler (Cloud) |
+| Zaubersystem, eigenes (E5): Caster, Projektil, Effekte, Status (`Magic/`) | ✅ | ⬜ Build | ⬜ 5 Automation-Tests geschrieben |
+| Kampf: Leben, Schaden, Status, Taumeln, Kampf-Regie (`Combat/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
+| Spielfigur: Laufen, Sprint, Ausweichen, Zielaufschaltung, Platzhalter-Körper, AnimInstance (`Character/`) | ✅ | ⬜ Build · ⬜ Game Animation Sample | ⬜ |
+| Gegner-KI Novize (Nahkampf) + Fluchsänger (Fernkampf) + Übungspuppe (`AI/`, `Content/Data/Creatures/`) | ✅ | ⬜ Build | ⬜ |
+| Dialogkamera (Totale/Schulter/Close-up, 180°-Regel) (`Camera/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
+| HUD Phase 3 (Leisten, Zauberleiste, Trefferzahlen, F1-Hilfe) + Testarena + Test-NPC Lio (`UI/`, `World/`) | ✅ | ⬜ Build | ⬜ |
+| Mehrspieler-Vorbereitung (server-autoritativ, repliziert, GDD E11) | ✅ | ⬜ | ⬜ PIE mit 2 Spielern |
+| Prüfskript Weisen/Status/Gegner (`Scripts/Tools/validate_combat.py`, Format docs/SPELL_FORMAT.md) | ✅ | ✅ | ✅ 7 Selbsttests (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 

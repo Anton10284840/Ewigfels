@@ -9,6 +9,7 @@ Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidung
 - `CREDITS.md` – jede externe Ressource (Asset, Plugin, KI-Modell). Ohne Eintrag kommt nichts rein.
 - `docs/` – `SETUP_WINDOWS.md` (Installation), `KI_LIZENZEN.md` (Tool-Lizenzen), `PLUGINS.md` (Plugin-Bewertung), `QUEST_FORMAT.md` (Quest-JSON, SUDS-Dialoge, Weltstatus-Syntax, Speichern).
 - Kernsysteme (Phase 2, `Source/Ewigfels/{WorldState,Quest,Dialogue,Save}`): Weltstatus-Subsystem (Flags/Beziehungen/Ruf), Quest-Subsystem (lädt `Content/Data/Quests/**/*.json`), SUDS-Brücke, Save-Subsystem. Neue Quest = JSON + `.sud`, danach `python Scripts/Tools/validate_data.py` (läuft auch in der Cloud). Erlaubte Flags/NPCs/Regionen: `Content/Data/World/WorldState.json`.
+- Kampf (Phase 3, `Source/Ewigfels/{Magic,Combat,Character,Camera,AI,UI,World}`): eigenes Zaubersystem (kein GAS), Kampfwerte in `Content/Data/Spells/*.json` + Gegner in `Content/Data/Creatures/`, Format `docs/SPELL_FORMAT.md`, prüfen mit `python Scripts/Tools/validate_combat.py`. Leere Karte startet automatisch die Testarena.
 - Weisen (E10, 430 Zauber): `docs/WEISEN.md` (System), `docs/WEISEN_KATALOG.md` (automatisch erzeugt, nicht von Hand ändern), Daten `Content/Data/Spells/Katalog/*.json`, prüfen + Katalog neu schreiben: `python Scripts/Tools/validate_spells.py --write-doc`. Akt-1-Schulleben: `docs/AKT1_SCHULLEBEN.md`.
 - Bibeln (Phase 1, groß, gezielt per `grep -n "^#"` lesen): `GDD.md` (Systeme, Weisen, Gegner), `STORY_BIBLE.md` (Lore, Missionen, Flags, Enden), `CHARACTER_BIBLE.md` (Figuren, Türme, Kreaturen), `ART_BIBLE.md` (Look, Budgets), `ANIMATION_BIBLE.md` (Checklisten).
 - Kernbegriffe: Spiel- und Akademiename **Nocturna** (Code, Repo, Pfade, Klassen-Präfix bleiben `Ewigfels`), Kontinent **Velmark**, Magie = Klang aus den Fingern, kein Stab (**Weisen**, **Stimmringe**, **Atem**), Schwarzmagier = **Missklinger**, verbotene Magie **Urton**, Schattenreich **Nachhall**, Antagonisten **Stille Hand**/**Dirigent**, Häuser = 4 **Türme**.
@@ -23,6 +24,7 @@ Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidung
 - Modulplan: Core, Magic, Combat, Quest, Dialogue, AI, UI, Save, World (je eigenes Modul, sobald gebraucht).
 - Gameplay-Inhalte datengetrieben (JSON in `Content/Data`), Texte über String Tables (DE + EN).
 - Binär-Assets (`*.uasset`, `*.umap`, `art/`) nie in Git. Backup über OneDrive.
+- **Mehrspieler-Regel (GDD E11):** Koop 2–4 Spieler kommt später, darum alles server-autoritativ bauen: Spielwerte nur mit `HasAuthority()` ändern, Clients schicken Server-RPCs, Zustand per `DOREPLIFETIME`/OnRep, Optik per Multicast, Bewegung über die CMC, nie „Spieler 0“ annehmen.
 - Commits: ein funktionierendes Feature pro Commit, Nachricht auf Deutsch.
 
 ## Bauen und testen (Windows, beim Nutzer)

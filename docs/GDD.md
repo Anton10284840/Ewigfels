@@ -34,11 +34,20 @@ Alternative: zufällige Zuteilung durch die Glocke der Akademie. Nachteil: nimmt
 **Empfehlung:** Frei gestaltbar (männlich/weiblich/divers über Körper- und Stimmwahl), Name frei, Alter 15 zu Beginn, 20 am Ende. Stimme: 3 Varianten (TTS-Platzhalter, später Sprecher).
 Alternative: feste Figur mit Namen. Vorteil: stärkere Cutscenes. Nachteil: widerspricht dem Charakter-Editor im Master-Prompt.
 
-### E5 – Zaubersystem-Technik (Entscheidung erst Phase 3, hier nur vorgemerkt)
+### E5 – Zaubersystem-Technik ✅ entschieden: eigenes System (Nutzer, 26.11.2026)
 
-GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Vorläufige Empfehlung: **GAS**, weil Cooldowns, Kosten, Tags, Effekte (Nässe, Brennen) und Netzwerk-Robustheit fertig dabei sind.
+GAS (Gameplay Ability System) vs. eigenes Komponentensystem. Gewählt: **eigenes datengetriebenes Komponentensystem** (`UEwigfelsSpellCasterComponent` + `UEwigfelsCombatComponent`). Grund: Jede Weise ist reine JSON-Daten (Auslieferung + Liste von Effekten, Format [SPELL_FORMAT.md](SPELL_FORMAT.md)), dadurch bleiben 430 Weisen ohne 430 Blueprints machbar, und der Code ist für einen Laien lesbar. Kosten, Abklingzeiten, Status-Stapel und Netzwerk sind selbst gebaut und mit Automation-Tests abgesichert.
 
----
+### E11 – Mehrspieler (Koop) ✅ vorbereitet, Einschalten später (Nutzer, 26.11.2026)
+
+Koop für 2–4 Spieler (Listen-Server: ein Spieler ist Gastgeber). Jetzt noch nicht spielbar, aber **jede Spielmechanik wird ab Phase 3 so gebaut, dass Koop später nur eingeschaltet werden muss.** Architekturregel:
+
+1. **Server entscheidet.** Schaden, Leben, Atem, Status, Abklingzeiten, Gegner-KI, Beute und Quest-Fortschritt werden nur auf dem Server (`HasAuthority()`) verändert.
+2. **Clients bitten.** Eingaben gehen als Server-RPC („Weise X zaubern“, „ausweichen“), nie als fertiges Ergebnis.
+3. **Zustand wird repliziert** (`DOREPLIFETIME`, `OnRep_…`), Effekte für alle per `NetMulticast` (nur Optik/Ton, keine Spielwerte).
+4. **Bewegung über die CharacterMovementComponent** (Sprint als Saved-Move-Flag, Ausweichen als Root-Motion-Source), damit Vorhersage und Korrektur funktionieren.
+5. **Kein „der Spieler“.** Code fragt nie nach Spieler 0; Gegner wählen ihr Ziel aus allen Spielern, Quests zählen für die Gruppe.
+6. **Rein lokales** (Kamera, HUD, Dialogkamera, Zeitlupe) bleibt lokal und wird im Koop nicht angewendet, wo es andere stören würde (z. B. Zeitlupe nur allein).
 
 ### E6 – Ton ✅ entschieden (Nutzer, 26.11.2026)
 
