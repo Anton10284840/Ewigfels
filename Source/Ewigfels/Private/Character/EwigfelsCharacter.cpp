@@ -224,7 +224,8 @@ void AEwigfelsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Input->BindAction(S->Look, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputWheelPointMouse);
 	Input->BindAction(S->LookStick, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputWheelPointStick);
 	// Jede Taste meldet das Gerät (Controller oder Maus/Tastatur), ohne sie zu verschlucken
-	FInputKeyBinding& AnyKey = Input->BindKey(EKeys::AnyKey, IE_Pressed, this, &AEwigfelsCharacter::InputAnyKey);
+	// Enhanced Input sperrt BindKey (= delete), die Basisklasse UInputComponent kann es noch
+	FInputKeyBinding& AnyKey = static_cast<UInputComponent*>(Input)->BindKey(EKeys::AnyKey, IE_Pressed, this, &AEwigfelsCharacter::InputAnyKey);
 	AnyKey.bConsumeInput = false;
 }
 

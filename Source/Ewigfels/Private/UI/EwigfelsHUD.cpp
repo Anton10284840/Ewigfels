@@ -514,7 +514,7 @@ void AEwigfelsHUD::SpellOrb(AEwigfelsCharacter* Player, const FEwigfelsSpellDef*
 	{
 		const float Frac = FMath::Clamp(Cd / Spell->Cooldown, 0.f, 1.f);
 		Ring(C, 0.f, R, 1.f - Frac, 1.f, FLinearColor(0.02f, 0.01f, 0.06f, 0.7f), FLinearColor(0.02f, 0.01f, 0.06f, 0.7f));
-		TextC(FString::Printf(Cd >= 10.f ? TEXT("%.0f") : TEXT("%.1f"), Cd), C.X, C.Y, FLinearColor::White, R > S(35.f) ? Large() : Small(), 1.f);
+		TextC(Cd >= 10.f ? FString::Printf(TEXT("%.0f"), Cd) : FString::Printf(TEXT("%.1f"), Cd), C.X, C.Y, FLinearColor::White, R > S(35.f) ? Large() : Small(), 1.f);
 	}
 	if (bShine)
 	{
