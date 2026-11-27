@@ -4,11 +4,11 @@ Stand: 27.11.2026, abends
 
 ## 👉 Dein nächster Schritt
 
-> **Schreib mir, welche Webcam du hast** (Marke und Modell, steht meist auf der Kamera oder dem Kabel). Mehr nicht.
+> **Gerade nichts zu tun.** Lass den PC an und den Unreal-Editor in Ruhe: Claude arbeitet dort gerade am neuen Look.
 >
-> Lass den PC an und den Unreal-Editor in Ruhe: Claude arbeitet dort gerade per Remote Control am neuen Look.
+> Sobald Claude „fertig“ sagt, übernimmst du PR #15 (Schritt 14).
 
-Danach geht es mit Schritt 12 weiter. Sobald du dran bist, sagt Claude dir Bescheid, immer nur ein Schritt pro Nachricht.
+Sobald du dran bist, sagt Claude dir Bescheid, immer nur ein Schritt pro Nachricht.
 
 ---
 
@@ -39,9 +39,9 @@ Die Nummern sind die Reihenfolge. Wir arbeiten von oben nach unten und haken ab.
 - [x] 10. 🤖 Game Animation Sample eingebaut: echte Laufbewegung (PR #14)
 - [x] 11. 👤 „Paragon: Gideon“ aus Fab hinzugefügt (Fingergesten, Gegnerkörper)
 - [x] 11a. 🤖 Zauberworte für die ersten Weisen (Scintivox, Campanimur …)
-- [ ] 12. 👤 Webcam-Modell nennen (für Bewegungsaufnahmen) ← **jetzt dran**
+- [x] 12. 👤 Bewegungsaufnahmen: entschieden, mit dem Pixel 10 Pro statt Webcam
 - [ ] 13. 🟨 🤝 Blitz aus den Fingern, Zauber mit eigener Wirkung, magische Landung, Foto-Look (PR #15, Claude arbeitet gerade am PC)
-- [ ] 14. 👤 PR #15 übernehmen, wenn Claude „fertig“ sagt
+- [ ] 14. 👤 PR #15 übernehmen, wenn Claude „fertig“ sagt ← **jetzt dran**
 - [ ] 15. 👤 Testarena anspielen: Laufen, Zaubern, Kampf. Fühlt es sich gut an? Kurz sagen, was stört
 - [ ] 16. 🤖 Nachbessern nach deiner Rückmeldung
 - [ ] 17. 🤖 Weitere Weisen wirkbar machen, jede mit eigener Geste, Farbe, Wirkung und Zauberwort (Ziel: alle ~430), Zauberrad
