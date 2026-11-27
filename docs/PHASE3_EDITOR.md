@@ -27,6 +27,14 @@ Das Game Animation Sample von Epic enthält ca. 500 Bewegungs-Animationen und fe
 | 2.5 | Claude | `DefaultGame.ini`: `PlayerPawnClass` = der umgestellte Blueprint, beim Charakter `bUseBuiltInMovementInput=False` (Laufen/Kamera kommen dann aus dem Sample, Zaubern/Ausweichen/Zielaufschaltung aus unserem C++) |
 | 2.6 | Claude | Bauen, Arena starten, prüfen: Laufen mit Motion Matching, Zaubern, Treffer, Tod, Wiederbelebung |
 
+**Stand 2026-11-27: erledigt (2.1–2.6).** Was tatsächlich gemacht wurde (UE-5.8-Version des Samples heißt anders als oben):
+- Sample-Projekt liegt unter `Dokumente\Unreal Projects\AnimationenGesichtetc` (bleibt als Quelle liegen).
+- Migriert wurde `/Game/Blueprints/SandboxCharacter_CMC` (Character-Variante; `SandboxCharacter_Mover` ist die Mover-Variante) mit allen Abhängigkeiten: ca. 2.900 Dateien, 4,3 GB, ohne das Sample vorher im Editor zu öffnen (headless per Python `migrate_packages`). Pfade wie im Sample (`/Game/Blueprints`, `/Game/Characters/UEFN_Mannequin` …), Content liegt nur lokal + OneDrive.
+- 19 zusätzliche Engine-Plugins in `Ewigfels.uproject` (siehe CREDITS.md).
+- `DefaultEngine.ini`: Kollisionskanäle `Traversable`, `Mouse`, `Obstacle` (GameTraceChannel1–3) + Profile `CharacterCapsule`, `TraversalObjectPreset`, `ObstaclePreset`, Daten-Konsolenvariablen `DDCvar.*`, PoseSearch-Einstellung. `DefaultGameplayTags.ini` aus dem Sample übernommen (Foley, MotionMatching, SmartObject).
+- Elternklasse von `SandboxCharacter_CMC` = `EwigfelsCharacter`, `bUseBuiltInMovementInput=False`, als `PlayerPawnClass` eingetragen. Kamera kommt aus der GameplayCamera des Samples; unsere `FollowCamera`/`CameraBoom` sind zusätzlich da (noch prüfen, ob Zielaufschaltung/Dialogkamera richtig umschalten).
+- Bau grün, Tests `Ewigfels.*` grün, Probestart: Testarena + Sample-Kamera aktiv, keine Blueprint-Fehler.
+
 Warum Reparent statt neuer AnimBP: Das Sample-AnimBP liest seine Werte aus dem Sample-Charakter. Wenn dieser Charakter von unserer C++-Klasse erbt, behalten wir das fertige Motion Matching und bekommen trotzdem Zauber, Kampf und Mehrspieler-Vorbereitung.
 
 Später (eigenes AnimBP `ABP_EwigfelsCharacter` nach ANIMATION_BIBLE §2): Werte kommen aus `UEwigfelsAnimInstance` (Geschwindigkeit, Richtung, Neigung, Zielwinkel, Zauber-Schule, Grundton, Handbereitschaft, Erschöpfung).
