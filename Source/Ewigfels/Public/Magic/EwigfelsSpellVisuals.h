@@ -43,6 +43,10 @@ private:
 	UPROPERTY(Transient)
 	TObjectPtr<UMaterialInstanceDynamic> Material;
 
+	/** Weicher Halo um den Blitz (nur mit M_EwigfelsSoftSprite). */
+	UPROPERTY(Transient)
+	TObjectPtr<UMaterialInstanceDynamic> HaloMaterial;
+
 	FVector From = FVector::OneVector;
 	FVector To = FVector::OneVector;
 	float Length = 0.3f;
@@ -201,6 +205,12 @@ namespace EwigfelsSpellVisuals
 
 	/** Hitzeflimmern (M_EwigfelsHeat). nullptr, wenn das Material fehlt (dann kein Flimmern). Parameter: Strength. */
 	EWIGFELS_API UMaterialInstanceDynamic* ApplyHeat(UPrimitiveComponent* Component, float Strength);
+
+	/**
+	 * Weicher Leucht-Halo als Kamera-Sprite (M_EwigfelsSoftSprite), an AttachTo gehängt, feste Größe in cm.
+	 * nullptr, wenn das Material fehlt. Parameter am Rückgabewert: Color, Glow, Opacity.
+	 */
+	EWIGFELS_API UMaterialInstanceDynamic* AddHalo(USceneComponent* AttachTo, const FLinearColor& Color, float SizeCm, float Glow);
 
 	/** "sphere", "cylinder", "cone", "cube" aus /Engine/BasicShapes. */
 	EWIGFELS_API UStaticMesh* GetShape(FName Shape);

@@ -1,6 +1,7 @@
 // Copyright Ewigfels. Alle Rechte vorbehalten.
 
 #include "Magic/EwigfelsSpellVisuals.h"
+#include "Components/MaterialBillboardComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -194,6 +195,26 @@ UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplyHeat(UPrimitiveComponent* C
 	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Component);
 	MID->SetScalarParameterValue(TEXT("Strength"), Strength);
 	Component->SetMaterial(0, MID);
+	return MID;
+}
+
+UMaterialInstanceDynamic* EwigfelsSpellVisuals::AddHalo(USceneComponent* AttachTo, const FLinearColor& Color, float SizeCm, float Glow)
+{
+	UMaterialInterface* Base = Cast<UMaterialInterface>(LoadIfExists(FSoftObjectPath(TEXT("/Game/VFX/Materials/M_EwigfelsSoftSprite.M_EwigfelsSoftSprite"))));
+	AActor* Owner = AttachTo ? AttachTo->GetOwner() : nullptr;
+	if (!Base || !Owner)
+	{
+		return nullptr;
+	}
+	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Owner);
+	MID->SetVectorParameterValue(TEXT("Color"), Color);
+	MID->SetScalarParameterValue(TEXT("Glow"), Glow);
+	UMaterialBillboardComponent* Halo = NewObject<UMaterialBillboardComponent>(Owner);
+	Halo->SetupAttachment(AttachTo);
+	Halo->SetUsingAbsoluteScale(true); // Größe in cm, unabhängig vom Wachsen der Form
+	Halo->SetCastShadow(false);
+	Halo->RegisterComponent();
+	Halo->AddElement(MID, nullptr, false, SizeCm, SizeCm, nullptr);
 	return MID;
 }
 
@@ -798,6 +819,11 @@ void AEwigfelsSpellFlash::Setup(UStaticMesh* Shape, const FLinearColor& Color, c
 		Mesh->SetStaticMesh(Shape);
 	}
 	Material = EwigfelsSpellVisuals::ApplyGlow(Mesh, Color, PeakGlow);
+	// Halo: so groß wie die Endform x 2,4 (BasicShapes = 100 cm), nur bei kugeligen Blitzen, flache Ringe bleiben ohne
+	if (EndScale.Z > 0.1f)
+	{
+		HaloMaterial = EwigfelsSpellVisuals::AddHalo(Mesh, Color, EndScale.GetMax() * 240.f, 8.f);
+	}
 	From = StartScale;
 	To = EndScale;
 	Length = FMath::Max(0.05f, Duration);
@@ -822,6 +848,10 @@ void AEwigfelsSpellFlash::Tick(float DeltaSeconds)
 	{
 		Material->SetScalarParameterValue(TEXT("Glow"), PeakGlow * Fade);
 		Material->SetScalarParameterValue(TEXT("Opacity"), Fade);
+	}
+	if (HaloMaterial)
+	{
+		HaloMaterial->SetScalarParameterValue(TEXT("Opacity"), Fade * Fade);
 	}
 	if (T >= 1.f)
 	{

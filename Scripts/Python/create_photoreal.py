@@ -5,6 +5,7 @@ Fotorealistischer Look (einmalig, kann gefahrlos wiederholt werden). Legt im Edi
   - /Game/Environment/Materials/MI_Ewigfels_<Fläche>   Ground, Wall, Pillar, Rock, Paving – lädt die Arena automatisch
   - /Game/VFX/Materials/M_EwigfelsIce                 durchsichtiges Eis mit Lichtbrechung (Status "Gefroren")
   - /Game/VFX/Materials/M_EwigfelsHeat                Hitzeflimmern (Glutweise, Brennen)
+  - /Game/VFX/Materials/M_EwigfelsSoftSprite          weicher Leucht-Halo (Kamera-Sprite) um Geschosse und Blitze
 Texturen: ambientCG, CC0 (CREDITS.md). Werden in Content/Environment/Textures/ambientCG/ geladen (nicht im Repo).
 
 Ausführen (Editor offen): Tools > Execute Python Script… > diese Datei
@@ -349,6 +350,63 @@ def make_heat():
     log("M_EwigfelsHeat angelegt")
 
 
+def make_soft_sprite():
+    """Weicher Leuchtpunkt für Kamera-Sprites (Halos um Geschosse, Blitze, Einschläge): radial, additiv,
+    blendet an Wänden/Boden weich aus (Depth Fade), damit nichts hart abgeschnitten aussieht."""
+    mat = fresh(VFX_DIR, "M_EwigfelsSoftSprite")
+    mat.set_editor_property("blend_mode", unreal.BlendMode.BLEND_ADDITIVE)
+    mat.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_UNLIT)
+    mat.set_editor_property("two_sided", True)
+    uv = node(mat, unreal.MaterialExpressionTextureCoordinate, -1100, 0)
+    center = node(mat, unreal.MaterialExpressionConstant2Vector, -1100, 120)
+    center.set_editor_property("r", 0.5)
+    center.set_editor_property("g", 0.5)
+    dist = node(mat, unreal.MaterialExpressionDistance, -900, 50)
+    connect(uv, "", dist, "A")
+    connect(center, "", dist, "B")
+    scaled = node(mat, unreal.MaterialExpressionMultiply, -750, 50)
+    scaled.set_editor_property("const_b", 2.0)
+    connect(dist, "", scaled, "A")
+    inv = node(mat, unreal.MaterialExpressionOneMinus, -600, 50)
+    connect(scaled, "", inv, "")
+    clamp = node(mat, unreal.MaterialExpressionSaturate, -480, 50)
+    connect(inv, "", clamp, "")
+    soft = node(mat, unreal.MaterialExpressionPower, -360, 50)
+    soft.set_editor_property("const_exponent", 2.2)
+    connect(clamp, "", soft, "Base")
+    fade = node(mat, unreal.MaterialExpressionDepthFade, -360, 250)
+    fade.set_editor_property("fade_distance_default", 40.0)
+    color = node(mat, unreal.MaterialExpressionVectorParameter, -600, -250)
+    color.set_editor_property("parameter_name", "Color")
+    color.set_editor_property("default_value", unreal.LinearColor(1.0, 0.85, 0.55, 1.0))
+    glow = node(mat, unreal.MaterialExpressionScalarParameter, -600, -120)
+    glow.set_editor_property("parameter_name", "Glow")
+    glow.set_editor_property("default_value", 6.0)
+    opacity = node(mat, unreal.MaterialExpressionScalarParameter, -600, 350)
+    opacity.set_editor_property("parameter_name", "Opacity")
+    opacity.set_editor_property("default_value", 1.0)
+    vcol = node(mat, unreal.MaterialExpressionVertexColor, -600, 450)
+    m1 = node(mat, unreal.MaterialExpressionMultiply, -200, -200)
+    connect(color, "", m1, "A")
+    connect(glow, "", m1, "B")
+    m2 = node(mat, unreal.MaterialExpressionMultiply, -50, -100)
+    connect(m1, "", m2, "A")
+    connect(soft, "", m2, "B")
+    m3 = node(mat, unreal.MaterialExpressionMultiply, 100, 0)
+    connect(m2, "", m3, "A")
+    connect(fade, "", m3, "B")
+    m4 = node(mat, unreal.MaterialExpressionMultiply, 250, 100)
+    connect(m3, "", m4, "A")
+    connect(opacity, "", m4, "B")
+    m5 = node(mat, unreal.MaterialExpressionMultiply, 400, 150)
+    connect(m4, "", m5, "A")
+    connect(vcol, "A", m5, "B")
+    mel.connect_material_property(m5, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+    mel.recompile_material(mat)
+    eal.save_loaded_asset(mat)
+    log("M_EwigfelsSoftSprite angelegt")
+
+
 def main():
     # Erst alle Texturen laden, dann den Master mit echten Standard-Texturen bauen (sonst kompiliert er nicht).
     fetched = []
@@ -375,6 +433,7 @@ def main():
             log("%s = ambientCG %s (CC0)" % (surface, asset_id))
     make_ice()
     make_heat()
+    make_soft_sprite()
     log("Fertig. Testarena neu laden (oder Play drücken), dann sind die echten Oberflächen da.")
 
 
