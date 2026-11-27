@@ -1,0 +1,55 @@
+{
+  "_doc": "Angriffe der Phase-3-Gegner (GDD §5.1). Gegner nutzen dasselbe Zaubersystem wie der Spieler, darum gelten Block und Reinklang auch hier. cast_time = Vorwarnzeit (Ausholen, Gegner leuchtet auf).",
+  "spells": [
+    {
+      "id": "novize_hieb",
+      "name": { "de": "Schweigehieb", "en": "Silencing Strike" },
+      "school": "Gegner", "unlock": "hidden", "kind": "gegner",
+      "cost": 0, "cooldown": 1.6, "cast_time": 0.6, "recovery": 0.55, "hands": "two",
+      "delivery": { "type": "cone", "range": 240, "angle": 100 },
+      "effects": [
+        { "type": "damage", "amount": 14, "element": "Grund" },
+        { "type": "knockback", "amount": 380, "up": 120 }
+      ],
+      "vfx": { "color": "#E8E8F0", "scale": 0.5 }
+    },
+    {
+      "id": "novize_ansturm",
+      "name": { "de": "Ansturm", "en": "Rush" },
+      "school": "Gegner", "unlock": "hidden", "kind": "gegner",
+      "cost": 0, "cooldown": 7.0, "cast_time": 0.9, "recovery": 0.8, "hands": "two",
+      "delivery": { "type": "cone", "range": 420, "angle": 50 },
+      "effects": [
+        { "type": "damage", "amount": 22, "element": "Grund" },
+        { "type": "knockback", "amount": 900, "up": 250 },
+        { "type": "status", "status": "stunned", "duration": 0.5 }
+      ],
+      "vfx": { "color": "#FFFFFF", "scale": 0.8 }
+    },
+    {
+      "id": "fluch_kugel",
+      "name": { "de": "Fluchkugel", "en": "Curse Orb" },
+      "school": "Gegner", "unlock": "hidden", "kind": "gegner",
+      "cost": 0, "cooldown": 2.2, "cast_time": 0.7, "recovery": 0.4, "hands": "one",
+      "delivery": { "type": "projectile", "speed": 1500, "radius": 22, "range": 3000, "homing": 0.45 },
+      "effects": [
+        { "type": "damage", "amount": 11, "element": "Urton" },
+        { "type": "status", "status": "cursed", "duration": 4.0 }
+      ],
+      "vfx": { "color": "#8A4DFF", "scale": 0.75, "niagara": "/Game/VFX/Spells/NS_Fluchkugel" }
+    },
+    {
+      "id": "fluch_kreis",
+      "name": { "de": "Fluchkreis", "en": "Hex Circle" },
+      "school": "Gegner", "unlock": "hidden", "kind": "gegner",
+      "cost": 0, "cooldown": 6.0, "cast_time": 0.8, "recovery": 0.6, "hands": "two",
+      "delivery": { "type": "area", "radius": 380 },
+      "effects": [
+        { "type": "damage", "amount": 12, "element": "Urton" },
+        { "type": "knockback", "amount": 1000, "up": 300 },
+        { "type": "status", "status": "cursed", "duration": 3.0 }
+      ],
+      "vfx": { "color": "#6A2BD9", "scale": 1.0 }
+    }
+  ]
+}

@@ -92,7 +92,7 @@ Koop wird vorbereitet, aber noch nicht gebaut. Die Koop-Weisen sind so gestaltet
 | **Dreiklang** (3) | Dreiklang, Kreiswacht | Jeder spielt einen Grundton, der Akkord bestimmt die Wirkung: ein eigener Baukasten für Gruppen (84 Akkorde, 12 benannte Meisterakkorde) |
 | **Vierklang** (4) | Vierklang, Glockenchor | ein großer Chor-Moment pro Kampf, Akademie-Glocken läuten |
 
-Dazu kommen Kernweisen mit Mitspieler-Bonus: *Schutzchor* (Schild auf Mitspieler), *Zielfunke* (Ziel für alle markieren), *Haltelied + Sturmweise* zweier Spieler ergeben einen Kettenstrom. Technik: GAS ist netzwerkfähig (E5), Koop-Weisen sind normale Abilities mit „Partner-Fenster“ (2 s, in denen der zweite Spieler einsteigen muss).
+Dazu kommen Kernweisen mit Mitspieler-Bonus: *Schutzchor* (Schild auf Mitspieler), *Zielfunke* (Ziel für alle markieren), *Haltelied + Sturmweise* zweier Spieler ergeben einen Kettenstrom. Technik: Das Zaubersystem ist server-autoritativ gebaut (GDD E5/E11), Koop-Weisen werden normale Weisen mit „Partner-Fenster“ (2 s, in denen der zweite Spieler einsteigen muss).
 
 ## 7. Stimmringe und Alltagsweisen
 
@@ -135,9 +135,9 @@ Kosten: 2–6 Atem, keine Abklingzeit. Regel gegen Missbrauch: dieselbe Ablenkun
 
 Wenn Zeit knapp wird, streichen wir Varianten in späten Heften, nie Grundformen oder Kernweisen. Das Spiel bleibt vollständig.
 
-## 10. Technik (Plan für Phase 3)
+## 10. Technik (Phase 3)
 
-- **GAS** (E5): je Kernweise eine Gameplay Ability (`GA_Kern_K01` …), Kampfwerte in `Content/Data/Spells/*.json` mit `catalog_id`. Alle Alltagsweisen laufen über **eine** datengetriebene Ability `GA_Alltag`, die Grundton, Wirkart und Wirkung aus dem Katalog liest.
+- **Eigenes Zaubersystem** (E5, kein GAS): Kampfwerte jeder Kernweise stehen in `Content/Data/Spells/*.json` mit `catalog_id` (Format [SPELL_FORMAT.md](SPELL_FORMAT.md), Prüfung `validate_combat.py` inkl. Abgleich von Akkord und Name mit dem Katalog). Alltagsweisen laufen später über **einen** gemeinsamen datengetriebenen Pfad, der Grundton, Wirkart und Wirkung aus dem Katalog liest.
 - Ziele reagieren über ein Interface `IEwigfelsWeiseTarget` (`OnWeise(Grundton, Wirkart, Wirkung, WeiseId)`). Ein Stuhl, der auf *Stuhltanz* reagiert, implementiert nur diese eine Funktion.
 - Katalog-Dateien liegen in `Content/Data/Spells/Katalog/` und werden vom Kampf-Loader nicht direkt geladen (Absprache mit dem Phase-3-Thread).
 - Neue Weise = Eintrag in der passenden JSON-Datei, dann `python Scripts/Tools/validate_spells.py --write-doc` (prüft IDs, Akkorde, Lehrer, Akt, Baukasten-Raster und schreibt den Katalog neu).
