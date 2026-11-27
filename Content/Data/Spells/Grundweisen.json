@@ -9,8 +9,8 @@
       "chord": ["Glut", "Strom", "Strom"],
       "unlock": "start",
       "cost": 0, "cooldown": 0.0, "cast_time": 0.12, "recovery": 0.22, "hands": "one",
-      "delivery": { "type": "projectile", "speed": 4200, "radius": 14, "range": 3200,
-                    "homing": 0.35, "chain": 3, "chain_window": 0.7 },
+      "_doc": "Blitz: sofortiger Strahl aus den Fingern, 3er-Kette, der dritte Schlag knallt (mehr Schaden, Stoß, Druckring).",
+      "delivery": { "type": "beam", "radius": 22, "range": 2600, "chain": 3, "chain_window": 0.7 },
       "effects": [
         { "type": "damage", "amount": 9, "element": "Strom" },
         { "type": "damage", "amount": 8, "element": "Strom", "chain_end_only": true },

@@ -125,6 +125,7 @@ namespace
 		if (S == TEXT("shield"))     { Out = EEwigfelsSpellDelivery::Shield; return true; }
 		if (S == TEXT("area"))       { Out = EEwigfelsSpellDelivery::Area; return true; }
 		if (S == TEXT("self"))       { Out = EEwigfelsSpellDelivery::Self; return true; }
+		if (S == TEXT("beam"))       { Out = EEwigfelsSpellDelivery::Beam; return true; }
 		return false;
 	}
 

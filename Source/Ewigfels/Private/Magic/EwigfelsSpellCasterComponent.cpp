@@ -4,6 +4,7 @@
 #include "Magic/EwigfelsSpellEffects.h"
 #include "Magic/EwigfelsSpellProjectile.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
+#include "Magic/EwigfelsSpellVisuals.h"
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Ewigfels.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -505,6 +506,26 @@ void UEwigfelsSpellCasterComponent::ExecuteDelivery(const FEwigfelsSpellDef& Spe
 		EwigfelsSpellEffects::ApplyEffects(Spell, Spell.Effects, Hit);
 		break;
 	}
+	case EEwigfelsSpellDelivery::Beam:
+	{
+		FVector End;
+		FVector Normal;
+		const TArray<AActor*> Targets = EwigfelsSpellEffects::TraceBeam(Owner, Origin, Direction, Spell.Delivery.Range,
+			Spell.Delivery.Radius, 1 + Spell.Delivery.Pierce, End, Normal);
+		for (AActor* Target : Targets)
+		{
+			FEwigfelsSpellHit Hit;
+			Hit.Caster = Owner;
+			Hit.Target = Target;
+			Hit.Location = FMath::ClosestPointOnSegment(Target->GetActorLocation(), Origin, End);
+			Hit.Direction = Direction;
+			Hit.bChainEnd = bChainEnd;
+			EwigfelsSpellEffects::ApplyEffects(Spell, Spell.Effects, Hit);
+			ApplyHitStop(Target, bChainEnd ? 0.09f : 0.05f);
+		}
+		Multicast_BeamFired(Spell.Id, Origin, End, Normal, Targets.Num() > 0, ChainIndex);
+		break;
+	}
 	case EEwigfelsSpellDelivery::Shield:
 		break;
 	}
@@ -515,6 +536,40 @@ void UEwigfelsSpellCasterComponent::ExecuteDelivery(const FEwigfelsSpellDef& Spe
 void UEwigfelsSpellCasterComponent::Multicast_SpellReleased_Implementation(FName SpellId, FVector_NetQuantize Origin, FVector_NetQuantizeNormal Direction)
 {
 	OnSpellReleased.Broadcast(SpellId, Origin, Direction);
+}
+
+void UEwigfelsSpellCasterComponent::ApplyHitStop(AActor* Target, float Seconds)
+{
+	// Treff-Stopp: das getroffene Ziel friert kurz ein (Wucht-Gefühl). Nur für KI-Ziele auf dem Server,
+	// Spielerfiguren nicht (deren Bewegung sagt der Client voraus, ein Stopp nur auf dem Server würde ruckeln).
+	const APawn* Pawn = Cast<APawn>(Target);
+	if (!Target || !GetOwner()->HasAuthority() || (Pawn && Pawn->IsPlayerControlled()) || Seconds <= 0.f)
+	{
+		return;
+	}
+	Target->CustomTimeDilation = 0.03f;
+	FTimerHandle Handle;
+	TWeakObjectPtr<AActor> Weak(Target);
+	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateLambda([Weak]()
+	{
+		if (AActor* A = Weak.Get())
+		{
+			A->CustomTimeDilation = 1.f;
+		}
+	}), Seconds, false);
+}
+
+void UEwigfelsSpellCasterComponent::Multicast_BeamFired_Implementation(FName SpellId, FVector_NetQuantize Start, FVector_NetQuantize End,
+	FVector_NetQuantizeNormal Normal, bool bHitTarget, uint8 ChainIndex)
+{
+	if (const FEwigfelsSpellDef* Spell = FindSpellDef(SpellId))
+	{
+		// Start lokal an den Fingern neu bestimmen: auf Clients steht die Hand minimal anders als auf dem Server
+		const FVector LocalStart = GetOwner() ? GetCastOrigin(Spell->bTwoHanded) : FVector(Start);
+		const FVector From = FVector::DistSquared(LocalStart, Start) < FMath::Square(80.f) ? LocalStart : FVector(Start);
+		EwigfelsSpellVisuals::PlayBeam(GetWorld(), *Spell, From, End, Normal, bHitTarget, ChainIndex);
+		OnBeamFired.Broadcast(SpellId, From, End, bHitTarget, ChainIndex);
+	}
 }
 
 void UEwigfelsSpellCasterComponent::OnRep_CastState()

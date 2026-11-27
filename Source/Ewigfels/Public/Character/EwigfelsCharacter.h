@@ -195,6 +195,10 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_ReportTutorial(FName Step);
 
+	/** Magische Landung für alle anderen sichtbar machen (Server und eigener Client spielen sie selbst). */
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_FallCatchFx();
+
 	// Ereignisse aus den Komponenten
 	UFUNCTION()
 	void HandleCastStarted(FName SpellId, uint8 ChainIndex, float CastTime);
@@ -223,6 +227,17 @@ protected:
 	UFUNCTION()
 	void HandleStaggered(float Seconds);
 
+	UFUNCTION()
+	void HandleBeamFired(FName SpellId, FVector Start, FVector End, bool bHitTarget, uint8 ChainIndex);
+
+	/** Montage für die Abfang-Geste beim Fallen (optional, sonst nur Licht und Klangring). */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Look")
+	FSoftObjectPath FallCatchMontage = FSoftObjectPath(TEXT("/Game/Animations/Magic/AM_Magic_FallCatch.AM_Magic_FallCatch"));
+
+	/** Kamerastoß beim Zaubern/Treffer (Grad Nicken). 0 = aus. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ewigfels|Camera")
+	float CameraPunchStrength = 1.f;
+
 private:
 	void ApplyDefaultLook();
 	void StartDodge(const FVector& Direction);
@@ -230,6 +245,15 @@ private:
 	void UpdateCamera(float DeltaSeconds);
 	void DetectExternalCamera();
 	bool bExternalCamera = false;
+	/** Kurzer Kamerastoß über die Control Rotation (wirkt mit jeder Kamera, auch der des Samples). Nur lokal. */
+	void AddCameraPunch(float PitchDeg, float YawDeg);
+	void UpdateCameraPunch(float DeltaSeconds);
+	void PlayFallCatchFx(bool bLanding);
+	FRotator PunchApplied = FRotator::ZeroRotator;
+	FRotator PunchPeak = FRotator::ZeroRotator;
+	float PunchAge = -1.f;
+	bool bWasFallCatching = false;
+	float LastFallCatchFxTime = -10.f;
 	void UpdateInteractFocus();
 	void Respawn();
 	void NoteTutorialStep(FName Step);

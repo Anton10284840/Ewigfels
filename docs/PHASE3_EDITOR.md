@@ -45,7 +45,9 @@ Erst wenn 2. läuft: MetaHuman-Figur nach CHARACTER_BIBLE (Nutzer wählt das Ges
 
 ## 4. Niagara-Effekte (Claude, Phase 3b)
 
-Jede Weise hat in ihrer JSON schon den Pfad (`vfx.niagara`, z. B. `/Game/VFX/Spells/NS_Funkenstoss`). Sobald es das System an diesem Pfad gibt, wird es statt des Platzhalter-Leuchtens benutzt, ohne Code-Änderung. Parameter `User.Color` bekommt die Farbe der Weise. Liste der Effekte: SPELL_FORMAT.md und Grundweisen.json.
+Jede Weise hat in ihrer JSON schon den Pfad (`vfx.niagara`, z. B. `/Game/VFX/Spells/NS_Funkenstoss`). Sobald es das System an diesem Pfad gibt, wird es statt des Platzhalter-Leuchtens benutzt, ohne Code-Änderung. Parameter `User.Color` bekommt die Farbe der Weise, Strahl-Weisen (`beam`) zusätzlich `User.BeamEnd` (Endpunkt in Weltkoordinaten).
+
+**Magische Landung:** Ab ca. 6 m Fallhöhe bremst die Bewegung kurz vor dem Boden ab (Klangring unter den Füßen, Funken an den Händen, weiches Aufsetzen). Werte in `UEwigfelsCharacterMovementComponent` (FallCatch…). Geste: Montage `/Game/Animations/Magic/AM_Magic_FallCatch`, wird benutzt, sobald es sie gibt. Liste der Effekte: SPELL_FORMAT.md und Grundweisen.json.
 
 ## 5. Prüfliste für den ersten Test
 

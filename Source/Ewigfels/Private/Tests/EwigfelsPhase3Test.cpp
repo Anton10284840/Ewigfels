@@ -11,6 +11,8 @@
 #include "Magic/EwigfelsSpellCasterComponent.h"
 #include "Magic/EwigfelsSpellEffects.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
+#include "Magic/EwigfelsSpellVisuals.h"
+#include "Character/EwigfelsCharacterMovementComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
@@ -201,6 +203,30 @@ bool FEwigfelsCombatMathTest::RunTest(const FString& Parameters)
 	bool bConsume = true;
 	TestEqual(TEXT("ohne Ziel"), EwigfelsSpellEffects::ComputeDamage(Hammer, nullptr, bConsume), 26.f);
 	TestFalse(TEXT("nichts verbraucht"), bConsume);
+
+	// Blitz-Zacken: Enden sitzen fest an Hand und Ziel, Ausschlag bleibt im Rahmen
+	FRandomStream Rng(42);
+	TArray<FVector> Points;
+	const FVector A(0.f, 0.f, 0.f);
+	const FVector B(1000.f, 0.f, 0.f);
+	AEwigfelsLightningBolt::BuildJaggedPath(Rng, A, B, 10, 40.f, Points);
+	TestEqual(TEXT("Blitz: Punktzahl"), Points.Num(), 11);
+	TestTrue(TEXT("Blitz: Start an der Hand"), Points[0].Equals(A));
+	TestTrue(TEXT("Blitz: Ende im Ziel"), Points.Last().Equals(B));
+	bool bInside = true;
+	for (const FVector& P : Points)
+	{
+		bInside &= FMath::Abs(P.Y) <= 40.f * 1.01f && FMath::Abs(P.Z) <= 40.f * 1.01f;
+	}
+	TestTrue(TEXT("Blitz: Ausschlag begrenzt"), bInside);
+
+	// Magische Landung: Aufprall-Tempo und Bremsen
+	using FMove = UEwigfelsCharacterMovementComponent;
+	TestTrue(TEXT("Fall: 6 m aus dem Stand ~1085 cm/s"), FMath::IsNearlyEqual(FMove::PredictImpactSpeed(0.f, 600.f, 980.f), 1084.4f, 2.f));
+	TestTrue(TEXT("Fall: kleiner Sprung bleibt unter der Schwelle"), FMove::PredictImpactSpeed(300.f, 100.f, 980.f) < 1100.f);
+	TestEqual(TEXT("Fall: schon langsam = nicht bremsen"), FMove::ComputeCatchDeceleration(200.f, 260.f, 300.f, 980.f), 0.f);
+	const float Decel = FMove::ComputeCatchDeceleration(1500.f, 260.f, 420.f, 980.f);
+	TestTrue(TEXT("Fall: bremst stärker als die Schwerkraft"), Decel > 980.f && Decel <= 9000.f);
 	return true;
 }
 

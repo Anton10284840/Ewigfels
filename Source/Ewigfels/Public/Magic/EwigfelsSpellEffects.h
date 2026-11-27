@@ -42,4 +42,11 @@ namespace EwigfelsSpellEffects
 	/** Feindliche, lebende Ziele mit Kampfkomponente im Kegel bzw. Kreis, mit Sichtlinie. */
 	EWIGFELS_API TArray<AActor*> GatherCone(AActor* Caster, const FVector& Origin, const FVector& Forward, float Range, float AngleDeg);
 	EWIGFELS_API TArray<AActor*> GatherSphere(AActor* Caster, const FVector& Origin, float Radius, const AActor* Ignore = nullptr);
+
+	/**
+	 * Strahl (delivery "beam"): Kugel-Sweep vom Ursprung, trifft bis zu MaxTargets feindliche Ziele der Reihe nach
+	 * und endet an der ersten Wand. OutEnd = Endpunkt des Strahls (für die Optik), OutNormal = Flächennormale dort.
+	 */
+	EWIGFELS_API TArray<AActor*> TraceBeam(AActor* Caster, const FVector& Origin, const FVector& Direction, float Range, float Radius,
+		int32 MaxTargets, FVector& OutEnd, FVector& OutNormal);
 }

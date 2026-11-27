@@ -43,6 +43,7 @@ Fehlt ein Niagara-System oder eine Montage, nimmt das Spiel einen Platzhalter (l
 | type | Felder (Standard) | Wirkung |
 |---|---|---|
 | `projectile` | `speed` 3000, `radius` 15, `range` 3000, `homing` 0–1 (0), `gravity` (0), `chain` (1), `chain_window` 0.6, `pierce` (0), `explode_radius` (0) | Geschoss aus den Fingern. `chain` = Schlagkette (z. B. 3er-Funken), `pierce` = durchschlägt n Gegner, `explode_radius` = Flächenschaden beim Aufprall |
+| `beam` | `range` 3000, `radius` 15, `chain` (1), `chain_window` 0.6, `pierce` (0) | Sofortiger Strahl aus den Fingern bis zur ersten Wand (Funkenstoß als Blitz). Trifft das erste feindliche Ziel, mit `pierce` weitere dahinter. Optik: `vfx.niagara` bekommt den Endpunkt als `User.BeamEnd` (Vektor); ohne Niagara-System zeichnet das Spiel einen flackernden Blitz mit Verästelungen. Getroffene KI-Gegner frieren kurz ein (Treff-Stopp), der Wirkende bekommt einen Kamerastoß |
 | `cone` | `range`, `angle` 60 | Kegel vor der Figur (Hammerton) |
 | `area` | `radius` | Kreis um die Figur |
 | `shield` | `parry_window` 0.2, `block_atem_per_damage` 0.5, `block_damage_mult` 0.2, `radius` | Halten = blocken (kostet Atem pro Schaden), im Fenster nach dem Hochnehmen = Parade |

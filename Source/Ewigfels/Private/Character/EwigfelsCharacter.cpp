@@ -136,6 +136,7 @@ void AEwigfelsCharacter::BeginPlay()
 	Caster->OnCastFailed.AddDynamic(this, &AEwigfelsCharacter::HandleCastFailed);
 	Caster->OnShieldChanged.AddDynamic(this, &AEwigfelsCharacter::HandleShieldChanged);
 	Caster->OnParried.AddDynamic(this, &AEwigfelsCharacter::HandleParried);
+	Caster->OnBeamFired.AddDynamic(this, &AEwigfelsCharacter::HandleBeamFired);
 	Combat->OnHitFeedback.AddDynamic(this, &AEwigfelsCharacter::HandleHitFeedback);
 	Combat->OnDied.AddDynamic(this, &AEwigfelsCharacter::HandleDied);
 	Combat->OnStaggered.AddDynamic(this, &AEwigfelsCharacter::HandleStaggered);
@@ -486,7 +487,22 @@ void AEwigfelsCharacter::Tick(float DeltaSeconds)
 	if (IsLocallyControlled() && IsPlayerControlled())
 	{
 		UpdateCamera(DeltaSeconds);
+		UpdateCameraPunch(DeltaSeconds);
 		UpdateInteractFocus();
+	}
+	// Magische Landung: Beginn erkennen (Server + eigener Client rechnen sie in der Bewegung aus)
+	if (const UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement())
+	{
+		const bool bCatching = Move->IsFallCatching();
+		if (bCatching && !bWasFallCatching)
+		{
+			PlayFallCatchFx(false);
+			if (HasAuthority())
+			{
+				Multicast_FallCatchFx();
+			}
+		}
+		bWasFallCatching = bCatching;
 	}
 	// Platzhalter: Hände zeigen, solange gezaubert wird
 	if (PlaceholderBody->IsActiveBody())
@@ -595,6 +611,13 @@ void AEwigfelsCharacter::UpdateInteractFocus()
 void AEwigfelsCharacter::Landed(const FHitResult& Hit)
 {
 	Super::Landed(Hit);
+	if (const UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement())
+	{
+		if (Move->IsFallCatching()) // wird erst nach Landed zurückgesetzt
+		{
+			PlayFallCatchFx(true);
+		}
+	}
 	if (PlaceholderBody->IsActiveBody())
 	{
 		PlaceholderBody->PlayHit(); // kleiner Federeffekt beim Landen
@@ -698,6 +721,10 @@ void AEwigfelsCharacter::HandleParried(AActor* Attacker, FVector Location)
 
 void AEwigfelsCharacter::HandleHitFeedback(float Amount, FVector Location, EEwigfelsHitResult Result, AActor* InstigatorActor)
 {
+	if (IsLocallyControlled() && (Result == EEwigfelsHitResult::Hit || Result == EEwigfelsHitResult::Blocked) && Amount > 0.f)
+	{
+		AddCameraPunch(-FMath::Clamp(Amount * 0.08f, 0.4f, 2.2f), FMath::FRandRange(-0.6f, 0.6f));
+	}
 	if (Result == EEwigfelsHitResult::Hit || Result == EEwigfelsHitResult::Blocked || Result == EEwigfelsHitResult::Killed)
 	{
 		PlaceholderBody->PlayHit();
@@ -705,6 +732,109 @@ void AEwigfelsCharacter::HandleHitFeedback(float Amount, FVector Location, EEwig
 	if (IsLocallyControlled() && Result == EEwigfelsHitResult::Ignored && Amount <= 0.f && IsDodging())
 	{
 		ShowMessage(LOCTEXT("Dodged", "Ausgewichen"), FLinearColor(0.7f, 0.85f, 1.f), 0.6f);
+	}
+}
+
+void AEwigfelsCharacter::HandleBeamFired(FName SpellId, FVector Start, FVector End, bool bHitTarget, uint8 ChainIndex)
+{
+	if (!IsLocallyControlled())
+	{
+		return;
+	}
+	const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(SpellId);
+	const bool bStrong = Spell && Spell->Delivery.Chain > 1 && ChainIndex + 1 >= Spell->Delivery.Chain;
+	// Rückstoß nach oben, abwechselnd leicht links/rechts; der dritte Schlag und Treffer knallen mehr
+	const float Side = (ChainIndex % 2 == 0) ? 1.f : -1.f;
+	AddCameraPunch((bStrong ? 1.6f : 0.7f) * (bHitTarget ? 1.25f : 1.f), Side * (bStrong ? 0.5f : 0.25f));
+}
+
+void AEwigfelsCharacter::AddCameraPunch(float PitchDeg, float YawDeg)
+{
+	if (CameraPunchStrength <= 0.f)
+	{
+		return;
+	}
+	PunchPeak = FRotator(PitchDeg * CameraPunchStrength, YawDeg * CameraPunchStrength, 0.f);
+	PunchAge = 0.f;
+}
+
+void AEwigfelsCharacter::UpdateCameraPunch(float DeltaSeconds)
+{
+	AController* C = GetController();
+	if (PunchAge < 0.f || !C)
+	{
+		return;
+	}
+	// 40 ms hoch, 180 ms zurück: wirkt wie ein Schlag, die Blickrichtung bleibt am Ende gleich
+	constexpr float Attack = 0.04f;
+	constexpr float Release = 0.18f;
+	PunchAge += DeltaSeconds;
+	float Weight = 0.f;
+	if (PunchAge < Attack)
+	{
+		Weight = PunchAge / Attack;
+	}
+	else if (PunchAge < Attack + Release)
+	{
+		const float T = (PunchAge - Attack) / Release;
+		Weight = 1.f - T * T * (3.f - 2.f * T);
+	}
+	else
+	{
+		PunchAge = -1.f;
+	}
+	const FRotator Wanted = PunchPeak * Weight;
+	const FRotator Delta = Wanted - PunchApplied;
+	PunchApplied = Wanted;
+	C->SetControlRotation(C->GetControlRotation() + Delta);
+}
+
+void AEwigfelsCharacter::Multicast_FallCatchFx_Implementation()
+{
+	if (!HasAuthority() && !IsLocallyControlled())
+	{
+		PlayFallCatchFx(false);
+	}
+}
+
+void AEwigfelsCharacter::PlayFallCatchFx(bool bLanding)
+{
+	UWorld* World = GetWorld();
+	if (!World || World->GetNetMode() == NM_DedicatedServer)
+	{
+		return;
+	}
+	if (!bLanding && World->GetTimeSeconds() - LastFallCatchFxTime < 0.5f)
+	{
+		return;
+	}
+	LastFallCatchFxTime = World->GetTimeSeconds();
+	const FLinearColor Color(0.62f, 0.86f, 1.f);
+	const FVector Feet = GetActorLocation() - FVector(0.f, 0.f, GetCapsuleComponent()->GetScaledCapsuleHalfHeight());
+	if (bLanding)
+	{
+		// Aufsetzen: weicher Klangring am Boden
+		EwigfelsSpellVisuals::SpawnFlash(World, TEXT("cylinder"), Feet + FVector(0.f, 0.f, 3.f), FRotator::ZeroRotator, Color,
+			FVector(0.4f, 0.4f, 0.01f), FVector(3.2f, 3.2f, 0.015f), 0.45f, 9000.f, 700.f);
+		return;
+	}
+	// Abfangen: Ring unter den Füßen, Funken an beiden Händen
+	EwigfelsSpellVisuals::SpawnFlash(World, TEXT("cylinder"), Feet - FVector(0.f, 0.f, 20.f), FRotator::ZeroRotator, Color,
+		FVector(0.3f, 0.3f, 0.01f), FVector(2.2f, 2.2f, 0.02f), 0.6f, 12000.f, 800.f);
+	if (USkeletalMeshComponent* SkelMesh = GetMesh())
+	{
+		for (const TCHAR* Bone : { TEXT("hand_r"), TEXT("hand_l") })
+		{
+			if (SkelMesh->GetSkeletalMeshAsset() && SkelMesh->DoesSocketExist(Bone))
+			{
+				EwigfelsSpellVisuals::SpawnFlash(World, TEXT("sphere"), SkelMesh->GetSocketLocation(Bone), FRotator::ZeroRotator, Color,
+					FVector(0.05f), FVector(0.4f), 0.35f, 3000.f, 300.f);
+			}
+		}
+		if (UAnimMontage* Montage = Cast<UAnimMontage>(EwigfelsSpellVisuals::LoadIfExists(FallCatchMontage)))
+		{
+			PlayAnimMontage(Montage);
+		}
 	}
 }
 

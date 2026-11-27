@@ -110,6 +110,61 @@ TArray<AActor*> EwigfelsSpellEffects::GatherSphere(AActor* Caster, const FVector
 	return Out;
 }
 
+TArray<AActor*> EwigfelsSpellEffects::TraceBeam(AActor* Caster, const FVector& Origin, const FVector& Direction, float Range, float Radius,
+	int32 MaxTargets, FVector& OutEnd, FVector& OutNormal)
+{
+	TArray<AActor*> Out;
+	const FVector Dir = Direction.GetSafeNormal();
+	OutEnd = Origin + Dir * Range;
+	OutNormal = -Dir;
+	UWorld* World = Caster ? Caster->GetWorld() : nullptr;
+	if (!World || Dir.IsNearlyZero())
+	{
+		return Out;
+	}
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsBeam), false, Caster);
+
+	// 1) Wand: dünne Linie, damit der Strahl nicht an Kanten hängen bleibt
+	FHitResult Wall;
+	float Length = Range;
+	if (World->LineTraceSingleByChannel(Wall, Origin, OutEnd, ECC_Visibility, Params) && !Cast<APawn>(Wall.GetActor()))
+	{
+		Length = Wall.Distance;
+		OutEnd = Wall.ImpactPoint;
+		OutNormal = Wall.ImpactNormal;
+	}
+
+	// 2) Ziele: dicker Sweep bis zur Wand, sortiert nach Abstand
+	FCollisionObjectQueryParams Objects;
+	Objects.AddObjectTypesToQuery(ECC_Pawn);
+	Objects.AddObjectTypesToQuery(ECC_PhysicsBody);
+	TArray<FHitResult> Hits;
+	World->SweepMultiByObjectType(Hits, Origin, Origin + Dir * Length, FQuat::Identity, Objects, FCollisionShape::MakeSphere(FMath::Max(1.f, Radius)), Params);
+	Hits.Sort([](const FHitResult& A, const FHitResult& B) { return A.Distance < B.Distance; });
+	for (const FHitResult& H : Hits)
+	{
+		AActor* A = H.GetActor();
+		if (!A || A == Caster || Out.Contains(A) || !UEwigfelsCombatComponent::AreHostile(Caster, A))
+		{
+			continue;
+		}
+		const UEwigfelsCombatComponent* Combat = UEwigfelsCombatComponent::Find(A);
+		if (!Combat || Combat->IsDead())
+		{
+			continue;
+		}
+		Out.Add(A);
+		if (Out.Num() >= FMath::Max(1, MaxTargets))
+		{
+			// Strahl endet im letzten Ziel (Brusthöhe statt Kapselrand sieht besser aus)
+			OutEnd = FMath::ClosestPointOnSegment(A->GetActorLocation(), Origin, Origin + Dir * Length);
+			OutNormal = -Dir;
+			break;
+		}
+	}
+	return Out;
+}
+
 void EwigfelsSpellEffects::ApplyEffects(const FEwigfelsSpellDef& Spell, const TArray<FEwigfelsSpellEffect>& Effects,
 	const FEwigfelsSpellHit& Hit, AActor* Attacker)
 {

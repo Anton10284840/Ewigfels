@@ -24,7 +24,9 @@ enum class EEwigfelsSpellDelivery : uint8
 	/** Sofortiger Kreis um den Wirker (Verstummen, Klangwand-Stoß). */
 	Area,
 	/** Wirkt nur auf den Wirker selbst (Atemwende). */
-	Self
+	Self,
+	/** Sofortiger Strahl aus den Fingern bis zum ersten Hindernis (Funkenstoß als Blitz). */
+	Beam
 };
 
 UENUM(BlueprintType)

@@ -67,6 +67,7 @@ enum class EEwigfelsCastFailReason : uint8
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsCastStarted, FName, SpellId, uint8, ChainIndex, float, CastTime);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsSpellReleased, FName, SpellId, FVector, Origin, FVector, Direction);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FEwigfelsBeamFired, FName, SpellId, FVector, Start, FVector, End, bool, bHitTarget, uint8, ChainIndex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsCastFailed, FName, SpellId, EEwigfelsCastFailReason, Reason);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEwigfelsShieldChanged, bool, bShieldUp);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEwigfelsParried, AActor*, Attacker, FVector, Location);
@@ -209,6 +210,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsSpellReleased OnSpellReleased;
 
+	/** Strahl-Weise ausgelöst (Start an den Fingern, End = Ziel/Wand). Für Blitz-Optik, Kamerastoß, Treff-Stopp. */
+	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
+	FEwigfelsBeamFired OnBeamFired;
+
 	/** Nur lokal beim Wirker (HUD-Hinweis „Kein Atem“). */
 	UPROPERTY(BlueprintAssignable, Category = "Ewigfels|Magic")
 	FEwigfelsCastFailed OnCastFailed;
@@ -235,6 +240,10 @@ protected:
 	UFUNCTION(NetMulticast, Unreliable)
 	void Multicast_SpellReleased(FName SpellId, FVector_NetQuantize Origin, FVector_NetQuantizeNormal Direction);
 
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multicast_BeamFired(FName SpellId, FVector_NetQuantize Start, FVector_NetQuantize End, FVector_NetQuantizeNormal Normal,
+		bool bHitTarget, uint8 ChainIndex);
+
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Parried(AActor* Attacker, FVector_NetQuantize Location);
 
@@ -248,6 +257,8 @@ protected:
 	void OnRep_Atem();
 
 private:
+	void ApplyHitStop(AActor* Target, float Seconds);
+
 	EEwigfelsCastFailReason CastSpellInternal(FName SpellId, FVector AimPoint, AActor* Target, bool bSkipLoadoutCheck);
 	void ReleaseSpell(FName SpellId, uint8 ChainIndex);
 	void ExecuteDelivery(const FEwigfelsSpellDef& Spell, uint8 ChainIndex, const FVector& Origin, const FVector& Direction);

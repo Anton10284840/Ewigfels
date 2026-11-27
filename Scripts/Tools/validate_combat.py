@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 TONES = {"Glut", "Firn", "Strom", "Quell", "Grund", "Wachs", "Hall", "Urton"}
-DELIVERIES = {"projectile", "cone", "shield", "area", "self"}
+DELIVERIES = {"projectile", "beam", "cone", "shield", "area", "self"}
 EFFECTS = {"damage", "status", "knockback", "pull", "restore_atem", "heal", "stagger_attacker"}
 BEHAVIORS = {"melee", "ranged", "dummy"}
 SPELL_FIELDS = {"id", "name", "description", "kind", "catalog_id", "school", "chord", "unlock", "cost", "cooldown",
@@ -198,6 +198,11 @@ def check_spell(rep, sid, where, s, statuses, spells, catalog):
         num(rep, where, d, "range", 100, 10000)
         num(rep, where, d, "homing", 0, 1)
         num(rep, where, d, "chain", 1, 8)
+    if dt == "beam":
+        num(rep, where, d, "range", 100, 6000)
+        num(rep, where, d, "radius", 1, 120)
+        num(rep, where, d, "chain", 1, 8)
+        num(rep, where, d, "pierce", 0, 10)
     if dt == "cone":
         num(rep, where, d, "angle", 1, 360)
         num(rep, where, d, "range", 50, 5000)
