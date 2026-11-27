@@ -5,6 +5,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
+#include "Camera/PlayerCameraManager.h"
+#include "GameFramework/PlayerController.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Materials/MaterialInterface.h"
 #include "Misc/PackageName.h"
@@ -14,6 +16,7 @@
 
 namespace
 {
+	const TCHAR* BeamMaterialPath = TEXT("/Game/VFX/Materials/M_EwigfelsBeam.M_EwigfelsBeam");
 	const TCHAR* GlowMaterialPath = TEXT("/Game/VFX/Materials/M_EwigfelsGlow.M_EwigfelsGlow");
 	const TCHAR* SolidMaterialPath = TEXT("/Game/VFX/Materials/M_EwigfelsSolid.M_EwigfelsSolid");
 	const TCHAR* BasicMaterialPath = TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial");
@@ -97,6 +100,41 @@ UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplyGlow(UPrimitiveComponent* C
 	MID->SetScalarParameterValue(TEXT("Glow"), Glow);
 	Component->SetMaterial(0, MID);
 	return MID;
+}
+
+UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplyBeam(UPrimitiveComponent* Component, const FLinearColor& Color, float Glow)
+{
+	UMaterialInterface* Base = Cast<UMaterialInterface>(LoadIfExists(FSoftObjectPath(BeamMaterialPath)));
+	if (!Base)
+	{
+		return ApplyGlow(Component, Color, Glow);
+	}
+	if (!Component)
+	{
+		return nullptr;
+	}
+	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Component);
+	MID->SetVectorParameterValue(TEXT("Color"), Color);
+	MID->SetScalarParameterValue(TEXT("Glow"), Glow);
+	Component->SetMaterial(0, MID);
+	return MID;
+}
+
+void EwigfelsSpellVisuals::FlashScreen(UWorld* World, float Alpha, float Seconds)
+{
+	if (!World || Alpha <= 0.f)
+	{
+		return;
+	}
+	APlayerController* PC = World->GetFirstPlayerController();
+	if (PC && PC->IsLocalController())
+	{
+		if (PC->PlayerCameraManager)
+		{
+			PC->PlayerCameraManager->StartCameraFade(FMath::Min(Alpha, 0.25f), 0.f, FMath::Clamp(Seconds, 0.03f, 0.08f),
+				FLinearColor(0.82f, 0.9f, 1.f), false, false);
+		}
+	}
 }
 
 UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplySolid(UPrimitiveComponent* Component, const FLinearColor& Color, float Roughness)
@@ -209,7 +247,7 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 		if (AEwigfelsLightningBolt* Bolt = World->SpawnActor<AEwigfelsLightningBolt>(AEwigfelsLightningBolt::StaticClass(), FTransform::Identity, Params))
 		{
-			Bolt->Setup(Start, End, Spell.Visual.Color, 7.f * Scale, bStrong ? 0.2f : 0.13f, bStrong);
+			Bolt->Setup(Start, End, Spell.Visual.Color, Scale * 1.6f, bStrong ? 0.26f : FMath::FRandRange(0.18f, 0.24f), bStrong ? 4 : 2);
 		}
 	}
 
@@ -223,6 +261,10 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 	{
 		SpawnFlash(World, TEXT("sphere"), End, Rot, Spell.Visual.Color, FVector(0.15f), FVector((bHitTarget ? 0.9f : 0.55f) * Scale),
 			bStrong ? 0.3f : 0.2f, bHitTarget ? 14000.f : 6000.f, bStrong ? 900.f : 550.f);
+		if (AEwigfelsSparkBurst* Sparks = World->SpawnActor<AEwigfelsSparkBurst>(AEwigfelsSparkBurst::StaticClass(), FTransform(End)))
+		{
+			Sparks->Setup(End, Normal, Spell.Visual.Color, bStrong ? 55 : (bHitTarget ? 30 : 20), bStrong ? 900.f : 650.f);
+		}
 		if (bStrong)
 		{
 			// flacher Ring senkrecht zur Schlagrichtung
@@ -308,7 +350,6 @@ void AEwigfelsLightningBolt::BuildJaggedPath(FRandomStream& InRng, const FVector
 	for (int32 i = 1; i < NumSegments; ++i)
 	{
 		const float T = static_cast<float>(i) / NumSegments;
-		// Ausschlag in der Mitte am größten, an den Enden null (Blitz sitzt sauber an Hand und Ziel)
 		const float Envelope = FMath::Sin(T * PI);
 		const FVector Offset = (Side * InRng.FRandRange(-1.f, 1.f) + Up * InRng.FRandRange(-1.f, 1.f)) * Amplitude * Envelope;
 		OutPoints.Add(FMath::Lerp(A, B, T) + Offset);
@@ -316,7 +357,38 @@ void AEwigfelsLightningBolt::BuildJaggedPath(FRandomStream& InRng, const FVector
 	OutPoints.Add(B);
 }
 
-UStaticMeshComponent* AEwigfelsLightningBolt::MakePiece(const FLinearColor& Color, float Glow)
+void AEwigfelsLightningBolt::MidpointDisplace(FRandomStream& InRng, const FVector& A, const FVector& B, int32 Levels, float Amount,
+	TArray<FVector>& OutPoints)
+{
+	OutPoints.Reset();
+	OutPoints.Add(A);
+	OutPoints.Add(B);
+	float D = Amount;
+	TArray<FVector> Next;
+	for (int32 L = 0; L < FMath::Clamp(Levels, 0, 8); ++L)
+	{
+		Next.Reset(OutPoints.Num() * 2);
+		Next.Add(OutPoints[0]);
+		for (int32 i = 0; i + 1 < OutPoints.Num(); ++i)
+		{
+			const FVector& P = OutPoints[i];
+			const FVector& Q = OutPoints[i + 1];
+			const FVector Seg = (Q - P).GetSafeNormal();
+			FVector Side;
+			FVector Up;
+			Seg.FindBestAxisVectors(Side, Up);
+			// senkrecht zum Segment versetzen, in beliebiger Richtung um die Achse (3D statt nur seitlich)
+			const float Spin = InRng.FRandRange(0.f, 2.f * PI);
+			const FVector Perp = Side * FMath::Cos(Spin) + Up * FMath::Sin(Spin);
+			Next.Add((P + Q) * 0.5f + Perp * InRng.FRandRange(-1.f, 1.f) * D);
+			Next.Add(Q);
+		}
+		Swap(OutPoints, Next);
+		D *= 0.5f; // Versatz halbiert sich pro Ebene
+	}
+}
+
+UStaticMeshComponent* AEwigfelsLightningBolt::MakePiece(const FLinearColor& Color, float Glow, UMaterialInstanceDynamic*& OutMat)
 {
 	UStaticMeshComponent* C = NewObject<UStaticMeshComponent>(this);
 	C->SetStaticMesh(EwigfelsSpellVisuals::GetShape(TEXT("cylinder")));
@@ -325,108 +397,163 @@ UStaticMeshComponent* AEwigfelsLightningBolt::MakePiece(const FLinearColor& Colo
 	C->SetMobility(EComponentMobility::Movable);
 	C->SetupAttachment(Root);
 	C->RegisterComponent();
-	if (UMaterialInstanceDynamic* MID = EwigfelsSpellVisuals::ApplyGlow(C, Color, Glow))
+	OutMat = EwigfelsSpellVisuals::ApplyBeam(C, Color, Glow);
+	Keep.Add(C);
+	if (OutMat)
 	{
-		Materials.Add(MID);
+		Keep.Add(OutMat);
 	}
-	Pieces.Add(C);
 	return C;
 }
 
-void AEwigfelsLightningBolt::Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Thickness, float Duration, bool bStrong)
+void AEwigfelsLightningBolt::Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Width, float Duration, int32 Regenerations)
 {
 	From = Start;
 	To = End;
 	BoltColor = Color;
-	BaseWidth = FMath::Max(1.f, Thickness);
-	Length = FMath::Max(0.05f, Duration);
-	Forks = bStrong ? 4 : 2;
+	BaseWidth = FMath::Max(0.2f, Width);
+	Life = FMath::Max(0.05f, Duration);
+	AfterLife = FMath::FRandRange(0.15f, 0.3f);
+	Regens = RegensLeft = FMath::Clamp(Regenerations, 0, 6);
+	NextRegen = Life / (Regens + 1);
 	Rng.Initialize(FMath::Rand());
 
-	const float Dist = FVector::Dist(From, To);
-	const int32 MainSegments = FMath::Clamp(FMath::RoundToInt(Dist / 70.f), 6, 26);
-	const int32 ForkSegments = 4;
-	const int32 Total = MainSegments + Forks * ForkSegments;
-	const FLinearColor CoreColor = FLinearColor::LerpUsingHSV(Color, FLinearColor::White, 0.8f);
-	Segments.SetNum(Total);
-	for (FBoltSegment& S : Segments)
-	{
-		S.Core = MakePiece(CoreColor, 60.f);
-		S.Halo = MakePiece(Color, 18.f);
-	}
-
-	PeakStartLight = bStrong ? 9000.f : 5000.f;
-	PeakEndLight = bStrong ? 22000.f : 12000.f;
-	StartLight->SetLightColor(CoreColor);
+	const FLinearColor Core = FLinearColor::LerpUsingHSV(Color, FLinearColor::White, 0.85f);
+	const FLinearColor Mid = FLinearColor::LerpUsingHSV(Color, FLinearColor::White, 0.35f);
+	StartLight->SetLightColor(Core);
 	EndLight->SetLightColor(Color);
-	StartLight->SetAttenuationRadius(450.f);
-	EndLight->SetAttenuationRadius(bStrong ? 1100.f : 750.f);
+	StartLight->SetAttenuationRadius(380.f + 150.f * BaseWidth);
+	EndLight->SetAttenuationRadius(600.f + 300.f * BaseWidth);
 	StartLight->SetWorldLocation(From);
 	EndLight->SetWorldLocation(To);
 
-	Rebuild();
-	PlaceSegments(1.f);
-	SetLifeSpan(Length + 0.15f);
+	Generate();
+	// Feste Obergrenze an Teilen, damit ein Blitz nie hunderte Komponenten anlegt
+	constexpr int32 MaxPieces = 72;
+	int32 Needed = 0;
+	for (const FBoltPath& P : Paths)
+	{
+		Needed += FMath::Max(0, P.Points.Num() - 1);
+	}
+	Pool.SetNum(FMath::Min(Needed + 8, MaxPieces));
+	for (FBoltPiece& Piece : Pool)
+	{
+		UMaterialInstanceDynamic* M = nullptr;
+		Piece.Outer = MakePiece(Color, 4.f, M);
+		Piece.OuterMat = M;
+		Piece.Mid = MakePiece(Mid, 16.f, M);
+		Piece.MidMat = M;
+		Piece.Core = MakePiece(Core, 70.f, M);
+		Piece.CoreMat = M;
+	}
+	Place(1.f, false);
+	SetLifeSpan(Life + AfterLife + 0.2f);
 }
 
-void AEwigfelsLightningBolt::Rebuild()
+void AEwigfelsLightningBolt::Generate()
 {
+	Paths.Reset();
 	const float Dist = FVector::Dist(From, To);
-	const int32 ForkSegments = 4;
-	const int32 MainSegments = Segments.Num() - Forks * ForkSegments;
-	TArray<FVector> Main;
-	BuildJaggedPath(Rng, From, To, MainSegments, FMath::Min(45.f, Dist * 0.05f), Main);
-	int32 Index = 0;
-	for (int32 i = 0; i + 1 < Main.Num() && Index < Segments.Num(); ++i, ++Index)
-	{
-		Segments[Index].A = Main[i];
-		Segments[Index].B = Main[i + 1];
-		Segments[Index].Width = 1.f;
-	}
-	// Äste: zweigen irgendwo im mittleren Teil ab, schräg nach vorn, dünner
-	const FVector Dir = (To - From).GetSafeNormal();
-	TArray<FVector> Fork;
-	for (int32 f = 0; f < Forks; ++f)
-	{
-		const FVector Base = Main[Rng.RandRange(1, FMath::Max(1, Main.Num() - 2))];
-		const FVector Bend = FMath::VRandCone(Dir, FMath::DegreesToRadians(55.f));
-		const FVector Tip = Base + Bend * Dist * Rng.FRandRange(0.08f, 0.22f);
-		BuildJaggedPath(Rng, Base, Tip, ForkSegments, FMath::Min(18.f, Dist * 0.03f), Fork);
-		for (int32 i = 0; i + 1 < Fork.Num() && Index < Segments.Num(); ++i, ++Index)
-		{
-			Segments[Index].A = Fork[i];
-			Segments[Index].B = Fork[i + 1];
-			Segments[Index].Width = 0.45f * (1.f - static_cast<float>(i) / ForkSegments);
-		}
-	}
-	for (; Index < Segments.Num(); ++Index)
-	{
-		Segments[Index].A = Segments[Index].B = From; // unbenutzt
-		Segments[Index].Width = 0.f;
-	}
+	FBoltPath& Main = Paths.AddDefaulted_GetRef();
+	// 5 Ebenen = 32 Segmente; Versatz am Anfang ~12 % der Länge
+	MidpointDisplace(Rng, From, To, 5, FMath::Min(Dist * 0.12f, 160.f), Main.Points);
+	const TArray<FVector> MainPoints = Main.Points;
+	GrowBranches(MainPoints, 1);
 }
 
-void AEwigfelsLightningBolt::PlaceSegments(float WidthScale)
+void AEwigfelsLightningBolt::GrowBranches(const TArray<FVector>& Points, int32 Depth)
 {
-	for (FBoltSegment& S : Segments)
+	if (Depth > 2 || Points.Num() < 6)
 	{
-		const FVector Delta = S.B - S.A;
-		const float Len = Delta.Size();
-		const bool bVisible = Len > 1.f && S.Width * WidthScale > 0.01f;
-		S.Core->SetVisibility(bVisible);
-		S.Halo->SetVisibility(bVisible);
-		if (!bVisible)
+		return;
+	}
+	const FVector End = Points.Last();
+	const float Chance = Depth == 1 ? 0.22f : 0.12f;
+	for (int32 i = 2; i + 3 < Points.Num(); ++i)
+	{
+		if (Rng.GetFraction() > Chance)
 		{
 			continue;
 		}
-		// BasicShapes-Zylinder: 100 cm hoch (Z), 100 cm Durchmesser
-		const FRotator Rot = FRotationMatrix::MakeFromZ(Delta / Len).Rotator();
-		const FVector Mid = (S.A + S.B) * 0.5f;
-		const float W = BaseWidth * S.Width * WidthScale;
-		S.Core->SetWorldLocationAndRotation(Mid, Rot);
-		S.Core->SetWorldScale3D(FVector(W * 0.35f / 100.f, W * 0.35f / 100.f, Len / 100.f));
-		S.Halo->SetWorldLocationAndRotation(Mid, Rot);
-		S.Halo->SetWorldScale3D(FVector(W / 100.f, W / 100.f, Len / 100.f));
+		const FVector& P = Points[i];
+		const FVector Seg = (Points[i + 1] - P).GetSafeNormal();
+		FVector Side;
+		FVector Up;
+		Seg.FindBestAxisVectors(Side, Up);
+		const float Spin = Rng.FRandRange(0.f, 2.f * PI);
+		const FVector Perp = Side * FMath::Cos(Spin) + Up * FMath::Sin(Spin);
+		const float Angle = FMath::DegreesToRadians(Rng.FRandRange(15.f, 45.f));
+		const FVector Dir = (Seg * FMath::Cos(Angle) + Perp * FMath::Sin(Angle)).GetSafeNormal();
+		const float Length = FVector::Dist(P, End) * Rng.FRandRange(0.3f, 0.6f) * (Depth == 1 ? 1.f : 0.6f);
+		if (Length < 15.f)
+		{
+			continue;
+		}
+		FBoltPath& Branch = Paths.AddDefaulted_GetRef();
+		MidpointDisplace(Rng, P, P + Dir * Length, 3, Length * 0.18f, Branch.Points);
+		Branch.Width = FMath::Pow(0.5f, static_cast<float>(Depth));
+		Branch.Alpha = FMath::Pow(0.62f, static_cast<float>(Depth));
+		const TArray<FVector> BranchPoints = Branch.Points; // Kopie: Paths kann beim Wachsen umziehen
+		GrowBranches(BranchPoints, Depth + 1);
+	}
+}
+
+void AEwigfelsLightningBolt::Place(float Brightness, bool bAfterglow)
+{
+	int32 Index = 0;
+	for (const FBoltPath& Path : Paths)
+	{
+		if (bAfterglow && Path.Width < 0.5f)
+		{
+			continue; // Nachbild nur vom Hauptstrahl und dicken Ästen
+		}
+		for (int32 i = 0; i + 1 < Path.Points.Num() && Index < Pool.Num(); ++i, ++Index)
+		{
+			FBoltPiece& Piece = Pool[Index];
+			const FVector A = Path.Points[i];
+			const FVector B = Path.Points[i + 1];
+			const FVector Delta = B - A;
+			const float Len = Delta.Size();
+			const FRotator Rot = FRotationMatrix::MakeFromZ(Delta / FMath::Max(Len, 0.01f)).Rotator();
+			const FVector MidPoint = (A + B) * 0.5f;
+			const float W = BaseWidth * Path.Width;
+			// BasicShapes-Zylinder: 100 cm hoch (Z), 100 cm Durchmesser; Saum/Glow/Kern wie in der Vorschau 12/5/1,8
+			auto Put = [&](UStaticMeshComponent* Comp, UMaterialInstanceDynamic* Mat, float WidthCm, float Opacity)
+			{
+				const bool bShow = Len > 1.f && Opacity > 0.005f;
+				Comp->SetVisibility(bShow);
+				if (!bShow)
+				{
+					return;
+				}
+				Comp->SetWorldLocationAndRotation(MidPoint, Rot);
+				Comp->SetWorldScale3D(FVector(WidthCm / 100.f, WidthCm / 100.f, (Len + WidthCm * 0.5f) / 100.f));
+				if (Mat)
+				{
+					Mat->SetScalarParameterValue(TEXT("Opacity"), Opacity);
+				}
+			};
+			if (bAfterglow)
+			{
+				if (Piece.OuterMat)
+				{
+					Piece.OuterMat->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.35f, 0.5f, 1.f));
+				}
+				Put(Piece.Outer, Piece.OuterMat, 9.f * W, 0.3f * Brightness);
+				Put(Piece.Mid, Piece.MidMat, 0.f, 0.f);
+				Put(Piece.Core, Piece.CoreMat, 0.f, 0.f);
+				continue;
+			}
+			Put(Piece.Outer, Piece.OuterMat, 26.f * W, 0.15f * Path.Alpha * Brightness);
+			Put(Piece.Mid, Piece.MidMat, 9.f * W, 0.4f * Path.Alpha * Brightness);
+			Put(Piece.Core, Piece.CoreMat, FMath::Max(1.2f, 3.2f * W), FMath::Min(1.f, 0.95f * Path.Alpha * Brightness + 0.05f));
+		}
+	}
+	for (; Index < Pool.Num(); ++Index)
+	{
+		Pool[Index].Outer->SetVisibility(false);
+		Pool[Index].Mid->SetVisibility(false);
+		Pool[Index].Core->SetVisibility(false);
 	}
 }
 
@@ -434,23 +561,123 @@ void AEwigfelsLightningBolt::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	Age += DeltaSeconds;
-	const float T = FMath::Clamp(Age / Length, 0.f, 1.f);
-	const float Fade = 1.f - T;
-	if (Age >= NextJitter && T < 0.8f)
+	if (Age < Life)
 	{
-		NextJitter = Age + 0.035f;
-		Rebuild(); // Flackern: neue Zacken
+		if (RegensLeft > 0 && Age >= NextRegen)
+		{
+			// gleiches Start/Ende, neuer Pfad
+			Generate();
+			--RegensLeft;
+			NextRegen += Life / (Regens + 1);
+		}
+		// Helligkeit springt unregelmäßig zwischen 60 und 100 %, letztes Viertel blendet aus
+		if (Rng.GetFraction() < 0.35f)
+		{
+			Bright = Rng.FRandRange(0.6f, 1.f);
+		}
+		const float Tail = Age > Life * 0.75f ? 1.f - (Age - Life * 0.75f) / (Life * 0.25f) : 1.f;
+		Place(Bright * Tail, false);
+		StartLight->SetIntensity((4000.f + 3000.f * BaseWidth) * Bright * Tail);
+		EndLight->SetIntensity((9000.f + 7000.f * BaseWidth) * Bright * Tail);
+		return;
 	}
-	// Flackern der Helligkeit zusätzlich zum Ausblenden
-	const float Flicker = FMath::Lerp(0.65f, 1.f, Rng.GetFraction());
-	PlaceSegments(FMath::Sqrt(Fade) * Flicker);
-	for (UMaterialInstanceDynamic* MID : Materials)
-	{
-		MID->SetScalarParameterValue(TEXT("Opacity"), Fade);
-	}
-	StartLight->SetIntensity(PeakStartLight * Fade * Fade * Flicker);
-	EndLight->SetIntensity(PeakEndLight * Fade * Flicker);
+	const float T = (Age - Life) / AfterLife;
 	if (T >= 1.f)
+	{
+		Destroy();
+		return;
+	}
+	// Nachbild: schwach, bläulich, blendet aus
+	Place(1.f - T, true);
+	StartLight->SetIntensity(0.f);
+	EndLight->SetIntensity(1500.f * (1.f - T));
+}
+
+// ---------------------------------------------------------------------------
+
+AEwigfelsSparkBurst::AEwigfelsSparkBurst()
+{
+	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = false;
+	SetCanBeDamaged(false);
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	Root->SetMobility(EComponentMobility::Movable);
+	RootComponent = Root;
+}
+
+void AEwigfelsSparkBurst::Setup(const FVector& Location, const FVector& Normal, const FLinearColor& Color, int32 Count, float Speed)
+{
+	FloorZ = Location.Z - 200.f;
+	FHitResult Hit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(EwigfelsSparks), false);
+	if (GetWorld() && GetWorld()->LineTraceSingleByChannel(Hit, Location + FVector(0.f, 0.f, 20.f), Location - FVector(0.f, 0.f, 600.f), ECC_Visibility, Params))
+	{
+		FloorZ = Hit.ImpactPoint.Z + 1.f;
+	}
+	const FLinearColor Hot = FLinearColor::LerpUsingHSV(Color, FLinearColor::White, 0.6f);
+	const FVector Bias = Normal.IsNearlyZero() ? FVector::UpVector : Normal.GetSafeNormal();
+	Count = FMath::Clamp(Count, 1, 60);
+	Sparks.SetNum(Count);
+	for (FSpark& S : Sparks)
+	{
+		S.Pos = Location;
+		const FVector Dir = (FMath::VRand() + Bias * 0.6f + FVector(0.f, 0.f, 0.4f)).GetSafeNormal();
+		S.Vel = Dir * Speed * FMath::FRandRange(0.35f, 1.f);
+		S.Life = FMath::FRandRange(0.28f, 0.65f);
+		S.Comp = NewObject<UStaticMeshComponent>(this);
+		S.Comp->SetStaticMesh(EwigfelsSpellVisuals::GetShape(TEXT("cylinder")));
+		S.Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		S.Comp->SetCastShadow(false);
+		S.Comp->SetMobility(EComponentMobility::Movable);
+		S.Comp->SetupAttachment(Root);
+		S.Comp->RegisterComponent();
+		S.Mat = EwigfelsSpellVisuals::ApplyBeam(S.Comp, Hot, 40.f);
+		Keep.Add(S.Comp);
+		if (S.Mat)
+		{
+			Keep.Add(S.Mat);
+		}
+	}
+	SetLifeSpan(0.9f);
+}
+
+void AEwigfelsSparkBurst::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	Age += DeltaSeconds;
+	bool bAny = false;
+	for (FSpark& S : Sparks)
+	{
+		const float K = 1.f - Age / S.Life;
+		if (K <= 0.f)
+		{
+			S.Comp->SetVisibility(false);
+			continue;
+		}
+		bAny = true;
+		S.Vel.Z -= 1400.f * DeltaSeconds; // Schwerkraft
+		S.Vel *= FMath::Pow(0.4f, DeltaSeconds);
+		S.Pos += S.Vel * DeltaSeconds;
+		if (S.Pos.Z < FloorZ && S.Vel.Z < 0.f)
+		{
+			S.Pos.Z = FloorZ;
+			S.Vel.Z *= -0.35f; // abprallen
+			S.Vel.X *= 0.7f;
+			S.Vel.Y *= 0.7f;
+		}
+		// Leuchtspur: Streifen entlang der Flugrichtung, Länge = zurückgelegter Weg der letzten ~40 ms
+		const float Speed = S.Vel.Size();
+		const float TrailLen = FMath::Clamp(Speed * 0.04f, 3.f, 60.f);
+		const FVector Dir = S.Vel / FMath::Max(Speed, 1.f);
+		const float Width = 1.6f * K + 0.4f;
+		S.Comp->SetWorldLocationAndRotation(S.Pos - Dir * TrailLen * 0.5f, FRotationMatrix::MakeFromZ(Dir).Rotator());
+		S.Comp->SetWorldScale3D(FVector(Width / 100.f, Width / 100.f, TrailLen / 100.f));
+		if (S.Mat)
+		{
+			S.Mat->SetScalarParameterValue(TEXT("Opacity"), K);
+		}
+	}
+	if (!bAny)
 	{
 		Destroy();
 	}

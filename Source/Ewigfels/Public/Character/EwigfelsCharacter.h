@@ -248,6 +248,11 @@ private:
 	/** Kurzer Kamerastoß über die Control Rotation (wirkt mit jeder Kamera, auch der des Samples). Nur lokal. */
 	void AddCameraPunch(float PitchDeg, float YawDeg);
 	void UpdateCameraPunch(float DeltaSeconds);
+	/** Abklingendes Zittern (Grad), 150–400 ms. */
+	void AddCameraShake(float AmplitudeDeg, float Seconds);
+	float ShakeAmp = 0.f;
+	float ShakeDuration = 0.f;
+	float ShakeAge = -1.f;
 	void PlayFallCatchFx(bool bLanding);
 	FRotator PunchApplied = FRotator::ZeroRotator;
 	FRotator PunchPeak = FRotator::ZeroRotator;

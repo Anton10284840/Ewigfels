@@ -1,6 +1,7 @@
 """
 Phase 3: legt im Editor an (einmalig, kann gefahrlos wiederholt werden):
   - /Game/VFX/Materials/M_EwigfelsGlow   (additiv, unbeleuchtet: Color, Glow, Opacity)  – Magie, Augen, Hände
+  - /Game/VFX/Materials/M_EwigfelsBeam   (additiv, weicher Rand: Color, Glow, Opacity)   – Blitze, Strahlen, Funken
   - /Game/VFX/Materials/M_EwigfelsSolid  (beleuchtet: Color, Roughness)                 – Platzhalter-Körper, Arena
   - /Game/Maps/L_Phase3_Test             (Testarena + Startpunkt) und trägt sie als Start-Map ein
 
@@ -75,6 +76,31 @@ def make_glow():
     log("M_EwigfelsGlow angelegt")
 
 
+def make_beam():
+    # Blitz-/Strahlteile: Mitte hell, Rand weich ausgeblendet (umgekehrter Fresnel), additiv, ohne Licht
+    mat = fresh_material("M_EwigfelsBeam")
+    mat.set_editor_property("blend_mode", unreal.BlendMode.BLEND_ADDITIVE)
+    mat.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_UNLIT)
+    mat.set_editor_property("two_sided", True)
+    color = param_vector(mat, "Color", unreal.LinearColor(0.6, 0.8, 1.0, 1.0), -900, 0)
+    glow = param_scalar(mat, "Glow", 20.0, -900, 200)
+    opacity = param_scalar(mat, "Opacity", 1.0, -900, 320)
+    fresnel = mel.create_material_expression(mat, unreal.MaterialExpressionFresnel, -900, 450)
+    fresnel.set_editor_property("exponent", 1.5)
+    inv = mel.create_material_expression(mat, unreal.MaterialExpressionOneMinus, -650, 450)
+    mel.connect_material_expressions(fresnel, "", inv, "")
+    soft = mel.create_material_expression(mat, unreal.MaterialExpressionPower, -450, 450)
+    soft.set_editor_property("const_exponent", 2.0)
+    mel.connect_material_expressions(inv, "", soft, "Base")
+    m1 = multiply(mat, color, glow, -650, 100)
+    m2 = multiply(mat, m1, opacity, -450, 150)
+    m3 = multiply(mat, m2, soft, -250, 200)
+    mel.connect_material_property(m3, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+    mel.recompile_material(mat)
+    eal.save_loaded_asset(mat)
+    log("M_EwigfelsBeam angelegt")
+
+
 def make_solid():
     mat = fresh_material("M_EwigfelsSolid")
     color = param_vector(mat, "Color", unreal.LinearColor(0.3, 0.3, 0.3, 1.0), -600, 0)
@@ -124,6 +150,7 @@ def set_startup_map():
 
 
 make_glow()
+make_beam()
 make_solid()
 if make_map():
     set_startup_map()

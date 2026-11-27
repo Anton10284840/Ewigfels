@@ -52,9 +52,10 @@ private:
 };
 
 /**
- * Prozeduraler Blitz (delivery "beam", bis es ein Niagara-System gibt): zackiger Hauptstrahl mit weißem Kern und
- * farbigem Saum, ein paar Verästelungen, flackert (neu gezackt alle ~35 ms) und verglüht in Sekundenbruchteilen.
- * Rein kosmetisch, lokal, nie repliziert.
+ * Prozeduraler Blitz (delivery "beam", bis es ein Niagara-System gibt). Gleiche Technik wie die Web-Vorschau:
+ * Hauptpfad per Midpoint Displacement, Äste an ~22 % der Segmente (Tiefe 2), drei additive Schichten
+ * (weiter weicher Saum, mittlerer Glow, fast weißer Kern), 2–4× neu gezackt, Helligkeit springt 60–100 %,
+ * danach 150–300 ms bläuliches Nachbild. Rein kosmetisch, lokal, nie repliziert.
  */
 UCLASS(NotPlaceable, Transient)
 class EWIGFELS_API AEwigfelsLightningBolt : public AActor
@@ -64,23 +65,67 @@ class EWIGFELS_API AEwigfelsLightningBolt : public AActor
 public:
 	AEwigfelsLightningBolt();
 
-	/** bStrong = letzter Schlag der Kette: dicker, mehr Äste, länger sichtbar. */
-	void Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Thickness, float Duration, bool bStrong);
+	/** Width = Stärke (1 normal, 1.6 dritter Kettenschlag, 2.5 Lanze). */
+	void Setup(const FVector& Start, const FVector& End, const FLinearColor& Color, float Width, float Duration, int32 Regenerations);
 
 	virtual void Tick(float DeltaSeconds) override;
 
 	/** Reine Rechenfunktion (getestet): Zickzack-Punkte von A nach B, Enden fest, Ausschlag in der Mitte am größten. */
 	static void BuildJaggedPath(FRandomStream& Rng, const FVector& A, const FVector& B, int32 Segments, float Amplitude, TArray<FVector>& OutPoints);
 
+	/** Reine Rechenfunktion (getestet): Midpoint Displacement, 2^Levels Segmente, Versatz halbiert sich pro Ebene. */
+	static void MidpointDisplace(FRandomStream& Rng, const FVector& A, const FVector& B, int32 Levels, float Amount, TArray<FVector>& OutPoints);
+
 private:
-	struct FBoltSegment
+	struct FBoltPath
 	{
-		TObjectPtr<UStaticMeshComponent> Core;
-		TObjectPtr<UStaticMeshComponent> Halo;
-		FVector A = FVector::ZeroVector;
-		FVector B = FVector::ZeroVector;
+		TArray<FVector> Points;
 		float Width = 1.f;
+		float Alpha = 1.f;
 	};
+	struct FBoltPiece
+	{
+		TObjectPtr<UStaticMeshComponent> Outer;
+		TObjectPtr<UStaticMeshComponent> Mid;
+		TObjectPtr<UStaticMeshComponent> Core;
+		TObjectPtr<UMaterialInstanceDynamic> OuterMat;
+		TObjectPtr<UMaterialInstanceDynamic> MidMat;
+		TObjectPtr<UMaterialInstanceDynamic> CoreMat;
+	};
+
+	void Generate();
+	void GrowBranches(const TArray<FVector>& Points, int32 Depth);
+	void Place(float Brightness, bool bAfterglow);
+	UStaticMeshComponent* MakePiece(const FLinearColor& Color, float Glow, UMaterialInstanceDynamic*& OutMat);
+
+	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
+	TObjectPtr<USceneComponent> Root;
+
+	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
+	TObjectPtr<UPointLightComponent> StartLight;
+
+	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
+	TObjectPtr<UPointLightComponent> EndLight;
+
+	/** Hält Teile und Materialien am Leben (FBoltPiece ist kein USTRUCT). */
+	UPROPERTY(Transient)
+	TArray<TObjectPtr<UObject>> Keep;
+
+	TArray<FBoltPath> Paths;
+	TArray<FBoltPiece> Pool;
+	FRandomStream Rng;
+	FVector From = FVector::ZeroVector;
+	FVector To = FVector::ZeroVector;
+	FLinearColor BoltColor = FLinearColor::White;
+	float BaseWidth = 1.f;
+	float Life = 0.2f;
+	float AfterLife = 0.2f;
+	float Age = 0.f;
+	float NextRegen = 0.f;
+	float Bright = 1.f;
+	int32 RegensLeft = 3;
+	int32 Regens = 3;
+};
 
 	void Rebuild();
 	void PlaceSegments(float WidthScale);
@@ -116,6 +161,38 @@ private:
 	int32 Forks = 2;
 };
 
+/** Funkenregen am Einschlag: schnelle Funken mit Schwerkraft und kurzen Leuchtspuren, prallen am Boden ab. Lokal. */
+UCLASS(NotPlaceable, Transient)
+class EWIGFELS_API AEwigfelsSparkBurst : public AActor
+{
+	GENERATED_BODY()
+
+public:
+	AEwigfelsSparkBurst();
+	void Setup(const FVector& Location, const FVector& Normal, const FLinearColor& Color, int32 Count, float Speed);
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	struct FSpark
+	{
+		FVector Pos = FVector::ZeroVector;
+		FVector Vel = FVector::ZeroVector;
+		float Life = 0.4f;
+		TObjectPtr<UStaticMeshComponent> Comp;
+		TObjectPtr<UMaterialInstanceDynamic> Mat;
+	};
+
+	UPROPERTY(VisibleAnywhere, Category = "Ewigfels|VFX")
+	TObjectPtr<USceneComponent> Root;
+
+	UPROPERTY(Transient)
+	TArray<TObjectPtr<UObject>> Keep;
+
+	TArray<FSpark> Sparks;
+	float FloorZ = 0.f;
+	float Age = 0.f;
+};
+
 /** Hilfen für den Look der Weisen: Leucht-Material, Grundformen, Niagara mit Rückfall auf Platzhalter. */
 namespace EwigfelsSpellVisuals
 {
@@ -127,6 +204,12 @@ namespace EwigfelsSpellVisuals
 
 	/** Leuchtend, additiv (Magie, Augen, Hände). Parameter: Color, Glow, Opacity. */
 	EWIGFELS_API UMaterialInstanceDynamic* ApplyGlow(UPrimitiveComponent* Component, const FLinearColor& Color, float Glow);
+
+	/** Strahl-Material M_EwigfelsBeam (weicher Rand, Mitte hell) oder M_EwigfelsGlow. Parameter: Color, Glow, Opacity. */
+	EWIGFELS_API UMaterialInstanceDynamic* ApplyBeam(UPrimitiveComponent* Component, const FLinearColor& Color, float Glow);
+
+	/** Kurzer Vollbild-Aufheller für den lokalen Spieler (0–0.25), 30–80 ms. */
+	EWIGFELS_API void FlashScreen(UWorld* World, float Alpha, float Seconds);
 
 	/** Fest, beleuchtet (Platzhalter-Körper, Arena). M_EwigfelsSolid (Color, Roughness) oder BasicShapeMaterial. */
 	EWIGFELS_API UMaterialInstanceDynamic* ApplySolid(UPrimitiveComponent* Component, const FLinearColor& Color, float Roughness = 0.7f);

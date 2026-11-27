@@ -219,6 +219,15 @@ bool FEwigfelsCombatMathTest::RunTest(const FString& Parameters)
 		bInside &= FMath::Abs(P.Y) <= 40.f * 1.01f && FMath::Abs(P.Z) <= 40.f * 1.01f;
 	}
 	TestTrue(TEXT("Blitz: Ausschlag begrenzt"), bInside);
+	AEwigfelsLightningBolt::MidpointDisplace(Rng, A, B, 5, 120.f, Points);
+	TestEqual(TEXT("Midpoint: 2^5 Segmente"), Points.Num(), 33);
+	TestTrue(TEXT("Midpoint: Enden fest"), Points[0].Equals(A) && Points.Last().Equals(B));
+	bool bNear = true;
+	for (const FVector& P : Points)
+	{
+		bNear &= FMath::Abs(P.Y) <= 240.f && FMath::Abs(P.Z) <= 240.f; // Summe der halbierten Versätze < 2× Start
+	}
+	TestTrue(TEXT("Midpoint: Versatz bleibt begrenzt"), bNear);
 
 	// Magische Landung: Aufprall-Tempo und Bremsen
 	using FMove = UEwigfelsCharacterMovementComponent;

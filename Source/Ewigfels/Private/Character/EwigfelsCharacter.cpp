@@ -746,6 +746,20 @@ void AEwigfelsCharacter::HandleBeamFired(FName SpellId, FVector Start, FVector E
 	// Rückstoß nach oben, abwechselnd leicht links/rechts; der dritte Schlag und Treffer knallen mehr
 	const float Side = (ChainIndex % 2 == 0) ? 1.f : -1.f;
 	AddCameraPunch((bStrong ? 1.6f : 0.7f) * (bHitTarget ? 1.25f : 1.f), Side * (bStrong ? 0.5f : 0.25f));
+	AddCameraShake(bStrong ? 0.9f : 0.25f, bStrong ? 0.35f : 0.16f);
+	EwigfelsSpellVisuals::FlashScreen(GetWorld(), bStrong ? 0.2f : 0.07f, bStrong ? 0.07f : 0.04f);
+}
+
+void AEwigfelsCharacter::AddCameraShake(float AmplitudeDeg, float Seconds)
+{
+	if (CameraPunchStrength <= 0.f)
+	{
+		return;
+	}
+	const float Remaining = ShakeAge >= 0.f && ShakeDuration > 0.f ? ShakeAmp * FMath::Square(1.f - ShakeAge / ShakeDuration) : 0.f;
+	ShakeAmp = FMath::Max(Remaining, AmplitudeDeg * CameraPunchStrength);
+	ShakeDuration = FMath::Clamp(Seconds, 0.15f, 0.4f);
+	ShakeAge = 0.f;
 }
 
 void AEwigfelsCharacter::AddCameraPunch(float PitchDeg, float YawDeg)
@@ -761,16 +775,23 @@ void AEwigfelsCharacter::AddCameraPunch(float PitchDeg, float YawDeg)
 void AEwigfelsCharacter::UpdateCameraPunch(float DeltaSeconds)
 {
 	AController* C = GetController();
-	if (PunchAge < 0.f || !C)
+	if ((PunchAge < 0.f && ShakeAge < 0.f && PunchApplied.IsZero()) || !C)
 	{
 		return;
 	}
 	// 40 ms hoch, 180 ms zurück: wirkt wie ein Schlag, die Blickrichtung bleibt am Ende gleich
 	constexpr float Attack = 0.04f;
 	constexpr float Release = 0.18f;
-	PunchAge += DeltaSeconds;
 	float Weight = 0.f;
-	if (PunchAge < Attack)
+	if (PunchAge >= 0.f)
+	{
+		PunchAge += DeltaSeconds;
+	}
+	if (PunchAge < 0.f)
+	{
+		Weight = 0.f;
+	}
+	else if (PunchAge < Attack)
 	{
 		Weight = PunchAge / Attack;
 	}
@@ -783,7 +804,20 @@ void AEwigfelsCharacter::UpdateCameraPunch(float DeltaSeconds)
 	{
 		PunchAge = -1.f;
 	}
-	const FRotator Wanted = PunchPeak * Weight;
+	FRotator Wanted = PunchPeak * Weight;
+	if (ShakeAge >= 0.f)
+	{
+		ShakeAge += DeltaSeconds;
+		if (ShakeAge >= ShakeDuration)
+		{
+			ShakeAge = -1.f;
+		}
+		else
+		{
+			const float K = FMath::Square(1.f - ShakeAge / ShakeDuration) * ShakeAmp;
+			Wanted += FRotator(FMath::FRandRange(-1.f, 1.f) * K, FMath::FRandRange(-1.f, 1.f) * K, 0.f);
+		}
+	}
 	const FRotator Delta = Wanted - PunchApplied;
 	PunchApplied = Wanted;
 	C->SetControlRotation(C->GetControlRotation() + Delta);
