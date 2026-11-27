@@ -105,6 +105,15 @@ AEwigfelsTestArena::AEwigfelsTestArena()
 	Walls.Add(MakeMesh(TEXT("WallE"), CubeMesh.Object, FVector(0.f, ArenaHalf, WallH * 50.f), FVector(ArenaHalf / 50.f, 1.f, WallH)));
 	Walls.Add(MakeMesh(TEXT("WallW"), CubeMesh.Object, FVector(0.f, -ArenaHalf, WallH * 50.f), FVector(ArenaHalf / 50.f, 1.f, WallH)));
 
+	// Sprungturm: Treppe aus 9 Stufen bis auf gut 8 m, zum Testen der magischen Landung (ab ~6 m Fallhöhe)
+	for (int32 i = 0; i < 9; ++i)
+	{
+		const float Top = (i + 1) * 90.f;
+		const float Size = i == 8 ? 3.2f : 2.3f; // oben eine größere Absprung-Fläche
+		const FVector Pos(-2600.f + i * 230.f, -2600.f, Top * 0.5f);
+		Walls.Add(MakeMesh(*FString::Printf(TEXT("JumpStep_%d"), i), CubeMesh.Object, Pos, FVector(Size, Size, Top / 100.f)));
+	}
+
 	// Deckung: zerbrochene Mauerstücke (Sichtlinien für den Fluchsänger)
 	const FVector CoverSpots[] = { {900.f, 700.f, 0.f}, {1300.f, -600.f, 0.f}, {600.f, -1500.f, 0.f}, {-800.f, 1400.f, 0.f}, {1700.f, 200.f, 0.f} };
 	int32 CoverIndex = 0;
