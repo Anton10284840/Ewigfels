@@ -76,7 +76,7 @@ Jeder Effekt kann `"chain_end_only": true` haben: wirkt nur beim letzten Schlag 
 
 ## 3. Start-Ausrüstung (`loadout`)
 
-`"loadout": ["funkenstoss", "glockenschild", "hammerton", "glutweise", "frostweise"]` – die Weisen auf den Tasten 1–5 (Gamepad: Steuerkreuz). Später kommt die Auswahl aus dem Spielstand.
+`"loadout": ["funkenstoss", "glockenschild", "hammerton", "glutweise", "frostweise"]` – Platz 0 liegt auf der linken Maustaste (Gamepad: rechter Trigger), Plätze 1–4 auf den Tasten 1–4 (Gamepad: Steuerkreuz). Ein Schild im Loadout wird mit der rechten Maustaste gehalten. Später kommt die Auswahl aus dem Spielstand.
 
 ## 4. Gegner (`creatures[]` in `Content/Data/Creatures/`)
 
