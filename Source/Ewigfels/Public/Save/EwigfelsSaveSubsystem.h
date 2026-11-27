@@ -80,6 +80,13 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Save")
 	FString MakeDefaultDisplayName() const;
 
+	/** Aussehen aus dem zuletzt geladenen Spielstand – für eine Figur, die beim Laden noch nicht existierte. */
+	bool GetLoadedPlayerAppearance(FEwigfelsAppearance& OutLook) const
+	{
+		OutLook = LoadedAppearance;
+		return bHasLoadedAppearance;
+	}
+
 	// --- Für UEwigfelsSaveableComponent ---
 	void RegisterSaveable(UEwigfelsSaveableComponent* Component);
 	void UnregisterSaveable(UEwigfelsSaveableComponent* Component, bool bCaptureState);
@@ -123,6 +130,9 @@ private:
 	FTSTicker::FDelegateHandle AutosaveHandle;
 	float AutosaveInterval = 300.f;
 	bool bSaveInFlight = false;
+
+	FEwigfelsAppearance LoadedAppearance;
+	bool bHasLoadedAppearance = false;
 
 	double PlayTimeBeforeSession = 0.0;
 	double SessionStartSeconds = 0.0;

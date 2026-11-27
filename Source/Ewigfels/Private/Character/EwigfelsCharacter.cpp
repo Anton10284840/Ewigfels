@@ -1,6 +1,7 @@
 // Copyright Ewigfels. Alle Rechte vorbehalten.
 
 #include "Character/EwigfelsCharacter.h"
+#include "Appearance/EwigfelsAppearanceComponent.h"
 #include "Character/EwigfelsCharacterMovementComponent.h"
 #include "Character/EwigfelsInputSetup.h"
 #include "Character/EwigfelsLockOnComponent.h"
@@ -80,6 +81,7 @@ AEwigfelsCharacter::AEwigfelsCharacter(const FObjectInitializer& ObjectInitializ
 	Caster = CreateDefaultSubobject<UEwigfelsSpellCasterComponent>(TEXT("Caster"));
 	LockOn = CreateDefaultSubobject<UEwigfelsLockOnComponent>(TEXT("LockOn"));
 	DialogueCamera = CreateDefaultSubobject<UEwigfelsDialogueCameraComponent>(TEXT("DialogueCamera"));
+	Appearance = CreateDefaultSubobject<UEwigfelsAppearanceComponent>(TEXT("Appearance"));
 
 	PlaceholderBody = CreateDefaultSubobject<UEwigfelsPlaceholderBody>(TEXT("PlaceholderBody"));
 	PlaceholderBody->SetupAttachment(RootComponent);

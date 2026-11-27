@@ -2,6 +2,7 @@
 
 #include "World/EwigfelsTestArena.h"
 #include "World/EwigfelsTestNPC.h"
+#include "World/EwigfelsMirror.h"
 #include "AI/EwigfelsEnemy.h"
 #include "Combat/EwigfelsCombatComponent.h"
 #include "Magic/EwigfelsSpellVisuals.h"
@@ -219,6 +220,12 @@ void AEwigfelsTestArena::SpawnStatic()
 	FActorSpawnParameters Params;
 	Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 	GetWorld()->SpawnActor<AEwigfelsTestNPC>(AEwigfelsTestNPC::StaticClass(), Base + FVector(-1100.f, 450.f, 120.f), FRotator(0.f, -150.f, 0.f), Params);
+
+	// Schneider-Spiegel zum Ausprobieren der Laden-Personalisierung (E drücken)
+	if (AEwigfelsMirror* Mirror = GetWorld()->SpawnActor<AEwigfelsMirror>(AEwigfelsMirror::StaticClass(), Base + FVector(-1250.f, -450.f, 0.f), FRotator(0.f, 110.f, 0.f), Params))
+	{
+		Mirror->ShopId = TEXT("schneiderei");
+	}
 }
 
 void AEwigfelsTestArena::CheckWave()
