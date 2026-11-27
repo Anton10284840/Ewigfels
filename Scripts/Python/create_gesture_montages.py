@@ -30,7 +30,9 @@ GESTURES = {
     "punch":  ("Blackhole_Start", 3.20, 3.80),          # beide Hände stoßen nach vorn
     "stiff":  ("RMB_Cast", 0.00, 0.50),                 # Hand vorn gehalten, Finger gespreizt
     "clap":   ("Blackhole_Start", 0.00, 0.40),          # Arme auf, Hände treffen sich vor der Brust
-    "lift":   ("Burden_Start", 0.10, 0.80),             # Hand steigt langsam bis über den Kopf
+    # rechte Hand steigt bis über den Kopf und bleibt oben (ohne den Wurf am Ende von "rub"), linke bleibt unten. (Burden_Start war falsch: dort gehen
+    # beide Arme waagrecht zur Seite, Hände nur auf Kopfhöhe – gemessen mit AnimPose, Hand minus Kopf.)
+    "lift":   ("Cast", 0.04, 0.62),
     "slam":   ("Blackhole_Start", 0.25, 0.75),          # beide Hände schmettern nach unten
     "grab":   ("Torn_Space_Outro", 0.00, 0.70),         # vorgreifen und zurückreißen
     "rub":    ("Cast", 0.10, 0.85),                     # über Kopf holen, dann werfen
@@ -126,24 +128,35 @@ def trimmed_copy(seq, gesture, t0, t1):
 
 def make_montages(seqs, target_mesh):
     skel = target_mesh.get_editor_property("skeleton")
-    # Alte Stände erst gesammelt löschen und aufräumen, sonst scheitert create_asset am gleichen Namen
-    for gesture in GESTURES:
-        for path in ("%s/AM_Geste_%s" % (OUT_DIR, gesture), "%s/A_Geste_%s" % (RTG_DIR, gesture)):
-            if eal.does_asset_exist(path):
-                eal.delete_asset(path)
-    unreal.SystemLibrary.collect_garbage()
     for gesture, (anim, t0, t1) in GESTURES.items():
         t1 = min(t1, seqs[anim].get_play_length())
         clip = trimmed_copy(seqs[anim], gesture, t0, t1)
-        f = unreal.AnimMontageFactory()
-        f.set_editor_property("source_animation", clip)
-        f.set_editor_property("target_skeleton", skel)
-        m = tools.create_asset("AM_Geste_" + gesture, OUT_DIR, unreal.AnimMontage, f)
+        path = "%s/AM_Geste_%s" % (OUT_DIR, gesture)
+        if eal.does_asset_exist(path):
+            # Vorhandene Montage weiterverwenden: Löschen + Neuanlegen scheitert, solange das Paket geladen ist
+            m = unreal.load_asset(path)
+        else:
+            f = unreal.AnimMontageFactory()
+            f.set_editor_property("source_animation", clip)
+            f.set_editor_property("target_skeleton", skel)
+            m = tools.create_asset("AM_Geste_" + gesture, OUT_DIR, unreal.AnimMontage, f)
+        length = clip.get_play_length()
         tracks = m.get_editor_property("slot_anim_tracks")
         tr = tracks[0]
         tr.set_editor_property("slot_name", SLOT)
+        track = tr.get_editor_property("anim_track")
+        seg = unreal.AnimSegment()
+        seg.import_text('(AnimReference="%s",StartPos=0.0,AnimStartTime=0.0,AnimEndTime=%f,AnimPlayRate=1.0,LoopingCount=1)'
+                        % (clip.get_path_name(), length))
+        track.set_editor_property("anim_segments", [seg])
+        tr.set_editor_property("anim_track", track)
         tracks[0] = tr
         m.set_editor_property("slot_anim_tracks", tracks)
+        if abs(m.get_play_length() - length) > 0.02:
+            # Die Länge einer vorhandenen Montage lässt sich per Python nicht neu berechnen (SequenceLength ist read-only).
+            # Abhilfe: bei geschlossenem Editor Content/Animations/Magic/Gesten/AM_Geste_<geste>.uasset löschen, Skript neu starten.
+            unreal.log_warning("[Ewigfels Gesten] %s: Montage-Länge %.2f statt %.2f – AM_Geste_%s.uasset löschen und Skript neu starten"
+                               % (gesture, m.get_play_length(), length, gesture))
         for prop, val in (("blend_in", 0.12), ("blend_out", 0.18)):
             try:
                 b = m.get_editor_property(prop)
