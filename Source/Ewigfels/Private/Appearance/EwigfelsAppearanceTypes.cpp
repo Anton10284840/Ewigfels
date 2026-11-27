@@ -48,22 +48,22 @@ namespace EwigfelsLook
 
 namespace
 {
-	constexpr int32 MaxRings = 4;
+	constexpr int32 LookMaxRings = 4;
 
 	/** JSON-Schlüssel → Katalog-Kategorie. */
-	struct FListKey
+	struct FLookListKey
 	{
 		const TCHAR* Key;
 		FName Category;
 	};
 
-	bool IsGerman()
+	bool LookIsGerman()
 	{
 		const FString Lang = FInternationalization::Get().GetCurrentCulture()->GetTwoLetterISOLanguageName();
 		return Lang.IsEmpty() || Lang == TEXT("de");
 	}
 
-	FText ReadName(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field = TEXT("name"))
+	FText LookReadName(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field = TEXT("name"))
 	{
 		const TSharedPtr<FJsonObject>* NameObj = nullptr;
 		if (Obj->TryGetObjectField(Field, NameObj))
@@ -71,20 +71,20 @@ namespace
 			FString De, En;
 			(*NameObj)->TryGetStringField(TEXT("de"), De);
 			(*NameObj)->TryGetStringField(TEXT("en"), En);
-			return FText::FromString(IsGerman() || En.IsEmpty() ? De : En);
+			return FText::FromString(LookIsGerman() || En.IsEmpty() ? De : En);
 		}
 		FString Plain;
 		Obj->TryGetStringField(Field, Plain);
 		return FText::FromString(Plain);
 	}
 
-	FName ReadFName(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field)
+	FName LookReadFName(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field)
 	{
 		FString Str;
 		return Obj->TryGetStringField(Field, Str) && !Str.IsEmpty() ? FName(*Str) : NAME_None;
 	}
 
-	FColor ReadColor(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field, const FColor& Fallback, const FString& Where, TArray<FString>& Errors)
+	FColor LookReadColor(const TSharedPtr<FJsonObject>& Obj, const TCHAR* Field, const FColor& Fallback, const FString& Where, TArray<FString>& Errors)
 	{
 		FString Str;
 		FColor Color = Fallback;
@@ -95,23 +95,23 @@ namespace
 		return Color;
 	}
 
-	void ParseDefaults(const TSharedPtr<FJsonObject>& D, FEwigfelsLookCatalog& Catalog, const FString& Where, TArray<FString>& Errors)
+	void LookParseDefaults(const TSharedPtr<FJsonObject>& D, FEwigfelsLookCatalog& Catalog, const FString& Where, TArray<FString>& Errors)
 	{
 		FEwigfelsAppearance& L = Catalog.Defaults;
-		L.BodyType = ReadFName(D, TEXT("body_type"));
+		L.BodyType = LookReadFName(D, TEXT("body_type"));
 		D->TryGetNumberField(TEXT("height"), L.Height);
-		L.FaceA = ReadFName(D, TEXT("face_a"));
-		L.FaceB = ReadFName(D, TEXT("face_b"));
+		L.FaceA = LookReadFName(D, TEXT("face_a"));
+		L.FaceB = LookReadFName(D, TEXT("face_b"));
 		D->TryGetNumberField(TEXT("face_blend"), L.FaceBlend);
-		L.SkinColor = ReadColor(D, TEXT("skin_color"), L.SkinColor, Where, Errors);
-		L.EyeColorL = ReadColor(D, TEXT("eye_color_l"), L.EyeColorL, Where, Errors);
-		L.EyeColorR = ReadColor(D, TEXT("eye_color_r"), L.EyeColorL, Where, Errors);
-		L.HairStyle = ReadFName(D, TEXT("hair_style"));
-		L.HairColor = ReadColor(D, TEXT("hair_color"), L.HairColor, Where, Errors);
-		L.HairTipColor = ReadColor(D, TEXT("hair_tip_color"), L.HairColor, Where, Errors);
-		L.Beard = ReadFName(D, TEXT("beard"));
-		L.Brows = ReadFName(D, TEXT("brows"));
-		L.Voice = ReadFName(D, TEXT("voice"));
+		L.SkinColor = LookReadColor(D, TEXT("skin_color"), L.SkinColor, Where, Errors);
+		L.EyeColorL = LookReadColor(D, TEXT("eye_color_l"), L.EyeColorL, Where, Errors);
+		L.EyeColorR = LookReadColor(D, TEXT("eye_color_r"), L.EyeColorL, Where, Errors);
+		L.HairStyle = LookReadFName(D, TEXT("hair_style"));
+		L.HairColor = LookReadColor(D, TEXT("hair_color"), L.HairColor, Where, Errors);
+		L.HairTipColor = LookReadColor(D, TEXT("hair_tip_color"), L.HairColor, Where, Errors);
+		L.Beard = LookReadFName(D, TEXT("beard"));
+		L.Brows = LookReadFName(D, TEXT("brows"));
+		L.Voice = LookReadFName(D, TEXT("voice"));
 		D->TryGetNumberField(TEXT("voice_pitch"), L.VoicePitch);
 
 		FString Pronouns;
@@ -129,8 +129,8 @@ namespace
 				EwigfelsLook::HexToColor((*ColorArray)[i]->AsString(), Dyes[i]);
 			}
 		}
-		const FName Pattern = ReadFName(D, TEXT("outfit_pattern"));
-		const FName Fabric = ReadFName(D, TEXT("outfit_fabric"));
+		const FName Pattern = LookReadFName(D, TEXT("outfit_pattern"));
+		const FName Fabric = LookReadFName(D, TEXT("outfit_fabric"));
 		const TSharedPtr<FJsonObject>* OutfitObj = nullptr;
 		L.Outfit.Reset();
 		if (D->TryGetObjectField(TEXT("outfit"), OutfitObj))
@@ -149,13 +149,13 @@ namespace
 			}
 		}
 		FEwigfelsRingLook Ring;
-		Ring.Metal = ReadFName(D, TEXT("ring_metal"));
-		Ring.Quartz = ReadColor(D, TEXT("quartz"), Ring.Quartz, Where, Errors);
+		Ring.Metal = LookReadFName(D, TEXT("ring_metal"));
+		Ring.Quartz = LookReadColor(D, TEXT("quartz"), Ring.Quartz, Where, Errors);
 		L.Rings = { Ring };
 	}
 
 	/** Alle gewählten (Kategorie, Id)-Paare eines Aussehens – für Freischaltung und Preis. */
-	void CollectChoices(const FEwigfelsAppearance& L, TArray<TPair<FName, FName>>& Out)
+	void LookCollectChoices(const FEwigfelsAppearance& L, TArray<TPair<FName, FName>>& Out)
 	{
 		using namespace EwigfelsLook;
 		Out.Emplace(Cat::Body, L.BodyType);
@@ -181,19 +181,19 @@ namespace
 		}
 	}
 
-	bool IsBodySlider(FName Id)
+	bool LookIsBodySlider(FName Id)
 	{
 		return Id.ToString().StartsWith(TEXT("koerper_"));
 	}
 
-	bool SlidersEqual(const FEwigfelsAppearance& A, const FEwigfelsAppearance& B, bool bBody)
+	bool LookSlidersEqual(const FEwigfelsAppearance& A, const FEwigfelsAppearance& B, bool bBody)
 	{
 		auto Collect = [bBody](const FEwigfelsAppearance& L)
 		{
 			TMap<FName, float> Map;
 			for (const FEwigfelsSliderValue& S : L.Sliders)
 			{
-				if (IsBodySlider(S.Id) == bBody && S.Value != 0.f)
+				if (LookIsBodySlider(S.Id) == bBody && S.Value != 0.f)
 				{
 					Map.Add(S.Id, S.Value);
 				}
@@ -217,7 +217,7 @@ namespace
 		return true;
 	}
 
-	float SafeClamp(float Value, float Min, float Max, float Fallback)
+	float LookSafeClamp(float Value, float Min, float Max, float Fallback)
 	{
 		return FMath::IsFinite(Value) ? FMath::Clamp(Value, Min, Max) : Fallback;
 	}
@@ -365,7 +365,7 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 		}
 	}
 
-	static const FListKey Lists[] = {
+	static const FLookListKey Lists[] = {
 		{ TEXT("body_types"), EwigfelsLook::Cat::Body }, { TEXT("face_presets"), EwigfelsLook::Cat::Face },
 		{ TEXT("hair_styles"), EwigfelsLook::Cat::Hair }, { TEXT("beards"), EwigfelsLook::Cat::Beard },
 		{ TEXT("brows"), EwigfelsLook::Cat::Brows }, { TEXT("marks"), EwigfelsLook::Cat::Marks },
@@ -373,7 +373,7 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 		{ TEXT("patterns"), EwigfelsLook::Cat::Pattern }, { TEXT("fabrics"), EwigfelsLook::Cat::Fabric },
 		{ TEXT("ring_metals"), EwigfelsLook::Cat::Metal } };
 
-	for (const FListKey& List : Lists)
+	for (const FLookListKey& List : Lists)
 	{
 		const TArray<TSharedPtr<FJsonValue>>* Items = nullptr;
 		if (!Root->TryGetArrayField(List.Key, Items))
@@ -390,11 +390,11 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 			}
 			FEwigfelsLookOption Option;
 			Option.Category = List.Category;
-			Option.Id = ReadFName(Obj, TEXT("id"));
-			Option.Slot = ReadFName(Obj, TEXT("slot"));
-			Option.Kind = ReadFName(Obj, TEXT("kind"));
-			Option.Morph = ReadFName(Obj, TEXT("morph"));
-			Option.DisplayName = ReadName(Obj);
+			Option.Id = LookReadFName(Obj, TEXT("id"));
+			Option.Slot = LookReadFName(Obj, TEXT("slot"));
+			Option.Kind = LookReadFName(Obj, TEXT("kind"));
+			Option.Morph = LookReadFName(Obj, TEXT("morph"));
+			Option.DisplayName = LookReadName(Obj);
 			FString Asset;
 			if (Obj->TryGetStringField(TEXT("asset"), Asset) && !Asset.IsEmpty())
 			{
@@ -437,12 +437,12 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 				continue;
 			}
 			FEwigfelsSliderDef Def;
-			Def.Id = ReadFName(Obj, TEXT("id"));
-			Def.Group = ReadFName(Obj, TEXT("group"));
-			Def.GroupName = ReadName(Obj, TEXT("group_name"));
-			Def.DisplayName = ReadName(Obj);
-			Def.MorphPos = ReadFName(Obj, TEXT("morph_pos"));
-			Def.MorphNeg = ReadFName(Obj, TEXT("morph_neg"));
+			Def.Id = LookReadFName(Obj, TEXT("id"));
+			Def.Group = LookReadFName(Obj, TEXT("group"));
+			Def.GroupName = LookReadName(Obj, TEXT("group_name"));
+			Def.DisplayName = LookReadName(Obj);
+			Def.MorphPos = LookReadFName(Obj, TEXT("morph_pos"));
+			Def.MorphNeg = LookReadFName(Obj, TEXT("morph_neg"));
 			if (Def.Id.IsNone() || Catalog.FindSlider(Def.Id))
 			{
 				OutErrors.Add(FString::Printf(TEXT("%s/sliders: id fehlt oder doppelt ('%s')"), *SourceName, *Def.Id.ToString()));
@@ -476,7 +476,7 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 	const TSharedPtr<FJsonObject>* Defaults = nullptr;
 	if (Root->TryGetObjectField(TEXT("defaults"), Defaults))
 	{
-		ParseDefaults(*Defaults, Catalog, SourceName + TEXT("/defaults"), OutErrors);
+		LookParseDefaults(*Defaults, Catalog, SourceName + TEXT("/defaults"), OutErrors);
 	}
 
 	const TArray<TSharedPtr<FJsonValue>>* Shops = nullptr;
@@ -490,10 +490,10 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 				continue;
 			}
 			FEwigfelsLookShop Shop;
-			Shop.Id = ReadFName(Obj, TEXT("id"));
-			Shop.DisplayName = ReadName(Obj);
-			Shop.Npc = ReadFName(Obj, TEXT("npc"));
-			Shop.PriceItem = ReadFName(Obj, TEXT("price_item"));
+			Shop.Id = LookReadFName(Obj, TEXT("id"));
+			Shop.DisplayName = LookReadName(Obj);
+			Shop.Npc = LookReadFName(Obj, TEXT("npc"));
+			Shop.PriceItem = LookReadFName(Obj, TEXT("price_item"));
 			Obj->TryGetNumberField(TEXT("base_price"), Shop.BasePrice);
 			Obj->TryGetNumberField(TEXT("price_item_count"), Shop.PriceItemCount);
 			const TArray<TSharedPtr<FJsonValue>>* Cats = nullptr;
@@ -549,7 +549,7 @@ int32 EwigfelsLook::Sanitize(FEwigfelsAppearance& L, const FEwigfelsLookCatalog&
 	};
 	auto FixFloat = [&](float& Value, float Min, float Max, float Fallback, const TCHAR* What)
 	{
-		const float Clean = SafeClamp(Value, Min, Max, Fallback);
+		const float Clean = LookSafeClamp(Value, Min, Max, Fallback);
 		if (Clean != Value)
 		{
 			Fix(FString::Printf(TEXT("%s %.3f -> %.3f"), What, Value, Clean));
@@ -683,10 +683,10 @@ int32 EwigfelsLook::Sanitize(FEwigfelsAppearance& L, const FEwigfelsLookCatalog&
 		Fix(TEXT("Ring fehlte"));
 		L.Rings = D.Rings.Num() ? D.Rings : TArray<FEwigfelsRingLook>{ FEwigfelsRingLook() };
 	}
-	if (L.Rings.Num() > MaxRings)
+	if (L.Rings.Num() > LookMaxRings)
 	{
 		Fix(TEXT("Mehr als 4 Ringe"));
-		L.Rings.SetNum(MaxRings);
+		L.Rings.SetNum(LookMaxRings);
 	}
 	const FName DefaultMetal = D.Rings.Num() ? D.Rings[0].Metal : NAME_None;
 	for (FEwigfelsRingLook& Ring : L.Rings)
@@ -724,11 +724,11 @@ TArray<FName> EwigfelsLook::GetChangedAreas(const FEwigfelsAppearance& O, const 
 	{
 		Areas.Add(Change::Name);
 	}
-	if (O.BodyType != N.BodyType || O.Height != N.Height || !SlidersEqual(O, N, true))
+	if (O.BodyType != N.BodyType || O.Height != N.Height || !LookSlidersEqual(O, N, true))
 	{
 		Areas.Add(Change::Body);
 	}
-	if (O.FaceA != N.FaceA || O.FaceB != N.FaceB || O.FaceBlend != N.FaceBlend || !SlidersEqual(O, N, false))
+	if (O.FaceA != N.FaceA || O.FaceB != N.FaceB || O.FaceBlend != N.FaceBlend || !LookSlidersEqual(O, N, false))
 	{
 		Areas.Add(Change::Face);
 	}
@@ -850,9 +850,9 @@ bool EwigfelsLook::CheckChange(const FEwigfelsAppearance& Old, const FEwigfelsAp
 	TArray<TPair<FName, FName>> OldChoices, NewChoices;
 	if (!Context.IsCreation())
 	{
-		CollectChoices(Old, OldChoices);
+		LookCollectChoices(Old, OldChoices);
 	}
-	CollectChoices(New, NewChoices);
+	LookCollectChoices(New, NewChoices);
 	TSet<TPair<FName, FName>> Counted;
 	for (const TPair<FName, FName>& Choice : NewChoices)
 	{

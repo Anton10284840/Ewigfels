@@ -25,9 +25,9 @@
 
 namespace
 {
-	constexpr int32 MaxUndo = 60;
+	constexpr int32 CreatorMaxUndo = 60;
 
-	bool IsFaceTab(EEwigfelsCreatorTab Tab)
+	bool CreatorIsFaceTab(EEwigfelsCreatorTab Tab)
 	{
 		return Tab == EEwigfelsCreatorTab::Face || Tab == EEwigfelsCreatorTab::SkinEyes || Tab == EEwigfelsCreatorTab::Hair
 			|| Tab == EEwigfelsCreatorTab::Marks;
@@ -199,7 +199,7 @@ void UEwigfelsCreatorSubsystem::Edit(TFunctionRef<void(FEwigfelsAppearance&)> Ch
 		return;
 	}
 	UndoStack.Push(Working);
-	if (UndoStack.Num() > MaxUndo)
+	if (UndoStack.Num() > CreatorMaxUndo)
 	{
 		UndoStack.RemoveAt(0);
 	}
@@ -226,7 +226,7 @@ void UEwigfelsCreatorSubsystem::BeginDrag()
 		return;
 	}
 	UndoStack.Push(Working);
-	if (UndoStack.Num() > MaxUndo)
+	if (UndoStack.Num() > CreatorMaxUndo)
 	{
 		UndoStack.RemoveAt(0);
 	}
@@ -428,7 +428,7 @@ void UEwigfelsCreatorSubsystem::SetTab(EEwigfelsCreatorTab Tab)
 	{
 		return;
 	}
-	const bool bFaceChange = IsFaceTab(Tab) != IsFaceTab(CurrentTab);
+	const bool bFaceChange = CreatorIsFaceTab(Tab) != CreatorIsFaceTab(CurrentTab);
 	CurrentTab = Tab;
 	if (bFaceChange)
 	{
@@ -483,10 +483,13 @@ void UEwigfelsCreatorSubsystem::SpawnStage()
 		if (Light)
 		{
 			Light->SetMobility(EComponentMobility::Movable);
-			Light->PointLight->SetIntensity(Intensity);
-			Light->PointLight->SetAttenuationRadius(700.f);
-			Light->PointLight->SetLightColor(Color);
-			Light->PointLight->SetCastShadows(false);
+			if (UPointLightComponent* Comp = Cast<UPointLightComponent>(Light->GetLightComponent()))
+			{
+				Comp->SetIntensity(Intensity);
+				Comp->SetAttenuationRadius(700.f);
+				Comp->SetLightColor(Color);
+				Comp->SetCastShadows(false);
+			}
 		}
 		return Light;
 	};
@@ -523,7 +526,7 @@ void UEwigfelsCreatorSubsystem::UpdateCamera(bool bInstant)
 		return;
 	}
 	const float HalfHeight = Owner->GetCapsuleComponent() ? Owner->GetCapsuleComponent()->GetScaledCapsuleHalfHeight() : 88.f;
-	const bool bFace = IsFaceTab(CurrentTab);
+	const bool bFace = CreatorIsFaceTab(CurrentTab);
 	// Kapselmitte = Hüfte; Kopf ≈ 80 % der halben Höhe darüber
 	const FVector Focus = Owner->GetActorLocation() + FVector(0.f, 0.f, bFace ? HalfHeight * 0.8f * Working.Height : HalfHeight * 0.05f);
 	const float Distance = FMath::Lerp(bFace ? 95.f : 330.f, bFace ? 55.f : 170.f, ZoomAlpha);

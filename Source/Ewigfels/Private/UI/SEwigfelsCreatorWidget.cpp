@@ -21,20 +21,20 @@
 
 namespace
 {
-	const FLinearColor Gold(1.f, 0.8f, 0.45f);
-	const FLinearColor Ink(0.015f, 0.02f, 0.045f, 0.84f);
-	const FLinearColor TextColor(0.93f, 0.91f, 0.86f);
-	const FLinearColor Muted(0.62f, 0.63f, 0.7f);
-	const FLinearColor Warn(1.f, 0.55f, 0.45f);
+	const FLinearColor CrGold(1.f, 0.8f, 0.45f);
+	const FLinearColor CrInk(0.015f, 0.02f, 0.045f, 0.84f);
+	const FLinearColor CrTextColor(0.93f, 0.91f, 0.86f);
+	const FLinearColor CrMuted(0.62f, 0.63f, 0.7f);
+	const FLinearColor CrWarn(1.f, 0.55f, 0.45f);
 
-	FSlateFontInfo Font(int32 Size, bool bBold = false)
+	FSlateFontInfo CrFont(int32 Size, bool bBold = false)
 	{
 		return FCoreStyle::GetDefaultFontStyle(bBold ? "Bold" : "Regular", Size);
 	}
 
-	const FSlateBrush* White() { return FCoreStyle::Get().GetBrush("WhiteBrush"); }
+	const FSlateBrush* CrWhite() { return FCoreStyle::Get().GetBrush("WhiteBrush"); }
 
-	FText TabName(EEwigfelsCreatorTab Tab)
+	FText CrTabName(EEwigfelsCreatorTab Tab)
 	{
 		switch (Tab)
 		{
@@ -51,7 +51,7 @@ namespace
 		return FText::GetEmpty();
 	}
 
-	FText SlotName(FName Slot)
+	FText CrSlotName(FName Slot)
 	{
 		static const TMap<FName, FText> Names = {
 			{ TEXT("kopf"), LOCTEXT("SlotKopf", "Kopf") }, { TEXT("gesicht"), LOCTEXT("SlotGesicht", "Gesicht") },
@@ -63,7 +63,7 @@ namespace
 		return Found ? *Found : FText::FromName(Slot);
 	}
 
-	FText KindName(FName Kind)
+	FText CrKindName(FName Kind)
 	{
 		if (Kind == TEXT("freckles")) { return LOCTEXT("KindFreckles", "Sommersprossen & Male"); }
 		if (Kind == TEXT("scar")) { return LOCTEXT("KindScar", "Narben"); }
@@ -74,8 +74,8 @@ namespace
 		return FText::FromName(Kind);
 	}
 
-	FName OutfitArea(FName Slot) { return FName(*(TEXT("outfit:") + Slot.ToString())); }
-	FName OutfitColorArea(FName Slot) { return FName(*(TEXT("outfit_colors:") + Slot.ToString())); }
+	FName CrOutfitArea(FName Slot) { return FName(*(TEXT("outfit:") + Slot.ToString())); }
+	FName CrOutfitColorArea(FName Slot) { return FName(*(TEXT("outfit_colors:") + Slot.ToString())); }
 
 	/** Unsichtbare Fläche hinter dem Bedienfeld: Ziehen dreht die Kamera, Mausrad zoomt. */
 	class SEwigfelsOrbitArea : public SCompoundWidget
@@ -159,16 +159,16 @@ void SEwigfelsCreatorWidget::Construct(const FArguments& InArgs)
 		[
 			SNew(SBox).WidthOverride(260.f)
 			[
-				SNew(SBorder).BorderImage(White()).BorderBackgroundColor(Ink).Padding(16.f)
+				SNew(SBorder).BorderImage(CrWhite()).BorderBackgroundColor(CrInk).Padding(16.f)
 				[
 					SNew(SVerticalBox)
 					+ SVerticalBox::Slot().AutoHeight()
 					[
-						SNew(STextBlock).Text(Title).Font(Font(22, true)).ColorAndOpacity(Gold)
+						SNew(STextBlock).Text(Title).Font(CrFont(22, true)).ColorAndOpacity(CrGold)
 					]
 					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 6.f, 0.f, 14.f)
 					[
-						SNew(STextBlock).Text(Subtitle).Font(Font(11)).ColorAndOpacity(Muted).AutoWrapText(true)
+						SNew(STextBlock).Text(Subtitle).Font(CrFont(11)).ColorAndOpacity(CrMuted).AutoWrapText(true)
 					]
 					+ SVerticalBox::Slot().AutoHeight()
 					[
@@ -177,7 +177,7 @@ void SEwigfelsCreatorWidget::Construct(const FArguments& InArgs)
 					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 14.f, 0.f, 0.f)
 					[
 						SNew(STextBlock).Text(LOCTEXT("Help", "Maus ziehen: drehen · Mausrad: näher\nStrg+Z / Strg+Y: zurück / vor"))
-						.Font(Font(10)).ColorAndOpacity(Muted)
+						.Font(CrFont(10)).ColorAndOpacity(CrMuted)
 					]
 				]
 			]
@@ -187,7 +187,7 @@ void SEwigfelsCreatorWidget::Construct(const FArguments& InArgs)
 		[
 			SNew(SBox).WidthOverride(440.f)
 			[
-				SNew(SBorder).BorderImage(White()).BorderBackgroundColor(Ink).Padding(16.f)
+				SNew(SBorder).BorderImage(CrWhite()).BorderBackgroundColor(CrInk).Padding(16.f)
 				[
 					SNew(SScrollBox)
 					+ SScrollBox::Slot()
@@ -264,7 +264,7 @@ void SEwigfelsCreatorWidget::RebuildTabs()
 			SNew(SButton)
 			.ButtonColorAndOpacity_Lambda([this, Tab]()
 			{
-				return C() && C()->GetTab() == Tab ? FLinearColor(Gold.R, Gold.G, Gold.B, 0.9f) : FLinearColor(0.25f, 0.27f, 0.36f, 0.9f);
+				return C() && C()->GetTab() == Tab ? FLinearColor(CrGold.R, CrGold.G, CrGold.B, 0.9f) : FLinearColor(0.25f, 0.27f, 0.36f, 0.9f);
 			})
 			.OnClicked_Lambda([this, Tab]()
 			{
@@ -276,7 +276,7 @@ void SEwigfelsCreatorWidget::RebuildTabs()
 				return FReply::Handled();
 			})
 			[
-				SNew(STextBlock).Text(TabName(Tab)).Font(Font(13, true)).ColorAndOpacity(FLinearColor::White)
+				SNew(STextBlock).Text(CrTabName(Tab)).Font(CrFont(13, true)).ColorAndOpacity(FLinearColor::White)
 			]
 		];
 	}
@@ -294,10 +294,10 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 			SNew(SButton)
 			.HAlign(HAlign_Center)
 			.IsEnabled_Lambda([IsEnabled]() { return IsEnabled ? IsEnabled() : true; })
-			.ButtonColorAndOpacity(bPrimary ? Gold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f))
+			.ButtonColorAndOpacity(bPrimary ? CrGold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f))
 			.OnClicked_Lambda([OnClick]() { OnClick(); return FReply::Handled(); })
 			[
-				SNew(STextBlock).Text(Label).Font(Font(bPrimary ? 15 : 13, bPrimary)).ColorAndOpacity(FLinearColor::White)
+				SNew(STextBlock).Text(Label).Font(CrFont(bPrimary ? 15 : 13, bPrimary)).ColorAndOpacity(FLinearColor::White)
 			]
 		];
 	};
@@ -306,12 +306,12 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 	// Status: Fehler, Preis, Geld
 	Bar->AddSlot().FillWidth(1.f).VAlign(VAlign_Center)
 	[
-		SNew(SBorder).BorderImage(White()).BorderBackgroundColor(Ink).Padding(FMargin(14.f, 10.f))
+		SNew(SBorder).BorderImage(CrWhite()).BorderBackgroundColor(CrInk).Padding(FMargin(14.f, 10.f))
 		[
-			SNew(STextBlock).Font(Font(13)).AutoWrapText(true)
+			SNew(STextBlock).Font(CrFont(13)).AutoWrapText(true)
 			.ColorAndOpacity_Lambda([this]()
 			{
-				return C() && !C()->GetStatusText().IsEmpty() && !C()->IsWaitingForServer() ? FSlateColor(Warn) : FSlateColor(TextColor);
+				return C() && !C()->GetStatusText().IsEmpty() && !C()->IsWaitingForServer() ? FSlateColor(CrWarn) : FSlateColor(CrTextColor);
 			})
 			.Text_Lambda([this]()
 			{
@@ -412,7 +412,7 @@ void SEwigfelsCreatorWidget::BuildIdentity()
 	PanelBox->AddSlot().AutoHeight().Padding(0.f, 4.f, 0.f, 10.f)
 	[
 		SNew(SEditableTextBox)
-		.Font(Font(16))
+		.Font(CrFont(16))
 		.HintText(LOCTEXT("NameHint", "Wie heißt du?"))
 		.Text_Lambda([this]() { return C() ? FText::FromString(C()->GetWorking().Name) : FText::GetEmpty(); })
 		.OnTextChanged_Lambda([this, MaxLen](const FText& NewText)
@@ -585,7 +585,7 @@ void SEwigfelsCreatorWidget::BuildMarks()
 		}
 		if (Option.Kind != LastKind)
 		{
-			AddHeader(KindName(Option.Kind));
+			AddHeader(CrKindName(Option.Kind));
 			LastKind = Option.Kind;
 		}
 		const int32 MaxMarks = Cat.MaxMarks;
@@ -615,7 +615,7 @@ void SEwigfelsCreatorWidget::BuildMarks()
 				bRebuildPending = true;
 			})
 			[
-				SNew(STextBlock).Text(OptionLabel(&Option)).Font(Font(13)).ColorAndOpacity(TextColor)
+				SNew(STextBlock).Text(OptionLabel(&Option)).Font(CrFont(13)).ColorAndOpacity(CrTextColor)
 			]
 		];
 		if (bHas)
@@ -661,7 +661,7 @@ void SEwigfelsCreatorWidget::BuildOutfit()
 	TArray<FName> Slots;
 	for (const FName Slot : Cat.OutfitSlots)
 	{
-		if (C()->IsAreaEditable(OutfitArea(Slot)) || C()->IsAreaEditable(OutfitColorArea(Slot)))
+		if (C()->IsAreaEditable(CrOutfitArea(Slot)) || C()->IsAreaEditable(CrOutfitColorArea(Slot)))
 		{
 			Slots.Add(Slot);
 		}
@@ -682,10 +682,10 @@ void SEwigfelsCreatorWidget::BuildOutfit()
 		SlotWrap->AddSlot().Padding(2.f)
 		[
 			SNew(SButton)
-			.ButtonColorAndOpacity_Lambda([this, Slot]() { return OutfitSlot == Slot ? Gold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f); })
+			.ButtonColorAndOpacity_Lambda([this, Slot]() { return OutfitSlot == Slot ? CrGold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f); })
 			.OnClicked_Lambda([this, Slot]() { OutfitSlot = Slot; bRebuildPending = true; return FReply::Handled(); })
 			[
-				SNew(STextBlock).Text(SlotName(Slot)).Font(Font(12)).ColorAndOpacity(FLinearColor::White)
+				SNew(STextBlock).Text(CrSlotName(Slot)).Font(CrFont(12)).ColorAndOpacity(FLinearColor::White)
 			]
 		];
 	}
@@ -696,14 +696,14 @@ void SEwigfelsCreatorWidget::BuildOutfit()
 	{
 		return L.FindPiece(Slot);
 	};
-	AddHeader(SlotName(Slot));
-	if (C()->IsAreaEditable(OutfitArea(Slot)))
+	AddHeader(CrSlotName(Slot));
+	if (C()->IsAreaEditable(CrOutfitArea(Slot)))
 	{
 		AddPicker(LOCTEXT("Item", "Stück"), EwigfelsLook::Cat::Outfit, Slot,
 			[Piece](const FEwigfelsAppearance& L) { const FEwigfelsOutfitPiece* P = Piece(L); return P ? P->Item : NAME_None; },
 			[Slot](FEwigfelsAppearance& L, FName V) { L.FindOrAddPiece(Slot).Item = V; });
 	}
-	if (C()->IsAreaEditable(OutfitColorArea(Slot)))
+	if (C()->IsAreaEditable(CrOutfitColorArea(Slot)))
 	{
 		const FText Zones[3] = { LOCTEXT("Dye1", "Hauptfarbe"), LOCTEXT("Dye2", "Zweitfarbe"), LOCTEXT("Dye3", "Akzent (Saum, Knöpfe)") };
 		for (int32 Zone = 0; Zone < 3; ++Zone)
@@ -756,7 +756,7 @@ void SEwigfelsCreatorWidget::BuildRing()
 		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Metal : NAME_None; },
 		[](FEwigfelsAppearance& L, FName V) { if (L.Rings.Num() == 0) { L.Rings.AddDefaulted(); } L.Rings[0].Metal = V; });
 	AddColor(LOCTEXT("Quartz", "Quarzfarbe"), TEXT("quartz"),
-		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Quartz : FColor::White; },
+		[](const FEwigfelsAppearance& L) { return L.Rings.Num() ? L.Rings[0].Quartz : FColor::CrWhite; },
 		[](FEwigfelsAppearance& L, FColor V) { if (L.Rings.Num() == 0) { L.Rings.AddDefaulted(); } L.Rings[0].Quartz = V; });
 }
 
@@ -767,7 +767,7 @@ void SEwigfelsCreatorWidget::AddHeader(const FText& Text)
 {
 	PanelBox->AddSlot().AutoHeight().Padding(0.f, 12.f, 0.f, 4.f)
 	[
-		SNew(STextBlock).Text(Text).Font(Font(15, true)).ColorAndOpacity(Gold)
+		SNew(STextBlock).Text(Text).Font(CrFont(15, true)).ColorAndOpacity(CrGold)
 	];
 }
 
@@ -775,7 +775,7 @@ void SEwigfelsCreatorWidget::AddInfo(const FText& Text)
 {
 	PanelBox->AddSlot().AutoHeight().Padding(0.f, 2.f, 0.f, 6.f)
 	[
-		SNew(STextBlock).Text(Text).Font(Font(11)).ColorAndOpacity(Muted).AutoWrapText(true)
+		SNew(STextBlock).Text(Text).Font(CrFont(11)).ColorAndOpacity(CrMuted).AutoWrapText(true)
 	];
 }
 
@@ -840,7 +840,7 @@ void SEwigfelsCreatorWidget::AddPicker(const FText& Label, FName Category, FName
 			.ButtonColorAndOpacity(FLinearColor(0.25f, 0.27f, 0.36f, 0.95f))
 			.OnClicked_Lambda([Step, Dir]() { Step(Dir); return FReply::Handled(); })
 			[
-				SNew(STextBlock).Text(Glyph).Font(Font(14, true)).ColorAndOpacity(FLinearColor::White)
+				SNew(STextBlock).Text(Glyph).Font(CrFont(14, true)).ColorAndOpacity(FLinearColor::White)
 			];
 	};
 
@@ -849,7 +849,7 @@ void SEwigfelsCreatorWidget::AddPicker(const FText& Label, FName Category, FName
 		SNew(SVerticalBox)
 		+ SVerticalBox::Slot().AutoHeight()
 		[
-			SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(Muted)
+			SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(CrMuted)
 		]
 		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 2.f)
 		[
@@ -857,7 +857,7 @@ void SEwigfelsCreatorWidget::AddPicker(const FText& Label, FName Category, FName
 			+ SHorizontalBox::Slot().AutoWidth()[Arrow(LOCTEXT("Prev", "◀"), -1)]
 			+ SHorizontalBox::Slot().FillWidth(1.f).VAlign(VAlign_Center).HAlign(HAlign_Center)
 			[
-				SNew(STextBlock).Font(Font(14, true)).ColorAndOpacity(TextColor)
+				SNew(STextBlock).Font(CrFont(14, true)).ColorAndOpacity(CrTextColor)
 				.Text_Lambda([this, Category, SlotFilter, Get]()
 				{
 					if (!C())
@@ -883,7 +883,7 @@ void SEwigfelsCreatorWidget::AddSlider(const FText& Label, float Min, float Max,
 		SNew(SHorizontalBox)
 		+ SHorizontalBox::Slot().FillWidth(0.42f).VAlign(VAlign_Center)
 		[
-			SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(TextColor)
+			SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(CrTextColor)
 		]
 		+ SHorizontalBox::Slot().FillWidth(0.43f).VAlign(VAlign_Center)
 		[
@@ -891,7 +891,7 @@ void SEwigfelsCreatorWidget::AddSlider(const FText& Label, float Min, float Max,
 			.MinValue(Min)
 			.MaxValue(Max)
 			.SliderBarColor(FLinearColor(0.35f, 0.36f, 0.45f))
-			.SliderHandleColor(Gold)
+			.SliderHandleColor(CrGold)
 			.Value_Lambda([this, Get]() { return C() ? Get(C()->GetWorking()) : 0.f; })
 			.OnMouseCaptureBegin_Lambda([this]() { if (C()) { C()->BeginDrag(); } })
 			.OnValueChanged_Lambda([this, Set](float V)
@@ -904,7 +904,7 @@ void SEwigfelsCreatorWidget::AddSlider(const FText& Label, float Min, float Max,
 		]
 		+ SHorizontalBox::Slot().FillWidth(0.15f).VAlign(VAlign_Center).HAlign(HAlign_Right)
 		[
-			SNew(STextBlock).Font(Font(11)).ColorAndOpacity(Muted)
+			SNew(STextBlock).Font(CrFont(11)).ColorAndOpacity(CrMuted)
 			.Text_Lambda([this, Get, Format]()
 			{
 				const float V = C() ? Get(C()->GetWorking()) : 0.f;
@@ -967,7 +967,7 @@ void SEwigfelsCreatorWidget::AddColor(const FText& Label, FName Palette, FGetCol
 			]
 			+ SHorizontalBox::Slot().FillWidth(1.f).VAlign(VAlign_Center)
 			[
-				SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(TextColor)
+				SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(CrTextColor)
 			]
 			+ SHorizontalBox::Slot().AutoWidth()
 			[
@@ -981,7 +981,7 @@ void SEwigfelsCreatorWidget::AddColor(const FText& Label, FName Palette, FGetCol
 				})
 				[
 					SNew(STextBlock).Text(bExpanded ? LOCTEXT("Less", "Weniger") : LOCTEXT("Fine", "Feinabstimmung"))
-					.Font(Font(10)).ColorAndOpacity(FLinearColor::White)
+					.Font(CrFont(10)).ColorAndOpacity(FLinearColor::White)
 				]
 			]
 		]
@@ -1019,7 +1019,7 @@ void SEwigfelsCreatorWidget::AddChoices(const FText& Label, const TArray<FText>&
 		Wrap->AddSlot().Padding(2.f)
 		[
 			SNew(SButton)
-			.ButtonColorAndOpacity_Lambda([this, Get, i]() { return C() && Get(C()->GetWorking()) == i ? Gold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f); })
+			.ButtonColorAndOpacity_Lambda([this, Get, i]() { return C() && Get(C()->GetWorking()) == i ? CrGold : FLinearColor(0.25f, 0.27f, 0.36f, 0.95f); })
 			.OnClicked_Lambda([this, Set, i]()
 			{
 				if (C())
@@ -1029,14 +1029,14 @@ void SEwigfelsCreatorWidget::AddChoices(const FText& Label, const TArray<FText>&
 				return FReply::Handled();
 			})
 			[
-				SNew(STextBlock).Text(Choices[i]).Font(Font(13)).ColorAndOpacity(FLinearColor::White)
+				SNew(STextBlock).Text(Choices[i]).Font(CrFont(13)).ColorAndOpacity(FLinearColor::White)
 			]
 		];
 	}
 	PanelBox->AddSlot().AutoHeight().Padding(0.f, 6.f)
 	[
 		SNew(SVerticalBox)
-		+ SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(Muted)]
+		+ SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(CrMuted)]
 		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 3.f)[Wrap]
 	];
 }
@@ -1056,7 +1056,7 @@ void SEwigfelsCreatorWidget::AddCheck(const FText& Label, TFunction<bool(const F
 			}
 		})
 		[
-			SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(TextColor)
+			SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(CrTextColor)
 		]
 	];
 }
@@ -1069,7 +1069,7 @@ void SEwigfelsCreatorWidget::AddButton(const FText& Label, TFunction<void()> OnC
 		.ButtonColorAndOpacity(FLinearColor(0.25f, 0.27f, 0.36f, 0.95f))
 		.OnClicked_Lambda([OnClick]() { OnClick(); return FReply::Handled(); })
 		[
-			SNew(STextBlock).Text(Label).Font(Font(12)).ColorAndOpacity(FLinearColor::White)
+			SNew(STextBlock).Text(Label).Font(CrFont(12)).ColorAndOpacity(FLinearColor::White)
 		]
 	];
 }

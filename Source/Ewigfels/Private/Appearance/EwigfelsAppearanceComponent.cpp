@@ -29,26 +29,26 @@
 
 namespace
 {
-	const FName PieceHair(TEXT("hair"));
-	const FName PieceBeard(TEXT("beard"));
-	const FName PieceBrows(TEXT("brows"));
-	const FName FlagLookCreated(TEXT("Look_Created"));
+	const FName LookPieceHair(TEXT("hair"));
+	const FName LookPieceBeard(TEXT("beard"));
+	const FName LookPieceBrows(TEXT("brows"));
+	const FName LookFlagCreated(TEXT("Look_Created"));
 
-	FLinearColor Lin(const FColor& C) { return FLinearColor::FromSRGBColor(C); }
+	FLinearColor LookLin(const FColor& C) { return FLinearColor::FromSRGBColor(C); }
 
-	UEwigfelsAppearanceSubsystem* LookSubsystem(const UActorComponent* Comp)
+	UEwigfelsAppearanceSubsystem* LookSubsystemOf(const UActorComponent* Comp)
 	{
 		const UWorld* World = Comp->GetWorld();
 		UGameInstance* GI = World ? World->GetGameInstance() : nullptr;
 		return GI ? GI->GetSubsystem<UEwigfelsAppearanceSubsystem>() : nullptr;
 	}
 
-	int32 IndexOf(const FEwigfelsLookCatalog& Catalog, FName Category, FName Id)
+	int32 LookIndexOf(const FEwigfelsLookCatalog& Catalog, FName Category, FName Id)
 	{
 		return Catalog.GetOptions(Category).IndexOfByPredicate([Id](const FEwigfelsLookOption& O) { return O.Id == Id; });
 	}
 
-	FSoftObjectPath AssetOf(const FEwigfelsLookCatalog& Catalog, FName Category, FName Id)
+	FSoftObjectPath LookAssetOf(const FEwigfelsLookCatalog& Catalog, FName Category, FName Id)
 	{
 		const FEwigfelsLookOption* Option = Catalog.Find(Category, Id);
 		return Option ? Option->Asset : FSoftObjectPath();
@@ -74,7 +74,7 @@ void UEwigfelsAppearanceComponent::BeginPlay()
 	// Noch nicht erstellte Figur sieht bis zur Wahl wie der Katalog-Standard aus
 	if (!Appearance.bCreated)
 	{
-		if (const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this))
+		if (const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this))
 		{
 			if (GetOwner()->HasAuthority())
 			{
@@ -122,7 +122,7 @@ void UEwigfelsAppearanceComponent::CheckStartup()
 	}
 	GetWorld()->GetTimerManager().ClearTimer(StartupTimer);
 
-	UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	if (Appearance.bCreated)
 	{
 		if (Sub)
@@ -188,7 +188,7 @@ void UEwigfelsAppearanceComponent::Server_RequestChange_Implementation(const FEw
 
 void UEwigfelsAppearanceComponent::HandleChangeOnServer(const FEwigfelsAppearance& NewLook, FName ShopId)
 {
-	UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	if (!Sub)
 	{
 		Client_ChangeResult(false, 0, LOCTEXT("NoCatalog", "Kein Katalog geladen."));
@@ -248,7 +248,7 @@ void UEwigfelsAppearanceComponent::HandleChangeOnServer(const FEwigfelsAppearanc
 	{
 		if (UEwigfelsWorldStateSubsystem* WorldState = GetWorld()->GetGameInstance()->GetSubsystem<UEwigfelsWorldStateSubsystem>())
 		{
-			WorldState->SetFlag(FlagLookCreated, true);
+			WorldState->SetFlag(LookFlagCreated, true);
 		}
 	}
 	UE_LOG(LogEwigfels, Log, TEXT("Look: %s %s (%d Kronen)"), *Appearance.Name, ShopId.IsNone() ? TEXT("erstellt") : *ShopId.ToString(), Price);
@@ -263,7 +263,7 @@ void UEwigfelsAppearanceComponent::Client_ChangeResult_Implementation(bool bAcce
 	const APawn* Pawn = Cast<APawn>(GetOwner());
 	if (bAccepted && Pawn && Pawn->IsLocallyControlled() && Pawn->IsPlayerControlled())
 	{
-		if (UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this))
+		if (UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this))
 		{
 			Sub->SaveProfile(Appearance);
 			Sub->PushDialogueVariables(Appearance);
@@ -279,7 +279,7 @@ void UEwigfelsAppearanceComponent::SetAppearanceAuthority(const FEwigfelsAppeara
 		return;
 	}
 	Appearance = Look;
-	if (const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this))
+	if (const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this))
 	{
 		EwigfelsLook::Sanitize(Appearance, Sub->GetCatalog());
 	}
@@ -343,7 +343,7 @@ bool UEwigfelsAppearanceComponent::IsNearShopMirror(FName ShopId) const
 
 void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 {
-	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	ACharacter* Character = Cast<ACharacter>(GetOwner());
 	if (!Sub || !Character || IsRunningDedicatedServer())
 	{
@@ -366,7 +366,7 @@ void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 	if (Body)
 	{
 		// Körpertyp: nur tauschen, wenn das Asset da ist (sonst bleibt Mannequin/Platzhalter)
-		if (USkeletalMesh* BodyAsset = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(AssetOf(Catalog, EwigfelsLook::Cat::Body, Look.BodyType))))
+		if (USkeletalMesh* BodyAsset = Cast<USkeletalMesh>(EwigfelsSpellVisuals::LoadIfExists(LookAssetOf(Catalog, EwigfelsLook::Cat::Body, Look.BodyType))))
 		{
 			if (Body->GetSkeletalMeshAsset() != BodyAsset)
 			{
@@ -396,17 +396,17 @@ void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 
 		// Haare, Bart, Brauen
 		const TPair<FName, FSoftObjectPath> HairParts[] = {
-			{ PieceHair, AssetOf(Catalog, EwigfelsLook::Cat::Hair, Look.HairStyle) },
-			{ PieceBeard, AssetOf(Catalog, EwigfelsLook::Cat::Beard, Look.Beard) },
-			{ PieceBrows, AssetOf(Catalog, EwigfelsLook::Cat::Brows, Look.Brows) } };
+			{ LookPieceHair, LookAssetOf(Catalog, EwigfelsLook::Cat::Hair, Look.HairStyle) },
+			{ LookPieceBeard, LookAssetOf(Catalog, EwigfelsLook::Cat::Beard, Look.Beard) },
+			{ LookPieceBrows, LookAssetOf(Catalog, EwigfelsLook::Cat::Brows, Look.Brows) } };
 		for (const TPair<FName, FSoftObjectPath>& Part : HairParts)
 		{
 			if (USkeletalMeshComponent* Mesh = UpdateAttachedPiece(Part.Key, Part.Value, Body))
 			{
 				for (UMaterialInstanceDynamic* Mid : GetMids(Mesh))
 				{
-					Mid->SetVectorParameterValue(TEXT("HairColor"), Lin(Look.HairColor));
-					Mid->SetVectorParameterValue(TEXT("HairTipColor"), Lin(Look.HairTipColor));
+					Mid->SetVectorParameterValue(TEXT("HairColor"), LookLin(Look.HairColor));
+					Mid->SetVectorParameterValue(TEXT("HairTipColor"), LookLin(Look.HairTipColor));
 				}
 				ApplyMorphs(Mesh, Look);
 			}
@@ -415,15 +415,15 @@ void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 		// Kleidung
 		for (const FEwigfelsOutfitPiece& Piece : Look.Outfit)
 		{
-			if (USkeletalMeshComponent* Mesh = UpdateAttachedPiece(Piece.Slot, AssetOf(Catalog, EwigfelsLook::Cat::Outfit, Piece.Item), Body))
+			if (USkeletalMeshComponent* Mesh = UpdateAttachedPiece(Piece.Slot, LookAssetOf(Catalog, EwigfelsLook::Cat::Outfit, Piece.Item), Body))
 			{
 				for (UMaterialInstanceDynamic* Mid : GetMids(Mesh))
 				{
-					Mid->SetVectorParameterValue(TEXT("Dye1"), Lin(Piece.Color1));
-					Mid->SetVectorParameterValue(TEXT("Dye2"), Lin(Piece.Color2));
-					Mid->SetVectorParameterValue(TEXT("Dye3"), Lin(Piece.Color3));
-					Mid->SetScalarParameterValue(TEXT("PatternIndex"), static_cast<float>(FMath::Max(0, IndexOf(Catalog, EwigfelsLook::Cat::Pattern, Piece.Pattern))));
-					Mid->SetScalarParameterValue(TEXT("FabricIndex"), static_cast<float>(FMath::Max(0, IndexOf(Catalog, EwigfelsLook::Cat::Fabric, Piece.Fabric))));
+					Mid->SetVectorParameterValue(TEXT("Dye1"), LookLin(Piece.Color1));
+					Mid->SetVectorParameterValue(TEXT("Dye2"), LookLin(Piece.Color2));
+					Mid->SetVectorParameterValue(TEXT("Dye3"), LookLin(Piece.Color3));
+					Mid->SetScalarParameterValue(TEXT("PatternIndex"), static_cast<float>(FMath::Max(0, LookIndexOf(Catalog, EwigfelsLook::Cat::Pattern, Piece.Pattern))));
+					Mid->SetScalarParameterValue(TEXT("FabricIndex"), static_cast<float>(FMath::Max(0, LookIndexOf(Catalog, EwigfelsLook::Cat::Fabric, Piece.Fabric))));
 				}
 				ApplyMorphs(Mesh, Look); // Körperregler auch auf Kleidung (gleiche Morph-Namen)
 			}
@@ -438,7 +438,7 @@ void UEwigfelsAppearanceComponent::ApplyVisuals(const FEwigfelsAppearance& Look)
 
 void UEwigfelsAppearanceComponent::ApplyMorphs(USkeletalMeshComponent* Mesh, const FEwigfelsAppearance& Look) const
 {
-	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	if (!Mesh || !Mesh->GetSkeletalMeshAsset() || !Sub)
 	{
 		return;
@@ -467,7 +467,7 @@ void UEwigfelsAppearanceComponent::ApplyMorphs(USkeletalMeshComponent* Mesh, con
 
 void UEwigfelsAppearanceComponent::ApplyBodyParams(UMeshComponent* Mesh, const FEwigfelsAppearance& Look)
 {
-	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	if (!Mesh || !Sub)
 	{
 		return;
@@ -475,10 +475,10 @@ void UEwigfelsAppearanceComponent::ApplyBodyParams(UMeshComponent* Mesh, const F
 	const FEwigfelsLookCatalog& Catalog = Sub->GetCatalog();
 	for (UMaterialInstanceDynamic* Mid : GetMids(Mesh))
 	{
-		Mid->SetVectorParameterValue(TEXT("SkinColor"), Lin(Look.SkinColor));
-		Mid->SetVectorParameterValue(TEXT("EyeColorL"), Lin(Look.EyeColorL));
-		Mid->SetVectorParameterValue(TEXT("EyeColorR"), Lin(Look.EyeColorR));
-		Mid->SetVectorParameterValue(TEXT("HairColor"), Lin(Look.HairColor));
+		Mid->SetVectorParameterValue(TEXT("SkinColor"), LookLin(Look.SkinColor));
+		Mid->SetVectorParameterValue(TEXT("EyeColorL"), LookLin(Look.EyeColorL));
+		Mid->SetVectorParameterValue(TEXT("EyeColorR"), LookLin(Look.EyeColorR));
+		Mid->SetVectorParameterValue(TEXT("HairColor"), LookLin(Look.HairColor));
 		Mid->SetVectorParameterValue(TEXT("MagicColor"), Look.GetMagicColor());
 
 		// Haut-Details: Ebenen Mark0 … Mark{max-1}
@@ -486,12 +486,12 @@ void UEwigfelsAppearanceComponent::ApplyBodyParams(UMeshComponent* Mesh, const F
 		{
 			const FEwigfelsMarkLook* Mark = Look.Marks.IsValidIndex(i) ? &Look.Marks[i] : nullptr;
 			const FString Prefix = FString::Printf(TEXT("Mark%d"), i);
-			UTexture* Texture = Mark ? Cast<UTexture>(EwigfelsSpellVisuals::LoadIfExists(AssetOf(Catalog, EwigfelsLook::Cat::Marks, Mark->Id))) : nullptr;
+			UTexture* Texture = Mark ? Cast<UTexture>(EwigfelsSpellVisuals::LoadIfExists(LookAssetOf(Catalog, EwigfelsLook::Cat::Marks, Mark->Id))) : nullptr;
 			if (Texture)
 			{
 				Mid->SetTextureParameterValue(FName(*(Prefix + TEXT("Tex"))), Texture);
 			}
-			Mid->SetVectorParameterValue(FName(*(Prefix + TEXT("Color"))), Mark ? Lin(Mark->Color) : FLinearColor::Black);
+			Mid->SetVectorParameterValue(FName(*(Prefix + TEXT("Color"))), Mark ? LookLin(Mark->Color) : FLinearColor::Black);
 			Mid->SetScalarParameterValue(FName(*(Prefix + TEXT("Opacity"))), Mark && Texture ? Mark->Opacity : 0.f);
 		}
 	}
@@ -531,7 +531,7 @@ USkeletalMeshComponent* UEwigfelsAppearanceComponent::UpdateAttachedPiece(FName 
 void UEwigfelsAppearanceComponent::UpdateRings(const FEwigfelsAppearance& Look, USkeletalMeshComponent* Body)
 {
 	UStaticMesh* Mesh = Cast<UStaticMesh>(EwigfelsSpellVisuals::LoadIfExists(RingMesh));
-	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystem(this);
+	const UEwigfelsAppearanceSubsystem* Sub = LookSubsystemOf(this);
 	for (int32 i = 0; i < RingSockets.Num(); ++i)
 	{
 		const bool bWanted = Mesh && Look.Rings.IsValidIndex(i) && Body->DoesSocketExist(RingSockets[i]);
@@ -560,8 +560,8 @@ void UEwigfelsAppearanceComponent::UpdateRings(const FEwigfelsAppearance& Look, 
 		Comp->SetVisibility(true);
 		for (UMaterialInstanceDynamic* Mid : GetMids(Comp))
 		{
-			Mid->SetVectorParameterValue(TEXT("Quartz"), Lin(Look.Rings[i].Quartz));
-			const int32 MetalIndex = Sub ? IndexOf(Sub->GetCatalog(), EwigfelsLook::Cat::Metal, Look.Rings[i].Metal) : 0;
+			Mid->SetVectorParameterValue(TEXT("Quartz"), LookLin(Look.Rings[i].Quartz));
+			const int32 MetalIndex = Sub ? LookIndexOf(Sub->GetCatalog(), EwigfelsLook::Cat::Metal, Look.Rings[i].Metal) : 0;
 			Mid->SetScalarParameterValue(TEXT("MetalIndex"), static_cast<float>(FMath::Max(0, MetalIndex)));
 		}
 	}
@@ -607,8 +607,8 @@ void UEwigfelsAppearanceComponent::ApplyToPlaceholder(const FEwigfelsAppearance&
 	const FEwigfelsOutfitPiece* Top = Look.FindPiece(TEXT("oberkoerper"));
 	const bool bCloak = Cloak && !Cloak->Item.ToString().EndsWith(TEXT("_nichts"));
 	const FEwigfelsOutfitPiece* Main = bCloak ? Cloak : Top;
-	const FLinearColor RobeColor = Main ? Lin(Main->Color1) : FLinearColor(0.035f, 0.05f, 0.11f);
-	const FLinearColor EyeColor = FMath::Lerp(Lin(Look.EyeColorL), FLinearColor::White, 0.35f);
+	const FLinearColor RobeColor = Main ? LookLin(Main->Color1) : FLinearColor(0.035f, 0.05f, 0.11f);
+	const FLinearColor EyeColor = FMath::Lerp(LookLin(Look.EyeColorL), FLinearColor::White, 0.35f);
 	const FEwigfelsOutfitPiece* Head = Look.FindPiece(TEXT("kopf"));
 	const bool bHood = Head && Head->Item.ToString().Contains(TEXT("kapuze"));
 	Placeholder->SetLook(RobeColor, Look.GetMagicColor(), EyeColor, 1.f, bHood); // Größe über Skalierung unten
