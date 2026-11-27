@@ -1,0 +1,191 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/KESSELBRUNN.md. Marker-IDs = Quest-Marker.",
+  "id": "Kesselbrunn",
+  "act_from": 1,
+  "size_km": [
+    2,
+    2
+  ],
+  "villages": [
+    {
+      "id": "Kesselbrunn",
+      "mood": "froehlich",
+      "music": "Akkordeon (Jupp, Leitmotiv), Blaskapelle, Kinderlieder",
+      "fast_travel": "Marktbrunnen",
+      "npcs": [
+        "Hanne",
+        "Hedda",
+        "Jupp",
+        "Ambros",
+        "Frieda",
+        "Fridolin",
+        "Mathilde",
+        "Hubert",
+        "Pfennig",
+        "Lene",
+        "Bastian",
+        "Kalle"
+      ],
+      "shops": [
+        {
+          "npc": "Ambros",
+          "sells": [
+            "Stimmringe",
+            "Quarze",
+            "Gravuren"
+          ]
+        },
+        {
+          "npc": "Fridolin",
+          "sells": [
+            "Frisuren",
+            "Haarfarbe",
+            "Bart"
+          ]
+        },
+        {
+          "npc": "Mathilde",
+          "sells": [
+            "Kleidung",
+            "Farbstoffe",
+            "Muster"
+          ]
+        },
+        {
+          "npc": "Hubert",
+          "sells": [
+            "Turmzimmer-Moebel"
+          ]
+        },
+        {
+          "npc": "Hedda",
+          "sells": [
+            "Backwaren (Buffs)"
+          ]
+        },
+        {
+          "npc": "Frieda",
+          "sells": [
+            "Quellbad (Rast-Bonus Atem)"
+          ]
+        }
+      ],
+      "pois": [
+        "Marktbrunnen",
+        "Kettler_Werkstatt",
+        "Heddas_Backstube",
+        "Waisenhaus",
+        "Waisenhaus_Dach",
+        "Waisenhaus_Schlafsaal",
+        "Quellbad",
+        "Quellrohr_Keller",
+        "Handwerkergasse",
+        "Zunfthaus"
+      ],
+      "minigames": [
+        "Akkordeon mit Jupp",
+        "Zimtschnecken backen",
+        "Steine flitschen",
+        "Dampf-Bilder"
+      ],
+      "peaceful_act1": true
+    },
+    {
+      "id": "Russgrube",
+      "mood": "gruselig",
+      "music": "kein Lied, Hämmern im Takt (Bergmannslied ohne Melodie), Grubenpfiff",
+      "fast_travel": "Foerderturm",
+      "fast_travel_requires": "flag:Russgrube_Freed",
+      "lord": "Egon",
+      "npcs": [
+        "Egon",
+        "Kuno",
+        "Fiete"
+      ],
+      "rules": [
+        "Rauch dreht im Takt des Hämmerns, zwischen zwei Schlägen blind (Schleichen)",
+        "Immer genau zwölf Rauchgesichter",
+        "Grusel-Regler: Mild = Rauch ohne Gesichter, Ruhig = nur Rauch"
+      ],
+      "pois": [
+        "Grubenweg",
+        "Russgrube_Gasse",
+        "Russgrube_Kantine",
+        "Foerderturm",
+        "Schmelzhuette",
+        "Alte_Mine_Eingang"
+      ],
+      "after_liberation": [
+        "Bergleute schlafen zwei Tage",
+        "Rauch zieht ab",
+        "Kuno Hartmann neuer Steiger",
+        "Grubenschmiede",
+        "zwölf Grubenlampen an der Gedenktafel",
+        "Egon lehrt Rauchschleier (bei Gerechtigkeit)"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Alte_Mine_Vorhalle",
+      "kind": "dungeon",
+      "quest": "N126"
+    },
+    {
+      "id": "Schmelzhalle",
+      "kind": "boss",
+      "quest": "N125",
+      "boss": "Schmelzer"
+    },
+    {
+      "id": "Brandheim_Schild",
+      "kind": "sperre",
+      "note": "Kollegiums-Wache, verbotene Zone bis Akt 2"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Quellorgel",
+      "at": "Quellbad",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Lorenbahn",
+      "at": "Russgrube_Gasse",
+      "reward": "Stimmring_Quarz_Grubengold",
+      "requires": "flag:Russgrube_Freed"
+    },
+    {
+      "id": "Schrein_Glockenbalken",
+      "at": "Waldhang",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Kinderbrief": 10,
+    "Grubenmarke": 12,
+    "Nachklang": 5,
+    "Jupps_Liedzettel": 8
+  },
+  "enemies": {
+    "act1": [
+      "Egon_Russ",
+      "Russgesicht",
+      "Erzkriecher",
+      "Grubengeist",
+      "Schmelzer"
+    ],
+    "act2": [
+      "Stille_Hand",
+      "Kollegiums_Wache"
+    ]
+  },
+  "quests": [
+    "N121",
+    "N122",
+    "N123",
+    "N124",
+    "N125",
+    "N126"
+  ]
+}

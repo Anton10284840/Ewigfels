@@ -1,0 +1,128 @@
+{
+  "id": "N126",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Ambros",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Der summende Quarz",
+    "en": "The Humming Quartz"
+  },
+  "summary": {
+    "de": "Ambros braucht einen seltenen Quarz aus der Vorhalle der Alten Mine. Er sagt, für einen besonderen Ring. Er sagt nicht, für wen.",
+    "en": "Ambros needs a rare quartz from the entrance hall of the Old Mine. For a special ring, he says. He doesn't say whose."
+  },
+  "dialogues": [
+    "D_N126_Ambros",
+    "D_N126_Ambros_Quarz"
+  ],
+  "stages": [
+    {
+      "id": "s1_ambros",
+      "text": {
+        "de": "Hör dir an, was Ambros braucht.",
+        "en": "Hear what Ambros needs."
+      },
+      "objectives": [
+        {
+          "id": "o_ambros",
+          "kind": "dialogue",
+          "target": "D_N126_Ambros",
+          "marker": "NPC_Ambros",
+          "text": {
+            "de": "Sprich mit Ambros in seiner Werkstatt",
+            "en": "Talk to Ambros in his workshop"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_vorhalle"
+        }
+      ]
+    },
+    {
+      "id": "s2_vorhalle",
+      "text": {
+        "de": "Find in der Vorhalle der Alten Mine den Quarz, der antwortet, wenn man summt.",
+        "en": "Find the quartz in the Old Mine's entrance hall that answers when you hum."
+      },
+      "objectives": [
+        {
+          "id": "o_vorhalle",
+          "kind": "reach",
+          "target": "Alte_Mine_Vorhalle",
+          "marker": "Alte_Mine_Eingang",
+          "text": {
+            "de": "Geh in die Vorhalle der Alten Mine",
+            "en": "Go into the Old Mine's entrance hall"
+          }
+        },
+        {
+          "id": "o_summen",
+          "kind": "custom",
+          "target": "Quarz_Ansummen",
+          "text": {
+            "de": "Summ die Quarzadern an, bis einer zurücksingt",
+            "en": "Hum at the quartz veins until one sings back"
+          }
+        },
+        {
+          "id": "o_quarz",
+          "kind": "collect",
+          "target": "Summender_Quarz",
+          "text": {
+            "de": "Brich den summenden Quarz heraus",
+            "en": "Break out the humming quartz"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_zurueck"
+        }
+      ]
+    },
+    {
+      "id": "s3_zurueck",
+      "text": {
+        "de": "Bring Ambros den Quarz.",
+        "en": "Bring Ambros the quartz."
+      },
+      "objectives": [
+        {
+          "id": "o_rueckgabe",
+          "kind": "dialogue",
+          "target": "D_N126_Ambros_Quarz",
+          "marker": "NPC_Ambros",
+          "text": {
+            "de": "Gib Ambros den Quarz",
+            "en": "Give Ambros the quartz"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Ambros_Quartz=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Stimmring_Quarz_Bernsteinglut",
+      "Gravur_Gratis"
+    ],
+    "effects": []
+  }
+}

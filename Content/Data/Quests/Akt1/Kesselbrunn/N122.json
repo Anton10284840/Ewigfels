@@ -1,0 +1,136 @@
+{
+  "id": "N122",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Frieda",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Die kalten Quellen",
+    "en": "The Cold Springs"
+  },
+  "summary": {
+    "de": "Die heißen Quellen von Kesselbrunn werden jede Woche ein Grad kälter. Bademeisterin Frieda ist nur noch 31 Grad gelaunt.",
+    "en": "Kesselbrunn's hot springs grow one degree colder every week. Bath keeper Frieda is only in a 31-degree mood."
+  },
+  "dialogues": [
+    "D_N122_Frieda",
+    "D_N122_Frieda_Bericht"
+  ],
+  "stages": [
+    {
+      "id": "s1_frieda",
+      "text": {
+        "de": "Hör dir Friedas Messungen an.",
+        "en": "Hear Frieda's measurements."
+      },
+      "objectives": [
+        {
+          "id": "o_frieda",
+          "kind": "dialogue",
+          "target": "D_N122_Frieda",
+          "marker": "NPC_Frieda",
+          "text": {
+            "de": "Sprich mit Frieda Dampf im Quellbad",
+            "en": "Talk to Frieda Dampf at the spring baths"
+          }
+        },
+        {
+          "id": "o_becken",
+          "kind": "custom",
+          "target": "Quellen_Messen",
+          "count": 5,
+          "marker": "Quellbad",
+          "text": {
+            "de": "Miss die Temperatur der fünf Becken",
+            "en": "Measure the temperature of the five pools"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_rohre"
+        }
+      ]
+    },
+    {
+      "id": "s2_rohre",
+      "text": {
+        "de": "Die Wärme fließt irgendwohin ab. Folg den alten Quellrohren unter dem Dorf.",
+        "en": "The heat is draining away somewhere. Follow the old spring pipes beneath the village."
+      },
+      "objectives": [
+        {
+          "id": "o_keller",
+          "kind": "reach",
+          "target": "Quellrohr_Keller",
+          "marker": "Quellrohr_Keller",
+          "text": {
+            "de": "Steig in den Rohrkeller unter dem Quellbad",
+            "en": "Climb into the pipe cellar under the baths"
+          }
+        },
+        {
+          "id": "o_horchen",
+          "kind": "custom",
+          "target": "Rohre_Abhorchen",
+          "text": {
+            "de": "Horch die Rohre ab (Lauschen), wohin das Rauschen fließt",
+            "en": "Listen to the pipes to hear where the rushing goes"
+          }
+        },
+        {
+          "id": "o_hang",
+          "kind": "reach",
+          "target": "Grubenweg",
+          "marker": "Grubenweg",
+          "text": {
+            "de": "Folg der Spur bis zum Grubenhang",
+            "en": "Follow the trail to the mine slope"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_bericht"
+        }
+      ]
+    },
+    {
+      "id": "s3_bericht",
+      "text": {
+        "de": "Die Rohre führen in die Alte Mine. Dort zieht etwas die Wärme ab. Und der Rauch kommt von dort.",
+        "en": "The pipes lead into the Old Mine. Something there is drawing off the heat. And the smoke comes from there."
+      },
+      "objectives": [
+        {
+          "id": "o_bericht",
+          "kind": "dialogue",
+          "target": "D_N122_Frieda_Bericht",
+          "marker": "NPC_Frieda",
+          "text": {
+            "de": "Erzähl Frieda, was du gefunden hast",
+            "en": "Tell Frieda what you found"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 20,
+    "items": [
+      "Kodex_Quellen"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,18 @@
+# N123 – Rückgabe. Entscheidung: Liebesbrief zeigen (Hedda und Ole backen zusammen) oder schweigen.
+===
+[set SpeakerName.Hedda "Hedda"]
+===
+[event emotion `happy`]
+Hedda: Mein Rezept! Wo war es?
+  * Kalle hat es als Unterlage für seine Steine genommen.
+    Hedda: Unter den Steinen! Dieser kleine Hallkopf. Er kriegt trotzdem eine Schnecke. Zwei.
+Hedda: Und Ole? Hat er's zugegeben?
+  * Ole hat eine Abschrift. Von deiner Oma an seinen Opa. Schau auf die Rückseite.
+    [set flag.Hedda_Ole_Letter true]
+    Hedda: Auf die ...
+    [event emotion `soft`]
+    Hedda: Mein lieber Hinrich, wenn du das backst, denk an mich. Deine Greta.
+    Hedda: Oma. Du alte Geheimniskrämerin.
+    Hedda: Na gut. Dann backen wir dieses Jahr beim Pfannkuchenfest zusammen. Ole und ich. Ein Stand. Und wehe, er wirft was.
+  * Ole war es nicht. Er ist unschuldig.
+    Hedda: Hm. Dann schulde ich ihm wohl eine Schnecke. Eine kleine.

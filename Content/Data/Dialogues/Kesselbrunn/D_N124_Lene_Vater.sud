@@ -1,0 +1,18 @@
+# N124 – Kuno Hartmann wacht auf. Lene findet ihn. Danach wird er Steiger.
+===
+[set SpeakerName.Lene "Lene"]
+[set SpeakerName.Kuno "Kuno Hartmann"]
+===
+[event emotion `sad`]
+Kuno: Wo ... Wie lange war ich ... Meine Hände tun weh.
+Lene: PAPA!
+[event camera `close`]
+Kuno: Lene? Lenchen? Was machst du hier oben? Es ist ... es ist Herbst? Es war doch gerade noch Frühling.
+Lene: Ich hab deine Lampe geputzt. Jeden Abend. Du musst sie jetzt anmachen.
+[event emotion `soft`]
+Kuno: Jeden Abend? ... Komm her. Komm auf die Schultern. Wie früher.
+  * (Still danebenstehen)
+    Kuno: Danke. Wer auch immer du bist. Danke.
+  * Sie war jeden Tag am Hang und hat nach Ihnen gerufen.
+    Kuno: Ich hab's gehört. Glaub ich. Wie durch Watte. Ich konnte nicht aufhören zu hämmern.
+Lene: Siehst du, ich hab gesagt, die verspricht es richtig. Nicht wie Erwachsene.

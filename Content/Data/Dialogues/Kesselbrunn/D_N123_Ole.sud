@@ -1,0 +1,15 @@
+# N123 – Ole Butterfass, Pfannkuchenbäcker in Uferlicht. Wettet um alles. Hat eine Abschrift, nicht das Original.
+===
+[set SpeakerName.Ole "Ole Butterfass"]
+===
+Ole: Na, Akademie! Pfannkuchen? Ich wette, du fängst ihn nicht. Hoch damit!
+  * Hedda sagt, du hast ihr Rezept gestohlen.
+    [event emotion `surprised`]
+    Ole: Gestohlen? Ich? Das Zimtschnecken-Rezept?
+    Ole: ... Ich hab es. Aber ich hab es nicht gestohlen. Ich hab es geerbt.
+  * (Den Pfannkuchen fangen)
+    Ole: Gefangen! Gut. Wer fängt, darf fragen. Also frag.
+    Ole: Ach, wegen Hedda. Ich hab's mir gedacht. Wartet, ich hol was.
+Ole: Hier. Eine Abschrift, so alt wie ich. Von Heddas Oma, Greta. An meinen Opa. Die beiden haben sich mal sehr gemocht.
+Ole: Schau auf die Rückseite. Aber nicht weitersagen. Na gut, sag's weiter. Ich wette, Hedda weiß es nicht.
+Ole: Ihr Original hab ich nie gesehen. Wenn es weg ist, such da, wo Kinder Sachen verschleppen. Unter Steinen. Kinder lieben Steine.

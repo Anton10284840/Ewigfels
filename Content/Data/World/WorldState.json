@@ -87,6 +87,14 @@
     "Wurzelvater_Decided": "N115: Wurzelvater gefällt oder geheilt",
     "Wurzelvater_Healed": "N115: Wurzelvater geheilt",
     "Moosbock_Tamed": "N116: Moosbock ist Reittier",
+    "Waisenhaus_Feier": "N121: Willkommensfeier mit dem Ersparten der Kinder (Jupp spielt Benefiz)",
+    "Hedda_Ole_Letter": "N123: Hedda hat den Liebesbrief der Großeltern gesehen (Doppelstand S112)",
+    "Pfennig_Confronted": "N124: Zunftmeister Pfennig öffentlich zur Rede gestellt",
+    "Egon_Decided": "N124: bei Egon Ruß entschieden (egal wie)",
+    "Egon_Redeemed": "N124: Russgrube durch Gerechtigkeit befreit (Akte + zwölf Namen)",
+    "Russgrube_Freed": "N124: Russgrube befreit (M206 kleiner Unterschied)",
+    "Schmelzer_Defeated": "N125: Schmelzer abgeschaltet oder besiegt",
+    "Ambros_Quartz": "N126: Ambros hat den summenden Quarz versteckt (Saat für M408)",
     "Tutorial_Movement": "M101: Bewegungs-Tutorial abgeschlossen",
     "Met_Lio": "M101: Lio getroffen",
     "Nym_Spoke": "M110: Nym hat zum ersten Mal gesprochen",
@@ -183,6 +191,17 @@
     "Wendeline",
     "Edwin",
     "Mauritz",
-    "Hilde"
+    "Hilde",
+    "Frieda",
+    "Fridolin",
+    "Mathilde",
+    "Hubert",
+    "Pfennig",
+    "Lene",
+    "Bastian",
+    "Kalle",
+    "Egon",
+    "Kuno",
+    "Fiete"
   ]
 }
