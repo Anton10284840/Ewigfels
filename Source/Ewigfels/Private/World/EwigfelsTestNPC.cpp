@@ -15,6 +15,7 @@ AEwigfelsTestNPC::AEwigfelsTestNPC()
 	PrimaryActorTick.bCanEverTick = true;
 	GetCapsuleComponent()->InitCapsuleSize(36.f, 88.f);
 	GetCharacterMovement()->bOrientRotationToMovement = false;
+	GetCharacterMovement()->bRunPhysicsWithNoController = true; // ohne Controller trotzdem auf den Boden fallen
 	DisplayName = LOCTEXT("Lio", "Lio");
 
 	Combat = CreateDefaultSubobject<UEwigfelsCombatComponent>(TEXT("Combat"));

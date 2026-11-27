@@ -10,6 +10,7 @@
 #include "Magic/EwigfelsSpellCasterComponent.h"
 #include "Magic/EwigfelsSpellSubsystem.h"
 #include "World/EwigfelsInteractable.h"
+#include "CanvasItem.h"
 #include "Engine/Canvas.h"
 #include "Engine/Engine.h"
 #include "Engine/Font.h"
@@ -432,10 +433,12 @@ void AEwigfelsHUD::DrawHelp(AEwigfelsCharacter* Player)
 		TEXT("Combos: Frost x3 = Gefroren, dann Hammerton (x2,5)  ·  Glut taut Eis"),
 	};
 	float Y = S(16.f);
-	DrawRect(Ink, S(10.f), S(10.f), S(760.f), S(18.f) * UE_ARRAY_COUNT(Lines) + S(14.f));
-	for (int32 i = 0; i < UE_ARRAY_COUNT(Lines); ++i)
+	DrawRect(Ink, S(10.f), S(10.f), S(760.f), S(18.f) * static_cast<float>(UE_ARRAY_COUNT(Lines)) + S(14.f));
+	bool bFirst = true;
+	for (const TCHAR* HelpLine : Lines)
 	{
-		Text(Lines[i], S(20.f), Y, i == 0 ? Gold : Soft, Small(), 1.f);
+		Text(HelpLine, S(20.f), Y, bFirst ? Gold : Soft, Small(), 1.f);
+		bFirst = false;
 		Y += S(18.f);
 	}
 }

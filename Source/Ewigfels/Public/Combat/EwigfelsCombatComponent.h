@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Engine/NetSerialization.h"
 #include "Combat/EwigfelsCombatTypes.h"
 #include "EwigfelsCombatComponent.generated.h"
 
@@ -87,7 +88,7 @@ public:
 	int32 GetStatusStacks(FName StatusId) const;
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Combat")
-	const TArray<FEwigfelsActiveStatus>& GetActiveStatuses() const { return ActiveStatuses; }
+	TArray<FEwigfelsActiveStatus> GetActiveStatuses() const { return ActiveStatuses; }
 
 	/** Produkt der Bewegungs-Multiplikatoren aller Status (Gefroren = 0). */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Combat")

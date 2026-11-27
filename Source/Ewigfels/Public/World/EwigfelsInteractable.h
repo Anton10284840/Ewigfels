@@ -6,6 +6,8 @@
 #include "UObject/Interface.h"
 #include "EwigfelsInteractable.generated.h"
 
+class APawn;
+
 UINTERFACE(MinimalAPI, BlueprintType)
 class UEwigfelsInteractable : public UInterface
 {

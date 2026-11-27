@@ -74,6 +74,7 @@ void UEwigfelsPlaceholderBody::BeginPlay()
 
 	HandLight = NewObject<UPointLightComponent>(GetOwner(), TEXT("PH_HandLight"));
 	HandLight->SetupAttachment(HandR);
+	HandLight->SetMobility(EComponentMobility::Movable);
 	HandLight->SetIntensityUnits(ELightUnits::Lumens);
 	HandLight->SetIntensity(0.f);
 	HandLight->SetAttenuationRadius(300.f);

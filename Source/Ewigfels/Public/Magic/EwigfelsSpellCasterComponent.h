@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Engine/NetSerialization.h"
 #include "Combat/EwigfelsCombatTypes.h"
 #include "Magic/EwigfelsSpellTypes.h"
 #include "EwigfelsSpellCasterComponent.generated.h"
@@ -145,7 +146,7 @@ public:
 	float GetMaxAtem() const { return MaxAtem; }
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
-	const TArray<FName>& GetLoadout() const { return Loadout; }
+	TArray<FName> GetLoadout() const { return Loadout; }
 
 	/** Restzeit in s bis die Weise wieder geht (0 = bereit). */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
@@ -158,7 +159,7 @@ public:
 	bool IsCasting() const;
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
-	const FEwigfelsCastState& GetCastState() const { return CastState; }
+	FEwigfelsCastState GetCastState() const { return CastState; }
 
 	/** Fingerspitze (bzw. Mitte beider Hände), aus der die Weise kommt. */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
@@ -167,7 +168,7 @@ public:
 	const FEwigfelsSpellDef* FindSpellDef(FName SpellId) const;
 
 	/** Kettenglied für die nächste Wirkung dieser Weise (rein rechnerisch, für Tests öffentlich). */
-	static uint8 NextChainIndex(const FEwigfelsSpellDef& Spell, FName LastSpell, uint8 LastIndex, float LastReleaseTime, float Now);
+	static uint8 NextChainIndex(const FEwigfelsSpellDef& Spell, FName LastSpell, uint8 LastIndex, float LastReleaseTime, float NowTime);
 
 	/** Parade-Entscheid: true = innerhalb des Fensters seit dem Hochnehmen. */
 	static bool IsWithinParryWindow(float ShieldUpTime, float Now, float Window) { return Now - ShieldUpTime <= Window; }

@@ -37,7 +37,7 @@ public:
 
 	/** Start-Belegung der Schnellwahl ("loadout" in den JSON-Dateien). */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
-	const TArray<FName>& GetDefaultLoadout() const { return DefaultLoadout; }
+	TArray<FName> GetDefaultLoadout() const { return DefaultLoadout; }
 
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Magic")
 	TArray<FName> GetAllSpellIds() const;

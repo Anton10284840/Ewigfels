@@ -347,7 +347,19 @@ void AEwigfelsCharacter::StartDodge(const FVector& Direction)
 bool AEwigfelsCharacter::IsDodging() const
 {
 	const UCharacterMovementComponent* Move = GetCharacterMovement();
-	return Move && Move->GetRootMotionSource(DodgeSourceName).IsValid();
+	if (!Move)
+	{
+		return false;
+	}
+	// GetRootMotionSource ist nicht const, darum selbst suchen
+	for (const TSharedPtr<FRootMotionSource>& Source : Move->CurrentRootMotion.RootMotionSources)
+	{
+		if (Source.IsValid() && Source->InstanceName == DodgeSourceName)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void AEwigfelsCharacter::InputCastBasic()

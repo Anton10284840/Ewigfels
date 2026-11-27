@@ -88,8 +88,8 @@ bool FEwigfelsSpellParseTest::RunTest(const FString& Parameters)
 	if (Spells.Num() == 1)
 	{
 		const FEwigfelsSpellDef& S = Spells[0];
-		TestEqual(TEXT("Id"), S.Id, FName(TEXT("probe")));
-		TestEqual(TEXT("Katalog-Id"), S.CatalogId, FName(TEXT("K99")));
+		TestTrue(TEXT("Id"), S.Id == FName(TEXT("probe")));
+		TestTrue(TEXT("Katalog-Id"), S.CatalogId == FName(TEXT("K99")));
 		TestEqual(TEXT("Akkord"), S.Chord.Num(), 3);
 		TestTrue(TEXT("zweihändig"), S.bTwoHanded);
 		TestEqual(TEXT("Kette"), S.Delivery.Chain, 3);
@@ -252,19 +252,19 @@ bool FEwigfelsCombatStatusTest::RunTest(const FString& Parameters)
 	Info.Amount = 20.f;
 	Info.Element = TEXT("Glut");
 	Info.Instigator = Player->GetOwner();
-	TestEqual(TEXT("Treffer"), Target->ApplyDamage(Info), EEwigfelsHitResult::Hit);
+	TestEqual(TEXT("Treffer"), static_cast<int32>(Target->ApplyDamage(Info)), static_cast<int32>(EEwigfelsHitResult::Hit));
 	TestEqual(TEXT("Glut-Schwäche ×1,5"), Target->GetHealth(), 70.f);
 
 	Target->SetInvulnerableFor(1.f);
-	TestEqual(TEXT("unverwundbar beim Ausweichen"), Target->ApplyDamage(Info), EEwigfelsHitResult::Ignored);
+	TestEqual(TEXT("unverwundbar beim Ausweichen"), static_cast<int32>(Target->ApplyDamage(Info)), static_cast<int32>(EEwigfelsHitResult::Ignored));
 	Target->ResetCombatState();
 	TestEqual(TEXT("Reset füllt Leben"), Target->GetHealth(), 100.f);
 
 	Info.Amount = 500.f;
 	Info.Element = NAME_None;
-	TestEqual(TEXT("tödlich"), Target->ApplyDamage(Info), EEwigfelsHitResult::Killed);
+	TestEqual(TEXT("tödlich"), static_cast<int32>(Target->ApplyDamage(Info)), static_cast<int32>(EEwigfelsHitResult::Killed));
 	TestTrue(TEXT("tot"), Target->IsDead());
-	TestEqual(TEXT("Tote nehmen keinen Schaden"), Target->ApplyDamage(Info), EEwigfelsHitResult::Ignored);
+	TestEqual(TEXT("Tote nehmen keinen Schaden"), static_cast<int32>(Target->ApplyDamage(Info)), static_cast<int32>(EEwigfelsHitResult::Ignored));
 
 	// Angriffsplätze: max. 2 Nahkämpfer pro Ziel
 	UEwigfelsCombatDirector* Director = Game.World()->GetSubsystem<UEwigfelsCombatDirector>();
@@ -310,11 +310,11 @@ bool FEwigfelsDialogueCameraTest::RunTest(const FString& Parameters)
 	TestEqual(TEXT("Totale = 24 mm"), Focal, 24.f);
 
 	FEwigfelsDialogueLine Line;
-	TestEqual(TEXT("erste Zeile = Totale"), UEwigfelsDialogueCameraComponent::ChooseShot(Line, true), EEwigfelsDialogueShot::Wide);
+	TestEqual(TEXT("erste Zeile = Totale"), static_cast<int32>(UEwigfelsDialogueCameraComponent::ChooseShot(Line, true)), static_cast<int32>(EEwigfelsDialogueShot::Wide));
 	Line.Intensity = 0.85f;
-	TestEqual(TEXT("starke Emotion = Close-up"), UEwigfelsDialogueCameraComponent::ChooseShot(Line, false), EEwigfelsDialogueShot::CloseUp);
+	TestEqual(TEXT("starke Emotion = Close-up"), static_cast<int32>(UEwigfelsDialogueCameraComponent::ChooseShot(Line, false)), static_cast<int32>(EEwigfelsDialogueShot::CloseUp));
 	Line.Camera = TEXT("wide");
-	TestEqual(TEXT("Hinweis im Dialog gewinnt"), UEwigfelsDialogueCameraComponent::ChooseShot(Line, false), EEwigfelsDialogueShot::Wide);
+	TestEqual(TEXT("Hinweis im Dialog gewinnt"), static_cast<int32>(UEwigfelsDialogueCameraComponent::ChooseShot(Line, false)), static_cast<int32>(EEwigfelsDialogueShot::Wide));
 	return true;
 }
 

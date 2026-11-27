@@ -107,10 +107,12 @@ AEwigfelsTestArena::AEwigfelsTestArena()
 
 	// Deckung: zerbrochene Mauerstücke (Sichtlinien für den Fluchsänger)
 	const FVector CoverSpots[] = { {900.f, 700.f, 0.f}, {1300.f, -600.f, 0.f}, {600.f, -1500.f, 0.f}, {-800.f, 1400.f, 0.f}, {1700.f, 200.f, 0.f} };
-	for (int32 i = 0; i < UE_ARRAY_COUNT(CoverSpots); ++i)
+	int32 CoverIndex = 0;
+	for (const FVector& Spot : CoverSpots)
 	{
-		const FRotator Rot(0.f, 25.f * i + 10.f, 0.f);
-		Cover.Add(MakeMesh(*FString::Printf(TEXT("Cover_%d"), i), CubeMesh.Object, CoverSpots[i] + FVector(0.f, 0.f, 75.f), FVector(2.6f, 0.6f, 1.5f), Rot));
+		const FRotator Rot(0.f, 25.f * CoverIndex + 10.f, 0.f);
+		Cover.Add(MakeMesh(*FString::Printf(TEXT("Cover_%d"), CoverIndex), CubeMesh.Object, Spot + FVector(0.f, 0.f, 75.f), FVector(2.6f, 0.6f, 1.5f), Rot));
+		++CoverIndex;
 	}
 
 	// Licht: goldene Stunde (ART_BIBLE §4), Sonne tief im Westen

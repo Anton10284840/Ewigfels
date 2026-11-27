@@ -243,6 +243,7 @@ AEwigfelsSpellFlash::AEwigfelsSpellFlash()
 
 	Light = CreateDefaultSubobject<UPointLightComponent>(TEXT("Light"));
 	Light->SetupAttachment(Mesh);
+	Light->SetMobility(EComponentMobility::Movable);
 	Light->SetCastShadows(false);
 	Light->SetIntensityUnits(ELightUnits::Lumens);
 }

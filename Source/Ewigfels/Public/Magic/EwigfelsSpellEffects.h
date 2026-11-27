@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Magic/EwigfelsSpellTypes.h"
 
+class AActor;
 class UEwigfelsCombatComponent;
 
 /** Ein Treffer einer Weise auf ein Ziel. */

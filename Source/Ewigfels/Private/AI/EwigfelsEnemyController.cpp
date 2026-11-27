@@ -184,7 +184,14 @@ void AEwigfelsEnemyController::SteerTowards(const FVector& Destination, float Sc
 	UNavigationSystemV1* Nav = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
 	if (Nav && Nav->GetDefaultNavDataInstance(FNavigationSystem::DontCreate))
 	{
-		MoveToLocation(Destination, 60.f, true, true, true, true);
+		// Pfad nur neu anfordern, wenn das Ziel spürbar gewandert ist (sonst ruckelt die Wegverfolgung)
+		const UPathFollowingComponent* Path = GetPathFollowingComponent();
+		const bool bFollowing = Path && Path->GetStatus() == EPathFollowingStatus::Moving;
+		if (!bFollowing || FVector::DistSquared2D(Destination, LastMoveGoal) > FMath::Square(120.f))
+		{
+			LastMoveGoal = Destination;
+			MoveToLocation(Destination, 60.f, true, true, true, true);
+		}
 		return;
 	}
 	SteerDirection(Destination - Self->GetActorLocation(), Scale);

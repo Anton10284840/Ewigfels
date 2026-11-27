@@ -18,7 +18,7 @@
 
 namespace
 {
-	FText ReadLocText(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
+	FText ReadCreatureLocText(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
 	{
 		const TSharedPtr<FJsonValue> Value = Obj->TryGetField(Field);
 		if (!Value.IsValid())
@@ -43,13 +43,13 @@ namespace
 		return FText::GetEmpty();
 	}
 
-	float Num(const TSharedPtr<FJsonObject>& Obj, const FString& Field, float Default)
+	float CreatureNum(const TSharedPtr<FJsonObject>& Obj, const FString& Field, float Default)
 	{
 		double V = 0.0;
 		return Obj->TryGetNumberField(Field, V) ? static_cast<float>(V) : Default;
 	}
 
-	void Color(const TSharedPtr<FJsonObject>& Obj, const FString& Field, FLinearColor& Out, const FString& Where, TArray<FString>& Errors)
+	void CreatureColor(const TSharedPtr<FJsonObject>& Obj, const FString& Field, FLinearColor& Out, const FString& Where, TArray<FString>& Errors)
 	{
 		FString Hex;
 		if (Obj->TryGetStringField(Field, Hex) && !EwigfelsSpells::ParseHexColor(Hex, Out))
@@ -96,7 +96,7 @@ bool EwigfelsCreatures::ParseCreatureFile(const FString& JsonText, const FString
 			continue;
 		}
 		Def.Id = FName(*S);
-		Def.Name = ReadLocText(C, TEXT("name"));
+		Def.Name = ReadCreatureLocText(C, TEXT("name"));
 		if (Def.Name.IsEmpty())
 		{
 			Def.Name = FText::FromName(Def.Id);
@@ -109,14 +109,14 @@ bool EwigfelsCreatures::ParseCreatureFile(const FString& JsonText, const FString
 			else if (S == TEXT("dummy"))  { Def.Behavior = EEwigfelsCreatureBehavior::Dummy; }
 			else { OutErrors.Add(FString::Printf(TEXT("%s: unbekanntes behavior '%s'"), *Where, *S)); }
 		}
-		Def.Health = FMath::Max(1.f, Num(C, TEXT("health"), Def.Health));
-		Def.WalkSpeed = Num(C, TEXT("walk_speed"), Def.WalkSpeed);
-		Def.RunSpeed = Num(C, TEXT("run_speed"), Def.RunSpeed);
-		Def.AggroRadius = Num(C, TEXT("aggro_radius"), Def.AggroRadius);
-		Def.AttackRange = Num(C, TEXT("attack_range"), Def.AttackRange);
-		Def.PreferredRange = Num(C, TEXT("preferred_range"), Def.PreferredRange);
-		Def.FleeRange = Num(C, TEXT("flee_range"), Def.FleeRange);
-		Def.StaggerThreshold = Num(C, TEXT("stagger_threshold"), Def.StaggerThreshold);
+		Def.Health = FMath::Max(1.f, CreatureNum(C, TEXT("health"), Def.Health));
+		Def.WalkSpeed = CreatureNum(C, TEXT("walk_speed"), Def.WalkSpeed);
+		Def.RunSpeed = CreatureNum(C, TEXT("run_speed"), Def.RunSpeed);
+		Def.AggroRadius = CreatureNum(C, TEXT("aggro_radius"), Def.AggroRadius);
+		Def.AttackRange = CreatureNum(C, TEXT("attack_range"), Def.AttackRange);
+		Def.PreferredRange = CreatureNum(C, TEXT("preferred_range"), Def.PreferredRange);
+		Def.FleeRange = CreatureNum(C, TEXT("flee_range"), Def.FleeRange);
+		Def.StaggerThreshold = CreatureNum(C, TEXT("stagger_threshold"), Def.StaggerThreshold);
 		TArray<FString> Spells;
 		C->TryGetStringArrayField(TEXT("spells"), Spells);
 		for (const FString& Sp : Spells)
@@ -138,10 +138,10 @@ bool EwigfelsCreatures::ParseCreatureFile(const FString& JsonText, const FString
 		const TSharedPtr<FJsonObject>* Look = nullptr;
 		if (C->TryGetObjectField(TEXT("look"), Look) && Look)
 		{
-			Color(*Look, TEXT("body"), Def.Look.Body, Where, OutErrors);
-			Color(*Look, TEXT("accent"), Def.Look.Accent, Where, OutErrors);
-			Color(*Look, TEXT("eyes"), Def.Look.Eyes, Where, OutErrors);
-			Def.Look.Height = FMath::Clamp(Num(*Look, TEXT("height"), 1.f), 0.4f, 3.f);
+			CreatureColor(*Look, TEXT("body"), Def.Look.Body, Where, OutErrors);
+			CreatureColor(*Look, TEXT("accent"), Def.Look.Accent, Where, OutErrors);
+			CreatureColor(*Look, TEXT("eyes"), Def.Look.Eyes, Where, OutErrors);
+			Def.Look.Height = FMath::Clamp(CreatureNum(*Look, TEXT("height"), 1.f), 0.4f, 3.f);
 			bool bHood = true;
 			if ((*Look)->TryGetBoolField(TEXT("hood"), bHood)) { Def.Look.bHood = bHood; }
 			if ((*Look)->TryGetStringField(TEXT("mesh"), S)) { Def.Look.Mesh = FSoftObjectPath(S); }

@@ -43,6 +43,7 @@ AEwigfelsSpellProjectile::AEwigfelsSpellProjectile()
 
 	Light = CreateDefaultSubobject<UPointLightComponent>(TEXT("Light"));
 	Light->SetupAttachment(Collision);
+	Light->SetMobility(EComponentMobility::Movable);
 	Light->SetIntensityUnits(ELightUnits::Lumens);
 	Light->SetIntensity(3000.f);
 	Light->SetAttenuationRadius(450.f);

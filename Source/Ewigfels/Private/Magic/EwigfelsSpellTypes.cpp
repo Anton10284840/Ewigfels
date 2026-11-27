@@ -12,7 +12,7 @@
 
 namespace
 {
-	struct FParseContext
+	struct FSpellParseContext
 	{
 		FString Source;
 		TArray<FString>& Errors;
@@ -24,7 +24,7 @@ namespace
 	};
 
 	/** "Text" oder {"de": "...", "en": "..."}; Rückfall Deutsch (gleiche Regel wie Quests). */
-	FText ReadLocText(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
+	FText ReadSpellLocText(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
 	{
 		const TSharedPtr<FJsonValue> Value = Obj->TryGetField(Field);
 		if (!Value.IsValid())
@@ -49,7 +49,7 @@ namespace
 		return FText::GetEmpty();
 	}
 
-	FName ReadName(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
+	FName ReadSpellName(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
 	{
 		FString S;
 		return Obj->TryGetStringField(Field, S) && !S.IsEmpty() ? FName(*S) : NAME_None;
@@ -91,7 +91,7 @@ namespace
 		return Out;
 	}
 
-	const TArray<TSharedPtr<FJsonValue>>& ReadArray(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
+	const TArray<TSharedPtr<FJsonValue>>& ReadSpellArray(const TSharedPtr<FJsonObject>& Obj, const FString& Field)
 	{
 		static const TArray<TSharedPtr<FJsonValue>> Empty;
 		const TArray<TSharedPtr<FJsonValue>>* Arr = nullptr;
@@ -140,10 +140,10 @@ namespace
 		return false;
 	}
 
-	void ReadEffects(const TSharedPtr<FJsonObject>& Obj, const FString& Field, const FString& Where,
-		const FParseContext& Ctx, TArray<FEwigfelsSpellEffect>& Out)
+	void ReadSpellEffects(const TSharedPtr<FJsonObject>& Obj, const FString& Field, const FString& Where,
+		const FSpellParseContext& Ctx, TArray<FEwigfelsSpellEffect>& Out)
 	{
-		const TArray<TSharedPtr<FJsonValue>>& Arr = ReadArray(Obj, Field);
+		const TArray<TSharedPtr<FJsonValue>>& Arr = ReadSpellArray(Obj, Field);
 		for (int32 i = 0; i < Arr.Num(); ++i)
 		{
 			const FString At = FString::Printf(TEXT("%s.%s[%d]"), *Where, *Field, i);
@@ -162,14 +162,14 @@ namespace
 				continue;
 			}
 			Effect.Amount = ReadFloat(E, TEXT("amount"), 0.f);
-			Effect.Element = ReadName(E, TEXT("element"));
-			Effect.Status = ReadName(E, TEXT("status"));
+			Effect.Element = ReadSpellName(E, TEXT("element"));
+			Effect.Status = ReadSpellName(E, TEXT("status"));
 			Effect.Duration = ReadFloat(E, TEXT("duration"), 0.f);
 			Effect.Up = ReadFloat(E, TEXT("up"), 0.f);
 			Effect.bChainEndOnly = ReadBool(E, TEXT("chain_end_only"), false);
 			if (const TSharedPtr<FJsonObject> Bonus = ReadObject(E, TEXT("bonus")))
 			{
-				Effect.Bonus.IfStatus = ReadName(Bonus, TEXT("if_status"));
+				Effect.Bonus.IfStatus = ReadSpellName(Bonus, TEXT("if_status"));
 				Effect.Bonus.Multiplier = ReadFloat(Bonus, TEXT("mult"), 1.f);
 				Effect.Bonus.bConsume = ReadBool(Bonus, TEXT("consume"), false);
 			}
@@ -193,38 +193,38 @@ namespace
 		return Known;
 	}
 
-	bool ParseSpell(const TSharedPtr<FJsonObject>& S, const FString& Where, const FParseContext& Ctx, FEwigfelsSpellDef& Out)
+	bool ParseSpell(const TSharedPtr<FJsonObject>& S, const FString& Where, const FSpellParseContext& Ctx, FEwigfelsSpellDef& Out)
 	{
 		const int32 ErrorsBefore = Ctx.Errors.Num();
 		Out = FEwigfelsSpellDef();
-		Out.Id = ReadName(S, TEXT("id"));
+		Out.Id = ReadSpellName(S, TEXT("id"));
 		if (Out.Id.IsNone())
 		{
 			Ctx.Error(Where, TEXT("id fehlt"));
 			return false;
 		}
-		Out.Name = ReadLocText(S, TEXT("name"));
+		Out.Name = ReadSpellLocText(S, TEXT("name"));
 		if (Out.Name.IsEmpty())
 		{
 			Out.Name = FText::FromName(Out.Id);
 		}
-		Out.Description = ReadLocText(S, TEXT("description"));
-		Out.Kind = ReadName(S, TEXT("kind"));
+		Out.Description = ReadSpellLocText(S, TEXT("description"));
+		Out.Kind = ReadSpellName(S, TEXT("kind"));
 		if (Out.Kind.IsNone())
 		{
 			Out.Kind = TEXT("kern");
 		}
-		Out.CatalogId = ReadName(S, TEXT("catalog_id"));
-		Out.School = ReadName(S, TEXT("school"));
+		Out.CatalogId = ReadSpellName(S, TEXT("catalog_id"));
+		Out.School = ReadSpellName(S, TEXT("school"));
 		Out.Chord = ReadNameArray(S, TEXT("chord"));
-		Out.Unlock = ReadName(S, TEXT("unlock"));
+		Out.Unlock = ReadSpellName(S, TEXT("unlock"));
 		Out.Cost = FMath::Max(0.f, ReadFloat(S, TEXT("cost"), 0.f));
 		Out.Cooldown = FMath::Max(0.f, ReadFloat(S, TEXT("cooldown"), 0.f));
 		Out.CastTime = FMath::Max(0.f, ReadFloat(S, TEXT("cast_time"), 0.f));
 		Out.Recovery = FMath::Max(0.f, ReadFloat(S, TEXT("recovery"), 0.2f));
 		FString Hands;
 		Out.bTwoHanded = S->TryGetStringField(TEXT("hands"), Hands) && Hands == TEXT("two");
-		Out.CounterSpell = ReadName(S, TEXT("counter_spell"));
+		Out.CounterSpell = ReadSpellName(S, TEXT("counter_spell"));
 
 		const TSharedPtr<FJsonObject> D = ReadObject(S, TEXT("delivery"));
 		if (!D)
@@ -253,8 +253,8 @@ namespace
 		Del.BlockAtemPerDamage = FMath::Max(0.f, ReadFloat(D, TEXT("block_atem_per_damage"), Del.BlockAtemPerDamage));
 		Del.BlockDamageMultiplier = FMath::Clamp(ReadFloat(D, TEXT("block_damage_mult"), Del.BlockDamageMultiplier), 0.f, 1.f);
 
-		ReadEffects(S, TEXT("effects"), Where, Ctx, Out.Effects);
-		ReadEffects(S, TEXT("on_parry"), Where, Ctx, Out.OnParry);
+		ReadSpellEffects(S, TEXT("effects"), Where, Ctx, Out.Effects);
+		ReadSpellEffects(S, TEXT("on_parry"), Where, Ctx, Out.OnParry);
 
 		if (const TSharedPtr<FJsonObject> V = ReadObject(S, TEXT("vfx")))
 		{
@@ -264,7 +264,7 @@ namespace
 				Ctx.Error(Where + TEXT(".vfx.color"), FString::Printf(TEXT("'%s' ist kein #RRGGBB"), *Hex));
 			}
 			Out.Visual.Scale = ReadFloat(V, TEXT("scale"), 1.f);
-			const FName Shape = ReadName(V, TEXT("shape"));
+			const FName Shape = ReadSpellName(V, TEXT("shape"));
 			if (!Shape.IsNone())
 			{
 				Out.Visual.Shape = Shape;
@@ -292,16 +292,16 @@ namespace
 		return Ctx.Errors.Num() == ErrorsBefore;
 	}
 
-	bool ParseStatus(const TSharedPtr<FJsonObject>& S, const FString& Where, const FParseContext& Ctx, FEwigfelsStatusDef& Out)
+	bool ParseStatus(const TSharedPtr<FJsonObject>& S, const FString& Where, const FSpellParseContext& Ctx, FEwigfelsStatusDef& Out)
 	{
 		Out = FEwigfelsStatusDef();
-		Out.Id = ReadName(S, TEXT("id"));
+		Out.Id = ReadSpellName(S, TEXT("id"));
 		if (Out.Id.IsNone())
 		{
 			Ctx.Error(Where, TEXT("id fehlt"));
 			return false;
 		}
-		Out.Name = ReadLocText(S, TEXT("name"));
+		Out.Name = ReadSpellLocText(S, TEXT("name"));
 		Out.Duration = FMath::Max(0.05f, ReadFloat(S, TEXT("duration"), Out.Duration));
 		Out.DamagePerSecond = ReadFloat(S, TEXT("damage_per_second"), 0.f);
 		Out.MoveSpeedMultiplier = FMath::Max(0.f, ReadFloat(S, TEXT("move_speed_mult"), 1.f));
@@ -310,7 +310,7 @@ namespace
 		Out.bStopsActions = ReadBool(S, TEXT("stops_actions"), false);
 		Out.Cancels = ReadNameArray(S, TEXT("cancels"));
 		Out.EscalateAt = FMath::Max(0, ReadInt(S, TEXT("escalate_at"), 0));
-		Out.EscalateTo = ReadName(S, TEXT("escalate_to"));
+		Out.EscalateTo = ReadSpellName(S, TEXT("escalate_to"));
 		FString Hex;
 		if (S->TryGetStringField(TEXT("color"), Hex) && !EwigfelsSpells::ParseHexColor(Hex, Out.Color))
 		{
@@ -360,7 +360,7 @@ bool EwigfelsSpells::ParseSpellFile(const FString& JsonText, const FString& Sour
 	TArray<FEwigfelsSpellDef>& OutSpells, TArray<FEwigfelsStatusDef>& OutStatuses, TArray<FName>& OutLoadout,
 	TArray<FString>& OutErrors)
 {
-	const FParseContext Ctx{ SourceName, OutErrors };
+	const FSpellParseContext Ctx{ SourceName, OutErrors };
 	TSharedPtr<FJsonObject> Root;
 	const TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonText);
 	if (!FJsonSerializer::Deserialize(Reader, Root) || !Root.IsValid())
@@ -369,7 +369,7 @@ bool EwigfelsSpells::ParseSpellFile(const FString& JsonText, const FString& Sour
 		return false;
 	}
 
-	const TArray<TSharedPtr<FJsonValue>>& Spells = ReadArray(Root, TEXT("spells"));
+	const TArray<TSharedPtr<FJsonValue>>& Spells = ReadSpellArray(Root, TEXT("spells"));
 	for (int32 i = 0; i < Spells.Num(); ++i)
 	{
 		const FString Where = FString::Printf(TEXT("spells[%d]"), i);
@@ -386,7 +386,7 @@ bool EwigfelsSpells::ParseSpellFile(const FString& JsonText, const FString& Sour
 		}
 	}
 
-	const TArray<TSharedPtr<FJsonValue>>& Statuses = ReadArray(Root, TEXT("statuses"));
+	const TArray<TSharedPtr<FJsonValue>>& Statuses = ReadSpellArray(Root, TEXT("statuses"));
 	for (int32 i = 0; i < Statuses.Num(); ++i)
 	{
 		const FString Where = FString::Printf(TEXT("statuses[%d]"), i);

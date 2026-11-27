@@ -51,7 +51,7 @@ private:
 	void DrawHelp(AEwigfelsCharacter* Player);
 
 	void Bar(float X, float Y, float W, float H, float Fraction, const FLinearColor& Fill, const FLinearColor& Back, float Ghost = -1.f);
-	void Text(const FString& S, float X, float Y, const FLinearColor& Color, UFont* Font, float Scale = 1.f, bool bCenter = false);
+	void Text(const FString& Str, float X, float Y, const FLinearColor& Color, UFont* Font, float Scale = 1.f, bool bCenter = false);
 	float S(float V) const { return V * UIScale; }
 
 	TArray<FFloatingNumber> Numbers;

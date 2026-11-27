@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Engine/NetSerialization.h"
 #include "EwigfelsSpellProjectile.generated.h"
 
 class UNiagaraComponent;

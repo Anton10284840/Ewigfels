@@ -9,7 +9,7 @@
  * Datentypen der Weisen (Zauber). Eine Weise = Auslieferung (wie sie ins Ziel kommt) + Liste von Effekten (was sie dort tut).
  * Damit sind hunderte Weisen reine Daten (Content/Data/Spells/*.json, Format: docs/SPELL_FORMAT.md).
  * Neue Auslieferungs- oder Effekt-Typen: Enum erweitern, Parser (EwigfelsSpellTypes.cpp) und Ausführung
- * (UEwigfelsSpellCasterComponent bzw. EwigfelsSpellEffects) ergänzen, validate_data.py nachziehen.
+ * (UEwigfelsSpellCasterComponent bzw. EwigfelsSpellEffects) ergänzen, Scripts/Tools/validate_combat.py nachziehen.
  */
 
 UENUM(BlueprintType)

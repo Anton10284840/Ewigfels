@@ -64,4 +64,5 @@ private:
 	float StrafeSign = 1.f;
 	float NextStrafeFlip = 0.f;
 	FVector Home = FVector::ZeroVector;
+	FVector LastMoveGoal = FVector(FLT_MAX);
 };

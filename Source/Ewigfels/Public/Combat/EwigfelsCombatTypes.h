@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "EwigfelsCombatTypes.generated.h"
 
+class AActor;
+
 UENUM(BlueprintType)
 enum class EEwigfelsTeam : uint8
 {
