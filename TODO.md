@@ -16,7 +16,7 @@ Legende: ✅ fertig · 🟨 läuft · ⬜ offen · 👤 = du am PC · 🤖 = Cla
 | 2 | Charakter-Editor bauen (PR #11), Gesichts-Technik entscheiden | 👤 + 🤖 | 🟨 |
 | 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) | 🤖 | ✅ |
 | 4 | Dialoge für Lio, Lehrkräfte und Mitschüler | 🤖 | ✅ |
-| 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten | 🤖 | ⬜ |
+| 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten | 🤖 | ✅ |
 | 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests | 🤖 | ⬜ |
 | 7 | Game Animation Sample einbinden (docs/PHASE3_EDITOR.md, ein Schritt pro Nachricht) | 👤 | ⬜ |
 
@@ -59,7 +59,8 @@ Geschichte und Daten (🤖, geht ohne PC):
 - ✅ Schulleben-Quests S101–S118 als JSON
 - ⬜ Region Ilsensee: Uferlicht + Stillwasser (Bewohner, Quests, Missklinger)
 - ⬜ Raunwald (Pilzhausen + Krähenhain), Kesselbrunn (+ Russgrube) ausarbeiten
-- ⬜ Gegner und Bosse Akt 1 als Daten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
+- ✅ Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
+- ⬜ Kampfwerte (Leben, Tempo, Weisen) der Akt-1-Gegner im Phase-3-Format ableiten (nach Build von Phase 3)
 - ⬜ Reittier Moosbock (Zähm-Quest)
 
 Bauen im Editor (👤 mit Anleitung):

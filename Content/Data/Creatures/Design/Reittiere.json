@@ -1,0 +1,207 @@
+{
+  "_doc": "Reittiere (docs/BESTIARIUM.md §5). stats 1–5. Beziehung 0–100: Scheu 0, Vertraut 30, Treu 60, Seelenverwandt 90 (soulbound_trick). carries = Plätze inkl. Reiter (Koop-Mitreiter).",
+  "relationship_tiers": {
+    "Scheu": 0,
+    "Vertraut": 30,
+    "Treu": 60,
+    "Seelenverwandt": 90
+  },
+  "mounts": [
+    {
+      "id": "R3_Moosbock",
+      "name": {
+        "de": "Moosbock",
+        "en": "Mossbuck"
+      },
+      "act": 1,
+      "region": "Raunwald",
+      "movement": "ground_climb",
+      "stats": {
+        "speed": 3,
+        "stamina": 4,
+        "agility": 3,
+        "courage": 4
+      },
+      "special": "Wandlauf",
+      "soulbound_trick": "Wandelnder Garten",
+      "favorite_food": "Waldmeister",
+      "dislikes": [
+        "Lärm",
+        "Feuer"
+      ],
+      "unlock": {
+        "quest": "N116"
+      },
+      "personality": "gemütlich, stur, verfressen",
+      "upgrades": [
+        "Kletterklauen",
+        "Gartentaschen",
+        "Rindenpanzer"
+      ],
+      "carries": 2
+    },
+    {
+      "id": "R5_Gischtrobbe",
+      "name": {
+        "de": "Gischtrobbe",
+        "en": "Spray Seal"
+      },
+      "act": 2,
+      "region": "Ilsensee",
+      "movement": "water_dive",
+      "stats": {
+        "speed": 4,
+        "stamina": 3,
+        "agility": 5,
+        "courage": 3
+      },
+      "special": "Wellenritt",
+      "soulbound_trick": "Sturmwarnung",
+      "favorite_food": "Ilsensee-Hering",
+      "dislikes": [
+        "Stille"
+      ],
+      "unlock": {
+        "quest": "N106"
+      },
+      "personality": "verspielt, neugierig, eifersüchtig",
+      "upgrades": [
+        "Segelflossen",
+        "Atemkiemen-Geschirr",
+        "Muschelpanzer"
+      ],
+      "carries": 2
+    },
+    {
+      "id": "R6_Glutdachs",
+      "name": {
+        "de": "Glutdachs",
+        "en": "Ember Badger"
+      },
+      "act": 2,
+      "region": "Glastiefen",
+      "movement": "ground_dig",
+      "stats": {
+        "speed": 3,
+        "stamina": 3,
+        "agility": 2,
+        "courage": 5
+      },
+      "special": "Graben",
+      "soulbound_trick": "Glutpelz",
+      "favorite_food": "Glutwurzel",
+      "dislikes": [
+        "Wasser"
+      ],
+      "unlock": {
+        "quest": "M208"
+      },
+      "personality": "mutig, beschützend, grummelig",
+      "upgrades": [
+        "Kristallkrallen",
+        "Glutgeschirr",
+        "Steinpanzer"
+      ],
+      "carries": 2
+    },
+    {
+      "id": "R1_Sturmschwinge",
+      "name": {
+        "de": "Sturmschwinge",
+        "en": "Stormwing"
+      },
+      "act": 3,
+      "region": "Weisse_Zinnen",
+      "movement": "fly",
+      "stats": {
+        "speed": 5,
+        "stamina": 3,
+        "agility": 4,
+        "courage": 4
+      },
+      "special": "Sturzflug-Boost",
+      "soulbound_trick": "Sturmruf",
+      "favorite_food": "Firnforelle",
+      "dislikes": [
+        "nasse Federn",
+        "Lärm beim Landen"
+      ],
+      "unlock": {
+        "quest": "M305"
+      },
+      "personality": "stolz, scheu, eitel",
+      "upgrades": [
+        "Sturmsattel",
+        "Federhaube",
+        "Wolkenrüstung"
+      ],
+      "carries": 2
+    },
+    {
+      "id": "R4_Duenenschreiter",
+      "name": {
+        "de": "Dünenschreiter",
+        "en": "Dune Strider"
+      },
+      "act": 3,
+      "region": "Kaelschlucht",
+      "movement": "ground_fast",
+      "stats": {
+        "speed": 5,
+        "stamina": 4,
+        "agility": 2,
+        "courage": 2
+      },
+      "special": "Sandsprint",
+      "soulbound_trick": "Sonnenschirm",
+      "favorite_food": "Dattelkäfer",
+      "dislikes": [
+        "Dunkelheit",
+        "Höhlen"
+      ],
+      "unlock": {
+        "note": "Nebenquest Oase Sela (Akt 3)"
+      },
+      "personality": "schnell, nervös, sehr treu",
+      "upgrades": [
+        "Sandschuhe",
+        "Kammgeschirr",
+        "Schuppenpanzer"
+      ],
+      "carries": 2
+    },
+    {
+      "id": "R2_Perlsegler",
+      "name": {
+        "de": "Perlsegler",
+        "en": "Pearl Glider"
+      },
+      "act": 4,
+      "region": "Treibende_Inseln",
+      "movement": "fly_glide",
+      "stats": {
+        "speed": 3,
+        "stamina": 5,
+        "agility": 3,
+        "courage": 3
+      },
+      "special": "Ewiges Gleiten",
+      "soulbound_trick": "Leuchtquaste",
+      "favorite_food": "Wolkenbeeren",
+      "dislikes": [
+        "Kälte",
+        "Eile"
+      ],
+      "unlock": {
+        "note": "Befreiung von Leerfall (Akt 4)"
+      },
+      "personality": "sanft, träumerisch, weise",
+      "upgrades": [
+        "Segelspanner",
+        "Quastenschmuck",
+        "Perlmuttrüstung"
+      ],
+      "carries": 2
+    }
+  ]
+}

@@ -161,6 +161,8 @@ Nass, Brennen, Gefroren, Betäubt, Schwebend, Verstummt (keine Weisen), Nachhall
 
 ### 5.1 Gegnertypen (30)
 
+Ausführlich (Verhalten, Fähigkeiten, Schwächen, Grusel-Regeln, 10 Gruseldorf-Herrscher, Regionsbosse, Reittiere): [BESTIARIUM.md](BESTIARIUM.md).
+
 | Gruppe | Typen |
 |---|---|
 | Stille Hand (Orden) | Novize · Schweiger (Nahkampf, verstummt Weisen) · Taktgeber (Fernkampf, synchronisiert Gruppen) · Choralist (stärkt Verbündete) · Dirigentenwache (Elite, Schild) |

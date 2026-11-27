@@ -344,10 +344,12 @@ Alle Reittiere sind eigene Erfindungen. Man zähmt sie in Quests, hält sie im *
 | # | Reittier | Bewegung | Aussehen | Besonderheit | Freischaltung |
 |---|---|---|---|---|---|
 | R1 | **Sturmschwinge** | Fliegen | Vorderkörper Schnee-Eule, Hinterkörper Luchs, Federohren, Schwanzfächer | schnellster Flieger, Sturzflug-Boost | Akt 3, Weiße Zinnen (Story) |
-| R2 | **Perlsegler** | Fliegen + Gleiten | pferdegroß, langer Hals, vier breite Hautsegel zwischen den Beinen, Fell schimmert wie Perlmutt, Leuchtquaste am Schwanz; summt beim Fliegen | gleitet ewig ohne Ausdauer, kann aber schlecht steigen; nachts leuchtet die Quaste | Akt 2, Treibende Inseln (Sidequest) |
-| R3 | **Moosbock** | Boden, Klettern | riesiger Bock mit Moospelz, Pilzen und kleinen Pflanzen auf dem Rücken, gedrehte Rindenhörner | läuft Steilwände hoch, Pflanzen auf seinem Rücken wachsen mit (Housing-Garten zum Mitnehmen) | Akt 1, Raunwald |
+| R2 | **Perlsegler** | Fliegen + Gleiten | pferdegroß, langer Hals, vier breite Hautsegel zwischen den Beinen, Fell schimmert wie Perlmutt, Leuchtquaste am Schwanz; summt beim Fliegen | gleitet ewig ohne Ausdauer, kann aber schlecht steigen; nachts leuchtet die Quaste | Akt 4, Treibende Inseln (Befreiung von Leerfall) |
+| R3 | **Moosbock** | Boden, Klettern | riesiger Bock mit Moospelz, Pilzen und kleinen Pflanzen auf dem Rücken, gedrehte Rindenhörner | läuft Steilwände hoch, Pflanzen auf seinem Rücken wachsen mit (Housing-Garten zum Mitnehmen) | Akt 1, Raunwald (Sidequest N116) |
 | R4 | **Dünenschreiter** | Boden, sehr schnell | Laufvogel, 3 m hoch, gepanzerte Schuppenbeine, Kopf mit Sonnenschirm-Kamm | schnellstes Bodentier, gräbt sich bei Sandsturm ein (Unterschlupf) | Akt 3, Kaelschlucht |
-| R5 | **Gischtrobbe** | Wasser, Tauchen | Robbe mit segelartigen Flossen | surft auf Wellen, taucht in Höhlenseen | Akt 2, Tiedmar |
-| R6 | **Glutdachs** | Boden, Graben | ponygroßer Dachs mit glimmenden Streifen im Fell, Funken bei jedem Schritt | gräbt verschüttete Gänge frei, wärmt im Schnee (kein Frieren) | Akt 4, Glastiefen |
+| R5 | **Gischtrobbe** | Wasser, Tauchen | Robbe mit segelartigen Flossen | surft auf Wellen, taucht in Höhlenseen | Akt 2, Ilsensee (Sidequest N106) |
+| R6 | **Glutdachs** | Boden, Graben | ponygroßer Dachs mit glimmenden Streifen im Fell, Funken bei jedem Schritt | gräbt verschüttete Gänge frei, wärmt im Schnee (kein Frieren) | Akt 2, Glastiefen (M208) |
+
+Persönlichkeit, Werte, Zähm-Quests, Upgrades: [BESTIARIUM §5](BESTIARIUM.md#5-reittiere-6-alle-eigene-erfindungen) (Akte am 27.11.2026 an die Regionen angepasst).
 
 Regeln: 1 Reittier aktiv, Wechsel per Pfiff-Rad (Taste halten). Jedes Reittier hat Ausdauer, Tempo, Spezialfähigkeit und eine Beziehung (füttern, putzen, gemeinsam Rennen = Bonus). Rennen: Flug-, Boden- und Wasser-Rennstrecken je Region.
