@@ -1,0 +1,12 @@
+# N122 – Die Wärme fließt in die Alte Mine. Öffnet N124/N125.
+===
+[set SpeakerName.Frieda "Frieda Dampf"]
+===
+Frieda: Und? Wohin läuft meine Wärme?
+  * In die Alte Mine. Unter der Russgrube zieht etwas sie ab.
+    [event emotion `scared`]
+    Frieda: Die Russgrube. Natürlich. Seit dem Frühjahr kommt da kein Bergmann mehr runter. Und seitdem raucht der Schornstein Tag und Nacht.
+  * Irgendwas da oben ist hungrig. Sehr hungrig.
+    Frieda: Hungrig auf Wärme? Dann soll es sich ein Bad nehmen wie jeder anständige Mensch.
+Frieda: Lenes Vater ist da oben. Kuno. Das Mädchen fragt jeden Tag, wann er wiederkommt.
+Frieda: Ich bin jetzt 28 Grad gelaunt. Und das liegt nicht an den Becken.

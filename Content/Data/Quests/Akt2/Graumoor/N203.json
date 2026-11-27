@@ -1,0 +1,160 @@
+{
+  "id": "N203",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Ilmo",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M204"
+  ],
+  "title": {
+    "de": "Bruder Ilmos Bad",
+    "en": "Brother Ilmo's Bath"
+  },
+  "summary": {
+    "de": "Seit Altwacht klebt etwas Graues an dir. Bruder Ilmo kann es abwaschen. Er braucht nur drei Dinge. Langsam erklärt.",
+    "en": "Since Altwacht something grey has clung to you. Brother Ilmo can wash it off. He only needs three things. Explained slowly."
+  },
+  "dialogues": [
+    "D_N203_Ilmo",
+    "D_N203_Irrlicht"
+  ],
+  "stages": [
+    {
+      "id": "s1_ilmo",
+      "text": {
+        "de": "Hör Ilmo zu. Er macht Pausen. Viele.",
+        "en": "Listen to Ilmo. He pauses. A lot."
+      },
+      "objectives": [
+        {
+          "id": "o_ilmo",
+          "kind": "dialogue",
+          "target": "D_N203_Ilmo",
+          "marker": "NPC_Ilmo",
+          "text": {
+            "de": "Sprich mit Bruder Ilmo in der Heilerhütte",
+            "en": "Talk to Brother Ilmo at the healer's hut"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_zutaten"
+        }
+      ]
+    },
+    {
+      "id": "s2_zutaten",
+      "text": {
+        "de": "Moorlilie, Stelzreiherfeder, ein Irrlicht im Glas.",
+        "en": "Moor lily, stilt heron feather, a will-o'-wisp in a jar."
+      },
+      "objectives": [
+        {
+          "id": "o_lilie",
+          "kind": "collect",
+          "target": "Moorlilie",
+          "text": {
+            "de": "Pflück eine Moorlilie (blüht nur im Nebel)",
+            "en": "Pick a moor lily (blooms only in fog)"
+          }
+        },
+        {
+          "id": "o_feder",
+          "kind": "collect",
+          "target": "Stelzreiherfeder",
+          "text": {
+            "de": "Find eine Stelzreiherfeder (ohne die Reiher zu stören)",
+            "en": "Find a stilt heron feather (without disturbing the herons)"
+          }
+        },
+        {
+          "id": "o_irrlicht",
+          "kind": "dialogue",
+          "target": "D_N203_Irrlicht",
+          "marker": "Irrlichtsenke",
+          "text": {
+            "de": "Fang ein Irrlicht in der Irrlichtsenke",
+            "en": "Catch a will-o'-wisp in the Wisp Hollow"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Irrlicht_Freed"
+          ],
+          "stage": "s3a_frei"
+        },
+        {
+          "stage": "s3b_bad"
+        }
+      ]
+    },
+    {
+      "id": "s3a_frei",
+      "text": {
+        "de": "Du hast das Irrlicht freigelassen. Es war ein Kind aus Moorwinkel. Ilmo nimmt ein anderes, schwächeres.",
+        "en": "You let the wisp go. It was a child from Moorwinkel. Ilmo uses another, weaker one."
+      },
+      "objectives": [
+        {
+          "id": "o_bad",
+          "kind": "custom",
+          "target": "Ilmos_Bad",
+          "marker": "Heilerhuette",
+          "text": {
+            "de": "Steig in Ilmos Moorbad",
+            "en": "Get into Ilmo's moor bath"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:NachhallLoad-5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_bad",
+      "text": {
+        "de": "Das Irrlicht leuchtet im Bad und singt ganz leise.",
+        "en": "The wisp glows in the bath and sings very quietly."
+      },
+      "objectives": [
+        {
+          "id": "o_bad2",
+          "kind": "custom",
+          "target": "Ilmos_Bad",
+          "marker": "Heilerhuette",
+          "text": {
+            "de": "Steig in Ilmos Moorbad",
+            "en": "Get into Ilmo's moor bath"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:NachhallLoad-10"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Kodex_Irrlichter"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "id": "N216",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Der Glutdachs",
+    "en": "The Ember Badger"
+  },
+  "summary": {
+    "de": "In einem eingestürzten Kael-Stollen glimmt etwas. Die Stille Hand hat ein Tier als Heizung angekettet.",
+    "en": "Something glows in a collapsed Kael shaft. The Silent Hand has chained up an animal as a heater."
+  },
+  "stages": [
+    {
+      "id": "s1_fund",
+      "text": {
+        "de": "Folg dem Glimmen in den Glutstollen.",
+        "en": "Follow the glow into the ember shaft."
+      },
+      "objectives": [
+        {
+          "id": "o_stollen",
+          "kind": "reach",
+          "target": "Glutstollen",
+          "marker": "Glutstollen",
+          "text": {
+            "de": "Erreich den Glutstollen",
+            "en": "Reach the ember shaft"
+          }
+        },
+        {
+          "id": "o_ketten",
+          "kind": "custom",
+          "target": "Glutdachs_Ketten_Loesen",
+          "count": 3,
+          "text": {
+            "de": "Lös die Ketten (das Klangschloss ist im Takt der Stillen Hand)",
+            "en": "Release the chains (the sound lock beats in the Silent Hand's rhythm)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_weg"
+        }
+      ]
+    },
+    {
+      "id": "s2_weg",
+      "text": {
+        "de": "Er ist frei, aber eingesperrt. Spreng ihm einen Weg.",
+        "en": "He's free, but trapped. Blast him a way out."
+      },
+      "objectives": [
+        {
+          "id": "o_sprengen",
+          "kind": "custom",
+          "target": "Glutdachs_Weg_Sprengen",
+          "text": {
+            "de": "Spreng den Schutt mit Prellschlag",
+            "en": "Blast the rubble with Rebound Strike"
+          }
+        },
+        {
+          "id": "o_futter",
+          "kind": "collect",
+          "target": "Glutwurzel",
+          "count": 3,
+          "text": {
+            "de": "Füttere ihn mit Glutwurzeln",
+            "en": "Feed him glow roots"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_see"
+        }
+      ]
+    },
+    {
+      "id": "s3_see",
+      "text": {
+        "de": "Er folgt dir. Aber er schwimmt nicht.",
+        "en": "He follows you. But he won't swim."
+      },
+      "objectives": [
+        {
+          "id": "o_tragen",
+          "kind": "custom",
+          "target": "Glutdachs_Ueber_See",
+          "text": {
+            "de": "Bring ihn über die Kristallinseln (er springt nur, wenn du vorspringst)",
+            "en": "Get him across the crystal islands (he only jumps if you jump first)"
+          }
+        },
+        {
+          "id": "o_funkelgrund",
+          "kind": "reach",
+          "target": "Funkelgrund",
+          "marker": "Funkelgrund",
+          "text": {
+            "de": "Bring ihn nach Funkelgrund",
+            "en": "Bring him to Sparkledeep"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Glutdachs_Tamed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [
+      "Reittier_Glutdachs",
+      "Kodex_Glutdachs"
+    ],
+    "effects": []
+  }
+}

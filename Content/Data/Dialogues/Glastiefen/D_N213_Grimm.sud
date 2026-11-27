@@ -1,0 +1,21 @@
+# N213 – Grimm Glanz, Laternenhändler, Marktschreier, kann nicht lügen (wird rot und leuchtet). Plan: ewige Laterne.
+===
+[set SpeakerName.Grimm "Grimm Glanz"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Grimm: Laternen! Linsen! Licht für jede Lebenslage! Kommen Sie, schauen Sie, staunen Sie!
+Grimm: Ah, Akademie! Für Akademie-Leute hab ich was ganz Besonderes. Etwas, das es noch nicht gibt.
+  * Etwas, das es noch nicht gibt, kann man nicht kaufen.
+    Grimm: Noch nicht! Darum brauch ich Sie. Ich hab den Plan. Ich hab nur keine Hände, die in einen See tauchen.
+  * Was soll das sein?
+    Grimm: Die Laterne, die nie ausgeht. Dreißig Jahre Planung. Hier, schauen Sie. Nein, nicht da, das ist die Einkaufsliste.
+Grimm: Drei Teile. Ein Kristall vom Wal, der fällt ihm ab wie uns die Haare. Ein Funke, der nie kalt wird, Glutdachs oder Glutwurzel. Und Prismas Schliff, niemand sonst kann das.
+[event emotion `surprised`]
+Grimm: Und wenn sie fertig ist, verkaufen wir sie. Für ein Vermögen. Für ... für ...
+  * Für wen?
+    [event emotion `sad`]
+    Grimm: Für ... ach, verflixt. Jetzt leuchte ich schon wieder. Ich weiß es nicht. Ich wollte sie nur bauen. Das Verkaufen klingt erwachsener.
+  * Für ein Vermögen, klar.
+    Grimm: Genau! ... Na ja. Halbes Vermögen. Wir teilen. Ich bin ja kein Unmensch.
+Grimm: Also? Abgemacht? Hand drauf, Licht drauf!

@@ -1,0 +1,19 @@
+# M208 (optional, rel:Aurelia >= 20) – Aurelia wartet am Steg „aus Neugier“. Kontrolliert, knapp.
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+[set SpeakerName.Lio "Lio"]
+===
+[if {rel.Aurelia} >= 20]
+Aurelia: Ihr seid laut. Zwei Leute, ein Boot, und ihr klingt wie eine Blaskapelle.
+Lio: Was machst DU hier?
+Aurelia: Neugier. Ich will sehen, wo ihr hingeht. Ich hab ein Recht darauf, wenn ihr mich danach wieder für etwas verantwortlich macht.
+  * Komm mit.
+    Aurelia: Ich hatte nicht vor zu fragen. Rutsch rüber.
+  * Das ist gefährlich, Aurelia.
+    Aurelia: Ich weiß. Deshalb komm ich mit. Ich bin besser im Duell als ihr beide zusammen.
+    Aurelia: Das war keine Angeberei. Das war eine Feststellung.
+Lio: Super. Jetzt sind wir eine Blaskapelle mit Dirigentin.
+Aurelia: Ich bin keine Dirigentin. Sag das nie wieder.
+[else]
+Aurelia: (Am Fenster des Silberquell-Turms bewegt sich ein Vorhang. Dann ist er wieder still.)
+[endif]

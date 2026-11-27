@@ -1,0 +1,278 @@
+{
+  "id": "N124",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Lene",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Die Rauchgesichter",
+    "en": "The Smoke Faces"
+  },
+  "summary": {
+    "de": "Lenes Vater arbeitet in der Russgrube und kommt seit drei Monaten nicht nach Hause. Im Rauch über dem Hang sieht man Gesichter.",
+    "en": "Lene's father works in Russgrube and hasn't come home for three months. Faces show in the smoke above the slope."
+  },
+  "dialogues": [
+    "D_N124_Lene",
+    "D_N124_Fiete",
+    "D_N124_Egon",
+    "D_N124_Pfennig",
+    "D_N124_Lene_Vater"
+  ],
+  "stages": [
+    {
+      "id": "s1_lene",
+      "text": {
+        "de": "Hör Lene zu.",
+        "en": "Listen to Lene."
+      },
+      "objectives": [
+        {
+          "id": "o_lene",
+          "kind": "dialogue",
+          "target": "D_N124_Lene",
+          "marker": "NPC_Lene",
+          "text": {
+            "de": "Sprich mit Lene im Waisenhaus",
+            "en": "Talk to Lene at the orphanage"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_grube"
+        }
+      ]
+    },
+    {
+      "id": "s2_grube",
+      "text": {
+        "de": "Geh den Grubenweg hinauf. Ab der dritten Kehre beginnt der Rauch.",
+        "en": "Walk up the mine path. The smoke begins at the third bend."
+      },
+      "objectives": [
+        {
+          "id": "o_kehre",
+          "kind": "reach",
+          "target": "Russgrube_Gasse",
+          "marker": "Russgrube_Gasse",
+          "text": {
+            "de": "Erreich die Russgrube",
+            "en": "Reach Russgrube"
+          }
+        },
+        {
+          "id": "o_fiete",
+          "kind": "dialogue",
+          "target": "D_N124_Fiete",
+          "marker": "NPC_Fiete",
+          "text": {
+            "de": "Find Fiete im Lorenwagen",
+            "en": "Find Fiete in the mine cart"
+          }
+        },
+        {
+          "id": "o_kuno",
+          "kind": "talk",
+          "target": "Kuno",
+          "marker": "NPC_Kuno",
+          "text": {
+            "de": "Sprich mit Kuno Hartmann (er hört nicht auf zu hämmern)",
+            "en": "Talk to Kuno Hartmann (he won't stop hammering)"
+          }
+        },
+        {
+          "id": "o_tafel",
+          "kind": "interact",
+          "target": "Gedenktafel_Foerderturm",
+          "marker": "Foerderturm",
+          "text": {
+            "de": "Lies die Gedenktafel am Förderturm",
+            "en": "Read the memorial plaque at the headframe"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_egon"
+        }
+      ]
+    },
+    {
+      "id": "s3_egon",
+      "text": {
+        "de": "In der Schmelzhütte wohnt der, der den Rauch webt.",
+        "en": "The one who weaves the smoke lives in the smelting hut."
+      },
+      "objectives": [
+        {
+          "id": "o_egon",
+          "kind": "dialogue",
+          "target": "D_N124_Egon",
+          "marker": "NPC_Egon",
+          "text": {
+            "de": "Sprich mit Egon Ruß in der Schmelzhütte",
+            "en": "Talk to Egon Ruß in the smelting hut"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_akte"
+        }
+      ]
+    },
+    {
+      "id": "s4_akte",
+      "text": {
+        "de": "Egon spricht von drei Briefen an die Zunft. Wenn es sie gibt, liegen sie im Zunfthaus von Kesselbrunn.",
+        "en": "Egon speaks of three letters to the guild. If they exist, they're in Kesselbrunn's guild hall."
+      },
+      "objectives": [
+        {
+          "id": "o_keller",
+          "kind": "custom",
+          "target": "Zunftkeller_Schleichen",
+          "marker": "Zunfthaus",
+          "text": {
+            "de": "Durchsuch den Zunftkeller, ohne dass Pfennig es merkt",
+            "en": "Search the guild cellar without Pfennig noticing"
+          }
+        },
+        {
+          "id": "o_akte",
+          "kind": "collect",
+          "target": "Zunftakte_Stollen4",
+          "marker": "Zunfthaus",
+          "text": {
+            "de": "Find die Akte Stollen 4",
+            "en": "Find the Shaft 4 file"
+          }
+        },
+        {
+          "id": "o_pfennig",
+          "kind": "dialogue",
+          "target": "D_N124_Pfennig",
+          "marker": "NPC_Pfennig",
+          "text": {
+            "de": "Stell Zunftmeister Pfennig zur Rede",
+            "en": "Confront Guild Master Pfennig"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Egon_Decided",
+          "text": {
+            "de": "Lies die zwölf Namen am Förderturm oder stell dich Egon",
+            "en": "Read the twelve names at the headframe or face Egon"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Egon_Redeemed"
+          ],
+          "stage": "s5a_namen"
+        },
+        {
+          "stage": "s5b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s5a_namen",
+      "text": {
+        "de": "Lies die zwölf Namen laut vor. Bei jedem Namen löst sich ein Gesicht und lächelt.",
+        "en": "Read the twelve names aloud. With each name a face dissolves and smiles."
+      },
+      "objectives": [
+        {
+          "id": "o_namen",
+          "kind": "custom",
+          "target": "Zwoelf_Namen_Lesen",
+          "count": 12,
+          "marker": "Foerderturm",
+          "text": {
+            "de": "Lies die zwölf Namen am Förderturm",
+            "en": "Read the twelve names at the headframe"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Zuenfte+10"
+      ],
+      "next": [
+        {
+          "stage": "s6_erwachen"
+        }
+      ]
+    },
+    {
+      "id": "s5b_kampf",
+      "text": {
+        "de": "Egon webt den Rauch gegen dich.",
+        "en": "Egon weaves the smoke against you."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Egon_Russ",
+          "marker": "NPC_Egon",
+          "text": {
+            "de": "Besiege Egon Ruß",
+            "en": "Defeat Egon Ruß"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s6_erwachen"
+        }
+      ]
+    },
+    {
+      "id": "s6_erwachen",
+      "text": {
+        "de": "Das Hämmern hört auf. Die Bergleute wachen auf.",
+        "en": "The hammering stops. The miners wake up."
+      },
+      "objectives": [
+        {
+          "id": "o_lene2",
+          "kind": "dialogue",
+          "target": "D_N124_Lene_Vater",
+          "marker": "NPC_Kuno",
+          "text": {
+            "de": "Bring Lene zu ihrem Vater",
+            "en": "Bring Lene to her father"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Russgrube_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Kodex_Russgrube",
+      "Grubenlampe"
+    ],
+    "effects": []
+  }
+}

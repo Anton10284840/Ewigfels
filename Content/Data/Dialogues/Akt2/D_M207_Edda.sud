@@ -1,0 +1,17 @@
+# M207 – Edda verbietet die Reise. Leise, trocken, siezt. Sie weiß mehr über Brandheim, als sie sagt.
+===
+[set SpeakerName.Edda "Magistra Vornholt"]
+===
+[event emotion `neutral`]
+Edda: Nein.
+Edda: Sie wollen in die Glastiefen. Ich sehe es Ihnen an. Und Herrn Vandermeer auch.
+  * Lios Schwester ist dort. Wir müssen zu ihr.
+    Edda: Mara Vandermeer hat gewählt, wo sie ist. Sie nicht. Noch nicht.
+  * Sie können uns nicht aufhalten.
+    Edda: Doch. Ich kann. Ich habe es schon bei Leuten getan, die mächtiger waren als Sie.
+    [event emotion `sad`]
+    Edda: Es hat mir keine Freude gemacht.
+  * Was wissen Sie, das wir nicht wissen?
+    Edda: Viel. Und ich trage es seit fünfzehn Jahren, damit Sie es nicht tragen müssen.
+Edda: Der Bootssteg wird bewacht. Von Meister Grell. Persönlich.
+Edda: Gute Nacht.

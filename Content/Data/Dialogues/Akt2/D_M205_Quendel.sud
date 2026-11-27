@@ -1,0 +1,16 @@
+# M205 – Quendel will den Kael-Schlüssel in die Ader setzen. Laut, wütend, ehrlich.
+===
+[set SpeakerName.Quendel "Mutter Quendel"]
+===
+[event emotion `angry`]
+Quendel: Da sind sie. Die Aurenburger. Mit ihren sauberen Stiefeln. Im Moor! Ha!
+Quendel: Hör mir zu, Kind. Der Stein in deiner Tasche ist ein Kael-Schlüssel. Er hält einen Ton. Für immer. Setzen wir ihn in den kranken Knoten, singt die Ader wieder richtig.
+  * Was will das Kollegium damit?
+    Quendel: Ihn in einen Schrank legen. In Aurenburg. Mit einem Schild dran. Und dann das Moor trockenlegen, damit sie Wege bauen können. Wege! Hier! Die Frösche brauchen keine Wege.
+  * Ist es sicher, ihn in die Ader zu setzen?
+    Quendel: Sicher? Nichts ist sicher. Sicher ist ein Wort aus Aurenburg.
+    Quendel: Aber es ist richtig. Das ist ein Wort aus dem Moor.
+  * Warum sollte ich Ihnen vertrauen?
+    [event emotion `neutral`]
+    Quendel: Solltest du nicht. Vertrau dem Moor. Es lügt nicht. Es stinkt nur.
+Quendel: Du entscheidest. Nicht ich. Nicht der Glatte da drüben. Du hast ihn aus dem Loch geholt. Du gibst ihn weg.

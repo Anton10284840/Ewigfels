@@ -1,0 +1,33 @@
+# M210 – Anhörung bei Großinquisitor Halmar Dräger. Dialog-Rätsel: Wahrheit sagen, ohne zu verraten.
+# Die Stimmglocke klingt sauer bei Lügen (Lüge = Draeger_Alarm). Aurelia lässt den Handschuh fallen, wenn es klingt (D_M210_Aurelia).
+===
+[set SpeakerName.Draeger "Großinquisitor Dräger"]
+===
+[event camera `wide`]
+[event emotion `neutral`]
+Draeger: Setzen Sie sich. Die Glocke über Ihnen ist eine Stimmglocke. Sie mag keine Lügen. Ich auch nicht. Wir haben viel gemeinsam.
+Draeger: Waren Sie während der Wintersperre in den Glastiefen?
+  * Ich war dort, wo meine Freunde mich gebraucht haben.
+    Draeger: Eine schöne Antwort. Und eine wahre, sagt die Glocke. Leider keine nützliche.
+  * Nein.
+    [set flag.Draeger_Alarm true]
+    [event emotion `angry`]
+    Draeger: Hören Sie das? Sauer. Wie Milch im Sommer.
+  * Ja. Wir haben Bergleute aus dem Zwang befreit.
+    Draeger: Ehrlich. Gefährlich ehrlich. Ich notiere mir das.
+Draeger: Haben Sie jemals einen Ton gewirkt, der nicht in den Lehrbüchern steht?
+  * Jeder Ton, den ich wirke, kommt aus mir. Wie bei allen.
+    Draeger: Hm. Die Glocke ist zufrieden. Ich nicht. Das ist mein Beruf.
+  * Nie.
+    [set flag.Draeger_Alarm true]
+    Draeger: Sauer. Schon wieder.
+  * Ich habe im Wald einmal die Kontrolle verloren. Ich weiß nicht, warum.
+    Draeger: Varn. Der manipulierte Ausbilder. Ja, ich habe den Bericht. Die Glocke sagt, Sie sagen die Wahrheit. Interessant.
+Draeger: Letzte Frage. Kennen Sie den Namen Brandheim?
+  * Ich habe ihn gehört. Ich weiß nicht, was er bedeutet.
+    [event camera `close`]
+    Draeger: ... Wahr. Gut für Sie. Dann bleibt es dabei.
+  * Nein.
+    [set flag.Draeger_Alarm true]
+    Draeger: Oh. Oh, das war sehr sauer.
+Draeger: Danke. Sie dürfen gehen. Vorerst.

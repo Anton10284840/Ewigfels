@@ -1,6 +1,6 @@
 # TO-DO – Nocturna (die Reihenfolge bis zum fertigen Spiel)
 
-Stand: 27.11.2026, abends
+Stand: 27.11.2026, 23:40 Uhr
 
 ## 👉 Dein nächster Schritt
 
@@ -42,16 +42,20 @@ Die Nummern sind die Reihenfolge. Wir arbeiten von oben nach unten und haken ab.
 - [x] 12. 👤 Pixel 10 Pro eingerichtet (statt Webcam): Live Link Face, gleiches WLAN, Kamera 4K/60 FPS
 - [ ] 12a. 🤝 Handy per Live Link mit Unreal verbinden + Probeaufnahme, sobald der PC frei ist
 - [ ] 13. 🟨 🤝 Blitz aus den Fingern, Zauber mit eigener Wirkung, magische Landung, Foto-Look (PR #15, Claude arbeitet gerade am PC)
+  - [x] 🤖 Fingergesten aus Gideon (9 Gesten), Zauberrad mit 6 Plätzen, Zauberbuch zum Wählen, bunte Kampf-Anzeige (Controller + Maus)
+  - [ ] 🤝 Am PC bauen und Zauberrad/Zauberbuch anschauen
 - [ ] 14. 👤 PR #15 übernehmen, wenn Claude „fertig“ sagt ← **jetzt dran**
 - [ ] 15. 👤 Testarena anspielen: Laufen, Zaubern, Kampf. Fühlt es sich gut an? Kurz sagen, was stört
 - [ ] 16. 🤖 Nachbessern nach deiner Rückmeldung
-- [ ] 17. 🤖 Weitere Weisen wirkbar machen, jede mit eigener Geste, Farbe, Wirkung und Zauberwort (Ziel: alle ~430), Zauberrad
+- [ ] 17. 🤖 Weitere Weisen wirkbar machen, jede mit eigener Geste, Farbe, Wirkung und Zauberwort (Ziel: alle ~430)
 
 ## C · Charakter-Editor 🟨
 
 - [x] 18. 🤖 Code für Charakter-Editor und Läden (PR #11)
-- [x] 19. 👤 Gesichts-Technik entschieden: 8 Grundgesichter mischen + Regler
-- [ ] 20. 🤝 Gesichter einbauen: Plugins an, Editor-Neustart (wartet, bis Schritt 13 am PC fertig ist)
+- [x] 19. 👤 Neu entschieden: einfacher und bunter, 12 fertige Köpfe statt Regler, Kleiderschrank-Stil, Controller + Maus
+- [x] 19a. 🤖 Charakter-Editor umgebaut (PR #19, Prüfung 0 Fehler)
+- [ ] 20. 🤝 PR #19 am PC bauen und testen, Köpfe einbauen (wartet, bis Schritt 13 am PC fertig ist)
+- [ ] 20a. 👤 PR #19 übernehmen, wenn Claude „fertig“ sagt
 - [ ] 21. 👤 Eigene Figur im Editor zusammenstellen und sagen, ob es gefällt
 - [ ] 22. 🤝 Spieler-MetaHuman und Lippen-Test
 
@@ -61,8 +65,8 @@ Die Nummern sind die Reihenfolge. Wir arbeiten von oben nach unten und haken ab.
 - [x] 24. 🤖 Akt 1: 10 Haupt- und 30 Nebenquests, 69 Dialoge, Stimmen-Leitfaden (PR #13)
 - [x] 25. 🤖 Gegner, Bosse und 6 Reittiere (`docs/BESTIARIUM.md`)
 - [x] 26. 🤖 Regionen Ilsensee und Raunwald
-- [ ] 27. 🟨 🤖 Region Kesselbrunn + Russgrube: Nebenquests N121–N126 und Dialoge (PR #16, läuft)
-- [ ] 28. 👤 PR #16 übernehmen, wenn Claude „fertig“ sagt
+- [x] 27. 🤖 Region Kesselbrunn + Russgrube: Nebenquests N121–N126 und 15 Dialoge (PR #16)
+- [x] 28. 👤 PR #16 übernommen
 - [ ] 29. 🤖 Kampfwerte der Akt-1-Gegner (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
 
 ## E · Bilder und Grundsatzfragen
@@ -110,6 +114,8 @@ Testen:
 Pro Akt gleiche Reihenfolge: 🤖 Quests, Dialoge, Gegner als Daten → 🤝 Regionen und Zwischensequenzen bauen → 👤 durchspielen → 🤖 polieren.
 
 - [ ] 54. Akt 2: Graumoor, Glastiefen · Boss Mara · Reittiere Gischtrobbe + Glutdachs
+  - [x] 🤖 Hauptmissionen M201–M210 als Quest-JSON + 29 Dialoge (PR #18)
+  - [x] 🤖 Regionen Graumoor + Glastiefen: N201–N216 + 23 Dialoge, Glutdachs-Zähmquest N216 (PR #18)
 - [ ] 55. Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Sturmschwinge + Dünenschreiter
 - [ ] 56. Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Perlsegler · Akademie zerstört
 - [ ] 57. Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · 4 Enden

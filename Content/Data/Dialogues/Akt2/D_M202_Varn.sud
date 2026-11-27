@@ -1,0 +1,19 @@
+# M202 – Varn nach der Manipulation. Freundlich, verwirrt, schämt sich. Geduld statt Druck öffnet die Erinnerung.
+===
+[set SpeakerName.Varn "Ausbilder Varn"]
+===
+[event emotion `sad`]
+Varn: Ach. Du. Ich hab gehofft, dass ich dich nicht sehe. Und gehofft, dass doch.
+Varn: Es tut mir leid. Das im Wald. Ich weiß nicht mehr viel. Nur den Takt. Eins, zwei, drei, vier. Immer. Auch im Schlaf.
+  * Was ist passiert? Wer hat Ihnen das angetan?
+    Varn: Ich weiß es nicht. Ich ... es ist alles wie hinter Glas.
+    Varn: Bitte nicht drängen. Wenn man drängt, wird das Glas dicker.
+  * Es ist nicht Ihre Schuld.
+    [event emotion `soft`]
+    Varn: Doch. Ich hab den Stein gekauft. Freiwillig. Ich konnte nicht schlafen.
+  * (Sich zu ihm setzen und warten)
+    Varn: ... Danke. Die meisten fragen. Du sitzt einfach.
+[event emotion `neutral`]
+Varn: Der Stein. Ja. Ein Händler. Grauer Mantel. Er sagte, der Stein hilft gegen Schlaflosigkeit. Er summte. So angenehm still.
+Varn: Ich hab geschlafen wie ein Kind. Und dann hab ich nicht mehr aufgehört, im Takt zu gehen.
+Varn: Der Händler. Er roch nach Moor. Nach Torf und Nebel. Er kam aus dem Graumoor. Da bin ich ganz sicher.

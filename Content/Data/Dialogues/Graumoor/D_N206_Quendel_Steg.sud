@@ -1,0 +1,16 @@
+# N206 – Quendel singt nachts auf Kael am Steg. Aus dem Nebel antwortet eine Frauenstimme (Saat M203, Akt 5).
+===
+[set SpeakerName.Quendel "Mutter Quendel"]
+[set SpeakerName.Stimme "Stimme im Nebel"]
+===
+[event camera `wide`]
+Quendel: Va'el ... shor ... na'el ve ...
+Stimme: ... na'el ve ... tan ...
+[event emotion `sad`]
+Quendel: ...
+Quendel: Du hast es gehört. Ich seh's dir an.
+  * Wer hat geantwortet?
+    Quendel: Jemand, dem ich seit sechzig Jahren nicht antworte. Ich hab dir das gesagt, am ersten Tag. Du klingst wie sie.
+  * Warum weinen Sie?
+    Quendel: Weil sie jedes Mal antwortet. Und ich jedes Mal aufhöre.
+Quendel: Geh schlafen, Kind. Das ist kein Lied für Lebende. Noch nicht.

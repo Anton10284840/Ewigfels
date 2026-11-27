@@ -1,0 +1,20 @@
+# M201 – Corvin Hale nach der ersten Stunde. Warm, witzig, ironisch, stellt Gegenfragen. Erinnert sich ans Ilsenlicht.
+===
+[set SpeakerName.Corvin "Corvin Hale"]
+===
+[event emotion `happy`]
+Corvin: Ah, Sie. Die Person vom Ilsenlicht. Ich vergesse nie ein Gesicht. Namen schon. Ständig.
+[if {flag.Corvin_Drink}]
+Corvin: Sie haben damals meinen Funkensaft getrunken. Mutig. Der Mann am Stand hat danach eine Woche gepfiffen, wenn er niesen wollte.
+[else]
+Corvin: Sie haben damals meinen Funkensaft abgelehnt. Kluge Entscheidung. Der Mann am Stand pfeift heute noch.
+[endif]
+  * Warum sollten wir den Kessel explodieren lassen?
+    Corvin: Damit Sie wissen, wie es klingt, bevor es passiert. Ein Knall, den man kennt, ist ein Lehrer. Ein Knall, den man nicht kennt, ist ein Unfall.
+  * Wo kommen Sie her?
+    Corvin: Aus einem kleinen Dorf, in dem nie etwas passiert ist. Klingt langweilig. Ist es auch.
+    Corvin: Und Sie? Wo kommen Sie her? Wirklich her, meine ich.
+  * Sie sind anders als die anderen Lehrer.
+    Corvin: Jünger. Lauter. Schlechter rasiert. Ich arbeite dran. Am Rasieren.
+Corvin: Gute Arbeit heute. Ihre Flamme war ruhig. Fast zu ruhig. Wie ein Musiker, der leiser spielt, als er kann.
+Corvin: War nur eine Beobachtung. Kommen Sie gut nach Hause. In den Turm, meine ich.

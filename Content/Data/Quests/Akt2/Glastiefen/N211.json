@@ -1,0 +1,101 @@
+{
+  "id": "N211",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Lumi",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Der Freund im Schacht",
+    "en": "The Friend in the Shaft"
+  },
+  "summary": {
+    "de": "Lumi sagt, im Echobrunnen wohnt ein Freund. Er singt andere Lieder zurück. Ihr großer Bruder lacht sie aus.",
+    "en": "Lumi says a friend lives in the echo well. He sings different songs back. Her big brother laughs at her."
+  },
+  "dialogues": [
+    "D_N211_Lumi",
+    "D_N211_Echokind"
+  ],
+  "stages": [
+    {
+      "id": "s1_lumi",
+      "text": {
+        "de": "Hör Lumi zu.",
+        "en": "Listen to Lumi."
+      },
+      "objectives": [
+        {
+          "id": "o_lumi",
+          "kind": "dialogue",
+          "target": "D_N211_Lumi",
+          "marker": "Echobrunnen",
+          "text": {
+            "de": "Sprich mit Lumi am Echobrunnen",
+            "en": "Talk to Lumi at the echo well"
+          }
+        },
+        {
+          "id": "o_singen",
+          "kind": "custom",
+          "target": "Echolied_Singen",
+          "marker": "Echobrunnen",
+          "text": {
+            "de": "Sing ein Echolied in den Schacht",
+            "en": "Sing an echo song into the shaft"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_echo"
+        }
+      ]
+    },
+    {
+      "id": "s2_echo",
+      "text": {
+        "de": "Die Antwort ist kein Echo. Sie ist auf Kael.",
+        "en": "The answer isn't an echo. It's in Kael."
+      },
+      "objectives": [
+        {
+          "id": "o_seelenecho",
+          "kind": "cast",
+          "target": "K55",
+          "text": {
+            "de": "Hör mit Seelenecho in den Schacht",
+            "en": "Listen into the shaft with Soul Echo"
+          }
+        },
+        {
+          "id": "o_kind",
+          "kind": "dialogue",
+          "target": "D_N211_Echokind",
+          "text": {
+            "de": "Sprich mit dem Kind im Schacht",
+            "en": "Talk to the child in the shaft"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Kodex_Kinder_von_Kael",
+      "Echolied_Kael"
+    ],
+    "effects": []
+  }
+}

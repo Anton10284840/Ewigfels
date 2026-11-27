@@ -1,0 +1,15 @@
+# N126 – Ambros Kettler braucht einen summenden Quarz. Musik-Metaphern, schweift ab, redet nie über die Eltern (bis M408).
+===
+[set SpeakerName.Ambros "Ambros Kettler"]
+===
+[event emotion `happy`]
+Ambros: Ah! Da ist ja mein Lieblingsinstrument. Klingt noch ein bisschen verstimmt, aber das gibt sich mit der Zeit.
+[if {flag.Ambros_Flicker}]
+Ambros: Wie geht's den Ringen? Flackern sie noch? ... Nein, nein, gut. War nur eine Frage. Alte Männer fragen viel.
+[endif]
+Ambros: Ich brauch einen Quarz. Einen besonderen. Er wächst nur in der Vorhalle der Alten Mine, da, wo das Gestein noch warm ist.
+  * Wofür brauchen Sie ihn?
+    Ambros: Für einen Ring. Einen besonderen Ring. Für ... später. Für jemanden. Fragen klingen manchmal schöner als Antworten, weißt du.
+  * Was ist so besonders an ihm?
+    Ambros: Er singt zurück, wenn man ihn ansummt. Die meisten Quarze brummen. Dieser singt. Wie eine Glocke in Watte.
+Ambros: Summ die Adern an. Der richtige antwortet. Und bring ihn mir, ohne ihn zu lange anzuhören. Quarze, die man zu lange anhört, werden eitel.

@@ -1,0 +1,172 @@
+{
+  "id": "N215",
+  "type": "side",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Gunda",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M208"
+  ],
+  "title": {
+    "de": "Der Kristallwal",
+    "en": "The Crystal Whale"
+  },
+  "summary": {
+    "de": "Die Höhlen beben. Tief im Kristallsee schreit der Wal. Bergfrau Gunda sagt, so hat er noch nie geklungen.",
+    "en": "The caves are shaking. Deep in the crystal lake the whale is screaming. Mountain warden Gunda says he has never sounded like this."
+  },
+  "dialogues": [
+    "D_N215_Gunda"
+  ],
+  "stages": [
+    {
+      "id": "s1_gunda",
+      "text": {
+        "de": "Hör Gunda zu.",
+        "en": "Listen to Gunda."
+      },
+      "objectives": [
+        {
+          "id": "o_gunda",
+          "kind": "dialogue",
+          "target": "D_N215_Gunda",
+          "marker": "NPC_Gunda",
+          "text": {
+            "de": "Sprich mit Gunda Schacht am Bergtor",
+            "en": "Talk to Gunda Schacht at the mountain gate"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_see"
+        }
+      ]
+    },
+    {
+      "id": "s2_see",
+      "text": {
+        "de": "Auf den schwimmenden Kristallen zum Wal.",
+        "en": "Across the floating crystals to the whale."
+      },
+      "objectives": [
+        {
+          "id": "o_inseln",
+          "kind": "custom",
+          "target": "Kristallinseln_Springen",
+          "marker": "Kristallsee",
+          "text": {
+            "de": "Spring über die schwimmenden Kristallinseln",
+            "en": "Jump across the floating crystal islands"
+          }
+        },
+        {
+          "id": "o_ketten",
+          "kind": "custom",
+          "target": "Walketten_Sehen",
+          "text": {
+            "de": "Find mit Seelenecho heraus, was ihm wehtut",
+            "en": "Find out with Soul Echo what's hurting him"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wal"
+        }
+      ]
+    },
+    {
+      "id": "s3_wal",
+      "text": {
+        "de": "Ketten der Kael-Mine stecken in seinem Körper. Lös sie oder triff die Resonanzpunkte.",
+        "en": "Chains from the Kael mine are stuck in his body. Release them or strike the resonance points."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "condition",
+          "target": "flag:Whale_Decided",
+          "marker": "Kristallsee",
+          "text": {
+            "de": "Lös die Ketten oder bezwing den Wal",
+            "en": "Release the chains or subdue the whale"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Whale_Freed"
+          ],
+          "stage": "s4a_licht"
+        },
+        {
+          "stage": "s4b_still"
+        }
+      ]
+    },
+    {
+      "id": "s4a_licht",
+      "text": {
+        "de": "Der Wal singt Licht in die Höhle. Die ganze Ebene leuchtet.",
+        "en": "The whale sings light into the cave. The whole level glows."
+      },
+      "objectives": [
+        {
+          "id": "o_lied",
+          "kind": "custom",
+          "target": "Walgesang_Hoeren",
+          "text": {
+            "de": "Hör dem Wal zu",
+            "en": "Listen to the whale"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s4b_still",
+      "text": {
+        "de": "Der Wal taucht ab. Er singt nicht mehr.",
+        "en": "The whale dives. He doesn't sing any more."
+      },
+      "objectives": [
+        {
+          "id": "o_ufer",
+          "kind": "reach",
+          "target": "Kristallsee_Ufer",
+          "marker": "Kristallsee",
+          "text": {
+            "de": "Kehr zum Ufer zurück",
+            "en": "Return to the shore"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 80,
+    "items": [
+      "Ring_Walgesang",
+      "Kodex_Kristallwal",
+      "Schnellreise_Faehrsteg"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,17 @@
+# N212 – Am Kristallsee. Der Wal singt, Prisma beschreibt das Licht genauer als jeder Sehende.
+===
+[set SpeakerName.Prisma "Großmutter Prisma"]
+===
+[event camera `wide`]
+Prisma: Still. Da. Hörst du das?
+[event camera `close`]
+[event emotion `happy`]
+Prisma: Das Wasser ist türkis, oben. Darunter wird es grün, wie Moos im Frühling. Und ganz unten, da ist es fast weiß.
+Prisma: Die Inseln drehen sich. Langsam. Die rechte ist größer, sie hat einen Sprung, man hört ihn, wenn das Licht durchgeht.
+Prisma: Hab ich recht? Sag die Wahrheit.
+  * Jedes Wort.
+    [event emotion `sad`]
+    Prisma: Dann hab ich es gesehen. Achtundvierzig Jahre hab ich gewartet. Es war es wert.
+  * Sie sehen mehr als ich.
+    Prisma: Natürlich. Du schaust nur. Ich höre zu.
+Prisma: Ich schleif dir was. Einen Quarz, der so klingt wie das hier. Den trägst du, und dann denkst du an eine blinde alte Frau, die einmal alles gesehen hat.

@@ -1,0 +1,20 @@
+# M209 – Nach dem Kampf. Mara hat den Spieler aus dem Geröll gezogen und „Brandheim-Kind“ gesagt. Lio hat es gehört.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `sad`]
+Lio: Sie hat dich rausgezogen. Hast du das gesehen? Sie hätte dich liegen lassen können. Hat sie nicht.
+Lio: Das heißt was. Oder?
+  * Das heißt, dass sie noch da ist. Irgendwo drin.
+    [event emotion `soft`]
+    Lio: Irgendwo drin. Ja. Hinter dem Takt.
+  * Ich weiß es nicht, Lio.
+    Lio: Ich auch nicht. Aber ich entscheide mich, dass es was heißt.
+[event emotion `neutral`]
+Lio: Und ... was sie gesagt hat. Brandheim-Kind. Was ist Brandheim?
+  * Keine Ahnung. Eine Stadt?
+    Lio: Steht in jedem Buch: Aderbrand, vor fünfzehn Jahren. Eine Unglücksstadt. Gesperrt. Kein Mensch wohnt da mehr.
+  * Sie hat gesagt, ich soll Edda fragen.
+    Lio: Edda. Natürlich Edda. Edda weiß alles und sagt nichts. Wie ein Buch mit Schloss.
+Lio: Egal, was es ist. Du bist mein bester Freund. Brandheim-Kind oder Kesselbrunn-Kind oder Kuchen-Kind. Ist mir egal.
+Lio: Und jetzt raus hier, bevor der Rest auch noch einstürzt.

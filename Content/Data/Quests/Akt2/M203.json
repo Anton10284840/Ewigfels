@@ -1,0 +1,184 @@
+{
+  "id": "M203",
+  "type": "main",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Saphira",
+  "duration_min": 55,
+  "auto_start": true,
+  "requires": [
+    "quest:M202"
+  ],
+  "title": {
+    "de": "Im Graumoor",
+    "en": "In the Greymoor"
+  },
+  "summary": {
+    "de": "Exkursion Kreaturenkunde, offiziell. In Wahrheit sucht ihr den Moorhändler. Das Moor ist grau, aber nicht tot.",
+    "en": "A creature studies excursion, officially. In truth you're looking for the moor trader. The moor is grey, but not dead."
+  },
+  "dialogues": [
+    "D_M203_Saphira",
+    "D_M203_Tilda_Quaak",
+    "D_M203_Quendel"
+  ],
+  "stages": [
+    {
+      "id": "s1_reise",
+      "text": {
+        "de": "Reis mit Saphira ins Graumoor.",
+        "en": "Travel into the Greymoor with Saphira."
+      },
+      "objectives": [
+        {
+          "id": "o_saphira",
+          "kind": "dialogue",
+          "target": "D_M203_Saphira",
+          "marker": "NPC_Saphira",
+          "text": {
+            "de": "Sprich mit Saphira am Moorrand",
+            "en": "Talk to Saphira at the edge of the moor"
+          }
+        },
+        {
+          "id": "o_nebel",
+          "kind": "custom",
+          "target": "Nebel_Navigation",
+          "text": {
+            "de": "Find den Weg durch den Nebel, indem du den Fröschen folgst",
+            "en": "Find your way through the fog by following the frogs"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_stelzenheim"
+        }
+      ]
+    },
+    {
+      "id": "s2_stelzenheim",
+      "text": {
+        "de": "Stelzenheim, das Pfahldorf der Hüter.",
+        "en": "Stelzenheim, the Keepers' stilt village."
+      },
+      "objectives": [
+        {
+          "id": "o_dorf",
+          "kind": "reach",
+          "target": "Stelzenheim",
+          "marker": "Stelzenheim",
+          "text": {
+            "de": "Erreich Stelzenheim",
+            "en": "Reach Stelzenheim"
+          }
+        },
+        {
+          "id": "o_quaak",
+          "kind": "dialogue",
+          "target": "D_M203_Tilda_Quaak",
+          "optional": true,
+          "text": {
+            "de": "Schau, was mit Herrn Quaak passiert (wenn Tilda dabei ist)",
+            "en": "See what happens to Mr Quaak (if Tilda is with you)"
+          }
+        },
+        {
+          "id": "o_quendel",
+          "kind": "dialogue",
+          "target": "D_M203_Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Sprich mit Mutter Quendel",
+            "en": "Talk to Mother Quendel"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_ader"
+        }
+      ]
+    },
+    {
+      "id": "s3_ader",
+      "text": {
+        "de": "Ein Aderknoten ist krank. Singt ihn mit Quendel zurück, drei Stimmen, du hältst den Grundton.",
+        "en": "A vein knot is sick. Sing it back with Quendel, three voices, you hold the root note."
+      },
+      "objectives": [
+        {
+          "id": "o_knoten",
+          "kind": "custom",
+          "target": "Aderknoten_Zuruecksingen",
+          "marker": "Aderknoten_Moor",
+          "text": {
+            "de": "Halte den Grundton (Rhythmus, drei Stimmen)",
+            "en": "Hold the root note (rhythm, three voices)"
+          }
+        },
+        {
+          "id": "o_unken",
+          "kind": "defeat",
+          "target": "Moorlicht_Unke",
+          "count": 6,
+          "text": {
+            "de": "Halt die Moorlicht-Unken vom Knoten fern",
+            "en": "Keep the moorlight toads away from the knot"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_fest"
+        }
+      ]
+    },
+    {
+      "id": "s4_fest",
+      "text": {
+        "de": "Quendel weiß, wohin der Moorhändler verschwunden ist. Danach: Frösche-Chor-Fest.",
+        "en": "Quendel knows where the moor trader went. Afterwards: frog choir festival."
+      },
+      "objectives": [
+        {
+          "id": "o_haendler",
+          "kind": "talk",
+          "target": "Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Frag Quendel nach dem Moorhändler",
+            "en": "Ask Quendel about the moor trader"
+          }
+        },
+        {
+          "id": "o_fest",
+          "kind": "custom",
+          "target": "Froschchor_Fest",
+          "marker": "Stelzenheim",
+          "optional": true,
+          "text": {
+            "de": "Tanz auf den schwankenden Stegen",
+            "en": "Dance on the swaying walkways"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 350,
+    "gold": 0,
+    "items": [
+      "Weise_Rankenstrich_Hueter",
+      "Schnellreise_Stelzenheim"
+    ],
+    "effects": [
+      "rep:Hueter+10"
+    ]
+  }
+}

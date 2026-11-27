@@ -1,0 +1,22 @@
+# N121 – Hanne Brook, Waisenhausleiterin. Trocken, warm unter der Schale, tut so, als wäre ihr alles egal. Stirbt in M206.
+===
+[set SpeakerName.Hanne "Hanne Brook"]
+===
+Hanne: Na sieh mal an. Die Akademie lässt dich raus. Haben sie gemerkt, dass du schief pfeifst?
+  * Ich wollte dich besuchen.
+    Hanne: Mich? Ich bin nicht besuchenswert. Ich bin ein Möbelstück mit Meinung.
+    [event emotion `soft`]
+    Hanne: ... Schön, dass du da bist. Sag's keinem.
+  * Was tropft denn hier so?
+    Hanne: Das Dach. Das Dach tropft seit drei Wochen. Ich hab ihm gesagt, es soll aufhören. Es hört nicht auf mich. Wie alle hier.
+  * (Hanne umarmen)
+    Hanne: Na, na. Nicht zerdrücken. Ich bin alt und aus Pappe.
+    Hanne: ... Noch ein bisschen. Dann ist gut.
+Hanne: Der Winter kommt. Wenn es reinschneit, schlafen die Kleinen in der Küche. Ist auch gemütlich. Rauchig, aber gemütlich.
+  * Ich flicke das Dach. Ich kann jetzt zaubern.
+    Hanne: Zaubern. Dachdecken. Ist ja fast dasselbe.
+    Hanne: Na gut. Schiefer liegt am Grubenweg, bröselt da von allein ab. Nimm die Kinder mit, die wollen eh nicht stillsitzen.
+  * Warum lässt du es nicht reparieren?
+    [event emotion `neutral`]
+    Hanne: Weil der Dachdecker zu teuer ist und ich zu stur. Frag nicht weiter, sonst muss ich lügen, und ich lüge schlecht.
+Hanne: Und Kind. Pass auf dich auf da oben in der Akademie. Du schreibst zu selten.

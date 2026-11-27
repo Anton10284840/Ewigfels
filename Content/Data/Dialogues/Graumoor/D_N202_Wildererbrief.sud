@@ -1,0 +1,14 @@
+# N202 – Papiere im Wildererzelt. Vertrag mit einem Auftraggeber in Aurenburg (Arche-Questreihe).
+===
+[set SpeakerName.Seline "Seline"]
+===
+[event camera `close`]
+Seline: Lies vor. Ich kann die Aurenburger Schrift nicht gut. Die schreiben zu schön.
+Seline: Lebend geliefert. Mageninhalt unberührt. Pro Tier ein Silber, pro Stelzreiher fünf. Abholung: Aurenburg, Lager 7.
+  * Mageninhalt? Warum ist der Magen wichtig?
+    [event emotion `angry`]
+    Seline: Mooslinge fressen Nachhall-Reste. Stelzreiher picken Kael-Splitter aus dem Schlamm. In ihren Mägen liegt Quarz. Jemand erntet ihn. Aus lebenden Tieren.
+  * Wer ist der Auftraggeber?
+    Seline: Kein Name. Nur ein Siegel. Ein Kreis mit vier Strichen. Das Siegel kenn ich nicht.
+    Seline: Aber das Papier ist teuer. Leute, die so teures Papier haben, wohnen nicht im Moor.
+Seline: Nimm das mit. Zeig es Saphira. Und sag ihr, die Hüter bauen ihr die Gehege. Alle, die sie will.

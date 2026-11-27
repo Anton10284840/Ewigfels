@@ -1,0 +1,172 @@
+{
+  "id": "N125",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Kuno",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:N124",
+    "quest:M107"
+  ],
+  "title": {
+    "de": "Der Schmelzer",
+    "en": "The Smelter"
+  },
+  "summary": {
+    "de": "Tief in der Alten Mine läuft noch etwas. Es zieht die Wärme aus den Quellen und frisst Erz. Steiger Kuno will, dass es aufhört.",
+    "en": "Deep in the Old Mine something is still running. It pulls the heat from the springs and devours ore. Foreman Kuno wants it to stop."
+  },
+  "stages": [
+    {
+      "id": "s1_mine",
+      "text": {
+        "de": "Geh mit Kuno in die Alte Mine.",
+        "en": "Go into the Old Mine with Kuno."
+      },
+      "objectives": [
+        {
+          "id": "o_kuno",
+          "kind": "talk",
+          "target": "Kuno",
+          "marker": "NPC_Kuno",
+          "text": {
+            "de": "Lass dir von Kuno die Stollenkarte geben",
+            "en": "Get the shaft map from Kuno"
+          }
+        },
+        {
+          "id": "o_eingang",
+          "kind": "reach",
+          "target": "Alte_Mine_Eingang",
+          "marker": "Alte_Mine_Eingang",
+          "text": {
+            "de": "Betritt die Alte Mine",
+            "en": "Enter the Old Mine"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_stollen"
+        }
+      ]
+    },
+    {
+      "id": "s2_stollen",
+      "text": {
+        "de": "Lava fließt durch alte Kanäle. Stell die Hebel so, dass ein Weg frei wird.",
+        "en": "Lava flows through old channels. Set the levers so a path opens."
+      },
+      "objectives": [
+        {
+          "id": "o_hebel",
+          "kind": "custom",
+          "target": "Lavakanaele_Umleiten",
+          "count": 3,
+          "text": {
+            "de": "Leite die Lava-Kanäle mit den Hebeln um",
+            "en": "Divert the lava channels with the levers"
+          }
+        },
+        {
+          "id": "o_kriecher",
+          "kind": "defeat",
+          "target": "Erzkriecher",
+          "count": 6,
+          "text": {
+            "de": "Halte die Erzkriecher auf",
+            "en": "Fend off the ore crawlers"
+          }
+        },
+        {
+          "id": "o_marken",
+          "kind": "collect",
+          "target": "Grubenmarke",
+          "count": 4,
+          "optional": true,
+          "text": {
+            "de": "Sammle Grubenmarken der Toten (optional)",
+            "en": "Collect the miners' tags (optional)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_schmelzer"
+        }
+      ]
+    },
+    {
+      "id": "s3_schmelzer",
+      "text": {
+        "de": "In der Schmelzhalle erwacht der Schmelzer.",
+        "en": "In the smelting hall the Smelter awakens."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "defeat",
+          "target": "Schmelzer",
+          "marker": "Schmelzhalle",
+          "text": {
+            "de": "Besiege den Schmelzer (Frost kühlt den Panzer)",
+            "en": "Defeat the Smelter (Frost cools its armour)"
+          }
+        },
+        {
+          "id": "o_egon",
+          "kind": "custom",
+          "target": "Egon_Schaltet_Ab",
+          "optional": true,
+          "text": {
+            "de": "Schütz Egon eine Minute, während er den Schmelzer abschaltet (nur nach Gerechtigkeit)",
+            "en": "Protect Egon for a minute while he shuts the Smelter down (only after justice)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_waerme"
+        }
+      ]
+    },
+    {
+      "id": "s4_waerme",
+      "text": {
+        "de": "Der Schmelzer ist still. Die Wärme fließt zurück ins Tal.",
+        "en": "The Smelter is silent. The warmth flows back into the valley."
+      },
+      "objectives": [
+        {
+          "id": "o_frieda",
+          "kind": "talk",
+          "target": "Frieda",
+          "marker": "NPC_Frieda",
+          "text": {
+            "de": "Bade in Friedas wieder heißen Quellen",
+            "en": "Bathe in Frieda's hot springs again"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Schmelzer_Defeated=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 80,
+    "items": [
+      "Ring_Glutherz",
+      "Kodex_Schmelzer"
+    ],
+    "effects": []
+  }
+}

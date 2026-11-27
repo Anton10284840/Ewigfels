@@ -1,0 +1,15 @@
+# N203 – Das Irrlicht ist ein Kind-Echo aus Moorwinkel. Freilassen oder ins Bad geben. Echo am Satzende.
+===
+[set SpeakerName.Irrlicht "Irrlicht"]
+===
+[event camera `close`]
+Irrlicht: Fang mich! Fang mich! *... fang mich ...*
+Irrlicht: Ich bin Mia. Ich war Mia. Aus Moorwinkel. *... Moorwinkel ...*
+Irrlicht: Ich bin ins Moor gelaufen, weil die Großen nicht mehr aufgehört haben zu tanzen. *... zu tanzen ...*
+  * (Das Glas öffnen und es fliegen lassen)
+    [set flag.Irrlicht_Freed true]
+    [event emotion `happy`]
+    Irrlicht: Danke! Sag Tobi, ich bin noch da. Im Nebel. Er soll keine Angst haben. *... keine Angst ...*
+  * (Das Glas verschließen)
+    [event emotion `sad`]
+    Irrlicht: Es ist warm hier drin. Und dunkel. Ist gut. Ich schlaf ein bisschen. *... ein bisschen ...*

@@ -1,0 +1,25 @@
+# N124 – Zunftmeister Gustav Pfennig. Freundlich, rund, zu freundlich. Entscheidung: öffentlich vorlesen (Erlösung) oder Kampf gegen Egon.
+===
+[set SpeakerName.Pfennig "Zunftmeister Pfennig"]
+[set SpeakerName.Egon "Egon Ruß"]
+===
+[event emotion `happy`]
+Pfennig: Ah, das Kind aus dem Waisenhaus! Wie schön! Ein Bonbon? Die Zunft hat immer Bonbons.
+Pfennig: Was hast du denn da? Das ist ... das ist Zunfteigentum. Woher hast du das?
+[event emotion `scared`]
+  * Aus Ihrem Keller. Die drei Briefe von Egon Ruß. Sie haben sie nie beantwortet.
+    Pfennig: Das waren ... Sorgenbriefe. Steiger schreiben immer Sorgenbriefe. Man kann nicht jeden Balken ...
+    Pfennig: Zwölf Männer. Ich weiß. Ich weiß es jede Nacht.
+  * Ganz Kesselbrunn soll hören, was drinsteht.
+    Pfennig: Das ist nicht nötig. Wir können das unter uns ... die Zunft zahlt, natürlich, eine Summe ...
+[set flag.Pfennig_Confronted true]
+Pfennig: Was ... was hast du jetzt vor?
+  * Ich lasse es auf dem Marktplatz vorlesen. Und dann lese ich die zwölf Namen am Förderturm.
+    [event camera `wide`]
+    Pfennig: ... Ja. Gut. Dann komme ich mit. Ich lese den ersten Namen. Das ist das Mindeste.
+    [set flag.Egon_Redeemed true]
+    [set flag.Egon_Decided true]
+  * Behalten Sie Ihre Briefe. Ich regle das mit Egon auf meine Art.
+    Pfennig: Auf deine Art? Was heißt das?
+    Pfennig: Oh. Oh nein.
+    [set flag.Egon_Decided true]

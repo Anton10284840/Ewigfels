@@ -1,0 +1,16 @@
+# M201 (E1_HidePower) – Corvin hat die graue Flamme gesehen. Wird Vertrauter. Er misst bereits (Verrat M406).
+===
+[set SpeakerName.Corvin "Corvin Hale"]
+===
+[event emotion `neutral`]
+Corvin: Bleiben Sie noch einen Moment? Die Kessel müssen abkühlen. Ich auch.
+Corvin: Ihre Kerze. Vorhin. Sie hat kurz grau geflackert.
+[event emotion `happy`]
+Corvin: Ich hab nichts gesehen. Wirklich. Meine Augen sind schlecht, vor allem für Dinge, die mich nichts angehen.
+  * Was haben Sie gesehen?
+    Corvin: Eine Kerze, die einen schlechten Tag hatte. Das passiert. Ich hab auch schlechte Tage. Dann flackere ich auch.
+  * Bitte sagen Sie es niemandem.
+    Corvin: Wem sollte ich es sagen? Dem Kollegium? Die hören mir nicht mal zu, wenn ich nach dem Gehalt frage.
+  * (Schweigen)
+    Corvin: Kluge Antwort. Die klügste, die es gibt.
+Corvin: Hören Sie. Wenn Sie mal reden wollen, über Kerzen oder Kessel oder sonst was: Mein Keller ist warm, und ich habe Kakao. Kein Funkensaft. Versprochen.

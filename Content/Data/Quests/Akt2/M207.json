@@ -1,0 +1,139 @@
+{
+  "id": "M207",
+  "type": "main",
+  "act": 2,
+  "region": "Nocturna",
+  "giver": "Lio",
+  "duration_min": 45,
+  "auto_start": true,
+  "requires": [
+    "quest:M206"
+  ],
+  "title": {
+    "de": "Lios Schwester",
+    "en": "Lio's Sister"
+  },
+  "summary": {
+    "de": "Am Morgen nach dem Angriff ist Lio verschwunden. Kessel Klaus weiß, wohin.",
+    "en": "The morning after the attack Lio is gone. Kettle Klaus knows where."
+  },
+  "dialogues": [
+    "D_M207_Lio_Glockenturm",
+    "D_M207_Corvin",
+    "D_M207_Edda"
+  ],
+  "stages": [
+    {
+      "id": "s1_suche",
+      "text": {
+        "de": "Such Lio.",
+        "en": "Look for Lio."
+      },
+      "objectives": [
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Spuren_Im_Schnee",
+          "text": {
+            "de": "Folg den Spuren im Schnee",
+            "en": "Follow the tracks in the snow"
+          }
+        },
+        {
+          "id": "o_klaus",
+          "kind": "talk",
+          "target": "KesselKlaus",
+          "marker": "NPC_KesselKlaus",
+          "text": {
+            "de": "Frag Kessel Klaus",
+            "en": "Ask Kettle Klaus"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_turm"
+        }
+      ]
+    },
+    {
+      "id": "s2_turm",
+      "text": {
+        "de": "Lio sitzt im Glockenturm zwischen den Laternenkrähen.",
+        "en": "Lio is sitting in the bell tower among the lantern crows."
+      },
+      "objectives": [
+        {
+          "id": "o_turm",
+          "kind": "reach",
+          "target": "Glockenturm",
+          "marker": "Glockenturm",
+          "text": {
+            "de": "Steig in den Glockenturm",
+            "en": "Climb the bell tower"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M207_Lio_Glockenturm",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sei für Lio da",
+            "en": "Be there for Lio"
+          }
+        },
+        {
+          "id": "o_corvin",
+          "kind": "dialogue",
+          "target": "D_M207_Corvin",
+          "marker": "NPC_Corvin",
+          "text": {
+            "de": "Corvin kommt dazu",
+            "en": "Corvin joins you"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Mara_Revealed=1"
+      ],
+      "next": [
+        {
+          "stage": "s3_edda"
+        }
+      ]
+    },
+    {
+      "id": "s3_edda",
+      "text": {
+        "de": "Edda verbietet die Reise in die Glastiefen.",
+        "en": "Edda forbids the journey to the Glass Depths."
+      },
+      "objectives": [
+        {
+          "id": "o_edda",
+          "kind": "dialogue",
+          "target": "D_M207_Edda",
+          "marker": "NPC_Edda",
+          "text": {
+            "de": "Sprich mit Edda",
+            "en": "Talk to Edda"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rel:Lio+10"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+# N122 – Frieda Dampf, Bademeisterin. Spricht in Temperaturen. Die Quellen kühlen ab.
+===
+[set SpeakerName.Frieda "Frieda Dampf"]
+===
+[event emotion `sad`]
+Frieda: Ich bin heute 31 Grad gelaunt. Lauwarm. Wie mein Badewasser. Weißt du, was das für eine Bademeisterin bedeutet?
+  * Was ist mit den Quellen los?
+    Frieda: Jede Woche ein Grad weniger. Seit dem Frühjahr. Becken drei ist schon so kalt, dass die Frösche Schals tragen.
+  * 31 Grad klingt doch gemütlich.
+    Frieda: Für einen Tee vielleicht. Für eine Quelle ist das eine Beleidigung.
+Frieda: Die Quellen hier kommen von tief unten. Aus dem Berg. Seit dreihundert Jahren 42 Grad, auf den Punkt.
+Frieda: Miss mal alle fünf Becken. Ich trau meinem eigenen Thermometer nicht mehr. Und ich trau meinem Thermometer mehr als meinem Mann.

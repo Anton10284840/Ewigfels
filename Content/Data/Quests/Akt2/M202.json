@@ -1,0 +1,213 @@
+{
+  "id": "M202",
+  "type": "main",
+  "act": 2,
+  "region": "Kesselbrunn",
+  "giver": "Lio",
+  "duration_min": 50,
+  "auto_start": true,
+  "requires": [
+    "quest:M201"
+  ],
+  "title": {
+    "de": "Der Handschuh",
+    "en": "The Glove"
+  },
+  "summary": {
+    "de": "Wer hat Varn umgedreht? Lio will nicht mehr warten. Ihr fangt bei Varns Hütte an.",
+    "en": "Who turned Varn? Lio won't wait any longer. You start at Varn's hut."
+  },
+  "dialogues": [
+    "D_M202_Lio",
+    "D_M202_Varn",
+    "D_M202_Grell"
+  ],
+  "stages": [
+    {
+      "id": "s1_huette",
+      "text": {
+        "de": "Durchsuch mit Lio Varns Hütte am Waldrand.",
+        "en": "Search Varn's hut at the forest edge with Lio."
+      },
+      "objectives": [
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M202_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio",
+            "en": "Talk to Lio"
+          }
+        },
+        {
+          "id": "o_notizbuch",
+          "kind": "interact",
+          "target": "Varns_Notizbuch",
+          "marker": "Varns_Huette",
+          "text": {
+            "de": "Lies Varns Notizbuch",
+            "en": "Read Varn's notebook"
+          }
+        },
+        {
+          "id": "o_takt",
+          "kind": "custom",
+          "target": "Notizbuch_Takt_Entschluesseln",
+          "text": {
+            "de": "Entschlüssel den Takt der Striche (Takt = Weg auf der Karte)",
+            "en": "Decode the rhythm of the marks (rhythm = route on the map)"
+          }
+        },
+        {
+          "id": "o_quittung",
+          "kind": "interact",
+          "target": "Quittung_Moorhaendler",
+          "marker": "Varns_Huette",
+          "text": {
+            "de": "Find die Quittung des Moorhändlers",
+            "en": "Find the moor trader's receipt"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_varn"
+        }
+      ]
+    },
+    {
+      "id": "s2_varn",
+      "text": {
+        "de": "Varn ist zur Kur in Kesselbrunn. Er schämt sich. Sei geduldig.",
+        "en": "Varn is taking the cure in Kesselbrunn. He's ashamed. Be patient."
+      },
+      "objectives": [
+        {
+          "id": "o_varn",
+          "kind": "dialogue",
+          "target": "D_M202_Varn",
+          "marker": "NPC_Varn",
+          "text": {
+            "de": "Sprich mit Varn im Quellbad",
+            "en": "Talk to Varn at the spring baths"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_scheune"
+        }
+      ]
+    },
+    {
+      "id": "s3_scheune",
+      "text": {
+        "de": "Die abgebrannte Scheune vom Sommer. Der Bauer erzählt von Fremden, die den Boden abgehört haben.",
+        "en": "The barn that burned in summer. The farmer tells of strangers who listened to the ground."
+      },
+      "objectives": [
+        {
+          "id": "o_scheune",
+          "kind": "reach",
+          "target": "Abgebrannte_Scheune",
+          "marker": "Abgebrannte_Scheune",
+          "text": {
+            "de": "Geh zur abgebrannten Scheune",
+            "en": "Go to the burnt barn"
+          }
+        },
+        {
+          "id": "o_bohrloch",
+          "kind": "custom",
+          "target": "Bohrloch_Finden",
+          "text": {
+            "de": "Find mit Lauschen das Bohrloch unter der Asche",
+            "en": "Find the borehole under the ashes by listening"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Found_Borehole=1"
+      ],
+      "next": [
+        {
+          "stage": "s4_wilderer"
+        }
+      ]
+    },
+    {
+      "id": "s4_wilderer",
+      "text": {
+        "de": "Auf dem Rückweg: Wilderer mit Käfigen voller Mooslinge.",
+        "en": "On the way back: poachers with cages full of mosslings."
+      },
+      "objectives": [
+        {
+          "id": "o_kaefige",
+          "kind": "custom",
+          "target": "Mooslinge_Befreien",
+          "count": 4,
+          "marker": "Wilderer_Lager",
+          "text": {
+            "de": "Öffne die Käfige (schleichend oder im Kampf)",
+            "en": "Open the cages (stealthily or in combat)"
+          }
+        },
+        {
+          "id": "o_wilderer",
+          "kind": "defeat",
+          "target": "Wilderer",
+          "count": 3,
+          "optional": true,
+          "text": {
+            "de": "Vertreib die Wilderer (optional, wenn du schleichst)",
+            "en": "Drive off the poachers (optional if sneaking)"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Freed_Mooslinge=1"
+      ],
+      "next": [
+        {
+          "stage": "s5_erlaubnis"
+        }
+      ]
+    },
+    {
+      "id": "s5_erlaubnis",
+      "text": {
+        "de": "Erzähl Grell, was ihr gefunden habt. Ihr braucht eine Erlaubnis für Graumoor.",
+        "en": "Tell Grell what you found. You need permission for the Greymoor."
+      },
+      "objectives": [
+        {
+          "id": "o_grell",
+          "kind": "dialogue",
+          "target": "D_M202_Grell",
+          "marker": "NPC_Grell",
+          "text": {
+            "de": "Sprich mit Grell",
+            "en": "Talk to Grell"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 0,
+    "items": [
+      "Haustier_Moosling"
+    ],
+    "effects": [
+      "rep:Hueter+5"
+    ]
+  }
+}

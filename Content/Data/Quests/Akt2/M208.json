@@ -1,0 +1,214 @@
+{
+  "id": "M208",
+  "type": "main",
+  "act": 2,
+  "region": "Glastiefen",
+  "giver": "Lio",
+  "duration_min": 60,
+  "auto_start": true,
+  "requires": [
+    "quest:M207"
+  ],
+  "title": {
+    "de": "Glastiefen",
+    "en": "The Glass Depths"
+  },
+  "summary": {
+    "de": "Heimlich los, über den unbewachten Steg. In den Glastiefen bricht die Stille Hand Kael-Quarz. Und Mara ist dort.",
+    "en": "Off in secret, over the unguarded jetty. In the Glass Depths the Silent Hand is breaking Kael quartz. And Mara is there."
+  },
+  "dialogues": [
+    "D_M208_Lio",
+    "D_M208_Aurelia",
+    "D_M208_KaelEcho"
+  ],
+  "stages": [
+    {
+      "id": "s1_aufbruch",
+      "text": {
+        "de": "Brich nachts mit Lio auf.",
+        "en": "Set off with Lio at night."
+      },
+      "objectives": [
+        {
+          "id": "o_steg",
+          "kind": "reach",
+          "target": "Bootssteg_Nocturna",
+          "marker": "Bootssteg_Nocturna",
+          "text": {
+            "de": "Schleich zum Bootssteg",
+            "en": "Sneak to the jetty"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_M208_Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Sprich mit Lio im Boot",
+            "en": "Talk to Lio in the boat"
+          }
+        },
+        {
+          "id": "o_aurelia",
+          "kind": "dialogue",
+          "target": "D_M208_Aurelia",
+          "optional": true,
+          "text": {
+            "de": "Aurelia wartet am Steg (nur bei guter Beziehung)",
+            "en": "Aurelia is waiting at the jetty (good relationship only)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_funkelgrund"
+        }
+      ]
+    },
+    {
+      "id": "s2_funkelgrund",
+      "text": {
+        "de": "Funkelgrund: Alles glitzert. Die Kinder singen Echolieder in die Schächte.",
+        "en": "Sparkledeep: everything glitters. The children sing echo songs into the shafts."
+      },
+      "objectives": [
+        {
+          "id": "o_dorf",
+          "kind": "reach",
+          "target": "Funkelgrund",
+          "marker": "Funkelgrund",
+          "text": {
+            "de": "Erreich Funkelgrund",
+            "en": "Reach Sparkledeep"
+          }
+        },
+        {
+          "id": "o_laterne",
+          "kind": "collect",
+          "target": "Hoehlenlaterne",
+          "marker": "NPC_Grimm",
+          "text": {
+            "de": "Kauf eine Höhlenlaterne bei Grimm Glanz",
+            "en": "Buy a cave lantern from Grimm Glanz"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_abstieg"
+        }
+      ]
+    },
+    {
+      "id": "s3_abstieg",
+      "text": {
+        "de": "Kristallseen, leuchtende Pilze und Glasnattern, die Wärme jagen.",
+        "en": "Crystal lakes, glowing fungi and glass adders hunting warmth."
+      },
+      "objectives": [
+        {
+          "id": "o_nattern",
+          "kind": "custom",
+          "target": "Glasnattern_Ausweichen",
+          "text": {
+            "de": "Bleib kalt: Atem anhalten, wenn Glasnattern nahe sind",
+            "en": "Stay cold: hold your breath when glass adders are near"
+          }
+        },
+        {
+          "id": "o_bruecken",
+          "kind": "custom",
+          "target": "Kristall_Resonanz",
+          "count": 3,
+          "text": {
+            "de": "Bau Lichtbrücken aus gespiegelten Tönen",
+            "en": "Build light bridges from mirrored tones"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_echo"
+        }
+      ]
+    },
+    {
+      "id": "s4_echo",
+      "text": {
+        "de": "In einer Kael-Halle hält ein Stein die letzten Worte des Ortes fest.",
+        "en": "In a Kael hall a stone holds the last words of the place."
+      },
+      "objectives": [
+        {
+          "id": "o_echo",
+          "kind": "dialogue",
+          "target": "D_M208_KaelEcho",
+          "marker": "Kael_Halle_Glastiefen",
+          "text": {
+            "de": "Hör dem Kael-Echo zu",
+            "en": "Listen to the Kael echo"
+          }
+        },
+        {
+          "id": "o_spur",
+          "kind": "cast",
+          "target": "K55",
+          "text": {
+            "de": "Folg mit Seelenecho der Spur der Stillen Hand",
+            "en": "Follow the Silent Hand's trail with Soul Echo"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s5_mine"
+        }
+      ]
+    },
+    {
+      "id": "s5_mine",
+      "text": {
+        "de": "Bergleute aus Hohlstollen brechen Quarz unter Taktstein-Zwang. Befrei sie, ohne sie zu verletzen.",
+        "en": "Miners from Hohlstollen are breaking quartz under beat-stone control. Free them without hurting them."
+      },
+      "objectives": [
+        {
+          "id": "o_steine",
+          "kind": "custom",
+          "target": "Taktsteine_Zerschlagen",
+          "count": 5,
+          "text": {
+            "de": "Zerschlag die Taktsteine der Bergleute",
+            "en": "Shatter the miners' beat stones"
+          }
+        },
+        {
+          "id": "o_novizen",
+          "kind": "defeat",
+          "target": "Stille_Hand_Novize",
+          "count": 4,
+          "text": {
+            "de": "Besiege die Aufseher",
+            "en": "Defeat the overseers"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 0,
+    "items": [
+      "Weise_Seelenecho",
+      "Schnellreise_Funkelgrund"
+    ],
+    "effects": []
+  }
+}

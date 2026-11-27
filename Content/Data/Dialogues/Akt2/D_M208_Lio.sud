@@ -1,0 +1,18 @@
+# M208 – Im Boot, nachts, heimlich. Der Steg war unbewacht (Grell). Lio zwischen Mut und Angst.
+===
+[set SpeakerName.Lio "Lio"]
+===
+Lio: Der Steg war leer. Grell war nicht da. Grell ist IMMER da. Grell schläft im Stehen am Steg, das weiß jeder.
+  * Vielleicht wollte Grell, dass wir gehen.
+    Lio: Grell? Uns helfen? ... Ja. Das wär typisch. Uns anschreien und dann die Tür aufmachen.
+  * Glück gehabt.
+    Lio: Glück. Ja. Ich hab noch nie Glück gehabt. Vielleicht fängt es heute an.
+[event emotion `sad`]
+Lio: Wenn wir sie finden. Was sag ich zu ihr? Ich hab mir hundert Sätze überlegt. Alle blöd.
+  * Sag ihr das Lied. Die drei Töne.
+    [event emotion `soft`]
+    Lio: Das Lied. Ja. Das versteht sie. Wörter versteht sie nicht mehr, glaub ich. Aber das Lied.
+  * Sag einfach ihren Namen.
+    Lio: Mara. Einfach Mara. Okay. Das krieg ich hin. Wahrscheinlich.
+[event emotion `happy`]
+Lio: Und jetzt rudere schneller. Ich will nicht, dass Edda aufwacht und merkt, dass zwei Betten leer sind. Und ein Boot fehlt. Und meine Mundharmonika. Die nehm ich mit.

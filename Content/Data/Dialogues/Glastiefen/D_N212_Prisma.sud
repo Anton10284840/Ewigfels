@@ -1,0 +1,22 @@
+# N212 – Großmutter Prisma, blind, sieht mit den Fingerspitzen. Sagt dem Spieler Dinge über sein Gesicht, die stimmen.
+===
+[set SpeakerName.Prisma "Großmutter Prisma"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Prisma: Komm her, Kind. Nein, näher. Ich beiß nicht, ich schleife nur.
+[event camera `close`]
+Prisma: Darf ich? Die Finger sehen mehr als die Augen je gesehen haben.
+  * (Stillhalten)
+    Prisma: Hm. Eine kleine Narbe an der Augenbraue. Und du lachst mehr mit dem linken Mundwinkel. Du hast Angst, und du gehst trotzdem. Gutes Gesicht.
+  * Lieber nicht.
+    Prisma: Auch eine Antwort. Ich mag Leute, die Nein sagen können. Hier unten können das nicht mehr viele.
+Prisma: Ich war vierzig, als das Licht ging. Seitdem höre ich Farben. Türkis klingt hoch. Violett summt.
+[event emotion `sad`]
+Prisma: Nur den Kristallsee hab ich nie gehört. Als ich ihn noch sehen konnte, war ich zu beschäftigt. Dumm, was?
+Prisma: Bring mich hin. Und bring den Wal dazu, zu singen. Dann sehe ich ihn. Ein letztes Mal.
+  * Ich bringe Sie hin.
+    [event emotion `happy`]
+    Prisma: Gut. Und nicht an der Hand ziehen. Ich halte mich an deiner Schulter fest. Wie eine Dame.
+  * Ist der Weg nicht zu gefährlich?
+    Prisma: Kind, ich bin achtzig. Für mich ist das Aufstehen gefährlich. Komm.

@@ -1,0 +1,18 @@
+# M202 – Bericht an Grell. Laut, knapp, Befehlston, wiederholt Wörter mit Punkt. Organisiert die „Exkursion“ nach Graumoor.
+===
+[set SpeakerName.Grell "Meister Grell"]
+===
+[event emotion `angry`]
+Grell: Varns Hütte. Ohne Erlaubnis. Nachts.
+Grell: ... Was habt ihr gefunden?
+  * Ein Bohrloch unter der Scheune. Bis auf die Ader.
+    Grell: Bohrloch. Tief.
+    [event emotion `neutral`]
+    Grell: Das ist kein Diebstahl. Das ist Vermessung. Jemand hört den Boden ab.
+  * Varn hat den Stein von einem Moorhändler aus dem Graumoor.
+    Grell: Graumoor. Hüterland. Gut zu wissen.
+  * Wilderer. Mit Mooslingen in Käfigen.
+    Grell: Wilderer. Dreckspack. Saphira wird sich freuen. Nicht.
+Grell: Hört zu. Offiziell war das nie. Offiziell gibt es eine Exkursion Kreaturenkunde nach Graumoor. Saphira begleitet. Sie wollte sowieso zu den Hütern.
+Grell: Inoffiziell: Ihr findet den Händler. Ihr fasst ihn nicht an. Ihr kommt zurück und erzählt es mir.
+Grell: Verstanden? Verstanden. Nächste Frage.

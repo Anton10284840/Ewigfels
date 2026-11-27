@@ -1,0 +1,14 @@
+# N124 – Lene (9), Waisenkind, Vater Kuno arbeitet in der Russgrube. Wohnt im Waisenhaus, seit er nicht mehr runterkommt.
+===
+[set SpeakerName.Lene "Lene"]
+===
+[event emotion `sad`]
+Lene: Papa ist nicht tot. Er ist nur da oben. Hanne sagt, ich soll nicht hochgehen. Das sagt sie jeden Tag.
+Lene: Ich hab ihn gesehen. Vom Hang aus. Er hämmert. Er hört nicht auf. Ich hab gerufen, und er hat nicht mal hochgeschaut.
+  * Ich hol ihn zurück.
+    Lene: Versprichst du es? Richtig? Nicht so wie Erwachsene?
+  * Was ist da oben los?
+    Lene: Rauch. Mit Gesichtern. Bastian sagt, das sind Geister. Ich glaub, die sind traurig. Sie sehen nicht böse aus.
+  * (Lene die Hand geben)
+    Lene: Deine Hand ist warm. Papas Hand war auch immer warm. Vom Ofen.
+Lene: Wenn du ihn siehst, sag ihm, ich hab seine Grubenlampe geputzt. Jeden Abend. Damit er sie wieder anmachen kann.

@@ -1,0 +1,271 @@
+{
+  "id": "N204",
+  "type": "side",
+  "act": 2,
+  "region": "Graumoor",
+  "giver": "Tobi",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M204"
+  ],
+  "title": {
+    "de": "Moorwinkel",
+    "en": "Moorwinkel"
+  },
+  "summary": {
+    "de": "In Moorwinkel arbeiten die Bauern Tag und Nacht an unsichtbaren Fäden. Eine Vogelscheuche hat gerade den Kopf gedreht.",
+    "en": "In Moorwinkel the farmers work day and night on invisible strings. A scarecrow just turned its head."
+  },
+  "dialogues": [
+    "D_N204_Tobi",
+    "D_N204_Martha",
+    "D_N204_Quendel",
+    "D_N204_Agathe"
+  ],
+  "stages": [
+    {
+      "id": "s1_dorf",
+      "text": {
+        "de": "Geh nach Moorwinkel. Fremde tanzen mit, steht auf dem Schild.",
+        "en": "Go to Moorwinkel. Strangers dance along, says the sign."
+      },
+      "objectives": [
+        {
+          "id": "o_gatter",
+          "kind": "reach",
+          "target": "Moorwinkel_Gatter",
+          "marker": "Moorwinkel_Gatter",
+          "text": {
+            "de": "Folg dem Bohlenweg bis zum Gatter",
+            "en": "Follow the plank road to the gate"
+          }
+        },
+        {
+          "id": "o_faeden",
+          "kind": "cast",
+          "target": "K55",
+          "text": {
+            "de": "Mach die Fäden mit Seelenecho sichtbar",
+            "en": "Reveal the strings with Soul Echo"
+          }
+        },
+        {
+          "id": "o_tobi",
+          "kind": "dialogue",
+          "target": "D_N204_Tobi",
+          "marker": "NPC_Tobi",
+          "text": {
+            "de": "Sprich mit der Vogelscheuche, die sich bewegt hat",
+            "en": "Talk to the scarecrow that moved"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahrheit"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahrheit",
+      "text": {
+        "de": "Finde heraus, wer Agathe Dornfeld ist und warum sie allein ist.",
+        "en": "Find out who Agathe Dornfeld is and why she is alone."
+      },
+      "objectives": [
+        {
+          "id": "o_martha",
+          "kind": "dialogue",
+          "target": "D_N204_Martha",
+          "marker": "NPC_Martha",
+          "text": {
+            "de": "Lockere Marthas Faden und hör, was sie im Schlaf sagt",
+            "en": "Loosen Martha's string and hear what she says in her sleep"
+          }
+        },
+        {
+          "id": "o_grab",
+          "kind": "interact",
+          "target": "Grab_Ohne_Namen",
+          "marker": "Moorwinkel_Friedhof",
+          "text": {
+            "de": "Untersuch das Grab ohne Namen",
+            "en": "Examine the nameless grave"
+          }
+        },
+        {
+          "id": "o_zeichnung",
+          "kind": "interact",
+          "target": "Quendels_Kinderzeichnung",
+          "marker": "Quendels_Haus",
+          "text": {
+            "de": "Find in Quendels Haus die alte Kinderzeichnung",
+            "en": "Find the old child's drawing in Quendel's house"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_quendel"
+        }
+      ]
+    },
+    {
+      "id": "s3_quendel",
+      "text": {
+        "de": "Quendel muss Agathe zurücknehmen. Oder du stellst dich Agathe allein.",
+        "en": "Quendel must take Agathe back. Or you face Agathe alone."
+      },
+      "objectives": [
+        {
+          "id": "o_quendel",
+          "kind": "dialogue",
+          "target": "D_N204_Quendel",
+          "marker": "NPC_Quendel",
+          "text": {
+            "de": "Sprich mit Mutter Quendel über Agathe",
+            "en": "Talk to Mother Quendel about Agathe"
+          }
+        },
+        {
+          "id": "o_muehle",
+          "kind": "reach",
+          "target": "Moorwinkel_Muehle",
+          "marker": "Moorwinkel_Muehle",
+          "text": {
+            "de": "Steig die Treppe der Windmühle hinauf",
+            "en": "Climb the windmill stairs"
+          }
+        },
+        {
+          "id": "o_agathe",
+          "kind": "dialogue",
+          "target": "D_N204_Agathe",
+          "marker": "NPC_Agathe",
+          "text": {
+            "de": "Stell dich Agathe Dornfeld",
+            "en": "Face Agathe Dornfeld"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Agathe_Decided",
+          "text": {
+            "de": "Versöhnung oder Kampf",
+            "en": "Reconciliation or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Agathe_Reconciled"
+          ],
+          "stage": "s4a_versoehnung"
+        },
+        {
+          "stage": "s4b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s4a_versoehnung",
+      "text": {
+        "de": "Quendel und Agathe. Fünfzig Jahre auf einer Treppe.",
+        "en": "Quendel and Agathe. Fifty years on one staircase."
+      },
+      "objectives": [
+        {
+          "id": "o_faeden_los",
+          "kind": "custom",
+          "target": "Agathe_Faeden_Los",
+          "text": {
+            "de": "Sieh zu, wie die Fäden fallen",
+            "en": "Watch the strings fall"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+10"
+      ],
+      "next": [
+        {
+          "stage": "s5_kinder"
+        }
+      ]
+    },
+    {
+      "id": "s4b_kampf",
+      "text": {
+        "de": "Agathe tanzt. Und du tanzt mit, ob du willst oder nicht.",
+        "en": "Agathe dances. And you dance along, whether you want to or not."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Agathe_Dornfeld",
+          "marker": "NPC_Agathe",
+          "text": {
+            "de": "Besiege Agathe Dornfeld",
+            "en": "Defeat Agathe Dornfeld"
+          }
+        },
+        {
+          "id": "o_marionetten",
+          "kind": "custom",
+          "target": "Marionetten_Faeden",
+          "count": 2,
+          "text": {
+            "de": "Trenn die Fäden der Marionetten-Bauern",
+            "en": "Cut the strings of the puppet farmers"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s5_kinder"
+        }
+      ]
+    },
+    {
+      "id": "s5_kinder",
+      "text": {
+        "de": "Die Kinder kommen aus Stelzenheim nach Hause.",
+        "en": "The children come home from Stelzenheim."
+      },
+      "objectives": [
+        {
+          "id": "o_vogelscheuchen",
+          "kind": "custom",
+          "target": "Vogelscheuchen_Umwerfen",
+          "marker": "Moorwinkel_Felder",
+          "text": {
+            "de": "Wirf mit Tobi die erste Vogelscheuche um",
+            "en": "Knock over the first scarecrow with Tobi"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Moorwinkel_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Kodex_Moorwinkel"
+    ],
+    "effects": [
+      "rel:Lio+3"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+# N204 – Agathe Dornfeld, Hexenmutter, in der Windmühle. Nennt alle „mein Herzchen“. Einziger Schreck beim Hochkommen.
+===
+[set SpeakerName.Agathe "Agathe Dornfeld"]
+[set SpeakerName.Quendel "Mutter Quendel"]
+===
+[event camera `close`]
+[event emotion `happy`]
+Agathe: Da bist du ja, mein Herzchen.
+Agathe: Komm, setz dich. Oder tanz. Hier tanzt jeder irgendwann.
+[if {flag.Agathe_Reconciled}]
+Quendel: Agathe.
+[event emotion `surprised`]
+Agathe: ... Quendel?
+Quendel: Ich hab als Letzte Ja gesagt. Damals. Ich sag jetzt als Erste Nein.
+Quendel: Komm nach Hause. Die Frösche haben nach dir gefragt. Fünfzig Jahre lang.
+[event emotion `sad`]
+Agathe: Ich hab ihnen nur nicht wehtun wollen. Den Bauern. Ich wollte nur, dass niemand mehr geht.
+  * Sie können sie loslassen. Es geht niemand für immer.
+    Agathe: Loslassen. Ja. Das hab ich nie gekonnt. Die Fäden waren das Einzige, was blieb.
+  * (Schweigend die Treppe freimachen, damit Quendel zu ihr kann)
+    Quendel: Gib mir die Hand, du alte Spinne.
+Agathe: ... Na gut. Na gut, mein Herzchen.
+[set flag.Agathe_Decided true]
+[else]
+  * Lassen Sie die Bauern frei.
+    Agathe: Damit sie gehen? Wie alle gehen? Nein, mein Herzchen. Hier geht keiner mehr.
+  * Die Hüter haben Ihnen Unrecht getan.
+    [event emotion `sad`]
+    Agathe: Ja. Und jetzt kommt die Akademie und sagt mir, was Recht ist. Wie freundlich.
+  * Ich hole Quendel.
+    Agathe: Quendel. Die kommt nicht. Die ist nie gekommen.
+[event emotion `angry`]
+Agathe: Tanz mit mir, Herzchen. Eins, zwei, drei. Ringel, Ringel, Reihe.
+[set flag.Agathe_Decided true]
+[endif]

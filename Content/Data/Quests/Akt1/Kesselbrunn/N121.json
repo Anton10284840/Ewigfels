@@ -1,0 +1,212 @@
+{
+  "id": "N121",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Hanne",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Das Dach vom Warmen Ofen",
+    "en": "The Roof of the Warm Stove"
+  },
+  "summary": {
+    "de": "Das Dach vom Waisenhaus leckt, und der Winter kommt. Hanne sagt, das sei kein Problem. Hanne sagt das immer.",
+    "en": "The orphanage roof is leaking and winter is coming. Hanne says it's no problem. Hanne always says that."
+  },
+  "dialogues": [
+    "D_N121_Hanne",
+    "D_N121_Kinder"
+  ],
+  "stages": [
+    {
+      "id": "s1_hanne",
+      "text": {
+        "de": "Schau dir das Dach mit Hanne an.",
+        "en": "Look at the roof with Hanne."
+      },
+      "objectives": [
+        {
+          "id": "o_hanne",
+          "kind": "dialogue",
+          "target": "D_N121_Hanne",
+          "marker": "NPC_Hanne",
+          "text": {
+            "de": "Sprich mit Hanne im Waisenhaus",
+            "en": "Talk to Hanne at the orphanage"
+          }
+        },
+        {
+          "id": "o_dach",
+          "kind": "interact",
+          "target": "Waisenhaus_Dach",
+          "marker": "Waisenhaus_Dach",
+          "text": {
+            "de": "Klettere aufs Dach und zähl die Löcher",
+            "en": "Climb onto the roof and count the holes"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_schiefer"
+        }
+      ]
+    },
+    {
+      "id": "s2_schiefer",
+      "text": {
+        "de": "Für das Dach braucht ihr Schiefer. Die Kinder wollen unbedingt mithelfen.",
+        "en": "You need slate for the roof. The children absolutely want to help."
+      },
+      "objectives": [
+        {
+          "id": "o_schiefer",
+          "kind": "collect",
+          "target": "Schieferplatte",
+          "count": 12,
+          "marker": "Grubenweg",
+          "text": {
+            "de": "Hol Schieferplatten vom Grubenweg (mit den Kindern)",
+            "en": "Fetch slate tiles from the mine path (with the children)"
+          }
+        },
+        {
+          "id": "o_geld",
+          "kind": "interact",
+          "target": "Kinder_Spardose",
+          "marker": "Waisenhaus_Schlafsaal",
+          "text": {
+            "de": "Finde heraus, was die Kinder in der Spardose verstecken",
+            "en": "Find out what the children are hiding in the money box"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wahl"
+        }
+      ]
+    },
+    {
+      "id": "s3_wahl",
+      "text": {
+        "de": "Die Kinder haben gespart: für eine Willkommensfeier für dich. Und Hanne hat kein Geld für Nägel.",
+        "en": "The children have been saving: for a welcome party for you. And Hanne has no money for nails."
+      },
+      "objectives": [
+        {
+          "id": "o_wahl",
+          "kind": "dialogue",
+          "target": "D_N121_Kinder",
+          "marker": "Waisenhaus_Schlafsaal",
+          "text": {
+            "de": "Sprich mit Bastian und Lene",
+            "en": "Talk to Bastian and Lene"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Waisenhaus_Feier"
+          ],
+          "stage": "s4a_jupp"
+        },
+        {
+          "stage": "s4b_dach"
+        }
+      ]
+    },
+    {
+      "id": "s4a_jupp",
+      "text": {
+        "de": "Die Feier findet statt. Für die Nägel spielt Jupp ein Benefizkonzert auf dem Markt. Du spielst mit.",
+        "en": "The party goes ahead. Jupp plays a benefit concert on the market square for the nails. You play along."
+      },
+      "objectives": [
+        {
+          "id": "o_konzert",
+          "kind": "custom",
+          "target": "Benefizkonzert_Jupp",
+          "marker": "NPC_Jupp",
+          "text": {
+            "de": "Spiel mit Jupp auf dem Markt (Rhythmus)",
+            "en": "Play with Jupp on the market square (rhythm)"
+          }
+        },
+        {
+          "id": "o_flicken",
+          "kind": "custom",
+          "target": "Dach_Flicken",
+          "marker": "Waisenhaus_Dach",
+          "text": {
+            "de": "Flick das Dach mit Schwebeklang und Ziegelruf",
+            "en": "Patch the roof with Floatchime and Tile Call"
+          }
+        },
+        {
+          "id": "o_feier",
+          "kind": "custom",
+          "target": "Willkommensfeier",
+          "marker": "Waisenhaus",
+          "text": {
+            "de": "Feier mit den Kindern",
+            "en": "Celebrate with the children"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s4b_dach",
+      "text": {
+        "de": "Die Kinder kaufen stolz die Nägel. Die Feier gibt es trotzdem, nur kleiner: mit Heddas Zimtschnecken.",
+        "en": "The children proudly buy the nails. The party still happens, just smaller: with Hedda's cinnamon buns."
+      },
+      "objectives": [
+        {
+          "id": "o_flicken2",
+          "kind": "custom",
+          "target": "Dach_Flicken",
+          "marker": "Waisenhaus_Dach",
+          "text": {
+            "de": "Flick das Dach mit Schwebeklang und Ziegelruf",
+            "en": "Patch the roof with Floatchime and Tile Call"
+          }
+        },
+        {
+          "id": "o_hedda",
+          "kind": "talk",
+          "target": "Hedda",
+          "marker": "NPC_Hedda",
+          "text": {
+            "de": "Hol Zimtschnecken bei Hedda",
+            "en": "Get cinnamon buns from Hedda"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Hannes_Wollschal_Gut",
+      "Kinderbriefe_Mappe"
+    ],
+    "effects": []
+  }
+}

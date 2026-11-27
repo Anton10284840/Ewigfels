@@ -1,0 +1,18 @@
+# M207 – Corvin kommt mit Kakao, sagt das Richtige und schickt die beiden „zufällig“ in die Glastiefen (er misst die Kraft).
+===
+[set SpeakerName.Corvin "Corvin Hale"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `soft`]
+Corvin: Ich hab euch gesucht. Drei Türme, zwei Keller und ein sehr beleidigter Teekessel.
+Corvin: Kakao. Mit Schaumtier. Ich hab es selbst gesungen, deshalb sieht es aus wie eine Kartoffel.
+Lio: Danke.
+Corvin: Ich hab einen Bruder verloren. Nicht so. Aber auch an etwas, das ihn mir genommen hat. Man hört nie auf, die Briefe aufzumachen.
+  * Wie haben Sie es ausgehalten?
+    Corvin: Gar nicht. Ich hab nur gelernt, es zu tragen. Halten ist nicht festhalten. Hat mir jemand mal gesagt.
+  * Was können wir tun?
+    Corvin: Heute? Kakao trinken. Morgen? Gute Frage. Ich stelle gute Fragen. Antworten sind nicht mein Fach.
+[event emotion `neutral`]
+Corvin: Übrigens. Ganz nebenbei. Die Stille Hand baut in den Glastiefen Kael-Quarz ab. Das sagt man sich jedenfalls im Lehrerzimmer.
+Corvin: Ich sag das nur, weil ihr es sowieso herausfinden würdet. Und weil ihr es lieber von mir hören sollt als von den Lauschern.
+Corvin: Aber geht nicht hin. Das ist ein Befehl. Ein sehr leiser.

@@ -1,0 +1,22 @@
+# Freies Gespräch: Hanne Brook, Waisenhaus „Zum Warmen Ofen“. Wichtig für M206: Spieler soll sie mögen.
+===
+[set SpeakerName.Hanne "Hanne Brook"]
+===
+Hanne: Du schon wieder. Hast du Hunger? Du hast Hunger. Setz dich.
+:themen
+Hanne: Was ist?
+  * Wie geht's den Kindern?
+    Hanne: Bastian will zur Akademie. Lene redet mit Lampen. Kalle hat einen Stein, der angeblich spricht. Tom und Tim haben sich wieder vertauscht. Normal also.
+    [goto themen]
+  * Erzähl mal, wie ich als Kind war.
+    [event emotion `soft`]
+    Hanne: Laut. Neugierig. Hast jeden Abend gefragt, warum die Sterne nicht runterfallen. Ich hab gesagt: Weil sie sich festhalten. Hast du mir geglaubt. Bis du neun warst.
+    [goto themen]
+  [if {flag.Russgrube_Freed}]
+  * Lene ist wieder bei ihrem Vater.
+    Hanne: Ich weiß. Sie besucht uns trotzdem jeden Tag. Sagt, sie muss nach den Lampen schauen.
+    Hanne: Gut gemacht, Kind. ... Hab ich nicht gesagt.
+    [goto themen]
+  [endif]
+  * Ich muss los, Hanne.
+    Hanne: Schal an. Der ist nicht zur Deko.

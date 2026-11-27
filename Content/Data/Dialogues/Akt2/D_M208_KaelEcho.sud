@@ -1,0 +1,15 @@
+# M208 – Ein Kael-Echo (alte Minenarbeiterin) lehrt Seelenecho (K55). Spricht wie aus einer anderen Zeit, mit Echo.
+===
+[set SpeakerName.KaelEcho "Echo einer Minenarbeiterin"]
+===
+[event camera `wide`]
+KaelEcho: Wer klopft? Wer klopft an meinen Stein?
+KaelEcho: Ach. Ein Kind. Mit warmen Händen. Lange her, dass hier warme Hände waren.
+  * Wer bist du?
+    KaelEcho: Ich war Hauerin. Vor achthundert Jahren. Jetzt bin ich das, was der Stein von mir behalten hat. Das letzte, was ich gesagt habe. Und ein bisschen mehr.
+  * Was ist dieser Ort?
+    KaelEcho: Eine Halle, in der wir unsere Toten gesungen haben. Damit sie nicht verklingen. Der Stein hält sie. Er hält alles.
+KaelEcho: Du willst wissen, wer vor dir hier war. Das kann ich dir zeigen.
+KaelEcho: Leg die Hand auf den Boden. Nicht hören mit den Ohren. Hören mit der Haut. Jeder Ort erinnert sich, wer auf ihm ging.
+KaelEcho: Gut. Du lernst schnell. Zu schnell. Du hast das schon einmal gekonnt, oder? Ganz klein. Bevor du sprechen konntest.
+KaelEcho: Geh jetzt. Und lass das Licht an, wenn du gehst. Ich mag das Licht.

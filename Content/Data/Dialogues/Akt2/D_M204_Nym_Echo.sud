@@ -1,0 +1,18 @@
+# M204 – Erster Nachhallschritt. Nym flüstert den Weg. Echo am Satzende (kursiv, leiser).
+===
+[set SpeakerName.Nym "Die Stimme"]
+===
+[event camera `wide`]
+Nym: Du bist gefallen. *... gefallen ...*
+Nym: Nicht schlimm. Hier fällt alles hin. *... alles hin ...*
+  * Wo bin ich?
+    Nym: Im Nachhall. Wo die Welt hinhallt, wenn sie verklungen ist. *... verklungen ...*
+  * Bist du die Stimme aus meinen Träumen?
+    Nym: Ja. Und nein. Hier bin ich lauter. *... lauter ...*
+[event emotion `scared`]
+Nym: Die Stummen kommen. Sie trinken Töne. Mach keinen. *... keinen ...*
+Nym: Geh, wo das Licht von unten kommt. Nicht, wo es oben ist. *... oben ist ...*
+Nym: Der Riss ist hinter der Treppe, die es draußen nicht mehr gibt. *... nicht mehr gibt ...*
+Nym: Und nimm das Papier mit. Auf dem Tisch. Du wirst es brauchen. *... brauchen ...*
+[event emotion `sad`]
+Nym: Komm wieder. Bitte. Nicht zu bald. *... zu bald ... zu bald ...*

@@ -1,0 +1,17 @@
+# M206 – Ambros' Werkstatt brennt. Er rettet Quarze und eine alte Instrumentenkiste (Brandheim, Eltern, M408). Redet nicht über die Eltern.
+===
+[set SpeakerName.Ambros "Ambros Kettler"]
+===
+[event emotion `scared`]
+Ambros: Nicht da lang! Die Decke! Hier, nimm die Schublade. Die blauen Quarze. Die blauen!
+  * Ambros, raus hier! Lassen Sie die Quarze!
+    Ambros: Die Quarze ja. Aber nicht ... nicht die Kiste. Die nicht.
+  * (Die Schublade nehmen)
+    Ambros: Gut. Gut so. Und jetzt die Kiste. Hinten unter der Werkbank.
+[event camera `close`]
+Ambros: (zieht eine alte, verkohlte Instrumentenkiste unter der Werkbank hervor und drückt sie an sich)
+  * Was ist da drin?
+    Ambros: Ein Versprechen. Frag nicht. Nicht heute. Heute brennt mein Laden, und ich bin ein alter Mann, der eine Kiste trägt.
+  * Ich helfe Ihnen tragen.
+    Ambros: Nein. Die trag ich. Die trag ich allein. Das hab ich jemandem versprochen.
+Ambros: Raus jetzt. Das Waisenhaus. Hanne. Lauf!
