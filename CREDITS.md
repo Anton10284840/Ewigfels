@@ -44,6 +44,7 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 | Name | Quelle | Lizenz | Verwendung (Pfad im Projekt) |
 |---|---|---|---|
 | Game Animation Sample (Epic Games, UE 5.8) | Fab / Epic Games Launcher | UE-Content (Fab Standard-Lizenz, nur in Unreal-Projekten) | Sandbox-Figur mit Motion Matching, ca. 2.900 Dateien: `Content/Blueprints`, `Content/Characters/{UEFN_Mannequin,UE5_Mannequins,UE4_Mannequin,Echo,Paragon}`, `Content/MetaHumans/{Common,Kellan}`, `Content/Audio/Foley`, `Content/Input`, `Content/Levels/LevelPrototyping`, `Content/Misc` |
+| ambientCG PBR-Materialien (Boden, Fels, Pflaster; Auswahl im Skript) | https://ambientcg.com (Lizenz: https://docs.ambientcg.com/license) | CC0 1.0 | Testarena-Oberflächen, lädt `Scripts/Python/create_photoreal_arena.py` auf dem PC nach `Content/Environment/Textures/ambientCG/` (nicht im Repo) |
 
 ## Audio & Musik
 

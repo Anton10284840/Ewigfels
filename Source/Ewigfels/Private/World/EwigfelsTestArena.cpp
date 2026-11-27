@@ -175,13 +175,14 @@ void AEwigfelsTestArena::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 	// Materialien hier (nicht im Konstruktor), damit dynamische Instanzen auch im Editor-Vorschaubild sitzen
-	EwigfelsSpellVisuals::ApplySolid(Floor, Stone, 0.85f);
-	EwigfelsSpellVisuals::ApplySolid(Dais, DaisColor, 0.6f);
+	// Echte Oberflächen (create_photoreal.py), sonst graue Platzhalter
+	EwigfelsSpellVisuals::ApplySurface(Floor, TEXT("Ground"), Stone, 0.85f);
+	EwigfelsSpellVisuals::ApplySurface(Dais, TEXT("Paving"), DaisColor, 0.6f);
 	EwigfelsSpellVisuals::ApplyGlow(DaisRing, Amber, 3.f);
-	for (UStaticMeshComponent* P : Pillars)    { EwigfelsSpellVisuals::ApplySolid(P, StoneLight, 0.75f); }
+	for (UStaticMeshComponent* P : Pillars)    { EwigfelsSpellVisuals::ApplySurface(P, TEXT("Pillar"), StoneLight, 0.75f); }
 	for (UStaticMeshComponent* G : PillarGlows) { EwigfelsSpellVisuals::ApplyGlow(G, Amber, 18.f); }
-	for (UStaticMeshComponent* W : Walls)      { EwigfelsSpellVisuals::ApplySolid(W, StoneLight, 0.8f); }
-	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySolid(C, Stone, 0.9f); }
+	for (UStaticMeshComponent* W : Walls)      { EwigfelsSpellVisuals::ApplySurface(W, TEXT("Wall"), StoneLight, 0.8f); }
+	for (UStaticMeshComponent* C : Cover)      { EwigfelsSpellVisuals::ApplySurface(C, TEXT("Rock"), Stone, 0.9f); }
 }
 
 FTransform AEwigfelsTestArena::GetPlayerSpawn() const

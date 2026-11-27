@@ -109,7 +109,8 @@ void UEwigfelsStatusLookComponent::BuildLook(FLook& Look, const FLinearColor& Co
 	float Half = 90.f;
 	GetBodySize(Radius, Half);
 
-	auto Add = [&](FName Shape, const FVector& Offset, const FVector& Scale, const FRotator& Rot, float Glow, float Opacity, float Phase)
+	auto Add = [&](FName Shape, const FVector& Offset, const FVector& Scale, const FRotator& Rot, float Glow, float Opacity, float Phase,
+		int32 Kind = 0) // 0 = Leuchten, 1 = Eis (Lichtbrechung), 2 = Hitzeflimmern
 	{
 		UStaticMeshComponent* C = NewObject<UStaticMeshComponent>(Owner);
 		C->SetStaticMesh(EwigfelsSpellVisuals::GetShape(Shape));
@@ -119,8 +120,15 @@ void UEwigfelsStatusLookComponent::BuildLook(FLook& Look, const FLinearColor& Co
 		C->RegisterComponent();
 		C->SetRelativeLocationAndRotation(Offset, Rot);
 		C->SetRelativeScale3D(Scale);
-		UMaterialInstanceDynamic* M = EwigfelsSpellVisuals::ApplyGlow(C, Color, Glow);
-		if (M)
+		UMaterialInstanceDynamic* M = Kind == 1 ? EwigfelsSpellVisuals::ApplyIce(C, Color)
+			: Kind == 2 ? EwigfelsSpellVisuals::ApplyHeat(C, 0.08f)
+			: EwigfelsSpellVisuals::ApplyGlow(C, Color, Glow);
+		if (Kind == 2 && !M)
+		{
+			C->DestroyComponent(); // kein Hitze-Material da: lieber gar nichts als ein grauer Kegel
+			return;
+		}
+		if (M && Kind == 0)
 		{
 			M->SetScalarParameterValue(TEXT("Opacity"), Opacity);
 		}
@@ -141,9 +149,9 @@ void UEwigfelsStatusLookComponent::BuildLook(FLook& Look, const FLinearColor& Co
 	if (Look.Look == TEXT("ice"))
 	{
 		// Eisblock um den Körper + zwei schräge Zacken
-		Add(TEXT("cube"), FVector(0.f, 0.f, 0.f), FVector(D, D, Half * 2.2f / 100.f), FRotator(0.f, 20.f, 0.f), 1.6f, 0.38f, 0.f);
-		Add(TEXT("cone"), FVector(Radius * 0.9f, 0.f, Half * 0.7f), FVector(0.25f, 0.25f, 0.7f), FRotator(-35.f, 0.f, 0.f), 3.f, 0.5f, 0.f);
-		Add(TEXT("cone"), FVector(-Radius * 0.7f, Radius * 0.6f, Half * 0.4f), FVector(0.2f, 0.2f, 0.55f), FRotator(30.f, 60.f, 0.f), 3.f, 0.5f, 0.f);
+		Add(TEXT("cube"), FVector(0.f, 0.f, 0.f), FVector(D, D, Half * 2.2f / 100.f), FRotator(0.f, 20.f, 0.f), 1.6f, 0.38f, 0.f, 1);
+		Add(TEXT("cone"), FVector(Radius * 0.9f, 0.f, Half * 0.7f), FVector(0.25f, 0.25f, 0.7f), FRotator(-35.f, 0.f, 0.f), 3.f, 0.5f, 0.f, 1);
+		Add(TEXT("cone"), FVector(-Radius * 0.7f, Radius * 0.6f, Half * 0.4f), FVector(0.2f, 0.2f, 0.55f), FRotator(30.f, 60.f, 0.f), 3.f, 0.5f, 0.f, 1);
 	}
 	else if (Look.Look == TEXT("notes"))
 	{
@@ -161,6 +169,8 @@ void UEwigfelsStatusLookComponent::BuildLook(FLook& Look, const FLinearColor& Co
 			Add(TEXT("cone"), FVector(FMath::Cos(A) * Radius * 0.6f, FMath::Sin(A) * Radius * 0.6f, -Half * 0.3f + (i % 3) * Half * 0.35f),
 				FVector(0.22f, 0.22f, 0.5f), FRotator::ZeroRotator, 14.f, 0.8f, i * 1.3f);
 		}
+		// Hitzeflimmern um den ganzen Körper
+		Add(TEXT("cylinder"), FVector(0.f, 0.f, Half * 0.2f), FVector(D * 1.1f, D * 1.1f, Half * 2.6f / 100.f), FRotator::ZeroRotator, 0.f, 0.f, 0.f, 2);
 	}
 	else if (Look.Look == TEXT("rings"))
 	{

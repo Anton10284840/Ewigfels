@@ -155,6 +155,48 @@ UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplySolid(UPrimitiveComponent* 
 	return MID;
 }
 
+UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplySurface(UPrimitiveComponent* Component, FName Surface, const FLinearColor& Fallback,
+	float Roughness, const FLinearColor& Tint)
+{
+	const FString Name = FString::Printf(TEXT("MI_Ewigfels_%s"), *Surface.ToString());
+	UMaterialInterface* Base = Cast<UMaterialInterface>(LoadIfExists(FSoftObjectPath(
+		FString::Printf(TEXT("/Game/Environment/Materials/%s.%s"), *Name, *Name))));
+	if (!Component || !Base)
+	{
+		return ApplySolid(Component, Fallback, Roughness);
+	}
+	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Component);
+	MID->SetVectorParameterValue(TEXT("Tint"), Tint);
+	Component->SetMaterial(0, MID);
+	return MID;
+}
+
+UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplyIce(UPrimitiveComponent* Component, const FLinearColor& Color)
+{
+	UMaterialInterface* Base = Cast<UMaterialInterface>(LoadIfExists(FSoftObjectPath(TEXT("/Game/VFX/Materials/M_EwigfelsIce.M_EwigfelsIce"))));
+	if (!Component || !Base)
+	{
+		return ApplyGlow(Component, Color, 1.6f);
+	}
+	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Component);
+	MID->SetVectorParameterValue(TEXT("Color"), Color);
+	Component->SetMaterial(0, MID);
+	return MID;
+}
+
+UMaterialInstanceDynamic* EwigfelsSpellVisuals::ApplyHeat(UPrimitiveComponent* Component, float Strength)
+{
+	UMaterialInterface* Base = Cast<UMaterialInterface>(LoadIfExists(FSoftObjectPath(TEXT("/Game/VFX/Materials/M_EwigfelsHeat.M_EwigfelsHeat"))));
+	if (!Component || !Base)
+	{
+		return nullptr;
+	}
+	UMaterialInstanceDynamic* MID = UMaterialInstanceDynamic::Create(Base, Component);
+	MID->SetScalarParameterValue(TEXT("Strength"), Strength);
+	Component->SetMaterial(0, MID);
+	return MID;
+}
+
 UStaticMesh* EwigfelsSpellVisuals::GetShape(FName Shape)
 {
 	FString Name = TEXT("Sphere");

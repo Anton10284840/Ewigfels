@@ -189,6 +189,19 @@ namespace EwigfelsSpellVisuals
 	/** Fest, beleuchtet (Platzhalter-Körper, Arena). M_EwigfelsSolid (Color, Roughness) oder BasicShapeMaterial. */
 	EWIGFELS_API UMaterialInstanceDynamic* ApplySolid(UPrimitiveComponent* Component, const FLinearColor& Color, float Roughness = 0.7f);
 
+	/**
+	 * Echte PBR-Oberfläche /Game/Environment/Materials/MI_Ewigfels_<Surface> (Ground, Wall, Pillar, Rock, Paving;
+	 * angelegt von Scripts/Python/create_photoreal.py), sonst ApplySolid mit Fallback-Farbe. Tint färbt leicht ein.
+	 */
+	EWIGFELS_API UMaterialInstanceDynamic* ApplySurface(UPrimitiveComponent* Component, FName Surface, const FLinearColor& Fallback,
+		float Roughness = 0.7f, const FLinearColor& Tint = FLinearColor::White);
+
+	/** Klares Eis mit Lichtbrechung (M_EwigfelsIce) oder Leucht-Material. Parameter: Color, Glow. */
+	EWIGFELS_API UMaterialInstanceDynamic* ApplyIce(UPrimitiveComponent* Component, const FLinearColor& Color);
+
+	/** Hitzeflimmern (M_EwigfelsHeat). nullptr, wenn das Material fehlt (dann kein Flimmern). Parameter: Strength. */
+	EWIGFELS_API UMaterialInstanceDynamic* ApplyHeat(UPrimitiveComponent* Component, float Strength);
+
 	/** "sphere", "cylinder", "cone", "cube" aus /Engine/BasicShapes. */
 	EWIGFELS_API UStaticMesh* GetShape(FName Shape);
 
