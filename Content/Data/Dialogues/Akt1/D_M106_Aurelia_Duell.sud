@@ -1,0 +1,20 @@
+# M106 – Aurelia fordert zum Festduell (Glockenschilde, kein Schaden, drei Glocken).
+# Setzt Aurelia_DuelWon / Aurelia_DuelFair. Das Duell selbst ist ein Kampf-Event (custom).
+===
+[set SpeakerName.Aurelia "Aurelia von Stauffen"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `neutral`]
+Aurelia: Du. Festduell. Jetzt.
+Lio: Wow. Wie charmant. Willst du nicht erst Guten Abend sagen?
+Aurelia: Guten Abend. Festduell. Jetzt.
+Aurelia: Festregeln: Glockenschilde, kein Schaden, drei Glocken. Wer zuerst drei Glocken trifft, gewinnt. Das ist alles.
+  * Warum ich?
+    Aurelia: Weil alle über dich reden. Ich will wissen, ob da was dran ist. Oder ob die Lauscher wieder übertreiben.
+  * Gern. Ich wollte schon immer mal gegen die Kanzlerstochter verlieren.
+    [event emotion `smirk`]
+    Aurelia: Wenigstens bist du realistisch.
+  * Nein danke.
+    Aurelia: Mein Vater sieht zu. Die halbe Akademie sieht zu. Du kannst Nein sagen. Dann sagen sie morgen alle, du hattest Angst.
+    Aurelia: ... Ich sag's übrigens nicht. Die anderen schon.
+[event camera `wide`]

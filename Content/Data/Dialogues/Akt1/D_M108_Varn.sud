@@ -1,0 +1,27 @@
+# M108 – Ausbilder Varn auf der Lichtung, unter dem Einfluss des Taktsteins. Spricht im gleichmäßigen Takt.
+# Danach startet der Bosskampf (Boss_Varn). Kampfrufe als Bark-Liste am Ende (für die Kampf-KI).
+===
+[set SpeakerName.Varn "Ausbilder Varn"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `neutral`]
+Varn: Da seid ihr. Gut. Genau. Pünktlich. Gut.
+Lio: Herr Varn? Wir dachten, Sie sind beim Lager. Wo sind die anderen?
+Varn: Beim Lager. Genau. Beim Lager. Gut.
+[event camera `closeup`]
+Varn: Ihr zwei seid besonders. Das hat man mir gesagt. Einer von euch ist besonders.
+  * Herr Varn, geht es Ihnen gut?
+    Varn: Mir geht es gut. Gut. Gut. Gut.
+    Lio: Okay, das ist gruselig. Das ist offiziell gruselig.
+  * Wer hat Ihnen das gesagt?
+    Varn: Der Takt. Der Takt sagt es. Hörst du ihn nicht? Eins. Zwei. Drei. Vier.
+  * Lio, wir gehen. Langsam.
+    Varn: Nein. Nein. Noch nicht. Erst zeigst du es.
+[event emotion `angry`]
+Varn: Zeig es. Zeig es. Zeig es.
+[event quest.objective `M108`, `o_varn`]
+
+# Kampfrufe (Barks), werden von der Kampf-KI zufällig gespielt, nicht als Dialog:
+# Phase 1: "Schild hoch. Zeig es. Schild hoch." · "Eins. Zwei. Drei." · "Gut. Gut. Gut." · "Du bist zu langsam. Zu langsam. Zu langsam."
+# Phase 2: "Nicht du. Er." · "Zeig es, oder er fällt." · "Eins. Zwei. Drei. Vier."
+# Lio Phase 1: "Herr Varn, bitte!" · "Kitzelklang! ... Hat nicht gewirkt." · Lio Phase 2: "Ich kann nicht zaubern! Wieso kann ich nicht zaubern?"

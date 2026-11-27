@@ -1,0 +1,29 @@
+# Freies Gespräch: Agnes, Stillwasser. Vor der Befreiung flüsternd, danach laut und ununterbrochen. Meisterin für Flüsterweisen.
+===
+[set SpeakerName.Agnes "Agnes"]
+===
+[if {flag.Stillwasser_Freed}]
+[event emotion `happy`]
+Agnes: DA BIST DU JA! Komm her! Ich hab heute schon gesungen, gelacht, gebrüllt und meinen Nachbarn beschimpft. Vor dem Frühstück!
+:themen
+Agnes: Was willst du wissen? Frag ruhig. Ich rede jetzt. Viel.
+  * Bringen Sie mir eine Flüsterweise bei?
+    Agnes: Ausgerechnet ich! Vierzig Jahre geflüstert, jetzt bin ich Meisterin darin. Das Leben ist ein Witz, Kind. Ein guter.
+    Agnes: Flüsterschritt, Wisperwand, Leisezug. Für Leute, die nicht gehört werden wollen. Du wirst sie brauchen. Glaub mir.
+    [goto themen]
+  * Wie geht es Senta?
+    [if {flag.Senta_Redeemed}]
+    Agnes: Sie läutet jeden Abend die Festglocke. Für Konrad. Danach trinkt sie Tee mit mir. Sie lächelt jetzt auch mit den Augen. Manchmal.
+    [else]
+    Agnes: Weg. Im Raunwald, sagen die Leute. Ich wünsch ihr, dass sie irgendwann zurückkommt. Und weint. Das hat ihr gefehlt.
+    [endif]
+    [goto themen]
+  * Was machen die Wäscherinnen?
+    Agnes: Eine Färberei! Das alte Festtischtuch hängt jetzt als Fahne überm Dorf. Und sie streiten in Farben statt im Kanon. Herrlich.
+    [goto themen]
+  * Ich muss los, Agnes.
+    Agnes: Dann geh! Aber LAUT! Ich will dich bis zum Uferweg hören!
+[else]
+Agnes: Psst. Du schon wieder. Gut. Leise reinkommen.
+Agnes: (schreibt auf die Tafel: NOCH NICHT VORBEI.)
+[endif]

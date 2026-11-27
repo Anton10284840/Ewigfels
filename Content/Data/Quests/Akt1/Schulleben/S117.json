@@ -1,0 +1,78 @@
+{
+  "id": "S117",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Edda",
+  "duration_min": 60,
+  "auto_start": false,
+  "requires": [
+    "quest:M109"
+  ],
+  "title": {
+    "de": "Die Stimmprobe",
+    "en": "The Tuning Exam"
+  },
+  "summary": {
+    "de": "Jahresprüfungen. Jedes Fach eine Prüfung, jede gute Note ein Ton für deinen Turm.",
+    "en": "End-of-year exams. One exam per subject, every good grade a note for your tower."
+  },
+  "stages": [
+    {
+      "id": "s1_pruefungen",
+      "text": {
+        "de": "Leg die Stimmprobe in allen acht Fächern ab.",
+        "en": "Take the tuning exam in all eight subjects."
+      },
+      "objectives": [
+        {
+          "id": "o_pruefung",
+          "kind": "custom",
+          "target": "Stimmprobe_Fach",
+          "count": 8,
+          "text": {
+            "de": "Bestehe eine Fachprüfung",
+            "en": "Pass a subject exam"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_zeugnis"
+        }
+      ]
+    },
+    {
+      "id": "s2_zeugnis",
+      "text": {
+        "de": "Die Zeugnisse liegen in der Großen Halle aus.",
+        "en": "The report cards are laid out in the Great Hall."
+      },
+      "objectives": [
+        {
+          "id": "o_zeugnis",
+          "kind": "interact",
+          "target": "Zeugnis",
+          "marker": "Grosse_Halle",
+          "text": {
+            "de": "Hol dein Zeugnis ab",
+            "en": "Collect your report card"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 50,
+    "items": [
+      "Zeugnis_Jahr1"
+    ],
+    "effects": []
+  }
+}

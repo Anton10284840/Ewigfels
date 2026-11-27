@@ -1,0 +1,19 @@
+# M104 – Jupp, Straßenmusikant in Kesselbrunn, erster Meister. Lehrt nur gegen ein Lied.
+===
+[set SpeakerName.Jupp "Jupp"]
+===
+[event emotion `happy`]
+Jupp: Na, wen haben wir denn da! Das Kind aus dem dritten Bett links, jetzt mit Uniform. Hanne hat's dem halben Dorf erzählt.
+Jupp: Du willst Weisen lernen? Von mir? Ich bin kein Magister. Ich bin ein Mann mit einem Akkordeon und zu wenig Zähnen.
+  * Sie spielen besser als jeder Magister.
+    Jupp: Ha! Schmeichler. Das funktioniert bei mir. Leider.
+  * Lio sagt, Sie kennen Lieder, die zaubern.
+    Jupp: Jedes Lied zaubert, Kleines. Manche nur ein bisschen mehr.
+  * Ich wollte eigentlich nur zuhören.
+    Jupp: Zuhören ist der halbe Weg. Die andere Hälfte ist Nachmachen.
+Jupp: Also gut. Meisterregel, die gilt bei jedem echten Meister in Velmark: Wer lernen will, gibt erst was zurück.
+Jupp: Ich spiel dir was vor. Du spielst es nach. Mit den Fingern, in der Luft, wie auf Tasten. Wenn's klingt, kriegst du mein Liederheft.
+[event quest.report `custom`, `Jupp_Rhythmus`]
+Jupp: ... Na, sieh mal einer an. Schief, aber mit Herz. Das ist die beste Art von schief.
+[event emotion `happy`]
+Jupp: Hier, das Heft. Drei Lieder drin. Eins für den Regen, eins für Kühe, eins für traurige Abende. Das letzte brauchst du hoffentlich am seltensten.

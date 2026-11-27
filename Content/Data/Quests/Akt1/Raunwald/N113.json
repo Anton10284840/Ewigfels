@@ -1,0 +1,135 @@
+{
+  "id": "N113",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Wendeline",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Die Spiegelhexe",
+    "en": "The Mirror Witch"
+  },
+  "summary": {
+    "de": "Die Spiegelhexe am Teich kann Gesichter verzaubern. Nur ihr eigenes Spiegelbild ist weg. Es ist ausgezogen.",
+    "en": "The mirror witch by the pond can enchant faces. Only her own reflection is missing. It moved out."
+  },
+  "dialogues": [
+    "D_N113_Wendeline",
+    "D_N113_Spiegelbild"
+  ],
+  "stages": [
+    {
+      "id": "s1_hexe",
+      "text": {
+        "de": "Besuch die Hütte am Teich.",
+        "en": "Visit the hut by the pond."
+      },
+      "objectives": [
+        {
+          "id": "o_wendeline",
+          "kind": "dialogue",
+          "target": "D_N113_Wendeline",
+          "marker": "NPC_Wendeline",
+          "text": {
+            "de": "Sprich mit der Spiegelhexe Wendeline",
+            "en": "Talk to Wendeline the mirror witch"
+          }
+        },
+        {
+          "id": "o_kraeuter",
+          "kind": "collect",
+          "target": "Spiegelkraut",
+          "count": 4,
+          "text": {
+            "de": "Sammle Spiegelkraut am Teichrand",
+            "en": "Gather mirrorwort at the pond's edge"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_suche"
+        }
+      ]
+    },
+    {
+      "id": "s2_suche",
+      "text": {
+        "de": "Ein Spiegelbild geht dahin, wo es Spiegel gibt. Und Musik. Wo ist im Wasser ein Fest?",
+        "en": "A reflection goes where there are mirrors. And music. Where is there a party in the water?"
+      },
+      "objectives": [
+        {
+          "id": "o_stillwasser",
+          "kind": "reach",
+          "target": "Spiegelsteg",
+          "marker": "Spiegelsteg",
+          "text": {
+            "de": "Such am Spiegelsteg in Stillwasser",
+            "en": "Search at the Mirror Pier in Stillwasser"
+          }
+        },
+        {
+          "id": "o_tanzen",
+          "kind": "custom",
+          "target": "Spiegelfest_Mittanzen",
+          "text": {
+            "de": "Tanz im Spiegelbild mit, bis das Spiegelbild der Hexe dich bemerkt",
+            "en": "Dance in the reflection until the witch's reflection notices you"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wahl"
+        }
+      ]
+    },
+    {
+      "id": "s3_wahl",
+      "text": {
+        "de": "Das Spiegelbild ist glücklich hier. Bring es zurück oder lass es tanzen.",
+        "en": "The reflection is happy here. Bring it back or let it dance."
+      },
+      "objectives": [
+        {
+          "id": "o_wahl",
+          "kind": "dialogue",
+          "target": "D_N113_Spiegelbild",
+          "marker": "Spiegelsteg",
+          "text": {
+            "de": "Sprich mit dem Spiegelbild",
+            "en": "Talk to the reflection"
+          }
+        },
+        {
+          "id": "o_zurueck",
+          "kind": "talk",
+          "target": "Wendeline",
+          "marker": "NPC_Wendeline",
+          "text": {
+            "de": "Geh zurück zu Wendeline",
+            "en": "Go back to Wendeline"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Laden_Spiegelhexe"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "S114",
+  "type": "side",
+  "act": 1,
+  "region": "Kesselbrunn",
+  "giver": "Jupp",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Jupps Melodie",
+    "en": "Jupp's Melody"
+  },
+  "summary": {
+    "de": "Jupp will mit dir auf dem Markt auftreten. Dafür musst du sein schwerstes Lied lernen. Auf dem Akkordeon.",
+    "en": "Jupp wants to perform with you at the market. For that you need to learn his hardest song. On the accordion."
+  },
+  "stages": [
+    {
+      "id": "s1_ueben",
+      "text": {
+        "de": "Lerne Jupps Lied (Rhythmus-Spiel, drei Schwierigkeiten).",
+        "en": "Learn Jupp's song (rhythm game, three difficulties)."
+      },
+      "objectives": [
+        {
+          "id": "o_ueben",
+          "kind": "custom",
+          "target": "Jupp_Lied_Geuebt",
+          "count": 3,
+          "marker": "NPC_Jupp",
+          "text": {
+            "de": "Übe Jupps Lied",
+            "en": "Practise Jupp's song"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_auftritt"
+        }
+      ]
+    },
+    {
+      "id": "s2_auftritt",
+      "text": {
+        "de": "Markttag in Kesselbrunn. Halb das Dorf schaut zu. Hanne auch.",
+        "en": "Market day in Kesselbrunn. Half the village is watching. Hanne too."
+      },
+      "objectives": [
+        {
+          "id": "o_auftritt",
+          "kind": "custom",
+          "target": "Jupp_Auftritt",
+          "marker": "Kesselbrunn_Markt",
+          "text": {
+            "de": "Tritt mit Jupp auf dem Markt auf",
+            "en": "Perform with Jupp at the market"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 30,
+    "items": [
+      "Akkordeonbalg_Kosmetik"
+    ],
+    "effects": [
+      "rep:Zuenfte+5"
+    ]
+  }
+}

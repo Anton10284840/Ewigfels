@@ -1,0 +1,20 @@
+# N115 – Am Wurzelherz spürt der Spieler: Die Krankheit ist der eigene Urton aus M108. Seline sagen oder schweigen.
+===
+[set SpeakerName.Seline "Seline"]
+===
+[event camera `close`]
+Seline: Spürst du das? Der Kern. Er klingt ... nicht krank. Er klingt fremd. Als hätte ihm jemand einen Ton eingesetzt, der nicht hierher gehört.
+Seline: Ein Ton unter allen Tönen. So was gibt's doch gar nicht.
+  * Das war ich. Im Winter. Der Ton kam aus mir.
+    [set flag.Told_Seline true]
+    [event emotion `angry`]
+    Seline: Du? Du hast ... der ganze Wald war grau! Vögel sind vom Himmel gefallen!
+    Seline: ...
+    [event emotion `neutral`]
+    Seline: Und jetzt bist du hier und hilfst. Freiwillig.
+    Seline: Gut. Dann reparierst du, was du kaputt gemacht hast. Und ich sag es keinem. Die Hüter sind nicht das Kollegium.
+  * Ich weiß nicht, woher das kommt.
+    Seline: Ich auch nicht. Und das macht mir mehr Angst als der Baum.
+  * (Schweigen)
+    Seline: Du siehst blass aus. Bleib hinter mir.
+Seline: Er wacht auf. Wiegenlied, wenn du es kannst. Ich singe mit. Wenn das nicht reicht, legst du seinen Kern frei.

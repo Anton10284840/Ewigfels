@@ -1,0 +1,306 @@
+{
+  "id": "N114",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Edwin",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Krähenhain",
+    "en": "Crowgrove"
+  },
+  "summary": {
+    "de": "In Krähenhain hängen Puppen in allen Bäumen. Jede trägt die Kleidung eines Dorfbewohners. Ein Junge im Kirchturm ist noch wach.",
+    "en": "In Crowgrove dolls hang in every tree. Each wears a villager's clothes. A boy in the church tower is still awake."
+  },
+  "dialogues": [
+    "D_N114_Edwin",
+    "D_N114_Mauritz",
+    "D_N114_Hilde"
+  ],
+  "stages": [
+    {
+      "id": "s1_dorf",
+      "text": {
+        "de": "Geh nach Krähenhain. Schau nicht zu lange weg.",
+        "en": "Go to Crowgrove. Don't look away for too long."
+      },
+      "objectives": [
+        {
+          "id": "o_dornpfad",
+          "kind": "reach",
+          "target": "Dornpfad",
+          "marker": "Dornpfad",
+          "text": {
+            "de": "Folg dem Dornpfad nach Westen",
+            "en": "Follow the Thorn Path west"
+          }
+        },
+        {
+          "id": "o_haus",
+          "kind": "interact",
+          "target": "Kraehenhain_Gedeckter_Tisch",
+          "marker": "Kraehenhain_Dorfplatz",
+          "text": {
+            "de": "Untersuch das erste Haus",
+            "en": "Examine the first house"
+          }
+        },
+        {
+          "id": "o_klasse",
+          "kind": "interact",
+          "target": "Kraehenhain_Tafel",
+          "marker": "Kraehenhain_Schule",
+          "text": {
+            "de": "Lies die Tafel in der Schule",
+            "en": "Read the blackboard in the school"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_edwin"
+        }
+      ]
+    },
+    {
+      "id": "s2_edwin",
+      "text": {
+        "de": "Im Kirchturm versteckt sich Edwin. Er ist seit drei Monaten allein.",
+        "en": "Edwin is hiding in the church tower. He's been alone for three months."
+      },
+      "objectives": [
+        {
+          "id": "o_turm",
+          "kind": "reach",
+          "target": "Kraehenhain_Kirchturm",
+          "marker": "Kraehenhain_Kirche",
+          "text": {
+            "de": "Steig in den Kirchturm",
+            "en": "Climb the church tower"
+          }
+        },
+        {
+          "id": "o_edwin",
+          "kind": "dialogue",
+          "target": "D_N114_Edwin",
+          "marker": "NPC_Edwin",
+          "text": {
+            "de": "Sprich mit Edwin",
+            "en": "Talk to Edwin"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_geschichte"
+        }
+      ]
+    },
+    {
+      "id": "s3_geschichte",
+      "text": {
+        "de": "Finde heraus, wer Mauritz Knochenfeld ist und was ihm angetan wurde.",
+        "en": "Find out who Mauritz Knochenfeld is and what was done to him."
+      },
+      "objectives": [
+        {
+          "id": "o_werkstatt",
+          "kind": "interact",
+          "target": "Mauritz_Werkstatt",
+          "marker": "Mauritz_Werkstatt",
+          "text": {
+            "de": "Durchsuch die Werkstatt des Puppenmachers",
+            "en": "Search the doll maker's workshop"
+          }
+        },
+        {
+          "id": "o_morchel",
+          "kind": "talk",
+          "target": "Morchel",
+          "marker": "NPC_Morchel",
+          "text": {
+            "de": "Frag Großmutter Morchel nach dem stillen Jungen von früher",
+            "en": "Ask Grandmother Morchel about the quiet boy from long ago"
+          }
+        },
+        {
+          "id": "o_puppe",
+          "kind": "interact",
+          "target": "Erste_Puppe_Baum",
+          "marker": "Kirchenbaum",
+          "text": {
+            "de": "Find die älteste Puppe im Baum über der Kirche",
+            "en": "Find the oldest doll in the tree above the church"
+          }
+        },
+        {
+          "id": "o_reparieren",
+          "kind": "custom",
+          "target": "Erste_Puppe_Reparieren",
+          "marker": "NPC_Gernot",
+          "text": {
+            "de": "Lass Gernot Borke in Pilzhausen den abgebrochenen Flügel neu schnitzen",
+            "en": "Have Gernot Borke in Pilzhausen carve a new wing for the broken one"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_mauritz"
+        }
+      ]
+    },
+    {
+      "id": "s4_mauritz",
+      "text": {
+        "de": "Mauritz wartet auf dem Dorfplatz. Er hat schon eine Puppe in deiner Größe angefangen.",
+        "en": "Mauritz waits on the village square. He has already started a doll your size."
+      },
+      "objectives": [
+        {
+          "id": "o_mauritz",
+          "kind": "dialogue",
+          "target": "D_N114_Mauritz",
+          "marker": "NPC_Mauritz",
+          "text": {
+            "de": "Stell dich Mauritz Knochenfeld",
+            "en": "Face Mauritz Knochenfeld"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Mauritz_Decided",
+          "text": {
+            "de": "Erlöse Mauritz oder kämpfe",
+            "en": "Redeem Mauritz or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Mauritz_Redeemed"
+          ],
+          "stage": "s5a_lied"
+        },
+        {
+          "stage": "s5b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s5a_lied",
+      "text": {
+        "de": "Die Puppe singt ihre Zeile, schief. Sing sie richtig mit.",
+        "en": "The doll sings its line, off-key. Sing it properly with it."
+      },
+      "objectives": [
+        {
+          "id": "o_mitsingen",
+          "kind": "custom",
+          "target": "Pilzlied_Mitsingen",
+          "text": {
+            "de": "Sing die Zeile mit (Rhythmus)",
+            "en": "Sing the line along (rhythm)"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+10"
+      ],
+      "next": [
+        {
+          "stage": "s6_hilde"
+        }
+      ]
+    },
+    {
+      "id": "s5b_kampf",
+      "text": {
+        "de": "Mauritz pfeift. Die Krähen fliegen auf. Zwei Puppen stehen auf, um für ihn zu kämpfen.",
+        "en": "Mauritz whistles. The crows take flight. Two dolls rise to fight for him."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Mauritz_Knochenfeld",
+          "marker": "NPC_Mauritz",
+          "text": {
+            "de": "Besiege Mauritz Knochenfeld",
+            "en": "Defeat Mauritz Knochenfeld"
+          }
+        },
+        {
+          "id": "o_faeden",
+          "kind": "custom",
+          "target": "Marionetten_Faeden",
+          "count": 2,
+          "text": {
+            "de": "Durchtrenn die Fäden der Marionetten, ohne sie zu verletzen",
+            "en": "Cut the puppets' strings without hurting them"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s6_hilde"
+        }
+      ]
+    },
+    {
+      "id": "s6_hilde",
+      "text": {
+        "de": "Die Puppen werden wieder Menschen. Nur die Bürgermeisterin bleibt im höchsten Baum.",
+        "en": "The dolls become people again. Only the mayor stays in the highest tree."
+      },
+      "objectives": [
+        {
+          "id": "o_hilde",
+          "kind": "dialogue",
+          "target": "D_N114_Hilde",
+          "marker": "NPC_Hilde",
+          "text": {
+            "de": "Sprich mit Bürgermeisterin Hilde Span",
+            "en": "Talk to Mayor Hilde Span"
+          }
+        },
+        {
+          "id": "o_edwin2",
+          "kind": "talk",
+          "target": "Edwin",
+          "marker": "NPC_Edwin",
+          "text": {
+            "de": "Bring Edwin aus dem Turm",
+            "en": "Bring Edwin down from the tower"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Kraehenhain_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Kodex_Kraehenhain",
+      "Handpuppe_Kraehe"
+    ],
+    "effects": [
+      "rel:Lio+3"
+    ]
+  }
+}

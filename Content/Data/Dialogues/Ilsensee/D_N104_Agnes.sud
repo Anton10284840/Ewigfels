@@ -1,0 +1,26 @@
+# N104 – Agnes, Älteste von Stillwasser (78). Flüstert, schreibt Wichtiges auf ihre Schiefertafel.
+# Alle Zeilen in Stillwasser werden geflüstert (Audio: Flüster-Preset). Laute Antworten kosten Stimme (Spielmechanik).
+===
+[set SpeakerName.Agnes "Agnes"]
+===
+[event emotion `neutral`]
+Agnes: Psst. Komm rein. Schnell. Und die Tür nicht knallen.
+Agnes: Du hast den Eimer umgeworfen. Das ganze Dorf hat's gehört. Ganz Stillwasser weiß jetzt, wie deine Füße klingen.
+  * Entschuldigung. Was ist das hier für ein Ort?
+    Agnes: Ein Dorf, das nicht laut sein darf. Seit vierzig Jahren.
+  * Warum flüstern hier alle?
+    Agnes: Weil wer laut ist, seine Stimme verliert. Einen Tag. Manchmal länger.
+  [if {flag.Matti_Voiceless}]
+  * Ein Junge aus Uferlicht hat hier seine Stimme verloren. Matti.
+    [event emotion `sad`]
+    Agnes: Der Kleine mit den Muscheln. Ich hab ihn gesehen. Er hat nur einmal gerufen. Einmal reicht.
+  [endif]
+Agnes: (schreibt auf die Tafel: SIE HAT ES GEMACHT. DIE WITWE. ABER SIE IST NICHT BÖSE.)
+Agnes: Senta Grau. Sie wohnt im trockenen Haus auf dem Felsen. Sie bringt uns Brot. Sie fragt, wie es uns geht. Und sie hält das ganze Dorf still.
+Agnes: Ich will nicht, dass ihr jemand wehtut. Ich will nur wieder singen. Ich hatte mal eine schöne Stimme. Glaub ich. Ich weiß es nicht mehr genau.
+  * Was ist damals passiert?
+    Agnes: Das Sommerfest. Konrad, ihr Mann, ist rausgerudert und nicht zurückgekommen. Mehr weiß ich nicht. Die anderen wissen mehr. Hinnerk weiß mehr.
+  * Wie kann ich helfen?
+    Agnes: Finde heraus, was in der Nacht passiert ist. Wirklich passiert. Dann weißt du auch, was Senta braucht.
+Agnes: (schreibt: HILF UNS. ABER LEISE.)
+Agnes: Und schau nicht zu lange ins Wasser. Man gewöhnt sich dran. Das ist das Schlimme.

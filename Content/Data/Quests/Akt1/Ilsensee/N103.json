@@ -1,0 +1,198 @@
+{
+  "id": "N103",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Lotte",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Der Glockenwels",
+    "en": "The Bell Catfish"
+  },
+  "summary": {
+    "de": "Im Laternenhecht erzählt man sich: Wer den Glockenwels fängt, hat einen Wunsch frei. Lotte Krabbe hat es vierzig Jahre versucht. Jetzt bist du dran.",
+    "en": "At the Lantern Pike they say whoever catches the bell catfish gets a wish. Lotte Krabbe has tried for forty years. Now it's your turn."
+  },
+  "dialogues": [
+    "D_N103_Lotte",
+    "D_N103_Leine"
+  ],
+  "stages": [
+    {
+      "id": "s1_legende",
+      "text": {
+        "de": "Hör dir die Legende an und finde heraus, was der Wels mag.",
+        "en": "Listen to the legend and find out what the catfish likes."
+      },
+      "objectives": [
+        {
+          "id": "o_lotte",
+          "kind": "dialogue",
+          "target": "D_N103_Lotte",
+          "marker": "NPC_Lotte",
+          "text": {
+            "de": "Lass dir von Lotte die Legende erzählen",
+            "en": "Let Lotte tell you the legend"
+          }
+        },
+        {
+          "id": "o_tammo",
+          "kind": "talk",
+          "target": "Tammo",
+          "marker": "NPC_Tammo",
+          "text": {
+            "de": "Lass dir von Tammo das Angeln zeigen",
+            "en": "Let Tammo teach you to fish"
+          }
+        },
+        {
+          "id": "o_koeder",
+          "kind": "collect",
+          "target": "Koeder_Glimmwurm",
+          "count": 5,
+          "marker": "Westufer_Wiese",
+          "text": {
+            "de": "Sammle Glimmwürmer am Westufer (nur nachts)",
+            "en": "Collect glowworms on the west shore (night only)"
+          }
+        },
+        {
+          "id": "o_fenna",
+          "kind": "talk",
+          "target": "Fenna",
+          "marker": "NPC_Fenna",
+          "text": {
+            "de": "Frag Oma Fenna nach dem richtigen Wetter",
+            "en": "Ask Grandma Fenna about the right weather"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_anbiss"
+        }
+      ]
+    },
+    {
+      "id": "s2_anbiss",
+      "text": {
+        "de": "Morgennebel, Glimmwurm am Haken, die Stelle über der Glockeninsel. Lotte rudert. Und dann beißt etwas an, das größer ist als das Boot.",
+        "en": "Morning fog, a glowworm on the hook, the spot above Bell Island. Lotte rows. And then something bites that is bigger than the boat."
+      },
+      "objectives": [
+        {
+          "id": "o_nebel",
+          "kind": "custom",
+          "target": "Nebel_Morgen",
+          "text": {
+            "de": "Warte auf Morgennebel",
+            "en": "Wait for morning fog"
+          }
+        },
+        {
+          "id": "o_anbiss",
+          "kind": "custom",
+          "target": "Glockenwels_Anbiss",
+          "marker": "Glockeninsel",
+          "text": {
+            "de": "Halte die Leine, während der Wels euch über den See zieht",
+            "en": "Hold the line while the catfish drags you across the lake"
+          }
+        },
+        {
+          "id": "o_leine",
+          "kind": "dialogue",
+          "target": "D_N103_Leine",
+          "text": {
+            "de": "Entscheide: festhalten oder loslassen",
+            "en": "Decide: hold on or let go"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Glockenwels_Released"
+          ],
+          "stage": "s3a_geschenk"
+        },
+        {
+          "stage": "s3b_nass"
+        }
+      ]
+    },
+    {
+      "id": "s3a_geschenk",
+      "text": {
+        "de": "Du hast losgelassen. Der Wels taucht. Nach einer Weile treibt etwas Glänzendes an die Oberfläche.",
+        "en": "You let go. The catfish dives. After a while something shiny floats to the surface."
+      },
+      "objectives": [
+        {
+          "id": "o_schluessel",
+          "kind": "interact",
+          "target": "Glockenwels_Geschenk",
+          "marker": "Glockeninsel",
+          "text": {
+            "de": "Fisch das Geschenk des Welses aus dem Wasser",
+            "en": "Fish the catfish's gift out of the water"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Has_Grottenkey=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_nass",
+      "text": {
+        "de": "Die Leine reißt. Du nicht. Du landest im See. Lotte lacht so laut, dass man es in Nocturna hört.",
+        "en": "The line snaps. You don't. You land in the lake. Lotte laughs so hard they hear it in Nocturna."
+      },
+      "objectives": [
+        {
+          "id": "o_raus",
+          "kind": "custom",
+          "target": "Ins_Wasser_Gefallen",
+          "text": {
+            "de": "Schwimm zurück ins Boot",
+            "en": "Swim back to the boat"
+          }
+        },
+        {
+          "id": "o_lotte2",
+          "kind": "talk",
+          "target": "Lotte",
+          "marker": "NPC_Lotte",
+          "text": {
+            "de": "Lass dich im Laternenhecht trocknen und auslachen",
+            "en": "Dry off at the Lantern Pike and get laughed at"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Kodex_Glockenwels",
+      "Angelrute_Lotte"
+    ],
+    "effects": []
+  }
+}

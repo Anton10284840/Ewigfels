@@ -46,6 +46,7 @@ LANGS = ("de", "en")
 QUEST_TYPES = {"main", "series", "faction", "side"}
 TIERS = {"feind": -100, "misstrauisch": -59, "neutral": -19, "geschaetzt": 20, "geschätzt": 20, "verbuendet": 60, "verbündet": 60}
 QUEST_STATES = {"notstarted": 0, "active": 1, "completed": 2, "failed": 3}
+FREE_TALK_PREFIXES = ("D_Schule_", "D_Dorf_", "D_Welt_")  # freie Gespräche ohne Quest
 TARGET_HOURS = {"main": (45, 50), "series+faction+side": (35, 40)}
 
 
@@ -513,6 +514,8 @@ def main() -> int:
     used = {d for _, q in quests.values() for d in q.get("dialogues", []) or []}
     used |= {o.get("target") for _, q in quests.values() for s in q.get("stages", []) for o in s.get("objectives", []) if o.get("kind") == "dialogue"}
     for name in sorted(dialogue_names - used):
+        if name.startswith(FREE_TALK_PREFIXES):
+            continue  # freie Gespräche (NPC direkt ansprechen), brauchen keine Quest
         report.warn(f"Dialog {name}", "wird von keiner Quest erwähnt")
 
     if not args.quiet:

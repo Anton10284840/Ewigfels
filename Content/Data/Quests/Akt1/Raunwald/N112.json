@@ -1,0 +1,126 @@
+{
+  "id": "N112",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Hutzel",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Der Mottenreigen",
+    "en": "The Moth Dance"
+  },
+  "summary": {
+    "de": "Die Waldkinder wollen den großen Mottenreigen tanzen. Aber die Glimmermotten sind weg. Alle.",
+    "en": "The forest children want to dance the great moth dance. But the glimmer moths are gone. All of them."
+  },
+  "dialogues": [
+    "D_N112_Waldkinder"
+  ],
+  "stages": [
+    {
+      "id": "s1_kinder",
+      "text": {
+        "de": "Frag die Waldkinder, was passiert ist.",
+        "en": "Ask the forest children what happened."
+      },
+      "objectives": [
+        {
+          "id": "o_hutzel",
+          "kind": "dialogue",
+          "target": "D_N112_Waldkinder",
+          "marker": "Mottenbaum",
+          "text": {
+            "de": "Sprich mit Hutzel, Mira und Pfiff",
+            "en": "Talk to Hutzel, Mira and Pfiff"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_spur"
+        }
+      ]
+    },
+    {
+      "id": "s2_spur",
+      "text": {
+        "de": "Die Motten fliegen nach Westen. Aus Krähenhain klingt eine Spieluhr.",
+        "en": "The moths are flying west. A music box sounds from Krähenhain."
+      },
+      "objectives": [
+        {
+          "id": "o_dornpfad",
+          "kind": "reach",
+          "target": "Dornpfad",
+          "marker": "Dornpfad",
+          "text": {
+            "de": "Folg den Motten bis zum Dornpfad",
+            "en": "Follow the moths to the Thorn Path"
+          }
+        },
+        {
+          "id": "o_lied",
+          "kind": "custom",
+          "target": "Mottenlied_Ueben",
+          "marker": "Mottenbaum",
+          "text": {
+            "de": "Übe mit den Kindern die Lockruf-Melodie (Tonfolge halten)",
+            "en": "Practise the Lure Call tune with the children (hold the sequence)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_reigen"
+        }
+      ]
+    },
+    {
+      "id": "s3_reigen",
+      "text": {
+        "de": "Sing die Motten vom Dornpfad zurück, ohne Krähenhain zu betreten. Dann tanzt der Reigen.",
+        "en": "Sing the moths back from the Thorn Path without entering Krähenhain. Then the dance begins."
+      },
+      "objectives": [
+        {
+          "id": "o_zuruecksingen",
+          "kind": "custom",
+          "target": "Motten_Zuruecksingen",
+          "marker": "Dornpfad",
+          "text": {
+            "de": "Sing die Motten zurück",
+            "en": "Sing the moths back"
+          }
+        },
+        {
+          "id": "o_reigen",
+          "kind": "custom",
+          "target": "Mottenreigen_Tanzen",
+          "marker": "Mottenbaum",
+          "text": {
+            "de": "Tanz den großen Reigen mit",
+            "en": "Join the great dance"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Glimmerglas_Laterne",
+      "Fotorahmen_Mottenreigen"
+    ],
+    "effects": []
+  }
+}

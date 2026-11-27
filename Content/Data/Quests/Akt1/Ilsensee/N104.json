@@ -1,0 +1,328 @@
+{
+  "id": "N104",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Agnes",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Das Flüsterdorf",
+    "en": "The Whispering Village"
+  },
+  "summary": {
+    "de": "In Stillwasser flüstern alle. Wer laut ist, verliert seine Stimme. Die alte Agnes schreibt dir auf ihre Tafel: HILF UNS. ABER LEISE.",
+    "en": "In Stillwasser everyone whispers. Whoever is loud loses their voice. Old Agnes writes on her slate: HELP US. BUT QUIETLY."
+  },
+  "dialogues": [
+    "D_N104_Agnes",
+    "D_N104_Hinnerk",
+    "D_N104_Senta",
+    "D_N104_Hinnerk_Schuld"
+  ],
+  "stages": [
+    {
+      "id": "s1_ankommen",
+      "text": {
+        "de": "Geh nach Stillwasser. Sprich leise.",
+        "en": "Go to Stillwasser. Speak quietly."
+      },
+      "objectives": [
+        {
+          "id": "o_schild",
+          "kind": "reach",
+          "target": "Stillwasser_Schild",
+          "marker": "Stillwasser_Schild",
+          "text": {
+            "de": "Folg dem Uferweg bis zum Schild LEISE",
+            "en": "Follow the shore path to the sign that says QUIET"
+          }
+        },
+        {
+          "id": "o_eimer",
+          "kind": "custom",
+          "target": "Stillwasser_Eimer",
+          "marker": "Stillwasser_Kapelle",
+          "text": {
+            "de": "Geh über die Dachstege zur Kapelle",
+            "en": "Cross the rooftop walkways to the chapel"
+          }
+        },
+        {
+          "id": "o_agnes",
+          "kind": "dialogue",
+          "target": "D_N104_Agnes",
+          "marker": "NPC_Agnes",
+          "text": {
+            "de": "Sprich mit Agnes (flüstern!)",
+            "en": "Talk to Agnes (whisper!)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_spuren"
+        }
+      ]
+    },
+    {
+      "id": "s2_spuren",
+      "text": {
+        "de": "Finde heraus, was vor vierzig Jahren beim Sommerfest geschah.",
+        "en": "Find out what happened at the summer festival forty years ago."
+      },
+      "objectives": [
+        {
+          "id": "o_fenna",
+          "kind": "talk",
+          "target": "Fenna",
+          "marker": "NPC_Fenna",
+          "text": {
+            "de": "Frag Oma Fenna in Uferlicht nach dem Fest",
+            "en": "Ask Grandma Fenna in Uferlicht about the festival"
+          }
+        },
+        {
+          "id": "o_laken",
+          "kind": "interact",
+          "target": "Waescherinnen_Laken",
+          "marker": "Stillwasser_Waschplatz",
+          "text": {
+            "de": "Schau dir das Laken der Wäscherinnen genauer an",
+            "en": "Take a closer look at the washerwomen's sheet"
+          }
+        },
+        {
+          "id": "o_linus",
+          "kind": "interact",
+          "target": "Linus_Kreide",
+          "marker": "NPC_Linus",
+          "text": {
+            "de": "Lies, was Linus auf die Planken schreibt",
+            "en": "Read what Linus writes on the planks"
+          }
+        },
+        {
+          "id": "o_hinnerk",
+          "kind": "dialogue",
+          "target": "D_N104_Hinnerk",
+          "marker": "Spiegelsteg",
+          "text": {
+            "de": "Sprich nachts mit Hinnerk auf dem Spiegelsteg",
+            "en": "Talk to Hinnerk on the Mirror Pier at night"
+          }
+        },
+        {
+          "id": "o_spiegel",
+          "kind": "custom",
+          "target": "Spiegel_Konrad",
+          "marker": "Spiegelsteg",
+          "text": {
+            "de": "Schau ins Wasser des Spiegelstegs",
+            "en": "Look into the water at the Mirror Pier"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_ruf"
+        }
+      ]
+    },
+    {
+      "id": "s3_ruf",
+      "text": {
+        "de": "Der Mann im Spiegel zeigt auf die Glockeninsel. Dort hängt noch etwas in der Luft.",
+        "en": "The man in the mirror points at Bell Island. Something still hangs in the air there."
+      },
+      "objectives": [
+        {
+          "id": "o_insel",
+          "kind": "reach",
+          "target": "Glockeninsel",
+          "marker": "Glockeninsel",
+          "text": {
+            "de": "Fahr zur Glockeninsel",
+            "en": "Go to Bell Island"
+          }
+        },
+        {
+          "id": "o_ruf",
+          "kind": "custom",
+          "target": "Konrads_Ruf_Hoeren",
+          "marker": "Glockenstuhl_Leer",
+          "text": {
+            "de": "Lausche dem Echo im leeren Glockenstuhl",
+            "en": "Listen to the echo in the empty bell frame"
+          }
+        },
+        {
+          "id": "o_glas",
+          "kind": "custom",
+          "target": "Ruf_Einfangen",
+          "optional": true,
+          "text": {
+            "de": "Fang Konrads Ruf mit Mirelas Nachklang-Glas ein (braucht S111)",
+            "en": "Catch Konrad's call in Mirela's echo glass (needs S111)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_senta"
+        }
+      ]
+    },
+    {
+      "id": "s4_senta",
+      "text": {
+        "de": "Geh zum Haus der Witwe. Senta Grau erwartet dich schon.",
+        "en": "Go to the widow's house. Senta Grau is already expecting you."
+      },
+      "objectives": [
+        {
+          "id": "o_senta",
+          "kind": "dialogue",
+          "target": "D_N104_Senta",
+          "marker": "NPC_Senta",
+          "text": {
+            "de": "Sprich mit Senta Grau",
+            "en": "Talk to Senta Grau"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Senta_Decided",
+          "text": {
+            "de": "Erlöse Senta oder stell dich ihr",
+            "en": "Redeem Senta or face her"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Senta_Redeemed"
+          ],
+          "stage": "s5a_erloesung"
+        },
+        {
+          "stage": "s5b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s5a_erloesung",
+      "text": {
+        "de": "Senta hört den Ruf ihres Mannes zum ersten Mal. Und sie weint. Laut.",
+        "en": "Senta hears her husband's call for the first time. And she cries. Loudly."
+      },
+      "objectives": [
+        {
+          "id": "o_weinen",
+          "kind": "custom",
+          "target": "Senta_Weint",
+          "marker": "NPC_Senta",
+          "text": {
+            "de": "Bleib bei ihr",
+            "en": "Stay with her"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+10"
+      ],
+      "next": [
+        {
+          "stage": "s6_hinnerk"
+        }
+      ]
+    },
+    {
+      "id": "s5b_kampf",
+      "text": {
+        "de": "Senta singt den See gegen dich. Halte durch, ohne deine Stimme zu verlieren.",
+        "en": "Senta sings the lake against you. Hold on without losing your voice."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Senta_Grau",
+          "marker": "NPC_Senta",
+          "text": {
+            "de": "Besiege Senta Grau",
+            "en": "Defeat Senta Grau"
+          }
+        },
+        {
+          "id": "o_lehrlinge",
+          "kind": "defeat",
+          "target": "Fluchsaenger_Lehrling",
+          "count": 2,
+          "text": {
+            "de": "Besiege ihre Lehrlinge",
+            "en": "Defeat her apprentices"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s6_hinnerk"
+        }
+      ]
+    },
+    {
+      "id": "s6_hinnerk",
+      "text": {
+        "de": "Der Fluch ist gebrochen. Aber einer im Dorf hat damals einen Ruf gehört und nichts gesagt.",
+        "en": "The curse is broken. But someone in the village heard a call back then and said nothing."
+      },
+      "objectives": [
+        {
+          "id": "o_schuld",
+          "kind": "dialogue",
+          "target": "D_N104_Hinnerk_Schuld",
+          "marker": "NPC_Hinnerk",
+          "text": {
+            "de": "Sprich mit Hinnerk",
+            "en": "Talk to Hinnerk"
+          }
+        },
+        {
+          "id": "o_glocken",
+          "kind": "custom",
+          "target": "Glocken_Auswickeln",
+          "marker": "Stillwasser_Kapelle",
+          "text": {
+            "de": "Wickel mit Agnes die erste Glocke aus",
+            "en": "Unwrap the first bell with Agnes"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Stillwasser_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Weise_Fluesterschritt",
+      "Kodex_Stillwasser"
+    ],
+    "effects": [
+      "rel:Lio+3"
+    ]
+  }
+}

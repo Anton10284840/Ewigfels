@@ -1,0 +1,25 @@
+# N102 – Pips, Anführerin der Kaimöwen (10). Jule zählt alles, Matti will mutig sein.
+===
+[set SpeakerName.Pips "Pips"]
+[set SpeakerName.Jule "Jule"]
+[set SpeakerName.Matti "Matti"]
+===
+Pips: Halt! Das ist Kaimöwen-Gebiet. Wer hier durch will, muss Kaimöwe sein.
+Jule: Oder Möwe. Echte Möwen dürfen auch. Es sind heute schon vierzehn durch.
+Matti: Ich bin auch Kaimöwe. Seit Dienstag.
+  * Wie wird man Kaimöwe?
+    Pips: Drei Mutproben. Keiner von der Akademie hat das je geschafft.
+    Jule: Weil noch nie einer gefragt hat.
+    Pips: Jule!
+  * Ich bin von der Akademie. Ich kann zaubern.
+    Pips: Zaubern kann jeder. Mutig sein nicht.
+    Matti: Ich kann beides nicht. Noch nicht.
+  * (Grimasse schneiden)
+    [event emotion `happy`]
+    Pips: ... Okay. Das war gut. Du darfst die Mutproben machen.
+Pips: Erstens: Nachts ohne Licht bis ans Ende vom Leuchtsteg. Die Laterne da vorn zählt nicht.
+Pips: Zweitens: Eine Messingfeder von Ottilie. Der Laterne in der Akademie. Die petzt alles.
+Pips: Drittens: Um Mitternacht Oles Pfanne läuten. Einmal. Dann rennen.
+Jule: Rekord ist zwölf Sekunden bis hinter die Netze. Ich hab gezählt.
+Matti: Ich hab sie noch nie geläutet. Aber ich würde. Bestimmt.
+[event quest.objective `N102`, `o_pips`]

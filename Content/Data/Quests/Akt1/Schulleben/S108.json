@@ -1,0 +1,98 @@
+{
+  "id": "S108",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Tilda",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Herr Quaak",
+    "en": "Mr Quaak"
+  },
+  "summary": {
+    "de": "Tilda will beweisen, dass ihr Frosch ein verzauberter Prinz ist. Er ist es nicht. Aber irgendwas ist an ihm komisch.",
+    "en": "Tilda wants to prove her frog is an enchanted prince. He isn't. But something about him is strange."
+  },
+  "stages": [
+    {
+      "id": "s1_beweis",
+      "text": {
+        "de": "Teste Herrn Quaak: Krone, Kuss-Weise, Ahnenbuch.",
+        "en": "Test Mr Quaak: crown, kiss air, family register."
+      },
+      "objectives": [
+        {
+          "id": "o_buch",
+          "kind": "interact",
+          "target": "Ahnenbuch_Bibliothek",
+          "marker": "Bibliothek",
+          "text": {
+            "de": "Such im Gehör nach verzauberten Prinzen",
+            "en": "Search the library for enchanted princes"
+          }
+        },
+        {
+          "id": "o_kuss",
+          "kind": "cast",
+          "target": "A_Froschkuss",
+          "marker": "NPC_Tilda",
+          "text": {
+            "de": "Probier die Weise Froschkuss (nur ein Schmatz-Geräusch)",
+            "en": "Try the Frog Kiss air (just a smacking sound)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahrheit"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahrheit",
+      "text": {
+        "de": "Kein Prinz. Aber alle Frösche am See verbeugen sich, wenn Herr Quaak vorbeihüpft. Sag es Tilda.",
+        "en": "No prince. But all the frogs at the lake bow when Mr Quaak hops past. Tell Tilda."
+      },
+      "objectives": [
+        {
+          "id": "o_see",
+          "kind": "reach",
+          "target": "Ilsensee_Froschbucht",
+          "marker": "Froschbucht",
+          "text": {
+            "de": "Beobachte Herrn Quaak an der Froschbucht",
+            "en": "Watch Mr Quaak at Frog Bay"
+          }
+        },
+        {
+          "id": "o_tilda",
+          "kind": "talk",
+          "target": "Tilda",
+          "marker": "NPC_Tilda",
+          "text": {
+            "de": "Erzähl Tilda, was du gesehen hast",
+            "en": "Tell Tilda what you saw"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [],
+    "effects": [
+      "rep:Hueter+3"
+    ]
+  }
+}

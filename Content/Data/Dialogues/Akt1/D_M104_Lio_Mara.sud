@@ -1,0 +1,25 @@
+# M104 – Rückweg zum Boot. Erstes ernstes Gespräch über Mara. Lio versteckt Angst hinter Witzen.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `neutral`]
+Lio: Hast du gesehen? Mundharmonika-Zungen. Messing. Für drei Kupfer. Das ist geschenkt.
+  * Du hast doch schon eine Mundharmonika.
+    Lio: Die ist nicht für mich.
+  * Für wen ist die?
+    Lio: Für ... für jemanden.
+[event emotion `sad`]
+Lio: Meine Schwester. Mara. Sie hat mir das Spielen beigebracht. Und das Schnippen. Und den Netzknoten. Eigentlich alles.
+Lio: Sie ist weg. Seit drei Jahren. Einfach weg. Am Abend vorher haben wir uns gestritten, wegen nichts. Wegen einer blöden Mütze.
+  * Das ist nicht deine Schuld, Lio.
+    [set rel.Lio {rel.Lio} + 5]
+    Lio: Sagen alle. Sagt Mama. Sagt der Pfarrer in Tiedmar. Glaubt keiner.
+  * Vielleicht finden wir sie.
+    [set rel.Lio {rel.Lio} + 5]
+    Lio: Wir? ... Ja. Wir. Das klingt gut.
+  * (Ihm die Hand auf die Schulter legen)
+    [set rel.Lio {rel.Lio} + 5]
+    Lio: ... Danke.
+[event emotion `smirk`]
+Lio: So. Genug traurig. Wenn du's irgendwem erzählst, sag ich allen, dass du beim Boot fast gekotzt hast.
+Lio: ... Ich kauf ihr trotzdem die Zunge. Falls sie wiederkommt. Dann hat sie gleich was zum Spielen.

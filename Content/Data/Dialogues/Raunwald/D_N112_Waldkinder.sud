@@ -1,0 +1,19 @@
+# N112 – Die Waldkinder Hutzel (11), Mira (7), Pfiff (6). Die Glimmermotten sind nach Krähenhain geflogen.
+===
+[set SpeakerName.Hutzel "Hutzel"]
+[set SpeakerName.Mira "Mira"]
+[set SpeakerName.Pfiff "Pfiff"]
+===
+[event emotion `sad`]
+Hutzel: Heute ist Reigennacht. Der große. Einmal im Jahr. Und die Motten sind weg.
+Mira: Alle dreihundertzwölf. Ich hab sie Namen gegeben. Na gut, zwölf. Der Rest heißt Gerhard.
+Pfiff: Gerhard!
+  * Wohin sind sie geflogen?
+    Hutzel: Nach Westen. Da, wo wir nicht hin dürfen.
+  * Vielleicht kommen sie von allein zurück.
+    Hutzel: Nein. Sie fliegen einer Musik nach. Man hört sie nachts. Eine Spieluhr.
+Mira: Das Lied ist unser Lied. Das Pilzhausen-Lied. Aber falsch. Als hätte es jemand verkehrt rum gelernt.
+Pfiff: Gruselig!
+Hutzel: Wenn wir das richtige Lied lauter singen als das falsche, kommen sie vielleicht zurück. Aber wir sind nur drei. Und Pfiff kann nur ein Wort.
+Pfiff: Gerhard!
+Hutzel: Hilfst du uns? Du kannst doch Lockruf. Wir singen, du lockst. Und wir gehen nicht rein. Versprochen. Bis zum Dornpfad und keinen Schritt weiter.

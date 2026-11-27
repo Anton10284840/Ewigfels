@@ -1,0 +1,15 @@
+# M105 – Großmutter Morchel in Pilzhausen. Märchenhaft, resolut, füttert alle.
+===
+[set SpeakerName.Morchel "Großmutter Morchel"]
+===
+[event emotion `happy`]
+Morchel: Kinderchen! Kommt rein, kommt rein, der Kopf geht unter dem Hutrand durch, wenn man sich bückt. Bücken!
+Morchel: Ich hab Pilzsuppe, Pilzbrot und Pilzkuchen. Und für die, die keine Pilze mögen ... hab ich auch Pilze.
+Morchel: Ach, aber ihr kommt zur schlechten Zeit. Die Pilzbrut ist in meiner Vorratskammer. Kleines Gewimmel, frisst alles, was nicht wegläuft. Und meine Vorräte laufen nicht weg.
+  * Wir kümmern uns drum.
+    Morchel: Ach, du liebes Kind. Nimm Glut. Die Sporen mögen keine Wärme. Ich auch nicht, aber ich bin älter.
+  * Sind die gefährlich?
+    Morchel: Einzeln? Wie ein Floh. Zusammen? Wie zwanzig Flöhe mit Hunger. Und die Mutter ist so groß wie ein Fass.
+[event emotion `worried`]
+Morchel: Und Kinderchen ... wenn ihr nachher am Waldrand lang geht, schaut nicht zu lange nach Westen. Da liegt Krähenhain.
+Morchel: Da hängen Puppen in den Bäumen. Und manchmal ... manchmal hängen sie anders als am Tag davor.

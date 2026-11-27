@@ -1,0 +1,24 @@
+# M107 – Ruven Falk, Chef der Schiefen Töne. Charmant, nie erwischt. Lehrt das Klinkenlied gegen einen Streich.
+===
+[set SpeakerName.Ruven "Ruven Falk"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `smirk`]
+Ruven: Zwei Erstklässler. Nach der Sperrstunde. Im Kreuzgang. Ohne Plan.
+Ruven: Ich bin beeindruckt. Und ein bisschen besorgt.
+Lio: Wir haben einen Plan!
+Ruven: Ihr habt den Anfang eines Plans und sehr viel Hoffnung. Ich bin Ruven. Ihr habt mich nie gesehen.
+Ruven: Ihr wollt in den Bücherschlund. Dafür braucht ihr das Klinkenlied. Ich bring's euch bei. Aber Die Schiefen Töne tun nichts umsonst.
+  * Was willst du?
+    Ruven: Einen Gefallen. Klein. Elegant. Brams' Stuhl im Schlaghof. Eine Quietschnote drunter. Morgen früh setzt er sich hin, und der Stuhl singt ihm ein Ständchen.
+  * Ist das ein Streich gegen einen Lehrer?
+    Ruven: Gegen Brams. Das ist kein Streich, das ist Kultur. Er lacht als Erster, glaub mir. Und dann brüllt er. Aber erst lacht er.
+[event emotion `neutral`]
+Ruven: Regel der Schiefen Töne, und die gilt für immer: Nie gemein. Nie gegen Schwächere. Wer das bricht, fliegt raus. Klar?
+  * Klar.
+    Ruven: Gut. Dann sind wir im Geschäft.
+  * Und wenn wir erwischt werden?
+    Ruven: Dann habt ihr mich nie gesehen. Und Ottilie kriegt einen Sonderbonus in ihrem Lampenöl.
+Ruven: Das Klinkenlied: Strom, Hall, Grund. Ganz leise, so als würdest du einer Tür ein Geheimnis erzählen. Zeig mal.
+[event emotion `happy`]
+Ruven: Nicht schlecht. Wenn ihr den Stuhl erledigt habt, gehört euch die Nacht.

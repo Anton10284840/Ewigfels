@@ -294,6 +294,8 @@ Legende Akt-Bogen: A1 … A5. Stimme: TTS-Platzhalter mit Piper (männlich: `de_
 
 **Wichtige Nebenfiguren** (ohne volles Blatt, MetaHuman „Optimized“): Ausbilder Varn (Akt-1-Boss) · Hanne Brook (Waisenhausleiterin, stirbt in M206) · Ida Brack (Hafenmeisterin, Zunftrat) · die vier Turmsprecher Greta Kohlhammer (Aschenhain), Jonte Weißdorn (Silberquell), Fenja Brise (Sturmkamm), Hannes Wurzel (Moosgrund) · Großinquisitor Halmar Dräger (Regionsboss Aurenburg) · Bruder Stumm (Abt der Schweigemönche).
 
+**Neu aus dem Missionsdesign (docs/missions/, 27.11.2026):** Wim Hasel (11, Erstklässler ab Akt 2, Schützling des Spielers, Angst vor Wasser) · Jorin und Elise (Eltern des Spielers, Instrumentenbauer in Brandheim, nur als Echo in M504; Nachname = im Editor wählbar, Standard Harlander) · Magister Lorenz Feil (Kollegiumsgesandter, M205) · Seline (junge Hüterin, Wurzelläuferin, M105) · Choralist Benedikt Raue (Kapitän der *Schweigenden Möwe*, M303) · Olga (Fischhändlerin, Tiedmar) · Ansgar Lenz (Ältester von Windnest) · Hedda (Bäckerin) und Jupp (Akkordeonspieler) in Kesselbrunn · Großmutter Morchel (Pilzhausen) · der Fährmann (spricht nur in Wetterberichten).
+
 **Neu für den Akt-1-Schulvibe (E10, ohne volles Blatt):** Lehrkräfte Haldor Brams (Schlagweisen), Bruni Kesselmayr (Elementar/Tränke in Akt 1), Pim Ollendorf (Wandelkunde), Ilka Morgenroth (Sternkunde) · Personal Mutter Gundel (Küche), Herr Fennimore Staub (Bibliothek), Gärtnerin Rosa Dornbusch · Mitschüler Pankraz „Panki“ Holler, Mirela Sandor, Tilda Morn (mit Frosch Herr Quaak), Ruven Falk (Die Schiefen Töne) · lebendige Dinge: Ottilie (wandelnde Laterne), Kessel Klaus und Brüder (Teekessel), Sessel Barnabas, die Stimmglocke · 36 Meister in der Welt (Liste mit Ort und Bedingung: `Content/Data/Spells/Katalog/Lehrer.json`, Übersicht in WEISEN_KATALOG §5). Beschreibungen: AKT1_SCHULLEBEN.md §3 und §7.
 
 ## 5. NPCs und Crowds
@@ -342,10 +344,12 @@ Alle Reittiere sind eigene Erfindungen. Man zähmt sie in Quests, hält sie im *
 | # | Reittier | Bewegung | Aussehen | Besonderheit | Freischaltung |
 |---|---|---|---|---|---|
 | R1 | **Sturmschwinge** | Fliegen | Vorderkörper Schnee-Eule, Hinterkörper Luchs, Federohren, Schwanzfächer | schnellster Flieger, Sturzflug-Boost | Akt 3, Weiße Zinnen (Story) |
-| R2 | **Perlsegler** | Fliegen + Gleiten | pferdegroß, langer Hals, vier breite Hautsegel zwischen den Beinen, Fell schimmert wie Perlmutt, Leuchtquaste am Schwanz; summt beim Fliegen | gleitet ewig ohne Ausdauer, kann aber schlecht steigen; nachts leuchtet die Quaste | Akt 2, Treibende Inseln (Sidequest) |
-| R3 | **Moosbock** | Boden, Klettern | riesiger Bock mit Moospelz, Pilzen und kleinen Pflanzen auf dem Rücken, gedrehte Rindenhörner | läuft Steilwände hoch, Pflanzen auf seinem Rücken wachsen mit (Housing-Garten zum Mitnehmen) | Akt 1, Raunwald |
+| R2 | **Perlsegler** | Fliegen + Gleiten | pferdegroß, langer Hals, vier breite Hautsegel zwischen den Beinen, Fell schimmert wie Perlmutt, Leuchtquaste am Schwanz; summt beim Fliegen | gleitet ewig ohne Ausdauer, kann aber schlecht steigen; nachts leuchtet die Quaste | Akt 4, Treibende Inseln (Befreiung von Leerfall) |
+| R3 | **Moosbock** | Boden, Klettern | riesiger Bock mit Moospelz, Pilzen und kleinen Pflanzen auf dem Rücken, gedrehte Rindenhörner | läuft Steilwände hoch, Pflanzen auf seinem Rücken wachsen mit (Housing-Garten zum Mitnehmen) | Akt 1, Raunwald (Sidequest N116) |
 | R4 | **Dünenschreiter** | Boden, sehr schnell | Laufvogel, 3 m hoch, gepanzerte Schuppenbeine, Kopf mit Sonnenschirm-Kamm | schnellstes Bodentier, gräbt sich bei Sandsturm ein (Unterschlupf) | Akt 3, Kaelschlucht |
-| R5 | **Gischtrobbe** | Wasser, Tauchen | Robbe mit segelartigen Flossen | surft auf Wellen, taucht in Höhlenseen | Akt 2, Tiedmar |
-| R6 | **Glutdachs** | Boden, Graben | ponygroßer Dachs mit glimmenden Streifen im Fell, Funken bei jedem Schritt | gräbt verschüttete Gänge frei, wärmt im Schnee (kein Frieren) | Akt 4, Glastiefen |
+| R5 | **Gischtrobbe** | Wasser, Tauchen | Robbe mit segelartigen Flossen | surft auf Wellen, taucht in Höhlenseen | Akt 2, Ilsensee (Sidequest N106) |
+| R6 | **Glutdachs** | Boden, Graben | ponygroßer Dachs mit glimmenden Streifen im Fell, Funken bei jedem Schritt | gräbt verschüttete Gänge frei, wärmt im Schnee (kein Frieren) | Akt 2, Glastiefen (M208) |
+
+Persönlichkeit, Werte, Zähm-Quests, Upgrades: [BESTIARIUM §5](BESTIARIUM.md#5-reittiere-6-alle-eigene-erfindungen) (Akte am 27.11.2026 an die Regionen angepasst).
 
 Regeln: 1 Reittier aktiv, Wechsel per Pfiff-Rad (Taste halten). Jedes Reittier hat Ausdauer, Tempo, Spezialfähigkeit und eine Beziehung (füttern, putzen, gemeinsam Rennen = Bonus). Rennen: Flug-, Boden- und Wasser-Rennstrecken je Region.

@@ -1,0 +1,55 @@
+{
+  "id": "S110",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Fenja",
+  "duration_min": 40,
+  "auto_start": false,
+  "requires": [
+    "quest:M103"
+  ],
+  "title": {
+    "de": "Glockenball: Turmrunde",
+    "en": "Bellball: Tower Round"
+  },
+  "summary": {
+    "de": "Vier Spiele über das Jahr, Turm gegen Turm. Am Ende hängt dein Schal oder der eines anderen über der Halle.",
+    "en": "Four matches over the year, tower against tower. At the end your scarf, or someone else's, hangs over the hall."
+  },
+  "stages": [
+    {
+      "id": "s1_spiele",
+      "text": {
+        "de": "Spiel die Turmrunde: Innenhof im Herbst und Frühling, Eis im Winter.",
+        "en": "Play the tower round: courtyard in autumn and spring, ice in winter."
+      },
+      "objectives": [
+        {
+          "id": "o_spiel",
+          "kind": "custom",
+          "target": "Glockenball_Spiel",
+          "count": 4,
+          "marker": "Innenhof_Glockenball",
+          "text": {
+            "de": "Spiel ein Glockenball-Spiel",
+            "en": "Play a bellball match"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Schal_Glockenball"
+    ],
+    "effects": []
+  }
+}

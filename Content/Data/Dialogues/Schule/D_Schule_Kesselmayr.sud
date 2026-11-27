@@ -1,0 +1,22 @@
+# Dozentin Bruni Kesselmayr, Elementar und Tränke (nur Akt 1, geht danach in Rente). Lacht über jeden explodierten Kessel.
+===
+[set SpeakerName.Kesselmayr "Dozentin Kesselmayr"]
+===
+[event emotion `happy`]
+Kesselmayr: Hach, Kind, du hast Ruß an der Nase. Nein, andere Seite. Nein, die andere andere. Lass, das sieht gut aus.
+:themen
+Kesselmayr: Noch eine Frage, Rußnäschen?
+  * Warum explodieren hier so viele Kessel?
+    Kesselmayr: Weil ihr lernt! Ein Kessel, der nie explodiert, hat nie was Neues gekocht.
+    Kesselmayr: Mein erster ist 762 explodiert. Ich war zwölf. Meine Augenbrauen sind bis heute schief nachgewachsen. Schau. Schief. Wunderbar.
+    [goto themen]
+  * Was ist das Wichtigste beim Brauen?
+    Kesselmayr: Rhythmus. Rühren ist wie Tanzen. Dreimal links, einmal rechts, und nie, nie gegen den Takt. Der Trank merkt das. Tränke sind beleidigt sehr schnell.
+    [goto themen]
+  * Stimmt es, dass Sie bald aufhören?
+    [event emotion `soft`]
+    Kesselmayr: Nach diesem Jahr, mein Kind. Ich will Bienen halten. Bienen explodieren nicht. Meistens.
+    Kesselmayr: Es kommt ein Junger nach mir, hab ich gehört. Aus dem Kollegium. Hoffentlich lacht er auch, wenn's knallt. Wer nicht lacht, wenn's knallt, sollte keine Kinder unterrichten.
+    [goto themen]
+  * Bis bald!
+    Kesselmayr: Bis bald, Rußnäschen!

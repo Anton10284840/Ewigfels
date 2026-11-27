@@ -1,0 +1,25 @@
+# M102 – Der sprechende Teekessel im Gemeinschaftsraum begrüßt den Neuling.
+# Vier Brüder, je ein Dialekt/Charakter (AKT1_SCHULLEBEN §3). Text passt sich dem Turm an.
+===
+[set SpeakerName.KesselKlaus "Kessel Klaus"]
+===
+[if {flag.Tower_Aschenhain} > 0]
+    KesselKlaus: Hmpf. Noch einer. Füße vom Kaminsims, Hände weg vom Deckel, Tee gibt's um sieben. Ich bin Klaus. Der Älteste. Merk dir das.
+    KesselKlaus: Und sag nie "Blechkanne" zu mir. Der Letzte, der das gesagt hat, hat drei Wochen lauwarmen Tee getrunken.
+[elseif {flag.Tower_Silberquell} > 0]
+    KesselKlaus: Ah, ein neuer Geist. Ich bin Klaus der Zweite, der gebildete Bruder. Wusstest du, dass Wasser bei uns auf dem Fels zwei Grad früher kocht? Natürlich nicht. Darum bist du ja hier.
+[elseif {flag.Tower_Sturmkamm} > 0]
+    KesselKlaus: Heyyy! Frischfleisch! Ich bin Klausi, der Coole. Willst du einen Trick sehen? Ich kann "Seemannsgarn" pfeifen, rückwärts.
+    KesselKlaus: Okay, eigentlich kann ich's nur vorwärts. Aber sehr laut.
+[else]
+    KesselKlaus: Ach Gottchen, komm rein, du bist ja ganz kalt vom See! Ich bin Klärchen. Ja, ich weiß, ich bin auch ein Klaus, aber mich nennen alle Klärchen. Setz dich, ich mach dir was Warmes.
+[endif]
+  * Hallo, Klaus. Freut mich.
+    [event emotion `happy`]
+    KesselKlaus: Na also. Höflich. Das gibt einen Pluspunkt in meinem Buch. Ich hab kein Buch. Aber wenn ich eins hätte.
+  * Ein sprechender Teekessel. Natürlich.
+    KesselKlaus: Und du bist ein sprechender Mensch. Natürlich. Wir sind quitt.
+  * (Den Deckel anheben und reinschauen)
+    [event emotion `angry`]
+    KesselKlaus: HEY! Privatsphäre! Ich guck dir doch auch nicht in die Ohren!
+KesselKlaus: Dein Zimmer ist die Treppe hoch, dritte Tür. Morgen um halb sieben pfeif ich. Laut. Gewöhn dich dran.

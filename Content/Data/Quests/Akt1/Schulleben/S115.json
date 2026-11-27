@@ -1,0 +1,91 @@
+{
+  "id": "S115",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Rosa",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M109"
+  ],
+  "title": {
+    "de": "Wachsfest",
+    "en": "Waxing Festival"
+  },
+  "summary": {
+    "de": "Frühling. Das Wachsfest steht bevor, aber die Gewächshaus-Pflanzen sind beleidigt und blühen nicht.",
+    "en": "Spring. The Waxing Festival is near, but the greenhouse plants are offended and won't bloom."
+  },
+  "stages": [
+    {
+      "id": "s1_versoehnen",
+      "text": {
+        "de": "Find heraus, warum die Pflanzen schmollen, und versöhne sie.",
+        "en": "Find out why the plants are sulking and make peace with them."
+      },
+      "objectives": [
+        {
+          "id": "o_pflanzen",
+          "kind": "talk",
+          "target": "Rosa",
+          "marker": "NPC_Rosa",
+          "text": {
+            "de": "Frag Gärtnerin Rosa",
+            "en": "Ask Gardener Rosa"
+          }
+        },
+        {
+          "id": "o_lied",
+          "kind": "cast",
+          "target": "A_Gartenlied",
+          "count": 3,
+          "marker": "Gewaechshaus",
+          "text": {
+            "de": "Sing den beleidigten Pflanzen etwas vor",
+            "en": "Sing something to the offended plants"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_fest"
+        }
+      ]
+    },
+    {
+      "id": "s2_fest",
+      "text": {
+        "de": "Die Gewächshäuser blühen. Das Wachsfest beginnt mit Blütenregen und Bändertanz.",
+        "en": "The greenhouses bloom. The Waxing Festival begins with a rain of blossoms and a ribbon dance."
+      },
+      "objectives": [
+        {
+          "id": "o_tanz",
+          "kind": "custom",
+          "target": "Baendertanz",
+          "marker": "Innenhof_Fest",
+          "text": {
+            "de": "Tanz den Bändertanz mit",
+            "en": "Join the ribbon dance"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Blumenkranz"
+    ],
+    "effects": [
+      "rep:Hueter+3"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+# N111 – Trüffel (9), Morchels Enkel. Sammelt alles, was glänzt. Will den Nebelfuchs zähmen.
+===
+[set SpeakerName.Trueffel "Trüffel"]
+===
+[event emotion `happy`]
+Trueffel: Psst! Du! Du bist doch von der Akademie. Kannst du Tiere zähmen? Mit Zaubern?
+  * Ein bisschen. Warum?
+    Trueffel: Weil ich einen Fuchs will. Nicht irgendeinen. Den Nebelfuchs.
+  * Kommt drauf an, was ich dafür kriege.
+    Trueffel: Einen Knopf. Einen sehr glänzenden. Den zweitglänzendsten, den ich hab.
+  * (Nicken)
+    Trueffel: Ich wusste es! Du hast ein Zähm-Gesicht.
+Trueffel: Der Nebelfuchs führt Leute im Kreis. Oma sagt, er ist ein Schlingel. Letzte Woche lief der Holzhändler sechsmal um denselben Baum.
+Trueffel: Ich hab's gezählt. Na gut, Hutzel hat's gezählt. Ich hab gelacht.
+Trueffel: Wenn wir ihm folgen, finden wir seinen Bau. Und wer den Bau findet, darf ihn streicheln. Das ist eine Regel. Hab ich mir ausgedacht.
+Trueffel: Aber ich darf nicht in die Nebelsenke. Oma. Also gehst du, und ich bin im Herzen dabei. Und hier, hinterm Pilz.

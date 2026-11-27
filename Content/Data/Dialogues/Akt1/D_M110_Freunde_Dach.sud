@@ -1,0 +1,30 @@
+# M110 – Mondtau auf dem Nordturm mit Lio, Mirela, Panki, Tilda (Herr Quaak). Warm, albern, ein bisschen wehmütig.
+===
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Mirela "Mirela Sandor"]
+[set SpeakerName.Panki "Panki Holler"]
+[set SpeakerName.Tilda "Tilda Morn"]
+===
+[event camera `wide`]
+[event emotion `happy`]
+Panki: Achtung, ich hab den Taufänger gebaut! Ein Trichter mit Flügeln. Er fängt Tau und fliegt dabei nicht weg.
+Panki: Theoretisch.
+Tilda: Herr Quaak sagt, er fliegt weg.
+Panki: Herr Quaak ist ein Frosch, Tilda.
+Tilda: Ein Frosch mit Meinungen.
+Mirela: Pssst. Er fällt. Hört ihr? Der Mondtau macht ein Geräusch, wie ganz kleine Glocken.
+[event camera `closeup`]
+Lio: Man flüstert einen Wunsch in den Tropfen. Dann trinkt man ihn. Dann erfüllt er sich. Oder man kriegt Bauchweh. Das ist die Wette.
+Lio: Ich fang an. Ich wünsch mir ... nein, wenn man's sagt, gilt's nicht.
+  * Ich wünsch mir, dass wir nächstes Jahr alle wieder hier sitzen.
+    [set rel.Lio {rel.Lio} + 5]
+    Mirela: Das ist kein Wunsch, das ist ein Versprechen. Die halten länger.
+  * Ich wünsch mir, dass ich weiß, was in mir ist.
+    [event emotion `thoughtful`]
+    Mirela: Manchmal weiß man das erst, wenn man es hört.
+  * (Leise flüstern, sodass es niemand hört)
+    Lio: Das ist geschummelt. Das ist das Schlauste, was du heute gemacht hast.
+[event emotion `happy`]
+Panki: Der Taufänger fliegt weg.
+Tilda: Herr Quaak hat's gesagt.
+Lio: Weißt du was? Das war ein gutes Jahr. Bis auf den grauen Wald. Und Varn. Und die Gerüchte. Aber sonst. Ein sehr gutes Jahr.

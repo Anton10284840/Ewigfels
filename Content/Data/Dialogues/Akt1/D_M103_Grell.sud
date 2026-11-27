@@ -1,0 +1,24 @@
+# M103 – Duellsaal. Grell: knurrig, laut, fair, lobt nie. Erwähnt die Sperrzone.
+===
+[set SpeakerName.Grell "Meister Grell"]
+[set SpeakerName.Schueler "Mitschüler Bertil"]
+===
+[event emotion `angry`]
+Grell: Kreis bilden. Nicht so. Kreis. Rund. Wie ein Schild.
+Grell: Ich bin Grell. Ich bringe Ihnen nicht bei zu gewinnen. Ich bringe Ihnen bei zu überleben. Das ist mehr wert.
+Grell: Glockenschild. Hand hoch, Finger gespreizt, Hall, Grund, Firn. Und dann warten. Der Angriff kommt. Sie hören ihn, bevor Sie ihn sehen.
+Grell: Wer genau im richtigen Moment pariert, bekommt einen Reinklang. Wer zu früh pariert, bekommt einen Sandsack ins Gesicht.
+Schueler: Meister Grell, haben Sie schon mal echt gekämpft? Also richtig?
+[event emotion `thoughtful`]
+Grell: An einer Sperrzone.
+Grell: Nächste Frage.
+Schueler: Was ist eine Sperrz...
+Grell: Nächste. Frage.
+[event emotion `neutral`]
+Grell: Sie. Vortreten. Puppen, los.
+  * (Nicken und Hand heben)
+    Grell: Gut. Kein Gerede.
+  * Kann ich erst zuschauen?
+    Grell: Nein. Zuschauen lernt man im Grab.
+  * Ich bin bereit.
+    Grell: Das sagen alle. Zeigen Sie es.

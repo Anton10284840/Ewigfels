@@ -1,0 +1,25 @@
+# Ilka Morgenroth, Sternkunde. Fast blind, "hört" die Sterne. Nur nachts im Observatorium. Poetisch, ruhig, sehr direkt.
+===
+[set SpeakerName.Morgenroth "Magistra Morgenroth"]
+===
+[event emotion `neutral`]
+Morgenroth: Treten Sie näher. Ich sehe Sie nicht, aber ich höre, dass Sie die Stufen gezählt haben. Zweihundertvier. Alle zählen beim ersten Mal.
+:themen
+Morgenroth: Fragen Sie ruhig weiter. Die Nacht ist lang.
+  * Wie können Sie Sternkunde lehren, wenn Sie ...?
+    Morgenroth: Wenn ich nichts sehe? Die Sterne singen. Sehr leise, sehr hoch. Wie Glas, das man mit nassem Finger reibt. Die Augen sind dabei eher im Weg.
+    Morgenroth: Hören Sie mal. Dort. Der helle Ton im Osten. Das ist die Lerche. Ein Stern. Er singt seit dreitausend Jahren dasselbe Lied und hat sich noch nie verspielt.
+    [goto themen]
+  * Erzählen Sie mir von den Monden.
+    Morgenroth: Ilse ist die Ruhige. Groß, silbern, sie singt in tiefen, langen Tönen. Morn ist die Unruhige. Klein, rot, schnell, sie stottert.
+    Morgenroth: Wenn beide voll sind, singen sie zusammen. Und dann hört man auch, was darunter liegt. Was man lieber nicht hören will.
+    [goto themen]
+  [if {flag.Urton_Awakened} > 0]
+  * Hören Sie auch mich?
+    [event emotion `thoughtful`]
+    Morgenroth: ...
+    Morgenroth: Ja. Seit dem Winter klingen Sie wie ein Stern, der zu nah ist. Das ist nicht schlimm. Es ist nur laut. Für mich.
+    [goto themen]
+  [endif]
+  * Gute Nacht, Magistra.
+    Morgenroth: Gute Nacht. Und schauen Sie auf dem Rückweg nach oben. Einer von uns sollte es tun.

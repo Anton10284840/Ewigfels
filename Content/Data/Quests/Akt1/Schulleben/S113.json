@@ -1,0 +1,64 @@
+{
+  "id": "S113",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "Greta",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M109"
+  ],
+  "title": {
+    "de": "Firnnacht",
+    "en": "Frostnight"
+  },
+  "summary": {
+    "de": "Die Firnnacht geht weiter: Eisfiguren-Wettbewerb und Schneeball-Finale der Türme. Der Winterumhang wartet.",
+    "en": "Frostnight continues: the ice sculpture contest and the towers' snowball final. The winter cloak awaits."
+  },
+  "stages": [
+    {
+      "id": "s1_eisfigur",
+      "text": {
+        "de": "Bau mit deinem Turm eine Eisfigur. Panki baut einen Drachen. Er fällt um.",
+        "en": "Build an ice sculpture with your tower. Panki builds a dragon. It falls over."
+      },
+      "objectives": [
+        {
+          "id": "o_figur",
+          "kind": "custom",
+          "target": "Eisfigur_Bauen",
+          "marker": "Innenhof_Winter",
+          "text": {
+            "de": "Bau eine Eisfigur mit Frostweisen",
+            "en": "Build an ice sculpture with frost airs"
+          }
+        },
+        {
+          "id": "o_finale",
+          "kind": "custom",
+          "target": "Schneeball_Finale",
+          "marker": "Innenhof_Winter",
+          "text": {
+            "de": "Gewinn das Schneeball-Finale",
+            "en": "Win the snowball final"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Winterumhang_Turm"
+    ],
+    "effects": []
+  }
+}

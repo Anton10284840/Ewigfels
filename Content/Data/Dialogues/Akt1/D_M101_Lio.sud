@@ -5,7 +5,7 @@
 [set SpeakerName.Player "Du"]
 ===
 [event emotion `happy`]
-Lio: Du bist das neue Gesicht vom Nebelboot, oder? Ich hab gewettet, dass du umkippst, sobald du die Klippe siehst.
+Lio: Du bist das neue Gesicht fürs Nebelboot, oder? Ich hab mit dem Fährmann gewettet, dass du umkippst, sobald du die Klippe siehst.
   * Fast. Das ist ja riesig.
     [event state `rel:Lio+5`]
     Lio: Warte, bis du die Treppe hochmusst. Dreihundertzwölf Stufen. Ich hab sie gezählt. Zweimal.

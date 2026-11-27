@@ -1,0 +1,14 @@
+# N115 – Seline, junge Hüterin der Adern, Wurzelläuferin. Knapp, misstrauisch gegen die Akademie, ehrlich.
+===
+[set SpeakerName.Seline "Seline"]
+===
+Seline: Du. Akademie. Ich hab nicht um dich gebeten. Saphira hat dich geschickt.
+Seline: Der Wurzelvater ist krank. Seit dem Winter. Seit dem Tag, an dem der Wald grau wurde.
+  * Was ist der Wurzelvater?
+    Seline: Der älteste Baum im Raunwald. Er hält die Ader unter dem Wald im Takt. Wenn er hustet, hustet der ganze Wald.
+  * Ich helfe. Was muss ich tun?
+    Seline: Erstmal mitkommen. Und nichts anfassen, was atmet.
+  * (Nicken)
+    Seline: Gut. Wenig reden. Das mag der Wald.
+Seline: Die Ranken am Wurzelherz sind krank. Grau. Sie greifen alles, was warm ist. Brenn sie weg. Aber nur die grauen.
+Seline: Und wenn er aufwacht: nicht weglaufen. Er ist kein Feind. Er hat Schmerzen.

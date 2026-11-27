@@ -1,0 +1,210 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/ILSENSEE.md. Marker-IDs = Quest-Marker.",
+  "id": "Ilsensee",
+  "act_from": 1,
+  "size_km": [
+    4,
+    4
+  ],
+  "villages": [
+    {
+      "id": "Uferlicht",
+      "mood": "froehlich",
+      "music": "Akkordeon, Fiedel, Shanty-Chor (Dur, 6/8)",
+      "fast_travel": "Uferlicht_Kai",
+      "npcs": [
+        "Wenke",
+        "Ole",
+        "Lotte",
+        "Ignaz",
+        "Fenna",
+        "Bodo",
+        "Pips",
+        "Jule",
+        "Matti",
+        "Tammo"
+      ],
+      "shops": [
+        {
+          "npc": "Wenke",
+          "sells": [
+            "Bootsverleih",
+            "Weisen Wasser/Reise"
+          ]
+        },
+        {
+          "npc": "Ignaz",
+          "sells": [
+            "Laternen",
+            "Turmzimmer-Deko"
+          ]
+        },
+        {
+          "npc": "Fenna",
+          "sells": [
+            "Taschen",
+            "Guertel",
+            "Netzknoten-Schmuck"
+          ]
+        },
+        {
+          "npc": "Bodo",
+          "sells": [
+            "Fisch",
+            "Koeder"
+          ]
+        },
+        {
+          "npc": "Lotte",
+          "sells": [
+            "Zimmer (Rast-Bonus)",
+            "Essen"
+          ]
+        },
+        {
+          "npc": "Ole",
+          "sells": [
+            "Pfannkuchen (Buffs)"
+          ]
+        }
+      ],
+      "pois": [
+        "Laternenwerft",
+        "Uferlicht_Kai",
+        "Pfannkuchenplatz",
+        "Gasthaus_Laternenhecht",
+        "Leuchtsteg",
+        "Kaimoewen_Versteck",
+        "Nordbucht_Netze"
+      ],
+      "minigames": [
+        "Pfannkuchen-Wettwerfen",
+        "Wuerfeln",
+        "Angeln",
+        "Laternenboot-Rennen",
+        "Shanty-Abend",
+        "Mutproben"
+      ]
+    },
+    {
+      "id": "Stillwasser",
+      "mood": "gruselig",
+      "music": "keine (Wasser, Schilf, Fluestern)",
+      "fast_travel": "Stillwasser_Kapelle",
+      "fast_travel_requires": "flag:Stillwasser_Freed",
+      "lord": "Senta",
+      "npcs": [
+        "Senta",
+        "Agnes",
+        "Linus",
+        "Waescherinnen",
+        "Hinnerk"
+      ],
+      "rules": [
+        "Lautes Sprechen/Rennen kostet Stimme (Weisen gesperrt, 1 Spieltag)",
+        "Spiegelbild zeigt das Sommerfest vor 40 Jahren"
+      ],
+      "pois": [
+        "Stillwasser_Schild",
+        "Dachstege",
+        "Stillwasser_Waschplatz",
+        "Stillwasser_Kapelle",
+        "Haus_der_Witwe",
+        "Spiegelsteg"
+      ],
+      "after_liberation": [
+        "Glocken ausgewickelt, Wasser sinkt um 2 m",
+        "Lautfest",
+        "Agnes Meisterin Fluesterweisen",
+        "Linus Faehre nach Uferlicht",
+        "Faerberei der Waescherinnen",
+        "Senta laeutet Festglocke (bei Erloesung)"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Glockeninsel",
+      "kind": "insel",
+      "note": "leerer Glockenstuhl, darunter Seegrotte"
+    },
+    {
+      "id": "Seegrotte_Eingang",
+      "kind": "dungeon",
+      "quest": "N105",
+      "requires_any": [
+        "flag:Has_Grottenkey",
+        "Geheimgang_11"
+      ]
+    },
+    {
+      "id": "Reiherinsel",
+      "kind": "insel",
+      "fast_travel": true
+    },
+    {
+      "id": "Nebelharfe",
+      "kind": "ruine"
+    },
+    {
+      "id": "Westufer_Wiese",
+      "kind": "sammelort",
+      "note": "Glimmwuermer nachts, Pilzbrut aus dem Raunwald"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Spiegelsteg",
+      "at": "Spiegelsteg",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Reiherruf",
+      "at": "Reiherinsel",
+      "reward": "Stimmring_Quarz_Reiherblau"
+    },
+    {
+      "id": "Schrein_Nebelharfe",
+      "at": "Nebelharfe",
+      "reward": "Kael_Inschrift"
+    },
+    {
+      "id": "Schrein_Gezeitenstufen",
+      "at": "Suedschilf",
+      "reward": "Bootswimpel_Gezeiten"
+    }
+  ],
+  "collectibles": {
+    "Flaschenpost": 12,
+    "Nachklang": 6,
+    "Laternen_Muster": 8
+  },
+  "codex_creatures": [
+    "Glockenwels",
+    "Stelzreiher",
+    "Gischtrobbe",
+    "Laternenkraehe",
+    "Glimmermotte"
+  ],
+  "enemies": {
+    "act1": [
+      "Fluchsaenger_Lehrling",
+      "Fluestermoewe",
+      "Scherbengolem_Jung",
+      "Moorlicht_Unke",
+      "Pilzbrut"
+    ],
+    "act2": [
+      "Stille_Hand_Patrouille",
+      "Wilderer"
+    ]
+  },
+  "quests": [
+    "N101",
+    "N102",
+    "N103",
+    "N104",
+    "N105",
+    "N106"
+  ]
+}

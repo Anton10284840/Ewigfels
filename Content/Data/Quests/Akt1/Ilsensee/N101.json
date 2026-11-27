@@ -1,0 +1,141 @@
+{
+  "id": "N101",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Wenke",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M104"
+  ],
+  "title": {
+    "de": "Das Boot, das allein fährt",
+    "en": "The Boat That Sails Alone"
+  },
+  "summary": {
+    "de": "Kapitänin Wenke Haff baut die Laternenboote für das Ilsenlicht und braucht Hilfe. Eines der Boote hat andere Pläne.",
+    "en": "Captain Wenke Haff is building the lantern boats for the Ilsenlicht and needs a hand. One of the boats has other plans."
+  },
+  "dialogues": [
+    "D_N101_Wenke",
+    "D_N101_Wenke_Bericht"
+  ],
+  "stages": [
+    {
+      "id": "s1_werft",
+      "text": {
+        "de": "Hilf Wenke in der Laternenwerft. Ein Laternenboot schwimmt nur, wenn sein Licht im richtigen Ton brennt.",
+        "en": "Help Wenke at the lantern wharf. A lantern boat only floats if its light burns in the right tone."
+      },
+      "objectives": [
+        {
+          "id": "o_wenke",
+          "kind": "dialogue",
+          "target": "D_N101_Wenke",
+          "marker": "NPC_Wenke",
+          "text": {
+            "de": "Sprich mit Kapitänin Wenke Haff",
+            "en": "Talk to Captain Wenke Haff"
+          }
+        },
+        {
+          "id": "o_boote",
+          "kind": "custom",
+          "target": "Laternenboot_Bauen",
+          "count": 3,
+          "marker": "Laternenwerft",
+          "text": {
+            "de": "Bau Laternenboote (Werkstatt)",
+            "en": "Build lantern boats (workshop)"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_nacht"
+        }
+      ]
+    },
+    {
+      "id": "s2_nacht",
+      "text": {
+        "de": "In der Nacht legt eines deiner Boote allein ab. Kein Wind, kein Ruder. Es fährt nach Süden.",
+        "en": "At night one of your boats casts off on its own. No wind, no oars. It heads south."
+      },
+      "objectives": [
+        {
+          "id": "o_kai",
+          "kind": "reach",
+          "target": "Uferlicht_Kai",
+          "marker": "Uferlicht_Kai",
+          "text": {
+            "de": "Komm nachts zum Kai",
+            "en": "Come to the quay at night"
+          }
+        },
+        {
+          "id": "o_folgen",
+          "kind": "custom",
+          "target": "Boot_Folgen",
+          "text": {
+            "de": "Folg dem Boot mit einem Ruderboot, ohne es aus den Augen zu verlieren",
+            "en": "Follow the boat in a rowing boat without losing sight of it"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_insel"
+        }
+      ]
+    },
+    {
+      "id": "s3_insel",
+      "text": {
+        "de": "Das Boot bleibt an der Glockeninsel stehen. Der Glockenstuhl ist leer. Es wartet.",
+        "en": "The boat stops at Bell Island. The bell frame is empty. It waits."
+      },
+      "objectives": [
+        {
+          "id": "o_glockenstuhl",
+          "kind": "interact",
+          "target": "Glockenstuhl_Leer",
+          "marker": "Glockeninsel",
+          "text": {
+            "de": "Untersuch den leeren Glockenstuhl",
+            "en": "Examine the empty bell frame"
+          }
+        },
+        {
+          "id": "o_bericht",
+          "kind": "dialogue",
+          "target": "D_N101_Wenke_Bericht",
+          "marker": "NPC_Wenke",
+          "text": {
+            "de": "Erzähl Wenke, wohin das Boot wollte",
+            "en": "Tell Wenke where the boat wanted to go"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Boot_Followed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 40,
+    "items": [
+      "Weise_Laternenboot",
+      "Weise_Segelwind",
+      "Ruderboot_Eigen"
+    ],
+    "effects": []
+  }
+}

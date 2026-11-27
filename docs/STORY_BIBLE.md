@@ -185,7 +185,7 @@ Gegner-Typen: GDD §5.1. Optik: ART_BIBLE §2.1.
 
 ### 8.1 Missionen (50 = 10 pro Akt, je 45–60 Min.)
 
-Missionsdesign-Dokumente (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscenes, Entscheidungen, Belohnungen) entstehen pro Akt **in der jeweiligen Umsetzungsphase** als `docs/missions/M<Akt><Nr>.md` + JSON. Hier die verbindliche Liste. 🎬 = Cutscene-Schwerpunkt, ⚖ = große Entscheidung.
+Missionsdesign (Ziel, Ablauf, Orte, Gegner, Rätsel, Dialoge, Cutscenes, Entscheidungen, Belohnungen, Wendungen) für alle 50 Missionen: [missions/](missions/README.md) (`AKT1.md` … `AKT5.md`, Story-Bosse in `BOSSE.md`). Quest-JSON entsteht pro Akt (Akt 1 fertig). Hier die verbindliche Liste. 🎬 = Cutscene-Schwerpunkt, ⚖ = große Entscheidung.
 
 **Akt 1 – Ankunft (Jahr 1, 812/813)** · Schwerpunkt: verspielter, zauberhafter Schul-Vibe, Dunkelheit erst ab M108 (AKT1_SCHULLEBEN §0). Dazu 18 Schulleben-Quests S101–S118 (AKT1_SCHULLEBEN §14).
 

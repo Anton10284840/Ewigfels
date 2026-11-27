@@ -4,7 +4,7 @@ Stand: 27.11.2026 · Diese Liste zeigt **alles**, was bis zum fertigen Spiel zu 
 
 Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (Editor, testen, entscheiden) · 🤖 = Claude (Text/Code, geht auch ohne deinen PC)
 
-**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Parallel schreibt Claude Story, Dialoge, Gegner und die erste Region.
+**Wo wir stehen:** Phase 0–2 fertig. Phase 3 (Spielfigur, Zaubern, Kampf) und der Charakter-Editor sind als Code fertig und warten auf den ersten Bau auf deinem PC. Story, Dialoge, Gegner, Reittiere und die Regionen Ilsensee und Raunwald sind als Text und Daten fertig (PR #13).
 
 ---
 
@@ -12,12 +12,12 @@ Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (E
 
 | # | Aufgabe | Wer | Status |
 |---|---|---|---|
-| 1 | Phase 3 bauen und testen (PR #10), Fehler beheben | 👤 + 🤖 | 🟨 |
+| 1 | Phase 3 bauen und testen (PR #10, übernommen), Fehler beheben | 👤 + 🤖 | 🟨 |
 | 2 | Charakter-Editor bauen (PR #11), Gesichts-Technik entscheiden | 👤 + 🤖 | 🟨 |
-| 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) | 🤖 | 🟨 |
-| 4 | Dialoge für Lio, Lehrkräfte und Mitschüler | 🤖 | ⬜ |
-| 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten | 🤖 | ⬜ |
-| 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests | 🤖 | ⬜ |
+| 3 | Story Akt 1 bis Ende ausarbeiten (alle 50 Missionen, Wendungen, Bosse) → `docs/missions/` | 🤖 | ✅ |
+| 4 | Dialoge für Lio, Lehrkräfte und Mitschüler → `docs/DIALOG_STIMMEN.md` | 🤖 | ✅ |
+| 5 | Gruselige Gegner + 6 Reittiere mit Fähigkeiten und Verhalten → `docs/BESTIARIUM.md` | 🤖 | ✅ |
+| 6 | Erste Region: fröhliches + gruseliges Dorf, Bewohner, Quests → `docs/regionen/` | 🤖 | ✅ |
 | 7 | Game Animation Sample einbinden (docs/PHASE3_EDITOR.md, ein Schritt pro Nachricht) | 👤 | ⬜ |
 
 ---
@@ -61,14 +61,16 @@ Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (E
 
 ## Phase 5 – Akt 1 spielbar (Vertical Slice, ca. 8–10 Std.)
 Geschichte und Daten (🤖, geht ohne PC):
-- [ ] 🟨 Missionsdesign Akt 1 (M101–M110) → `docs/STORY_AKTE.md`
-- [ ] Quest-JSON M102–M109, M101/M110 an die neue Fassung anpassen
-- [ ] Dialoge Akt 1 (Lio, Edda, Grell, Saphira, Brams, Kesselmayr, Ollendorf, Morgenroth, Varga, Aurelia, Panki, Mirela, Tilda, Ruven, Turmsprecher, Kessel Klaus, Ottilie)
-- [ ] Schulleben-Quests S101–S118 als JSON
-- [ ] Region Ilsensee: Uferlicht + Stillwasser (Bewohner, Quests, Missklinger)
-- [ ] Raunwald (Pilzhausen + Krähenhain), Kesselbrunn (+ Russgrube) ausarbeiten
-- [ ] Gegner und Bosse Akt 1 als Daten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
-- [ ] Reittier Moosbock (Zähm-Quest)
+- [x] Missionsdesign aller 50 Missionen + Story-Bosse → `docs/missions/`
+- [x] Quest-JSON M101–M110 (neue Fassung)
+- [x] Dialoge Akt 1: 28 Missionsdialoge + 12 freie Gespräche, Stimmen-Leitfaden `docs/DIALOG_STIMMEN.md`
+- [x] Schulleben-Quests S101–S118 als JSON
+- [x] Region Ilsensee: Uferlicht + Stillwasser, Nebenquests N101–N106 + 13 Dialoge (`docs/regionen/ILSENSEE.md`)
+- [x] Raunwald: Pilzhausen + Krähenhain, Nebenquests N111–N116 + 13 Dialoge (`docs/regionen/RAUNWALD.md`)
+- [ ] 🟨 Kesselbrunn + Russgrube: Beschreibung fertig (`docs/regionen/KESSELBRUNN.md`), Quests N121–N126 + Dialoge fehlen
+- [x] Gegner, Gruseldorf-Herrscher, Bosse und Reittiere als Design-Daten (`docs/BESTIARIUM.md`, `Content/Data/Creatures/Design/`)
+- [ ] Kampfwerte der Akt-1-Gegner im Phase-3-Format ableiten (Pilzbrut, Missklinger, Varn, Seeglocke, Wurzelvater, Schmelzer)
+- [x] Reittier Moosbock (Zähm-Quest N116)
 
 Systeme (🤖 Code):
 - [ ] Questlog, HUD, Karte, Kompass, Inventar, Läden (UI)

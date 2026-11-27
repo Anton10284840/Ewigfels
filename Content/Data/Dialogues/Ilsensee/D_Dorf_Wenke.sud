@@ -1,0 +1,24 @@
+# Freies Gespräch: Kapitänin Wenke Haff, Laternenwerft Uferlicht. Meisterin für Wasser- und Reiseweisen.
+===
+[set SpeakerName.Wenke "Kapitänin Wenke Haff"]
+===
+[if {flag.Stillwasser_Freed}]
+Wenke: Wetterbericht: Süden klar, zum ersten Mal seit vierzig Jahren. Man hört Stillwasser bis hier. Ich hab geheult. Sag's keinem.
+[else]
+Wenke: Wetterbericht für dich persönlich: freundlich, leicht bewölkt, Aussicht auf Pfannkuchen.
+[endif]
+:themen
+Wenke: Was brauchst du?
+  * Bringst du mir eine Weise bei?
+    Wenke: Wasser und Wege, das ist mein Fach. Segelwind, Laternenboot, Nebellicht, Ankerhalt. Und das Brückenlied, aber nur für zwei. Allein fällst du rein.
+    Wenke: Wie bei Jupp gilt bei mir: erst was zurückgeben. Hilf in der Werft, dann reden wir.
+    [goto themen]
+  * Kann ich ein Boot leihen?
+    Wenke: Kannst du. Ruderboot kostet nichts, Segelboot zwei Silber. Bring sie heil zurück. Die Boote, nicht die Silber.
+    [goto themen]
+  * Wie war das Meer?
+    [event emotion `soft`]
+    Wenke: Groß. Laut. Ehrlich. Ich war zwanzig Jahre draußen. Dann hab ich mich in einen See verliebt. Kleiner, aber er hört zu.
+    [goto themen]
+  * Mach's gut, Kapitänin.
+    Wenke: Mach's besser. Und Ostwind meiden.

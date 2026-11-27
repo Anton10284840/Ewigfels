@@ -1,0 +1,41 @@
+# Freies Gespräch mit Lio (Begleiter) in Akt 1. Hub: Themen wählen, Antworten ändern sich mit dem Fortschritt.
+# Lio: witzig, laut, loyal, versteckt Angst hinter Witzen. Spielt Mundharmonika.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[if {quest.M108} == 2]
+    [event emotion `soft`]
+    Lio: Hey. Alles gut bei dir? Also wirklich gut, nicht so "gut" wie Varn "gut" gesagt hat.
+[elseif {quest.M106} == 2]
+    [event emotion `happy`]
+    Lio: Sag mal, findest du auch, dass Aurelia seit dem Duell zwei Grad weniger kalt ist? Nur zwei. Aber messbar.
+[else]
+    [event emotion `happy`]
+    Lio: Na? Wollen wir was anstellen? Ich hab Zeit. Ich hab immer Zeit. Ich sollte eigentlich Schlagweisen üben.
+[endif]
+:themen
+Lio: Und? Was noch?
+  * Erzähl was von Tiedmar.
+    Lio: Tiedmar riecht nach Fisch, Teer und Mamas Suppe. Wir haben einen Leuchtturm mit einer Glocke, die bei Sturm von allein läutet. Und Möwen, die Kinder beklauen.
+    Lio: Mein Vater knüpft die besten Netze der Küste. Er sagt, ein guter Knoten hält, auch wenn man ihn vergessen hat.
+    [goto themen]
+  * Wie geht's dir mit Mara?
+    [if {rel.Lio} >= 30]
+        [event emotion `sad`]
+        Lio: Manchmal träum ich, dass sie in der Tür steht und sagt: "Du hast meine Mütze, du Hallkopf." Und dann wach ich auf und hab tatsächlich ihre Mütze.
+        Lio: Ich schlaf mit der Mütze. Erzähl das keinem.
+    [else]
+        Lio: Gut. Alles gut. Weißt du, was nicht gut ist? Brams' Hausaufgaben. Lass uns darüber reden.
+    [endif]
+    [goto themen]
+  * Spiel was auf der Mundharmonika.
+    [event emotion `happy`]
+    Lio: Ein Wunsch! Ich kenn drei Lieder. Eins davon richtig. Rate, welches.
+    [event state `rel:Lio+1`]
+    [goto themen]
+  * Was denkst du über die Lehrer?
+    Lio: Grell: Bär mit Gefühlen, versteckt. Brams: Gewitter mit Bart. Ollendorf: niedlich, sein Hut hat Angst vor ihm. Lindqvist: würde für einen Moosling sterben. Edda ...
+    Lio: Edda guckt dich an, als hätte sie dich schon mal gesehen. Ist dir das aufgefallen?
+    [goto themen]
+  * Bis später.
+    Lio: Bis später! Wenn du mich suchst: Ich bin da, wo es Ärger gibt. Oder Kuchen.

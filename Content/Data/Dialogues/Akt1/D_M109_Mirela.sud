@@ -1,0 +1,19 @@
+# M109 – Mirela Sandor, Nachklang-Sammlerin, etwas unheimlich, sehr lieb. Ahnt früh etwas.
+===
+[set SpeakerName.Mirela "Mirela Sandor"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `thoughtful`]
+Mirela: Die Nachklänge reden über dich. Die ganz alten. Die, die seit dreihundert Jahren nur einen Satz sagen. Sie haben angefangen zu flüstern, seit dem Wald.
+Lio: Mirela, du darfst so was nicht sagen, ohne zu blinzeln.
+Mirela: Entschuldigung. *blinzelt*
+Mirela: Varn ist im Krankenflügel. Er weiß nichts mehr seit dem Sommer. Niemand vergisst einen ganzen Sommer. Außer jemand nimmt ihn weg.
+  * Du glaubst, jemand hat ihn manipuliert?
+    Mirela: Ich glaube, er hat etwas bei sich gehabt, das nicht ihm gehört. Etwas, das tickt.
+  * Woher weißt du das alles?
+    Mirela: Die Lauscher erzählen viel, wenn man nett zu ihnen ist. Ich bin immer nett zu Wänden.
+Mirela: Seine Sachen liegen in einer Kiste unter dem Bett. Die Krankenschwester macht um elf ihre Runde und um halb zwölf schläft sie im Sessel ein. Jeden Abend.
+Lio: Und das weißt du auch von den Wänden?
+Mirela: Nein. Ich war schon mal krank.
+[event emotion `happy`]
+Mirela: Gehen wir? Ich hab noch nie etwas Verbotenes gemacht. Ich bin sehr aufgeregt.

@@ -1,0 +1,34 @@
+# N114 – Mauritz Knochenfeld, Knochenpfeifer. Höflich wie ein Lehrer, verbessert Grammatik. Erlösung: seine erste Puppe.
+===
+[set SpeakerName.Mauritz "Mauritz Knochenfeld"]
+===
+[event emotion `neutral`]
+Mauritz: Guten Abend. Bitte bleib dort stehen. Auf dem Stein, nicht im Moos. Moos verzeiht nichts.
+Mauritz: Du bist aus der Akademie. Ich erkenne die Uniform. Ein Ort, an dem man Kinder lehrt, gut zu sein. Hoffentlich.
+:themen
+Mauritz: Du hast eine Frage. Stell sie vollständig, bitte.
+  * Warum hängen die Leute in den Bäumen?
+    Mauritz: Weil sie gelacht haben. Wer lacht, ist nicht artig. Wer nicht artig ist, kommt in den Baum. So hat man es mir beigebracht.
+    Mauritz: Hier. In diesem Dorf. Ich war sieben.
+    [goto themen]
+  * Was wollen Sie mit der Puppe in meiner Größe?
+    Mauritz: Nichts, solange du artig bist. Sie ist eine Vorsichtsmaßnahme. Wie ein Regenschirm. Ich hoffe sehr, dass sie trocken bleibt.
+    [goto themen]
+  * Ich habe etwas, das Ihnen gehört.
+    [event camera `close`]
+    [event emotion `scared`]
+    Mauritz: Das ... nein. Die hing im Baum über der Kirche. Ganz oben. Ich bin nie hinaufgestiegen. Ich konnte nicht.
+    Mauritz: Der Flügel war abgebrochen. Jemand hat ihn neu geschnitzt. Aus Eibe.
+    Mauritz: Darf ich? ... Danke.
+    [event emotion `sad`]
+    Mauritz: Sie singt noch. Hörst du? Falsch. Ich konnte nie singen. Deshalb haben sie gelacht.
+    Mauritz: Sing du es. Richtig. Bitte. Ich möchte einmal hören, wie es klingen sollte.
+    [set flag.Mauritz_Redeemed true]
+    [set flag.Mauritz_Decided true]
+  * Lassen Sie sie frei. Jetzt.
+    [event emotion `angry`]
+    Mauritz: Jetzt, bitte. Man sagt bitte.
+    Mauritz: Gut. Dann lernen wir heute beide etwas.
+    [set flag.Mauritz_Decided true]
+  * Ich komme später wieder.
+    Mauritz: Natürlich. Die Bäume laufen nicht weg. Das ist ihr Vorteil gegenüber Menschen.

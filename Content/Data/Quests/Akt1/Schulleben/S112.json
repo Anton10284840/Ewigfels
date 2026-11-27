@@ -1,0 +1,66 @@
+{
+  "id": "S112",
+  "type": "side",
+  "act": 1,
+  "region": "Ilsensee",
+  "giver": "Ole",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M106"
+  ],
+  "title": {
+    "de": "Die Pfannkuchen-Meisterschaft",
+    "en": "The Pancake Championship"
+  },
+  "summary": {
+    "de": "Beim Pfannkuchenfest in Uferlicht wird gewendet, geworfen und gefangen. Ole hat seit elf Jahren nicht verloren.",
+    "en": "At the Uferlicht pancake festival there is flipping, throwing and catching. Ole hasn't lost in eleven years."
+  },
+  "stages": [
+    {
+      "id": "s1_wettwurf",
+      "text": {
+        "de": "Tritt gegen Ole im Pfannkuchen-Wettwerfen an.",
+        "en": "Compete against Ole in the pancake toss."
+      },
+      "objectives": [
+        {
+          "id": "o_wurf",
+          "kind": "custom",
+          "target": "Pfannkuchen_Wettwurf",
+          "marker": "Uferlicht_Festplatz",
+          "text": {
+            "de": "Gewinn drei Runden Wettwerfen",
+            "en": "Win three rounds of pancake tossing"
+          }
+        },
+        {
+          "id": "o_ole",
+          "kind": "talk",
+          "target": "Ole",
+          "marker": "NPC_Ole",
+          "text": {
+            "de": "Sprich mit Ole nach dem Wettkampf",
+            "en": "Talk to Ole after the contest"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 20,
+    "items": [
+      "Pfanne_Ole"
+    ],
+    "effects": [
+      "rep:Zuenfte+3"
+    ]
+  }
+}

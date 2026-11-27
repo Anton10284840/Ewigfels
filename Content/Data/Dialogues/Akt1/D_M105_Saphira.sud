@@ -1,0 +1,25 @@
+# M105 – Kreaturenkunde im Raunwald. Saphira: sanft, verträumt, redet mit Tieren mehr als mit Menschen.
+===
+[set SpeakerName.Saphira "Dozentin Lindqvist"]
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `happy`]
+Saphira: Psst. Alle mal still sein. Hört ihr das?
+Lio: Ich hör nix.
+Saphira: Genau. Die Bäume hören zu. Sie raunen erst, wenn sie entschieden haben, ob sie uns mögen.
+Saphira: Summen Sie mit mir. Ganz tief, so wie ein Bär, der gut gegessen hat.
+[event camera `wide`]
+Saphira: ... Da. Habt ihr's gehört? Das war ein Ja.
+Saphira: Gut. Heute lernen Sie zwei Weisen. Das Wiegenlied, um zu beruhigen. Und den Lockruf, um zu rufen. Niemals umgekehrt, sonst haben Sie einen sehr wachen, sehr anhänglichen Bären.
+Saphira: Da drüben. Ein Borkenbär-Junges, es hat sich in den Brombeeren verfangen. Die Mutter schläft schon für den Winter. Wenn es schreit, wacht sie auf.
+  * Ich versuch's.
+    Saphira: Ganz langsam. Leise. Sie sind kein Lehrer für das Kleine. Sie sind ein Kissen.
+  * Was, wenn die Mutter aufwacht?
+    Saphira: Dann summen wir alle sehr, sehr schnell. Und laufen.
+[event emotion `happy`]
+Saphira: Wunderschön gemacht. Sehen Sie, wie es gähnt? Das ist das größte Kompliment im Raunwald.
+Lio: Ich glaub, der Bär mag dich mehr als mich.
+Saphira: Bären mögen alle gleich, Herr Vandermeer. Nur Sie haben ihm vorhin ins Ohr gesungen.
+[event emotion `worried`]
+Saphira: Und jetzt zur Lichtung, zu den Glimmermotten. Bleibt bitte zusammen. Der Raunwald führt gern Leute im Kreis, wenn sie ... Herr Vandermeer?
+Saphira: ... Wo ist Herr Vandermeer?

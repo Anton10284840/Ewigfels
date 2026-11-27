@@ -1,0 +1,30 @@
+# Freies Gespräch: Lotte Krabbe, Gasthaus „Zum Laternenhecht“. Gerüchte, Zimmer, Würfeln, Shanty-Abend.
+===
+[set SpeakerName.Lotte "Lotte Krabbe"]
+===
+Lotte: Na, Schatz von der Akademie! Hungrig? Müde? Pleite? Ich hab für alles was.
+:themen
+Lotte: Was darf's sein?
+  * Was gibt's Neues?
+    [if {quest.N104} == 2]
+    Lotte: In Stillwasser haben sie gestern bis drei Uhr nachts gebrüllt. Lautfest nennen sie das. Agnes hat gewonnen. Mit Abstand.
+    [elseif {quest.M106} == 2]
+    Lotte: Das Ilsenlicht war das schönste seit Jahren. Und irgendwer von euch hat ein Boot zum Singen gebracht. Ganz Uferlicht redet davon.
+    [else]
+    Lotte: Bodo hat einer Möwe den Krieg erklärt. Die Möwe gewinnt. Und im Südschilf schwimmen wieder Boote allein. Das passiert vorm Ilsenlicht immer.
+    [endif]
+    [goto themen]
+  * Ein Zimmer für die Nacht.
+    Lotte: Oben links, das mit dem Seeblick. Das Bett quietscht in Dur. Gut für die Träume.
+    [goto themen]
+  * Spielen wir Würfel?
+    Lotte: Immer. Aber ich warne dich: Ich verlier nur, wenn ich will. Und ich will nie.
+    [goto themen]
+  [if {flag.Glockenwels_Released}]
+  * Bereust du's? Dass wir ihn losgelassen haben?
+    [event emotion `soft`]
+    Lotte: Den Wels? Nee. Manchmal brummt er abends unterm Steg. Ich glaub, er sagt danke. Oder er hat Hunger.
+    [goto themen]
+  [endif]
+  * Tschüss, Lotte.
+    Lotte: Komm bald wieder. Und bring Hunger mit!

@@ -1,0 +1,205 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/RAUNWALD.md. Marker-IDs = Quest-Marker.",
+  "id": "Raunwald",
+  "act_from": 1,
+  "size_km": [
+    3,
+    4
+  ],
+  "villages": [
+    {
+      "id": "Pilzhausen",
+      "mood": "froehlich",
+      "music": "Holzflöte, Glockenspiel, Kinderchor (3/4), Pilzhausen-Lied richtig",
+      "fast_travel": "Mottenbaum",
+      "fast_travel_requires": "quest:M105",
+      "npcs": [
+        "Morchel",
+        "Trueffel",
+        "Hutzel",
+        "Mira",
+        "Pfiff",
+        "Gernot",
+        "Sporella",
+        "Seline"
+      ],
+      "shops": [
+        {
+          "npc": "Morchel",
+          "sells": [
+            "Pilzgerichte (Buffs)",
+            "Kraeuter"
+          ]
+        },
+        {
+          "npc": "Gernot",
+          "sells": [
+            "Holzschmuck",
+            "Stimmring-Fassungen Holz",
+            "Turmzimmer-Moebel"
+          ]
+        },
+        {
+          "npc": "Sporella",
+          "sells": [
+            "Huete",
+            "Kapuzen"
+          ]
+        },
+        {
+          "npc": "Wendeline",
+          "sells": [
+            "Gesicht aendern",
+            "Augenfarbe",
+            "Stimme"
+          ],
+          "requires": "quest:N113"
+        }
+      ],
+      "pois": [
+        "Morchels_Grosspilz",
+        "Mottenbaum",
+        "Wurzelmarkt",
+        "Hutdach_Buehne",
+        "Kraeuterbeete"
+      ],
+      "minigames": [
+        "Mottenbilder",
+        "Pilzkreis",
+        "Pilze sammeln",
+        "Haengebruecken-Wettlauf"
+      ]
+    },
+    {
+      "id": "Kraehenhain",
+      "mood": "gruselig",
+      "music": "Spieluhr mit schiefem Pilzhausen-Lied, Holzknarren",
+      "fast_travel": "Kraehenhain_Kirche",
+      "fast_travel_requires": "flag:Kraehenhain_Freed",
+      "lord": "Mauritz",
+      "npcs": [
+        "Mauritz",
+        "Edwin",
+        "Hilde"
+      ],
+      "rules": [
+        "Puppen ausserhalb des Sichtfelds wechseln die Haltung, nie im Blick",
+        "Krähen krächzen nie (bis zur Befreiung)",
+        "Grusel-Regler: Mild = Puppen ohne Augen, Ruhig = keine Bewegung"
+      ],
+      "pois": [
+        "Dornpfad",
+        "Kraehenhain_Dorfplatz",
+        "Kraehenhain_Schule",
+        "Kraehenhain_Kirche",
+        "Kraehenhain_Kirchturm",
+        "Kirchenbaum",
+        "Mauritz_Werkstatt"
+      ],
+      "after_liberation": [
+        "Fäden fallen, Krähen krächzen",
+        "Spieluhr spielt richtig",
+        "Edwin Puppenmacher-Lehrling",
+        "Holzfäller-Schmiede (Eibe)",
+        "Schild LACHEN ERLAUBT",
+        "Mauritz lehrt Krähenruf (bei Erlösung)"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Glimmermotten_Wiese",
+      "kind": "wiese"
+    },
+    {
+      "id": "Nebelsenke",
+      "kind": "senke",
+      "quest": "N111"
+    },
+    {
+      "id": "Fuchsbau",
+      "kind": "bau",
+      "quest": "N111"
+    },
+    {
+      "id": "Wurzelherz",
+      "kind": "boss",
+      "quest": "N115",
+      "boss": "Wurzelvater"
+    },
+    {
+      "id": "Farbloser_Kreis",
+      "kind": "narbe",
+      "note": "seit M108, wächst langsam zu"
+    },
+    {
+      "id": "Moosbock_Hang",
+      "kind": "felswand",
+      "quest": "N116"
+    },
+    {
+      "id": "Spiegelhexe_Teich",
+      "kind": "huette",
+      "npc": "Wendeline"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Pilzkreis",
+      "at": "Nebelsenke",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Raunender_Baum",
+      "at": "Pilzhausen",
+      "reward": "Stimmring_Quarz_Moosgruen"
+    },
+    {
+      "id": "Schrein_Moosbock_Hang",
+      "at": "Moosbock_Hang",
+      "reward": "Sattel_Farnkrone",
+      "requires": "flag:Moosbock_Tamed"
+    },
+    {
+      "id": "Schrein_Kraehenkirche",
+      "at": "Kraehenhain_Kirche",
+      "reward": "Kael_Inschrift",
+      "requires": "flag:Kraehenhain_Freed"
+    }
+  ],
+  "collectibles": {
+    "Raunspruch": 15,
+    "Puppenkopf": 10,
+    "Nachklang": 5
+  },
+  "codex_creatures": [
+    "Nebelfuchs",
+    "Borkenbaer",
+    "Moosling",
+    "Moosbock",
+    "Glimmermotte",
+    "Skelettkraehe"
+  ],
+  "enemies": {
+    "act1": [
+      "Pilzbrut",
+      "Pilzbrut_Mutter",
+      "Borkenbaer",
+      "Knochenpfeifer",
+      "Skelettkraehe",
+      "Wurzelvater"
+    ],
+    "act2": [
+      "Wilderer",
+      "Wildererhund"
+    ]
+  },
+  "quests": [
+    "N111",
+    "N112",
+    "N113",
+    "N114",
+    "N115",
+    "N116"
+  ]
+}

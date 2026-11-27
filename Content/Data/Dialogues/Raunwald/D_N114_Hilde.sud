@@ -1,0 +1,19 @@
+# N114 – Bürgermeisterin Hilde Span, hat Mauritz als Kind am lautesten ausgelacht. Bleibt Puppe, bis sie sich entschuldigt.
+===
+[set SpeakerName.Hilde "Bürgermeisterin Hilde Span"]
+===
+[event emotion `angry`]
+Hilde: Holt mich hier runter! Ich bin die Bürgermeisterin! Ich hab ein Recht auf einen Boden!
+Hilde: Alle anderen sind unten. Warum ich nicht? Was hab ich getan?
+  * Sie haben ihm als Kind die Puppe weggenommen. Und alle haben gelacht.
+    Hilde: Das war ein Spaß! Ein Kinderspaß! Vor vierzig Jahren!
+    Hilde: ...
+    [event emotion `sad`]
+    Hilde: Er hat geweint, oder? Ich weiß es noch. Er hat geweint, und ich hab gesagt: Krähen weinen nicht.
+  * Entschuldigen Sie sich, dann kommen Sie runter.
+    Hilde: Bei dem? Der hat mein Dorf in Bäume gehängt!
+    Hilde: ... Und ich hab ihn zuerst in einen Baum gehängt. Seine Puppe. Ich weiß.
+Hilde: Mauritz. Hörst du mich? Ich ... es tut mir leid. Das mit der Puppe. Das mit dem Lachen. Alles. Du hast nie gelacht, und ich hab dir das Lachen schwer gemacht.
+[set flag.Hilde_Apologized true]
+[event emotion `soft`]
+Hilde: So. Gesagt. Und jetzt holt mich bitte runter. Bitte. Siehst du, ich kann das.

@@ -1,0 +1,15 @@
+# N113 – Das Spiegelbild der Hexe tanzt im Spiegelfest von Stillwasser. Bringt man es zurück oder lässt man es tanzen?
+===
+[set SpeakerName.Spiegelbild "Wendelines Spiegelbild"]
+===
+[event emotion `happy`]
+Spiegelbild: Oh! Du kannst mich sehen? Du tanzt ja furchtbar. Herrlich! Noch mal!
+Spiegelbild: Sie hat dich geschickt, oder? Wendeline. Sie will, dass ich zurückkomme und still hinter ihr stehe. Dreihundert Jahre hab ich still gestanden.
+  * Sie vermisst dich. Und ohne dich kann sie nicht zaubern.
+    Spiegelbild: Vermisst. Hm. Hat sie das gesagt?
+    Spiegelbild: ... Gut. Ich komm zurück. Aber jeden Vollmond geh ich tanzen. Das sagst du ihr. Wörtlich.
+    [set flag.Wendeline_Reflection_Back true]
+  * Bleib hier, wenn du glücklich bist.
+    [event emotion `soft`]
+    Spiegelbild: Wirklich? Du sagst nicht, dass ich muss?
+    Spiegelbild: Dann sag ihr, sie soll in den Teich schauen statt in den Spiegel. Da schick ich ihr manchmal ein Winken. Und ein bisschen Zauber. Aber nur ein bisschen.

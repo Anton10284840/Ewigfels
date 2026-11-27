@@ -1,0 +1,22 @@
+# Magister Pim Ollendorf, Wandelkunde. Winzig, nervös, liebevoll. Sein Hut verwandelt sich mit seiner Stimmung.
+===
+[set SpeakerName.Ollendorf "Magister Ollendorf"]
+===
+[event emotion `surprised`]
+Ollendorf: Oh! Oh, Sie haben mich erschreckt. Mein Hut ist jetzt ein Igel. Das passiert. Er beruhigt sich gleich.
+:themen
+Ollendorf: Ähm, kann ich sonst noch helfen?
+  * Warum verwandelt sich Ihr Hut?
+    Ollendorf: Ach, eine Jugendsünde. Ich hab mit vierzehn versucht, ihn in einen Hut zu verwandeln, der immer passt. Jetzt passt er sich an. An meine Gefühle. Leider.
+    Ollendorf: Wenn er ein Blumentopf wird, bin ich verlegen. Wenn er ein Igel wird, erschrocken. Und wenn er eine Krone wird ... das ist noch nie passiert. Ich warte.
+    [goto themen]
+  * Warum laufen Ihre Tische weg?
+    Ollendorf: Weil sie sich langweilen! Das ist eigentlich ein Kompliment an die Tische. Sie haben Geschmack. Ich arbeite an meinem Unterricht. Wirklich.
+    [goto themen]
+  * Was ist Wandelkunde eigentlich?
+    Ollendorf: Die Kunst, Dingen zu erklären, dass sie etwas anderes sein könnten. Freundlich. Ein Knopf will keine Maus sein. Aber wenn man ihn nett fragt ...
+    Ollendorf: Dann ist er eine Maus. Eine kleine. Mit Löchern. Aber eine Maus.
+    [goto themen]
+  * Auf Wiedersehen, Magister.
+    [event emotion `happy`]
+    Ollendorf: Auf Wiedersehen! Sehen Sie, der Hut ist jetzt ein Strohhut. Das heißt, ich bin zufrieden.

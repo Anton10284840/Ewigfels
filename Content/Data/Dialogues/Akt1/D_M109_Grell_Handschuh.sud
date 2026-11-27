@@ -1,0 +1,31 @@
+# M109 – Grell erwischt die drei im Krankenflügel. Er sieht den schwarzen Handschuh und wird grau.
+===
+[set SpeakerName.Grell "Meister Grell"]
+[set SpeakerName.Lio "Lio"]
+[set SpeakerName.Mirela "Mirela Sandor"]
+===
+[event emotion `angry`]
+Grell: Drei Schüler. Nachts. Im Krankenflügel. In den Sachen eines Kranken.
+Grell: Ich hoffe für Sie, Sie haben eine sehr gute Erklärung.
+  * Varn wurde manipuliert. Wir haben Beweise.
+    Grell: Beweise. Zeigen.
+  * Wir wollten nur helfen.
+    Grell: Helfen. Nachts. Mit Taschenlampen aus Laternenkrähen. Zeigen Sie, was Sie da haben.
+Mirela: Einen Handschuh, Meister Grell. Und einen Splitter.
+[event camera `closeup`]
+[event emotion `shocked`]
+Grell: ...
+Grell: Geben Sie mir das.
+Lio: Was ist das? Meister Grell? Sie sind ganz ...
+Grell: Schwarzer Handschuh. Rechte Hand. Ich kenne diese Leute.
+[event emotion `thoughtful`]
+Grell: Hören Sie mir gut zu. Alle drei. Das bleibt unter uns. Keine Lauscher, keine Notenfalter, keine Heldengeschichten im Gemeinschaftsraum.
+  * Wer sind die?
+    Grell: Leute, die keine Lieder mögen. Mehr müssen Sie heute nicht wissen.
+  * Sagen Sie es der Rektorin?
+    Grell: Das ist meine Sache.
+  * Und unsere Strafe?
+    Grell: ... Ihre Strafe ist, dass Sie jetzt schlafen gehen und nachts nicht mehr allein rumlaufen. Das ist eine harte Strafe. Glauben Sie mir.
+[event emotion `neutral`]
+Grell: Und Sie. Im Wald. Gut gemacht. Mit dem Jungen. Damals.
+Grell: Jetzt raus.

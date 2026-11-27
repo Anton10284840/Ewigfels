@@ -1,0 +1,1460 @@
+{
+  "_doc": "Design-Daten aller Gegner, Gruseldorf-Herrscher und Bosse (docs/BESTIARIUM.md). Kampfwerte für die Engine stehen getrennt unter dem Schlüssel 'creatures' (Format docs/SPELL_FORMAT.md); IDs sind identisch. surrender_at = Lebensanteil, bei dem der Gegner aufgibt (0 = nie).",
+  "groups": {
+    "StilleHand": "Stille Hand",
+    "Missklinger": "Missklinger (Schwarzmagier)",
+    "Wilderer": "Wilderer und Schmuggler",
+    "Kollegium": "Kollegium-Vollstrecker",
+    "Kreatur": "Wilde Kreaturen",
+    "KaelKonstrukt": "Kael-Konstrukte",
+    "Nachhall": "Nachhall-Wesen"
+  },
+  "bestiary": [
+    {
+      "id": "Novize",
+      "name": {
+        "de": "Novize der Stillen Hand",
+        "en": "Novice of the Silent Hand"
+      },
+      "group": "StilleHand",
+      "act": 1,
+      "regions": [
+        "Raunwald",
+        "Kesselbrunn",
+        "Graumoor",
+        "Glastiefen"
+      ],
+      "behavior": "melee_group",
+      "abilities": [
+        {
+          "id": "novize_hieb",
+          "de": "Hieb",
+          "en": "Strike"
+        },
+        {
+          "id": "novize_ansturm",
+          "de": "Ansturm",
+          "en": "Charge"
+        },
+        {
+          "id": "taktsplitter",
+          "de": "Taktstein-Splitter (verstummt 2 s)",
+          "en": "Metronome shard (silences 2 s)"
+        }
+      ],
+      "weakness": [
+        "Hall",
+        "Gruppe aufbrechen"
+      ],
+      "sound_cue": "Metronom-Ticken, Vögel verstummen",
+      "surrender_at": 0.15
+    },
+    {
+      "id": "Schweiger",
+      "name": {
+        "de": "Schweiger",
+        "en": "Silencer"
+      },
+      "group": "StilleHand",
+      "act": 2,
+      "regions": [
+        "Kesselbrunn",
+        "Glastiefen",
+        "Nocturna"
+      ],
+      "behavior": "melee_hunter",
+      "abilities": [
+        {
+          "id": "verstummen_griff",
+          "de": "Verstummen-Griff",
+          "en": "Silencing grip"
+        },
+        {
+          "id": "schweigekegel",
+          "de": "Schweigekegel",
+          "en": "Cone of silence"
+        },
+        {
+          "id": "rammstoss",
+          "de": "Rammstoß",
+          "en": "Ram"
+        }
+      ],
+      "weakness": [
+        "Strom",
+        "Abstand"
+      ],
+      "sound_cue": "Ton wird in 8 m dumpf",
+      "surrender_at": 0.1
+    },
+    {
+      "id": "Taktgeber",
+      "name": {
+        "de": "Taktgeber",
+        "en": "Timekeeper"
+      },
+      "group": "StilleHand",
+      "act": 2,
+      "regions": [
+        "Kesselbrunn",
+        "Glastiefen",
+        "Kaelschlucht",
+        "Nocturna"
+      ],
+      "behavior": "ranged_commander",
+      "abilities": [
+        {
+          "id": "taktbefehl",
+          "de": "Taktbefehl (alle greifen auf 4 an)",
+          "en": "Beat command (all strike on 4)"
+        },
+        {
+          "id": "pfeilnote",
+          "de": "Pfeilnote",
+          "en": "Arrow note"
+        },
+        {
+          "id": "taktschild",
+          "de": "Takt-Schild",
+          "en": "Beat shield"
+        }
+      ],
+      "weakness": [
+        "Laute Weise auf Schlag 3",
+        "zuerst ausschalten"
+      ],
+      "sound_cue": "lauter werdendes Ticken",
+      "surrender_at": 0.15
+    },
+    {
+      "id": "Choralist",
+      "name": {
+        "de": "Choralist",
+        "en": "Choralist"
+      },
+      "group": "StilleHand",
+      "act": 2,
+      "regions": [
+        "Graumoor",
+        "Tiedmar",
+        "Nocturna",
+        "Brandheim"
+      ],
+      "behavior": "support_caster",
+      "abilities": [
+        {
+          "id": "staerkungschor",
+          "de": "Stärkungschor (+30 % Schaden)",
+          "en": "Strengthening choir (+30% damage)"
+        },
+        {
+          "id": "stiller_chor",
+          "de": "Stiller Chor (Weisen kosten doppelt)",
+          "en": "Silent choir (airs cost double)"
+        },
+        {
+          "id": "heilsummen",
+          "de": "Heilsummen",
+          "en": "Healing hum"
+        }
+      ],
+      "weakness": [
+        "Unterbrechen",
+        "Glut"
+      ],
+      "sound_cue": "schöner, falscher Gesang",
+      "surrender_at": 0.2
+    },
+    {
+      "id": "Dirigentenwache",
+      "name": {
+        "de": "Dirigentenwache",
+        "en": "Conductor's Guard"
+      },
+      "group": "StilleHand",
+      "act": 3,
+      "regions": [
+        "Kaelschlucht",
+        "Nocturna",
+        "Aurenburg",
+        "Brandheim"
+      ],
+      "behavior": "elite_shield",
+      "abilities": [
+        {
+          "id": "schildwall",
+          "de": "Schildwall (frontal immun)",
+          "en": "Shield wall (immune from front)"
+        },
+        {
+          "id": "schildstoss",
+          "de": "Schildstoß",
+          "en": "Shield bash"
+        },
+        {
+          "id": "verstummen_welle",
+          "de": "Verstummen-Welle",
+          "en": "Silencing wave"
+        }
+      ],
+      "weakness": [
+        "von hinten",
+        "Leichtklang hebt den Schild",
+        "Grund"
+      ],
+      "sound_cue": "Stille, dann schwere Schritte",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Fluchsaenger",
+      "name": {
+        "de": "Fluchsänger",
+        "en": "Hexsinger"
+      },
+      "group": "Missklinger",
+      "act": 1,
+      "regions": [
+        "Ilsensee",
+        "Raunwald",
+        "Tiedmar"
+      ],
+      "behavior": "ranged_kite",
+      "abilities": [
+        {
+          "id": "stolperfluch",
+          "de": "Stolperfluch",
+          "en": "Stumble hex"
+        },
+        {
+          "id": "fluch_kugel",
+          "de": "Fluchkugel",
+          "en": "Hex orb"
+        },
+        {
+          "id": "fluch_kreis",
+          "de": "Fluchkreis",
+          "en": "Hex circle"
+        }
+      ],
+      "weakness": [
+        "Glut",
+        "Hall"
+      ],
+      "sound_cue": "bekanntes Lied, das schief wird",
+      "surrender_at": 0.2
+    },
+    {
+      "id": "Knochenpfeifer",
+      "name": {
+        "de": "Knochenpfeifer",
+        "en": "Bonepiper"
+      },
+      "group": "Missklinger",
+      "act": 1,
+      "regions": [
+        "Raunwald",
+        "Graumoor"
+      ],
+      "behavior": "summoner",
+      "abilities": [
+        {
+          "id": "skelettkraehen",
+          "de": "Skelettkrähen (Schwarm)",
+          "en": "Skeleton crows (swarm)"
+        },
+        {
+          "id": "pfeifenstoss",
+          "de": "Pfeifenstoß (Betäubung)",
+          "en": "Pipe blast (stun)"
+        },
+        {
+          "id": "kraehenwand",
+          "de": "Krähenwand",
+          "en": "Crow wall"
+        }
+      ],
+      "weakness": [
+        "Strom",
+        "Flöte am Gürtel zerstören"
+      ],
+      "sound_cue": "Knochenflöte aus der Ferne",
+      "surrender_at": 0.2
+    },
+    {
+      "id": "Schattenweber",
+      "name": {
+        "de": "Schattenweber",
+        "en": "Shadowweaver"
+      },
+      "group": "Missklinger",
+      "act": 2,
+      "regions": [
+        "Kesselbrunn",
+        "Weisse_Zinnen",
+        "Kaelschlucht"
+      ],
+      "behavior": "stealth_ambush",
+      "abilities": [
+        {
+          "id": "webstich",
+          "de": "Webstich (Hinterhalt)",
+          "en": "Weave stab (ambush)"
+        },
+        {
+          "id": "schattenfaden",
+          "de": "Schattenfaden (fesselt)",
+          "en": "Shadow thread (binds)"
+        },
+        {
+          "id": "lichtfrass",
+          "de": "Lichtfraß (löscht Laternen)",
+          "en": "Light eater (douses lanterns)"
+        }
+      ],
+      "weakness": [
+        "Laternenlicht",
+        "Farbtausch auf Staub",
+        "Spurklang"
+      ],
+      "sound_cue": "Laternen gehen hinter dir aus",
+      "surrender_at": 0.15
+    },
+    {
+      "id": "Puppenmeister",
+      "name": {
+        "de": "Puppenmeister",
+        "en": "Puppeteer"
+      },
+      "group": "Missklinger",
+      "act": 1,
+      "regions": [
+        "Raunwald",
+        "Glastiefen",
+        "Aurenburg"
+      ],
+      "behavior": "controller",
+      "abilities": [
+        {
+          "id": "fadenzug",
+          "de": "Fadenzug (Marionette greift an)",
+          "en": "Thread pull (puppet attacks)"
+        },
+        {
+          "id": "fadennetz",
+          "de": "Fadennetz",
+          "en": "Thread net"
+        },
+        {
+          "id": "tausch",
+          "de": "Platztausch mit Marionette",
+          "en": "Swap with puppet"
+        }
+      ],
+      "weakness": [
+        "Fäden kappen (Glut, Strom)",
+        "Marionetten schonen"
+      ],
+      "sound_cue": "Marionetten flüstern „Hilf mir“",
+      "surrender_at": 0.25
+    },
+    {
+      "id": "Hexenmutter",
+      "name": {
+        "de": "Hexenmutter",
+        "en": "Hexmother"
+      },
+      "group": "Missklinger",
+      "act": 2,
+      "regions": [
+        "Graumoor",
+        "Treibende_Inseln"
+      ],
+      "behavior": "elite_caster",
+      "abilities": [
+        {
+          "id": "fluchkreis_farben",
+          "de": "Fluchkreis (Gift, Stille, Wurzeln)",
+          "en": "Hex circle (poison, silence, roots)"
+        },
+        {
+          "id": "puppenzauber",
+          "de": "Puppenzauber (Spielerkopie)",
+          "en": "Doll curse (player copy)"
+        },
+        {
+          "id": "kesselruf",
+          "de": "Kesselruf",
+          "en": "Cauldron call"
+        },
+        {
+          "id": "kreissprung",
+          "de": "Teleport zwischen Kreisen",
+          "en": "Teleport between circles"
+        }
+      ],
+      "weakness": [
+        "Entklang",
+        "Gegen-Grundton löscht Kreise"
+      ],
+      "sound_cue": "Kinderreim, rückwärts gesungen",
+      "surrender_at": 0.1
+    },
+    {
+      "id": "Klingenschnapper",
+      "name": {
+        "de": "Klingenschnapper",
+        "en": "Bladesnapper"
+      },
+      "group": "Wilderer",
+      "act": 2,
+      "regions": [
+        "Raunwald",
+        "Glastiefen",
+        "Tiedmar"
+      ],
+      "behavior": "melee_flanker",
+      "abilities": [
+        {
+          "id": "doppelmesser",
+          "de": "Doppelmesser-Kombo",
+          "en": "Twin knife combo"
+        },
+        {
+          "id": "wurfmesser",
+          "de": "Wurfmesser",
+          "en": "Throwing knife"
+        },
+        {
+          "id": "rauchflucht",
+          "de": "Rauchflucht",
+          "en": "Smoke escape"
+        }
+      ],
+      "weakness": [
+        "Haltelied",
+        "Reinklang"
+      ],
+      "sound_cue": "Pfiffe im Gebüsch",
+      "surrender_at": 0.3
+    },
+    {
+      "id": "Fallensteller",
+      "name": {
+        "de": "Fallensteller",
+        "en": "Trapper"
+      },
+      "group": "Wilderer",
+      "act": 2,
+      "regions": [
+        "Raunwald",
+        "Weisse_Zinnen"
+      ],
+      "behavior": "trapper",
+      "abilities": [
+        {
+          "id": "netzwurf",
+          "de": "Netzwurf",
+          "en": "Net throw"
+        },
+        {
+          "id": "oelfass",
+          "de": "Ölfass",
+          "en": "Oil barrel"
+        },
+        {
+          "id": "baerenfalle",
+          "de": "Bärenfalle",
+          "en": "Bear trap"
+        }
+      ],
+      "weakness": [
+        "Spurklang zeigt Fallen",
+        "eigenes Öl"
+      ],
+      "sound_cue": "Klicken von Federn",
+      "surrender_at": 0.3
+    },
+    {
+      "id": "Schmugglerwirker",
+      "name": {
+        "de": "Schmugglerwirker",
+        "en": "Smuggler Caster"
+      },
+      "group": "Wilderer",
+      "act": 3,
+      "regions": [
+        "Tiedmar",
+        "Kaelschlucht"
+      ],
+      "behavior": "ranged_elemental",
+      "abilities": [
+        {
+          "id": "element_wechsel",
+          "de": "Elementwechsel (Glut/Frost/Strom)",
+          "en": "Element swap (ember/frost/storm)"
+        }
+      ],
+      "weakness": [
+        "Fass am Gürtel treffen"
+      ],
+      "sound_cue": "klirrende Fässer",
+      "surrender_at": 0.3
+    },
+    {
+      "id": "Wildererhund",
+      "name": {
+        "de": "Wildererhund",
+        "en": "Poacher's Hound"
+      },
+      "group": "Wilderer",
+      "act": 2,
+      "regions": [
+        "Raunwald",
+        "Graumoor",
+        "Weisse_Zinnen"
+      ],
+      "behavior": "pack_animal",
+      "abilities": [
+        {
+          "id": "biss_halten",
+          "de": "Biss und Festhalten",
+          "en": "Bite and hold"
+        },
+        {
+          "id": "heulen",
+          "de": "Heulen (ruft Wilderer)",
+          "en": "Howl (calls poachers)"
+        }
+      ],
+      "weakness": [
+        "Wiegenlied (wird friedlich)",
+        "Lockruf"
+      ],
+      "sound_cue": "Hecheln, Kettenrasseln",
+      "peaceful_way": "Wiegenlied: läuft zum Schutzgebiet",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Ediktwache",
+      "name": {
+        "de": "Ediktwache",
+        "en": "Edict Guard"
+      },
+      "group": "Kollegium",
+      "act": 2,
+      "regions": [
+        "Graumoor",
+        "Aurenburg",
+        "Nocturna"
+      ],
+      "behavior": "formation",
+      "abilities": [
+        {
+          "id": "hellebarde",
+          "de": "Hellebardenstoß",
+          "en": "Halberd thrust"
+        },
+        {
+          "id": "schildwall_k",
+          "de": "Schildwall",
+          "en": "Shield wall"
+        },
+        {
+          "id": "festnahme",
+          "de": "Festnahme (Gefängnis statt Tod)",
+          "en": "Arrest (prison instead of death)"
+        }
+      ],
+      "weakness": [
+        "Formation sprengen (Windstoß, Prellschlag)"
+      ],
+      "sound_cue": "Marschschritte, Bannglöckchen",
+      "surrender_at": 0.2
+    },
+    {
+      "id": "Bannmagier",
+      "name": {
+        "de": "Bannmagier",
+        "en": "Ban Mage"
+      },
+      "group": "Kollegium",
+      "act": 3,
+      "regions": [
+        "Aurenburg"
+      ],
+      "behavior": "ranged_support",
+      "abilities": [
+        {
+          "id": "bannschild",
+          "de": "Bannschild (blockt einen Grundton, wechselt)",
+          "en": "Ban shield (blocks one root tone, rotates)"
+        },
+        {
+          "id": "bannglocke",
+          "de": "Bannglocke (Weisen 3 s aus)",
+          "en": "Ban bell (airs off 3 s)"
+        },
+        {
+          "id": "fesselkanon",
+          "de": "Fesselkanon",
+          "en": "Binding canon"
+        }
+      ],
+      "weakness": [
+        "Grundton wechseln",
+        "Urweisen (kostet Ruf)"
+      ],
+      "sound_cue": "Glocke, die nur einmal schlägt",
+      "surrender_at": 0.2
+    },
+    {
+      "id": "Pilzbrut",
+      "name": {
+        "de": "Pilzbrut",
+        "en": "Sporeling"
+      },
+      "group": "Kreatur",
+      "act": 1,
+      "regions": [
+        "Raunwald"
+      ],
+      "behavior": "swarm",
+      "abilities": [
+        {
+          "id": "sporenwolke",
+          "de": "Sporenwolke (Weisen verzögert)",
+          "en": "Spore cloud (airs delayed)"
+        },
+        {
+          "id": "anspringen",
+          "de": "Anspringen",
+          "en": "Pounce"
+        }
+      ],
+      "weakness": [
+        "Glut",
+        "Feuerkreis"
+      ],
+      "sound_cue": "Rascheln, nasses Ploppen",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Pilzbrut_Mutter",
+      "name": {
+        "de": "Pilzbrut-Mutter",
+        "en": "Sporeling Mother"
+      },
+      "group": "Kreatur",
+      "act": 1,
+      "regions": [
+        "Raunwald"
+      ],
+      "behavior": "miniboss_swarm",
+      "abilities": [
+        {
+          "id": "sporenplatzen",
+          "de": "Platzt in Brut",
+          "en": "Bursts into brood"
+        },
+        {
+          "id": "sporenregen",
+          "de": "Sporenregen",
+          "en": "Spore rain"
+        }
+      ],
+      "weakness": [
+        "Glut"
+      ],
+      "sound_cue": "tiefes Blubbern",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Borkenbaer",
+      "name": {
+        "de": "Borkenbär",
+        "en": "Barkbear"
+      },
+      "group": "Kreatur",
+      "act": 1,
+      "regions": [
+        "Raunwald",
+        "Weisse_Zinnen"
+      ],
+      "behavior": "territorial",
+      "abilities": [
+        {
+          "id": "prankenhieb",
+          "de": "Prankenhieb",
+          "en": "Paw swipe"
+        },
+        {
+          "id": "ansturm_baer",
+          "de": "Ansturm",
+          "en": "Charge"
+        },
+        {
+          "id": "rindenpanzer",
+          "de": "Rindenpanzer (Rücken)",
+          "en": "Bark armour (back)"
+        }
+      ],
+      "weakness": [
+        "Bauch",
+        "Glut"
+      ],
+      "sound_cue": "Brummen, Boden schlagen",
+      "peaceful_way": "Wiegenlied oder Honig; rückwärts weggehen",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Firnfuchs_Takt",
+      "name": {
+        "de": "Manipulierter Firnfuchs",
+        "en": "Entranced Frost Fox"
+      },
+      "group": "Kreatur",
+      "act": 1,
+      "regions": [
+        "Raunwald"
+      ],
+      "behavior": "pack_animal",
+      "abilities": [
+        {
+          "id": "fuchsbiss",
+          "de": "Biss",
+          "en": "Bite"
+        }
+      ],
+      "weakness": [
+        "Taktstein-Splitter am Halsband zerschlagen"
+      ],
+      "sound_cue": "Augen blinken im Takt",
+      "peaceful_way": "Halsband zerschlagen: Fuchs flieht",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Moorlicht_Unke",
+      "name": {
+        "de": "Moorlicht-Unke",
+        "en": "Bog-light Toad"
+      },
+      "group": "Kreatur",
+      "act": 2,
+      "regions": [
+        "Graumoor"
+      ],
+      "behavior": "ambush",
+      "abilities": [
+        {
+          "id": "lichtlockung",
+          "de": "Lichtlockung",
+          "en": "Light lure"
+        },
+        {
+          "id": "zungenpeitsche",
+          "de": "Zungenpeitsche",
+          "en": "Tongue lash"
+        },
+        {
+          "id": "giftblase",
+          "de": "Giftblase",
+          "en": "Poison blister"
+        }
+      ],
+      "weakness": [
+        "Frost löscht Irrlichter"
+      ],
+      "sound_cue": "Quaken, das zweistimmig wird",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Glasnatter",
+      "name": {
+        "de": "Glasnatter",
+        "en": "Glass Adder"
+      },
+      "group": "Kreatur",
+      "act": 2,
+      "regions": [
+        "Glastiefen"
+      ],
+      "behavior": "heat_hunter",
+      "abilities": [
+        {
+          "id": "versteinerungston",
+          "de": "Versteinerungston (Lähmung)",
+          "en": "Petrifying tone (paralysis)"
+        },
+        {
+          "id": "biss_natter",
+          "de": "Biss",
+          "en": "Bite"
+        }
+      ],
+      "weakness": [
+        "kalt und still bleiben",
+        "Frost-Aura"
+      ],
+      "sound_cue": "hohes Glasklirren",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Salzkrake_Jung",
+      "name": {
+        "de": "Salzkrake (Jungtier)",
+        "en": "Salt Kraken (young)"
+      },
+      "group": "Kreatur",
+      "act": 3,
+      "regions": [
+        "Tiedmar"
+      ],
+      "behavior": "thief",
+      "abilities": [
+        {
+          "id": "tintenstoss",
+          "de": "Tintenstoß (blind)",
+          "en": "Ink burst (blind)"
+        },
+        {
+          "id": "armgriff",
+          "de": "Armgriff",
+          "en": "Arm grab"
+        }
+      ],
+      "weakness": [
+        "glänzender Köder"
+      ],
+      "sound_cue": "Schmatzen im Tümpel",
+      "peaceful_way": "Köder werfen",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Firnwolf",
+      "name": {
+        "de": "Firnwolf",
+        "en": "Firn Wolf"
+      },
+      "group": "Kreatur",
+      "act": 3,
+      "regions": [
+        "Weisse_Zinnen"
+      ],
+      "behavior": "pack_hunter",
+      "abilities": [
+        {
+          "id": "eisbiss",
+          "de": "Eisbiss (verlangsamt)",
+          "en": "Ice bite (slows)"
+        },
+        {
+          "id": "rudelruf",
+          "de": "Rudelruf",
+          "en": "Pack call"
+        },
+        {
+          "id": "frostatem",
+          "de": "Frostatem (Alpha)",
+          "en": "Frost breath (alpha)"
+        }
+      ],
+      "weakness": [
+        "Alpha besiegen",
+        "Glut"
+      ],
+      "sound_cue": "Heulen, das gefriert",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Klangwaechter",
+      "name": {
+        "de": "Klangwächter",
+        "en": "Sound Warden"
+      },
+      "group": "KaelKonstrukt",
+      "act": 2,
+      "regions": [
+        "Glastiefen",
+        "Kaelschlucht",
+        "Treibende_Inseln"
+      ],
+      "behavior": "sound_reactive",
+      "abilities": [
+        {
+          "id": "saitenschlag",
+          "de": "Saitenschlag",
+          "en": "String strike"
+        },
+        {
+          "id": "resonanzstampf",
+          "de": "Resonanzstampf",
+          "en": "Resonance stomp"
+        },
+        {
+          "id": "echoschild",
+          "de": "Echo-Schild",
+          "en": "Echo shield"
+        }
+      ],
+      "weakness": [
+        "leise bleiben",
+        "Gegenakkord öffnet Kern"
+      ],
+      "sound_cue": "tiefes Summen im Stein",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Scherbengolem",
+      "name": {
+        "de": "Scherbengolem",
+        "en": "Shard Golem"
+      },
+      "group": "KaelKonstrukt",
+      "act": 2,
+      "regions": [
+        "Glastiefen"
+      ],
+      "behavior": "regenerating",
+      "abilities": [
+        {
+          "id": "splitterhagel",
+          "de": "Splitterhagel",
+          "en": "Shard hail"
+        },
+        {
+          "id": "zusammensetzen",
+          "de": "Neu zusammensetzen (heilt)",
+          "en": "Reassemble (heals)"
+        },
+        {
+          "id": "scherbenwirbel",
+          "de": "Scherbenwirbel",
+          "en": "Shard whirl"
+        }
+      ],
+      "weakness": [
+        "Grund hält Scherben am Boden"
+      ],
+      "sound_cue": "klirrendes Zusammensetzen",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Sandsaenger",
+      "name": {
+        "de": "Sandsänger",
+        "en": "Sandsinger"
+      },
+      "group": "KaelKonstrukt",
+      "act": 3,
+      "regions": [
+        "Kaelschlucht"
+      ],
+      "behavior": "ranged_echo",
+      "abilities": [
+        {
+          "id": "echoschuss",
+          "de": "Echoschuss (trifft zweimal)",
+          "en": "Echo shot (hits twice)"
+        },
+        {
+          "id": "sandwand",
+          "de": "Sandwand",
+          "en": "Sand wall"
+        }
+      ],
+      "weakness": [
+        "bewegen",
+        "Quell macht Sand schwer"
+      ],
+      "sound_cue": "Gesang mit Verzögerung",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Stummling",
+      "name": {
+        "de": "Stummling",
+        "en": "Muteling"
+      },
+      "group": "Nachhall",
+      "act": 2,
+      "regions": [
+        "Graumoor",
+        "Brandheim",
+        "Nachhall"
+      ],
+      "behavior": "sound_hunter",
+      "abilities": [
+        {
+          "id": "klangsog",
+          "de": "Klangsog (Weisen schwächer)",
+          "en": "Sound drain (airs weaker)"
+        },
+        {
+          "id": "umarmung",
+          "de": "Umarmung (Atem sinkt)",
+          "en": "Embrace (breath drains)"
+        }
+      ],
+      "weakness": [
+        "Hall",
+        "Rückklang",
+        "Schleichen"
+      ],
+      "sound_cue": "Umgebung wird dumpf, Musik dünnt aus",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Echohund",
+      "name": {
+        "de": "Echohund",
+        "en": "Echo Hound"
+      },
+      "group": "Nachhall",
+      "act": 2,
+      "regions": [
+        "Brandheim",
+        "Nachhall"
+      ],
+      "behavior": "sound_hunter_pack",
+      "abilities": [
+        {
+          "id": "echobiss",
+          "de": "Echobiss (zweimal)",
+          "en": "Echo bite (twice)"
+        },
+        {
+          "id": "sprung",
+          "de": "Sprung",
+          "en": "Leap"
+        }
+      ],
+      "weakness": [
+        "Echoköder",
+        "Stillpunkt"
+      ],
+      "sound_cue": "Bellen, bevor er bellt",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Leerchor",
+      "name": {
+        "de": "Leerchor",
+        "en": "Void Choir"
+      },
+      "group": "Nachhall",
+      "act": 4,
+      "regions": [
+        "Brandheim",
+        "Nachhall"
+      ],
+      "behavior": "swarm_caster",
+      "abilities": [
+        {
+          "id": "verschlucken",
+          "de": "Verschlucken (Weise kommt als Echo zurück)",
+          "en": "Swallow (air returns as echo)"
+        },
+        {
+          "id": "chorwelle",
+          "de": "Chor-Druckwelle",
+          "en": "Choir shockwave"
+        }
+      ],
+      "weakness": [
+        "Hall",
+        "Koop-Weisen"
+      ],
+      "sound_cue": "die eigene Stimme rückwärts",
+      "surrender_at": 0.0
+    },
+    {
+      "id": "Splitterwandler",
+      "name": {
+        "de": "Splitterwandler",
+        "en": "Splitwalker"
+      },
+      "group": "Nachhall",
+      "act": 4,
+      "regions": [
+        "Brandheim",
+        "Nachhall",
+        "Aurenburg"
+      ],
+      "behavior": "teleporter",
+      "abilities": [
+        {
+          "id": "ebenenwechsel",
+          "de": "Ebenenwechsel",
+          "en": "Plane shift"
+        },
+        {
+          "id": "splitterstoss",
+          "de": "Splitterstoß",
+          "en": "Split strike"
+        },
+        {
+          "id": "doppelgaenger",
+          "de": "Doppelgänger",
+          "en": "Doppelganger"
+        }
+      ],
+      "weakness": [
+        "Nachhallschritt folgt ihm",
+        "Seelenecho"
+      ],
+      "sound_cue": "im Spiegel, nicht im Raum",
+      "surrender_at": 0.0
+    }
+  ],
+  "village_lords": [
+    {
+      "id": "Senta_Grau",
+      "name": "Witwe Senta Grau",
+      "type": "Fluchsaenger",
+      "village": "Stillwasser",
+      "region": "Ilsensee",
+      "act": 1,
+      "village_suffers": "Bewohner können nur flüstern",
+      "backstory": "Mann ertrank, während das Dorf zu laut feierte",
+      "peaceful_way": "Seelenecho: letzten Ruf ihres Mannes vorspielen"
+    },
+    {
+      "id": "Mauritz_Knochenfeld",
+      "name": "Mauritz Knochenfeld",
+      "type": "Knochenpfeifer",
+      "village": "Kraehenhain",
+      "region": "Raunwald",
+      "act": 1,
+      "village_suffers": "Bewohner als Puppen in den Bäumen",
+      "backstory": "als Kind vom Dorf verlacht",
+      "peaceful_way": "seine erste Puppe zurückgeben"
+    },
+    {
+      "id": "Egon_Russ",
+      "name": "Egon Ruß, der Rauchschmied",
+      "type": "Schattenweber",
+      "village": "Russgrube",
+      "region": "Kesselbrunn",
+      "act": 1,
+      "village_suffers": "Rauch mit Gesichtern, Bergleute ohne Pause",
+      "backstory": "verlor 12 Mann wegen billiger Zunftbauten",
+      "peaceful_way": "Zunftakte nach Kesselbrunn bringen"
+    },
+    {
+      "id": "Agathe_Dornfeld",
+      "name": "Agathe Dornfeld",
+      "type": "Hexenmutter",
+      "village": "Moorwinkel",
+      "region": "Graumoor",
+      "act": 2,
+      "village_suffers": "Bauern als Marionetten",
+      "backstory": "von den Hütern verstoßen",
+      "peaceful_way": "Quendel überzeugt (Ruf Hüter ≥ Geschätzt)"
+    },
+    {
+      "id": "Meister_Lidlos",
+      "name": "Meister Lidlos",
+      "type": "Puppenmeister",
+      "village": "Hohlstollen",
+      "region": "Glastiefen",
+      "act": 2,
+      "village_suffers": "Bergleute blinzeln nicht",
+      "backstory": "Angst vor der Dunkelheit",
+      "peaceful_way": "Laterne, die nie ausgeht"
+    },
+    {
+      "id": "Jorgen_Moor",
+      "name": "Kapitän Jorgen Moor",
+      "type": "Fluchsaenger",
+      "village": "Ebbgrund",
+      "region": "Tiedmar",
+      "act": 3,
+      "village_suffers": "ertrunkene Glocken locken ins Wasser",
+      "backstory": "Schiff vom Kollegium versenkt",
+      "peaceful_way": "Schiffsglocke heben"
+    },
+    {
+      "id": "Reifhild",
+      "name": "Reifhild",
+      "type": "Schattenweber",
+      "village": "Frostwacht",
+      "region": "Weisse_Zinnen",
+      "act": 3,
+      "village_suffers": "Bewohner stehen lebendig im Eis",
+      "backstory": "Kinder in Lawine verloren",
+      "peaceful_way": "Entklang: Erinnerung loslassen"
+    },
+    {
+      "id": "Sandfluesterer",
+      "name": "Der Sandflüsterer",
+      "type": "Schattenweber",
+      "village": "Sandgrab",
+      "region": "Kaelschlucht",
+      "act": 3,
+      "village_suffers": "Stimmen aus dem Sand verraten Geheimnisse",
+      "backstory": "hörte zu lange Kael-Echos",
+      "peaceful_way": "eigene Stimme finden (Seelenecho)"
+    },
+    {
+      "id": "Der_Umgekehrte",
+      "name": "Der Umgekehrte",
+      "type": "Hexenmutter",
+      "village": "Leerfall",
+      "region": "Treibende_Inseln",
+      "act": 4,
+      "village_suffers": "Schwerkraft falsch",
+      "backstory": "Junge, der fliegen wollte",
+      "peaceful_way": "Fliegen ohne Zwang zeigen (Perlsegler)"
+    },
+    {
+      "id": "Lorenzo_Fadenweis",
+      "name": "Lorenzo Fadenweis",
+      "type": "Puppenmeister",
+      "village": "Senke",
+      "region": "Aurenburg",
+      "act": 4,
+      "village_suffers": "Menschen nachts an Fäden",
+      "backstory": "arbeitet heimlich für den Kanzler",
+      "peaceful_way": "Beweis an Fink"
+    }
+  ],
+  "bosses": [
+    {
+      "id": "Boss_Seeglocke",
+      "name": {
+        "de": "Die Seeglocke",
+        "en": "The Lake Bell"
+      },
+      "kind": "region",
+      "region": "Ilsensee",
+      "act": 1,
+      "phases": [
+        "Schallwellen im Takt, Reinklang",
+        "Glockenwels, sinkende Plattformen",
+        "Riss freilegen, Wiederklang"
+      ],
+      "redemption": "Glocke heilen"
+    },
+    {
+      "id": "Boss_Wurzelvater",
+      "name": {
+        "de": "Der Wurzelvater",
+        "en": "The Root Father"
+      },
+      "kind": "region",
+      "region": "Raunwald",
+      "act": 1,
+      "phases": [
+        "kranke Ranken verbrennen",
+        "Kern freilegen mit Ziehklang"
+      ],
+      "redemption": "Nachhall herausziehen (Entklang oder Wiegenlied + Hüter)"
+    },
+    {
+      "id": "Boss_Schmelzer",
+      "name": {
+        "de": "Schmelzer",
+        "en": "The Smelter"
+      },
+      "kind": "region",
+      "region": "Kesselbrunn",
+      "act": 1,
+      "phases": [
+        "Lava-Kanäle umleiten",
+        "mit Frost kühlen",
+        "Kern im Bauch"
+      ],
+      "redemption": "Egon Ruß schaltet ihn ab (Russgrube befreit)"
+    },
+    {
+      "id": "Boss_Moorkoenigin",
+      "name": {
+        "de": "Moorkönigin",
+        "en": "Bog Queen"
+      },
+      "kind": "region",
+      "region": "Graumoor",
+      "act": 2,
+      "phases": [
+        "im Nebel über Ton orten",
+        "Irrlichter löschen",
+        "Zungen, steigender Sumpf"
+      ],
+      "redemption": "bei E2_KeyKeepers gesund singen"
+    },
+    {
+      "id": "Boss_Kristallwal",
+      "name": {
+        "de": "Kristallwal",
+        "en": "Crystal Whale"
+      },
+      "kind": "region",
+      "region": "Glastiefen",
+      "act": 2,
+      "phases": [
+        "Resonanzpunkte auf schwimmenden Kristallen",
+        "Minenketten zerschlagen"
+      ],
+      "redemption": "Ketten lösen statt verletzen"
+    },
+    {
+      "id": "Boss_Salzmutter",
+      "name": {
+        "de": "Die Salzmutter",
+        "en": "The Salt Mother"
+      },
+      "kind": "region",
+      "region": "Tiedmar",
+      "act": 3,
+      "phases": [
+        "Tentakel binden",
+        "Hafenkräne",
+        "Nest im Wrack"
+      ],
+      "redemption": "Glocke aus Ebbgrund schenken"
+    },
+    {
+      "id": "Boss_Firnfuerst",
+      "name": {
+        "de": "Firnfürst",
+        "en": "Firn Prince"
+      },
+      "kind": "region",
+      "region": "Weisse_Zinnen",
+      "act": 3,
+      "phases": [
+        "Rudel mit Alpha",
+        "Lawinen lenken",
+        "Eisgeweih brechen"
+      ],
+      "redemption": "Welpen zurückbringen"
+    },
+    {
+      "id": "Boss_LetzterSaenger",
+      "name": {
+        "de": "Der Letzte Sänger",
+        "en": "The Last Singer"
+      },
+      "kind": "region",
+      "region": "Kaelschlucht",
+      "act": 3,
+      "phases": [
+        "Gegenakkorde",
+        "Kanon",
+        "Stille-Phase"
+      ],
+      "redemption": "ergibt sich, lehrt eine Kael-Weise"
+    },
+    {
+      "id": "Boss_Sturmrochen",
+      "name": {
+        "de": "Sturmrochen",
+        "en": "Storm Ray"
+      },
+      "kind": "region",
+      "region": "Treibende_Inseln",
+      "act": 4,
+      "phases": [
+        "Luftkampf, Blitzbahnen",
+        "Wolkenrochen-Schwarm",
+        "Sturzflug durch die Wolken"
+      ],
+      "redemption": "Gewitterquarz aus der Stirn ziehen"
+    },
+    {
+      "id": "Boss_Draeger",
+      "name": {
+        "de": "Großinquisitor Halmar Dräger",
+        "en": "Grand Inquisitor Halmar Dräger"
+      },
+      "kind": "region",
+      "region": "Aurenburg",
+      "act": 4,
+      "phases": [
+        "Bannschilde",
+        "Bannglocken-Turm",
+        "Urweisen brechen den Bann"
+      ],
+      "redemption": "ergibt sich bei 10 %"
+    },
+    {
+      "id": "Boss_Varn",
+      "name": {
+        "de": "Ausbilder Varn",
+        "en": "Instructor Varn"
+      },
+      "kind": "story",
+      "region": "Raunwald",
+      "act": 1,
+      "phases": [
+        "Übung im Takt",
+        "Verstummen-Feld (nicht gewinnbar, Urton)"
+      ],
+      "redemption": "überlebt immer"
+    },
+    {
+      "id": "Boss_Mara",
+      "name": {
+        "de": "Mara Vandermeer, die Taktgeberin",
+        "en": "Mara Vandermeer, the Timekeeper"
+      },
+      "kind": "story",
+      "region": "Glastiefen",
+      "act": 2,
+      "phases": [
+        "Novizen im Takt",
+        "allein, Druckwellen",
+        "zerrissen, Raum stürzt ein"
+      ],
+      "redemption": "flieht"
+    },
+    {
+      "id": "Boss_WaechterKael",
+      "name": {
+        "de": "Der Wächter von Kael",
+        "en": "The Warden of Kael"
+      },
+      "kind": "story",
+      "region": "Kaelschlucht",
+      "act": 3,
+      "phases": [
+        "Gegenakkord",
+        "Kanon",
+        "Stille"
+      ],
+      "redemption": "wird still"
+    },
+    {
+      "id": "Boss_Corvin",
+      "name": {
+        "de": "Corvin Hale",
+        "en": "Corvin Hale"
+      },
+      "kind": "story",
+      "region": "Nocturna",
+      "act": 4,
+      "phases": [
+        "Unterricht (Ansagen)",
+        "Messung (Gegenweisen)",
+        "Bruder (Urton-Extrakt, nur bei Corvin_Measured)"
+      ],
+      "redemption": "verschonen möglich"
+    },
+    {
+      "id": "Boss_Dirigent",
+      "name": {
+        "de": "Der Dirigent",
+        "en": "The Conductor"
+      },
+      "kind": "story",
+      "region": "Aurenburg",
+      "act": 5,
+      "phases": [
+        "Ouvertüre (Partitur lesen)",
+        "Tutti (Bannglocken stimmen)",
+        "Saite (Wiegenlied im Nachhall)"
+      ],
+      "redemption": "verschonen möglich"
+    }
+  ]
+}

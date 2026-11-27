@@ -1,0 +1,98 @@
+{
+  "id": "S102",
+  "type": "side",
+  "act": 1,
+  "region": "Nocturna",
+  "giver": "KesselKlaus",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M102"
+  ],
+  "title": {
+    "de": "Kessel Klaus ist beleidigt",
+    "en": "Kettle Klaus Is Offended"
+  },
+  "summary": {
+    "de": "Der Teekessel pfeift seit Tagen falsch. Jemand hat ihn Blechkanne genannt. Finde heraus, wer.",
+    "en": "The kettle has been whistling off-key for days. Someone called him a tin can. Find out who."
+  },
+  "stages": [
+    {
+      "id": "s1_fragen",
+      "text": {
+        "de": "Frag im Gemeinschaftsraum herum. Die Lauscher wissen bestimmt etwas.",
+        "en": "Ask around the common room. The Listeners surely know something."
+      },
+      "objectives": [
+        {
+          "id": "o_lauscher",
+          "kind": "interact",
+          "target": "Lauscher_Gemeinschaftsraum",
+          "marker": "Gemeinschaftsraum",
+          "text": {
+            "de": "Hör den Lauscher im Gemeinschaftsraum ab",
+            "en": "Listen to the Listener in the common room"
+          }
+        },
+        {
+          "id": "o_zeugen",
+          "kind": "talk",
+          "target": "Lio",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Frag Lio, ob er was gehört hat",
+            "en": "Ask Lio if he heard anything"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_wahrheit"
+        }
+      ]
+    },
+    {
+      "id": "s2_wahrheit",
+      "text": {
+        "de": "Es war gar kein Schüler: Kessel Klaus' Bruder aus einem anderen Turm hat es durch den Flüsterkorridor gerufen. Bring die Brüder zusammen.",
+        "en": "It wasn't a student at all: Kettle Klaus' brother from another tower shouted it through the Whispering Corridor. Bring the brothers together."
+      },
+      "objectives": [
+        {
+          "id": "o_bruder",
+          "kind": "interact",
+          "target": "Kessel_Bruder",
+          "marker": "Kessel_Bruder",
+          "text": {
+            "de": "Trag den anderen Kessel in deinen Gemeinschaftsraum",
+            "en": "Carry the other kettle to your common room"
+          }
+        },
+        {
+          "id": "o_versoehnen",
+          "kind": "talk",
+          "target": "KesselKlaus",
+          "marker": "NPC_KesselKlaus",
+          "text": {
+            "de": "Lass die Brüder sich aussprechen",
+            "en": "Let the brothers talk it out"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 100,
+    "gold": 0,
+    "items": [
+      "Rezept_Turmtee"
+    ],
+    "effects": []
+  }
+}

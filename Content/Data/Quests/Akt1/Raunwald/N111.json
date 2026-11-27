@@ -1,0 +1,137 @@
+{
+  "id": "N111",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Trueffel",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M105"
+  ],
+  "title": {
+    "de": "Der Fuchs, der im Kreis läuft",
+    "en": "The Fox Who Runs in Circles"
+  },
+  "summary": {
+    "de": "Trüffel will den Nebelfuchs zähmen, der Wanderer im Kreis führt. Vielleicht hat der Fuchs gute Gründe.",
+    "en": "Trüffel wants to tame the mist fox that leads walkers in circles. Maybe the fox has good reasons."
+  },
+  "dialogues": [
+    "D_N111_Trueffel",
+    "D_N111_Trueffel_Bericht"
+  ],
+  "stages": [
+    {
+      "id": "s1_trueffel",
+      "text": {
+        "de": "Hör dir Trüffels Plan an.",
+        "en": "Hear Trüffel's plan."
+      },
+      "objectives": [
+        {
+          "id": "o_trueffel",
+          "kind": "dialogue",
+          "target": "D_N111_Trueffel",
+          "marker": "NPC_Trueffel",
+          "text": {
+            "de": "Sprich mit Trüffel in Pilzhausen",
+            "en": "Talk to Trüffel in Pilzhausen"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_folgen"
+        }
+      ]
+    },
+    {
+      "id": "s2_folgen",
+      "text": {
+        "de": "Folg dem Nebelfuchs durch die Nebelsenke. Er löst sich auf, wenn du zu schnell bist.",
+        "en": "Follow the mist fox through the Misty Hollow. He dissolves if you're too fast."
+      },
+      "objectives": [
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Fuchsspuren_Folgen",
+          "marker": "Nebelsenke",
+          "text": {
+            "de": "Folg den Spuren mit Spurklang",
+            "en": "Follow the tracks with Trackchime"
+          }
+        },
+        {
+          "id": "o_kreis",
+          "kind": "custom",
+          "target": "Fuchs_Kreis_Erkennen",
+          "text": {
+            "de": "Merk dir, wohin er dich nicht lassen will",
+            "en": "Notice where he won't let you go"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_bau"
+        }
+      ]
+    },
+    {
+      "id": "s3_bau",
+      "text": {
+        "de": "Der Fuchs führt dich zu seinem Bau. Von dort sieht man, wohin der Weg geführt hätte: nach Krähenhain.",
+        "en": "The fox leads you to his den. From there you can see where the path would have led: to Krähenhain."
+      },
+      "objectives": [
+        {
+          "id": "o_bau",
+          "kind": "reach",
+          "target": "Fuchsbau",
+          "marker": "Fuchsbau",
+          "text": {
+            "de": "Erreich den Fuchsbau",
+            "en": "Reach the fox den"
+          }
+        },
+        {
+          "id": "o_verstecke",
+          "kind": "collect",
+          "target": "Fuchsversteck",
+          "count": 3,
+          "optional": true,
+          "text": {
+            "de": "Find die Fuchs-Verstecke",
+            "en": "Find the fox's hiding spots"
+          }
+        },
+        {
+          "id": "o_bericht",
+          "kind": "dialogue",
+          "target": "D_N111_Trueffel_Bericht",
+          "marker": "NPC_Trueffel",
+          "text": {
+            "de": "Erzähl Trüffel, was der Fuchs tut",
+            "en": "Tell Trüffel what the fox does"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 120,
+    "gold": 0,
+    "items": [
+      "Weise_Spurklang_2",
+      "Kodex_Nebelfuchs"
+    ],
+    "effects": []
+  }
+}

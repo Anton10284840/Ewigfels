@@ -89,6 +89,8 @@ Verbindung zum Weltstatus (`UEwigfelsDialogueBridge`, hängt automatisch an jede
 | `[event emotion `angry`]` · `[event camera `closeup`]` | geht an `OnCue` (Mimik, Dialogkamera: Phase 3) |
 | `[set global.X …]` | SUDS-eigene globale Variable, wird mitgespeichert |
 
+**Freie Gespräche** (NPC einfach ansprechen, ohne Quest) heißen `D_Schule_<NPC>`, `D_Dorf_<NPC>` oder `D_Welt_<NPC>` und brauchen keine Quest. Aufbau: Begrüßung je nach Fortschritt, dann ein Themen-Menü (`:themen` + `[goto themen]`). Themen, die erst später passen, stehen in einem `[if …]`-Block um die Auswahl (`[if {quest.M108} == 2]` / `* Text` / `[endif]`).
+
 Sprecher-Anzeigenamen im Kopf setzen: `[set SpeakerName.Edda "Magistra Vornholt"]`.
 
 ## 4. Speichern und Laden

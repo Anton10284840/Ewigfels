@@ -1,0 +1,196 @@
+{
+  "id": "N115",
+  "type": "side",
+  "act": 1,
+  "region": "Raunwald",
+  "giver": "Seline",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M108"
+  ],
+  "title": {
+    "de": "Der Wurzelvater",
+    "en": "The Root Father"
+  },
+  "summary": {
+    "de": "Seit dem Winter ist der Wurzelvater krank. Der uralte Baumgeist im Norden des Raunwalds schlägt um sich. Seline von den Hütern bittet um Hilfe.",
+    "en": "Since winter the Root Father has been sick. The ancient tree spirit in the north of the Raunwald is lashing out. Seline of the Keepers asks for help."
+  },
+  "dialogues": [
+    "D_N115_Seline",
+    "D_N115_Wahrheit"
+  ],
+  "stages": [
+    {
+      "id": "s1_seline",
+      "text": {
+        "de": "Hör dir an, was Seline weiß.",
+        "en": "Hear what Seline knows."
+      },
+      "objectives": [
+        {
+          "id": "o_seline",
+          "kind": "dialogue",
+          "target": "D_N115_Seline",
+          "marker": "NPC_Seline",
+          "text": {
+            "de": "Sprich mit Seline",
+            "en": "Talk to Seline"
+          }
+        },
+        {
+          "id": "o_kreis",
+          "kind": "reach",
+          "target": "Farbloser_Kreis",
+          "marker": "Farbloser_Kreis",
+          "text": {
+            "de": "Geh zum farblosen Kreis aus dem Winter",
+            "en": "Go to the colourless circle from winter"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_herz"
+        }
+      ]
+    },
+    {
+      "id": "s2_herz",
+      "text": {
+        "de": "Der Weg zum Wurzelherz ist voller kranker Ranken und Pilzbrut.",
+        "en": "The path to the Root Heart is full of sick vines and fungal brood."
+      },
+      "objectives": [
+        {
+          "id": "o_ranken",
+          "kind": "custom",
+          "target": "Kranke_Ranken_Brennen",
+          "count": 4,
+          "text": {
+            "de": "Brenn die kranken Ranken mit Glut weg",
+            "en": "Burn away the sick vines with Ember"
+          }
+        },
+        {
+          "id": "o_brut",
+          "kind": "defeat",
+          "target": "Pilzbrut_Mutter",
+          "text": {
+            "de": "Besiege die Pilzbrut-Mutter am Eingang",
+            "en": "Defeat the brood mother at the entrance"
+          }
+        },
+        {
+          "id": "o_wahrheit",
+          "kind": "dialogue",
+          "target": "D_N115_Wahrheit",
+          "marker": "Wurzelherz",
+          "text": {
+            "de": "Erkenne, woher die Krankheit kommt",
+            "en": "Realise where the sickness comes from"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_wurzelvater"
+        }
+      ]
+    },
+    {
+      "id": "s3_wurzelvater",
+      "text": {
+        "de": "Der Wurzelvater erwacht. Brenn ihn frei oder sing ihn gesund.",
+        "en": "The Root Father awakens. Burn him free or sing him healthy."
+      },
+      "objectives": [
+        {
+          "id": "o_boss",
+          "kind": "condition",
+          "target": "flag:Wurzelvater_Decided",
+          "marker": "Wurzelherz",
+          "text": {
+            "de": "Leg seinen Kern mit Ziehklang frei oder heile ihn mit Wiegenlied und Selines Gesang",
+            "en": "Expose his core with Pullchime or heal him with Lullaby and Seline's song"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Wurzelvater_Healed"
+          ],
+          "stage": "s4a_geheilt"
+        },
+        {
+          "stage": "s4b_gefaellt"
+        }
+      ]
+    },
+    {
+      "id": "s4a_geheilt",
+      "text": {
+        "de": "Der Wurzelvater atmet. Die Laternenpilze in seinen Augen leuchten wieder blau.",
+        "en": "The Root Father breathes. The lantern mushrooms in his eyes glow blue again."
+      },
+      "objectives": [
+        {
+          "id": "o_quelle",
+          "kind": "interact",
+          "target": "Aderquelle_Wurzelherz",
+          "marker": "Wurzelherz",
+          "text": {
+            "de": "Öffne die Aderquelle",
+            "en": "Open the vein spring"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+10"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s4b_gefaellt",
+      "text": {
+        "de": "Der Kern liegt frei. Der Wurzelvater sinkt zusammen und schläft. Ob er wieder aufwacht, weiß niemand.",
+        "en": "The core is exposed. The Root Father sinks down and sleeps. No one knows if he'll wake again."
+      },
+      "objectives": [
+        {
+          "id": "o_quelle2",
+          "kind": "interact",
+          "target": "Aderquelle_Wurzelherz",
+          "marker": "Wurzelherz",
+          "text": {
+            "de": "Öffne die Aderquelle",
+            "en": "Open the vein spring"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Hueter+3"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 80,
+    "items": [
+      "Ring_Wurzelherz",
+      "Kodex_Wurzelvater"
+    ],
+    "effects": []
+  }
+}

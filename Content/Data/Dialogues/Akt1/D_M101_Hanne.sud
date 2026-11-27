@@ -1,0 +1,32 @@
+# M101 – Hanne Brook liest im Waisenhaus von Kesselbrunn die Einladung vor.
+# Ton: warm, trocken, Hanne kann nur Alltagsweisen und tut so, als wäre ihr das alles egal.
+===
+[set SpeakerName.Hanne "Hanne Brook"]
+[set SpeakerName.Kind "Kleine Fritzi"]
+===
+[event emotion `surprised`]
+Hanne: Gebt das Ding her. Fritzi, nicht reinbeißen, das ist Post.
+Kind: Der summt!
+Hanne: Notenfalter summen. Das machen die so. Wie Fliegen, nur mit Briefmarke.
+[event camera `closeup`]
+Hanne: "An das Kind im dritten Bett links, Waisenhaus Kesselbrunn. Die Akademie Nocturna lädt dich ein, zur Herbst-Ilse dein erstes Jahr bei uns zu beginnen."
+Hanne: ... Das bist du. Dritte Bett links. Das bist eindeutig du.
+  * Das ist ein Streich. Von Bertram, oder?
+    Hanne: Bertram kann nicht mal seinen eigenen Namen schreiben. Das hier hat ein Siegel. Mit zwei Monden drauf.
+  * Ich hab noch nie gezaubert.
+    Hanne: Du hast letzten Winter die Suppe zum Kochen gebracht, indem du sie angestarrt hast. Ich hab's gesehen. Ich hab nur nichts gesagt.
+  * (Den Brief nehmen und lange anschauen)
+    [event emotion `soft`]
+    Hanne: Ja. Mir ging's auch so. Und ich musste ihn nur vorlesen.
+Hanne: Unten steht: "Das Boot legt bei Sonnenuntergang am Steg ab. Warme Kleidung empfohlen. Der Ilsensee ist ehrlich."
+Kind: Was heißt "der See ist ehrlich"?
+Hanne: Dass er kalt ist, Fritzi. Seen sind immer ehrlich.
+[event emotion `sad`]
+Hanne: Hier. Mein Schal. Der ist dir zu groß, also passt er genau. Du wächst schon rein.
+  * Danke, Hanne.
+    [event emotion `happy`]
+    Hanne: Nicht danke sagen. Briefe schreiben. Einmal im Monat, sonst schick ich Fritzi.
+  * Ich komm in den Ferien wieder.
+    Hanne: Das will ich hoffen. Wer soll sonst die Dachrinne freimachen?
+Hanne: Und merk dir: Wer pfeifen kann, kann zaubern. Du pfeifst schief. Aber laut.
+[event quest.objective `M101`, `o_hanne`]

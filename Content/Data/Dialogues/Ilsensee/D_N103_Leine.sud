@@ -1,0 +1,20 @@
+# N103 – Im Boot über der Glockeninsel. Der Wels zieht. Entscheidung: festhalten oder loslassen.
+===
+[set SpeakerName.Lotte "Lotte Krabbe"]
+===
+[event camera `close`]
+Lotte: Er ist es! Er ist es! Bei beiden Monden, halt fest!
+Lotte: Er zieht uns zur Insel! Hörst du das Brummen? Das ist er! Das ist er wirklich!
+[event emotion `surprised`]
+Lotte: Warte. Er will nicht weg. Er will, dass wir mitkommen. Er taucht genau da, wo die Glocke versunken ist.
+  * Loslassen. Er will uns etwas zeigen.
+    [set flag.Glockenwels_Released true]
+    [event emotion `soft`]
+    Lotte: Loslassen? Nach vierzig Jahren? ...
+    Lotte: Ach, verdammt. Du hast recht. Lass ihn.
+  * Festhalten! Dein Wunsch, Lotte!
+    Lotte: JA! Halt fest! Halt ... oh.
+    Lotte: Oh nein.
+  * Lotte, du entscheidest.
+    [set flag.Glockenwels_Released true]
+    Lotte: Ich? ... Lass ihn. Ich glaub, er hat schon einen Wunsch. Seinen eigenen.

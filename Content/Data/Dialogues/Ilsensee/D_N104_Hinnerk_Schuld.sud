@@ -1,0 +1,24 @@
+# N104 – Nach dem Fluch. Hinnerks Schuld: Er hat Konrads Ruf gehört und gedacht, es sei ein Scherz.
+===
+[set SpeakerName.Hinnerk "Hinnerk"]
+[set SpeakerName.Agnes "Agnes"]
+===
+[event emotion `sad`]
+Hinnerk: Du weißt es, oder? Ich seh's dir an.
+Hinnerk: Ich hab ihn gehört. In der Nacht. Hilfe, hat er gerufen. Zweimal.
+Hinnerk: Ich dachte, das ist Konrad, der Witzbold. Der hat immer solche Späße gemacht. Ich hab gelacht. Und weitergesungen.
+  * Sie müssen es den anderen sagen. Selbst.
+    Hinnerk: Selbst. Ja. Vierzig Jahre hab ich gewartet, dass es einer für mich sagt. Ist wohl nicht so gedacht.
+    [set flag.Hinnerk_Confessed true]
+    [event emotion `neutral`]
+    Hinnerk: (laut, zum ersten Mal, über den ganzen Steg) Ich hab ihn gehört! Ich hab Konrad gehört und nichts gesagt!
+    Agnes: ...
+    Agnes: Wir wissen es, du alter Hallkopf. Seit dreißig Jahren. Wir haben gewartet, dass du es sagst.
+  * Ich sag es Agnes.
+    Hinnerk: Tu das. Ich kann's nicht.
+    Agnes: Hinnerk. Ich weiß es seit dreißig Jahren. Aber es wäre schön gewesen, es von dir zu hören.
+    Hinnerk: ... Ja. Wär's.
+  * Niemand muss es erfahren.
+    Hinnerk: Doch. Doch, das muss es. Aber danke. Für das Angebot.
+    Hinnerk: Später. Ich sag's später.
+Agnes: Und jetzt komm. Die Glocken. Ich will die erste selbst auswickeln.

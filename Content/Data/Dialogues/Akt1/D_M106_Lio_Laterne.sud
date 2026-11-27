@@ -1,0 +1,23 @@
+# M106 – Laternen steigen lassen. Lio schreibt "Mara" drauf. Die Laterne des Spielers brennt kurz farblos.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event emotion `soft`]
+Lio: Man schreibt was drauf. Einen Wunsch. Oder einen Namen. Dann fliegt sie über den See, und die Monde lesen es.
+Lio: Sagt man. Die Monde haben bestimmt Besseres zu tun.
+Lio: ... Ich schreib trotzdem was drauf.
+[event camera `closeup`]
+Lio: "Mara."
+Lio: Was schreibst du drauf?
+  * "Zuhause."
+    Lio: Hm. Das ist ein guter. Das ist sogar ein sehr guter.
+  * "Lio soll seine Schwester finden."
+    [set rel.Lio {rel.Lio} + 10]
+    [event emotion `sad`]
+    Lio: ... Du Hallkopf. Jetzt muss ich so tun, als hätte ich Rauch im Auge.
+  * Ich schreib nichts. Ich lass sie einfach fliegen.
+    Lio: Auch gut. Dann darf sie selbst entscheiden, wo sie hinwill.
+[event camera `wide`]
+Lio: Da gehen sie. Schau mal, wie viele. Das ist ... das ist das Schönste, was ich je ...
+Lio: Wieso ist deine so ... grau?
+Lio: ... Ach, jetzt ist sie wieder normal. Hab ich mir eingebildet. Zu viel Funkensaft.

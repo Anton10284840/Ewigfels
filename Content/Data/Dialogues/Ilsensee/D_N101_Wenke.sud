@@ -1,0 +1,18 @@
+# N101 – Kapitänin Wenke Haff in der Laternenwerft. Spricht wie ein Seewetterbericht mit Herz.
+===
+[set SpeakerName.Wenke "Kapitänin Wenke Haff"]
+===
+[event emotion `happy`]
+Wenke: Wind aus Nord, zwei Stärken, leichte Neugier im Anmarsch. Du bist von der Akademie, richtig? Die Uniform riecht nach Kreide.
+Wenke: Ilsenlicht ist in zwei Wochen. Ich brauch dreihundert Laternenboote. Ich hab zweihundertneunzig und einen kaputten Rücken.
+  * Ich helfe gern.
+    Wenke: Guter Seegang. Komm rein.
+  * Was springt für mich dabei raus?
+    [event emotion `smirk`]
+    Wenke: Ehrlich, das mag ich. Ich bring dir zwei Weisen bei. Und du darfst danach mein altes Ruderboot behalten. Es leckt nur bei Ostwind.
+  * (Nicken)
+    Wenke: Wenig Worte. Wie ein Fischer. Komm rein.
+Wenke: Also. Ein Laternenboot ist ein Stück Rinde, ein Wachslicht und ein Ton. Das Licht muss in seinem Ton brennen, sonst kippt das Boot.
+Wenke: Halt die Hand über die Flamme und summ, bis sie ruhig steht. Nicht zu hoch. Hohe Boote fahren im Kreis.
+Wenke: Und wenn eins wegschwimmt, sag mir Bescheid. Die hauen manchmal ab. Boote sind wie Kinder. Und wie Möwen.
+[event quest.objective `N101`, `o_wenke`]
