@@ -39,7 +39,8 @@ Die Nummern sind die Reihenfolge. Wir arbeiten von oben nach unten und haken ab.
 - [x] 10. 🤖 Game Animation Sample eingebaut: echte Laufbewegung (PR #14)
 - [x] 11. 👤 „Paragon: Gideon“ aus Fab hinzugefügt (Fingergesten, Gegnerkörper)
 - [x] 11a. 🤖 Zauberworte für die ersten Weisen (Scintivox, Campanimur …)
-- [x] 12. 👤 Bewegungsaufnahmen: entschieden, mit dem Pixel 10 Pro statt Webcam
+- [x] 12. 👤 Pixel 10 Pro eingerichtet (statt Webcam): Live Link Face, gleiches WLAN, Kamera 4K/60 FPS
+- [ ] 12a. 🤝 Handy per Live Link mit Unreal verbinden + Probeaufnahme, sobald der PC frei ist
 - [ ] 13. 🟨 🤝 Blitz aus den Fingern, Zauber mit eigener Wirkung, magische Landung, Foto-Look (PR #15, Claude arbeitet gerade am PC)
 - [ ] 14. 👤 PR #15 übernehmen, wenn Claude „fertig“ sagt ← **jetzt dran**
 - [ ] 15. 👤 Testarena anspielen: Laufen, Zaubern, Kampf. Fühlt es sich gut an? Kurz sagen, was stört
