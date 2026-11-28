@@ -88,6 +88,12 @@ namespace EwigfelsSpellTest
 				Weak->TestCastSlot(1);
 				UE_LOG(LogTemp, Display, TEXT("[Weisen-Test] %s: Platz1=%s"), *Id.ToString(), *Slot.ToString());
 			});
+			At(T + 0.4f, [Weak, Id]()
+			{
+				const UAnimInstance* Anim = Weak.IsValid() && Weak->GetMesh() ? Weak->GetMesh()->GetAnimInstance() : nullptr;
+				const UAnimMontage* Montage = Anim ? Anim->GetCurrentActiveMontage() : nullptr;
+				UE_LOG(LogTemp, Display, TEXT("[Weisen-Test] %s: nach 0,1 s Montage=%s"), *Id.ToString(), Montage ? *Montage->GetName() : TEXT("-"));
+			});
 			At(T + 0.6f, [Weak, Id]()
 			{
 				const UAnimInstance* Anim = Weak.IsValid() && Weak->GetMesh() ? Weak->GetMesh()->GetAnimInstance() : nullptr;
