@@ -23,7 +23,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FEwigfelsLookChangeResult, bool, 
  *
  * Was angewendet wird (Namen für Materialien/Meshes: docs/CHARACTER_CREATOR.md §4):
  *  - Körper-Mesh je Körpertyp, Größe als Skalierung
- *  - Morph-Targets für Grundgesichter + Regler auf Körper, Gesicht und allen Kleidungs-Meshes
+ *  - fertiger Kopf als eigenes Mesh (Gesichts-Kind "Face" oder eigenes Teil), optionale Morph-Targets
  *  - Material-Parameter (Haut, Augen, Haare, Male, Farbzonen, Quarzfarbe)
  *  - Kleidung, Frisur, Bart, Brauen als eigene Skeletal Meshes, die dem Körper folgen (Leader Pose)
  *  - Stimmringe als Static Meshes an den Finger-Sockets
@@ -128,7 +128,7 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_Appearance)
 	FEwigfelsAppearance Appearance;
 
-	/** Kleidung/Haare/Bart/Brauen: Schlüssel = Slot bzw. "hair", "beard", "brows". */
+	/** Kopf/Kleidung/Haare/Bart/Brauen: Schlüssel = Slot bzw. "head", "hair", "beard", "brows". */
 	UPROPERTY(Transient)
 	TMap<FName, TObjectPtr<USkeletalMeshComponent>> Pieces;
 

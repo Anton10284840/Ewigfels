@@ -138,7 +138,7 @@ struct EWIGFELS_API FEwigfelsAppearance
 	UPROPERTY(SaveGame, EditAnywhere, BlueprintReadWrite, Category = "Ewigfels|Look")
 	float Height = 1.f;
 
-	// --- Gesicht: zwei Grundgesichter mischen, dann Regler ---
+	// --- Kopf: fertiger Kopf (FaceA). FaceB/FaceBlend/Sliders bleiben für ältere Spielstände und optionale Morphs. ---
 	UPROPERTY(SaveGame, EditAnywhere, BlueprintReadWrite, Category = "Ewigfels|Look")
 	FName FaceA;
 
@@ -220,7 +220,7 @@ struct EWIGFELS_API FEwigfelsAppearance
 // ---------------------------------------------------------------------------
 // Katalog (aus Content/Data/Appearance/*.json)
 
-/** Eine wählbare Sache: Körpertyp, Grundgesicht, Frisur, Bart, Brauen, Mal, Stimme, Kleidungsstück, Muster, Stoff, Metall. */
+/** Eine wählbare Sache: Körpertyp, Kopf, Frisur, Bart, Brauen, Mal, Stimme, Kleidungsstück, Muster, Stoff, Metall. */
 USTRUCT(BlueprintType)
 struct EWIGFELS_API FEwigfelsLookOption
 {
@@ -235,8 +235,13 @@ struct EWIGFELS_API FEwigfelsLookOption
 	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FName Kind;
 	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FText DisplayName;
 	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FSoftObjectPath Asset;
-	/** Nur Grundgesichter: Morph-Target im Gesichts-Mesh (leer = Grundform). */
+	/** Nur Köpfe (alt): Morph-Target im Gesichts-Mesh statt eigenem Kopf-Mesh. */
 	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FName Morph;
+	/** Bild für die Kachel im Editor (leer = /Game/UI/Creator/Thumbs/T_<id>, falls vorhanden). */
+	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FSoftObjectPath Thumb;
+	/** Köpfe: passender Hautton ("skin"), sonst Kachelfarbe ("color"). */
+	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FColor Tint = FColor::White;
+	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") bool bHasTint = false;
 	/** "start" (Editor + Läden), "shop" (nur Läden), "flag:<Flag>" (sobald der Weltstatus-Flag gesetzt ist). */
 	UPROPERTY(BlueprintReadOnly, Category = "Ewigfels|Look") FString Unlock = TEXT("start");
 	/** Preis in Kronen im Laden (zusätzlich zum Grundpreis des Ladens). */
@@ -289,6 +294,8 @@ struct EWIGFELS_API FEwigfelsLookCatalog
 	/** skin, hair, eyes, dye, quartz, makeup */
 	TMap<FName, TArray<FColor>> Palettes;
 	TArray<FName> OutfitSlots;
+	/** Vorschläge für „Namen würfeln“ (wichtig am Controller, da Tippen mühsam ist). */
+	TArray<FString> RandomNames;
 	TMap<FName, FEwigfelsLookShop> Shops;
 	FEwigfelsAppearance Defaults;
 	float HeightMin = 0.95f;
@@ -376,6 +383,9 @@ namespace EwigfelsLook
 
 	/** Zufälliges, gültiges Startaussehen (nur "start"-Optionen). */
 	EWIGFELS_API FEwigfelsAppearance MakeRandom(const FEwigfelsLookCatalog& Catalog, FRandomStream& Random);
+
+	/** Zufälliger Name aus dem Katalog (leer, wenn keiner da ist). Avoid: nicht genau diesen Namen nehmen. */
+	EWIGFELS_API FString RandomName(const FEwigfelsLookCatalog& Catalog, FRandomStream& Random, const FString& Avoid = FString());
 
 	/** Look-Code zum Teilen ("NOC1:" + Base64-JSON). */
 	EWIGFELS_API FString ToLookCode(const FEwigfelsAppearance& Look);

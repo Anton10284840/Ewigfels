@@ -366,7 +366,8 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 	}
 
 	static const FLookListKey Lists[] = {
-		{ TEXT("body_types"), EwigfelsLook::Cat::Body }, { TEXT("face_presets"), EwigfelsLook::Cat::Face },
+		{ TEXT("body_types"), EwigfelsLook::Cat::Body }, { TEXT("heads"), EwigfelsLook::Cat::Face },
+		{ TEXT("face_presets"), EwigfelsLook::Cat::Face },
 		{ TEXT("hair_styles"), EwigfelsLook::Cat::Hair }, { TEXT("beards"), EwigfelsLook::Cat::Beard },
 		{ TEXT("brows"), EwigfelsLook::Cat::Brows }, { TEXT("marks"), EwigfelsLook::Cat::Marks },
 		{ TEXT("voices"), EwigfelsLook::Cat::Voice }, { TEXT("outfit"), EwigfelsLook::Cat::Outfit },
@@ -404,6 +405,20 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 			Obj->TryGetNumberField(TEXT("price"), Option.Price);
 
 			const FString Where = FString::Printf(TEXT("%s/%s/%s"), *SourceName, List.Key, *Option.Id.ToString());
+			FString Thumb;
+			if (Obj->TryGetStringField(TEXT("thumb"), Thumb) && !Thumb.IsEmpty())
+			{
+				Option.Thumb = FSoftObjectPath(Thumb);
+			}
+			// Farbe der Kachel bzw. Hautton eines Kopfs
+			for (const TCHAR* Field : { TEXT("skin"), TEXT("color") })
+			{
+				if (Obj->HasField(Field))
+				{
+					Option.Tint = LookReadColor(Obj, Field, Option.Tint, Where, OutErrors);
+					Option.bHasTint = true;
+				}
+			}
 			if (Option.Id.IsNone())
 			{
 				OutErrors.Add(FString::Printf(TEXT("%s/%s: Eintrag ohne id"), *SourceName, List.Key));
@@ -423,6 +438,19 @@ bool EwigfelsLook::ParseCatalogJson(const FString& JsonText, const FString& Sour
 				continue;
 			}
 			Target.Add(MoveTemp(Option));
+		}
+	}
+
+	const TArray<TSharedPtr<FJsonValue>>* Names = nullptr;
+	if (Root->TryGetArrayField(TEXT("names"), Names))
+	{
+		for (const TSharedPtr<FJsonValue>& Value : *Names)
+		{
+			const FString NameText = Value.IsValid() ? Value->AsString() : FString();
+			if (!NameText.IsEmpty())
+			{
+				Catalog.RandomNames.AddUnique(NameText);
+			}
 		}
 	}
 
@@ -883,6 +911,19 @@ bool EwigfelsLook::CheckChange(const FEwigfelsAppearance& Old, const FEwigfelsAp
 // ---------------------------------------------------------------------------
 // Zufall, Look-Code, Hilfen
 
+FString EwigfelsLook::RandomName(const FEwigfelsLookCatalog& Catalog, FRandomStream& Random, const FString& Avoid)
+{
+	TArray<const FString*> Pool;
+	for (const FString& Name : Catalog.RandomNames)
+	{
+		if (Name != Avoid)
+		{
+			Pool.Add(&Name);
+		}
+	}
+	return Pool.Num() ? CleanName(*Pool[Random.RandRange(0, Pool.Num() - 1)], Catalog.NameMax) : FString();
+}
+
 FEwigfelsAppearance EwigfelsLook::MakeRandom(const FEwigfelsLookCatalog& C, FRandomStream& R)
 {
 	FEwigfelsAppearance L = C.Defaults;
@@ -909,9 +950,10 @@ FEwigfelsAppearance EwigfelsLook::MakeRandom(const FEwigfelsLookCatalog& C, FRan
 	L.Pronouns = static_cast<EEwigfelsPronouns>(R.RandRange(0, 2));
 	L.BodyType = Pick(Cat::Body, L.BodyType);
 	L.Height = FMath::RoundToFloat(R.FRandRange(C.HeightMin, C.HeightMax) * 1000.f) / 1000.f;
+	// Fertige Köpfe: kein Mischen, Hautton meist passend zum Kopf
 	L.FaceA = Pick(Cat::Face, L.FaceA);
-	L.FaceB = Pick(Cat::Face, L.FaceB);
-	L.FaceBlend = FMath::RoundToFloat(R.FRand() * 100.f) / 100.f;
+	L.FaceB = L.FaceA;
+	L.FaceBlend = 0.f;
 	L.Sliders.Reset();
 	for (const FEwigfelsSliderDef& S : C.Sliders)
 	{
@@ -920,16 +962,17 @@ FEwigfelsAppearance EwigfelsLook::MakeRandom(const FEwigfelsLookCatalog& C, FRan
 			L.SetSlider(S.Id, FMath::RoundToFloat(R.FRandRange(-0.6f, 0.6f) * 100.f) / 100.f);
 		}
 	}
-	L.SkinColor = PickColor(TEXT("skin"), L.SkinColor);
+	const FEwigfelsLookOption* Head = C.Find(Cat::Face, L.FaceA);
+	L.SkinColor = Head && Head->bHasTint && R.FRand() < 0.8f ? Head->Tint : PickColor(TEXT("skin"), L.SkinColor);
 	L.EyeColorL = PickColor(TEXT("eyes"), L.EyeColorL);
-	L.EyeColorR = R.FRand() < 0.05f ? PickColor(TEXT("eyes"), L.EyeColorL) : L.EyeColorL;
+	L.EyeColorR = L.EyeColorL;
 	L.HairStyle = Pick(Cat::Hair, L.HairStyle);
 	L.HairColor = PickColor(TEXT("hair"), L.HairColor);
-	L.HairTipColor = R.FRand() < 0.2f ? PickColor(TEXT("hair"), L.HairColor) : L.HairColor;
+	L.HairTipColor = L.HairColor;
 	L.Beard = R.FRand() < 0.7f ? C.Defaults.Beard : Pick(Cat::Beard, L.Beard);
 	L.Brows = Pick(Cat::Brows, L.Brows);
 	L.Voice = Pick(Cat::Voice, L.Voice);
-	L.VoicePitch = FMath::RoundToFloat(R.FRandRange(-0.5f, 0.5f) * 100.f) / 100.f;
+	L.VoicePitch = 0.f;
 
 	L.Marks.Reset();
 	for (const FEwigfelsLookOption& O : C.GetOptions(Cat::Marks))

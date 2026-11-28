@@ -69,7 +69,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | HUD Phase 3 (Leisten, Zauberleiste, Trefferzahlen, F1-Hilfe) + Testarena + Test-NPC Lio (`UI/`, `World/`) | ✅ | ⬜ Build | ⬜ |
 | Zauberrad (6 Plätze, Controller + Maus/Tastatur), Zauberbuch, neues rundes HUD mit Auto-Tastensymbolen (`docs/STEUERUNG.md`) | ✅ | ✅ PC 27.11. | ✅ im Spiel geprüft |
 | Kampfweisen Gruppe 2: 12 weitere (Splitterchor … Glutpeitsche), Status Schlaf | ✅ | ⬜ Build | ⬜ |
-| Charakter-Editor + Laden-Spiegel: Aussehen-Katalog, Regeln, Vorschau-Kamera, Slate-Fenster, Spielstand v2 (`Appearance/`, `UI/EwigfelsCharacterCreator`, `World/EwigfelsMirror`, docs/CHARACTER_CREATOR.md) | ✅ | ⬜ Build · ⬜ Assets (Grundgesichter, Morphs, Kleidung) Phase 5 | ⬜ 5 Automation-Tests geschrieben · ✅ validate_appearance.py 0 Fehler (Cloud) |
+| Charakter-Editor + Laden-Spiegel: Aussehen-Katalog, Regeln, Vorschau-Kamera, Slate-Fenster, Spielstand v2 (`Appearance/`, `UI/EwigfelsCharacterCreator`, `World/EwigfelsMirror`, docs/CHARACTER_CREATOR.md). Umbau 27.11.: 12 fertige Köpfe statt Regler, Kleiderschrank-Kacheln, bunt/magisch, Controller + Maus, geführte Erstellung | ✅ | ✅ Build v1 (PR #11) · ✅ Build Umbau (PC 28.11.) · ⬜ Assets (12 Köpfe, Vorschaubilder, Kleidung) Phase 5 | ✅ 19/19 Tests v1 · ✅ Ewigfels.Look.* 5/5 Umbau · ✅ validate_appearance.py 0 Fehler (Cloud) |
 | Mehrspieler-Vorbereitung (server-autoritativ, repliziert, GDD E11) | ✅ | ⬜ | ⬜ PIE mit 2 Spielern |
 | Prüfskript Weisen/Status/Gegner (`Scripts/Tools/validate_combat.py`, Format docs/SPELL_FORMAT.md) | ✅ | ✅ | ✅ 7 Selbsttests (Cloud) |
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
