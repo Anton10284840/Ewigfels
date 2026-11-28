@@ -6,6 +6,7 @@
 #include "NiagaraExternalSystemEditorUtilities.h"
 #include "NiagaraEmitter.h"
 #include "NiagaraSystem.h"
+#include "NiagaraScript.h"
 #include "HAL/IConsoleManager.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
@@ -161,6 +162,44 @@ namespace EwigfelsVfxDump
 			UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] %s nach %s"), *Name, *File);
 		}
 	}
+
+	/** Eingänge von Modul-Assets: Ewigfels.VFX.Modul /Niagara/Modules/Spawn/Velocity/AddVelocityInCone -> Saved/VFX/Module.txt */
+	void RunModule(const TArray<FString>& Args)
+	{
+		FString Out;
+		for (const FString& Path : Args)
+		{
+			const FString Name = FPackageName::GetShortName(Path);
+			UNiagaraScript* Script = LoadObject<UNiagaraScript>(nullptr, *FString::Printf(TEXT("%s.%s"), *Path, *Name));
+			Out += FString::Printf(TEXT("== %s %s\n"), *Path, Script ? TEXT("") : TEXT("FEHLT"));
+			if (!Script)
+			{
+				continue;
+			}
+			FNiagaraExternalEditContext Ctx;
+			FNiagaraExt_ModuleSchema Schema;
+			UNiagaraExternalEditUtilities::GetModuleSchema(Script, Schema, Ctx);
+			for (const FNiagaraExt_StackInputSchema& In : Schema.Inputs)
+			{
+				FString Options;
+				if (const UEnum* Enum = In.Type.GetEnum())
+				{
+					for (int32 I = 0; I < Enum->NumEnums() - 1; ++I)
+					{
+						Options += Enum->GetDisplayNameTextByIndex(I).ToString() + TEXT(" | ");
+					}
+				}
+				Out += FString::Printf(TEXT("  %s : %s %s\n"), *In.Name.ToString(), *In.Type.GetName(), *Options);
+			}
+		}
+		const FString File = FPaths::ProjectSavedDir() / TEXT("VFX/Module.txt");
+		FFileHelper::SaveStringToFile(Out, *File, FFileHelper::EEncodingOptions::ForceUTF8);
+		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] Module nach %s"), *File);
+	}
+
+	FAutoConsoleCommand GDumpModule(TEXT("Ewigfels.VFX.Modul"),
+		TEXT("Eingänge von Niagara-Modul-Assets auslesen -> Saved/VFX/Module.txt"),
+		FConsoleCommandWithArgsDelegate::CreateStatic(&RunModule));
 
 	FAutoConsoleCommand GDumpAsset(TEXT("Ewigfels.VFX.Auslesen"),
 		TEXT("Fertiges Niagara-System auslesen: Ewigfels.VFX.Auslesen /Game/VFX/Spells/NS_<id> -> Saved/VFX/<Name>.txt"),
