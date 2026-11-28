@@ -85,9 +85,10 @@ namespace EwigfelsSpellTest
 					return;
 				}
 				const FName Slot = Weak->GetCaster()->GetSlotSpell(1);
-				Weak->TestCastSlot(1);
+				Weak->TestCastSlot(Slot == Id ? 1 : 0); // Grundweise (Funkenstoß) liegt nicht im Rad: linke Maus
 				UE_LOG(LogTemp, Display, TEXT("[Weisen-Test] %s: Platz1=%s"), *Id.ToString(), *Slot.ToString());
 			});
+			At(T + 0.36f, [Id]() { SpellShot(Id.ToString() + TEXT("_0")); });
 			At(T + 0.4f, [Weak, Id]()
 			{
 				const UAnimInstance* Anim = Weak.IsValid() && Weak->GetMesh() ? Weak->GetMesh()->GetAnimInstance() : nullptr;
