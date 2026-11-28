@@ -21,6 +21,7 @@ class UEwigfelsSpellbookComponent;
 class UEwigfelsInputSetup;
 class UEwigfelsCharacterMovementComponent;
 class UAnimMontage;
+class UNiagaraComponent;
 struct FInputActionValue;
 
 /**
@@ -334,6 +335,10 @@ private:
 
 	UPROPERTY(Transient)
 	TObjectPtr<UEwigfelsInputSetup> InputSetup;
+
+	/** Schimmernde Schild-Kuppel (NS_glockenschild), solange der Schild oben ist. Nur Optik. */
+	UPROPERTY(Transient)
+	TObjectPtr<UNiagaraComponent> ShieldFx;
 
 	UPROPERTY(Replicated)
 	bool bLockedOnReplicated = false;

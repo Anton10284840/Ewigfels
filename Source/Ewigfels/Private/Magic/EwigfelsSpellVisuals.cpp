@@ -269,9 +269,14 @@ UNiagaraComponent* EwigfelsSpellVisuals::SpawnNiagaraAttached(USceneComponent* A
 	{
 		return nullptr;
 	}
+	// Wie SpawnNiagaraAt: erst Farben setzen, dann starten (sonst hat das erste Bild die Standardfarbe)
 	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAttached(Asset, AttachTo, NAME_None, FVector::ZeroVector,
-		FRotator::ZeroRotator, FVector(Scale), EAttachLocation::KeepRelativeOffset, true, ENCPoolMethod::None);
+		FRotator::ZeroRotator, FVector(Scale), EAttachLocation::KeepRelativeOffset, true, ENCPoolMethod::None, false);
 	SetNiagaraColors(Comp, Color, Glow, Spark);
+	if (Comp)
+	{
+		Comp->Activate(true);
+	}
 	return Comp;
 }
 

@@ -31,6 +31,7 @@
 #include "GameFramework/RootMotionSource.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "InputActionValue.h"
+#include "NiagaraComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "TimerManager.h"
 
@@ -915,7 +916,18 @@ void AEwigfelsCharacter::HandleShieldChanged(bool bUp)
 {
 	const FEwigfelsSpellDef* Shield = Caster->FindSpellDef(Caster->ShieldSpell);
 	const FLinearColor Color = Shield ? Shield->Visual.Color : FLinearColor::White;
-	PlaceholderBody->SetShieldVisible(bUp, Color);
+	// Echte Kuppel (Niagara), sonst Platzhalter-Blase
+	if (ShieldFx)
+	{
+		ShieldFx->Deactivate(); // Partikel klingen weich aus, Komponente räumt sich selbst weg
+		ShieldFx = nullptr;
+	}
+	if (bUp && Shield && GetNetMode() != NM_DedicatedServer)
+	{
+		ShieldFx = EwigfelsSpellVisuals::SpawnNiagaraAttached(GetRootComponent(), Shield->Visual.Niagara, Shield->Visual.Color,
+			Shield->Visual.Scale, Shield->Visual.GlowColor, Shield->Visual.SparkColor);
+	}
+	PlaceholderBody->SetShieldVisible(bUp && !ShieldFx, Color);
 	if (bUp && Shield)
 	{
 		EwigfelsSpellVisuals::SpawnFlash(GetWorld(), TEXT("sphere"), Caster->GetCastOrigin(true), GetActorRotation(), Color,
