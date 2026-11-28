@@ -1,0 +1,22 @@
+# N301 – In Gustavs Nest: Siegel und ein Kael-Quarzsplitter. Siegel zurückgeben oder Pelle den Finderlohn kassieren lassen.
+===
+[set SpeakerName.Pelle "Pelle"]
+===
+[event camera `close`]
+[event emotion `surprised`]
+Pelle: Ui. Löffel, Knöpfe, ein Monokel ... und das Siegel! Und was ist das? Das leuchtet ja!
+Pelle: So einen Stein hab ich schon mal gesehen. Unten in Ebbgrund, in den Kisten von den Schmugglern. Die tun immer so, als wär da Hering drin.
+  * Den Stein zeig ich Nell.
+    Pelle: Der Kommissarin? Gut. Aber sag nicht, dass ich in Ebbgrund war. Mama denkt, ich war in der Schule.
+  * Behalt das für dich, Pelle. Das ist gefährlich.
+    Pelle: Ich bin neun. Gefährlich ist mein zweiter Vorname.
+Pelle: Und das Siegel? Ida gibt zehn Silber Finderlohn. Oder ... wir behalten es und verkaufen es an den Schmuggler-Okke. Der zahlt bestimmt hundert.
+  * Wir bringen es Ida zurück.
+    [set flag.Gustav_SealReturned true]
+    [event emotion `sad`]
+    Pelle: Hab ich mir gedacht. Akademie-Leute sind immer so ehrlich. Ist anstrengend.
+    [event emotion `happy`]
+    Pelle: Aber zehn Silber sind auch schön. Fünf für dich, fünf für mich. Nein, sechs für mich. Ich hab's zuerst gesehen.
+  * Das entscheidest du, Pelle.
+    Pelle: Echt? ... Dann bring ich es zurück. Okke riecht komisch. Und Ida gibt mir manchmal Kekse.
+    [set flag.Gustav_SealReturned true]

@@ -1,0 +1,155 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/WEISSE_ZINNEN.md. Marker-IDs = Quest-Marker.",
+  "id": "Weisse_Zinnen",
+  "act_from": 3,
+  "size_km": [
+    4,
+    4
+  ],
+  "height_m": [
+    1200,
+    3800
+  ],
+  "villages": [
+    {
+      "id": "Firnhuetten",
+      "mood": "froehlich",
+      "music": "Hackbrett, Alphorn, Jodel-Chor der Kinder, Kuhglocken",
+      "fast_travel": "Dorfbrunnen",
+      "npcs": [
+        "Sepp",
+        "Burgl",
+        "Gidi",
+        "Falk",
+        "Resi",
+        "Hias",
+        "Hanni"
+      ],
+      "shops": [
+        {
+          "npc": "Hias",
+          "sells": [
+            "Fellmäntel",
+            "Mützen",
+            "Handschuhe"
+          ]
+        },
+        {
+          "npc": "Sepp",
+          "sells": [
+            "Käse (Wärme-Buffs)"
+          ]
+        },
+        {
+          "npc": "Resi",
+          "sells": [
+            "Winterblumen (Turmzimmer)"
+          ]
+        }
+      ],
+      "pois": [
+        "Firnhuetten",
+        "Kaeserei_Almer",
+        "Firnhuetten_Kuerschner",
+        "Schlittenbahn",
+        "Gasthof_Goldenes_Euter",
+        "Adlerwiese"
+      ],
+      "minigames": [
+        "Schlittenrennen",
+        "Jodeln",
+        "Kuehe_Heimtreiben",
+        "Zinnadler-Rennen"
+      ]
+    },
+    {
+      "id": "Frostwacht",
+      "mood": "gruselig",
+      "music": "singende Eiskristalle, sonst Stille, leise Herzschläge",
+      "fast_travel": "Kapelle_Frostwacht",
+      "npcs": [
+        "Reifhild",
+        "Alois"
+      ],
+      "shops": [],
+      "pois": [
+        "Frostwacht",
+        "Kapelle_Frostwacht",
+        "Reifhilds_Haus",
+        "Lawinenfeld"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Kloster_Schweigemoenche",
+      "kind": "ort",
+      "quest": "M306"
+    },
+    {
+      "id": "Wolfsgrat",
+      "kind": "boss",
+      "quest": "N315",
+      "boss": "Firnfuerst"
+    },
+    {
+      "id": "Kaesehoehle",
+      "kind": "hoehle",
+      "quest": "N312"
+    },
+    {
+      "id": "Adlerhorst",
+      "kind": "ort",
+      "quest": "N311"
+    },
+    {
+      "id": "Felsnische_Sturmschwinge",
+      "kind": "ort",
+      "quest": "M305"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Kaesehoehle",
+      "at": "Kaesehoehle",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Adlerhorst",
+      "at": "Adlerhorst",
+      "reward": "Quarz_Firnweiss"
+    },
+    {
+      "id": "Schrein_Gefrorene_Glocke",
+      "at": "Kapelle_Frostwacht",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Gipfelkreuz": 8,
+    "Eisblume": 10,
+    "Nachklang": 5
+  },
+  "enemies": {
+    "act3": [
+      "Firnwolf",
+      "Zinnadler",
+      "Borkenbaer",
+      "Wilderer",
+      "Reifhild",
+      "Eismarionette",
+      "Firnfuerst"
+    ]
+  },
+  "mechanics": {
+    "Kaelte": "ohne Fellmantel sinkt Wärme, Atem regeneriert langsamer; Schneestürme: Orientierung über Glockenklang, Sturmschwinge fliegt nicht"
+  },
+  "quests": [
+    "N311",
+    "N312",
+    "N313",
+    "N314",
+    "N315",
+    "N316"
+  ]
+}

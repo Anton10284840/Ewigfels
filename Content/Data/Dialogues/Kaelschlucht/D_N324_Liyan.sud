@@ -1,0 +1,15 @@
+# N324 – Liyan (17), Tänzerin. Tanzt beim Reden. Übt einen sehr alten Tanz für die Nacht der Lampen.
+===
+[set SpeakerName.Liyan "Liyan"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Liyan: Eins, zwei, Drehung, Klatschen! Oh, hallo! Nicht stehen bleiben, das macht mich nervös. Wipp mit.
+Liyan: Ich übe den Tanz für die Nacht der Lampen. Den alten. Den tanzt keiner mehr, weil keiner mehr alle Schritte kennt.
+  * Was ist so besonders daran?
+    Liyan: Oma sagt, früher hat es geregnet, wenn man ihn richtig getanzt hat. Ich glaub das nicht. Aber ich will es trotzdem wissen.
+  * Ich kann nicht tanzen.
+    Liyan: Jeder kann tanzen. Manche nur schlechter. Das ist nicht schlimm. Die Wüste ist nicht wählerisch.
+[event camera `close`]
+Liyan: Zwei Teile kenn ich. Den Ruf und das Warten. Der dritte fehlt. Den hat niemand aufgeschrieben.
+Liyan: Aber in Vor-Kael, in einer Mauer, sind Tänzer eingemeißelt. Vielleicht steht er da. Kannst du nachsehen? Ich trau mich nicht in die Ruinen. Da singen die Steine.

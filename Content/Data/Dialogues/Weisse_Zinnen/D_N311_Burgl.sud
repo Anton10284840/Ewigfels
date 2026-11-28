@@ -1,0 +1,15 @@
+# N311 – Burgl Steinhauer, Rennleiterin und Wirtin. Pfeift auf zwei Fingern lauter als jedes Alphorn.
+===
+[set SpeakerName.Burgl "Burgl Steinhauer"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Burgl: Griaß! Du schaust aus wie jemand, der noch nie Schlitten gefahren ist. Das ändern wir.
+Burgl: Das große Rennen. Vom Lärchensteig bis zu meiner Tür. Drei Sprünge, eine Kurve, die keiner schafft, und am Ende ein Käse so groß wie ein Wagenrad.
+  * Wer fährt mit?
+    Burgl: Sechs Kinder aus dem Dorf, die fahren seit sie laufen können. Und dein Freund mit den Locken. Der hat sich schon angemeldet. Zweimal.
+  * Gibt es Regeln?
+    Burgl: Eine. Wer jemanden schubst, kriegt keinen Käse. Wer jemanden schubst und gewinnt, kriegt Ärger mit mir.
+Burgl: Schlitten gibt's im Schuppen. Den roten nicht, der lenkt nach links.
+[event emotion `neutral`]
+Burgl: Und halt die Augen offen. Die Zinnadler mögen Käse. Mehr als gut für sie ist.

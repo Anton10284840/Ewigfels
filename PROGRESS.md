@@ -71,7 +71,7 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Questlog/HUD/Lademenü-UI | ⬜ Phase 5 | | |
 | Format-Doku | ✅ docs/QUEST_FORMAT.md | | |
 
-## Quests (geschätzte Spielzeit geschrieben: 53,4 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
+## Quests (geschätzte Spielzeit geschrieben: 63,8 Std. · Ziel ~100 Std. · Missionsdesign aller 50 Hauptmissionen: docs/missions/)
 
 | ID | Name | Typ | Dauer | Geschrieben | Umgesetzt | Getestet |
 |---|---|---|---|---|---|---|
@@ -127,6 +127,24 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | N214 | Hohlstollen (Glastiefen) | Neben | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
 | N215 | Der Kristallwal (Glastiefen) | Neben | 45 min | ✅ JSON + 1 Dialog | ⬜ Level fehlt | ⬜ |
 | N216 | Der Glutdachs (Glastiefen) | Neben | 35 min | ✅ JSON | ⬜ Level fehlt | ⬜ |
+| N301 | Gustav (Tiedmar) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N302 | Der heisere Vorsänger (Tiedmar) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N303 | Die Glocken von Ebbgrund (Tiedmar) | Neben | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| N304 | Die Glocke der Heringskönigin (Tiedmar) | Neben | 35 min | ✅ JSON + 1 Dialog | ⬜ Level fehlt | ⬜ |
+| N305 | Die Salzmutter (Tiedmar) | Neben | 45 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N306 | Ein Knoten für jeden (Tiedmar) | Neben | 20 min | ✅ JSON + 1 Dialog | ⬜ Level fehlt | ⬜ |
+| N311 | Das große Schlittenrennen (Weiße Zinnen) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N312 | Der Käse, der summt (Weiße Zinnen) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N313 | Frostwacht (Weiße Zinnen) | Neben | 50 min | ✅ JSON + 4 Dialoge | ⬜ Level fehlt | ⬜ |
+| N314 | Die Welpen vom Wolfsgrat (Weiße Zinnen) | Neben | 35 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N315 | Der Firnfürst (Weiße Zinnen) | Neben | 45 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N316 | Zinnadler-Rennen (Weiße Zinnen) | Neben | 30 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N321 | Der verlorene Dünenschreiter (Kaelschlucht) | Neben | 40 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N322 | Sandgrab (Kaelschlucht) | Neben | 50 min | ✅ JSON + 3 Dialoge | ⬜ Level fehlt | ⬜ |
+| N323 | Die Runenschildkröte (Kaelschlucht) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N324 | Der Tanz von Sela (Kaelschlucht) | Neben | 30 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N325 | Der Letzte Sänger (Kaelschlucht) | Neben | 45 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
+| N326 | Die Wasserorgel (Kaelschlucht) | Neben | 25 min | ✅ JSON + 1 Dialog | ⬜ Level fehlt | ⬜ |
 | N201 | Das große Froschrennen (Graumoor) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
 | N202 | Die Wilderer am Birkenhain (Graumoor) | Neben | 35 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |
 | N203 | Bruder Ilmos Bad (Graumoor) | Neben | 25 min | ✅ JSON + 2 Dialoge | ⬜ Level fehlt | ⬜ |

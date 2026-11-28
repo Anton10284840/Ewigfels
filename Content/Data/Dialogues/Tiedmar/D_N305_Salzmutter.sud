@@ -1,0 +1,21 @@
+# N305 – Die Salzmutter taucht auf. Spricht nicht: Untertitel beschreiben. Wenn Moor erlöst ist, kann man ihr die Glocke schenken.
+===
+[set SpeakerName.Salzmutter "Salzmutter"]
+===
+[event camera `wide`]
+Salzmutter: (Das Wasser hebt sich. Ein Auge, so groß wie ein Fenster, sieht dich an. Salzkrusten knirschen.)
+Salzmutter: (Ein tiefer Ton, wie eine Glocke unter Wasser. Er fragt etwas.)
+[if {flag.Moor_Redeemed}]
+  * (Die Glocke der Heringskönigin ins Wasser halten)
+    Salzmutter: (Ein Arm kommt aus dem Wasser, langsam, und legt sich um die Glocke. Ganz vorsichtig. Wie eine Hand um ein Ei.)
+    Salzmutter: (Der Ton wird weich. Dann sinkt sie, und das Wasser wird glatt.)
+    [set flag.Salzmutter_Calmed true]
+    [set flag.Salzmutter_Decided true]
+  * (Kämpfen)
+    Salzmutter: (Die Arme peitschen aus dem Wasser. Die Kräne am Kai quietschen.)
+    [set flag.Salzmutter_Decided true]
+[else]
+  * (Kämpfen)
+    Salzmutter: (Die Arme peitschen aus dem Wasser. Die Kräne am Kai quietschen.)
+    [set flag.Salzmutter_Decided true]
+[endif]

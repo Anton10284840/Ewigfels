@@ -1,0 +1,33 @@
+# N313 – Reifhild in der Kapelle. Mütterlich, leise, strickt an drei Schals. Erlösung: mit ihr zum Lawinenfeld gehen (Entklang nötig), sonst Kampf.
+===
+[set SpeakerName.Reifhild "Reifhild"]
+===
+[event camera `closeup`]
+[event emotion `soft`]
+Reifhild: Du frierst ja. Komm, ich mach dich warm. Ich mach euch alle warm.
+[event camera `close`]
+Reifhild: Setz dich. Ich stricke. Drei Schals. Einer für Lisl, einer für Mats, einer für den kleinen Jakob. Der Winter ist lang hier oben.
+  * Ihre Kinder sind tot, Reifhild.
+    [event emotion `angry`]
+    Reifhild: Sag das nicht. Sag das nicht in meiner Kapelle. Sie sind auf der Alm. Sie kommen zurück. Alle kommen zurück, wenn niemand mehr geht.
+  * Die Leute im Eis haben Angst.
+    Reifhild: Angst? Sie sind sicher. Keiner geht. Keiner fällt. Keiner kommt unter den Schnee. Ist das nicht besser als Angst?
+[event emotion `sad`]
+Reifhild: Ich halte sie nur fest. So wie man ein Kind festhält, wenn es über die Straße will.
+[if {quest.M306} == 2]
+  * Kommen Sie mit zum Lawinenfeld. Nur einmal.
+    [event emotion `scared`]
+    Reifhild: Zum ... Nein. Nein, da war ich nicht mehr. Seit damals nicht.
+    Reifhild: ... Wenn ich da hingehe, muss ich es sehen. Das kann ich nicht.
+    Reifhild: Du hältst meine Hand? Du lässt nicht los?
+    [set flag.Reifhild_Redeemed true]
+    [set flag.Reifhild_Decided true]
+  * (Kämpfen)
+    Reifhild: Dann bleibst du eben auch. Bleib. Es ist so still hier.
+    [set flag.Reifhild_Decided true]
+[else]
+  * (Kämpfen)
+    [event emotion `angry`]
+    Reifhild: Dann bleibst du eben auch. Bleib. Es ist so still hier.
+    [set flag.Reifhild_Decided true]
+[endif]

@@ -1,0 +1,153 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/TIEDMAR.md. Marker-IDs = Quest-Marker.",
+  "id": "Tiedmar",
+  "act_from": 3,
+  "size_km": [
+    3,
+    2
+  ],
+  "villages": [
+    {
+      "id": "Moewenkai",
+      "mood": "froehlich",
+      "music": "Shantys (Akkordeon, Fiedel, Männerchor, stampfende Füße), Möwen",
+      "fast_travel": "Zunfthaus",
+      "npcs": [
+        "Joost",
+        "Marit",
+        "Nell",
+        "Ida",
+        "Hella",
+        "Knut",
+        "Pelle",
+        "Olga",
+        "Tjorven"
+      ],
+      "shops": [
+        {
+          "npc": "Tjorven",
+          "sells": [
+            "Tattoos",
+            "Klang-Runen"
+          ]
+        },
+        {
+          "npc": "Joost",
+          "sells": [
+            "Netzknoten-Schmuck"
+          ]
+        },
+        {
+          "npc": "Hella",
+          "sells": [
+            "Essen (Buffs)"
+          ]
+        }
+      ],
+      "pois": [
+        "Moewenkai",
+        "Fischmarkt",
+        "Zunfthaus",
+        "Nasse_Katze",
+        "Pier_9",
+        "Kranberg",
+        "Haus_Vandermeer"
+      ],
+      "minigames": [
+        "Shanty-Singen",
+        "Pier-Springen",
+        "Muschelwerfen",
+        "Gustav-Jagd"
+      ]
+    },
+    {
+      "id": "Ebbgrund",
+      "mood": "gruselig",
+      "music": "ertrunkene Glocken unter Wasser, ein Bariton singt zu langsam",
+      "fast_travel": "Gezeitenstein",
+      "npcs": [
+        "Moor",
+        "Svea",
+        "Okke"
+      ],
+      "shops": [],
+      "pois": [
+        "Gezeitenpfad",
+        "Seilhuetten",
+        "Schmugglerbucht",
+        "Kapitaenshaus",
+        "Glockengrund"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Alter_Leuchtturm",
+      "kind": "dungeon",
+      "quest": "M303"
+    },
+    {
+      "id": "Hafenbecken",
+      "kind": "boss",
+      "quest": "N305",
+      "boss": "Salzmutter"
+    },
+    {
+      "id": "Wrack_Heringskoenigin",
+      "kind": "tauchen",
+      "quest": "N304"
+    },
+    {
+      "id": "Ebbgrund_Rand",
+      "kind": "ort",
+      "quest": "M302"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Kranberg_Orgel",
+      "at": "Kranberg",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Glockenwrack",
+      "at": "Glockengrund",
+      "reward": "Quarz_Gischtblau"
+    },
+    {
+      "id": "Schrein_Gezeitenstein",
+      "at": "Gezeitenpfad",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Shanty_Text": 10,
+    "Flaschenpost": 12,
+    "Nachklang": 5
+  },
+  "enemies": {
+    "act3": [
+      "Klingenschnapper",
+      "Salzkrake_Jung",
+      "Taschendieb",
+      "Schmuggler",
+      "Schmugglerwirker",
+      "Stille_Hand",
+      "Choralist_Raue",
+      "Kapitaen_Moor",
+      "Schlickgeist",
+      "Salzmutter"
+    ]
+  },
+  "mechanics": {
+    "Gezeiten": "alle 20 Spielminuten Ebbe/Flut; bei Ebbe Gezeitenpfad nach Ebbgrund frei"
+  },
+  "quests": [
+    "N301",
+    "N302",
+    "N303",
+    "N304",
+    "N305",
+    "N306"
+  ]
+}

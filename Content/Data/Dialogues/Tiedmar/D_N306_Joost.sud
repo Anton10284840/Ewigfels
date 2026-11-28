@@ -1,0 +1,20 @@
+# N306 – Joost Vandermeer am Familiennetz. Ein Knoten pro Familienmitglied, einer fehlt. Lio ist dabei.
+===
+[set SpeakerName.Joost "Joost Vandermeer"]
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `medium`]
+Joost: Setz dich, setz dich. Siehst du das Netz? Das ist das Familiennetz. Jeder Vandermeer hat einen Knoten drin. Seit zweihundert Jahren.
+Joost: Hier ist meiner. Da Marits. Da Lios, ganz krumm, den hat er mit vier geknotet.
+Lio: Der ist nicht krumm. Der ist künstlerisch.
+[event camera `close`]
+[event emotion `sad`]
+Joost: Und hier ... hier wäre Maras. Sie hat ihn nie geknotet. Sie wollte immer, wenn sie sechzehn ist. Sie war vierzehn, als sie ging.
+Joost: Ich hab es nie gekonnt. Ihn für sie zu knoten. Das wäre, als ob ich aufgebe.
+  * Knoten wir ihn zusammen. Nicht als Abschied. Als Platzhalter.
+    Joost: Ein Platzhalter. Ja. So, dass sie ihn später selbst festziehen kann.
+    Lio: Ich halte das Ende. Du ziehst, Papa. Und du zeigst uns, wo.
+  * Vielleicht sollte Lio ihn knoten.
+    Lio: Ich? ... Okay. Aber nur, wenn ihr helft. Allein wird der wieder künstlerisch.
+[event emotion `happy`]
+Joost: Gut. Hand drauf. Drei Hände, ein Knoten. So machen wir das in Tiedmar.

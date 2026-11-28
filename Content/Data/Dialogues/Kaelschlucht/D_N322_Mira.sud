@@ -1,0 +1,15 @@
+# N322 – Mira, Weberin in Sandgrab. Redet nur noch mit ihrem Webstuhl. Der Sand erzählt jedes Geheimnis.
+===
+[set SpeakerName.Mira "Mira"]
+===
+[event camera `medium`]
+Mira: (Sie webt. Sie schaut nicht auf. Sie redet mit dem Webstuhl.) Da ist jemand Fremdes. Ja. Ich seh's. Ich red nicht mit ihm.
+  * Ich will helfen.
+    Mira: (Zum Webstuhl) Er will helfen. Das sagen alle. Dann hören sie, was der Sand über einen sagt, und gehen.
+  * Warum reden Sie mit dem Webstuhl?
+    Mira: (Zum Webstuhl) Weil der nichts weitererzählt. Du bist der Einzige, der nichts weitererzählt.
+[event camera `close`]
+[event emotion `sad`]
+Mira: (Leise, jetzt doch zu dir) Der Sand sagt alles. Was ich denke. Was ich will. Was ich mich nie trauen würde zu sagen. Und alle hören es.
+Mira: Wir sind Nachbarn. Seit zwanzig Jahren. Jetzt sitzen wir mit dem Rücken zueinander. Weil wir alles voneinander wissen.
+Mira: Früher hat ein Gelehrter am Dorfrand gewohnt. Ammar. Er hat den Sand gehört, als er noch alte Lieder sang. Dann ist er auf die Düne gegangen und nie wieder runtergekommen.

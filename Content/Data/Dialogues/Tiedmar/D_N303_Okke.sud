@@ -1,0 +1,15 @@
+# N303 – Smutje Okke, alter Schmuggler. Knotet ständig sein Seil neu. Weiß, was mit der Heringskönigin geschah.
+===
+[set SpeakerName.Okke "Smutje Okke"]
+===
+[event camera `medium`]
+Okke: Achterknoten. Palstek. Webeleinstek. Wenn das Seil reißt, bin ich weg. Also knot ich. Den ganzen Tag.
+  * Sie waren auf der Heringskönigin?
+    Okke: Smutje. Koch. Ich war an Land in der Nacht, Zwiebeln kaufen. Zwiebeln! Hab überlebt wegen Zwiebeln.
+  * Was war in den Kisten am Strand?
+    Okke: Hering. ... Na gut. Quarz. Kael-Quarz aus der Wüste. Kauft das Kollegium für Gold und verbietet es für alle anderen. Wir haben es billiger verkauft. Das mochten sie nicht.
+[event camera `close`]
+[event emotion `sad`]
+Okke: Sie haben uns in der Bucht gestellt. Ein Kollegiumsschiff. Kein Wort, keine Warnung. Ein Bannlied, und die Heringskönigin war ein Stein.
+Okke: Jorgen hat sich an die Glocke geklammert. Die ganze Nacht. Am Morgen hat er losgelassen, und die Glocke ist gesunken. Weit weg. Bis ins Hafenbecken hat die Strömung sie getragen.
+Okke: Wenn er die Glocke wiederhätte ... vielleicht hört er dann auf. Ist nur so ein Gedanke von einem alten Koch.

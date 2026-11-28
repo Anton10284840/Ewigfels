@@ -1,0 +1,19 @@
+# N302 – Knut Brand, Vorsänger, heiser. Er hat die Glocken von Ebbgrund gehört und will hin.
+===
+[set SpeakerName.Knut "Knut Brand"]
+===
+[event camera `close`]
+Knut: Hörst du die auch? Ganz leise. Unter dem Wasser.
+  * Ich höre nur Möwen.
+    Knut: Glück für dich.
+  * Was hören Sie?
+    Knut: Glocken. Schiffsglocken. Sie läuten meinen Namen. Knut. Knut. Wie mein alter Kapitän.
+[event emotion `sad`]
+Knut: Ich hab dreißig Jahre gesungen, um das Meer zu übertönen. Jetzt übertönt das Meer mich. Ich krieg keinen Ton mehr raus. Nur ein Krächzen.
+Knut: Und manchmal stehen meine Beine einfach auf.
+  * Dann singen wir für Sie. Alle zusammen.
+    [event emotion `surprised`]
+    Knut: Du? Kannst du das? Ein Shanty ist kein Lied. Ein Shanty ist Arbeit. Man singt, damit die Hände wissen, wann sie ziehen.
+    Knut: Na gut. Wenn der Kai laut genug stampft, hör ich die Glocken vielleicht nicht mehr.
+  * Bleiben Sie hier. Ich halte Sie fest, wenn es sein muss.
+    Knut: Das musst du vielleicht. Halt mich fest und dann sing. Laut. Lauter als die Glocken.

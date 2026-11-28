@@ -1,0 +1,102 @@
+{
+  "id": "N304",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Ida",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M303"
+  ],
+  "title": {
+    "de": "Die Glocke der Heringskönigin",
+    "en": "The Bell of the Herring Queen"
+  },
+  "summary": {
+    "de": "Ida Brack weiß, wo das Wrack der Heringskönigin liegt: mitten im Hafenbecken. Im Nest der Salzmutter.",
+    "en": "Ida Brack knows where the wreck of the Herring Queen lies: in the middle of the harbour basin. In the Salt Mother's nest."
+  },
+  "dialogues": [
+    "D_N304_Ida"
+  ],
+  "stages": [
+    {
+      "id": "s1_ida",
+      "text": {
+        "de": "Ida leiht dir die Taucherglocke der Zunft.",
+        "en": "Ida lends you the guild's diving bell."
+      },
+      "objectives": [
+        {
+          "id": "o_ida",
+          "kind": "dialogue",
+          "target": "D_N304_Ida",
+          "marker": "NPC_Ida",
+          "text": {
+            "de": "Sprich mit Ida im Zunfthaus",
+            "en": "Talk to Ida at the guild hall"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_tauchen"
+        }
+      ]
+    },
+    {
+      "id": "s2_tauchen",
+      "text": {
+        "de": "Tauch zum Wrack. Die Salzmutter schläft. Noch.",
+        "en": "Dive to the wreck. The Salt Mother is asleep. For now."
+      },
+      "objectives": [
+        {
+          "id": "o_wrack",
+          "kind": "reach",
+          "target": "Wrack_Heringskoenigin",
+          "marker": "Hafenbecken",
+          "text": {
+            "de": "Tauch zum Wrack (Taucherglocke oder Gischtrobbe)",
+            "en": "Dive to the wreck (diving bell or spray seal)"
+          }
+        },
+        {
+          "id": "o_schleichen",
+          "kind": "custom",
+          "target": "Salzmutter_Schleichen",
+          "text": {
+            "de": "Schleich an den Tentakeln vorbei",
+            "en": "Sneak past the tentacles"
+          }
+        },
+        {
+          "id": "o_glocke",
+          "kind": "collect",
+          "target": "Moors_Glocke",
+          "text": {
+            "de": "Nimm Moors Schiffsglocke aus dem Nest",
+            "en": "Take Moor's ship's bell from the nest"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Has_MoorBell=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [
+      "Moors_Glocke"
+    ],
+    "effects": []
+  }
+}

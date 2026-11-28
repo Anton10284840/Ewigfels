@@ -1,0 +1,17 @@
+# N323 – Kemi (10), Saffas Enkel. Sammelt Steine mit Zeichen. Will Kael-Gelehrter werden.
+===
+[set SpeakerName.Kemi "Kemi"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Kemi: Du warst im Grab! Das sagen alle! Hast du Zeichen gesehen? Echte? Kannst du sie lesen?
+  * Ein paar.
+    Kemi: Ein paar! Ich kann null. Aber ich hab hundert gesammelt. Hier, in der Tasche. Vorsicht, die sind schwer.
+  * Wer will das wissen?
+    Kemi: Kemi. Ich werde Gelehrter. Der größte. Größer als Ammar, der ist nämlich verrückt geworden, sagt Oma.
+[event camera `close`]
+Kemi: Ich hab was gefunden. In der Echoschlucht. Eine Schildkröte. So groß wie Omas Karren. Und auf dem Panzer wachsen Zeichen. Wachsen! Wie Moos!
+[event emotion `sad`]
+Kemi: Aber sie bewegt sich kaum. Ich glaub, sie hat Hunger. Ich hab ihr Datteln gegeben. Sie hat mich nur angeschaut. Traurig. Wie Opa, wenn Oma kocht.
+  * Was frisst so eine Schildkröte?
+    Kemi: In den Büchern steht: Wüstenblüten. Die wachsen nur da, wo der Schatten lang ist. In der Schlucht. Hilfst du mir?

@@ -1,0 +1,25 @@
+# N322 – Der Sandflüsterer (Ammar) auf der Düne der Stimmen. Spricht mit vielen Stimmen, nie mit seiner eigenen. Erlösung: Ammars Muschel vorspielen.
+===
+[set SpeakerName.Fluesterer "Der Sandflüsterer"]
+===
+[event camera `wide`]
+Fluesterer: (Der Sand hebt sich zu einer Gestalt. Das Gesicht wandert wie eine Düne.)
+Fluesterer: Du bist aus Brandheim. Du hast Angst vor dir selbst. Du hast einmal einen Keks geklaut und es nie erzählt.
+[event camera `close`]
+Fluesterer: (Mit der Stimme einer Frau) Siehst du? Keine Geheimnisse. (Mit der Stimme eines Kindes) Keine Lügen. (Mit der Stimme eines Greises) Nur Wahrheit.
+  * Wer sind Sie?
+    Fluesterer: (Viele Stimmen) Ich bin alle. Ich bin jeder, der hier je gesprochen hat. (Leiser) Ich weiß nicht mehr, wer von uns ich bin.
+  * Ohne Geheimnisse vertraut hier niemand mehr niemandem.
+    Fluesterer: (Eine alte Kael-Stimme) Vertrauen ist eine Lüge, die man sich gegenseitig schenkt.
+  * (Die Muschel mit Ammars Stimme ans Ohr halten und abspielen)
+    Fluesterer: (Eine junge Stimme kommt aus der Muschel. Klar, freundlich.) „Ich bin Ammar. Ich bin gekommen, um zuzuhören.“
+    [event emotion `surprised`]
+    Fluesterer: (Alle Stimmen verstummen. Nur eine bleibt.) ... Das bin ich. Das ... das bin ich.
+    Fluesterer: (Der Sand fällt. Ein dünner Mann mit grauem Bart kniet da. Er lacht. Laut. Wie ein Esel.)
+    [set flag.Fluesterer_Redeemed true]
+    [set flag.Fluesterer_Decided true]
+    [goto end]
+  * (Kämpfen)
+    Fluesterer: (Alle Stimmen gleichzeitig) Dann hör uns alle.
+    [set flag.Fluesterer_Decided true]
+    [goto end]

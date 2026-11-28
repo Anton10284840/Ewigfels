@@ -1,0 +1,118 @@
+{
+  "id": "N324",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Liyan",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Der Tanz von Sela",
+    "en": "The Dance of Sela"
+  },
+  "summary": {
+    "de": "Liyan übt einen sehr alten Tanz für die Nacht der Lampen. Ihr fehlt ein Partner. Und ein Teil der Schritte.",
+    "en": "Liyan is practising a very old dance for the Night of Lamps. She's missing a partner. And some of the steps."
+  },
+  "dialogues": [
+    "D_N324_Liyan",
+    "D_N324_Regen"
+  ],
+  "stages": [
+    {
+      "id": "s1_liyan",
+      "text": {
+        "de": "Liyan tanzt beim Reden.",
+        "en": "Liyan dances while she talks."
+      },
+      "objectives": [
+        {
+          "id": "o_liyan",
+          "kind": "dialogue",
+          "target": "D_N324_Liyan",
+          "marker": "NPC_Liyan",
+          "text": {
+            "de": "Sprich mit Liyan am Tanzplatz",
+            "en": "Talk to Liyan at the dance square"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_schritte"
+        }
+      ]
+    },
+    {
+      "id": "s2_schritte",
+      "text": {
+        "de": "Der dritte Teil der Schritte ist in Vor-Kael in Stein gehauen.",
+        "en": "The third part of the steps is carved in stone in Fore-Kael."
+      },
+      "objectives": [
+        {
+          "id": "o_relief",
+          "kind": "interact",
+          "target": "Tanzrelief_VorKael",
+          "marker": "Vor_Kael",
+          "text": {
+            "de": "Find das Tanzrelief in Vor-Kael",
+            "en": "Find the dance relief in Fore-Kael"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_tanz"
+        }
+      ]
+    },
+    {
+      "id": "s3_tanz",
+      "text": {
+        "de": "Die Nacht der Lampen. Tanz mit Liyan.",
+        "en": "The Night of Lamps. Dance with Liyan."
+      },
+      "objectives": [
+        {
+          "id": "o_tanz",
+          "kind": "custom",
+          "target": "Tanz_Sela",
+          "marker": "Tanzplatz_Sela",
+          "text": {
+            "de": "Tanz alle drei Teile (Rhythmus)",
+            "en": "Dance all three parts (rhythm)"
+          }
+        },
+        {
+          "id": "o_regen",
+          "kind": "dialogue",
+          "target": "D_N324_Regen",
+          "text": {
+            "de": "Es regnet",
+            "en": "It's raining"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Rain_Sela=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [
+      "Emote_Regentanz"
+    ],
+    "effects": []
+  }
+}

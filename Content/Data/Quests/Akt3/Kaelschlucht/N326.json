@@ -1,0 +1,120 @@
+{
+  "id": "N326",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Oskan",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Die Wasserorgel",
+    "en": "The Water Organ"
+  },
+  "summary": {
+    "de": "Die Quelle von Sela wird schwächer. Brunnenwart Oskan hört, dass unten etwas falsch klingt.",
+    "en": "The spring of Sela is weakening. Oskan the well-keeper can hear something sounding wrong down below."
+  },
+  "dialogues": [
+    "D_N326_Oskan"
+  ],
+  "stages": [
+    {
+      "id": "s1_oskan",
+      "text": {
+        "de": "Oskan im Brunnenhaus.",
+        "en": "Oskan in the well house."
+      },
+      "objectives": [
+        {
+          "id": "o_oskan",
+          "kind": "dialogue",
+          "target": "D_N326_Oskan",
+          "marker": "NPC_Oskan",
+          "text": {
+            "de": "Sprich mit Oskan",
+            "en": "Talk to Oskan"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_pfeifen"
+        }
+      ]
+    },
+    {
+      "id": "s2_pfeifen",
+      "text": {
+        "de": "Zwei Pfeifen fehlen. In Vor-Kael gibt es noch welche.",
+        "en": "Two pipes are missing. There are more in Fore-Kael."
+      },
+      "objectives": [
+        {
+          "id": "o_pfeifen",
+          "kind": "collect",
+          "target": "Kael_Orgelpfeife",
+          "count": 2,
+          "marker": "Vor_Kael",
+          "text": {
+            "de": "Hol zwei Orgelpfeifen aus Vor-Kael",
+            "en": "Fetch two organ pipes from Fore-Kael"
+          }
+        },
+        {
+          "id": "o_saenger",
+          "kind": "defeat",
+          "target": "Sandsaenger",
+          "count": 3,
+          "text": {
+            "de": "Halt die Sandsänger auf",
+            "en": "Stop the sand singers"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_stimmen"
+        }
+      ]
+    },
+    {
+      "id": "s3_stimmen",
+      "text": {
+        "de": "Setz die Pfeifen ein und stimm die Orgel.",
+        "en": "Fit the pipes and tune the organ."
+      },
+      "objectives": [
+        {
+          "id": "o_stimmen",
+          "kind": "custom",
+          "target": "Wasserorgel_Stimmen",
+          "marker": "Brunnenhaus",
+          "text": {
+            "de": "Stimm die Wasserorgel (Rhythmus)",
+            "en": "Tune the water organ (rhythm)"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Sela_Organ_Tuned=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Ring_Quellton",
+      "Atem_Kristall"
+    ],
+    "effects": []
+  }
+}

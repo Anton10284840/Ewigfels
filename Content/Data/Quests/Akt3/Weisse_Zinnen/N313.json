@@ -1,0 +1,232 @@
+{
+  "id": "N313",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Hanni",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M306"
+  ],
+  "title": {
+    "de": "Frostwacht",
+    "en": "Frostwatch"
+  },
+  "summary": {
+    "de": "Hanni ist aus dem Eis gekommen, halb. Ihr linker Arm ist noch gefroren. Ihre Eltern stehen noch im Dorf. Sie hören alles.",
+    "en": "Hanni came out of the ice, halfway. Her left arm is still frozen. Her parents are still standing in the village. They hear everything."
+  },
+  "dialogues": [
+    "D_N313_Hanni",
+    "D_N313_Alois",
+    "D_N313_Reifhild",
+    "D_N313_Reifhild_Feld"
+  ],
+  "stages": [
+    {
+      "id": "s1_hanni",
+      "text": {
+        "de": "Hanni wartet in Firnhütten am Ofen.",
+        "en": "Hanni is waiting by the stove in Firnhütten."
+      },
+      "objectives": [
+        {
+          "id": "o_hanni",
+          "kind": "dialogue",
+          "target": "D_N313_Hanni",
+          "marker": "NPC_Hanni",
+          "text": {
+            "de": "Sprich mit Hanni",
+            "en": "Talk to Hanni"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_dorf"
+        }
+      ]
+    },
+    {
+      "id": "s2_dorf",
+      "text": {
+        "de": "Frostwacht. Alles im Eis. Und alle schauen dich an.",
+        "en": "Frostwatch. Everything in ice. And everyone is looking at you."
+      },
+      "objectives": [
+        {
+          "id": "o_dorf",
+          "kind": "reach",
+          "target": "Frostwacht",
+          "marker": "Frostwacht",
+          "text": {
+            "de": "Geh nach Frostwacht",
+            "en": "Go to Frostwatch"
+          }
+        },
+        {
+          "id": "o_alois",
+          "kind": "dialogue",
+          "target": "D_N313_Alois",
+          "marker": "NPC_Alois",
+          "text": {
+            "de": "Hör, was Pfarrer Alois im Eis sagt",
+            "en": "Hear what Father Alois says in the ice"
+          }
+        },
+        {
+          "id": "o_haus",
+          "kind": "interact",
+          "target": "Reifhilds_Haus",
+          "marker": "Reifhilds_Haus",
+          "text": {
+            "de": "Durchsuch das Haus am Hang",
+            "en": "Search the house on the slope"
+          }
+        },
+        {
+          "id": "o_reifhild",
+          "kind": "dialogue",
+          "target": "D_N313_Reifhild",
+          "marker": "NPC_Reifhild",
+          "text": {
+            "de": "Stell dich Reifhild in der Kapelle",
+            "en": "Face Reifhild in the chapel"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Reifhild_Decided",
+          "text": {
+            "de": "Geh mit ihr zum Lawinenfeld oder kämpfe",
+            "en": "Go with her to the avalanche field or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Reifhild_Redeemed"
+          ],
+          "stage": "s3a_feld"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_feld",
+      "text": {
+        "de": "Auf dem Lawinenfeld. Zieh den Nachhall aus dem Holzkreuz.",
+        "en": "On the avalanche field. Draw the echo-shadow out of the wooden cross."
+      },
+      "objectives": [
+        {
+          "id": "o_feld",
+          "kind": "reach",
+          "target": "Lawinenfeld",
+          "marker": "Lawinenfeld",
+          "text": {
+            "de": "Geh mit Reifhild zum Lawinenfeld",
+            "en": "Go with Reifhild to the avalanche field"
+          }
+        },
+        {
+          "id": "o_entklang",
+          "kind": "cast",
+          "target": "K57",
+          "text": {
+            "de": "Wirk Entklang am Holzkreuz",
+            "en": "Cast Unsounding at the wooden cross"
+          }
+        },
+        {
+          "id": "o_feld_dlg",
+          "kind": "dialogue",
+          "target": "D_N313_Reifhild_Feld",
+          "text": {
+            "de": "Bleib bei ihr",
+            "en": "Stay with her"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_tauen"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Reifhild webt Eisschatten.",
+        "en": "Reifhild weaves ice shadows."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Reifhild",
+          "marker": "Kapelle_Frostwacht",
+          "text": {
+            "de": "Besiege Reifhild",
+            "en": "Defeat Reifhild"
+          }
+        },
+        {
+          "id": "o_marionetten",
+          "kind": "custom",
+          "target": "Eismarionetten_Brechen",
+          "count": 2,
+          "text": {
+            "de": "Brich das Eis der Marionetten, ohne sie zu verletzen",
+            "en": "Break the puppets' ice without hurting them"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_tauen"
+        }
+      ]
+    },
+    {
+      "id": "s4_tauen",
+      "text": {
+        "de": "Das Eis schmilzt. Pfarrer Alois läutet die Glocke.",
+        "en": "The ice melts. Father Alois rings the bell."
+      },
+      "objectives": [
+        {
+          "id": "o_glocke",
+          "kind": "custom",
+          "target": "Kapelle_Laeuten",
+          "marker": "Kapelle_Frostwacht",
+          "text": {
+            "de": "Läute mit Alois die Kapellenglocke",
+            "en": "Ring the chapel bell with Alois"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Frostwacht_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 40,
+    "items": [
+      "Reifhilds_Schal"
+    ],
+    "effects": []
+  }
+}

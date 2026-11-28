@@ -1,0 +1,116 @@
+{
+  "id": "N323",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Kemi",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Die Runenschildkröte",
+    "en": "The Rune Tortoise"
+  },
+  "summary": {
+    "de": "Kemi hat in der Echoschlucht eine Schildkröte gefunden, so groß wie ein Karren. Auf ihrem Panzer wachsen Zeichen.",
+    "en": "In the Echo Gorge Kemi has found a tortoise as big as a cart. Signs are growing on her shell."
+  },
+  "dialogues": [
+    "D_N323_Kemi",
+    "D_N323_Schildkroete"
+  ],
+  "stages": [
+    {
+      "id": "s1_kemi",
+      "text": {
+        "de": "Kemi zieht dich am Ärmel.",
+        "en": "Kemi tugs at your sleeve."
+      },
+      "objectives": [
+        {
+          "id": "o_kemi",
+          "kind": "dialogue",
+          "target": "D_N323_Kemi",
+          "marker": "NPC_Kemi",
+          "text": {
+            "de": "Sprich mit Kemi",
+            "en": "Talk to Kemi"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_futter"
+        }
+      ]
+    },
+    {
+      "id": "s2_futter",
+      "text": {
+        "de": "Die Schildkröte ist schwach. Sie braucht Wüstenblüten.",
+        "en": "The tortoise is weak. She needs desert blossoms."
+      },
+      "objectives": [
+        {
+          "id": "o_blueten",
+          "kind": "collect",
+          "target": "Wuestenbluete",
+          "count": 5,
+          "text": {
+            "de": "Sammle Wüstenblüten in der Echoschlucht",
+            "en": "Gather desert blossoms in the Echo Gorge"
+          }
+        },
+        {
+          "id": "o_fuettern",
+          "kind": "interact",
+          "target": "Runenschildkroete",
+          "marker": "Echoschlucht",
+          "text": {
+            "de": "Füttere die Schildkröte",
+            "en": "Feed the tortoise"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_lesen"
+        }
+      ]
+    },
+    {
+      "id": "s3_lesen",
+      "text": {
+        "de": "Der Panzer leuchtet.",
+        "en": "The shell glows."
+      },
+      "objectives": [
+        {
+          "id": "o_lesen",
+          "kind": "dialogue",
+          "target": "D_N323_Schildkroete",
+          "text": {
+            "de": "Lies mit Kemi den Panzer",
+            "en": "Read the shell with Kemi"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Kodex_Panzerstrophe",
+      "Kael_Woerterbuch"
+    ],
+    "effects": []
+  }
+}

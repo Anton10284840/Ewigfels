@@ -1,0 +1,127 @@
+{
+  "id": "N321",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Ysra",
+  "duration_min": 40,
+  "auto_start": false,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Der verlorene Dünenschreiter",
+    "en": "The Lost Dune Strider"
+  },
+  "summary": {
+    "de": "Ysras Karawane hat einen jungen Dünenschreiter verloren. Draußen im Dünenmeer. Wo der Gräber wohnt.",
+    "en": "Ysra's caravan has lost a young dune strider. Out in the sea of dunes. Where the digger lives."
+  },
+  "dialogues": [
+    "D_N321_Ysra",
+    "D_N321_Schreiter"
+  ],
+  "stages": [
+    {
+      "id": "s1_ysra",
+      "text": {
+        "de": "Ysra in der Karawanserei.",
+        "en": "Ysra at the caravanserai."
+      },
+      "objectives": [
+        {
+          "id": "o_ysra",
+          "kind": "dialogue",
+          "target": "D_N321_Ysra",
+          "marker": "NPC_Ysra",
+          "text": {
+            "de": "Sprich mit Ysra",
+            "en": "Talk to Ysra"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_duenen"
+        }
+      ]
+    },
+    {
+      "id": "s2_duenen",
+      "text": {
+        "de": "Im Dünenmeer jagt ein Dünengräber den jungen Schreiter.",
+        "en": "Out in the dunes a dune digger is hunting the young strider."
+      },
+      "objectives": [
+        {
+          "id": "o_spur",
+          "kind": "reach",
+          "target": "Duenenmeer",
+          "marker": "Duenenmeer",
+          "text": {
+            "de": "Folg der Spur ins Dünenmeer",
+            "en": "Follow the trail into the dunes"
+          }
+        },
+        {
+          "id": "o_graeber",
+          "kind": "custom",
+          "target": "Duenengraeber_Ablenken",
+          "text": {
+            "de": "Lenk den Gräber mit Stille und Echoködern ab",
+            "en": "Distract the digger with silence and echo decoys"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_rennen"
+        }
+      ]
+    },
+    {
+      "id": "s3_rennen",
+      "text": {
+        "de": "Der Schreiter rennt weg. Und kommt zurück.",
+        "en": "The strider runs away. And comes back."
+      },
+      "objectives": [
+        {
+          "id": "o_schreiter",
+          "kind": "dialogue",
+          "target": "D_N321_Schreiter",
+          "text": {
+            "de": "Näher dich dem Dünenschreiter",
+            "en": "Approach the dune strider"
+          }
+        },
+        {
+          "id": "o_rennen",
+          "kind": "custom",
+          "target": "Oasenrennen",
+          "marker": "Oase_Sela",
+          "text": {
+            "de": "Gewinn das Rennen um die Oase",
+            "en": "Win the race around the oasis"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Duenenschreiter_Tamed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 350,
+    "gold": 0,
+    "items": [
+      "Reittier_Duenenschreiter"
+    ],
+    "effects": []
+  }
+}

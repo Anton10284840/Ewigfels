@@ -1,0 +1,247 @@
+{
+  "id": "N322",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Mira",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M307"
+  ],
+  "title": {
+    "de": "Sandgrab",
+    "en": "Sandgrave"
+  },
+  "summary": {
+    "de": "In Sandgrab redet niemand mehr. Der Sand redet für sie. Er erzählt jedes Geheimnis.",
+    "en": "In Sandgrave no one talks any more. The sand talks for them. It tells every secret."
+  },
+  "dialogues": [
+    "D_N322_Mira",
+    "D_N322_Bek",
+    "D_N322_Fluesterer"
+  ],
+  "stages": [
+    {
+      "id": "s1_dorf",
+      "text": {
+        "de": "Sandgrab. Die Häuser stehen mit dem Rücken zueinander.",
+        "en": "Sandgrave. The houses stand with their backs to each other."
+      },
+      "objectives": [
+        {
+          "id": "o_dorf",
+          "kind": "reach",
+          "target": "Sandgrab",
+          "marker": "Sandgrab",
+          "text": {
+            "de": "Geh nach Sandgrab",
+            "en": "Go to Sandgrave"
+          }
+        },
+        {
+          "id": "o_mira",
+          "kind": "dialogue",
+          "target": "D_N322_Mira",
+          "marker": "NPC_Mira",
+          "text": {
+            "de": "Sprich mit Mira am Webstuhl",
+            "en": "Talk to Mira at her loom"
+          }
+        },
+        {
+          "id": "o_bek",
+          "kind": "dialogue",
+          "target": "D_N322_Bek",
+          "marker": "NPC_Bek",
+          "text": {
+            "de": "Sprich mit dem alten Bek",
+            "en": "Talk to old Bek"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_haus"
+        }
+      ]
+    },
+    {
+      "id": "s2_haus",
+      "text": {
+        "de": "Das alte Gelehrtenhaus. Hunderte Muscheln an Schnüren.",
+        "en": "The old scholar's house. Hundreds of shells on strings."
+      },
+      "objectives": [
+        {
+          "id": "o_haus",
+          "kind": "reach",
+          "target": "Gelehrtenhaus",
+          "marker": "Gelehrtenhaus",
+          "text": {
+            "de": "Geh ins Gelehrtenhaus",
+            "en": "Enter the scholar's house"
+          }
+        },
+        {
+          "id": "o_echo",
+          "kind": "cast",
+          "target": "K55",
+          "text": {
+            "de": "Such mit Seelenecho nach der ältesten Stimme",
+            "en": "Search with Soul Echo for the oldest voice"
+          }
+        },
+        {
+          "id": "o_muschel",
+          "kind": "collect",
+          "target": "Ammars_Muschel",
+          "text": {
+            "de": "Nimm die Muschel mit Ammars Stimme",
+            "en": "Take the shell with Ammar's voice"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_duene"
+        }
+      ]
+    },
+    {
+      "id": "s3_duene",
+      "text": {
+        "de": "Die Düne der Stimmen. Der Sandflüsterer.",
+        "en": "The Dune of Voices. The Sand Whisperer."
+      },
+      "objectives": [
+        {
+          "id": "o_duene",
+          "kind": "reach",
+          "target": "Duene_der_Stimmen",
+          "marker": "Duene_der_Stimmen",
+          "text": {
+            "de": "Geh auf die Düne der Stimmen",
+            "en": "Climb the Dune of Voices"
+          }
+        },
+        {
+          "id": "o_fluesterer",
+          "kind": "dialogue",
+          "target": "D_N322_Fluesterer",
+          "marker": "NPC_Fluesterer",
+          "text": {
+            "de": "Stell dich dem Sandflüsterer",
+            "en": "Face the Sand Whisperer"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Fluesterer_Decided",
+          "text": {
+            "de": "Spiel ihm seine Stimme vor oder kämpfe",
+            "en": "Play him his voice or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Fluesterer_Redeemed"
+          ],
+          "stage": "s4a_still"
+        },
+        {
+          "stage": "s4b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s4a_still",
+      "text": {
+        "de": "Ammar hört seine Stimme. Der Sand wird still.",
+        "en": "Ammar hears his voice. The sand falls silent."
+      },
+      "objectives": [
+        {
+          "id": "o_still",
+          "kind": "custom",
+          "target": "Sand_Verstummt",
+          "text": {
+            "de": "Hör, wie der Sand verstummt",
+            "en": "Hear the sand fall silent"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Zuenfte+5"
+      ],
+      "next": [
+        {
+          "stage": "s5_baenke"
+        }
+      ]
+    },
+    {
+      "id": "s4b_kampf",
+      "text": {
+        "de": "Sandsturm. Orte ihn über den Ton.",
+        "en": "Sandstorm. Find him by sound."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Sandfluesterer",
+          "marker": "Duene_der_Stimmen",
+          "text": {
+            "de": "Besiege den Sandflüsterer",
+            "en": "Defeat the Sand Whisperer"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s5_baenke"
+        }
+      ]
+    },
+    {
+      "id": "s5_baenke",
+      "text": {
+        "de": "Dreh mit den Leuten die erste Bank um.",
+        "en": "Turn the first bench round with the villagers."
+      },
+      "objectives": [
+        {
+          "id": "o_bank",
+          "kind": "custom",
+          "target": "Baenke_Umdrehen",
+          "marker": "Schweigeplatz",
+          "text": {
+            "de": "Dreh eine Bank auf dem Schweigeplatz um",
+            "en": "Turn a bench round on the Square of Silence"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Sandgrab_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 50,
+    "items": [
+      "Kodex_Sandgrab"
+    ],
+    "effects": []
+  }
+}

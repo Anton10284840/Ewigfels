@@ -1,0 +1,106 @@
+{
+  "id": "N316",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Falk",
+  "duration_min": 30,
+  "auto_start": false,
+  "requires": [
+    "quest:M305"
+  ],
+  "title": {
+    "de": "Zinnadler-Rennen",
+    "en": "Pinnacle Eagle Race"
+  },
+  "summary": {
+    "de": "Falk Gratner hat noch nie verloren. Er sagt das jedem. Auf deiner Sturmschwinge könntest du das ändern.",
+    "en": "Falk Gratner has never lost. He tells everyone. On your stormwing you could change that."
+  },
+  "dialogues": [
+    "D_N316_Falk",
+    "D_N316_Falk_Ziel"
+  ],
+  "stages": [
+    {
+      "id": "s1_falk",
+      "text": {
+        "de": "Falk wartet auf der Adlerwiese.",
+        "en": "Falk is waiting on the eagle meadow."
+      },
+      "objectives": [
+        {
+          "id": "o_falk",
+          "kind": "dialogue",
+          "target": "D_N316_Falk",
+          "marker": "NPC_Falk",
+          "text": {
+            "de": "Fordere Falk heraus",
+            "en": "Challenge Falk"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_rennen"
+        }
+      ]
+    },
+    {
+      "id": "s2_rennen",
+      "text": {
+        "de": "Das Rennen über die Zinnen.",
+        "en": "The race over the pinnacles."
+      },
+      "objectives": [
+        {
+          "id": "o_rennen",
+          "kind": "custom",
+          "target": "Zinnadler_Rennen",
+          "marker": "Adlerwiese",
+          "text": {
+            "de": "Flieg das Rennen auf der Sturmschwinge",
+            "en": "Fly the race on the stormwing"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_ziel"
+        }
+      ]
+    },
+    {
+      "id": "s3_ziel",
+      "text": {
+        "de": "Falk hat eine Abkürzung durch die Eisspalte genommen.",
+        "en": "Falk took a shortcut through the ice crevasse."
+      },
+      "objectives": [
+        {
+          "id": "o_ziel",
+          "kind": "dialogue",
+          "target": "D_N316_Falk_Ziel",
+          "marker": "NPC_Falk",
+          "text": {
+            "de": "Sprich mit Falk im Ziel",
+            "en": "Talk to Falk at the finish"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 250,
+    "gold": 0,
+    "items": [
+      "Sturmsattel"
+    ],
+    "effects": []
+  }
+}

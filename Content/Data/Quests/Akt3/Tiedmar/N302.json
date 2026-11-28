@@ -1,0 +1,121 @@
+{
+  "id": "N302",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Hella",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M302"
+  ],
+  "title": {
+    "de": "Der heisere Vorsänger",
+    "en": "The Hoarse Shantyman"
+  },
+  "summary": {
+    "de": "Knut Brand kann nicht mehr singen, und ohne Vorsänger kein Shanty-Abend. Hella sagt, er war bei Ebbe am Watt.",
+    "en": "Knut Brand can't sing any more, and no shantyman means no shanty night. Hella says he was out on the mudflats at low tide."
+  },
+  "dialogues": [
+    "D_N302_Hella",
+    "D_N302_Knut"
+  ],
+  "stages": [
+    {
+      "id": "s1_hella",
+      "text": {
+        "de": "In der Nassen Katze ist es zu leise.",
+        "en": "It's too quiet in the Wet Cat."
+      },
+      "objectives": [
+        {
+          "id": "o_hella",
+          "kind": "dialogue",
+          "target": "D_N302_Hella",
+          "marker": "NPC_Hella",
+          "text": {
+            "de": "Sprich mit Hella",
+            "en": "Talk to Hella"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_knut"
+        }
+      ]
+    },
+    {
+      "id": "s2_knut",
+      "text": {
+        "de": "Knut sitzt am Kai und starrt aufs Wasser.",
+        "en": "Knut sits on the quay staring at the water."
+      },
+      "objectives": [
+        {
+          "id": "o_knut",
+          "kind": "dialogue",
+          "target": "D_N302_Knut",
+          "marker": "NPC_Knut",
+          "text": {
+            "de": "Sprich mit Knut",
+            "en": "Talk to Knut"
+          }
+        },
+        {
+          "id": "o_halten",
+          "kind": "custom",
+          "target": "Knut_Festhalten",
+          "marker": "Moewenkai",
+          "text": {
+            "de": "Halt Knut fest, als die Glocken läuten",
+            "en": "Hold Knut back when the bells ring"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_singen"
+        }
+      ]
+    },
+    {
+      "id": "s3_singen",
+      "text": {
+        "de": "Sing selbst vor. Der ganze Kai stampft mit und übertönt die Glocken.",
+        "en": "Lead the singing yourself. The whole quay stamps along and drowns out the bells."
+      },
+      "objectives": [
+        {
+          "id": "o_shanty",
+          "kind": "custom",
+          "target": "Shanty_Singen",
+          "marker": "Nasse_Katze",
+          "text": {
+            "de": "Sing den Shanty vor (Rhythmus)",
+            "en": "Lead the shanty (rhythm)"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Knut_Sang=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Shanty_Salz_in_den_Stiefeln"
+    ],
+    "effects": [
+      "rep:Zuenfte+5"
+    ]
+  }
+}

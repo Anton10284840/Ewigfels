@@ -1,0 +1,18 @@
+# N324 – Nach dem Tanz in der Nacht der Lampen. Es regnet zum ersten Mal seit 40 Jahren.
+===
+[set SpeakerName.Liyan "Liyan"]
+[set SpeakerName.Saffa "Saffa"]
+===
+[event camera `wide`]
+Liyan: Spürst du das? Auf der Haut? Das ist ... das ist ...
+[event emotion `surprised`]
+Saffa: Regen. Bei allen Sternen. Regen.
+[event camera `close`]
+[event emotion `happy`]
+Liyan: Es regnet! Es regnet wirklich! Oma! OMA! Es regnet!
+Saffa: Vierzig Jahre. Ich war ein Mädchen, als es das letzte Mal geregnet hat. Ich hab vergessen, wie das riecht.
+  * Wie riecht es?
+    Saffa: Nach Staub, der aufatmet.
+  * Tanzen wir weiter!
+    Liyan: Ja! Alle! Alle tanzen! Der ganze Platz!
+Saffa: Ab heute feiern wir das jedes Jahr. Das Regenfest. Und du kriegst jedes Jahr Minze umsonst. Für immer.

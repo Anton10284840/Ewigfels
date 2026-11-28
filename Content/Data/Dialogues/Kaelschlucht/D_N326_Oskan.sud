@@ -1,0 +1,14 @@
+# N326 – Brunnenwart Oskan, uralt, taub auf einem Ohr, hört mit dem anderen alles. Die Wasserorgel unter dem Brunnenhaus ist verstimmt.
+===
+[set SpeakerName.Oskan "Brunnenwart Oskan"]
+===
+[event camera `medium`]
+Oskan: Sprich auf die rechte Seite. Die linke hört nur noch das Meer, und das ist weit weg.
+Oskan: Unter uns spielt eine Orgel. Seit zweitausend Jahren. Das Wasser treibt sie, und sie treibt das Wasser. Solange sie richtig klingt, fließt die Quelle.
+  * Und jetzt klingt sie falsch?
+    Oskan: Zwei Töne fehlen. Ein Loch im Akkord. Seit die Leute in Grau hier durchgezogen sind. Sie haben zwei Pfeifen mitgenommen. Für ihre Taktsteine.
+  * Wie lange hält die Quelle noch?
+    Oskan: Einen Monat. Vielleicht zwei. Dann ist Sela ein Wort, das man über Sand sagt.
+[event camera `close`]
+Oskan: In Vor-Kael liegen noch Pfeifen. Die Sänger aus Sand bewachen sie. Bring mir zwei. Die gleiche Länge wie die da. Und dann stimmen wir sie zusammen.
+Oskan: Ich höre, ob es stimmt. Mit dem rechten Ohr. Das linke würde lügen.

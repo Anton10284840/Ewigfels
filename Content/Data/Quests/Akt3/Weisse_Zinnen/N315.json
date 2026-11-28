@@ -1,0 +1,164 @@
+{
+  "id": "N315",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Gidi",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M306"
+  ],
+  "title": {
+    "de": "Der Firnfürst",
+    "en": "The Frost Prince"
+  },
+  "summary": {
+    "de": "Der Alpha der Firnwölfe greift Herden und Wanderer an. Gidi sagt, er ist wütend. Nicht hungrig.",
+    "en": "The alpha of the frost wolves is attacking herds and hikers. Gidi says he's angry. Not hungry."
+  },
+  "dialogues": [
+    "D_N315_Gidi",
+    "D_N315_Firnfuerst"
+  ],
+  "stages": [
+    {
+      "id": "s1_gidi",
+      "text": {
+        "de": "Gidi will mit auf den Wolfsgrat.",
+        "en": "Gidi wants to come up Wolf Ridge."
+      },
+      "objectives": [
+        {
+          "id": "o_gidi",
+          "kind": "dialogue",
+          "target": "D_N315_Gidi",
+          "marker": "NPC_Gidi",
+          "text": {
+            "de": "Sprich mit Gidi",
+            "en": "Talk to Gidi"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_grat"
+        }
+      ]
+    },
+    {
+      "id": "s2_grat",
+      "text": {
+        "de": "Der Wolfsgrat. Der Firnfürst wartet.",
+        "en": "Wolf Ridge. The Frost Prince is waiting."
+      },
+      "objectives": [
+        {
+          "id": "o_grat",
+          "kind": "reach",
+          "target": "Wolfsgrat",
+          "marker": "Wolfsgrat",
+          "text": {
+            "de": "Steig auf den Wolfsgrat",
+            "en": "Climb Wolf Ridge"
+          }
+        },
+        {
+          "id": "o_fuerst",
+          "kind": "dialogue",
+          "target": "D_N315_Firnfuerst",
+          "text": {
+            "de": "Der Firnfürst stellt sich dir",
+            "en": "The Frost Prince confronts you"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Firnfuerst_Decided",
+          "text": {
+            "de": "Weich aus oder kämpfe",
+            "en": "Step aside or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Firnfuerst_Left"
+          ],
+          "stage": "s3a_abzug"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_abzug",
+      "text": {
+        "de": "Das Rudel zieht höher hinauf.",
+        "en": "The pack moves higher up."
+      },
+      "objectives": [
+        {
+          "id": "o_abzug",
+          "kind": "custom",
+          "target": "Rudel_Abzug",
+          "text": {
+            "de": "Sieh dem Rudel nach",
+            "en": "Watch the pack go"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Lawinen, Rudel, Eisgeweih.",
+        "en": "Avalanches, pack, ice antlers."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Firnfuerst",
+          "marker": "Wolfsgrat",
+          "text": {
+            "de": "Besiege den Firnfürsten",
+            "en": "Defeat the Frost Prince"
+          }
+        },
+        {
+          "id": "o_lawine",
+          "kind": "custom",
+          "target": "Lawine_Ablenken",
+          "count": 2,
+          "text": {
+            "de": "Lenk die Lawinen ab",
+            "en": "Divert the avalanches"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 40,
+    "items": [
+      "Ring_Firnzahn",
+      "Kodex_Firnfuerst"
+    ],
+    "effects": []
+  }
+}

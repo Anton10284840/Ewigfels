@@ -1,0 +1,126 @@
+{
+  "id": "N311",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Burgl",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M305"
+  ],
+  "title": {
+    "de": "Das große Schlittenrennen",
+    "en": "The Great Sledge Race"
+  },
+  "summary": {
+    "de": "Burgl Steinhauer pfeift zum Start. Gegen dich: sechs Dorfkinder, Lio und ein Käse als Preis.",
+    "en": "Burgl Steinhauer whistles for the start. Against you: six village kids, Lio, and a cheese as the prize."
+  },
+  "dialogues": [
+    "D_N311_Burgl",
+    "D_N311_Lio_Ziel"
+  ],
+  "stages": [
+    {
+      "id": "s1_start",
+      "text": {
+        "de": "Meld dich bei Burgl.",
+        "en": "Sign up with Burgl."
+      },
+      "objectives": [
+        {
+          "id": "o_burgl",
+          "kind": "dialogue",
+          "target": "D_N311_Burgl",
+          "marker": "NPC_Burgl",
+          "text": {
+            "de": "Sprich mit Burgl am Gasthof",
+            "en": "Talk to Burgl at the inn"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_rennen"
+        }
+      ]
+    },
+    {
+      "id": "s2_rennen",
+      "text": {
+        "de": "Das Rennen.",
+        "en": "The race."
+      },
+      "objectives": [
+        {
+          "id": "o_rennen",
+          "kind": "custom",
+          "target": "Schlittenrennen",
+          "marker": "Schlittenbahn",
+          "text": {
+            "de": "Fahr das Rennen vom Lärchensteig ins Dorf",
+            "en": "Race from the larch path down to the village"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_adler"
+        }
+      ]
+    },
+    {
+      "id": "s3_adler",
+      "text": {
+        "de": "Ein Zinnadler schnappt sich im Ziel den Siegerkäse.",
+        "en": "A pinnacle eagle snatches the winner's cheese at the finish."
+      },
+      "objectives": [
+        {
+          "id": "o_adler",
+          "kind": "reach",
+          "target": "Adlerhorst",
+          "marker": "Adlerhorst",
+          "text": {
+            "de": "Verfolg den Adler bis zum Horst",
+            "en": "Chase the eagle to its eyrie"
+          }
+        },
+        {
+          "id": "o_kaese",
+          "kind": "collect",
+          "target": "Siegerkaese",
+          "text": {
+            "de": "Hol den Käse zurück",
+            "en": "Get the cheese back"
+          }
+        },
+        {
+          "id": "o_lio",
+          "kind": "dialogue",
+          "target": "D_N311_Lio_Ziel",
+          "marker": "NPC_Lio",
+          "text": {
+            "de": "Bring Lio den Käse",
+            "en": "Bring Lio the cheese"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 0,
+    "items": [
+      "Rennschlitten",
+      "Bergkaese"
+    ],
+    "effects": []
+  }
+}

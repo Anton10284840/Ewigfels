@@ -1,0 +1,156 @@
+{
+  "id": "N305",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Nell",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M303"
+  ],
+  "title": {
+    "de": "Die Salzmutter",
+    "en": "The Salt Mother"
+  },
+  "summary": {
+    "de": "Die Salzmutter reißt Boote um. Nell sagt, so war sie nie. Ihr fehlt etwas.",
+    "en": "The Salt Mother is capsizing boats. Nell says she was never like this. Something is missing."
+  },
+  "dialogues": [
+    "D_N305_Nell",
+    "D_N305_Salzmutter"
+  ],
+  "stages": [
+    {
+      "id": "s1_nell",
+      "text": {
+        "de": "Nell hat den Hafen sperren lassen.",
+        "en": "Nell has had the harbour closed."
+      },
+      "objectives": [
+        {
+          "id": "o_nell",
+          "kind": "dialogue",
+          "target": "D_N305_Nell",
+          "marker": "NPC_Nell",
+          "text": {
+            "de": "Sprich mit Nell",
+            "en": "Talk to Nell"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_becken"
+        }
+      ]
+    },
+    {
+      "id": "s2_becken",
+      "text": {
+        "de": "Fahr hinaus ins Hafenbecken.",
+        "en": "Go out into the harbour basin."
+      },
+      "objectives": [
+        {
+          "id": "o_becken",
+          "kind": "reach",
+          "target": "Hafenbecken",
+          "marker": "Hafenbecken",
+          "text": {
+            "de": "Fahr zum Wrack hinaus",
+            "en": "Go out to the wreck"
+          }
+        },
+        {
+          "id": "o_salzmutter",
+          "kind": "dialogue",
+          "target": "D_N305_Salzmutter",
+          "text": {
+            "de": "Die Salzmutter taucht auf",
+            "en": "The Salt Mother surfaces"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Salzmutter_Decided",
+          "text": {
+            "de": "Schenk ihr die Glocke oder kämpfe",
+            "en": "Give her the bell or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Salzmutter_Calmed"
+          ],
+          "stage": "s3a_frieden"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_frieden",
+      "text": {
+        "de": "Sie nimmt die Glocke. Ganz vorsichtig.",
+        "en": "She takes the bell. Very carefully."
+      },
+      "objectives": [
+        {
+          "id": "o_frieden",
+          "kind": "custom",
+          "target": "Salzmutter_Glocke",
+          "text": {
+            "de": "Sieh zu, wie sie die Glocke in ihr Nest trägt",
+            "en": "Watch her carry the bell to her nest"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Bind die Tentakel, nutz die Hafenkräne.",
+        "en": "Bind the tentacles, use the harbour cranes."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Salzmutter",
+          "marker": "Hafenbecken",
+          "text": {
+            "de": "Besiege die Salzmutter",
+            "en": "Defeat the Salt Mother"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 50,
+    "items": [
+      "Ring_Salzkrone",
+      "Kodex_Salzmutter"
+    ],
+    "effects": [
+      "rep:Zuenfte+5"
+    ]
+  }
+}

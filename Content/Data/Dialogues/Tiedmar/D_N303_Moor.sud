@@ -1,0 +1,35 @@
+# N303 – Kapitän Jorgen Moor, Fluchsänger. Sitzt mit dem Rücken zur Tür, Wasser läuft aus seinem Mund. Erlösung nur mit seiner Glocke (Has_MoorBell).
+===
+[set SpeakerName.Moor "Kapitän Jorgen Moor"]
+===
+[event camera `wide`]
+Moor: Mach die Tür zu. Es zieht. Es zieht immer.
+[event camera `close`]
+Moor: Du bist die Akademie. Svea hat es mir gesagt. Laut. Sie sagt alles laut.
+Moor: Setz dich nicht. Die Stühle sind nass.
+  * Sie müssen aufhören zu singen.
+    Moor: Glaubst du, ich weiß das nicht? Jede Ebbe sehe ich sie gehen. Meine Nachbarn. Meine Tochter würde gehen, wenn sie nicht klüger wäre als ich.
+  * Was singen Sie da?
+    Moor: Das Heimkehrlied. Für meine Männer. Neunzehn Mann. Neunzehn Glocken. Ich läute sie, damit sie nach Hause finden. Sie finden nicht.
+[event emotion `sad`]
+Moor: Meine eigene Glocke fehlt. Die Schiffsglocke. Ohne sie ist das Lied falsch. Es ruft die Falschen.
+[if {flag.Has_MoorBell}]
+  * (Ihm die Glocke der Heringskönigin geben)
+    [event emotion `surprised`]
+    Moor: Das ist ... Die Delle. Da hat Hauke mit dem Anker draufgehauen, im ersten Jahr. Das ist sie.
+    Moor: Dreißig Jahre. Dreißig Jahre hab ich in den Schlick gesungen, und sie lag im Hafen.
+    [event emotion `soft`]
+    Moor: Einmal noch. Ein einziges Mal. Dann ist Ruhe.
+    [set flag.Moor_Redeemed true]
+    [set flag.Moor_Decided true]
+  * (Kämpfen)
+    Moor: Dann eben so. Die Flut kommt. Meine Männer kommen mit.
+    [set flag.Moor_Decided true]
+[else]
+  * (Kämpfen)
+    [event emotion `angry`]
+    Moor: Du willst mich zum Schweigen bringen? Das hat das Kollegium auch versucht. Die Flut kommt. Meine Männer kommen mit.
+    [set flag.Moor_Decided true]
+  * Ich hole Ihre Glocke.
+    Moor: Aus dem Hafen? Aus dem Nest der Alten? Dann geh. Ich sing so lange. Ich kann nicht anders.
+[endif]

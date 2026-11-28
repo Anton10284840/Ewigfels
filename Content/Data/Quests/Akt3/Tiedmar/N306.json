@@ -1,0 +1,70 @@
+{
+  "id": "N306",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Joost",
+  "duration_min": 20,
+  "auto_start": false,
+  "requires": [
+    "quest:M302"
+  ],
+  "title": {
+    "de": "Ein Knoten für jeden",
+    "en": "A Knot for Everyone"
+  },
+  "summary": {
+    "de": "Das Familiennetz der Vandermeers hat einen Knoten für jeden. Einer fehlt seit fünf Jahren.",
+    "en": "The Vandermeers' family net has a knot for each of them. One has been missing for five years."
+  },
+  "dialogues": [
+    "D_N306_Joost"
+  ],
+  "stages": [
+    {
+      "id": "s1_netz",
+      "text": {
+        "de": "Joost sitzt abends am Netz.",
+        "en": "Joost sits at the net in the evening."
+      },
+      "objectives": [
+        {
+          "id": "o_joost",
+          "kind": "dialogue",
+          "target": "D_N306_Joost",
+          "marker": "NPC_Joost",
+          "text": {
+            "de": "Setz dich zu Joost",
+            "en": "Sit with Joost"
+          }
+        },
+        {
+          "id": "o_knoten",
+          "kind": "custom",
+          "target": "Familienknoten",
+          "marker": "Haus_Vandermeer",
+          "text": {
+            "de": "Knüpf mit Joost und Lio den Knoten (Rhythmus)",
+            "en": "Tie the knot with Joost and Lio (rhythm)"
+          }
+        }
+      ],
+      "on_complete": [
+        "rel:Lio+5"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 150,
+    "gold": 0,
+    "items": [
+      "Armband_Netzknoten"
+    ],
+    "effects": []
+  }
+}

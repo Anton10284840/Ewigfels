@@ -1,0 +1,23 @@
+# N315 – Der Firnfürst, Alpha-Firnwolf mit Eisgeweih. Spricht nicht, Untertitel beschreiben. Wenn die Welpen zurück sind: stehen bleiben, er zieht ab.
+===
+[set SpeakerName.Firnfuerst "Firnfürst"]
+===
+[event camera `wide`]
+Firnfuerst: (Ein Wolf, so groß wie ein Pferd. Aus seiner Stirn wächst ein Geweih aus Eis. Sein Atem gefriert in der Luft.)
+Firnfuerst: (Er knurrt. Hinter ihm, auf dem Grat, zwanzig Augenpaare.)
+[event camera `close`]
+[if {flag.Cubs_Returned}]
+  * (Stehen bleiben. Nicht wegschauen. Die Hände offen.)
+    Firnfuerst: (Er kommt näher. Riecht an deiner Hand. Riecht die Welpen daran, die du getragen hast.)
+    Firnfuerst: (Das Knurren hört auf. Er dreht sich um und heult, einmal, lang. Das Rudel antwortet.)
+    Firnfuerst: (Sie ziehen den Grat hinauf. Höher. Weg von den Herden.)
+    [set flag.Firnfuerst_Left true]
+    [set flag.Firnfuerst_Decided true]
+  * (Kämpfen)
+    Firnfuerst: (Er senkt das Geweih. Über euch knackt der Schnee.)
+    [set flag.Firnfuerst_Decided true]
+[else]
+  * (Kämpfen)
+    Firnfuerst: (Er senkt das Geweih. Über euch knackt der Schnee.)
+    [set flag.Firnfuerst_Decided true]
+[endif]
