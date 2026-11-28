@@ -5,6 +5,8 @@
 // Content/ ist nicht im Git: dieser Code IST die Quelle der Effekte, die Assets sind reproduzierbar.
 
 #include "EwigfelsVfxBuilder.h"
+#include "EwigfelsVfxMaterials.h"
+#include "EditorAssetLibrary.h"
 
 #include "HAL/IConsoleManager.h"
 
@@ -176,6 +178,15 @@ namespace EwigfelsSpellVfx
 		return E;
 	}
 
+	/** Material aus /Game/VFX/Materials auf Renderer 0 legen; Funken-Material richtet die Sprites an der Flugrichtung aus. */
+	FName Mat(B& V, FName E, const TCHAR* Material)
+	{
+		const FString Path = EwigfelsVfxMaterials::Path(Material);
+		const bool bStretch = FCString::Strstr(Material, TEXT("Spark")) != nullptr;
+		V.Renderer(E, 0, FString::Printf(TEXT("{\"Material\":{\"refPath\":\"%s\"}%s}"), *Path, bStretch ? TEXT(",\"Alignment\":\"VelocityAligned\"") : TEXT("")));
+		return E;
+	}
+
 	const FString Smoke = B::Col(FLinearColor(0.05f, 0.045f, 0.04f, 0.45f));
 
 	// ---------------------------------------------------------------- Funkenstoß (Scintivox)
@@ -193,10 +204,10 @@ namespace EwigfelsSpellVfx
 			StandardUser(V, Core, Glow, Spark);
 			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
 			// Zittern addiert sich (Zufallsweg): kleine Schritte, damit der Blitz an Hand und Ziel bleibt
-			Beam(V, TEXT("Saum"), 12, 20.f, 0.16f, Hdr(TEXT("User.GlowColor"), 12.f, 0.45f), 12.f, 0.05f);
+			Mat(V, Beam(V, TEXT("Saum"), 12, 20.f, 0.16f, Hdr(TEXT("User.GlowColor"), 12.f, 0.45f), 12.f, 0.05f), TEXT("M_EwVfx_Trail"));
 			Beam(V, TEXT("Kern"), 18, 5.f, 0.16f, Hdr(TEXT("User.Color"), 60.f), 16.f, 0.04f);
-			Beam(V, TEXT("Ast"), 12, 1.8f, 0.10f, Hdr(TEXT("User.SparkColor"), 40.f), 30.f, 0.03f);
-			Flash(V, TEXT("Muendung"), 18.f, 0.07f, Hdr(TEXT("User.GlowColor"), 12.f, 0.8f));
+			Mat(V, Beam(V, TEXT("Ast"), 12, 1.8f, 0.10f, Hdr(TEXT("User.SparkColor"), 40.f), 30.f, 0.03f), TEXT("M_EwVfx_Bolt"));
+			Mat(V, Flash(V, TEXT("Muendung"), 18.f, 0.07f, Hdr(TEXT("User.GlowColor"), 12.f, 0.8f)), TEXT("M_EwVfx_Flare"));
 			bOk &= V.Finish();
 		}
 		{
@@ -206,9 +217,9 @@ namespace EwigfelsSpellVfx
 				return false;
 			}
 			StandardUser(V, Core, Glow, Spark);
-			Flash(V, TEXT("Blitz"), 90.f, 0.10f, Hdr(TEXT("User.GlowColor"), 25.f));
-			Sparks(V, TEXT("Funken"), 36, 350.f, 1100.f, 2.f, Hdr(TEXT("User.SparkColor"), 25.f));
-			Embers(V, TEXT("Glut"), 10, 6.f, Hdr(TEXT("User.SparkColor"), 8.f));
+			Mat(V, Flash(V, TEXT("Blitz"), 90.f, 0.10f, Hdr(TEXT("User.GlowColor"), 25.f)), TEXT("M_EwVfx_Burst"));
+			Mat(V, Sparks(V, TEXT("Funken"), 36, 350.f, 1100.f, 2.f, Hdr(TEXT("User.SparkColor"), 25.f)), TEXT("M_EwVfx_Spark"));
+			Mat(V, Embers(V, TEXT("Glut"), 10, 6.f, Hdr(TEXT("User.SparkColor"), 8.f)), TEXT("M_EwVfx_Glow"));
 			bOk &= V.Finish();
 		}
 		return bOk;
@@ -224,21 +235,21 @@ namespace EwigfelsSpellVfx
 			B V;
 			if (!V.Begin(TEXT("NS_frostweise"))) { return false; }
 			StandardUser(V, C, G, S);
-			Core(V, TEXT("Kern"), 26.f, Hdr(TEXT("User.Color"), 10.f));
-			Core(V, TEXT("Halo"), 70.f, Hdr(TEXT("User.GlowColor"), 2.5f, 0.35f));
-			Trail(V, TEXT("Spur"), 60.f, 14.f, 0.35f, Hdr(TEXT("User.GlowColor"), 4.f, 0.5f));
-			Stream(V, TEXT("Nebel"), 45.f, 18.f, 36.f, 0.5f, 0.9f, 10.f, 40.f, 20.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), 8.f);
-			Stream(V, TEXT("Kristalle"), 70.f, 1.2f, 3.f, 0.4f, 0.9f, 40.f, 160.f, -300.f, Hdr(TEXT("User.SparkColor"), 18.f), 10.f);
+			Mat(V, Core(V, TEXT("Kern"), 42.f, Hdr(TEXT("User.Color"), 12.f)), TEXT("M_EwVfx_Glow"));
+			Mat(V, Core(V, TEXT("Halo"), 110.f, Hdr(TEXT("User.GlowColor"), 3.f, 0.4f)), TEXT("M_EwVfx_Glow"));
+			Mat(V, Trail(V, TEXT("Spur"), 60.f, 14.f, 0.35f, Hdr(TEXT("User.GlowColor"), 4.f, 0.5f)), TEXT("M_EwVfx_Trail"));
+			Mat(V, Stream(V, TEXT("Nebel"), 45.f, 18.f, 36.f, 0.5f, 0.9f, 10.f, 40.f, 20.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), 8.f), TEXT("M_EwVfx_Cloud"));
+			Mat(V, Stream(V, TEXT("Kristalle"), 70.f, 1.2f, 3.f, 0.4f, 0.9f, 40.f, 160.f, -300.f, Hdr(TEXT("User.SparkColor"), 18.f), 10.f), TEXT("M_EwVfx_Glow"));
 			bOk &= V.Finish();
 		}
 		{
 			B V;
 			if (!V.Begin(TEXT("NS_frostweise_Impact"))) { return false; }
 			StandardUser(V, C, G, S);
-			Flash(V, TEXT("Blitz"), 110.f, 0.12f, Hdr(TEXT("User.GlowColor"), 14.f));
-			Sparks(V, TEXT("Splitter"), 46, 300.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 20.f));
-			Puff(V, TEXT("Frostwolke"), 14, 40.f, 80.f, 0.7f, 1.3f, 60.f, 160.f, 30.f, Hdr(TEXT("User.GlowColor"), 1.4f, 0.3f));
-			Embers(V, TEXT("Glitzer"), 24, 30.f, Hdr(TEXT("User.SparkColor"), 12.f));
+			Mat(V, Flash(V, TEXT("Blitz"), 110.f, 0.12f, Hdr(TEXT("User.GlowColor"), 14.f)), TEXT("M_EwVfx_Burst"));
+			Mat(V, Sparks(V, TEXT("Splitter"), 46, 300.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 20.f)), TEXT("M_EwVfx_Spark"));
+			Mat(V, Puff(V, TEXT("Frostwolke"), 14, 40.f, 80.f, 0.7f, 1.3f, 60.f, 160.f, 30.f, Hdr(TEXT("User.GlowColor"), 1.4f, 0.3f)), TEXT("M_EwVfx_Cloud"));
+			Mat(V, Embers(V, TEXT("Glitzer"), 24, 30.f, Hdr(TEXT("User.SparkColor"), 12.f)), TEXT("M_EwVfx_Glow"));
 			bOk &= V.Finish();
 		}
 		return bOk;
@@ -254,22 +265,22 @@ namespace EwigfelsSpellVfx
 			B V;
 			if (!V.Begin(TEXT("NS_glutweise"))) { return false; }
 			StandardUser(V, C, G, S);
-			Core(V, TEXT("Kern"), 30.f, Hdr(TEXT("User.Color"), 14.f));
-			Core(V, TEXT("Halo"), 80.f, Hdr(TEXT("User.GlowColor"), 3.f, 0.4f));
-			Stream(V, TEXT("Flammen"), 140.f, 10.f, 24.f, 0.2f, 0.45f, 20.f, 70.f, 180.f, Hdr(TEXT("User.Color"), 9.f, 0.7f), 9.f);
-			Stream(V, TEXT("Rauch"), 30.f, 20.f, 42.f, 0.7f, 1.4f, 10.f, 40.f, 90.f, Smoke, 10.f);
-			Stream(V, TEXT("Funken"), 40.f, 1.2f, 2.8f, 0.3f, 0.8f, 80.f, 260.f, -200.f, Hdr(TEXT("User.SparkColor"), 25.f), 8.f);
+			Mat(V, Core(V, TEXT("Kern"), 48.f, Hdr(TEXT("User.Color"), 16.f)), TEXT("M_EwVfx_Glow"));
+			Mat(V, Core(V, TEXT("Halo"), 130.f, Hdr(TEXT("User.GlowColor"), 4.f, 0.45f)), TEXT("M_EwVfx_Glow"));
+			Mat(V, Stream(V, TEXT("Flammen"), 140.f, 20.f, 42.f, 0.2f, 0.45f, 20.f, 70.f, 180.f, Hdr(TEXT("User.Color"), 9.f, 0.7f), 9.f), TEXT("M_EwVfx_Fire"));
+			Mat(V, Stream(V, TEXT("Rauch"), 30.f, 20.f, 42.f, 0.7f, 1.4f, 10.f, 40.f, 90.f, Smoke, 10.f), TEXT("M_EwVfx_Smoke"));
+			Mat(V, Stream(V, TEXT("Funken"), 40.f, 1.2f, 2.8f, 0.3f, 0.8f, 80.f, 260.f, -200.f, Hdr(TEXT("User.SparkColor"), 25.f), 8.f), TEXT("M_EwVfx_Spark"));
 			bOk &= V.Finish();
 		}
 		{
 			B V;
 			if (!V.Begin(TEXT("NS_glutweise_Impact"))) { return false; }
 			StandardUser(V, C, G, S);
-			Flash(V, TEXT("Blitz"), 140.f, 0.14f, Hdr(TEXT("User.Color"), 16.f));
-			Puff(V, TEXT("Flammenstoss"), 22, 30.f, 60.f, 0.25f, 0.55f, 150.f, 420.f, 150.f, Hdr(TEXT("User.Color"), 8.f, 0.7f));
-			Puff(V, TEXT("Rauch"), 12, 50.f, 100.f, 1.0f, 2.0f, 40.f, 140.f, 60.f, Smoke);
-			Sparks(V, TEXT("Funken"), 50, 250.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 25.f));
-			Embers(V, TEXT("Glut"), 22, 25.f, Hdr(TEXT("User.SparkColor"), 12.f));
+			Mat(V, Flash(V, TEXT("Blitz"), 140.f, 0.14f, Hdr(TEXT("User.Color"), 16.f)), TEXT("M_EwVfx_Burst"));
+			Mat(V, Puff(V, TEXT("Flammenstoss"), 22, 30.f, 60.f, 0.25f, 0.55f, 150.f, 420.f, 150.f, Hdr(TEXT("User.Color"), 8.f, 0.7f)), TEXT("M_EwVfx_Fire"));
+			Mat(V, Puff(V, TEXT("Rauch"), 12, 50.f, 100.f, 1.0f, 2.0f, 40.f, 140.f, 60.f, Smoke), TEXT("M_EwVfx_Smoke"));
+			Mat(V, Sparks(V, TEXT("Funken"), 50, 250.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 25.f)), TEXT("M_EwVfx_Spark"));
+			Mat(V, Embers(V, TEXT("Glut"), 22, 25.f, Hdr(TEXT("User.SparkColor"), 12.f)), TEXT("M_EwVfx_Glow"));
 			bOk &= V.Finish();
 		}
 		return bOk;
@@ -286,21 +297,21 @@ namespace EwigfelsSpellVfx
 			if (!V.Begin(TEXT("NS_sturmweise"))) { return false; }
 			StandardUser(V, C, G, S);
 			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
-			Beam(V, TEXT("Saum"), 14, 34.f, 0.2f, Hdr(TEXT("User.GlowColor"), 14.f, 0.5f), 16.f, 0.05f);
+			Mat(V, Beam(V, TEXT("Saum"), 14, 34.f, 0.2f, Hdr(TEXT("User.GlowColor"), 14.f, 0.5f), 16.f, 0.05f), TEXT("M_EwVfx_Trail"));
 			Beam(V, TEXT("Kern"), 20, 8.f, 0.2f, Hdr(TEXT("User.Color"), 70.f), 22.f, 0.04f);
 			Beam(V, TEXT("Kern2"), 16, 4.f, 0.14f, Hdr(TEXT("User.Color"), 50.f), 28.f, 0.035f);
-			Beam(V, TEXT("Ast1"), 12, 2.f, 0.12f, Hdr(TEXT("User.SparkColor"), 40.f), 40.f, 0.03f);
-			Beam(V, TEXT("Ast2"), 10, 1.6f, 0.1f, Hdr(TEXT("User.SparkColor"), 40.f), 50.f, 0.03f);
-			Flash(V, TEXT("Muendung"), 26.f, 0.08f, Hdr(TEXT("User.GlowColor"), 14.f, 0.8f));
+			Mat(V, Beam(V, TEXT("Ast1"), 12, 2.f, 0.12f, Hdr(TEXT("User.SparkColor"), 40.f), 40.f, 0.03f), TEXT("M_EwVfx_Bolt"));
+			Mat(V, Beam(V, TEXT("Ast2"), 10, 1.6f, 0.1f, Hdr(TEXT("User.SparkColor"), 40.f), 50.f, 0.03f), TEXT("M_EwVfx_Bolt"));
+			Mat(V, Flash(V, TEXT("Muendung"), 26.f, 0.08f, Hdr(TEXT("User.GlowColor"), 14.f, 0.8f)), TEXT("M_EwVfx_Flare"));
 			bOk &= V.Finish();
 		}
 		{
 			B V;
 			if (!V.Begin(TEXT("NS_sturmweise_Impact"))) { return false; }
 			StandardUser(V, C, G, S);
-			Flash(V, TEXT("Blitz"), 130.f, 0.12f, Hdr(TEXT("User.GlowColor"), 25.f));
-			Sparks(V, TEXT("Funken"), 60, 400.f, 1300.f, 2.f, Hdr(TEXT("User.SparkColor"), 30.f));
-			Embers(V, TEXT("Knistern"), 30, 40.f, Hdr(TEXT("User.Color"), 20.f));
+			Mat(V, Flash(V, TEXT("Blitz"), 130.f, 0.12f, Hdr(TEXT("User.GlowColor"), 25.f)), TEXT("M_EwVfx_Burst"));
+			Mat(V, Sparks(V, TEXT("Funken"), 60, 400.f, 1300.f, 2.f, Hdr(TEXT("User.SparkColor"), 30.f)), TEXT("M_EwVfx_Spark"));
+			Mat(V, Embers(V, TEXT("Knistern"), 30, 40.f, Hdr(TEXT("User.Color"), 20.f)), TEXT("M_EwVfx_Glow"));
 			bOk &= V.Finish();
 		}
 		return bOk;
@@ -312,6 +323,11 @@ namespace EwigfelsSpellVfx
 		const FEntry All[] = {
 			{ TEXT("funkenstoss"), &Funkenstoss }, { TEXT("frostweise"), &Frostweise },
 			{ TEXT("glutweise"), &Glutweise }, { TEXT("sturmweise"), &Sturmweise } };
+		// Materialien zuerst, wenn eins fehlt (sonst gezielt: Ewigfels.VFX.Materialien)
+		if (!UEditorAssetLibrary::DoesAssetExist(TEXT("/Game/VFX/Materials/M_EwVfx_GlowCloud")) || Ids.Contains(TEXT("materialien")))
+		{
+			EwigfelsVfxMaterials::BuildAll();
+		}
 		int32 Built = 0;
 		for (const FEntry& Entry : All)
 		{
@@ -324,6 +340,10 @@ namespace EwigfelsSpellVfx
 		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] fertig, %d Weise(n)"), Built);
 		return Built;
 	}
+
+	FAutoConsoleCommand GMaterials(TEXT("Ewigfels.VFX.Materialien"),
+		TEXT("Effekt-Materialien /Game/VFX/Materials/M_EwVfx_* neu bauen"),
+		FConsoleCommandDelegate::CreateLambda([]() { EwigfelsVfxMaterials::BuildAll(); }));
 
 	FAutoConsoleCommand GBuild(TEXT("Ewigfels.VFX.Erstellen"),
 		TEXT("Zauber-Effekte bauen: Ewigfels.VFX.Erstellen [id ...] (ohne id: alle) -> /Game/VFX/Spells/NS_<id>"),
