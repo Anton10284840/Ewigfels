@@ -1,0 +1,626 @@
+{
+  "_doc": "Kampfweisen, Gruppe 2 (12 Weisen aus dem Kern-Katalog, nur mit vorhandenen Bausteinen). Format: docs/SPELL_FORMAT.md.",
+  "spells": [
+    {
+      "id": "splitterchor",
+      "catalog_id": "K03",
+      "name": {
+        "de": "Splitterchor",
+        "en": "Shard Choir"
+      },
+      "incantation": "Vitrichorus",
+      "school": "Schlag",
+      "chord": [
+        "Grund",
+        "Firn",
+        "Strom"
+      ],
+      "unlock": "akt1",
+      "cost": 20,
+      "cooldown": 5.0,
+      "cast_time": 0.2,
+      "recovery": 0.35,
+      "hands": "one",
+      "_doc": "Fächer aus Quarzsplittern nach vorn: auf kurze Distanz stark, zerschneidet gefrorene Ziele (×2).",
+      "delivery": {
+        "type": "cone",
+        "range": 900,
+        "angle": 50
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 24,
+          "element": "Grund",
+          "bonus": {
+            "if_status": "frozen",
+            "mult": 2.0,
+            "consume": true
+          }
+        },
+        {
+          "type": "knockback",
+          "amount": 260,
+          "up": 60
+        }
+      ],
+      "vfx": {
+        "color": "#E7A8FF",
+        "scale": 0.9
+      },
+      "anim": {
+        "gesture": "rub"
+      },
+      "description": {
+        "de": "Fächer aus Quarzsplittern nach vorn: auf kurze Distanz stark, zerschneidet gefrorene Ziele (×2)."
+      }
+    },
+    {
+      "id": "bassbrecher",
+      "catalog_id": "K10",
+      "name": {
+        "de": "Bassbrecher",
+        "en": "Bass Breaker"
+      },
+      "incantation": "Gravisonus",
+      "school": "Schlag",
+      "chord": [
+        "Grund",
+        "Grund",
+        "Grund"
+      ],
+      "unlock": "akt1",
+      "cost": 35,
+      "cooldown": 12.0,
+      "cast_time": 0.45,
+      "recovery": 0.45,
+      "hands": "two",
+      "_doc": "Stampfen: Bodenwelle rundum, wirft alle Gegner hoch in die Luft. Danach Funkenstoß in der Luft = Jonglieren.",
+      "delivery": {
+        "type": "area",
+        "radius": 480
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 22,
+          "element": "Grund"
+        },
+        {
+          "type": "knockback",
+          "amount": 180,
+          "up": 820
+        }
+      ],
+      "vfx": {
+        "color": "#C9863E",
+        "scale": 1.1
+      },
+      "anim": {
+        "gesture": "slam"
+      },
+      "description": {
+        "de": "Stampfen: Bodenwelle rundum, wirft alle Gegner hoch in die Luft. Danach Funkenstoß in der Luft = Jonglieren."
+      }
+    },
+    {
+      "id": "wirbelschlag",
+      "catalog_id": "K11",
+      "name": {
+        "de": "Wirbelschlag",
+        "en": "Whirl Strike"
+      },
+      "incantation": "Rotasonus",
+      "school": "Schlag",
+      "chord": [
+        "Strom",
+        "Strom",
+        "Grund"
+      ],
+      "unlock": "akt1",
+      "cost": 25,
+      "cooldown": 8.0,
+      "cast_time": 0.2,
+      "recovery": 0.4,
+      "hands": "two",
+      "_doc": "Rundumschlag: stößt alle Umzingelnden weit weg. Rettung, wenn man umstellt ist.",
+      "delivery": {
+        "type": "area",
+        "radius": 420
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 14,
+          "element": "Hall"
+        },
+        {
+          "type": "knockback",
+          "amount": 1300,
+          "up": 180
+        }
+      ],
+      "vfx": {
+        "color": "#F2F4FF",
+        "scale": 1.0
+      },
+      "anim": {
+        "gesture": "rub"
+      },
+      "description": {
+        "de": "Rundumschlag: stößt alle Umzingelnden weit weg. Rettung, wenn man umstellt ist."
+      }
+    },
+    {
+      "id": "wiegenlied",
+      "catalog_id": "K16",
+      "name": {
+        "de": "Wiegenlied",
+        "en": "Lullaby"
+      },
+      "incantation": "Somnicantus",
+      "school": "Schutz",
+      "chord": [
+        "Quell",
+        "Firn",
+        "Wachs"
+      ],
+      "unlock": "akt1",
+      "cost": 30,
+      "cooldown": 15.0,
+      "cast_time": 0.5,
+      "recovery": 0.4,
+      "hands": "one",
+      "_doc": "Sanfte Klangwolke nach vorn: Gegner schlafen 8 s ein. Ein Treffer weckt sie, der erste Treffer zählt dreifach.",
+      "delivery": {
+        "type": "cone",
+        "range": 1100,
+        "angle": 45
+      },
+      "effects": [
+        {
+          "type": "status",
+          "status": "asleep",
+          "duration": 8.0
+        }
+      ],
+      "vfx": {
+        "color": "#B9A6FF",
+        "glow_color": "#E6DCFF",
+        "scale": 1.0
+      },
+      "anim": {
+        "gesture": "lift"
+      },
+      "description": {
+        "de": "Sanfte Klangwolke nach vorn: Gegner schlafen 8 s ein. Ein Treffer weckt sie, der erste Treffer zählt dreifach."
+      }
+    },
+    {
+      "id": "atemwende",
+      "catalog_id": "K18",
+      "name": {
+        "de": "Atemwende",
+        "en": "Breath Turn"
+      },
+      "incantation": "Respiravita",
+      "school": "Schutz",
+      "chord": [
+        "Quell",
+        "Quell",
+        "Wachs"
+      ],
+      "unlock": "akt1",
+      "cost": 0,
+      "cooldown": 20.0,
+      "cast_time": 0.6,
+      "recovery": 0.3,
+      "hands": "one",
+      "_doc": "Hand auf die Brust, tief durchatmen: heilt 35 Leben und füllt 50 Atem.",
+      "delivery": {
+        "type": "self"
+      },
+      "effects": [
+        {
+          "type": "heal",
+          "amount": 35
+        },
+        {
+          "type": "restore_atem",
+          "amount": 50
+        }
+      ],
+      "vfx": {
+        "color": "#7FE0B0",
+        "scale": 1.0
+      },
+      "anim": {
+        "gesture": "clap"
+      },
+      "description": {
+        "de": "Hand auf die Brust, tief durchatmen: heilt 35 Leben und füllt 50 Atem."
+      }
+    },
+    {
+      "id": "windstoss",
+      "catalog_id": "K27",
+      "name": {
+        "de": "Windstoß",
+        "en": "Gust"
+      },
+      "incantation": "Ventiflatus",
+      "school": "Elementar",
+      "chord": [
+        "Strom",
+        "Strom",
+        "Quell"
+      ],
+      "unlock": "akt1",
+      "cost": 15,
+      "cooldown": 4.0,
+      "cast_time": 0.15,
+      "recovery": 0.3,
+      "hands": "one",
+      "_doc": "Kräftige Böe nach vorn: schiebt Gegner weit weg, löscht Brennen, bläst Nebel fort.",
+      "delivery": {
+        "type": "cone",
+        "range": 1200,
+        "angle": 55
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 5,
+          "element": "Hall"
+        },
+        {
+          "type": "knockback",
+          "amount": 1500,
+          "up": 120
+        }
+      ],
+      "vfx": {
+        "color": "#DDF6FF",
+        "scale": 1.0
+      },
+      "anim": {
+        "gesture": "stiff"
+      },
+      "description": {
+        "de": "Kräftige Böe nach vorn: schiebt Gegner weit weg, löscht Brennen, bläst Nebel fort."
+      }
+    },
+    {
+      "id": "flutweise",
+      "catalog_id": "K29",
+      "name": {
+        "de": "Flutweise",
+        "en": "Flood Air"
+      },
+      "incantation": "Undasonus",
+      "school": "Elementar",
+      "chord": [
+        "Quell",
+        "Quell",
+        "Strom"
+      ],
+      "unlock": "akt1",
+      "cost": 18,
+      "cooldown": 5.0,
+      "cast_time": 0.25,
+      "recovery": 0.3,
+      "hands": "two",
+      "_doc": "Wasserschwall: macht nass (löscht Brennen). Nasse Ziele: Sturmweise doppelt, Frostweise friert sofort.",
+      "delivery": {
+        "type": "cone",
+        "range": 1000,
+        "angle": 40
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 8,
+          "element": "Quell"
+        },
+        {
+          "type": "status",
+          "status": "wet",
+          "duration": 8.0
+        },
+        {
+          "type": "knockback",
+          "amount": 520,
+          "up": 60
+        }
+      ],
+      "vfx": {
+        "color": "#2FB8FF",
+        "glow_color": "#9BE7FF",
+        "scale": 1.0
+      },
+      "anim": {
+        "gesture": "punch"
+      },
+      "description": {
+        "de": "Wasserschwall: macht nass (löscht Brennen). Nasse Ziele: Sturmweise doppelt, Frostweise friert sofort."
+      }
+    },
+    {
+      "id": "hagelchor",
+      "catalog_id": "K35",
+      "name": {
+        "de": "Hagelchor",
+        "en": "Hail Choir"
+      },
+      "incantation": "Grandicantus",
+      "school": "Elementar",
+      "chord": [
+        "Firn",
+        "Firn",
+        "Grund"
+      ],
+      "unlock": "akt1",
+      "cost": 28,
+      "cooldown": 10.0,
+      "cast_time": 0.4,
+      "recovery": 0.35,
+      "hands": "two",
+      "_doc": "Hagelkugel, die über dem Ziel zerplatzt: Hagel auf die Fläche, alle werden unterkühlt (3× = gefroren).",
+      "delivery": {
+        "type": "projectile",
+        "speed": 2200,
+        "radius": 28,
+        "range": 3200,
+        "gravity": 0.35,
+        "explode_radius": 360
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 16,
+          "element": "Firn"
+        },
+        {
+          "type": "status",
+          "status": "chilled",
+          "duration": 3.0
+        }
+      ],
+      "vfx": {
+        "color": "#BFE9FF",
+        "scale": 0.9
+      },
+      "anim": {
+        "gesture": "flick"
+      },
+      "description": {
+        "de": "Hagelkugel, die über dem Ziel zerplatzt: Hagel auf die Fläche, alle werden unterkühlt (3× = gefroren)."
+      }
+    },
+    {
+      "id": "donnerkeil",
+      "catalog_id": "K36",
+      "name": {
+        "de": "Donnerkeil",
+        "en": "Thunderbolt"
+      },
+      "incantation": "Fulminor",
+      "school": "Elementar",
+      "chord": [
+        "Strom",
+        "Strom",
+        "Firn"
+      ],
+      "unlock": "akt1",
+      "cost": 40,
+      "cooldown": 18.0,
+      "cast_time": 0.7,
+      "recovery": 0.5,
+      "hands": "one",
+      "_doc": "Aufgeladener Blitzeinschlag: großer Schaden und Betäubung in der Fläche, nasse Ziele doppelt.",
+      "delivery": {
+        "type": "projectile",
+        "speed": 6000,
+        "radius": 30,
+        "range": 3000,
+        "homing": 0.5,
+        "explode_radius": 420
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 45,
+          "element": "Strom",
+          "bonus": {
+            "if_status": "wet",
+            "mult": 2.0,
+            "consume": true
+          }
+        },
+        {
+          "type": "status",
+          "status": "stunned",
+          "duration": 1.5
+        },
+        {
+          "type": "knockback",
+          "amount": 300,
+          "up": 300
+        }
+      ],
+      "vfx": {
+        "color": "#FFF2A0",
+        "glow_color": "#B8C8FF",
+        "scale": 1.3
+      },
+      "anim": {
+        "gesture": "punch"
+      },
+      "description": {
+        "de": "Aufgeladener Blitzeinschlag: großer Schaden und Betäubung in der Fläche, nasse Ziele doppelt."
+      }
+    },
+    {
+      "id": "wirbelflut",
+      "catalog_id": "K37",
+      "name": {
+        "de": "Wirbelflut",
+        "en": "Whirlpool"
+      },
+      "incantation": "Vorticunda",
+      "school": "Elementar",
+      "chord": [
+        "Quell",
+        "Strom",
+        "Grund"
+      ],
+      "unlock": "akt1",
+      "cost": 30,
+      "cooldown": 14.0,
+      "cast_time": 0.45,
+      "recovery": 0.4,
+      "hands": "two",
+      "_doc": "Strudel um dich: zieht alle Gegner zu dir heran und macht sie nass. Danach Paukenschlag oder Sturmweise.",
+      "delivery": {
+        "type": "area",
+        "radius": 800
+      },
+      "effects": [
+        {
+          "type": "pull",
+          "amount": 1200,
+          "up": 80
+        },
+        {
+          "type": "status",
+          "status": "wet",
+          "duration": 8.0
+        }
+      ],
+      "vfx": {
+        "color": "#2AD1E0",
+        "scale": 1.2
+      },
+      "anim": {
+        "gesture": "grab"
+      },
+      "description": {
+        "de": "Strudel um dich: zieht alle Gegner zu dir heran und macht sie nass. Danach Paukenschlag oder Sturmweise."
+      }
+    },
+    {
+      "id": "felsfaust",
+      "catalog_id": "K38",
+      "name": {
+        "de": "Felsfaust",
+        "en": "Rock Fist"
+      },
+      "incantation": "Petrimanus",
+      "school": "Elementar",
+      "chord": [
+        "Grund",
+        "Glut",
+        "Wachs"
+      ],
+      "unlock": "akt1",
+      "cost": 30,
+      "cooldown": 9.0,
+      "cast_time": 0.55,
+      "recovery": 0.45,
+      "hands": "two",
+      "_doc": "Reißt einen Felsbrocken aus dem Boden und schleudert ihn: wuchtiger Treffer, wirft um.",
+      "delivery": {
+        "type": "projectile",
+        "speed": 2600,
+        "radius": 45,
+        "range": 3000,
+        "gravity": 0.25,
+        "homing": 0.3,
+        "explode_radius": 220
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "element": "Grund",
+          "bonus": {
+            "if_status": "frozen",
+            "mult": 2.0,
+            "consume": true
+          }
+        },
+        {
+          "type": "knockback",
+          "amount": 1100,
+          "up": 350
+        }
+      ],
+      "vfx": {
+        "color": "#A67A4F",
+        "scale": 1.4
+      },
+      "anim": {
+        "gesture": "grab"
+      },
+      "description": {
+        "de": "Reißt einen Felsbrocken aus dem Boden und schleudert ihn: wuchtiger Treffer, wirft um."
+      }
+    },
+    {
+      "id": "glutpeitsche",
+      "catalog_id": "K34",
+      "name": {
+        "de": "Glutpeitsche",
+        "en": "Ember Lash"
+      },
+      "incantation": "Flammiflexus",
+      "school": "Elementar",
+      "chord": [
+        "Glut",
+        "Strom",
+        "Wachs"
+      ],
+      "unlock": "akt1",
+      "cost": 22,
+      "cooldown": 7.0,
+      "cast_time": 0.2,
+      "recovery": 0.3,
+      "hands": "one",
+      "_doc": "Feuerpeitsche: schnalzt nach vorn, holt das Ziel heran und setzt es in Brand.",
+      "delivery": {
+        "type": "beam",
+        "radius": 30,
+        "range": 1800
+      },
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 14,
+          "element": "Glut"
+        },
+        {
+          "type": "status",
+          "status": "burning",
+          "duration": 4.0
+        },
+        {
+          "type": "pull",
+          "amount": 1100,
+          "up": 200
+        }
+      ],
+      "vfx": {
+        "color": "#FF6A20",
+        "glow_color": "#FFC060",
+        "scale": 0.9,
+        "beam_style": "tether"
+      },
+      "anim": {
+        "gesture": "twitch"
+      },
+      "description": {
+        "de": "Feuerpeitsche: schnalzt nach vorn, holt das Ziel heran und setzt es in Brand."
+      }
+    }
+  ]
+}

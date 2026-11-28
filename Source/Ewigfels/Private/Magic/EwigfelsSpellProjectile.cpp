@@ -152,7 +152,8 @@ void AEwigfelsSpellProjectile::ApplyVisuals()
 	const FLinearColor Color = Spell->Visual.Color;
 	Light->SetLightColor(Color);
 
-	Trail = EwigfelsSpellVisuals::SpawnNiagaraAttached(Collision, Spell->Visual.Niagara, Color, Spell->Visual.Scale);
+	Trail = EwigfelsSpellVisuals::SpawnNiagaraAttached(Collision, Spell->Visual.Niagara, Color, Spell->Visual.Scale,
+		Spell->Visual.GlowColor, Spell->Visual.SparkColor);
 	if (Trail)
 	{
 		Core->SetVisibility(false);

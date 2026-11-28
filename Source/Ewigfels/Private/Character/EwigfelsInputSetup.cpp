@@ -63,6 +63,9 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	S->Spell6       = MakeAction(S, TEXT("IA_Spell6"), EInputActionValueType::Boolean);
 	S->Spell7       = MakeAction(S, TEXT("IA_Spell7"), EInputActionValueType::Boolean);
 	S->Spell8       = MakeAction(S, TEXT("IA_Spell8"), EInputActionValueType::Boolean);
+	S->SpellWheel   = MakeAction(S, TEXT("IA_SpellWheel"), EInputActionValueType::Boolean);
+	S->CastSelected = MakeAction(S, TEXT("IA_CastSelected"), EInputActionValueType::Boolean);
+	S->Spellbook    = MakeAction(S, TEXT("IA_Spellbook"), EInputActionValueType::Boolean);
 	S->LockOn       = MakeAction(S, TEXT("IA_LockOn"), EInputActionValueType::Boolean);
 	S->SwitchTarget = MakeAction(S, TEXT("IA_SwitchTarget"), EInputActionValueType::Axis1D);
 	S->Interact     = MakeAction(S, TEXT("IA_Interact"), EInputActionValueType::Boolean);
@@ -92,27 +95,47 @@ UEwigfelsInputSetup* UEwigfelsInputSetup::Create(UObject* Outer)
 	C->MapKey(S->Spell2, EKeys::Two);
 	C->MapKey(S->Spell3, EKeys::Three);
 	C->MapKey(S->Spell4, EKeys::Four);
-	// 5–8 nur Tastatur; am Gamepad kommt später das Zauberrad
+	// 5–6 direkt nur Tastatur; am Controller über das Zauberrad (Spell7/8 bleiben unbelegt, Zauberrad hat 6 Plätze)
 	C->MapKey(S->Spell5, EKeys::Five);
 	C->MapKey(S->Spell6, EKeys::Six);
-	C->MapKey(S->Spell7, EKeys::Seven);
-	C->MapKey(S->Spell8, EKeys::Eight);
 	C->MapKey(S->Spell1, EKeys::Gamepad_DPad_Up);
 	C->MapKey(S->Spell2, EKeys::Gamepad_DPad_Right);
 	C->MapKey(S->Spell3, EKeys::Gamepad_DPad_Down);
 	C->MapKey(S->Spell4, EKeys::Gamepad_DPad_Left);
+	C->MapKey(S->SpellWheel, EKeys::Q);
+	C->MapKey(S->SpellWheel, EKeys::Gamepad_RightShoulder);
+	C->MapKey(S->CastSelected, EKeys::F);
+	C->MapKey(S->CastSelected, EKeys::Gamepad_FaceButton_Top);
+	C->MapKey(S->Spellbook, EKeys::B);
+	C->MapKey(S->Spellbook, EKeys::Gamepad_Special_Right);
 
 	// Ziel, Interaktion
 	C->MapKey(S->LockOn, EKeys::MiddleMouseButton);
 	C->MapKey(S->LockOn, EKeys::Tab);
 	C->MapKey(S->LockOn, EKeys::Gamepad_RightThumbstick);
 	C->MapKey(S->SwitchTarget, EKeys::MouseWheelAxis);
-	FEnhancedActionKeyMapping& SwitchLeft = C->MapKey(S->SwitchTarget, EKeys::Gamepad_LeftShoulder);
-	SwitchLeft.Modifiers.Add(NewObject<UInputModifierNegate>(C));
-	C->MapKey(S->SwitchTarget, EKeys::Gamepad_RightShoulder);
+	C->MapKey(S->SwitchTarget, EKeys::Gamepad_LeftShoulder); // RB gehört dem Zauberrad
 	C->MapKey(S->Interact, EKeys::E);
 	C->MapKey(S->Interact, EKeys::Gamepad_FaceButton_Left);
 	C->MapKey(S->ToggleHelp, EKeys::F1);
+
+	// Zusammenspiel mit dem Game Animation Sample (IMC_Sandbox, niedrigere Priorität):
+	// Bewegung/Kamera/Springen/Sprinten durchreichen, damit dessen Blueprint die Figur weiter bewegt.
+	// Alle übrigen Tasten verschlucken unsere Aktionen (Standard bConsumeInput), so lösen RB „Gehen“,
+	// Y „Interagieren“, LMB/RT „Takedown“, C/B „Ducken“, X/R „Ragdoll“ usw. dort nichts mehr aus.
+	for (UInputAction* PassThrough : { S->Move.Get(), S->Look.Get(), S->LookStick.Get(), S->Jump.Get(), S->Sprint.Get() })
+	{
+		PassThrough->bConsumeInput = false;
+	}
+	S->Swallow = MakeAction(S, TEXT("IA_Swallow"), EInputActionValueType::Boolean);
+	C->MapKey(S->Swallow, EKeys::R); // Sample: Ragdoll
 	C->MapKey(S->ToggleHelp, EKeys::Gamepad_Special_Left);
+
+	// Das Sample sprintet am Controller nur mit LB (bei uns: Ziel wechseln, wird geschluckt). Damit L3 dort weiter
+	// sprintet, legen wir dessen eigene Sprint-Aktion zusätzlich auf L3 (fehlt das Sample, passiert nichts).
+	if (UInputAction* SampleSprint = LoadObject<UInputAction>(nullptr, TEXT("/Game/Input/IA_Sprint.IA_Sprint"), nullptr, LOAD_NoWarn | LOAD_Quiet))
+	{
+		C->MapKey(SampleSprint, EKeys::Gamepad_LeftThumbstick);
+	}
 	return S;
 }

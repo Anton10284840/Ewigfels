@@ -534,7 +534,7 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 	UEwigfelsCreatorSubsystem* Cr = C();
 	const bool bCreation = Cr && Cr->IsCreation();
 	const bool bGuided = Cr && Cr->IsGuided();
-	const FLinearColor Soft(0.62f, 0.55f, 0.95f);
+	const FLinearColor PillSoft(0.62f, 0.55f, 0.95f);
 
 	TSharedRef<SHorizontalBox> Buttons = SNew(SHorizontalBox);
 	if (bCreation)
@@ -546,7 +546,7 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 	}
 	Buttons->AddSlot().AutoWidth().Padding(0.f, 0.f, 8.f, 0.f)
 	[
-		MakePill(LOCTEXT("Undo", "Rückgängig"), LOCTEXT("PadX", "X"), Soft, [this]() { if (C()) { C()->Undo(); } },
+		MakePill(LOCTEXT("Undo", "Rückgängig"), LOCTEXT("PadX", "X"), PillSoft, [this]() { if (C()) { C()->Undo(); } },
 			[this]() { return C() && C()->CanUndo(); })
 	];
 	Buttons->AddSlot().FillWidth(1.f)[SNullWidget::NullWidget];
@@ -554,7 +554,7 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 	{
 		Buttons->AddSlot().AutoWidth().Padding(8.f, 0.f, 0.f, 0.f)
 		[
-			MakePill(LOCTEXT("Back", "‹ Zurück"), LOCTEXT("PadB", "B"), Soft, [this]() { StepTab(-1); },
+			MakePill(LOCTEXT("Back", "‹ Zurück"), LOCTEXT("PadB", "B"), PillSoft, [this]() { StepTab(-1); },
 				[this]() { return C() && !C()->IsFirstTab(); })
 		];
 	}
@@ -562,7 +562,7 @@ TSharedRef<SWidget> SEwigfelsCreatorWidget::MakeBottomBar()
 	{
 		Buttons->AddSlot().AutoWidth().Padding(8.f, 0.f, 0.f, 0.f)
 		[
-			MakePill(LOCTEXT("Cancel", "Abbrechen"), LOCTEXT("PadB", "B"), Soft, [this]() { if (C()) { C()->Cancel(); } })
+			MakePill(LOCTEXT("Cancel", "Abbrechen"), LOCTEXT("PadB", "B"), PillSoft, [this]() { if (C()) { C()->Cancel(); } })
 		];
 	}
 	// Hauptknopf: Weiter (geführt, nicht letzter Schritt), sonst Fertig / Übernehmen

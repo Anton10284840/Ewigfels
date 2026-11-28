@@ -17,6 +17,7 @@ class UEwigfelsLockOnComponent;
 class UEwigfelsPlaceholderBody;
 class UEwigfelsDialogueCameraComponent;
 class UEwigfelsAppearanceComponent;
+class UEwigfelsSpellbookComponent;
 class UEwigfelsInputSetup;
 class UEwigfelsCharacterMovementComponent;
 class UAnimMontage;
@@ -70,6 +71,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
 	UEwigfelsAppearanceComponent* GetAppearance() const { return Appearance; }
 
+	/** Zauberbuch (6 Weisen fürs Zauberrad wählen). */
+	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
+	UEwigfelsSpellbookComponent* GetSpellbook() const { return Spellbook; }
+
 	/** Strafen statt in Laufrichtung drehen (Lock-On, Zaubern, Schild). Für das AnimBP. */
 	UFUNCTION(BlueprintPure, Category = "Ewigfels|Character")
 	bool IsStrafing() const { return bStrafing; }
@@ -92,8 +97,39 @@ public:
 
 	bool IsHelpVisible() const { return bShowHelp; }
 
+	// --- Zauberrad und Eingabegerät (nur lokal, fürs HUD) ---
+
+	/** Zauberrad gerade offen (RB / Q gehalten). */
+	bool IsSpellWheelOpen() const { return bWheelOpen; }
+
+	/** Platz 1–6 unter Stick/Maus, 0 = Mitte (nichts gewählt). */
+	int32 GetWheelHover() const { return WheelHover; }
+
+	/** Richtung des Rad-Zeigers (Länge 0–1), fürs Zeichnen. */
+	FVector2D GetWheelPointer() const { return WheelPointer; }
+
+	/** Gewählte Weise (Platz 1–6), wird mit Y / F gewirkt. */
+	int32 GetSelectedSlot() const { return SelectedSlot; }
+
+	/** true = zuletzt Controller benutzt, false = Maus/Tastatur. HUD zeigt passende Tasten-Symbole. */
+	bool IsUsingGamepad() const { return bUsingGamepad; }
+
 	/** Kurzer Hinweis in der Bildmitte („Kein Atem“, „Reinklang!“). Nur lokal. */
 	void ShowMessage(const FText& Text, const FLinearColor& Color, float Seconds = 1.2f);
+
+	/** Für Test-Befehle (Ewigfels.Test.Gesten): Zauber-Platz auslösen wie per Taste (0 = linke Maus). */
+	void TestCastSlot(int32 Slot) { CastSlot(Slot); }
+
+	/** Für Test-Befehle (Ewigfels.Test.UI): Zauberrad öffnen, Zeiger setzen (Länge 0–1), Gerät wählen. */
+	void TestOpenWheel(FVector2D Pointer, bool bGamepad)
+	{
+		SetUsingGamepad(bGamepad);
+		InputWheelOpen();
+		WheelPointer = Pointer;
+		WheelMouse = Pointer * WheelMouseRange;
+	}
+	void TestCloseWheel() { InputWheelClose(); }
+	void TestToggleSpellbook(bool bGamepad) { SetUsingGamepad(bGamepad); InputSpellbook(); }
 
 	/** Aktueller Hinweis, false wenn abgelaufen. Alpha blendet aus. */
 	bool GetMessage(FText& OutText, FLinearColor& OutColor, float& OutAlpha) const;
@@ -125,6 +161,10 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
 	float GamepadLookRate = 150.f;
+
+	/** Mausweg (Look-Werte) bis zum Rand des Zauberrads. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Input")
+	float WheelMouseRange = 90.f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ewigfels|Dodge")
 	float DodgeDistance = 520.f;
@@ -172,6 +212,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
 	TObjectPtr<UEwigfelsAppearanceComponent> Appearance;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ewigfels|Character")
+	TObjectPtr<UEwigfelsSpellbookComponent> Spellbook;
+
 	// Eingabe
 	void InputMove(const FInputActionValue& Value);
 	void InputLook(const FInputActionValue& Value);
@@ -195,6 +238,13 @@ protected:
 	void InputSwitchTarget(const FInputActionValue& Value);
 	void InputInteract();
 	void InputToggleHelp();
+	void InputWheelOpen();
+	void InputWheelClose();
+	void InputCastSelected();
+	void InputSpellbook();
+	void InputAnyKey(FKey Key);
+	void InputWheelPointMouse(const FInputActionValue& Value);
+	void InputWheelPointStick(const FInputActionValue& Value);
 	void CastSlot(int32 Slot);
 
 	// Netzwerk
@@ -275,6 +325,9 @@ private:
 	bool bWasFallCatching = false;
 	float LastFallCatchFxTime = -10.f;
 	void UpdateInteractFocus();
+	void UpdateSpellWheel();
+	void UpdateInputDevice();
+	void SetUsingGamepad(bool bGamepad);
 	void Respawn();
 	void NoteTutorialStep(FName Step);
 	void PlaySpellMontage(FName SpellId, uint8 ChainIndex = 0);
@@ -288,6 +341,12 @@ private:
 	bool bStrafing = false;
 	bool bInputBlocked = false;
 	bool bShowHelp = true;
+	bool bWheelOpen = false;
+	int32 WheelHover = 0;
+	int32 SelectedSlot = 1;
+	FVector2D WheelPointer = FVector2D::ZeroVector;
+	FVector2D WheelMouse = FVector2D::ZeroVector;
+	bool bUsingGamepad = false;
 	float LastDodgeTime = -100.f;
 	float LocalCastPoseUntil = 0.f;
 	float DefaultArmLength = 340.f;

@@ -53,7 +53,7 @@ Legende: `[x]` fertig · `[ ]` offen · 🟨 läuft gerade · 👤 = du am PC (E
 - [x] 🤖 Vorschau 2: 8 Kampfweisen mit eigener Wirkung, Farbe und Geste (https://claude.ai/artifact/9XGnEMf3qqf6Uxjqxad735)
 - [x] 🤖 Wirkungs-Baukasten im Spiel: Heben/Schmettern, Kettenblitz, Klangband, Aufprall, Status-Looks (Eis, Noten, Flammen, Ringe), Farben aus dem Akkord, Zauberworte, Tasten 1–8
 - [ ] 👤 „Paragon: Gideon“ (gratis, Fab) zu Ewigfels hinzufügen → 🤖 Fingergesten daraus umbauen (`AM_Geste_*`)
-- [ ] 🤖 **Ziel Endergebnis: alle ~430 Weisen wirkbar und jede individuell** (eigene Wirkung, Look, Farbe, Geste, Zauberwort) – Kampfwerte + Zauberworte für die restlichen Kern-, Alltags- und Koopweisen nachziehen
+- [ ] 🤖 **Ziel Endergebnis: alle ~430 Weisen wirkbar und jede individuell** (eigene Wirkung, Look, Farbe, Geste, Zauberwort) – Kampfwerte + Zauberworte für die restlichen Kern-, Alltags- und Koopweisen nachziehen (Stand 28.11.: 22 von 60 Kernweisen spielbar – Gruppe 2 in `Kampfweisen2.json`; Zauberrad 6 Plätze + Zauberbuch fertig)
 - [ ] 🤖 Zauberrad für mehr als 8 Weisen (erst später, Nutzerwunsch)
 
 ## Phase 4 – Grafik-Benchmark-Szene

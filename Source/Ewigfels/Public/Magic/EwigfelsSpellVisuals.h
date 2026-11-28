@@ -218,11 +218,18 @@ namespace EwigfelsSpellVisuals
 	/** Lädt ein Asset nur, wenn es existiert (ohne Warn-Spam), merkt sich das Ergebnis. */
 	EWIGFELS_API UObject* LoadIfExists(const FSoftObjectPath& Path);
 
+	/** Niagara-Parameter User.Color / User.GlowColor / User.SparkColor (Akkord-Farben) setzen. */
+	EWIGFELS_API void SetNiagaraColors(UNiagaraComponent* Comp, const FLinearColor& Color, const FLinearColor& Glow, const FLinearColor& Spark);
+
+	/** BeamEnd (nur Strahlen): wird vor dem Start gesetzt, sonst liest der erste Spawn noch den Standardwert. */
 	EWIGFELS_API UNiagaraComponent* SpawnNiagaraAt(UWorld* World, const FSoftObjectPath& System, const FVector& Location,
-		const FRotator& Rotation, const FLinearColor& Color, float Scale);
+		const FRotator& Rotation, const FLinearColor& Color, float Scale,
+		const FLinearColor& Glow = FLinearColor::Transparent, const FLinearColor& Spark = FLinearColor::Transparent,
+		const FVector* BeamEnd = nullptr);
 
 	EWIGFELS_API UNiagaraComponent* SpawnNiagaraAttached(USceneComponent* AttachTo, const FSoftObjectPath& System,
-		const FLinearColor& Color, float Scale);
+		const FLinearColor& Color, float Scale,
+		const FLinearColor& Glow = FLinearColor::Transparent, const FLinearColor& Spark = FLinearColor::Transparent);
 
 	EWIGFELS_API AEwigfelsSpellFlash* SpawnFlash(UWorld* World, FName Shape, const FVector& Location, const FRotator& Rotation,
 		const FLinearColor& Color, const FVector& StartScale, const FVector& EndScale, float Duration, float LightIntensity, float LightRadius);

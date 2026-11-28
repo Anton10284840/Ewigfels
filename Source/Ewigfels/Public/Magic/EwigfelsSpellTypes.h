@@ -362,6 +362,10 @@ struct EWIGFELS_API FEwigfelsStatusDef
 	/** Look am Ziel: "ice" (Eisblock, Animation steht), "notes" (kreisende Noten), "flames", "rings" (Schweberinge), "tint". */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
 	FName Look;
+
+	/** Endet beim ersten Schaden (Wiegenlied: ein Treffer weckt). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ewigfels|Magic")
+	bool bBreaksOnDamage = false;
 };
 
 namespace EwigfelsSpells

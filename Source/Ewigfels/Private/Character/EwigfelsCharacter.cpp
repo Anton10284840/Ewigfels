@@ -11,6 +11,7 @@
 #include "Magic/EwigfelsSpellCasterComponent.h"
 #include "Magic/EwigfelsSpellVisuals.h"
 #include "Quest/EwigfelsQuestSubsystem.h"
+#include "UI/EwigfelsSpellbookComponent.h"
 #include "World/EwigfelsInteractable.h"
 #include "Ewigfels.h"
 #include "Animation/AnimInstance.h"
@@ -82,6 +83,7 @@ AEwigfelsCharacter::AEwigfelsCharacter(const FObjectInitializer& ObjectInitializ
 	LockOn = CreateDefaultSubobject<UEwigfelsLockOnComponent>(TEXT("LockOn"));
 	DialogueCamera = CreateDefaultSubobject<UEwigfelsDialogueCameraComponent>(TEXT("DialogueCamera"));
 	Appearance = CreateDefaultSubobject<UEwigfelsAppearanceComponent>(TEXT("Appearance"));
+	Spellbook = CreateDefaultSubobject<UEwigfelsSpellbookComponent>(TEXT("Spellbook"));
 
 	PlaceholderBody = CreateDefaultSubobject<UEwigfelsPlaceholderBody>(TEXT("PlaceholderBody"));
 	PlaceholderBody->SetupAttachment(RootComponent);
@@ -169,7 +171,7 @@ void AEwigfelsCharacter::NotifyControllerChanged()
 	}
 	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
 	{
-		Subsystem->AddMappingContext(DefaultMappingContext ? DefaultMappingContext.Get() : InputSetup->Context.Get(), 0);
+		Subsystem->AddMappingContext(DefaultMappingContext ? DefaultMappingContext.Get() : InputSetup->Context.Get(), UEwigfelsInputSetup::ContextPriority);
 	}
 }
 
@@ -213,6 +215,18 @@ void AEwigfelsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Input->BindAction(S->SwitchTarget, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSwitchTarget);
 	Input->BindAction(S->Interact, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputInteract);
 	Input->BindAction(S->ToggleHelp, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputToggleHelp);
+	Input->BindAction(S->SpellWheel, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputWheelOpen);
+	Input->BindAction(S->SpellWheel, ETriggerEvent::Completed, this, &AEwigfelsCharacter::InputWheelClose);
+	Input->BindAction(S->CastSelected, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputCastSelected);
+	Input->BindAction(S->Spellbook, ETriggerEvent::Started, this, &AEwigfelsCharacter::InputSpellbook);
+	Spellbook->BindInput(Input);
+	// Rad-Zeiger und Geräte-Erkennung immer, auch wenn ein Blueprint Bewegung/Kamera selbst steuert
+	Input->BindAction(S->Look, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputWheelPointMouse);
+	Input->BindAction(S->LookStick, ETriggerEvent::Triggered, this, &AEwigfelsCharacter::InputWheelPointStick);
+	// Jede Taste meldet das Gerät (Controller oder Maus/Tastatur), ohne sie zu verschlucken
+	// Enhanced Input sperrt BindKey (= delete), die Basisklasse UInputComponent kann es noch
+	FInputKeyBinding& AnyKey = static_cast<UInputComponent*>(Input)->BindKey(EKeys::AnyKey, IE_Pressed, this, &AEwigfelsCharacter::InputAnyKey);
+	AnyKey.bConsumeInput = false;
 }
 
 void AEwigfelsCharacter::SetGameplayInputBlocked(bool bBlocked)
@@ -247,7 +261,7 @@ void AEwigfelsCharacter::InputMove(const FInputActionValue& Value)
 
 void AEwigfelsCharacter::InputLook(const FInputActionValue& Value)
 {
-	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
+	if (bInputBlocked || bWheelOpen || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
@@ -258,7 +272,7 @@ void AEwigfelsCharacter::InputLook(const FInputActionValue& Value)
 
 void AEwigfelsCharacter::InputLookStick(const FInputActionValue& Value)
 {
-	if (bInputBlocked || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
+	if (bInputBlocked || bWheelOpen || LockOn->GetTarget() || DialogueCamera->IsDialogueActive())
 	{
 		return;
 	}
@@ -390,6 +404,174 @@ void AEwigfelsCharacter::CastSlot(int32 Slot)
 	}
 	Caster->SetAimTarget(Target);
 	Caster->RequestCastSlot(Slot);
+	if (Slot >= 1 && Slot <= UEwigfelsSpellCasterComponent::WheelSlotCount && !Caster->GetSlotSpell(Slot).IsNone())
+	{
+		SelectedSlot = Slot; // zuletzt direkt gewirkte Weise wird die gewählte (Y / F)
+	}
+}
+
+// --- Zauberrad -----------------------------------------------------------
+
+void AEwigfelsCharacter::InputWheelOpen()
+{
+	if (bInputBlocked || bWheelOpen || Combat->IsDead())
+	{
+		return;
+	}
+	bWheelOpen = true;
+	WheelHover = 0;
+	WheelMouse = FVector2D::ZeroVector;
+	WheelPointer = FVector2D::ZeroVector;
+	// Kamera steht, solange das Rad offen ist (wirkt auch auf die Kamera des Blueprints)
+	if (APlayerController* PC = Cast<APlayerController>(Controller))
+	{
+		PC->SetIgnoreLookInput(true);
+	}
+}
+
+void AEwigfelsCharacter::InputWheelClose()
+{
+	if (!bWheelOpen)
+	{
+		return;
+	}
+	bWheelOpen = false;
+	if (APlayerController* PC = Cast<APlayerController>(Controller))
+	{
+		PC->SetIgnoreLookInput(false);
+	}
+	if (WheelHover >= 1 && WheelHover <= UEwigfelsSpellCasterComponent::WheelSlotCount && !Caster->GetSlotSpell(WheelHover).IsNone())
+	{
+		SelectedSlot = WheelHover;
+		if (const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(Caster->GetSlotSpell(SelectedSlot)))
+		{
+			ShowMessage(Spell->Name, Spell->Visual.GlowColor, 0.8f);
+		}
+	}
+	WheelHover = 0;
+}
+
+void AEwigfelsCharacter::InputSpellbook()
+{
+	if (bWheelOpen)
+	{
+		InputWheelClose();
+	}
+	Spellbook->Toggle();
+}
+
+void AEwigfelsCharacter::InputCastSelected()
+{
+	if (!bWheelOpen)
+	{
+		CastSlot(SelectedSlot);
+	}
+}
+
+void AEwigfelsCharacter::InputWheelPointMouse(const FInputActionValue& Value)
+{
+	const FVector2D Delta = Value.Get<FVector2D>();
+	if (Delta.SizeSquared() > 4.f)
+	{
+		SetUsingGamepad(false);
+	}
+	if (bWheelOpen && !bUsingGamepad)
+	{
+		WheelMouse += Delta;
+		const float Range = FMath::Max(WheelMouseRange, 1.f);
+		if (WheelMouse.Size() > Range)
+		{
+			WheelMouse = WheelMouse.GetSafeNormal() * Range;
+		}
+		WheelPointer = WheelMouse / Range;
+	}
+}
+
+void AEwigfelsCharacter::InputWheelPointStick(const FInputActionValue& Value)
+{
+	const FVector2D Stick = Value.Get<FVector2D>();
+	if (Stick.SizeSquared() > 0.09f)
+	{
+		SetUsingGamepad(true);
+	}
+	if (bWheelOpen && bUsingGamepad)
+	{
+		// Stick zurück in die Mitte behält die letzte Wahl (wie bei Waffenrädern üblich)
+		if (Stick.SizeSquared() > 0.25f)
+		{
+			WheelPointer = Stick.GetSafeNormal() * FMath::Min(Stick.Size(), 1.f);
+		}
+	}
+}
+
+void AEwigfelsCharacter::InputAnyKey(FKey Key)
+{
+	if (Key.IsGamepadKey())
+	{
+		SetUsingGamepad(true);
+	}
+	else if (Key.IsMouseButton() || !Key.IsAnalog())
+	{
+		SetUsingGamepad(false);
+	}
+}
+
+void AEwigfelsCharacter::SetUsingGamepad(bool bGamepad)
+{
+	if (bUsingGamepad == bGamepad)
+	{
+		return;
+	}
+	bUsingGamepad = bGamepad;
+	if (bWheelOpen)
+	{
+		WheelMouse = FVector2D::ZeroVector; // Zeiger nicht vom anderen Gerät erben
+	}
+}
+
+void AEwigfelsCharacter::UpdateSpellWheel()
+{
+	if (!bWheelOpen)
+	{
+		return;
+	}
+	if (bInputBlocked || Combat->IsDead())
+	{
+		InputWheelClose();
+		return;
+	}
+	// 6 Felder im Uhrzeigersinn, Platz 1 oben; Y zeigt bei Stick und Maus nach oben
+	if (WheelPointer.Size() < 0.35f)
+	{
+		if (!bUsingGamepad)
+		{
+			WheelHover = 0; // Maus in der Mitte = nichts ändern
+		}
+		return;
+	}
+	float Angle = FMath::RadiansToDegrees(FMath::Atan2(WheelPointer.X, WheelPointer.Y));
+	if (Angle < 0.f)
+	{
+		Angle += 360.f;
+	}
+	const int32 Count = UEwigfelsSpellCasterComponent::WheelSlotCount;
+	const float Step = 360.f / Count;
+	const int32 Sector = FMath::RoundToInt(Angle / Step) % Count;
+	const int32 Slot = Sector + 1;
+	WheelHover = Caster->GetSlotSpell(Slot).IsNone() ? 0 : Slot;
+}
+
+void AEwigfelsCharacter::UpdateInputDevice()
+{
+	// Linker Stick zählt auch (Laufen allein drückt keine Taste)
+	if (const APlayerController* PC = Cast<APlayerController>(Controller))
+	{
+		const FVector2D Left(PC->GetInputAnalogKeyState(EKeys::Gamepad_LeftX), PC->GetInputAnalogKeyState(EKeys::Gamepad_LeftY));
+		if (Left.SizeSquared() > 0.16f)
+		{
+			SetUsingGamepad(true);
+		}
+	}
 }
 
 void AEwigfelsCharacter::InputShieldStart()
@@ -496,6 +678,8 @@ void AEwigfelsCharacter::Tick(float DeltaSeconds)
 		UpdateCamera(DeltaSeconds);
 		UpdateCameraPunch(DeltaSeconds);
 		UpdateInteractFocus();
+		UpdateInputDevice();
+		UpdateSpellWheel();
 	}
 	// Magische Landung: Beginn erkennen (Server + eigener Client rechnen sie in der Bewegung aus)
 	if (const UEwigfelsCharacterMovementComponent* Move = GetEwigfelsMovement())

@@ -227,24 +227,42 @@ UStaticMesh* EwigfelsSpellVisuals::GetShape(FName Shape)
 	return Cast<UStaticMesh>(LoadIfExists(FSoftObjectPath(FString::Printf(TEXT("/Engine/BasicShapes/%s.%s"), *Name, *Name))));
 }
 
+void EwigfelsSpellVisuals::SetNiagaraColors(UNiagaraComponent* Comp, const FLinearColor& Color, const FLinearColor& Glow, const FLinearColor& Spark)
+{
+	if (!Comp)
+	{
+		return;
+	}
+	// Alle drei Akkord-Farben; Systeme nutzen, was sie brauchen. A = 0 heißt „nicht gesetzt“ = Kernfarbe.
+	Comp->SetVariableLinearColor(TEXT("User.Color"), Color);
+	Comp->SetVariableLinearColor(TEXT("User.GlowColor"), Glow.A > 0.f ? Glow : Color);
+	Comp->SetVariableLinearColor(TEXT("User.SparkColor"), Spark.A > 0.f ? Spark : Color);
+}
+
 UNiagaraComponent* EwigfelsSpellVisuals::SpawnNiagaraAt(UWorld* World, const FSoftObjectPath& System, const FVector& Location,
-	const FRotator& Rotation, const FLinearColor& Color, float Scale)
+	const FRotator& Rotation, const FLinearColor& Color, float Scale, const FLinearColor& Glow, const FLinearColor& Spark, const FVector* BeamEnd)
 {
 	UNiagaraSystem* Asset = Cast<UNiagaraSystem>(LoadIfExists(System));
-	if (!World || !Asset)
+	if (!World || !Asset || World->GetNetMode() == NM_DedicatedServer)
 	{
 		return nullptr;
 	}
-	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAtLocation(World, Asset, Location, Rotation, FVector(Scale));
+	// Erst alle User-Parameter setzen, dann starten: sonst spawnt der erste Durchlauf (z. B. Strahl-Punkte) mit Standardwerten
+	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAtLocation(World, Asset, Location, Rotation, FVector(Scale), true, false);
+	SetNiagaraColors(Comp, Color, Glow, Spark);
 	if (Comp)
 	{
-		Comp->SetVariableLinearColor(TEXT("User.Color"), Color);
+		if (BeamEnd)
+		{
+			Comp->SetVariableVec3(TEXT("User.BeamEnd"), *BeamEnd);
+		}
+		Comp->Activate(true);
 	}
 	return Comp;
 }
 
 UNiagaraComponent* EwigfelsSpellVisuals::SpawnNiagaraAttached(USceneComponent* AttachTo, const FSoftObjectPath& System,
-	const FLinearColor& Color, float Scale)
+	const FLinearColor& Color, float Scale, const FLinearColor& Glow, const FLinearColor& Spark)
 {
 	UNiagaraSystem* Asset = Cast<UNiagaraSystem>(LoadIfExists(System));
 	if (!AttachTo || !Asset)
@@ -253,10 +271,7 @@ UNiagaraComponent* EwigfelsSpellVisuals::SpawnNiagaraAttached(USceneComponent* A
 	}
 	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAttached(Asset, AttachTo, NAME_None, FVector::ZeroVector,
 		FRotator::ZeroRotator, FVector(Scale), EAttachLocation::KeepRelativeOffset, true, ENCPoolMethod::None);
-	if (Comp)
-	{
-		Comp->SetVariableLinearColor(TEXT("User.Color"), Color);
-	}
+	SetNiagaraColors(Comp, Color, Glow, Spark);
 	return Comp;
 }
 
@@ -280,7 +295,7 @@ AEwigfelsSpellFlash* EwigfelsSpellVisuals::SpawnFlash(UWorld* World, FName Shape
 void EwigfelsSpellVisuals::PlayImpact(UWorld* World, const FEwigfelsSpellDef& Spell, const FVector& Location, const FVector& Normal)
 {
 	const FRotator Rot = Normal.IsNearlyZero() ? FRotator::ZeroRotator : Normal.Rotation();
-	if (SpawnNiagaraAt(World, Spell.Visual.ImpactNiagara, Location, Rot, Spell.Visual.Color, Spell.Visual.Scale))
+	if (SpawnNiagaraAt(World, Spell.Visual.ImpactNiagara, Location, Rot, Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
 	{
 		return;
 	}
@@ -300,11 +315,7 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 	const FVector Dir = (End - Start).GetSafeNormal();
 	const float Scale = Spell.Visual.Scale * (bStrong ? 1.6f : 1.f);
 
-	if (UNiagaraComponent* Beam = SpawnNiagaraAt(World, Spell.Visual.Niagara, Start, Dir.Rotation(), Spell.Visual.Color, Scale))
-	{
-		Beam->SetVariableVec3(TEXT("User.BeamEnd"), End);
-	}
-	else
+	if (!SpawnNiagaraAt(World, Spell.Visual.Niagara, Start, Dir.Rotation(), Spell.Visual.Color, Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor, &End))
 	{
 		FActorSpawnParameters Params;
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -324,13 +335,13 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 		}
 	}
 
-	// Mündungsblitz: kurzer, greller Funke an den Fingern
-	SpawnFlash(World, TEXT("sphere"), Start, FRotator::ZeroRotator, FLinearColor::LerpUsingHSV(Spell.Visual.Color, FLinearColor::White, 0.6f),
-		FVector(0.08f), FVector(0.35f * Scale), 0.09f, 6000.f, 380.f);
+	// Mündungsblitz: kurzer Funke vor den Fingern (etwas vor der Hand, schwaches Licht, damit die Figur nicht weiß wird)
+	SpawnFlash(World, TEXT("sphere"), Start + Dir * 18.f, FRotator::ZeroRotator, FLinearColor::LerpUsingHSV(Spell.Visual.Color, FLinearColor::White, 0.4f),
+		FVector(0.05f), FVector(0.18f * Scale), 0.08f, 1200.f, 220.f);
 
 	// Einschlag: Niagara oder Lichtkugel; bei Treffer stärker, beim Kettenende mit Druckring
 	const FRotator Rot = Normal.IsNearlyZero() ? FRotator::ZeroRotator : Normal.Rotation();
-	if (!SpawnNiagaraAt(World, Spell.Visual.ImpactNiagara, End, Rot, Spell.Visual.Color, Scale))
+	if (!SpawnNiagaraAt(World, Spell.Visual.ImpactNiagara, End, Rot, Spell.Visual.Color, Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
 	{
 		SpawnFlash(World, TEXT("sphere"), End, Rot, Spell.Visual.Color, FVector(0.15f), FVector((bHitTarget ? 0.9f : 0.55f) * Scale),
 			bStrong ? 0.3f : 0.2f, bHitTarget ? 14000.f : 6000.f, bStrong ? 900.f : 550.f);
@@ -375,27 +386,36 @@ void EwigfelsSpellVisuals::PlayRelease(UWorld* World, const FEwigfelsSpellDef& S
 	case EEwigfelsSpellDelivery::Cone:
 	{
 		const FVector Base = Caster ? Caster->GetActorLocation() - FVector(0.f, 0.f, 60.f) : Origin;
-		if (SpawnNiagaraAt(World, Spell.Visual.Niagara, Base, Flat.Rotation(), Spell.Visual.Color, Spell.Visual.Scale))
+		if (SpawnNiagaraAt(World, Spell.Visual.Niagara, Base, Flat.Rotation(), Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
 		{
 			return;
 		}
 		// Platzhalter: flache Druckwelle, die nach vorne aufzieht (Zylinder liegt flach, wächst in Blickrichtung)
 		const float Width = Spell.Delivery.Range * FMath::Tan(FMath::DegreesToRadians(Spell.Delivery.Angle * 0.5f)) / 50.f;
 		SpawnFlash(World, TEXT("cylinder"), Base + Flat * Spell.Delivery.Range * 0.5f, Flat.Rotation(), Spell.Visual.Color,
-			FVector(0.5f, 0.5f, 0.05f), FVector(Spell.Delivery.Range / 100.f, Width, 0.12f), 0.35f, 25000.f, Spell.Delivery.Range * 1.2f);
-		SpawnFlash(World, TEXT("sphere"), Origin, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.1f), FVector(1.2f), 0.2f, 8000.f, 500.f);
+			FVector(0.5f, 0.5f, 0.05f), FVector(Spell.Delivery.Range / 100.f, Width, 0.12f), 0.35f, 3500.f, Spell.Delivery.Range * 0.8f);
+		// Kleiner Funke vor der Hand (vorher 1,2 m Kugel mit 8000 Licht direkt vor der Kamera = ganzes Bild weiß)
+		SpawnFlash(World, TEXT("sphere"), Origin + Flat * 30.f, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.05f), FVector(0.3f), 0.15f, 1500.f, 260.f);
 		break;
 	}
 	case EEwigfelsSpellDelivery::Area:
 	{
 		const FVector Base = Caster ? Caster->GetActorLocation() - FVector(0.f, 0.f, 80.f) : Origin;
-		if (!SpawnNiagaraAt(World, Spell.Visual.Niagara, Base, FRotator::ZeroRotator, Spell.Visual.Color, Spell.Visual.Scale))
+		if (!SpawnNiagaraAt(World, Spell.Visual.Niagara, Base, FRotator::ZeroRotator, Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
 		{
 			SpawnFlash(World, TEXT("cylinder"), Base, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.2f, 0.2f, 0.04f),
-				FVector(Spell.Delivery.Radius / 50.f, Spell.Delivery.Radius / 50.f, 0.06f), 0.4f, 20000.f, Spell.Delivery.Radius * 1.5f);
+				FVector(Spell.Delivery.Radius / 50.f, Spell.Delivery.Radius / 50.f, 0.06f), 0.4f, 4000.f, Spell.Delivery.Radius * 1.1f);
 		}
 		break;
 	}
+	case EEwigfelsSpellDelivery::Self:
+		// Sanfter Lichtring um den Wirker (Atemwende), ohne grelles Licht
+		if (Caster && !SpawnNiagaraAt(World, Spell.Visual.Niagara, Caster->GetActorLocation(), FRotator::ZeroRotator, Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
+		{
+			SpawnFlash(World, TEXT("cylinder"), Caster->GetActorLocation() - FVector(0.f, 0.f, 85.f), FRotator::ZeroRotator, Spell.Visual.GlowColor,
+				FVector(0.3f, 0.3f, 0.02f), FVector(2.2f, 2.2f, 0.03f), 0.6f, 1200.f, 300.f);
+		}
+		break;
 	case EEwigfelsSpellDelivery::Projectile:
 		// Mündungsblitz an den Fingerspitzen
 		SpawnFlash(World, TEXT("sphere"), Origin, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.05f), FVector(0.45f * Spell.Visual.Scale),
@@ -819,10 +839,11 @@ void AEwigfelsSpellFlash::Setup(UStaticMesh* Shape, const FLinearColor& Color, c
 		Mesh->SetStaticMesh(Shape);
 	}
 	Material = EwigfelsSpellVisuals::ApplyGlow(Mesh, Color, PeakGlow);
-	// Halo: so groß wie die Endform x 2,4 (BasicShapes = 100 cm), nur bei kugeligen Blitzen, flache Ringe bleiben ohne
+	// Halo: Endform x 1,6 (BasicShapes = 100 cm), nur bei kugeligen Blitzen, flache Ringe bleiben ohne.
+	// Vorher x 2,4 mit Glühen 8: überstrahlte die ganze Figur beim Mündungsblitz.
 	if (EndScale.Z > 0.1f)
 	{
-		HaloMaterial = EwigfelsSpellVisuals::AddHalo(Mesh, Color, EndScale.GetMax() * 240.f, 8.f);
+		HaloMaterial = EwigfelsSpellVisuals::AddHalo(Mesh, Color, EndScale.GetMax() * 160.f, 3.f);
 	}
 	From = StartScale;
 	To = EndScale;

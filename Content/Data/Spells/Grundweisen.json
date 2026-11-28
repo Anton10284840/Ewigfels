@@ -54,13 +54,14 @@
       ],
       "vfx": {
         "color": "#FFE7A0",
-        "scale": 0.55,
-        "niagara": "/Game/VFX/Spells/NS_Funkenstoss",
-        "impact_niagara": "/Game/VFX/Spells/NS_Funken_Impact"
+        "scale": 0.55
       },
       "anim": {
         "montage": "/Game/Animations/Magic/AM_Magic_Funkenstoss",
         "gesture": "flick"
+      },
+      "description": {
+        "de": "Blitz: sofortiger Strahl aus den Fingern, 3er-Kette, der dritte Schlag knallt (mehr Schaden, Stoß, Druckring). Gefrorene Ziele zerspringen beim dritten Schlag (×2,5)."
       }
     },
     {
@@ -103,13 +104,14 @@
       "counter_spell": "reinklang_konter",
       "vfx": {
         "color": "#E8EEFF",
-        "scale": 1.0,
-        "niagara": "/Game/VFX/Spells/NS_Glockenschild",
-        "impact_niagara": "/Game/VFX/Spells/NS_Reinklang"
+        "scale": 1.0
       },
       "anim": {
         "montage": "/Game/Animations/Magic/AM_Magic_Glockenschild",
         "gesture": "stiff"
+      },
+      "description": {
+        "de": "Block. Perfektes Timing = Reinklang (Konter + Atem zurück)."
       }
     },
     {
@@ -154,8 +156,10 @@
       ],
       "vfx": {
         "color": "#F4F7FF",
-        "scale": 0.8,
-        "niagara": "/Game/VFX/Spells/NS_Reinklang_Konter"
+        "scale": 0.8
+      },
+      "description": {
+        "de": "Konter nach gelungener Parade von K13 Glockenschild, keine eigene Weise."
       }
     },
     {
@@ -207,14 +211,16 @@
       ],
       "vfx": {
         "color": "#D9A25C",
-        "scale": 1.0,
-        "niagara": "/Game/VFX/Spells/NS_Hammerton"
+        "scale": 1.0
       },
       "anim": {
         "montage": "/Game/Animations/Magic/AM_Magic_Hammerton",
         "gesture": "punch"
       },
-      "_doc": "Wirft Gegner um (hoch und weit); gefrorene zerbrechen (×2,5)."
+      "_doc": "Wirft Gegner um (hoch und weit); gefrorene zerbrechen (×2,5).",
+      "description": {
+        "de": "Wirft Gegner um (hoch und weit); gefrorene zerbrechen (×2,5)."
+      }
     },
     {
       "id": "glutweise",
@@ -264,13 +270,14 @@
       ],
       "vfx": {
         "color": "#FF8A2A",
-        "scale": 0.9,
-        "niagara": "/Game/VFX/Spells/NS_Glutweise",
-        "impact_niagara": "/Game/VFX/Spells/NS_Glut_Explosion"
+        "scale": 0.9
       },
       "anim": {
         "montage": "/Game/Animations/Magic/AM_Magic_Glutweise",
         "gesture": "rub"
+      },
+      "description": {
+        "de": "Feuerball, Brennen-Effekt."
       }
     },
     {
@@ -316,15 +323,16 @@
       "vfx": {
         "color": "#8FD4FF",
         "scale": 0.6,
-        "shape": "lance",
-        "niagara": "/Game/VFX/Spells/NS_Frostweise",
-        "impact_niagara": "/Game/VFX/Spells/NS_Frost_Impact"
+        "shape": "lance"
       },
       "anim": {
         "montage": "/Game/Animations/Magic/AM_Magic_Frostweise",
         "gesture": "stiff"
       },
-      "_doc": "Eislanze: friert das Ziel 2,5 s ein (Eisblock, keine Aktionen). Danach Hammerton oder Funkenstoß = Zerspringen."
+      "_doc": "Eislanze: friert das Ziel 2,5 s ein (Eisblock, keine Aktionen). Danach Hammerton oder Funkenstoß = Zerspringen.",
+      "description": {
+        "de": "Eislanze: friert das Ziel 2,5 s ein (Eisblock, keine Aktionen). Danach Hammerton oder Funkenstoß = Zerspringen."
+      }
     }
   ],
   "loadout": [
@@ -332,7 +340,6 @@
     "glockenschild",
     "hammerton",
     "frostweise",
-    "paukenschlag",
     "haltelied",
     "ziehklang",
     "glutweise",
