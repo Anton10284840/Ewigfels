@@ -67,6 +67,8 @@ Legende: ⬜ offen · 🟨 in Arbeit · ✅ fertig · ❌ blockiert
 | Gegner-KI Novize (Nahkampf) + Fluchsänger (Fernkampf) + Übungspuppe (`AI/`, `Content/Data/Creatures/`) | ✅ | ⬜ Build | ⬜ |
 | Dialogkamera (Totale/Schulter/Close-up, 180°-Regel) (`Camera/`) | ✅ | ⬜ Build | ⬜ Automation-Test geschrieben |
 | HUD Phase 3 (Leisten, Zauberleiste, Trefferzahlen, F1-Hilfe) + Testarena + Test-NPC Lio (`UI/`, `World/`) | ✅ | ⬜ Build | ⬜ |
+| Zauberrad (6 Plätze, Controller + Maus/Tastatur), Zauberbuch, neues rundes HUD mit Auto-Tastensymbolen (`docs/STEUERUNG.md`) | ✅ | ✅ PC 27.11. | ✅ im Spiel geprüft |
+| Kampfweisen Gruppe 2: 12 weitere (Splitterchor … Glutpeitsche), Status Schlaf | ✅ | ⬜ Build | ⬜ |
 | Charakter-Editor + Laden-Spiegel: Aussehen-Katalog, Regeln, Vorschau-Kamera, Slate-Fenster, Spielstand v2 (`Appearance/`, `UI/EwigfelsCharacterCreator`, `World/EwigfelsMirror`, docs/CHARACTER_CREATOR.md) | ✅ | ⬜ Build · ⬜ Assets (Grundgesichter, Morphs, Kleidung) Phase 5 | ⬜ 5 Automation-Tests geschrieben · ✅ validate_appearance.py 0 Fehler (Cloud) |
 | Mehrspieler-Vorbereitung (server-autoritativ, repliziert, GDD E11) | ✅ | ⬜ | ⬜ PIE mit 2 Spielern |
 | Prüfskript Weisen/Status/Gegner (`Scripts/Tools/validate_combat.py`, Format docs/SPELL_FORMAT.md) | ✅ | ✅ | ✅ 7 Selbsttests (Cloud) |

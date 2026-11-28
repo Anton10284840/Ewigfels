@@ -126,6 +126,23 @@ EEwigfelsHitResult UEwigfelsCombatComponent::ApplyDamage(FEwigfelsDamageInfo Inf
 	{
 		Result = EEwigfelsHitResult::Killed;
 	}
+	else if (Info.Amount > 0.f)
+	{
+		// Schlaf u. ä. endet beim ersten Schaden
+		TArray<FName> Broken;
+		for (const FEwigfelsActiveStatus& Active : ActiveStatuses)
+		{
+			const FEwigfelsStatusDef* ActiveDef = StatusDef(Active.Id);
+			if (ActiveDef && ActiveDef->bBreaksOnDamage)
+			{
+				Broken.Add(Active.Id);
+			}
+		}
+		for (const FName Id : Broken)
+		{
+			RemoveStatus(Id);
+		}
+	}
 
 	if (!Info.bSilent || Result == EEwigfelsHitResult::Killed)
 	{

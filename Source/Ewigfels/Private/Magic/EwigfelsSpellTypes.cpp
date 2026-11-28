@@ -367,6 +367,7 @@ namespace
 		Out.EscalateAt = FMath::Max(0, ReadInt(S, TEXT("escalate_at"), 0));
 		Out.EscalateTo = ReadSpellName(S, TEXT("escalate_to"));
 		Out.Look = ReadSpellName(S, TEXT("look"));
+		Out.bBreaksOnDamage = ReadBool(S, TEXT("breaks_on_damage"), false);
 		FString Hex;
 		if (S->TryGetStringField(TEXT("color"), Hex) && !EwigfelsSpells::ParseHexColor(Hex, Out.Color))
 		{

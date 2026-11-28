@@ -98,6 +98,19 @@
       "stops_actions": true,
       "color": "#BFF3FF",
       "look": "rings"
+    },
+    {
+      "id": "asleep",
+      "name": {
+        "de": "Schläft",
+        "en": "Asleep"
+      },
+      "duration": 8.0,
+      "move_speed_mult": 0.0,
+      "stops_actions": true,
+      "breaks_on_damage": true,
+      "color": "#B9A6FF",
+      "look": "notes"
     }
   ]
 }
