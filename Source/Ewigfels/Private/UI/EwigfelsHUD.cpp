@@ -26,16 +26,16 @@
 
 namespace
 {
-	// Farben: Nachthimmel-Violett als Grund, Gold als Zierde, kräftige Edelstein-Töne
-	const FLinearColor Gold(1.f, 0.8f, 0.42f);
-	const FLinearColor Night(0.07f, 0.035f, 0.16f, 0.82f);
-	const FLinearColor NightEdge(0.02f, 0.01f, 0.06f, 0.9f);
-	const FLinearColor Rose(1.f, 0.3f, 0.48f);
-	const FLinearColor RoseLight(1.f, 0.66f, 0.55f);
-	const FLinearColor Aqua(0.3f, 0.85f, 1.f);
-	const FLinearColor AquaLight(0.7f, 1.f, 0.95f);
-	const FLinearColor Soft(0.94f, 0.94f, 1.f);
-	const FLinearColor Clear(0.f, 0.f, 0.f, 0.f);
+	// Farben: Nachthimmel-Violett als Grund, HudGold als Zierde, kräftige Edelstein-Töne
+	const FLinearColor HudGold(1.f, 0.8f, 0.42f);
+	const FLinearColor HudNight(0.07f, 0.035f, 0.16f, 0.82f);
+	const FLinearColor HudNightEdge(0.02f, 0.01f, 0.06f, 0.9f);
+	const FLinearColor HudRose(1.f, 0.3f, 0.48f);
+	const FLinearColor HudRoseLight(1.f, 0.66f, 0.55f);
+	const FLinearColor HudAqua(0.3f, 0.85f, 1.f);
+	const FLinearColor HudAquaLight(0.7f, 1.f, 0.95f);
+	const FLinearColor HudSoft(0.94f, 0.94f, 1.f);
+	const FLinearColor HudClear(0.f, 0.f, 0.f, 0.f);
 
 	UFont* Small()  { return GEngine->GetSmallFont(); }
 	UFont* Medium() { return GEngine->GetMediumFont(); }
@@ -94,25 +94,25 @@ namespace
 		}
 		switch (Action)
 		{
-		case A::Move:         return { TEXT("WASD"), Soft, 2 };
-		case A::Sprint:       return { TEXT("Shift"), Soft, 2 };
-		case A::Jump:         return { TEXT("Leertaste"), Soft, 2 };
-		case A::Dodge:        return { TEXT("C"), Soft, 2 };
-		case A::Interact:     return { TEXT("E"), Soft, 2 };
-		case A::CastSelected: return { TEXT("F"), Soft, 2 };
-		case A::Cast:         return { TEXT("L-Maus"), Soft, 2 };
-		case A::Shield:       return { TEXT("R-Maus"), Soft, 2 };
-		case A::Wheel:        return { TEXT("Q"), Soft, 2 };
-		case A::Switch:       return { TEXT("Mausrad"), Soft, 2 };
-		case A::LockOn:       return { TEXT("Tab"), Soft, 2 };
-		case A::QuickSlots:   return { TEXT("1–6"), Soft, 2 };
-		case A::Help:         return { TEXT("F1"), Soft, 2 };
-		case A::Book:         return { TEXT("B"), Soft, 2 };
-		case A::Confirm:      return { TEXT("Klick"), Soft, 2 };
-		case A::Back:         return { TEXT("Esc"), Soft, 2 };
-		case A::Browse:       return { TEXT("Mausrad"), Soft, 2 };
+		case A::Move:         return { TEXT("WASD"), HudSoft, 2 };
+		case A::Sprint:       return { TEXT("Shift"), HudSoft, 2 };
+		case A::Jump:         return { TEXT("Leertaste"), HudSoft, 2 };
+		case A::Dodge:        return { TEXT("C"), HudSoft, 2 };
+		case A::Interact:     return { TEXT("E"), HudSoft, 2 };
+		case A::CastSelected: return { TEXT("F"), HudSoft, 2 };
+		case A::Cast:         return { TEXT("L-Maus"), HudSoft, 2 };
+		case A::Shield:       return { TEXT("R-Maus"), HudSoft, 2 };
+		case A::Wheel:        return { TEXT("Q"), HudSoft, 2 };
+		case A::Switch:       return { TEXT("Mausrad"), HudSoft, 2 };
+		case A::LockOn:       return { TEXT("Tab"), HudSoft, 2 };
+		case A::QuickSlots:   return { TEXT("1–6"), HudSoft, 2 };
+		case A::Help:         return { TEXT("F1"), HudSoft, 2 };
+		case A::Book:         return { TEXT("B"), HudSoft, 2 };
+		case A::Confirm:      return { TEXT("Klick"), HudSoft, 2 };
+		case A::Back:         return { TEXT("Esc"), HudSoft, 2 };
+		case A::Browse:       return { TEXT("Mausrad"), HudSoft, 2 };
 		}
-		return { TEXT("?"), Soft, 2 };
+		return { TEXT("?"), HudSoft, 2 };
 	}
 }
 
@@ -347,7 +347,7 @@ void AEwigfelsHUD::DrawHUD()
 	DrawFloatingNumbers();
 	if (!Player)
 	{
-		TextC(LOCTEXT("NoPawn", "Nocturna").ToString(), Canvas->ClipX * 0.5f, S(40.f), Gold, Large(), 1.f);
+		TextC(LOCTEXT("NoPawn", "Nocturna").ToString(), Canvas->ClipX * 0.5f, S(40.f), HudGold, Large(), 1.f);
 		return;
 	}
 	const bool bDialogue = Player->GetDialogueCamera() && Player->GetDialogueCamera()->IsDialogueActive();
@@ -403,8 +403,8 @@ void AEwigfelsHUD::DrawVitals(AEwigfelsCharacter* Player)
 
 	// Grundscheibe mit Sternenhimmel-Verlauf, goldener Zierrand
 	Glow(C, S(72.f), S(26.f), FLinearColor(0.45f, 0.2f, 0.9f), 0.35f);
-	Ring(C, 0.f, S(74.f), 0.f, 1.f, FLinearColor(0.16f, 0.07f, 0.32f, 0.9f), NightEdge);
-	Ring(C, S(74.f), S(76.5f), 0.f, 1.f, WithAlpha(Gold, 0.85f), WithAlpha(Gold, 0.5f));
+	Ring(C, 0.f, S(74.f), 0.f, 1.f, FLinearColor(0.16f, 0.07f, 0.32f, 0.9f), HudNightEdge);
+	Ring(C, S(74.f), S(76.5f), 0.f, 1.f, WithAlpha(HudGold, 0.85f), WithAlpha(HudGold, 0.5f));
 
 	// Leben: äußerer Ring, Rosé → Pfirsich, mit Nachlauf
 	Ring(C, S(58.f), S(70.f), 0.f, 1.f, FLinearColor(0.25f, 0.04f, 0.1f, 0.7f), FLinearColor(0.25f, 0.04f, 0.1f, 0.7f));
@@ -412,32 +412,32 @@ void AEwigfelsHUD::DrawVitals(AEwigfelsCharacter* Player)
 	{
 		Ring(C, S(58.f), S(70.f), HealthFrac, GhostHealth, FLinearColor(1.f, 0.95f, 0.9f, 0.7f), FLinearColor(1.f, 0.95f, 0.9f, 0.7f));
 	}
-	Ring(C, S(58.f), S(70.f), 0.f, HealthFrac, Rose, RoseLight);
+	Ring(C, S(58.f), S(70.f), 0.f, HealthFrac, HudRose, HudRoseLight);
 	const bool bLow = HealthFrac < 0.3f && HealthFrac > 0.f;
 	if (bLow)
 	{
-		Glow(C, S(70.f), S(22.f), Rose, 0.4f + 0.35f * FMath::Sin(T * 7.f));
+		Glow(C, S(70.f), S(22.f), HudRose, 0.4f + 0.35f * FMath::Sin(T * 7.f));
 	}
 	if (HealthFrac > 0.01f)
 	{
 		const FVector2D Tip = OnCircle(C, S(64.f), HealthFrac);
-		Glow(Tip, 0.f, S(14.f), RoseLight, 0.8f);
+		Glow(Tip, 0.f, S(14.f), HudRoseLight, 0.8f);
 		Disc(Tip, S(3.f), FLinearColor(1.f, 1.f, 1.f, 0.95f));
 	}
 
 	// Atem: innerer Ring, Türkis
 	Ring(C, S(47.f), S(54.f), 0.f, 1.f, FLinearColor(0.02f, 0.1f, 0.18f, 0.75f), FLinearColor(0.02f, 0.1f, 0.18f, 0.75f));
-	Ring(C, S(47.f), S(54.f), 0.f, AtemFrac, Aqua, AquaLight);
+	Ring(C, S(47.f), S(54.f), 0.f, AtemFrac, HudAqua, HudAquaLight);
 	if (AtemFrac > 0.01f)
 	{
 		const FVector2D Tip = OnCircle(C, S(50.5f), AtemFrac);
-		Glow(Tip, 0.f, S(10.f), AquaLight, 0.7f);
+		Glow(Tip, 0.f, S(10.f), HudAquaLight, 0.7f);
 	}
 
 	// Mitte: Lebenszahl groß, darunter klein
 	Ring(C, 0.f, S(44.f), 0.f, 1.f, FLinearColor(0.22f, 0.1f, 0.4f, 0.6f), FLinearColor(0.05f, 0.02f, 0.12f, 0.2f));
-	TextC(FString::Printf(TEXT("%.0f"), Combat->GetHealth()), C.X, C.Y - S(4.f), bLow ? RoseLight : Soft, Large(), 1.15f);
-	TextC(LOCTEXT("Life", "Leben").ToString(), C.X, C.Y + S(22.f), WithAlpha(Gold, 0.9f), Small(), 0.85f);
+	TextC(FString::Printf(TEXT("%.0f"), Combat->GetHealth()), C.X, C.Y - S(4.f), bLow ? HudRoseLight : HudSoft, Large(), 1.15f);
+	TextC(LOCTEXT("Life", "Leben").ToString(), C.X, C.Y + S(22.f), WithAlpha(HudGold, 0.9f), Small(), 0.85f);
 	Sparkles(C, S(80.f), FLinearColor(0.8f, 0.6f, 1.f), 5, 1.3f);
 
 	DrawStatuses(Player, C.X + S(96.f), C.Y + S(30.f));
@@ -494,7 +494,7 @@ void AEwigfelsHUD::SpellOrb(AEwigfelsCharacter* Player, const FEwigfelsSpellDef*
 	}
 	// Kugel: heller Kern, satter Rand, kleiner Glanzpunkt oben links
 	Ring(C, 0.f, R, 0.f, 1.f, WithAlpha(FLinearColor::LerpUsingHSV(Core, FLinearColor::White, 0.35f), 0.98f), WithAlpha(Scaled(GlowC, 0.45f), 0.98f));
-	Ring(C, R, R + S(2.5f), 0.f, 1.f, WithAlpha(Gold, 0.9f), WithAlpha(Gold, 0.6f));
+	Ring(C, R, R + S(2.5f), 0.f, 1.f, WithAlpha(HudGold, 0.9f), WithAlpha(HudGold, 0.6f));
 	Disc(C + FVector2D(-R * 0.32f, -R * 0.36f), R * 0.22f, FLinearColor(1.f, 1.f, 1.f, 0.28f));
 	// Akkord: drei Noten-Perlen unten auf dem Rand
 	for (int32 n = 0; n < Spell->Chord.Num() && n < 3; ++n)
@@ -536,7 +536,7 @@ void AEwigfelsHUD::DrawSpellCluster(AEwigfelsCharacter* Player)
 	Glyph(EAction::CastSelected, bPad, C.X + R * 0.55f, C.Y - R * 0.85f, GH);
 	if (Selected)
 	{
-		TextC(Selected->Name.ToString(), C.X, C.Y + R + S(20.f), Soft, Medium(), 1.f);
+		TextC(Selected->Name.ToString(), C.X, C.Y + R + S(20.f), HudSoft, Medium(), 1.f);
 		if (!Selected->Incantation.IsEmpty())
 		{
 			TextC(Selected->Incantation.ToString(), C.X, C.Y + R + S(44.f), Selected->Visual.GlowColor, Small(), 1.f);
@@ -550,7 +550,7 @@ void AEwigfelsHUD::DrawSpellCluster(AEwigfelsCharacter* Player)
 		const float X = C.X - W * 0.5f;
 		const float Y = C.Y - R - S(40.f);
 		const float GW = Glyph(EAction::Wheel, bPad, X, Y, GH);
-		Text(Hint, X + GW + S(8.f), Y - S(9.f), WithAlpha(Gold, 0.95f), Small(), 0.95f);
+		Text(Hint, X + GW + S(8.f), Y - S(9.f), WithAlpha(HudGold, 0.95f), Small(), 0.95f);
 	}
 
 	// Schild (oben) und Basis-Weise (unten) links daneben
@@ -605,7 +605,7 @@ void AEwigfelsHUD::DrawQuickSlots(AEwigfelsCharacter* Player)
 	const float Total = Count * 2.f * R + (Count - 1) * Gap;
 	float X = (Canvas->ClipX - Total) * 0.5f + R;
 	const float Y = Canvas->ClipY - S(52.f);
-	RoundRect(X - R - S(12.f), Y - R - S(10.f), Total + S(24.f), 2.f * R + S(20.f), R + S(10.f), WithAlpha(Night, 0.55f));
+	RoundRect(X - R - S(12.f), Y - R - S(10.f), Total + S(24.f), 2.f * R + S(20.f), R + S(10.f), WithAlpha(HudNight, 0.55f));
 	for (int32 Slot = 1; Slot <= Count; ++Slot)
 	{
 		const FVector2D P(X, Y);
@@ -636,8 +636,8 @@ void AEwigfelsHUD::DrawWheel(AEwigfelsCharacter* Player)
 
 	// Ringband mit goldenen Kanten
 	Ring(C, RW - S(68.f), RW + S(68.f), 0.f, 1.f, FLinearColor(0.12f, 0.05f, 0.26f, 0.8f * B), FLinearColor(0.05f, 0.02f, 0.12f, 0.85f * B));
-	Ring(C, RW + S(68.f), RW + S(70.5f), 0.f, 1.f, WithAlpha(Gold, 0.8f * B), WithAlpha(Gold, 0.4f * B));
-	Ring(C, RW - S(70.5f), RW - S(68.f), 0.f, 1.f, WithAlpha(Gold, 0.4f * B), WithAlpha(Gold, 0.8f * B));
+	Ring(C, RW + S(68.f), RW + S(70.5f), 0.f, 1.f, WithAlpha(HudGold, 0.8f * B), WithAlpha(HudGold, 0.4f * B));
+	Ring(C, RW - S(70.5f), RW - S(68.f), 0.f, 1.f, WithAlpha(HudGold, 0.4f * B), WithAlpha(HudGold, 0.8f * B));
 
 	const int32 Hover = Player->GetWheelHover();
 	const int32 Selected = Player->GetSelectedSlot();
@@ -660,7 +660,7 @@ void AEwigfelsHUD::DrawWheel(AEwigfelsCharacter* Player)
 		SpellOrb(Player, Spell, P, R, Slot == Hover);
 		if (Slot == Selected)
 		{
-			Disc(OnCircle(C, RW + S(60.f), Frac), S(4.f), Gold);
+			Disc(OnCircle(C, RW + S(60.f), Frac), S(4.f), HudGold);
 		}
 		if (!bPad && Spell)
 		{
@@ -682,7 +682,7 @@ void AEwigfelsHUD::DrawWheel(AEwigfelsCharacter* Player)
 		if (Spell->Cost > 0.f)
 		{
 			TextC(FText::Format(LOCTEXT("Cost", "{0} Atem"), FText::AsNumber(FMath::RoundToInt(Spell->Cost))).ToString(),
-				C.X, C.Y + S(36.f), WithAlpha(Aqua, B), Small(), 0.9f);
+				C.X, C.Y + S(36.f), WithAlpha(HudAqua, B), Small(), 0.9f);
 		}
 	}
 	// Zeiger: Funkenpunkt in Zeigerrichtung
@@ -690,7 +690,7 @@ void AEwigfelsHUD::DrawWheel(AEwigfelsCharacter* Player)
 	if (Ptr.SizeSquared() > 0.01f)
 	{
 		const FVector2D P = C + FVector2D(Ptr.X, -Ptr.Y) * (RW - S(80.f));
-		Glow(P, 0.f, S(16.f), Gold, 0.9f * B);
+		Glow(P, 0.f, S(16.f), HudGold, 0.9f * B);
 		Disc(P, S(3.5f), WithAlpha(FLinearColor::White, B));
 	}
 	// Hinweis unten
@@ -701,7 +701,7 @@ void AEwigfelsHUD::DrawWheel(AEwigfelsCharacter* Player)
 	const float X = C.X - W * 0.5f;
 	const float Y = C.Y + RW + S(105.f);
 	const float GW = Glyph(EAction::Wheel, bPad, X, Y, GH);
-	Text(Hint, X + GW + S(10.f), Y - S(9.f), WithAlpha(Soft, B), Small(), 1.f);
+	Text(Hint, X + GW + S(10.f), Y - S(9.f), WithAlpha(HudSoft, B), Small(), 1.f);
 }
 
 // --- Zielhilfe und Gegner ------------------------------------------------
@@ -715,7 +715,7 @@ void AEwigfelsHUD::DrawCrosshair(AEwigfelsCharacter* Player)
 	const FVector2D C(Canvas->ClipX * 0.5f, Canvas->ClipY * 0.5f);
 	const UEwigfelsSpellCasterComponent* Caster = Player->GetCaster();
 	const FEwigfelsSpellDef* Spell = Caster->FindSpellDef(Caster->GetSlotSpell(Player->GetSelectedSlot()));
-	const FLinearColor Tint = Spell ? Spell->Visual.GlowColor : Gold;
+	const FLinearColor Tint = Spell ? Spell->Visual.GlowColor : HudGold;
 	// Leuchtpunkt + vier feine Bögen
 	Glow(C, 0.f, S(8.f), Tint, 0.6f);
 	Disc(C, S(2.2f), FLinearColor(1.f, 1.f, 1.f, 0.95f));
@@ -764,16 +764,16 @@ void AEwigfelsHUD::DrawEnemies(AEwigfelsCharacter* Player)
 		}
 		if (bIsLocked)
 		{
-			TextC(Enemy->GetDisplayName().ToString(), Screen.X, Screen.Y - S(14.f), Soft, Small(), 1.f);
+			TextC(Enemy->GetDisplayName().ToString(), Screen.X, Screen.Y - S(14.f), HudSoft, Small(), 1.f);
 			// Drehende goldene Bögen um die Brust
 			const FVector Chest = Project(Enemy->GetActorLocation() + FVector(0.f, 0.f, 20.f));
 			const FVector2D CC(Chest.X, Chest.Y);
 			const float Spin = FMath::Frac(Now() * 0.25f);
-			Glow(CC, S(16.f), S(10.f), Gold, 0.35f);
+			Glow(CC, S(16.f), S(10.f), HudGold, 0.35f);
 			for (int32 i = 0; i < 3; ++i)
 			{
 				const float F = Spin + i / 3.f;
-				Ring(CC, S(16.f), S(19.f), F, F + 0.2f, WithAlpha(Gold, 0.95f), WithAlpha(Gold, 0.95f));
+				Ring(CC, S(16.f), S(19.f), F, F + 0.2f, WithAlpha(HudGold, 0.95f), WithAlpha(HudGold, 0.95f));
 			}
 		}
 		// Status-Perlen (Brennen, Gefroren …)
@@ -846,9 +846,9 @@ void AEwigfelsHUD::DrawInteractPrompt(AEwigfelsCharacter* Player)
 	const float H = S(46.f);
 	const float X = (Canvas->ClipX - W) * 0.5f;
 	const float Y = Canvas->ClipY * 0.63f;
-	RoundRect(X, Y, W, H, H * 0.5f, Night);
+	RoundRect(X, Y, W, H, H * 0.5f, HudNight);
 	Glyph(EAction::Interact, bPad, X + S(8.f), Y + H * 0.5f, GH);
-	TextC(Prompt, X + S(8.f) + GW + S(12.f) + (W - GW - S(28.f)) * 0.5f, Y + H * 0.5f, Gold, Medium(), 1.f);
+	TextC(Prompt, X + S(8.f) + GW + S(12.f) + (W - GW - S(28.f)) * 0.5f, Y + H * 0.5f, HudGold, Medium(), 1.f);
 }
 
 void AEwigfelsHUD::DrawSubtitles(AEwigfelsCharacter* Player)
@@ -864,7 +864,7 @@ void AEwigfelsHUD::DrawSubtitles(AEwigfelsCharacter* Player)
 		return;
 	}
 	const float Y = Canvas->ClipY - Band - S(90.f);
-	Text(Line.Speaker.ToString(), Canvas->ClipX * 0.5f, Y, Gold, Medium(), 1.1f, true);
+	Text(Line.Speaker.ToString(), Canvas->ClipX * 0.5f, Y, HudGold, Medium(), 1.1f, true);
 	Text(Line.Text.ToString(), Canvas->ClipX * 0.5f, Y + S(30.f), FLinearColor::White, Medium(), 1.15f, true);
 	const bool bPad = Player->IsUsingGamepad();
 	const float GH = S(26.f);
@@ -903,19 +903,19 @@ void AEwigfelsHUD::DrawHelp(AEwigfelsCharacter* Player)
 	const float W = S(400.f);
 	const float H = S(58.f) + Rows.Num() * RowH + S(34.f);
 	const float X = S(18.f), Y = S(18.f);
-	RoundRect(X, Y, W, H, S(18.f), Night);
-	RoundRect(X, Y, W, S(4.f), S(2.f), WithAlpha(Gold, 0.7f));
-	Text(LOCTEXT("HelpTitle", "Steuerung").ToString(), X + S(20.f), Y + S(14.f), Gold, Medium(), 1.05f);
+	RoundRect(X, Y, W, H, S(18.f), HudNight);
+	RoundRect(X, Y, W, S(4.f), S(2.f), WithAlpha(HudGold, 0.7f));
+	Text(LOCTEXT("HelpTitle", "Steuerung").ToString(), X + S(20.f), Y + S(14.f), HudGold, Medium(), 1.05f);
 	float RowY = Y + S(60.f);
 	const float Col = X + S(20.f);
 	const float LabelX = X + S(150.f);
 	for (const FRow& Row : Rows)
 	{
 		Glyph(Row.Action, bPad, Col, RowY + RowH * 0.5f - S(4.f), GH);
-		Text(Row.Label.ToString(), LabelX, RowY + S(2.f), Soft, Small(), 1.f);
+		Text(Row.Label.ToString(), LabelX, RowY + S(2.f), HudSoft, Small(), 1.f);
 		RowY += RowH;
 	}
-	Text(LOCTEXT("HTip", "Tipp: einfrieren, dann Hammerton = Zerspringen").ToString(), Col, RowY + S(4.f), WithAlpha(Aqua, 0.9f), Small(), 0.9f);
+	Text(LOCTEXT("HTip", "Tipp: einfrieren, dann Hammerton = Zerspringen").ToString(), Col, RowY + S(4.f), WithAlpha(HudAqua, 0.9f), Small(), 0.9f);
 }
 
 // --- Zauberbuch ----------------------------------------------------------
@@ -980,8 +980,8 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 	}
 
 	// Titel
-	TextC(LOCTEXT("BookTitle", "Zauberbuch").ToString(), CX, S(70.f), WithAlpha(Gold, B), Large(), 1.6f);
-	TextC(LOCTEXT("BookSub", "Wähle 6 Weisen für dein Zauberrad").ToString(), CX, S(112.f), WithAlpha(Soft, 0.85f * B), Medium(), 0.9f);
+	TextC(LOCTEXT("BookTitle", "Zauberbuch").ToString(), CX, S(70.f), WithAlpha(HudGold, B), Large(), 1.6f);
+	TextC(LOCTEXT("BookSub", "Wähle 6 Weisen für dein Zauberrad").ToString(), CX, S(112.f), WithAlpha(HudSoft, 0.85f * B), Medium(), 0.9f);
 
 	// Obere Reihe: die 6 Rad-Plätze
 	const int32 Count = UEwigfelsSpellCasterComponent::WheelSlotCount;
@@ -990,7 +990,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 	const float RowW = Count * 2.f * SR + (Count - 1) * SGap;
 	const float SY = S(210.f);
 	TArray<FBox2D> SlotRects;
-	RoundRect(CX - RowW * 0.5f - S(30.f), SY - SR - S(22.f), RowW + S(60.f), 2.f * SR + S(64.f), S(30.f), WithAlpha(Night, 0.8f * B));
+	RoundRect(CX - RowW * 0.5f - S(30.f), SY - SR - S(22.f), RowW + S(60.f), 2.f * SR + S(64.f), S(30.f), WithAlpha(HudNight, 0.8f * B));
 	for (int32 Slot = 1; Slot <= Count; ++Slot)
 	{
 		const FVector2D P(CX - RowW * 0.5f + SR + (Slot - 1) * (2.f * SR + SGap), SY);
@@ -999,7 +999,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 		const float Flash = Book->GetFlashSlot() == Slot ? FMath::Clamp(1.f - (T - Book->GetFlashTime()) / 0.6f, 0.f, 1.f) : 0.f;
 		if (bFocus)
 		{
-			const FLinearColor GlowC = Spell ? Spell->Visual.GlowColor : Gold;
+			const FLinearColor GlowC = Spell ? Spell->Visual.GlowColor : HudGold;
 			Glow(P, SR, S(22.f), GlowC, Book->GetFocusRow() == 0 ? 0.9f : 0.45f);
 		}
 		if (Flash > 0.f)
@@ -1012,7 +1012,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 		Disc(K, S(10.f), FLinearColor(0.95f, 0.93f, 1.f, 0.95f * B));
 		TextC(FString::FromInt(Slot), K.X, K.Y, FLinearColor(0.12f, 0.08f, 0.25f), Small(), 0.8f);
 		TextC(Spell ? Spell->Name.ToString() : LOCTEXT("Empty", "leer").ToString(), P.X, P.Y + SR + S(20.f),
-			WithAlpha(bFocus ? FLinearColor::White : Soft, (bFocus ? 1.f : 0.75f) * B), Small(), 0.9f);
+			WithAlpha(bFocus ? FLinearColor::White : HudSoft, (bFocus ? 1.f : 0.75f) * B), Small(), 0.9f);
 		SlotRects.Add(FBox2D(P - FVector2D(SR, SR), P + FVector2D(SR, SR)));
 	}
 
@@ -1058,8 +1058,8 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 		{
 			Glow(FVector2D(X + W * 0.5f, Y + H * 0.5f), W * 0.45f, S(70.f), GlowC, (bCardRow ? 0.75f : 0.35f) * Fade);
 		}
-		// Rahmen in Gold (gewählt) bzw. Edelsteinfarbe, Kartengrund mit Farbe der Weise
-		RoundRect(X - S(3.f), Y - S(3.f), W + S(6.f), H + S(6.f), S(22.f), WithAlpha(bFocusCard && bCardRow ? Gold : Scaled(GlowC, 0.6f), 0.95f * Fade));
+		// Rahmen in HudGold (gewählt) bzw. Edelsteinfarbe, Kartengrund mit Farbe der Weise
+		RoundRect(X - S(3.f), Y - S(3.f), W + S(6.f), H + S(6.f), S(22.f), WithAlpha(bFocusCard && bCardRow ? HudGold : Scaled(GlowC, 0.6f), 0.95f * Fade));
 		RoundRect(X, Y, W, H, S(20.f), WithAlpha(FLinearColor(0.08f, 0.04f, 0.17f), 0.97f * Fade));
 		RoundRect(X, Y, W, H * 0.46f, S(20.f), WithAlpha(Scaled(Core, 0.35f), 0.9f * Fade));
 		const FVector2D OrbC(X + W * 0.5f, Y + H * 0.24f);
@@ -1076,13 +1076,13 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 		}
 		for (const FString& L : Wrap(Spell->Description.ToString(), Small(), 0.85f * Sc, W - S(30.f), 4))
 		{
-			TextC(L, X + W * 0.5f, TY, WithAlpha(Soft, 0.85f * Fade), Small(), 0.85f * Sc);
+			TextC(L, X + W * 0.5f, TY, WithAlpha(HudSoft, 0.85f * Fade), Small(), 0.85f * Sc);
 			TY += S(17.f) * Sc;
 		}
 		const FString Stats = Spell->Cooldown > 0.f
 			? FString::Printf(TEXT("%.0f Atem  ·  %.0f s"), Spell->Cost, Spell->Cooldown)
 			: FString::Printf(TEXT("%.0f Atem"), Spell->Cost);
-		TextC(Stats, X + W * 0.5f, Y + H - S(22.f) * Sc, WithAlpha(Aqua, Fade), Small(), 0.85f * Sc);
+		TextC(Stats, X + W * 0.5f, Y + H - S(22.f) * Sc, WithAlpha(HudAqua, Fade), Small(), 0.85f * Sc);
 
 		// Abzeichen: liegt schon im Rad auf Platz n
 		for (int32 Slot = 1; Slot <= Count; ++Slot)
@@ -1090,7 +1090,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 			if (Caster->GetSlotSpell(Slot) == Spell->Id)
 			{
 				const FVector2D Badge(X + W - S(22.f), Y + S(22.f));
-				Disc(Badge, S(13.f), WithAlpha(Gold, Fade));
+				Disc(Badge, S(13.f), WithAlpha(HudGold, Fade));
 				TextC(FString::FromInt(Slot), Badge.X, Badge.Y, FLinearColor(0.15f, 0.08f, 0.02f, Fade), Small(), 0.85f);
 				break;
 			}
@@ -1099,7 +1099,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 	}
 	if (Cards.Num() == 0)
 	{
-		TextC(LOCTEXT("NoCards", "Noch keine Weisen gelernt – geh in den Unterricht!").ToString(), CX, CY, WithAlpha(Soft, B), Medium(), 1.f);
+		TextC(LOCTEXT("NoCards", "Noch keine Weisen gelernt – geh in den Unterricht!").ToString(), CX, CY, WithAlpha(HudSoft, B), Medium(), 1.f);
 	}
 	if (bOpen)
 	{
@@ -1125,7 +1125,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 	}
 	float HX = CX - TotalW * 0.5f;
 	const float HY = Canvas->ClipY - S(56.f);
-	RoundRect(HX - S(20.f), HY - S(26.f), TotalW + S(40.f), S(52.f), S(26.f), WithAlpha(Night, 0.9f * B));
+	RoundRect(HX - S(20.f), HY - S(26.f), TotalW + S(40.f), S(52.f), S(26.f), WithAlpha(HudNight, 0.9f * B));
 	for (const FHint& Hint : Hints)
 	{
 		if (Hint.Action == EAction::QuickSlots && bPad)
@@ -1133,7 +1133,7 @@ void AEwigfelsHUD::DrawSpellbook(AEwigfelsCharacter* Player)
 			continue;
 		}
 		HX += Glyph(Hint.Action, bPad, HX, HY, GH) + S(10.f);
-		Text(Hint.Label.ToString(), HX, HY - S(9.f), WithAlpha(Soft, B), Small(), 1.f);
+		Text(Hint.Label.ToString(), HX, HY - S(9.f), WithAlpha(HudSoft, B), Small(), 1.f);
 		HX += TextW(Hint.Label.ToString(), Small(), 1.f) + S(34.f);
 	}
 }
