@@ -203,10 +203,56 @@ namespace EwigfelsVfxMaterials
 		return CompileErrors.Num() == 0;
 	}
 
+	/** Beleuchteter Stein für Brocken-Meshes (Felsfaust, Bassbrecher): Farbe und Normalen aus Gideons Fels-Texturen. */
+	bool BuildRock(TArray<FString>& Errors)
+	{
+		UTexture2D* Diffuse = LoadObject<UTexture2D>(nullptr, TEXT("/Game/ParagonGideon/FX/Textures/Rock/T_RockChunk_D.T_RockChunk_D"));
+		UTexture2D* Normal = LoadObject<UTexture2D>(nullptr, TEXT("/Game/ParagonGideon/FX/Textures/Rock/T_RockChunk_N.T_RockChunk_N"));
+		UMaterial* M = Diffuse && Normal ? LoadOrCreate(TEXT("M_EwVfx_Rock"), Errors) : nullptr;
+		if (!M)
+		{
+			Errors.Add(TEXT("M_EwVfx_Rock: Fels-Texturen fehlen"));
+			return false;
+		}
+		M->BlendMode = BLEND_Opaque;
+		M->SetShadingModel(MSM_DefaultLit);
+		M->TwoSided = false;
+		M->bUsedWithNiagaraMeshParticles = true;
+		M->bUsedWithNiagaraSprites = true;
+		UMaterialExpressionTextureSample* D = Node<UMaterialExpressionTextureSample>(M, -500, -100);
+		D->Texture = Diffuse;
+		D->SamplerType = UMaterialExpressionTextureBase::GetSamplerTypeForTexture(Diffuse);
+		UMaterialExpressionTextureSample* N = Node<UMaterialExpressionTextureSample>(M, -500, 200);
+		N->Texture = Normal;
+		N->SamplerType = UMaterialExpressionTextureBase::GetSamplerTypeForTexture(Normal);
+		// Partikelfarbe tönt den Stein leicht (z. B. erdig oder dunkel)
+		UMaterialExpressionParticleColor* PC = Node<UMaterialExpressionParticleColor>(M, -500, -300);
+		UMaterialExpressionComponentMask* PCrgb = Node<UMaterialExpressionComponentMask>(M, -300, -300);
+		PCrgb->Input.Connect(0, PC);
+		PCrgb->R = PCrgb->G = PCrgb->B = true;
+		PCrgb->A = false;
+		UMaterialExpressionMultiply* Tint = Node<UMaterialExpressionMultiply>(M, -150, -150);
+		Tint->A.Connect(0, D);
+		Tint->B.Connect(0, PCrgb);
+		UMaterialEditorOnlyData* Data = M->GetEditorOnlyData();
+		Data->BaseColor.Connect(0, Tint);
+		Data->Normal.Connect(0, N);
+		UMaterialExpressionConstant* Rough = Node<UMaterialExpressionConstant>(M, -150, 100);
+		Rough->R = 0.85f;
+		Data->Roughness.Connect(0, Rough);
+		const TArray<FString> CompileErrors = UMaterialEditingLibrary::RecompileMaterial(M);
+		for (const FString& E : CompileErrors)
+		{
+			Errors.Add(TEXT("M_EwVfx_Rock: ") + E);
+		}
+		UEditorAssetLibrary::SaveLoadedAsset(M, false);
+		return CompileErrors.Num() == 0;
+	}
+
 	int32 BuildAll()
 	{
 		TArray<FString> Errors;
-		int32 Ok = 0;
+		int32 Ok = BuildRock(Errors) ? 1 : 0;
 		for (const FSpec& S : Specs)
 		{
 			Ok += BuildOne(S, Errors) ? 1 : 0;
@@ -215,7 +261,7 @@ namespace EwigfelsVfxMaterials
 		{
 			UE_LOG(LogTemp, Warning, TEXT("[Ewigfels VFX] Material %s"), *E);
 		}
-		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] Materialien: %d von %d ohne Fehler"), Ok, UE_ARRAY_COUNT(Specs));
+		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] Materialien: %d von %d ohne Fehler"), Ok, UE_ARRAY_COUNT(Specs) + 1);
 		return Ok;
 	}
 

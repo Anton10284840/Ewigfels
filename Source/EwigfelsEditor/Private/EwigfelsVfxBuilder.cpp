@@ -183,6 +183,15 @@ void FEwigfelsVfxBuilder::Renderer(FName Emitter, int32 Index, const FString& Js
 	Collect(*FString::Printf(TEXT("%s Renderer %d"), *Emitter.ToString(), Index), Ctx.Errors);
 }
 
+void FEwigfelsVfxBuilder::RemoveRenderer(FName Emitter, int32 Index)
+{
+	FNiagaraExt_StackItemReference Ref(System, Emitter);
+	Ref.RendererIndex = Index;
+	FNiagaraExternalEditContext Ctx(Ref);
+	UNiagaraExternalEditUtilities::RemoveRenderer(Ref, Ctx);
+	Collect(*FString::Printf(TEXT("%s Renderer %d entfernen"), *Emitter.ToString(), Index), Ctx.Errors);
+}
+
 void FEwigfelsVfxBuilder::AddRenderer(FName Emitter, UClass* RendererClass, const FString& Json)
 {
 	FNiagaraExt_StackItemReference Ref(System, Emitter);

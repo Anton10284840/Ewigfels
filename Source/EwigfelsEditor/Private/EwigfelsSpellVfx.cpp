@@ -7,6 +7,7 @@
 #include "EwigfelsVfxBuilder.h"
 #include "EwigfelsVfxMaterials.h"
 #include "EditorAssetLibrary.h"
+#include "NiagaraMeshRendererProperties.h"
 
 #include "HAL/IConsoleManager.h"
 
@@ -340,8 +341,9 @@ namespace EwigfelsSpellVfx
 		V.Set(E, PS, *C.ToString(), TEXT("Cone Axis"), B::V3(FVector3f(1.f, 0.f, 0.f)));
 		V.Set(E, PS, *C.ToString(), TEXT("Cone Axis Coordinate Space"), TEXT("/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum(Enum=\"/Script/CoreUObject.Enum'/Script/Niagara.ENiagaraCoordinateSpace'\",EnumName=\"ENiagaraCoordinateSpace::Local\")"));
 		V.Set(E, PS, *C.ToString(), TEXT("Cone Angle"), B::F(AngleDeg * 0.5f));
-		// Bei Drag d legt ein Teilchen etwa v/d zurück: Geschwindigkeit so wählen, dass es ungefähr Range erreicht
-		V.Set(E, PS, *C.ToString(), TEXT("Velocity Strength"), B::F(Range * FMath::Max(Drag, 1.f / LifeMax)));
+		// Mit linearem Drag d legt ein Teilchen in der Zeit T die Strecke v/d·(1−e^(−dT)) zurück: v so wählen, dass es Range erreicht
+		const float Travel = (1.f - FMath::Exp(-Drag * LifeMax)) / FMath::Max(Drag, 0.01f);
+		V.Set(E, PS, *C.ToString(), TEXT("Velocity Strength"), B::F(Range / FMath::Max(Travel, 0.05f)));
 		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, 0.f)));
 		V.Set(E, PU, TEXT("Drag"), TEXT("Drag"), B::F(Drag));
 		return Mat(V, E, Material);
@@ -423,6 +425,20 @@ namespace EwigfelsSpellVfx
 		return E;
 	}
 
+	/** Sprite-Renderer durch Mesh-Renderer ersetzen (echte 3D-Brocken), beleuchteter Stein. */
+	FName AsMesh(B& V, FName E, const TCHAR* MeshPath, float Scale)
+	{
+		V.RemoveRenderer(E, 0);
+		V.AddRenderer(E, UNiagaraMeshRendererProperties::StaticClass(), FString::Printf(
+			TEXT("{\"Meshes\":[{\"mesh\":{\"refPath\":\"%s\"},\"scale\":{\"x\":%f,\"y\":%f,\"z\":%f}}],")
+			TEXT("\"bOverrideMaterials\":true,\"OverrideMaterials\":[{\"explicitMat\":{\"refPath\":\"%s\"}}]}"),
+			MeshPath, Scale, Scale, Scale, *EwigfelsVfxMaterials::Path(TEXT("M_EwVfx_Rock"))));
+		return E;
+	}
+
+	const TCHAR* RockMesh = TEXT("/Game/ParagonGideon/FX/Meshes/Heroes/Gideon/Abilities/SM_Meteor_Small.SM_Meteor_Small");
+	const TCHAR* ChunkMesh = TEXT("/Game/ParagonGideon/FX/Meshes/Heroes/Gideon/Abilities/SM_Meteor_Chunk_Small.SM_Meteor_Chunk_Small");
+
 	const FString Dust = B::Col(FLinearColor(0.35f, 0.3f, 0.24f, 0.5f));
 	const FString Water = B::Col(FLinearColor(0.55f, 0.75f, 0.95f, 0.45f));
 
@@ -455,8 +471,9 @@ namespace EwigfelsSpellVfx
 		return Simple(TEXT("NS_ziehklang"), FLinearColor(0.7f, 1.f, 0.85f), FLinearColor(0.3f, 0.9f, 0.6f), FLinearColor(0.85f, 1.f, 0.9f), [](B& V)
 		{
 			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
-			Mat(V, Beam(V, TEXT("Band"), 30, 26.f, 0.45f, Hdr(TEXT("User.GlowColor"), 8.f, 0.6f), 4.f, 0.08f), TEXT("M_EwVfx_Trail"));
-			Mat(V, Beam(V, TEXT("Kern"), 30, 5.f, 0.45f, Hdr(TEXT("User.Color"), 30.f), 3.f, 0.08f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Band"), 30, 70.f, 0.45f, Hdr(TEXT("User.GlowColor"), 10.f, 0.55f), 5.f, 0.08f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Welle"), 24, 45.f, 0.45f, Hdr(TEXT("User.SparkColor"), 8.f, 0.5f), 14.f, 0.1f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Kern"), 30, 14.f, 0.45f, Hdr(TEXT("User.Color"), 35.f), 3.f, 0.08f), TEXT("M_EwVfx_Trail"));
 			Mat(V, Flash(V, TEXT("Hand"), 40.f, 0.3f, Hdr(TEXT("User.GlowColor"), 8.f, 0.7f)), TEXT("M_EwVfx_Glow"));
 		});
 	}
@@ -466,8 +483,8 @@ namespace EwigfelsSpellVfx
 		// Kegel-Druckwelle: goldene Klangbögen, Staub vom Boden, kleine Funken
 		return Simple(TEXT("NS_hammerton"), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.65f, 0.2f), FLinearColor(1.f, 0.9f, 0.6f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Welle"), 26, 650.f, 70.f, 60.f, 110.f, 0.25f, 0.4f, Hdr(TEXT("User.GlowColor"), 3.f, 0.5f), TEXT("M_EwVfx_GlowCloud"));
-			ConeBurst(V, TEXT("Klang"), 40, 650.f, 70.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.Color"), 12.f), TEXT("M_EwVfx_Spark"));
+			ConeBurst(V, TEXT("Welle"), 30, 650.f, 70.f, 70.f, 130.f, 0.45f, 0.6f, Hdr(TEXT("User.GlowColor"), 3.f, 0.5f), TEXT("M_EwVfx_GlowCloud"));
+			ConeBurst(V, TEXT("Klang"), 50, 650.f, 70.f, 6.f, 12.f, 0.4f, 0.6f, Hdr(TEXT("User.Color"), 12.f), TEXT("M_EwVfx_Spark"));
 			ConeBurst(V, TEXT("Staub"), 18, 500.f, 80.f, 70.f, 140.f, 0.8f, 1.4f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 2.5f);
 		});
 	}
@@ -509,10 +526,16 @@ namespace EwigfelsSpellVfx
 		// schimmernde Kuppel: kreisende Lichtpunkte auf einer Halbkugel und ein weicher Glanz (Endlosschleife)
 		return Simple(TEXT("NS_glockenschild"), FLinearColor(1.f, 0.9f, 0.6f), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.95f, 0.8f), [](B& V)
 		{
-			Core(V, TEXT("Glanz"), 260.f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.25f));
-			const FName E = Stream(V, TEXT("Kuppel"), 90.f, 6.f, 12.f, 0.5f, 0.8f, 0.f, 10.f, 0.f, Hdr(TEXT("User.Color"), 10.f), 120.f);
+			// dichte, kurzlebige Lichtpunkte auf einer Kugelschale (lokaler Raum: Kuppel wandert mit dem Wirker) + weicher Glanz
+			Mat(V, Core(V, TEXT("Glanz"), 300.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.18f)), TEXT("M_EwVfx_GlowCloud"));
+			const FName E = Stream(V, TEXT("Kuppel"), 600.f, 2.5f, 5.f, 0.2f, 0.35f, 0.f, 5.f, 0.f, Hdr(TEXT("User.Color"), 12.f), 130.f);
 			V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Surface Distribution"), B::F(1.f));
+			V.EmitterData(E, TEXT("{\"bLocalSpace\":true}"));
 			Mat(V, E, TEXT("M_EwVfx_Glow"));
+			const FName W = Stream(V, TEXT("Wellen"), 40.f, 30.f, 60.f, 0.4f, 0.6f, 0.f, 5.f, 0.f, Hdr(TEXT("User.GlowColor"), 2.f, 0.3f), 125.f);
+			V.Set(W, PS, TEXT("ShapeLocation"), TEXT("Sphere Surface Distribution"), B::F(1.f));
+			V.EmitterData(W, TEXT("{\"bLocalSpace\":true}"));
+			Mat(V, W, TEXT("M_EwVfx_GlowCloud"));
 		});
 	}
 
@@ -600,7 +623,7 @@ namespace EwigfelsSpellVfx
 		// kräftige Bö: weiße Schwaden und Staub schießen nach vorn
 		return Simple(TEXT("NS_windstoss"), FLinearColor(0.9f, 0.97f, 1.f), FLinearColor(0.75f, 0.9f, 1.f), FLinearColor(1.f, 1.f, 1.f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Boe"), 30, 1200.f, 55.f, 90.f, 160.f, 0.5f, 0.8f, B::Col(FLinearColor(0.95f, 0.97f, 1.f, 0.3f)), TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
+			ConeBurst(V, TEXT("Boe"), 36, 1200.f, 55.f, 100.f, 180.f, 0.7f, 1.0f, B::Col(FLinearColor(0.95f, 0.97f, 1.f, 0.3f)), TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
 			ConeBurst(V, TEXT("Linien"), 50, 1200.f, 50.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f), TEXT("M_EwVfx_Spark"), 80.f, 0.4f);
 			ConeBurst(V, TEXT("Staub"), 20, 800.f, 60.f, 60.f, 120.f, 0.8f, 1.3f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 1.5f);
 		});
@@ -678,16 +701,16 @@ namespace EwigfelsSpellVfx
 		return Projectile(TEXT("felsfaust"), FLinearColor(0.75f, 0.6f, 0.45f), FLinearColor(0.9f, 0.6f, 0.3f), FLinearColor(0.8f, 0.7f, 0.55f),
 			[](B& V)
 			{
-				Mat(V, Core(V, TEXT("Fels"), 70.f, B::Col(FLinearColor(0.25f, 0.2f, 0.15f, 0.95f))), TEXT("M_EwVfx_Smoke"));
-				Core(V, TEXT("Glimmen"), 90.f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.35f));
+				AsMesh(V, Core(V, TEXT("Fels"), 1.f, B::Col(FLinearColor(0.8f, 0.7f, 0.6f, 1.f))), RockMesh, 3.f);
 				Mat(V, Stream(V, TEXT("Staub"), 40.f, 30.f, 60.f, 0.6f, 1.1f, 10.f, 40.f, -50.f, Dust, 20.f), TEXT("M_EwVfx_Smoke"));
-				Mat(V, Stream(V, TEXT("Kiesel"), 30.f, 3.f, 6.f, 0.4f, 0.8f, 50.f, 150.f, -900.f, Dust, 20.f), TEXT("M_EwVfx_Smoke"));
+				AsMesh(V, Stream(V, TEXT("Kiesel"), 14.f, 1.f, 1.f, 0.5f, 0.9f, 50.f, 150.f, -900.f, B::Col(FLinearColor(0.7f, 0.6f, 0.5f, 1.f)), 25.f), ChunkMesh, 0.3f);
 			},
 			[](B& V)
 			{
 				Mat(V, Puff(V, TEXT("Staubwolke"), 20, 80.f, 180.f, 1.2f, 2.0f, 100.f, 300.f, 30.f, Dust), TEXT("M_EwVfx_Smoke"));
-				Mat(V, Sparks(V, TEXT("Splitter"), 50, 300.f, 900.f, 3.f, Dust), TEXT("M_EwVfx_Smoke"));
-				Mat(V, Flash(V, TEXT("Wucht"), 160.f, 0.12f, Hdr(TEXT("User.GlowColor"), 6.f, 0.6f)), TEXT("M_EwVfx_Burst"));
+				AsMesh(V, Puff(V, TEXT("Brocken"), 14, 1.f, 1.f, 0.9f, 1.4f, 300.f, 700.f, -1300.f, B::Col(FLinearColor(0.7f, 0.6f, 0.5f, 1.f))), ChunkMesh, 0.5f);
+				Mat(V, Sparks(V, TEXT("Splitter"), 40, 300.f, 900.f, 3.f, Dust), TEXT("M_EwVfx_Smoke"));
+				Mat(V, Flash(V, TEXT("Wucht"), 120.f, 0.08f, Hdr(TEXT("User.GlowColor"), 2.f, 0.4f)), TEXT("M_EwVfx_Burst"));
 				Ring(V, TEXT("Bodenwelle"), 30, 40.f, 500.f, 60.f, 110.f, 0.8f, 1.3f, Dust, TEXT("M_EwVfx_Smoke"));
 			});
 	}
@@ -698,8 +721,9 @@ namespace EwigfelsSpellVfx
 		return Simple(TEXT("NS_glutpeitsche"), FLinearColor(1.f, 0.5f, 0.12f), FLinearColor(1.f, 0.3f, 0.05f), FLinearColor(1.f, 0.75f, 0.3f), [](B& V)
 		{
 			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
-			Mat(V, Beam(V, TEXT("Flammen"), 20, 30.f, 0.3f, Hdr(TEXT("User.GlowColor"), 10.f, 0.7f), 10.f, 0.05f), TEXT("M_EwVfx_Trail"));
-			Mat(V, Beam(V, TEXT("Kern"), 20, 7.f, 0.3f, Hdr(TEXT("User.Color"), 40.f), 8.f, 0.05f), TEXT("M_EwVfx_Bolt"));
+			Mat(V, Beam(V, TEXT("Glut"), 20, 80.f, 0.35f, Hdr(TEXT("User.GlowColor"), 8.f, 0.55f), 12.f, 0.05f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Flammen"), 18, 50.f, 0.35f, Hdr(TEXT("User.Color"), 14.f, 0.8f), 18.f, 0.04f), TEXT("M_EwVfx_Fire"));
+			Mat(V, Beam(V, TEXT("Kern"), 20, 16.f, 0.3f, Hdr(TEXT("User.SparkColor"), 40.f), 10.f, 0.05f), TEXT("M_EwVfx_Bolt"));
 			Mat(V, Flash(V, TEXT("Hand"), 50.f, 0.15f, Hdr(TEXT("User.Color"), 10.f, 0.8f)), TEXT("M_EwVfx_Fire"));
 		});
 	}

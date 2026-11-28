@@ -83,9 +83,14 @@ namespace EwigfelsVfxTest
 		// Farben kopieren (kein Zeiger in die Weisen-Tabelle über Timer hinweg)
 		FColors Colors;
 		bool bProjectile = false;
+		bool bGround = false;  // Kegel, Fläche, Selbst, Schild: am Boden vor der Figur statt quer
+		bool bCone = false;
 		if (const FEwigfelsSpellDef* Spell = Char->GetCaster()->FindSpellDef(Id))
 		{
 			bProjectile = Spell->Delivery.Type == EEwigfelsSpellDelivery::Projectile;
+			bCone = Spell->Delivery.Type == EEwigfelsSpellDelivery::Cone;
+			bGround = bCone || Spell->Delivery.Type == EEwigfelsSpellDelivery::Area
+				|| Spell->Delivery.Type == EEwigfelsSpellDelivery::Self || Spell->Delivery.Type == EEwigfelsSpellDelivery::Shield;
 			Colors.Color = Spell->Visual.Color;
 			Colors.Glow = Spell->Visual.GlowColor.A > 0.f ? Spell->Visual.GlowColor : Spell->Visual.Color;
 			Colors.Spark = Spell->Visual.SparkColor.A > 0.f ? Spell->Visual.SparkColor : Spell->Visual.Color;
@@ -97,8 +102,15 @@ namespace EwigfelsVfxTest
 		const FVector Forward = Char->GetActorForwardVector();
 		const FVector Right = Char->GetActorRightVector();
 		// Quer vor der Figur (von links nach rechts), damit die Kamera hinter ihr Strahlen in voller Länge sieht
-		const FVector Start = Char->GetActorLocation() + Forward * 550.f - Right * 380.f + FVector(0, 0, 60.f);
-		const FVector End = Start + Right * 760.f + Forward * 120.f;
+		FVector Start = Char->GetActorLocation() + Forward * 550.f - Right * 380.f + FVector(0, 0, 60.f);
+		FVector End = Start + Right * 760.f + Forward * 120.f;
+		if (bGround)
+		{
+			// Fläche/Selbst: mittig 6 m vor der Figur am Boden. Kegel: von links quer nach rechts, damit man die Breite sieht.
+			const FVector Feet = Char->GetActorLocation() - FVector(0, 0, Char->GetSimpleCollisionHalfHeight());
+			Start = bCone ? Feet + Forward * 600.f - Right * 450.f : Feet + Forward * 650.f;
+			End = bCone ? Start + Right * 900.f : Start + Forward * 100.f;
+		}
 		const FString Base = FString::Printf(TEXT("/Game/VFX/Spells/NS_%s.NS_%s"), *Id.ToString(), *Id.ToString());
 		const FString Impact = FString::Printf(TEXT("/Game/VFX/Spells/NS_%s_Impact.NS_%s_Impact"), *Id.ToString(), *Id.ToString());
 		TWeakObjectPtr<UWorld> WeakWorld(World);

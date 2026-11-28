@@ -17,6 +17,8 @@
 #include "InputKeyEventArgs.h"
 #include "TimerManager.h"
 #include "UI/EwigfelsCharacterCreator.h"
+#include "Misc/Paths.h"
+#include "UnrealClient.h"
 
 #if !UE_BUILD_SHIPPING
 
@@ -140,6 +142,63 @@ namespace EwigfelsInputTest
 			}
 		});
 	}
+
+	/** Schild: rechte Maustaste halten (simuliert), Screenshots nach Saved/Screenshots/Schild. */
+	void RunShield(UWorld* World, bool bQuit)
+	{
+		APlayerController* PC = World ? World->GetFirstPlayerController() : nullptr;
+		if (!PC || !PC->GetPawn() || World->GetTimeSeconds() < 5.f)
+		{
+			if (World)
+			{
+				FTimerHandle Retry;
+				TWeakObjectPtr<UWorld> WeakWorld(World);
+				World->GetTimerManager().SetTimer(Retry, FTimerDelegate::CreateLambda([WeakWorld, bQuit]()
+				{
+					if (WeakWorld.IsValid()) { RunShield(WeakWorld.Get(), bQuit); }
+				}), 1.f, false);
+			}
+			return;
+		}
+		if (ULocalPlayer* LP = PC->GetLocalPlayer())
+		{
+			if (UEwigfelsCreatorSubsystem* Creator = LP->GetSubsystem<UEwigfelsCreatorSubsystem>(); Creator && Creator->IsOpen())
+			{
+				Creator->Edit([](FEwigfelsAppearance& Look) { Look.Name = TEXT("Testfigur"); });
+				Creator->Confirm();
+			}
+		}
+		TWeakObjectPtr<APlayerController> WeakPC(PC);
+		FTimerManager& Timers = World->GetTimerManager();
+		auto At = [&Timers](float Seconds, TFunction<void()> Fn)
+		{
+			FTimerHandle Handle;
+			Timers.SetTimer(Handle, FTimerDelegate::CreateLambda(MoveTemp(Fn)), Seconds, false);
+		};
+		auto Shot = [](const TCHAR* Name)
+		{
+			FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/Schild") / (FString(Name) + TEXT(".png")), false, false);
+		};
+		At(1.0f, [WeakPC]() { Key(WeakPC.Get(), EKeys::RightMouseButton, IE_Pressed); });
+		At(1.3f, [Shot]() { Shot(TEXT("1_Schild_0_3s")); });
+		At(2.0f, [Shot]() { Shot(TEXT("2_Schild_1s")); });
+		At(3.0f, [Shot]() { Shot(TEXT("3_Schild_2s")); });
+		At(3.2f, [WeakPC]() { Key(WeakPC.Get(), EKeys::RightMouseButton, IE_Released); });
+		At(3.6f, [Shot]() { Shot(TEXT("4_nach_Loslassen")); });
+		At(4.5f, [bQuit]()
+		{
+			UE_LOG(LogTemp, Display, TEXT("[Schild-Test] fertig"));
+			if (bQuit) { FPlatformMisc::RequestExit(false); }
+		});
+	}
+
+	FAutoConsoleCommandWithWorldAndArgs GTestShield(
+		TEXT("Ewigfels.Test.Schild"),
+		TEXT("Schild per simulierter rechter Maustaste halten, Screenshots nach Saved/Screenshots/Schild (quit = danach beenden)"),
+		FConsoleCommandWithWorldAndArgsDelegate::CreateLambda([](const TArray<FString>& Args, UWorld* World)
+		{
+			RunShield(World, Args.Contains(TEXT("quit")));
+		}));
 
 	FAutoConsoleCommandWithWorldAndArgs GTestInput(
 		TEXT("Ewigfels.Test.Steuerung"),

@@ -36,6 +36,9 @@ public:
 	/** Renderer-Eigenschaften als JSON (Teilmenge reicht, z. B. {"Material":{"refPath":"..."}}). */
 	void Renderer(FName Emitter, int32 Index, const FString& Json);
 
+	/** Entfernt einen Renderer (z. B. den Sprite-Renderer einer Vorlage, wenn Meshes gezeigt werden). */
+	void RemoveRenderer(FName Emitter, int32 Index);
+
 	/** Fügt einen Renderer hinzu (z. B. UNiagaraLightRendererProperties) und setzt seine Eigenschaften. */
 	void AddRenderer(FName Emitter, UClass* RendererClass, const FString& Json);
 
