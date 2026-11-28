@@ -109,6 +109,75 @@ namespace EwigfelsSpellVfx
 		return E;
 	}
 
+	/** Partikelwolke aus einem Burst (Rauch, Frostnebel, Flammenstoß): große weiche Sprites. */
+	FName Puff(B& V, const TCHAR* Name, int32 Count, float SizeMin, float SizeMax, float LifeMin, float LifeMax, float SpeedMin, float SpeedMax,
+		float GravityZ, const FString& Color)
+	{
+		const FName E = V.AddEmitter(TEXT("OmnidirectionalBurst"), Name);
+		Once(V, E, LifeMax + 0.2f);
+		V.Set(E, ES, TEXT("SpawnBurst_Instantaneous"), TEXT("Spawn Count"), B::I(Count));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Min"), B::F(LifeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Max"), B::F(LifeMax));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Min"), B::F(SizeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Max"), B::F(SizeMax));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(SizeMin * 0.5f));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Minimum"), B::F(SpeedMin));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Maximum"), B::F(SpeedMax));
+		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, GravityZ)));
+		return E;
+	}
+
+	/** Dauerstrom hinter einem Geschoss (Weltraum, bleibt liegen): Rate pro Sekunde statt Burst. */
+	FName Stream(B& V, const TCHAR* Name, float Rate, float SizeMin, float SizeMax, float LifeMin, float LifeMax, float SpeedMin, float SpeedMax,
+		float GravityZ, const FString& Color, float Radius = 4.f)
+	{
+		const FName E = V.AddEmitter(TEXT("OmnidirectionalBurst"), Name);
+		V.SetEnum(E, ES, TEXT("EmitterState"), TEXT("Loop Behavior"), TEXT("Infinite"));
+		V.EnableModule(E, ES, TEXT("SpawnBurst_Instantaneous"), false);
+		const FName R = V.AddModule(E, ES, TEXT("/Niagara/Modules/Emitter/SpawnRate"));
+		V.Set(E, ES, *R.ToString(), TEXT("SpawnRate"), B::F(Rate));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Min"), B::F(LifeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Max"), B::F(LifeMax));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Min"), B::F(SizeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Max"), B::F(SizeMax));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(Radius));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Minimum"), B::F(SpeedMin));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Maximum"), B::F(SpeedMax));
+		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, GravityZ)));
+		return E;
+	}
+
+	/** Leuchtender Kern, der am Geschoss klebt (lokaler Raum, Endlosschleife). */
+	FName Core(B& V, const TCHAR* Name, float Size, const FString& Color)
+	{
+		const FName E = V.AddEmitter(TEXT("SingleLoopingParticle"), Name);
+		V.EmitterData(E, TEXT("{\"bLocalSpace\":true}"));
+		V.SetEnum(E, PS, TEXT("InitializeParticle"), TEXT("Color Mode"), TEXT("Direct Set"));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size"), B::F(Size));
+		return E;
+	}
+
+	/** Leuchtband hinter dem Geschoss (Band aus der Flugbahn, Weltraum). */
+	FName Trail(B& V, const TCHAR* Name, float Rate, float Width, float Life, const FString& Color)
+	{
+		const FName E = V.AddEmitter(TEXT("LocationBasedRibbon"), Name);
+		V.SetEnum(E, ES, TEXT("EmitterState"), TEXT("Loop Behavior"), TEXT("Infinite"));
+		const FName R = V.AddModule(E, ES, TEXT("/Niagara/Modules/Emitter/SpawnRate"));
+		V.Set(E, ES, *R.ToString(), TEXT("SpawnRate"), B::F(Rate));
+		V.SetEnum(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Mode"), TEXT("Direct Set"));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime"), B::F(Life));
+		V.SetEnum(E, PS, TEXT("InitializeParticle"), TEXT("Color Mode"), TEXT("Direct Set"));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.SetEnum(E, PS, TEXT("InitializeParticle"), TEXT("Ribbon Width Mode"), TEXT("Direct Set"));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Ribbon Width"), B::F(Width));
+		return E;
+	}
+
+	const FString Smoke = B::Col(FLinearColor(0.05f, 0.045f, 0.04f, 0.45f));
+
 	// ---------------------------------------------------------------- Funkenstoß (Scintivox)
 
 	bool Funkenstoss()
@@ -145,10 +214,104 @@ namespace EwigfelsSpellVfx
 		return bOk;
 	}
 
+	// ---------------------------------------------------------------- Frostweise (Gelucantus): Eislanze mit Frostnebel
+
+	bool Frostweise()
+	{
+		const FLinearColor C(0.75f, 0.92f, 1.f), G(0.35f, 0.75f, 1.f), S(0.85f, 0.97f, 1.f);
+		bool bOk = true;
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_frostweise"))) { return false; }
+			StandardUser(V, C, G, S);
+			Core(V, TEXT("Kern"), 26.f, Hdr(TEXT("User.Color"), 10.f));
+			Core(V, TEXT("Halo"), 70.f, Hdr(TEXT("User.GlowColor"), 2.5f, 0.35f));
+			Trail(V, TEXT("Spur"), 60.f, 14.f, 0.35f, Hdr(TEXT("User.GlowColor"), 4.f, 0.5f));
+			Stream(V, TEXT("Nebel"), 45.f, 18.f, 36.f, 0.5f, 0.9f, 10.f, 40.f, 20.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), 8.f);
+			Stream(V, TEXT("Kristalle"), 70.f, 1.2f, 3.f, 0.4f, 0.9f, 40.f, 160.f, -300.f, Hdr(TEXT("User.SparkColor"), 18.f), 10.f);
+			bOk &= V.Finish();
+		}
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_frostweise_Impact"))) { return false; }
+			StandardUser(V, C, G, S);
+			Flash(V, TEXT("Blitz"), 110.f, 0.12f, Hdr(TEXT("User.GlowColor"), 14.f));
+			Sparks(V, TEXT("Splitter"), 46, 300.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 20.f));
+			Puff(V, TEXT("Frostwolke"), 14, 40.f, 80.f, 0.7f, 1.3f, 60.f, 160.f, 30.f, Hdr(TEXT("User.GlowColor"), 1.4f, 0.3f));
+			Embers(V, TEXT("Glitzer"), 24, 30.f, Hdr(TEXT("User.SparkColor"), 12.f));
+			bOk &= V.Finish();
+		}
+		return bOk;
+	}
+
+	// ---------------------------------------------------------------- Glutweise (Ardesonus): Glutkugel mit Flammenschweif
+
+	bool Glutweise()
+	{
+		const FLinearColor C(1.f, 0.55f, 0.15f), G(1.f, 0.3f, 0.05f), S(1.f, 0.75f, 0.3f);
+		bool bOk = true;
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_glutweise"))) { return false; }
+			StandardUser(V, C, G, S);
+			Core(V, TEXT("Kern"), 30.f, Hdr(TEXT("User.Color"), 14.f));
+			Core(V, TEXT("Halo"), 80.f, Hdr(TEXT("User.GlowColor"), 3.f, 0.4f));
+			Stream(V, TEXT("Flammen"), 140.f, 10.f, 24.f, 0.2f, 0.45f, 20.f, 70.f, 180.f, Hdr(TEXT("User.Color"), 9.f, 0.7f), 9.f);
+			Stream(V, TEXT("Rauch"), 30.f, 20.f, 42.f, 0.7f, 1.4f, 10.f, 40.f, 90.f, Smoke, 10.f);
+			Stream(V, TEXT("Funken"), 40.f, 1.2f, 2.8f, 0.3f, 0.8f, 80.f, 260.f, -200.f, Hdr(TEXT("User.SparkColor"), 25.f), 8.f);
+			bOk &= V.Finish();
+		}
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_glutweise_Impact"))) { return false; }
+			StandardUser(V, C, G, S);
+			Flash(V, TEXT("Blitz"), 140.f, 0.14f, Hdr(TEXT("User.Color"), 16.f));
+			Puff(V, TEXT("Flammenstoss"), 22, 30.f, 60.f, 0.25f, 0.55f, 150.f, 420.f, 150.f, Hdr(TEXT("User.Color"), 8.f, 0.7f));
+			Puff(V, TEXT("Rauch"), 12, 50.f, 100.f, 1.0f, 2.0f, 40.f, 140.f, 60.f, Smoke);
+			Sparks(V, TEXT("Funken"), 50, 250.f, 900.f, 2.5f, Hdr(TEXT("User.SparkColor"), 25.f));
+			Embers(V, TEXT("Glut"), 22, 25.f, Hdr(TEXT("User.SparkColor"), 12.f));
+			bOk &= V.Finish();
+		}
+		return bOk;
+	}
+
+	// ---------------------------------------------------------------- Sturmweise (Tempestivox): dicker, springender Blitz
+
+	bool Sturmweise()
+	{
+		const FLinearColor C(0.85f, 0.8f, 1.f), G(0.55f, 0.35f, 1.f), S(0.7f, 0.75f, 1.f);
+		bool bOk = true;
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_sturmweise"))) { return false; }
+			StandardUser(V, C, G, S);
+			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
+			Beam(V, TEXT("Saum"), 14, 34.f, 0.2f, Hdr(TEXT("User.GlowColor"), 14.f, 0.5f), 16.f, 0.05f);
+			Beam(V, TEXT("Kern"), 20, 8.f, 0.2f, Hdr(TEXT("User.Color"), 70.f), 22.f, 0.04f);
+			Beam(V, TEXT("Kern2"), 16, 4.f, 0.14f, Hdr(TEXT("User.Color"), 50.f), 28.f, 0.035f);
+			Beam(V, TEXT("Ast1"), 12, 2.f, 0.12f, Hdr(TEXT("User.SparkColor"), 40.f), 40.f, 0.03f);
+			Beam(V, TEXT("Ast2"), 10, 1.6f, 0.1f, Hdr(TEXT("User.SparkColor"), 40.f), 50.f, 0.03f);
+			Flash(V, TEXT("Muendung"), 26.f, 0.08f, Hdr(TEXT("User.GlowColor"), 14.f, 0.8f));
+			bOk &= V.Finish();
+		}
+		{
+			B V;
+			if (!V.Begin(TEXT("NS_sturmweise_Impact"))) { return false; }
+			StandardUser(V, C, G, S);
+			Flash(V, TEXT("Blitz"), 130.f, 0.12f, Hdr(TEXT("User.GlowColor"), 25.f));
+			Sparks(V, TEXT("Funken"), 60, 400.f, 1300.f, 2.f, Hdr(TEXT("User.SparkColor"), 30.f));
+			Embers(V, TEXT("Knistern"), 30, 40.f, Hdr(TEXT("User.Color"), 20.f));
+			bOk &= V.Finish();
+		}
+		return bOk;
+	}
+
 	int32 Build(const TArray<FString>& Ids)
 	{
 		struct FEntry { const TCHAR* Id; bool (*Fn)(); };
-		const FEntry All[] = { { TEXT("funkenstoss"), &Funkenstoss } };
+		const FEntry All[] = {
+			{ TEXT("funkenstoss"), &Funkenstoss }, { TEXT("frostweise"), &Frostweise },
+			{ TEXT("glutweise"), &Glutweise }, { TEXT("sturmweise"), &Sturmweise } };
 		int32 Built = 0;
 		for (const FEntry& Entry : All)
 		{
