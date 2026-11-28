@@ -317,12 +317,405 @@ namespace EwigfelsSpellVfx
 		return bOk;
 	}
 
+	// ---------------------------------------------------------------- Bausteine für Kegel-, Flächen- und Selbst-Weisen
+
+	/** Partikel fliegen im Kegel nach vorn (lokale X-Achse des Systems = Blickrichtung), erreichen etwa Range. */
+	FName ConeBurst(B& V, const TCHAR* Name, int32 Count, float Range, float AngleDeg, float SizeMin, float SizeMax, float LifeMin, float LifeMax,
+		const FString& Color, const TCHAR* Material, float Height = 60.f, float Drag = 0.6f)
+	{
+		const FName E = V.AddEmitter(TEXT("OmnidirectionalBurst"), Name);
+		Once(V, E, LifeMax + 0.2f);
+		V.Set(E, ES, TEXT("SpawnBurst_Instantaneous"), TEXT("Spawn Count"), B::I(Count));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Min"), B::F(LifeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Max"), B::F(LifeMax));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Min"), B::F(SizeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Max"), B::F(SizeMax));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(25.f));
+		V.SetEnum(E, PS, TEXT("ShapeLocation"), TEXT("Offset Mode"), TEXT("Default"));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Offset"), B::V3(FVector3f(60.f, 0.f, Height)));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Offset Coordinate Space"), TEXT("/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum(Enum=\"/Script/CoreUObject.Enum'/Script/Niagara.ENiagaraCoordinateSpace'\",EnumName=\"ENiagaraCoordinateSpace::Local\")"));
+		V.EnableModule(E, PS, TEXT("AddVelocity"), false);
+		const FName C = V.AddModule(E, PS, TEXT("/Niagara/Modules/Spawn/Velocity/AddVelocityInCone"));
+		V.Set(E, PS, *C.ToString(), TEXT("Cone Axis"), B::V3(FVector3f(1.f, 0.f, 0.f)));
+		V.Set(E, PS, *C.ToString(), TEXT("Cone Axis Coordinate Space"), TEXT("/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum(Enum=\"/Script/CoreUObject.Enum'/Script/Niagara.ENiagaraCoordinateSpace'\",EnumName=\"ENiagaraCoordinateSpace::Local\")"));
+		V.Set(E, PS, *C.ToString(), TEXT("Cone Angle"), B::F(AngleDeg * 0.5f));
+		// Bei Drag d legt ein Teilchen etwa v/d zurück: Geschwindigkeit so wählen, dass es ungefähr Range erreicht
+		V.Set(E, PS, *C.ToString(), TEXT("Velocity Strength"), B::F(Range * FMath::Max(Drag, 1.f / LifeMax)));
+		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, 0.f)));
+		V.Set(E, PU, TEXT("Drag"), TEXT("Drag"), B::F(Drag));
+		return Mat(V, E, Material);
+	}
+
+	/** Bodenring, der sich nach außen ausbreitet (Druckwelle). Speed < 0: Teilchen laufen nach innen (Sog). */
+	FName Ring(B& V, const TCHAR* Name, int32 Count, float Radius, float Speed, float SizeMin, float SizeMax, float LifeMin, float LifeMax,
+		const FString& Color, const TCHAR* Material, float Height = 10.f, float GravityZ = 0.f)
+	{
+		const FName E = V.AddEmitter(TEXT("OmnidirectionalBurst"), Name);
+		Once(V, E, LifeMax + 0.2f);
+		V.Set(E, ES, TEXT("SpawnBurst_Instantaneous"), TEXT("Spawn Count"), B::I(Count));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Min"), B::F(LifeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Max"), B::F(LifeMax));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Min"), B::F(SizeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Max"), B::F(SizeMax));
+		// flacher Ring: Kugel stark in Z gestaucht, Geschwindigkeit radial vom Mittelpunkt (Vorlage: "From Point")
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(Radius));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Surface Distribution"), B::F(1.f));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Non Uniform Scale"), B::V3(FVector3f(1.f, 1.f, 0.05f)));
+		V.SetEnum(E, PS, TEXT("ShapeLocation"), TEXT("Offset Mode"), TEXT("Default"));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Offset"), B::V3(FVector3f(0.f, 0.f, Height)));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Minimum"), B::F(Speed * 0.8f));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Maximum"), B::F(Speed * 1.2f));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Origin Offset"), B::V3(FVector3f(0.f, 0.f, Height)));
+		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, GravityZ)));
+		V.Set(E, PU, TEXT("Drag"), TEXT("Drag"), B::F(1.5f));
+		return Mat(V, E, Material);
+	}
+
+	/** Wirbel: Teilchen kreisen um die Hochachse (Strudel, Wirbelwind). */
+	FName Swirl(B& V, const TCHAR* Name, float Rate, float Radius, float Spin, float Pull, float SizeMin, float SizeMax, float Life,
+		const FString& Color, const TCHAR* Material, float Seconds)
+	{
+		const FName E = V.AddEmitter(TEXT("OmnidirectionalBurst"), Name);
+		Once(V, E, Seconds);
+		V.EnableModule(E, ES, TEXT("SpawnBurst_Instantaneous"), false);
+		const FName R = V.AddModule(E, ES, TEXT("/Niagara/Modules/Emitter/SpawnRate"));
+		V.Set(E, ES, *R.ToString(), TEXT("SpawnRate"), B::F(Rate));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Min"), B::F(Life * 0.7f));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Lifetime Max"), B::F(Life));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Color"), Color);
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Min"), B::F(SizeMin));
+		V.Set(E, PS, TEXT("InitializeParticle"), TEXT("Uniform Sprite Size Max"), B::F(SizeMax));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(Radius));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Surface Distribution"), B::F(1.f));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Non Uniform Scale"), B::V3(FVector3f(1.f, 1.f, 0.15f)));
+		V.SetEnum(E, PS, TEXT("ShapeLocation"), TEXT("Offset Mode"), TEXT("Default"));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Offset"), B::V3(FVector3f(0.f, 0.f, 40.f)));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Minimum"), B::F(0.f));
+		V.Set(E, PS, TEXT("AddVelocity"), TEXT("Velocity Speed|Maximum"), B::F(20.f));
+		V.Set(E, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, 40.f)));
+		const FName W = V.AddModule(E, PU, TEXT("/Niagara/Modules/Update/Forces/VortexForce"));
+		V.Set(E, PU, *W.ToString(), TEXT("Vortex Axis"), B::V3(FVector3f(0.f, 0.f, 1.f)));
+		V.Set(E, PU, *W.ToString(), TEXT("Vortex Force Amount"), B::F(Spin));
+		V.Set(E, PU, *W.ToString(), TEXT("Origin Pull Amount"), B::F(Pull));
+		return Mat(V, E, Material);
+	}
+
+	/** Aufsteigende Lichtpunkte um den Wirker (Heilung, Schlaf-Noten). */
+	FName Rise(B& V, const TCHAR* Name, int32 Count, float Radius, float SizeMin, float SizeMax, float LifeMin, float LifeMax, float Up,
+		const FString& Color, const TCHAR* Material)
+	{
+		const FName E = Puff(V, Name, Count, SizeMin, SizeMax, LifeMin, LifeMax, 10.f, 40.f, Up, Color);
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(Radius));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Non Uniform Scale"), B::V3(FVector3f(1.f, 1.f, 1.8f)));
+		V.SetEnum(E, PS, TEXT("ShapeLocation"), TEXT("Offset Mode"), TEXT("Default"));
+		V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Offset"), B::V3(FVector3f(0.f, 0.f, 90.f)));
+		return Mat(V, E, Material);
+	}
+
+	/** Blitz aus dem Himmel auf den Systemursprung (Einschlag ohne BeamEnd: Ende relativ nach oben). */
+	FName SkyBolt(B& V, const TCHAR* Name, int32 Points, float Width, float Life, const FString& Color, float Jitter)
+	{
+		const FName E = Beam(V, Name, Points, Width, Life, Color, Jitter, 0.03f);
+		V.Set(E, ES, TEXT("BeamEmitterSetup"), TEXT("Absolute Beam End"), B::B(false));
+		V.Set(E, ES, TEXT("BeamEmitterSetup"), TEXT("Beam End"), B::V3(FVector3f(0.f, 0.f, 1400.f)));
+		return E;
+	}
+
+	const FString Dust = B::Col(FLinearColor(0.35f, 0.3f, 0.24f, 0.5f));
+	const FString Water = B::Col(FLinearColor(0.55f, 0.75f, 0.95f, 0.45f));
+
+	bool Simple(const TCHAR* Name, const FLinearColor& C, const FLinearColor& G, const FLinearColor& S, TFunctionRef<void(B&)> Fill)
+	{
+		B V;
+		if (!V.Begin(Name))
+		{
+			return false;
+		}
+		StandardUser(V, C, G, S);
+		Fill(V);
+		return V.Finish();
+	}
+
+	/** Geschoss-Weise: Flug (Kern, Halo, Spur, Strom) + Einschlag. */
+	bool Projectile(const TCHAR* Id, const FLinearColor& C, const FLinearColor& G, const FLinearColor& S,
+		TFunctionRef<void(B&)> Flight, TFunctionRef<void(B&)> Impact)
+	{
+		bool bOk = Simple(*FString::Printf(TEXT("NS_%s"), Id), C, G, S, Flight);
+		bOk &= Simple(*FString::Printf(TEXT("NS_%s_Impact"), Id), C, G, S, Impact);
+		return bOk;
+	}
+
+	// ---------------------------------------------------------------- Kampfweisen Gruppe 1 (Rest)
+
+	bool Ziehklang()
+	{
+		// ruhiges, pulsierendes Klangband (glatt, ohne Zucken) mit Leuchtpunkten
+		return Simple(TEXT("NS_ziehklang"), FLinearColor(0.7f, 1.f, 0.85f), FLinearColor(0.3f, 0.9f, 0.6f), FLinearColor(0.85f, 1.f, 0.9f), [](B& V)
+		{
+			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
+			Mat(V, Beam(V, TEXT("Band"), 30, 26.f, 0.45f, Hdr(TEXT("User.GlowColor"), 8.f, 0.6f), 4.f, 0.08f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Kern"), 30, 5.f, 0.45f, Hdr(TEXT("User.Color"), 30.f), 3.f, 0.08f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Flash(V, TEXT("Hand"), 40.f, 0.3f, Hdr(TEXT("User.GlowColor"), 8.f, 0.7f)), TEXT("M_EwVfx_Glow"));
+		});
+	}
+
+	bool Hammerton()
+	{
+		// Kegel-Druckwelle: goldene Klangbögen, Staub vom Boden, kleine Funken
+		return Simple(TEXT("NS_hammerton"), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.65f, 0.2f), FLinearColor(1.f, 0.9f, 0.6f), [](B& V)
+		{
+			ConeBurst(V, TEXT("Welle"), 26, 650.f, 70.f, 60.f, 110.f, 0.25f, 0.4f, Hdr(TEXT("User.GlowColor"), 3.f, 0.5f), TEXT("M_EwVfx_GlowCloud"));
+			ConeBurst(V, TEXT("Klang"), 40, 650.f, 70.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.Color"), 12.f), TEXT("M_EwVfx_Spark"));
+			ConeBurst(V, TEXT("Staub"), 18, 500.f, 80.f, 70.f, 140.f, 0.8f, 1.4f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 2.5f);
+		});
+	}
+
+	bool Paukenschlag()
+	{
+		// Klatschen: Ring-Schockwelle am Boden, Staubring, Lichtringe in die Höhe
+		return Simple(TEXT("NS_paukenschlag"), FLinearColor(1.f, 0.85f, 0.5f), FLinearColor(1.f, 0.6f, 0.3f), FLinearColor(1.f, 0.95f, 0.7f), [](B& V)
+		{
+			Mat(V, Flash(V, TEXT("Klatsch"), 160.f, 0.12f, Hdr(TEXT("User.GlowColor"), 10.f)), TEXT("M_EwVfx_Burst"));
+			Ring(V, TEXT("Welle"), 60, 60.f, 900.f, 40.f, 70.f, 0.3f, 0.45f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f), TEXT("M_EwVfx_GlowCloud"));
+			Ring(V, TEXT("Staub"), 36, 80.f, 600.f, 80.f, 150.f, 0.9f, 1.5f, Dust, TEXT("M_EwVfx_Smoke"), 5.f, 30.f);
+			Ring(V, TEXT("Funken"), 50, 50.f, 1100.f, 4.f, 9.f, 0.25f, 0.45f, Hdr(TEXT("User.SparkColor"), 20.f), TEXT("M_EwVfx_Spark"), 30.f);
+			Rise(V, TEXT("Lichtringe"), 14, 60.f, 20.f, 40.f, 0.5f, 0.9f, 500.f, Hdr(TEXT("User.Color"), 6.f, 0.7f), TEXT("M_EwVfx_Glow"));
+		});
+	}
+
+	bool Haltelied()
+	{
+		// Geschoss: schwebende Notenringe (leuchtende Kugel mit kreisenden Punkten); Aufprall: Bodenriss-Staubwelle
+		return Projectile(TEXT("haltelied"), FLinearColor(0.75f, 0.8f, 1.f), FLinearColor(0.5f, 0.55f, 1.f), FLinearColor(0.9f, 0.9f, 1.f),
+			[](B& V)
+			{
+				Core(V, TEXT("Kern"), 40.f, Hdr(TEXT("User.Color"), 10.f));
+				Core(V, TEXT("Halo"), 120.f, Hdr(TEXT("User.GlowColor"), 3.f, 0.4f));
+				Mat(V, Trail(V, TEXT("Spur"), 50.f, 18.f, 0.4f, Hdr(TEXT("User.GlowColor"), 4.f, 0.5f)), TEXT("M_EwVfx_Trail"));
+				Mat(V, Stream(V, TEXT("Noten"), 50.f, 3.f, 6.f, 0.5f, 0.9f, 30.f, 90.f, 0.f, Hdr(TEXT("User.SparkColor"), 14.f), 30.f), TEXT("M_EwVfx_Glow"));
+			},
+			[](B& V)
+			{
+				Mat(V, Flash(V, TEXT("Blitz"), 120.f, 0.14f, Hdr(TEXT("User.GlowColor"), 12.f)), TEXT("M_EwVfx_Burst"));
+				Ring(V, TEXT("Staubwelle"), 30, 40.f, 500.f, 70.f, 130.f, 0.8f, 1.4f, Dust, TEXT("M_EwVfx_Smoke"));
+				Ring(V, TEXT("Lichtring"), 40, 30.f, 700.f, 20.f, 40.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 5.f, 0.6f), TEXT("M_EwVfx_Glow"), 20.f);
+			});
+	}
+
+	bool Glockenschild()
+	{
+		// schimmernde Kuppel: kreisende Lichtpunkte auf einer Halbkugel und ein weicher Glanz (Endlosschleife)
+		return Simple(TEXT("NS_glockenschild"), FLinearColor(1.f, 0.9f, 0.6f), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.95f, 0.8f), [](B& V)
+		{
+			Core(V, TEXT("Glanz"), 260.f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.25f));
+			const FName E = Stream(V, TEXT("Kuppel"), 90.f, 6.f, 12.f, 0.5f, 0.8f, 0.f, 10.f, 0.f, Hdr(TEXT("User.Color"), 10.f), 120.f);
+			V.Set(E, PS, TEXT("ShapeLocation"), TEXT("Sphere Surface Distribution"), B::F(1.f));
+			Mat(V, E, TEXT("M_EwVfx_Glow"));
+		});
+	}
+
+	bool ReinklangKonter()
+	{
+		// heller, reiner Lichtpfeil, weißgoldener Blitz beim Einschlag
+		return Projectile(TEXT("reinklang_konter"), FLinearColor(1.f, 0.97f, 0.85f), FLinearColor(1.f, 0.85f, 0.5f), FLinearColor(1.f, 1.f, 0.9f),
+			[](B& V)
+			{
+				Core(V, TEXT("Kern"), 36.f, Hdr(TEXT("User.Color"), 20.f));
+				Core(V, TEXT("Stern"), 90.f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f));
+				Mat(V, Trail(V, TEXT("Spur"), 80.f, 10.f, 0.3f, Hdr(TEXT("User.GlowColor"), 10.f, 0.8f)), TEXT("M_EwVfx_Trail"));
+				Mat(V, Stream(V, TEXT("Funken"), 40.f, 2.f, 4.f, 0.2f, 0.5f, 40.f, 120.f, 0.f, Hdr(TEXT("User.SparkColor"), 20.f), 6.f), TEXT("M_EwVfx_Spark"));
+			},
+			[](B& V)
+			{
+				Mat(V, Flash(V, TEXT("Blitz"), 200.f, 0.16f, Hdr(TEXT("User.GlowColor"), 20.f)), TEXT("M_EwVfx_Flare"));
+				Mat(V, Sparks(V, TEXT("Funken"), 60, 400.f, 1200.f, 2.f, Hdr(TEXT("User.SparkColor"), 25.f)), TEXT("M_EwVfx_Spark"));
+				Ring(V, TEXT("Ring"), 40, 20.f, 800.f, 15.f, 30.f, 0.25f, 0.4f, Hdr(TEXT("User.Color"), 8.f), TEXT("M_EwVfx_Glow"), 40.f);
+			});
+	}
+
+	// ---------------------------------------------------------------- Kampfweisen Gruppe 2 (Kampfweisen2.json)
+
+	bool Splitterchor()
+	{
+		// Fächer aus Quarzsplittern: viele schnelle, gestreckte Splitter, Glitzern
+		return Simple(TEXT("NS_splitterchor"), FLinearColor(0.95f, 0.85f, 1.f), FLinearColor(0.75f, 0.55f, 1.f), FLinearColor(1.f, 0.95f, 1.f), [](B& V)
+		{
+			ConeBurst(V, TEXT("Splitter"), 70, 900.f, 50.f, 8.f, 16.f, 0.25f, 0.45f, Hdr(TEXT("User.Color"), 16.f), TEXT("M_EwVfx_Spark"), 80.f, 0.3f);
+			ConeBurst(V, TEXT("Glitzer"), 40, 700.f, 55.f, 3.f, 6.f, 0.4f, 0.8f, Hdr(TEXT("User.SparkColor"), 18.f), TEXT("M_EwVfx_Glow"), 80.f);
+			ConeBurst(V, TEXT("Schimmer"), 10, 500.f, 45.f, 60.f, 100.f, 0.2f, 0.35f, Hdr(TEXT("User.GlowColor"), 2.5f, 0.4f), TEXT("M_EwVfx_GlowCloud"), 80.f);
+		});
+	}
+
+	bool Bassbrecher()
+	{
+		// Stampfen: Bodenwelle, Staub, Brocken fliegen hoch
+		return Simple(TEXT("NS_bassbrecher"), FLinearColor(0.8f, 0.6f, 1.f), FLinearColor(0.5f, 0.3f, 0.9f), FLinearColor(0.9f, 0.8f, 0.7f), [](B& V)
+		{
+			Mat(V, Flash(V, TEXT("Stoss"), 220.f, 0.15f, Hdr(TEXT("User.GlowColor"), 8.f)), TEXT("M_EwVfx_Burst"));
+			Ring(V, TEXT("Welle"), 70, 60.f, 1000.f, 50.f, 90.f, 0.35f, 0.55f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f), TEXT("M_EwVfx_GlowCloud"));
+			Ring(V, TEXT("Staub"), 40, 80.f, 700.f, 90.f, 180.f, 1.0f, 1.8f, Dust, TEXT("M_EwVfx_Smoke"), 5.f, 40.f);
+			const FName Rocks = Puff(V, TEXT("Brocken"), 30, 8.f, 16.f, 0.7f, 1.2f, 300.f, 700.f, -1200.f, Dust);
+			V.Set(Rocks, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(250.f));
+			V.Set(Rocks, PS, TEXT("ShapeLocation"), TEXT("Non Uniform Scale"), B::V3(FVector3f(1.f, 1.f, 0.05f)));
+			Mat(V, Rocks, TEXT("M_EwVfx_Smoke"));
+		});
+	}
+
+	bool Wirbelschlag()
+	{
+		// Rundumschlag: schneller Windring nach außen, Funkenbogen
+		return Simple(TEXT("NS_wirbelschlag"), FLinearColor(0.85f, 1.f, 0.95f), FLinearColor(0.5f, 0.95f, 0.85f), FLinearColor(1.f, 1.f, 1.f), [](B& V)
+		{
+			Ring(V, TEXT("Wind"), 50, 80.f, 1100.f, 60.f, 110.f, 0.3f, 0.5f, B::Col(FLinearColor(0.9f, 0.95f, 1.f, 0.35f)), TEXT("M_EwVfx_Wisp"), 70.f);
+			Ring(V, TEXT("Bogen"), 80, 90.f, 1300.f, 5.f, 10.f, 0.2f, 0.35f, Hdr(TEXT("User.GlowColor"), 14.f), TEXT("M_EwVfx_Spark"), 90.f);
+			Ring(V, TEXT("Staub"), 24, 80.f, 600.f, 80.f, 140.f, 0.7f, 1.2f, Dust, TEXT("M_EwVfx_Smoke"));
+		});
+	}
+
+	bool Wiegenlied()
+	{
+		// sanfte, langsame Klangwolke nach vorn mit glitzernden Punkten
+		return Simple(TEXT("NS_wiegenlied"), FLinearColor(0.85f, 0.75f, 1.f), FLinearColor(0.6f, 0.45f, 1.f), FLinearColor(1.f, 0.9f, 1.f), [](B& V)
+		{
+			ConeBurst(V, TEXT("Wolke"), 24, 1100.f, 45.f, 120.f, 220.f, 1.2f, 1.8f, Hdr(TEXT("User.GlowColor"), 1.6f, 0.35f), TEXT("M_EwVfx_Cloud"), 80.f, 1.2f);
+			ConeBurst(V, TEXT("Sterne"), 50, 1000.f, 50.f, 4.f, 8.f, 1.0f, 1.6f, Hdr(TEXT("User.SparkColor"), 12.f), TEXT("M_EwVfx_Glow"), 90.f, 1.2f);
+		});
+	}
+
+	bool Atemwende()
+	{
+		// Selbstheilung: aufsteigende grüne Lichter, sanfter Ring am Boden
+		return Simple(TEXT("NS_atemwende"), FLinearColor(0.6f, 1.f, 0.7f), FLinearColor(0.3f, 0.95f, 0.5f), FLinearColor(0.85f, 1.f, 0.8f), [](B& V)
+		{
+			Rise(V, TEXT("Lichter"), 50, 70.f, 4.f, 9.f, 0.8f, 1.6f, 160.f, Hdr(TEXT("User.SparkColor"), 12.f), TEXT("M_EwVfx_Glow"));
+			Rise(V, TEXT("Hauch"), 10, 50.f, 60.f, 110.f, 0.8f, 1.4f, 120.f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.35f), TEXT("M_EwVfx_Cloud"));
+			Ring(V, TEXT("Ring"), 40, 40.f, 300.f, 18.f, 30.f, 0.6f, 0.9f, Hdr(TEXT("User.GlowColor"), 5.f, 0.6f), TEXT("M_EwVfx_Glow"), -80.f);
+		});
+	}
+
+	bool Windstoss()
+	{
+		// kräftige Bö: weiße Schwaden und Staub schießen nach vorn
+		return Simple(TEXT("NS_windstoss"), FLinearColor(0.9f, 0.97f, 1.f), FLinearColor(0.75f, 0.9f, 1.f), FLinearColor(1.f, 1.f, 1.f), [](B& V)
+		{
+			ConeBurst(V, TEXT("Boe"), 30, 1200.f, 55.f, 90.f, 160.f, 0.5f, 0.8f, B::Col(FLinearColor(0.95f, 0.97f, 1.f, 0.3f)), TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
+			ConeBurst(V, TEXT("Linien"), 50, 1200.f, 50.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f), TEXT("M_EwVfx_Spark"), 80.f, 0.4f);
+			ConeBurst(V, TEXT("Staub"), 20, 800.f, 60.f, 60.f, 120.f, 0.8f, 1.3f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 1.5f);
+		});
+	}
+
+	bool Flutweise()
+	{
+		// Wasserschwall: Gischt, Tropfen, nasser Nebel
+		return Simple(TEXT("NS_flutweise"), FLinearColor(0.5f, 0.75f, 1.f), FLinearColor(0.25f, 0.55f, 1.f), FLinearColor(0.85f, 0.95f, 1.f), [](B& V)
+		{
+			ConeBurst(V, TEXT("Schwall"), 40, 1000.f, 40.f, 70.f, 130.f, 0.4f, 0.7f, Water, TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
+			const FName Drops = ConeBurst(V, TEXT("Tropfen"), 80, 1000.f, 45.f, 4.f, 8.f, 0.5f, 0.9f, Hdr(TEXT("User.SparkColor"), 6.f), TEXT("M_EwVfx_Spark"), 80.f, 0.3f);
+			V.Set(Drops, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, -900.f)));
+			ConeBurst(V, TEXT("Nebel"), 12, 700.f, 50.f, 120.f, 200.f, 1.0f, 1.6f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), TEXT("M_EwVfx_Cloud"), 60.f, 1.5f);
+		});
+	}
+
+	bool Hagelchor()
+	{
+		// Hagelkugel, die über dem Ziel zerplatzt: Eisbrocken fallen, Frostwolke
+		return Projectile(TEXT("hagelchor"), FLinearColor(0.8f, 0.92f, 1.f), FLinearColor(0.45f, 0.7f, 1.f), FLinearColor(0.95f, 1.f, 1.f),
+			[](B& V)
+			{
+				Core(V, TEXT("Kern"), 50.f, Hdr(TEXT("User.Color"), 10.f));
+				Core(V, TEXT("Halo"), 120.f, Hdr(TEXT("User.GlowColor"), 2.5f, 0.4f));
+				Mat(V, Stream(V, TEXT("Kristalle"), 60.f, 2.f, 4.f, 0.4f, 0.8f, 40.f, 140.f, -400.f, Hdr(TEXT("User.SparkColor"), 16.f), 18.f), TEXT("M_EwVfx_Glow"));
+				Mat(V, Stream(V, TEXT("Kaelte"), 25.f, 30.f, 50.f, 0.5f, 0.9f, 10.f, 30.f, 0.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), 10.f), TEXT("M_EwVfx_Cloud"));
+			},
+			[](B& V)
+			{
+				Mat(V, Flash(V, TEXT("Blitz"), 140.f, 0.12f, Hdr(TEXT("User.GlowColor"), 12.f)), TEXT("M_EwVfx_Burst"));
+				const FName Hail = Puff(V, TEXT("Hagel"), 70, 6.f, 12.f, 0.6f, 1.0f, 50.f, 250.f, -1400.f, Hdr(TEXT("User.SparkColor"), 10.f));
+				V.Set(Hail, PS, TEXT("ShapeLocation"), TEXT("Sphere Radius"), B::F(260.f));
+				V.SetEnum(Hail, PS, TEXT("ShapeLocation"), TEXT("Offset Mode"), TEXT("Default"));
+				V.Set(Hail, PS, TEXT("ShapeLocation"), TEXT("Offset"), B::V3(FVector3f(0.f, 0.f, 300.f)));
+				Mat(V, Hail, TEXT("M_EwVfx_Spark"));
+				Mat(V, Puff(V, TEXT("Frost"), 16, 80.f, 160.f, 1.0f, 1.8f, 50.f, 160.f, 20.f, Hdr(TEXT("User.GlowColor"), 1.3f, 0.3f)), TEXT("M_EwVfx_Cloud"));
+			});
+	}
+
+	bool Donnerkeil()
+	{
+		// aufgeladene Blitzkugel; Einschlag: Blitz aus dem Himmel, Druckring, Funken
+		return Projectile(TEXT("donnerkeil"), FLinearColor(0.85f, 0.85f, 1.f), FLinearColor(0.5f, 0.45f, 1.f), FLinearColor(0.8f, 0.85f, 1.f),
+			[](B& V)
+			{
+				Core(V, TEXT("Kern"), 55.f, Hdr(TEXT("User.Color"), 18.f));
+				Core(V, TEXT("Halo"), 150.f, Hdr(TEXT("User.GlowColor"), 4.f, 0.5f));
+				Mat(V, Stream(V, TEXT("Knistern"), 80.f, 3.f, 7.f, 0.1f, 0.25f, 150.f, 400.f, 0.f, Hdr(TEXT("User.SparkColor"), 25.f), 25.f), TEXT("M_EwVfx_Spark"));
+			},
+			[](B& V)
+			{
+				Mat(V, SkyBolt(V, TEXT("Himmelsblitz"), 24, 16.f, 0.25f, Hdr(TEXT("User.Color"), 60.f), 30.f), TEXT("M_EwVfx_Bolt"));
+				SkyBolt(V, TEXT("Kern"), 24, 5.f, 0.2f, Hdr(TEXT("User.Color"), 80.f), 20.f);
+				Mat(V, Flash(V, TEXT("Blitz"), 300.f, 0.18f, Hdr(TEXT("User.GlowColor"), 20.f)), TEXT("M_EwVfx_Burst"));
+				Ring(V, TEXT("Druckring"), 60, 50.f, 1000.f, 40.f, 80.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 5.f, 0.6f), TEXT("M_EwVfx_GlowCloud"));
+				Mat(V, Sparks(V, TEXT("Funken"), 70, 400.f, 1400.f, 2.f, Hdr(TEXT("User.SparkColor"), 30.f)), TEXT("M_EwVfx_Spark"));
+			});
+	}
+
+	bool Wirbelflut()
+	{
+		// Strudel um den Wirker: Wasser kreist und zieht nach innen
+		return Simple(TEXT("NS_wirbelflut"), FLinearColor(0.5f, 0.75f, 1.f), FLinearColor(0.25f, 0.55f, 1.f), FLinearColor(0.85f, 0.95f, 1.f), [](B& V)
+		{
+			Swirl(V, TEXT("Strudel"), 60.f, 700.f, 2500.f, 400.f, 80.f, 140.f, 1.0f, Water, TEXT("M_EwVfx_Wisp"), 1.2f);
+			Swirl(V, TEXT("Gischt"), 120.f, 650.f, 3000.f, 500.f, 4.f, 8.f, 0.8f, Hdr(TEXT("User.SparkColor"), 8.f), TEXT("M_EwVfx_Spark"), 1.2f);
+			Ring(V, TEXT("Sog"), 40, 750.f, -500.f, 60.f, 100.f, 0.8f, 1.2f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.35f), TEXT("M_EwVfx_Cloud"));
+		});
+	}
+
+	bool Felsfaust()
+	{
+		// Felsbrocken mit Staubschweif; Einschlag: Staubwolke, Splitter, Brocken
+		return Projectile(TEXT("felsfaust"), FLinearColor(0.75f, 0.6f, 0.45f), FLinearColor(0.9f, 0.6f, 0.3f), FLinearColor(0.8f, 0.7f, 0.55f),
+			[](B& V)
+			{
+				Mat(V, Core(V, TEXT("Fels"), 70.f, B::Col(FLinearColor(0.25f, 0.2f, 0.15f, 0.95f))), TEXT("M_EwVfx_Smoke"));
+				Core(V, TEXT("Glimmen"), 90.f, Hdr(TEXT("User.GlowColor"), 1.5f, 0.35f));
+				Mat(V, Stream(V, TEXT("Staub"), 40.f, 30.f, 60.f, 0.6f, 1.1f, 10.f, 40.f, -50.f, Dust, 20.f), TEXT("M_EwVfx_Smoke"));
+				Mat(V, Stream(V, TEXT("Kiesel"), 30.f, 3.f, 6.f, 0.4f, 0.8f, 50.f, 150.f, -900.f, Dust, 20.f), TEXT("M_EwVfx_Smoke"));
+			},
+			[](B& V)
+			{
+				Mat(V, Puff(V, TEXT("Staubwolke"), 20, 80.f, 180.f, 1.2f, 2.0f, 100.f, 300.f, 30.f, Dust), TEXT("M_EwVfx_Smoke"));
+				Mat(V, Sparks(V, TEXT("Splitter"), 50, 300.f, 900.f, 3.f, Dust), TEXT("M_EwVfx_Smoke"));
+				Mat(V, Flash(V, TEXT("Wucht"), 160.f, 0.12f, Hdr(TEXT("User.GlowColor"), 6.f, 0.6f)), TEXT("M_EwVfx_Burst"));
+				Ring(V, TEXT("Bodenwelle"), 30, 40.f, 500.f, 60.f, 110.f, 0.8f, 1.3f, Dust, TEXT("M_EwVfx_Smoke"));
+			});
+	}
+
+	bool Glutpeitsche()
+	{
+		// Feuerpeitsche: zuckendes Flammenband mit Glutfunken
+		return Simple(TEXT("NS_glutpeitsche"), FLinearColor(1.f, 0.5f, 0.12f), FLinearColor(1.f, 0.3f, 0.05f), FLinearColor(1.f, 0.75f, 0.3f), [](B& V)
+		{
+			V.UserVec3(TEXT("User.BeamEnd"), FVector3f(800.f, 0.f, 0.f));
+			Mat(V, Beam(V, TEXT("Flammen"), 20, 30.f, 0.3f, Hdr(TEXT("User.GlowColor"), 10.f, 0.7f), 10.f, 0.05f), TEXT("M_EwVfx_Trail"));
+			Mat(V, Beam(V, TEXT("Kern"), 20, 7.f, 0.3f, Hdr(TEXT("User.Color"), 40.f), 8.f, 0.05f), TEXT("M_EwVfx_Bolt"));
+			Mat(V, Flash(V, TEXT("Hand"), 50.f, 0.15f, Hdr(TEXT("User.Color"), 10.f, 0.8f)), TEXT("M_EwVfx_Fire"));
+		});
+	}
+
 	int32 Build(const TArray<FString>& Ids)
 	{
 		struct FEntry { const TCHAR* Id; bool (*Fn)(); };
 		const FEntry All[] = {
 			{ TEXT("funkenstoss"), &Funkenstoss }, { TEXT("frostweise"), &Frostweise },
-			{ TEXT("glutweise"), &Glutweise }, { TEXT("sturmweise"), &Sturmweise } };
+			{ TEXT("glutweise"), &Glutweise }, { TEXT("sturmweise"), &Sturmweise },
+			{ TEXT("ziehklang"), &Ziehklang }, { TEXT("hammerton"), &Hammerton }, { TEXT("paukenschlag"), &Paukenschlag },
+			{ TEXT("haltelied"), &Haltelied }, { TEXT("glockenschild"), &Glockenschild }, { TEXT("reinklang_konter"), &ReinklangKonter },
+			{ TEXT("splitterchor"), &Splitterchor }, { TEXT("bassbrecher"), &Bassbrecher }, { TEXT("wirbelschlag"), &Wirbelschlag },
+			{ TEXT("wiegenlied"), &Wiegenlied }, { TEXT("atemwende"), &Atemwende }, { TEXT("windstoss"), &Windstoss },
+			{ TEXT("flutweise"), &Flutweise }, { TEXT("hagelchor"), &Hagelchor }, { TEXT("donnerkeil"), &Donnerkeil },
+			{ TEXT("wirbelflut"), &Wirbelflut }, { TEXT("felsfaust"), &Felsfaust }, { TEXT("glutpeitsche"), &Glutpeitsche } };
 		// Materialien zuerst, wenn eins fehlt (sonst gezielt: Ewigfels.VFX.Materialien)
 		if (!UEditorAssetLibrary::DoesAssetExist(TEXT("/Game/VFX/Materials/M_EwVfx_GlowCloud")) || Ids.Contains(TEXT("materialien")))
 		{

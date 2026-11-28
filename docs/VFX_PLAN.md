@@ -54,3 +54,15 @@ Pro Weise: anlegen, im Spiel ansehen (Testarena), Bild machen, Nutzer zeigen.
 - Stolpersteine: vorhandene Systeme werden geleert statt gelöscht (Löschen+Neuanlegen ergab kaputte Dateien);
   `GetStackIssues` nicht benutzen (danach gespeicherte Systeme stürzten beim Laden ab); User-Parameter vor dem Start
   setzen (`SpawnNiagaraAt` startet erst nach `User.BeamEnd`); Blitz-Zickzack = `JitterPosition` mit abgeschaltetem `UpdateBeam`.
+
+## Stand 28.11. (alle 22 Kampfweisen haben NS_<id>)
+- Materialien: `/Game/VFX/Materials/M_EwVfx_*` aus Gideon-Texturen (Glow, Flare, Burst, Spark, Bolt, Trail, Fire-Flipbook 8×16,
+  Smoke-Flipbook 8×8 deckend, Wisp, Cloud, GlowCloud). Bau: `Ewigfels.VFX.Materialien` (oder automatisch, wenn eins fehlt).
+- Bausteine in `EwigfelsSpellVfx.cpp`: Beam (Zickzack), Flash, Sparks, Embers, Puff, Stream, Core, Trail, ConeBurst (Kegel nach
+  lokal +X), Ring (Bodenwelle, negativ = Sog), Swirl (Wirbel), Rise (aufsteigend), SkyBolt (Blitz von oben auf den Einschlag).
+- Gruppe 2 (Kampfweisen2.json), abgeleitete Looks: splitterchor Quarzsplitter-Fächer · bassbrecher Bodenwelle+Brocken ·
+  wirbelschlag Windring · wiegenlied langsame Klangwolke mit Sternen · atemwende aufsteigende Heil-Lichter · windstoss
+  Schwaden-Bö · flutweise Wasserschwall+Tropfen · hagelchor Eiskugel, Hagel fällt aufs Ziel · donnerkeil Blitzkugel, Himmelsblitz
+  beim Einschlag · wirbelflut Strudel mit Sog · felsfaust Felsbrocken mit Staubschweif · glutpeitsche Flammenband.
+- Offen: `NS_glockenschild` existiert (schimmernde Kuppel, Endlosschleife), wird vom Code aber noch nicht gespawnt (Schild nutzt
+  den alten Mesh-Look). Geschosse (`SpawnNiagaraAttached`) setzen die Farben erst nach dem Start – erstes Bild in Standardfarbe.
