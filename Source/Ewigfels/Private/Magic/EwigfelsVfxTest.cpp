@@ -16,6 +16,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraSystem.h"
 #include "TimerManager.h"
+#include "Containers/Ticker.h"
 #include "UI/EwigfelsCharacterCreator.h"
 #include "UnrealClient.h"
 
@@ -81,8 +82,10 @@ namespace EwigfelsVfxTest
 		}
 		// Farben kopieren (kein Zeiger in die Weisen-Tabelle über Timer hinweg)
 		FColors Colors;
+		bool bProjectile = false;
 		if (const FEwigfelsSpellDef* Spell = Char->GetCaster()->FindSpellDef(Id))
 		{
+			bProjectile = Spell->Delivery.Type == EEwigfelsSpellDelivery::Projectile;
 			Colors.Color = Spell->Visual.Color;
 			Colors.Glow = Spell->Visual.GlowColor.A > 0.f ? Spell->Visual.GlowColor : Spell->Visual.Color;
 			Colors.Spark = Spell->Visual.SparkColor.A > 0.f ? Spell->Visual.SparkColor : Spell->Visual.Color;
@@ -107,22 +110,54 @@ namespace EwigfelsVfxTest
 		};
 		const FString IdText = Id.ToString();
 		// Drei Durchgänge, Screenshots zu verschiedenen Zeitpunkten nach dem Start
-		const float Delays[] = { 0.03f, 0.08f, 0.15f, 0.3f, 0.6f };
-		for (int32 Pass = 0; Pass < UE_ARRAY_COUNT(Delays); ++Pass)
+		const float BeamDelays[] = { 0.03f, 0.08f, 0.15f, 0.3f, 0.6f };
+		const float ProjectileDelays[] = { 0.15f, 0.35f, 0.55f, 0.7f, 0.95f };
+		const float* Delays = bProjectile ? ProjectileDelays : BeamDelays;
+		for (int32 Pass = 0; Pass < 5; ++Pass)
 		{
 			const float T = 1.f + Pass * 1.5f;
-			At(T, [WeakWorld, Base, Impact, Start, End, Forward, Colors]()
+			At(T, [WeakWorld, Base, Impact, Start, End, Forward, Colors, bProjectile]()
 			{
-				if (UWorld* W = WeakWorld.Get())
+				UWorld* W = WeakWorld.Get();
+				if (!W)
 				{
-					Play(W, Base, Start, (End - Start).Rotation(), Colors, End);
-					Play(W, Impact, End, (Start - End).Rotation(), Colors, End);
+					return;
 				}
+				UNiagaraComponent* Comp = Play(W, Base, Start, (End - Start).Rotation(), Colors, End);
+				if (!bProjectile)
+				{
+					Play(W, Impact, End, (Start - End).Rotation(), Colors, End);
+					return;
+				}
+				// Geschoss: Effekt 0,6 s von Start nach End fliegen lassen, dann Einschlag
+				const double T0 = FPlatformTime::Seconds();
+				TWeakObjectPtr<UNiagaraComponent> WeakComp(Comp);
+				FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([WeakComp, WeakWorld, Impact, Start, End, Colors, T0](float)
+				{
+					const float Alpha = FMath::Clamp(float(FPlatformTime::Seconds() - T0) / 0.6f, 0.f, 1.f);
+					if (WeakComp.IsValid())
+					{
+						WeakComp->SetWorldLocation(FMath::Lerp(Start, End, Alpha));
+					}
+					if (Alpha >= 1.f)
+					{
+						if (WeakComp.IsValid())
+						{
+							WeakComp->Deactivate();
+						}
+						if (UWorld* W2 = WeakWorld.Get())
+						{
+							Play(W2, Impact, End, (Start - End).Rotation(), Colors, End);
+						}
+						return false;
+					}
+					return true;
+				}));
 			});
 			const float Delay = Delays[Pass];
 			At(T + Delay, [IdText, Pass, Delay]() { VfxShot(FString::Printf(TEXT("%s_%d_%03dms"), *IdText, Pass, FMath::RoundToInt(Delay * 1000.f))); });
 		}
-		At(1.f + UE_ARRAY_COUNT(Delays) * 1.5f + 0.5f, [bQuit]()
+		At(1.f + 5 * 1.5f + 1.f, [bQuit]()
 		{
 			UE_LOG(LogTemp, Display, TEXT("[VFX-Test] fertig"));
 			if (bQuit)
