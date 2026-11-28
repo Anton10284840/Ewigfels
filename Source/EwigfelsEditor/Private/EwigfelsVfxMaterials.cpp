@@ -18,6 +18,7 @@
 #include "Materials/MaterialExpressionConstant3Vector.h"
 #include "Materials/MaterialExpressionCustom.h"
 #include "Materials/MaterialExpressionDepthFade.h"
+#include "Materials/MaterialExpressionFresnel.h"
 #include "Materials/MaterialExpressionDotProduct.h"
 #include "Materials/MaterialExpressionMultiply.h"
 #include "Materials/MaterialExpressionAdd.h"
@@ -249,10 +250,72 @@ namespace EwigfelsVfxMaterials
 		return CompileErrors.Num() == 0;
 	}
 
+	/** Schild-Glocke: additiv, Rand leuchtet stark (Fresnel), Mitte fast durchsichtig; Farbe = Partikelfarbe (User.Color). */
+	bool BuildShieldFresnel(TArray<FString>& Errors)
+	{
+		UMaterial* M = LoadOrCreate(TEXT("M_EwVfx_ShieldFresnel"), Errors);
+		if (!M)
+		{
+			return false;
+		}
+		M->BlendMode = BLEND_Additive;
+		M->SetShadingModel(MSM_Unlit);
+		M->TwoSided = false;
+		M->bUsedWithNiagaraMeshParticles = true;
+		M->bUsedWithNiagaraSprites = true;
+		UMaterialExpressionFresnel* Rim = Node<UMaterialExpressionFresnel>(M, -500, 100);
+		Rim->Exponent = 3.f;
+		Rim->BaseReflectFraction = 0.06f;
+		// leichtes Schimmern: Gideons weiche Wolkentextur über die Kugel (Welt-Koordinaten wären teurer)
+		UTexture2D* Noise = LoadObject<UTexture2D>(nullptr, TEXT("/Game/ParagonGideon/FX/Textures/Tile/Noise/T_Soft_Noise.T_Soft_Noise"));
+		UMaterialExpression* Shimmer = nullptr;
+		if (Noise)
+		{
+			UMaterialExpressionTextureSample* N = Node<UMaterialExpressionTextureSample>(M, -500, 300);
+			N->Texture = Noise;
+			N->SamplerType = UMaterialExpressionTextureBase::GetSamplerTypeForTexture(Noise);
+			UMaterialExpressionMultiply* NScale = Node<UMaterialExpressionMultiply>(M, -300, 300);
+			NScale->A.Connect(1, N); // R
+			NScale->ConstB = 0.6f;
+			UMaterialExpressionAdd* NAdd = Node<UMaterialExpressionAdd>(M, -150, 300);
+			NAdd->A.Connect(0, NScale);
+			NAdd->ConstB = 0.4f;
+			Shimmer = NAdd;
+		}
+		UMaterialExpressionParticleColor* PC = Node<UMaterialExpressionParticleColor>(M, -500, -200);
+		UMaterialExpressionComponentMask* PCrgb = Node<UMaterialExpressionComponentMask>(M, -300, -200);
+		PCrgb->Input.Connect(0, PC);
+		PCrgb->R = PCrgb->G = PCrgb->B = true;
+		PCrgb->A = false;
+		UMaterialExpressionMultiply* RimA = Node<UMaterialExpressionMultiply>(M, -300, 100);
+		RimA->A.Connect(0, Rim);
+		RimA->B.Connect(4, PC); // Alpha der Partikelfarbe = Stärke
+		UMaterialExpression* Mask = RimA;
+		if (Shimmer)
+		{
+			UMaterialExpressionMultiply* WithShimmer = Node<UMaterialExpressionMultiply>(M, -100, 150);
+			WithShimmer->A.Connect(0, RimA);
+			WithShimmer->B.Connect(0, Shimmer);
+			Mask = WithShimmer;
+		}
+		UMaterialExpressionMultiply* Emissive = Node<UMaterialExpressionMultiply>(M, 100, 0);
+		Emissive->A.Connect(0, PCrgb);
+		Emissive->B.Connect(0, Mask);
+		M->GetEditorOnlyData()->EmissiveColor.Connect(0, Emissive);
+		const TArray<FString> CompileErrors = UMaterialEditingLibrary::RecompileMaterial(M);
+		for (const FString& E : CompileErrors)
+		{
+			Errors.Add(TEXT("M_EwVfx_ShieldFresnel: ") + E);
+		}
+		UEditorAssetLibrary::SaveLoadedAsset(M, false);
+		return CompileErrors.Num() == 0;
+	}
+
 	int32 BuildAll()
 	{
 		TArray<FString> Errors;
 		int32 Ok = BuildRock(Errors) ? 1 : 0;
+		Ok += BuildShieldFresnel(Errors) ? 1 : 0;
 		for (const FSpec& S : Specs)
 		{
 			Ok += BuildOne(S, Errors) ? 1 : 0;
@@ -261,7 +324,7 @@ namespace EwigfelsVfxMaterials
 		{
 			UE_LOG(LogTemp, Warning, TEXT("[Ewigfels VFX] Material %s"), *E);
 		}
-		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] Materialien: %d von %d ohne Fehler"), Ok, UE_ARRAY_COUNT(Specs) + 1);
+		UE_LOG(LogTemp, Display, TEXT("[Ewigfels VFX] Materialien: %d von %d ohne Fehler"), Ok, UE_ARRAY_COUNT(Specs) + 2);
 		return Ok;
 	}
 

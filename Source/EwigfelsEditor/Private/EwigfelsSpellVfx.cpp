@@ -426,13 +426,13 @@ namespace EwigfelsSpellVfx
 	}
 
 	/** Sprite-Renderer durch Mesh-Renderer ersetzen (echte 3D-Brocken), beleuchteter Stein. */
-	FName AsMesh(B& V, FName E, const TCHAR* MeshPath, float Scale)
+	FName AsMesh(B& V, FName E, const TCHAR* MeshPath, float Scale, const TCHAR* Material = TEXT("M_EwVfx_Rock"))
 	{
 		V.RemoveRenderer(E, 0);
 		V.AddRenderer(E, UNiagaraMeshRendererProperties::StaticClass(), FString::Printf(
 			TEXT("{\"Meshes\":[{\"mesh\":{\"refPath\":\"%s\"},\"scale\":{\"x\":%f,\"y\":%f,\"z\":%f}}],")
 			TEXT("\"bOverrideMaterials\":true,\"OverrideMaterials\":[{\"explicitMat\":{\"refPath\":\"%s\"}}]}"),
-			MeshPath, Scale, Scale, Scale, *EwigfelsVfxMaterials::Path(TEXT("M_EwVfx_Rock"))));
+			MeshPath, Scale, Scale, Scale, *EwigfelsVfxMaterials::Path(Material)));
 		return E;
 	}
 
@@ -441,6 +441,9 @@ namespace EwigfelsSpellVfx
 
 	const FString Dust = B::Col(FLinearColor(0.35f, 0.3f, 0.24f, 0.5f));
 	const FString Water = B::Col(FLinearColor(0.55f, 0.75f, 0.95f, 0.45f));
+	// Kegel-Weisen bei Tageslicht: Staub und Wasser deutlich deckender
+	const FString DustStrong = B::Col(FLinearColor(0.42f, 0.36f, 0.28f, 0.8f));
+	const FString WaterStrong = B::Col(FLinearColor(0.6f, 0.8f, 1.f, 0.75f));
 
 	bool Simple(const TCHAR* Name, const FLinearColor& C, const FLinearColor& G, const FLinearColor& S, TFunctionRef<void(B&)> Fill)
 	{
@@ -483,9 +486,9 @@ namespace EwigfelsSpellVfx
 		// Kegel-Druckwelle: goldene Klangbögen, Staub vom Boden, kleine Funken
 		return Simple(TEXT("NS_hammerton"), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.65f, 0.2f), FLinearColor(1.f, 0.9f, 0.6f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Welle"), 30, 650.f, 70.f, 70.f, 130.f, 0.45f, 0.6f, Hdr(TEXT("User.GlowColor"), 3.f, 0.5f), TEXT("M_EwVfx_GlowCloud"));
-			ConeBurst(V, TEXT("Klang"), 50, 650.f, 70.f, 6.f, 12.f, 0.4f, 0.6f, Hdr(TEXT("User.Color"), 12.f), TEXT("M_EwVfx_Spark"));
-			ConeBurst(V, TEXT("Staub"), 18, 500.f, 80.f, 70.f, 140.f, 0.8f, 1.4f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 2.5f);
+			ConeBurst(V, TEXT("Welle"), 30, 650.f, 70.f, 70.f, 130.f, 0.45f, 0.6f, Hdr(TEXT("User.GlowColor"), 7.5f, 0.75f), TEXT("M_EwVfx_GlowCloud"));
+			ConeBurst(V, TEXT("Klang"), 50, 650.f, 70.f, 6.f, 12.f, 0.4f, 0.6f, Hdr(TEXT("User.Color"), 30.0f), TEXT("M_EwVfx_Spark"));
+			ConeBurst(V, TEXT("Staub"), 18, 500.f, 80.f, 70.f, 140.f, 0.8f, 1.4f, DustStrong, TEXT("M_EwVfx_Smoke"), 20.f, 2.5f);
 		});
 	}
 
@@ -526,6 +529,17 @@ namespace EwigfelsSpellVfx
 		// schimmernde Kuppel: kreisende Lichtpunkte auf einer Halbkugel und ein weicher Glanz (Endlosschleife)
 		return Simple(TEXT("NS_glockenschild"), FLinearColor(1.f, 0.9f, 0.6f), FLinearColor(1.f, 0.8f, 0.4f), FLinearColor(1.f, 0.95f, 0.8f), [](B& V)
 		{
+			// geschlossene Glocke: Kugel-Mesh mit Fresnel-Rand (Farbe aus User.Color), innen eine zweite, schwächere Schale
+			// kurze Lebenszeit (0,25 s, ständig erneuert): beim Loslassen ist die Glocke sofort weg
+			for (const TPair<const TCHAR*, float>& Shell : { TPair<const TCHAR*, float>(TEXT("Glocke"), 2.7f), TPair<const TCHAR*, float>(TEXT("Innen"), 2.55f) })
+			{
+				const bool bOuter = Shell.Value > 2.6f;
+				const FName G = Core(V, Shell.Key, 1.f, bOuter ? Hdr(TEXT("User.Color"), 3.f, 1.f) : Hdr(TEXT("User.GlowColor"), 1.2f, 0.6f));
+				V.SetEnum(G, ES, TEXT("EmitterState"), TEXT("Life Cycle Mode"), TEXT("Self"));
+				V.SetEnum(G, ES, TEXT("EmitterState"), TEXT("Loop Behavior"), TEXT("Infinite"));
+				V.Set(G, ES, TEXT("EmitterState"), TEXT("Loop Duration"), B::F(0.25f));
+				AsMesh(V, G, TEXT("/Engine/BasicShapes/Sphere.Sphere"), Shell.Value, TEXT("M_EwVfx_ShieldFresnel"));
+			}
 			// dichte, kurzlebige Lichtpunkte auf einer Kugelschale (lokaler Raum: Kuppel wandert mit dem Wirker) + weicher Glanz
 			Mat(V, Core(V, TEXT("Glanz"), 300.f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.18f)), TEXT("M_EwVfx_GlowCloud"));
 			const FName E = Stream(V, TEXT("Kuppel"), 600.f, 2.5f, 5.f, 0.2f, 0.35f, 0.f, 5.f, 0.f, Hdr(TEXT("User.Color"), 12.f), 130.f);
@@ -565,9 +579,9 @@ namespace EwigfelsSpellVfx
 		// Fächer aus Quarzsplittern: viele schnelle, gestreckte Splitter, Glitzern
 		return Simple(TEXT("NS_splitterchor"), FLinearColor(0.95f, 0.85f, 1.f), FLinearColor(0.75f, 0.55f, 1.f), FLinearColor(1.f, 0.95f, 1.f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Splitter"), 70, 900.f, 50.f, 8.f, 16.f, 0.25f, 0.45f, Hdr(TEXT("User.Color"), 16.f), TEXT("M_EwVfx_Spark"), 80.f, 0.3f);
-			ConeBurst(V, TEXT("Glitzer"), 40, 700.f, 55.f, 3.f, 6.f, 0.4f, 0.8f, Hdr(TEXT("User.SparkColor"), 18.f), TEXT("M_EwVfx_Glow"), 80.f);
-			ConeBurst(V, TEXT("Schimmer"), 10, 500.f, 45.f, 60.f, 100.f, 0.2f, 0.35f, Hdr(TEXT("User.GlowColor"), 2.5f, 0.4f), TEXT("M_EwVfx_GlowCloud"), 80.f);
+			ConeBurst(V, TEXT("Splitter"), 70, 900.f, 50.f, 8.f, 16.f, 0.25f, 0.45f, Hdr(TEXT("User.Color"), 40.0f), TEXT("M_EwVfx_Spark"), 80.f, 0.3f);
+			ConeBurst(V, TEXT("Glitzer"), 40, 700.f, 55.f, 3.f, 6.f, 0.4f, 0.8f, Hdr(TEXT("User.SparkColor"), 45.0f), TEXT("M_EwVfx_Glow"), 80.f);
+			ConeBurst(V, TEXT("Schimmer"), 10, 500.f, 45.f, 60.f, 100.f, 0.2f, 0.35f, Hdr(TEXT("User.GlowColor"), 6.2f, 0.65f), TEXT("M_EwVfx_GlowCloud"), 80.f);
 		});
 	}
 
@@ -602,8 +616,8 @@ namespace EwigfelsSpellVfx
 		// sanfte, langsame Klangwolke nach vorn mit glitzernden Punkten
 		return Simple(TEXT("NS_wiegenlied"), FLinearColor(0.85f, 0.75f, 1.f), FLinearColor(0.6f, 0.45f, 1.f), FLinearColor(1.f, 0.9f, 1.f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Wolke"), 24, 1100.f, 45.f, 120.f, 220.f, 1.2f, 1.8f, Hdr(TEXT("User.GlowColor"), 1.6f, 0.35f), TEXT("M_EwVfx_Cloud"), 80.f, 1.2f);
-			ConeBurst(V, TEXT("Sterne"), 50, 1000.f, 50.f, 4.f, 8.f, 1.0f, 1.6f, Hdr(TEXT("User.SparkColor"), 12.f), TEXT("M_EwVfx_Glow"), 90.f, 1.2f);
+			ConeBurst(V, TEXT("Wolke"), 24, 1100.f, 45.f, 120.f, 220.f, 1.2f, 1.8f, Hdr(TEXT("User.GlowColor"), 4.0f, 0.60f), TEXT("M_EwVfx_Cloud"), 80.f, 1.2f);
+			ConeBurst(V, TEXT("Sterne"), 50, 1000.f, 50.f, 4.f, 8.f, 1.0f, 1.6f, Hdr(TEXT("User.SparkColor"), 30.0f), TEXT("M_EwVfx_Glow"), 90.f, 1.2f);
 		});
 	}
 
@@ -623,9 +637,9 @@ namespace EwigfelsSpellVfx
 		// kräftige Bö: weiße Schwaden und Staub schießen nach vorn
 		return Simple(TEXT("NS_windstoss"), FLinearColor(0.9f, 0.97f, 1.f), FLinearColor(0.75f, 0.9f, 1.f), FLinearColor(1.f, 1.f, 1.f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Boe"), 36, 1200.f, 55.f, 100.f, 180.f, 0.7f, 1.0f, B::Col(FLinearColor(0.95f, 0.97f, 1.f, 0.3f)), TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
-			ConeBurst(V, TEXT("Linien"), 50, 1200.f, 50.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 4.f, 0.6f), TEXT("M_EwVfx_Spark"), 80.f, 0.4f);
-			ConeBurst(V, TEXT("Staub"), 20, 800.f, 60.f, 60.f, 120.f, 0.8f, 1.3f, Dust, TEXT("M_EwVfx_Smoke"), 20.f, 1.5f);
+			ConeBurst(V, TEXT("Boe"), 36, 1200.f, 55.f, 100.f, 180.f, 0.7f, 1.0f, B::Col(FLinearColor(0.95f, 0.97f, 1.f, 0.6f)), TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
+			ConeBurst(V, TEXT("Linien"), 50, 1200.f, 50.f, 6.f, 12.f, 0.3f, 0.5f, Hdr(TEXT("User.GlowColor"), 10.0f, 0.85f), TEXT("M_EwVfx_Spark"), 80.f, 0.4f);
+			ConeBurst(V, TEXT("Staub"), 20, 800.f, 60.f, 60.f, 120.f, 0.8f, 1.3f, DustStrong, TEXT("M_EwVfx_Smoke"), 20.f, 1.5f);
 		});
 	}
 
@@ -634,10 +648,10 @@ namespace EwigfelsSpellVfx
 		// Wasserschwall: Gischt, Tropfen, nasser Nebel
 		return Simple(TEXT("NS_flutweise"), FLinearColor(0.5f, 0.75f, 1.f), FLinearColor(0.25f, 0.55f, 1.f), FLinearColor(0.85f, 0.95f, 1.f), [](B& V)
 		{
-			ConeBurst(V, TEXT("Schwall"), 40, 1000.f, 40.f, 70.f, 130.f, 0.4f, 0.7f, Water, TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
+			ConeBurst(V, TEXT("Schwall"), 40, 1000.f, 40.f, 70.f, 130.f, 0.4f, 0.7f, WaterStrong, TEXT("M_EwVfx_Wisp"), 70.f, 0.8f);
 			const FName Drops = ConeBurst(V, TEXT("Tropfen"), 80, 1000.f, 45.f, 4.f, 8.f, 0.5f, 0.9f, Hdr(TEXT("User.SparkColor"), 6.f), TEXT("M_EwVfx_Spark"), 80.f, 0.3f);
 			V.Set(Drops, PU, TEXT("GravityForce"), TEXT("Gravity"), B::V3(FVector3f(0.f, 0.f, -900.f)));
-			ConeBurst(V, TEXT("Nebel"), 12, 700.f, 50.f, 120.f, 200.f, 1.0f, 1.6f, Hdr(TEXT("User.GlowColor"), 1.2f, 0.25f), TEXT("M_EwVfx_Cloud"), 60.f, 1.5f);
+			ConeBurst(V, TEXT("Nebel"), 12, 700.f, 50.f, 120.f, 200.f, 1.0f, 1.6f, Hdr(TEXT("User.GlowColor"), 3.0f, 0.50f), TEXT("M_EwVfx_Cloud"), 60.f, 1.5f);
 		});
 	}
 
