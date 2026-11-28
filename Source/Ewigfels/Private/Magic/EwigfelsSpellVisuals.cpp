@@ -388,8 +388,9 @@ void EwigfelsSpellVisuals::PlayRelease(UWorld* World, const FEwigfelsSpellDef& S
 		// Platzhalter: flache Druckwelle, die nach vorne aufzieht (Zylinder liegt flach, wächst in Blickrichtung)
 		const float Width = Spell.Delivery.Range * FMath::Tan(FMath::DegreesToRadians(Spell.Delivery.Angle * 0.5f)) / 50.f;
 		SpawnFlash(World, TEXT("cylinder"), Base + Flat * Spell.Delivery.Range * 0.5f, Flat.Rotation(), Spell.Visual.Color,
-			FVector(0.5f, 0.5f, 0.05f), FVector(Spell.Delivery.Range / 100.f, Width, 0.12f), 0.35f, 25000.f, Spell.Delivery.Range * 1.2f);
-		SpawnFlash(World, TEXT("sphere"), Origin, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.1f), FVector(1.2f), 0.2f, 8000.f, 500.f);
+			FVector(0.5f, 0.5f, 0.05f), FVector(Spell.Delivery.Range / 100.f, Width, 0.12f), 0.35f, 3500.f, Spell.Delivery.Range * 0.8f);
+		// Kleiner Funke vor der Hand (vorher 1,2 m Kugel mit 8000 Licht direkt vor der Kamera = ganzes Bild weiß)
+		SpawnFlash(World, TEXT("sphere"), Origin + Flat * 30.f, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.05f), FVector(0.3f), 0.15f, 1500.f, 260.f);
 		break;
 	}
 	case EEwigfelsSpellDelivery::Area:
@@ -398,10 +399,18 @@ void EwigfelsSpellVisuals::PlayRelease(UWorld* World, const FEwigfelsSpellDef& S
 		if (!SpawnNiagaraAt(World, Spell.Visual.Niagara, Base, FRotator::ZeroRotator, Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
 		{
 			SpawnFlash(World, TEXT("cylinder"), Base, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.2f, 0.2f, 0.04f),
-				FVector(Spell.Delivery.Radius / 50.f, Spell.Delivery.Radius / 50.f, 0.06f), 0.4f, 20000.f, Spell.Delivery.Radius * 1.5f);
+				FVector(Spell.Delivery.Radius / 50.f, Spell.Delivery.Radius / 50.f, 0.06f), 0.4f, 4000.f, Spell.Delivery.Radius * 1.1f);
 		}
 		break;
 	}
+	case EEwigfelsSpellDelivery::Self:
+		// Sanfter Lichtring um den Wirker (Atemwende), ohne grelles Licht
+		if (Caster && !SpawnNiagaraAt(World, Spell.Visual.Niagara, Caster->GetActorLocation(), FRotator::ZeroRotator, Spell.Visual.Color, Spell.Visual.Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
+		{
+			SpawnFlash(World, TEXT("cylinder"), Caster->GetActorLocation() - FVector(0.f, 0.f, 85.f), FRotator::ZeroRotator, Spell.Visual.GlowColor,
+				FVector(0.3f, 0.3f, 0.02f), FVector(2.2f, 2.2f, 0.03f), 0.6f, 1200.f, 300.f);
+		}
+		break;
 	case EEwigfelsSpellDelivery::Projectile:
 		// Mündungsblitz an den Fingerspitzen
 		SpawnFlash(World, TEXT("sphere"), Origin, FRotator::ZeroRotator, Spell.Visual.Color, FVector(0.05f), FVector(0.45f * Spell.Visual.Scale),
