@@ -20,6 +20,7 @@ public class EwigfelsEditor : ModuleRules
 			"SlateCore",
 			"AssetTools",
 			"AssetRegistry",
+			"MaterialEditor",  // UMaterialEditingLibrary (Effekt-Materialien)
 			"Niagara",
 			"NiagaraCore",
 			"NiagaraEditor",   // UNiagaraExternalEditUtilities (Systeme per Code bauen, UE 5.8)
