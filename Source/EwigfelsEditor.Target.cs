@@ -11,5 +11,6 @@ public class EwigfelsEditorTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.Latest;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 		ExtraModuleNames.Add("Ewigfels");
+		ExtraModuleNames.Add("EwigfelsEditor");
 	}
 }

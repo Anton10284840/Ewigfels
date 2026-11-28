@@ -42,3 +42,15 @@ Pro Weise: anlegen, im Spiel ansehen (Testarena), Bild machen, Nutzer zeigen.
 ## Erledigt im Code (27.11.)
 - Mündungsblitz und Leucht-Halos deutlich schwächer (vorher wurde die Figur beim Funkenstoß ganz weiß).
 - Alle drei Akkord-Farben gehen an Niagara; feste Ablage-Pfade ohne JSON.
+
+## Effekte bauen (Editor-Modul, seit 28.11.)
+- Quelle der Effekte ist Code: `Source/EwigfelsEditor/Private/EwigfelsSpellVfx.cpp` (Bausteine Strahl/Blitz, Leuchtfleck,
+  Funkenregen, Glut) über `FEwigfelsVfxBuilder` (UE-5.8-Schnittstelle `UNiagaraExternalEditUtilities`).
+  `Content/` liegt nicht im Git – die Assets entstehen reproduzierbar aus dem Code.
+- Bauen (Editor geschlossen): `UnrealEditor-Cmd.exe Ewigfels.uproject -run=pythonscript -script=Scripts/Python/create_spell_vfx.py`
+  (nur bestimmte Weisen: Umgebungsvariable `EWIGFELS_VFX="funkenstoss frostweise"`). Konsole im Editor: `Ewigfels.VFX.Erstellen [id]`.
+- Ansehen ohne Gegner/Wirkzeit: im Spiel `Ewigfels.Test.VFX <id> [quit]` → `Saved/Screenshots/VFX`.
+- Auslesen: `Ewigfels.VFX.Vorlagen` (Engine-Vorlagen), `Ewigfels.VFX.Auslesen /Game/VFX/Spells/NS_<id>` → `Saved/VFX/*.txt`.
+- Stolpersteine: vorhandene Systeme werden geleert statt gelöscht (Löschen+Neuanlegen ergab kaputte Dateien);
+  `GetStackIssues` nicht benutzen (danach gespeicherte Systeme stürzten beim Laden ab); User-Parameter vor dem Start
+  setzen (`SpawnNiagaraAt` startet erst nach `User.BeamEnd`); Blitz-Zickzack = `JitterPosition` mit abgeschaltetem `UpdateBeam`.
