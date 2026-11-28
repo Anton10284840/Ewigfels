@@ -1,0 +1,21 @@
+# N316 – Im Ziel. Falk hat durch die Eisspalte abgekürzt. Verpetzen oder es gut sein lassen.
+===
+[set SpeakerName.Falk "Falk Gratner"]
+===
+[event camera `close`]
+Falk: Knapp. Sehr knapp. Fast hättest du ...
+  * Sie sind durch die Eisspalte geflogen. Das ist abgekürzt.
+    [event emotion `surprised`]
+    Falk: Das ... ist ... eine Route. Eine alternative Route.
+    Falk: Na gut. Das ist geschummelt. Seit drei Jahren. Keiner hat es je gesehen. Pfeil ist der Einzige, der durchpasst.
+  * (Nichts sagen)
+    Falk: ... Du hast es gesehen, oder? Die Spalte.
+[event emotion `sad`]
+Falk: Wenn das rauskommt, lacht mich das ganze Dorf aus. Siebenundvierzig Siege, und alle mit Abkürzung.
+  * Ich sag es Burgl. Das ist nur fair.
+    [set flag.Falk_Reported true]
+    Falk: Fair. Ja. Fair ist ein hässliches Wort, wenn man verliert. Hier, der Sattel gehört dir. Du hast ihn verdient.
+  * Fliegen wir noch mal. Ohne Spalte.
+    [event emotion `happy`]
+    Falk: Ohne? Gegen dich? Hm. ... Ja. Ja, das will ich wissen.
+    Falk: Und wenn du gewinnst, gehört der Sattel dir. Ehrlich gewonnen. Das wäre mal was Neues für mich.

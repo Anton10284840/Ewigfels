@@ -1,0 +1,15 @@
+# N321 – Ysra, Karawanenmeisterin. Spricht in Wegstunden, kennt alle 40 Höckerlaufer beim Namen. Ein junger Dünenschreiter ist weg.
+===
+[set SpeakerName.Ysra "Ysra"]
+===
+[event camera `medium`]
+Ysra: Vierzig Höckerlaufer, zwölf Treiber, ein Dünenschreiter. So bin ich losgezogen. Jetzt sind es vierzig, zwölf und keiner.
+Ysra: Er heißt Funke. Er ist jung. Er erschrickt vor seinem eigenen Schatten, wirklich, ich hab es gesehen.
+  * Wo ist er verschwunden?
+    Ysra: Drei Wegstunden östlich, im Dünenmeer. Ein Sandsturm kam, er ist gerannt. Und hinter ihm hat sich der Sand bewegt.
+  * Was ist ein Dünenschreiter?
+    Ysra: Ein Laufvogel, so hoch wie ein Zelt. Schneller als alles auf zwei Beinen. Und der treueste Freund, wenn er einmal vertraut. Wenn.
+[event camera `close`]
+[event emotion `sad`]
+Ysra: Der Gräber jagt ihn. Der Gräber hört jeden Schritt im Sand. Der Kleine ist leicht, aber nicht leicht genug, wenn er Angst hat. Und er hat immer Angst.
+Ysra: Bring ihn zurück. Wenn er bei dir bleiben will, soll er bei dir bleiben. Ich glaube, er braucht jemanden, der nicht so laut ist wie wir.

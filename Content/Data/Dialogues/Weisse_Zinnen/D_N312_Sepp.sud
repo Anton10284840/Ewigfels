@@ -1,0 +1,14 @@
+# N312 – Sepp Almer, Käsemeister. Redet mit seinen Käselaiben. Sie summen.
+===
+[set SpeakerName.Sepp "Sepp Almer"]
+===
+[event camera `medium`]
+Sepp: Psst. Leise. Die Kleinen schlafen. Die Großen auch. Alle schlafen. Nur summen tun sie.
+Sepp: Hörst du's? Mmmmm. Seit drei Wochen. Jeder Laib. Ich hab mit ihnen geredet. Ich hab ihnen vorgesungen. Sie summen einfach weiter.
+  * Vielleicht sind sie glücklich.
+    Sepp: Käse ist nicht glücklich. Käse ist gut oder schlecht. Glücklich ist der, der ihn isst.
+  * Schmeckt er noch?
+    Sepp: Besser als je. Das ist ja das Unheimliche. Er schmeckt nach Gewitter. Nach Gewitter und Haselnuss.
+[event camera `close`]
+Sepp: Der Keller ist in der Höhle oben am Hang. Seit mein Urgroßvater ihn gegraben hat. Geh rauf und schau. Ich trau mich nicht. Ich hab Angst, dass es Geister sind.
+Sepp: Oder schlimmer: Schimmel.

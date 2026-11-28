@@ -1,0 +1,16 @@
+# N322 – Der alte Bek, früher Karawanenführer. Sitzt seit Monaten auf derselben Bank. Kannte Ammar.
+===
+[set SpeakerName.Bek "Der alte Bek"]
+===
+[event camera `medium`]
+Bek: Setz dich nicht neben mich. Der Sand hört dann uns beide.
+Bek: Ammar? Ja. Ich hab ihn vor dreißig Jahren hergebracht. Mit der Karawane. Ein junger Mann mit einer Kiste voller Muscheln.
+  * Warum Muscheln?
+    Bek: In Muscheln hält sich Klang. Er hat Stimmen gesammelt. Die alten, aus dem Sand. Jede Muschel eine.
+  * Was ist mit ihm passiert?
+    Bek: Er hat zu lange zugehört. Am Ende hat er mit hundert Stimmen geredet. Nur nicht mit seiner eigenen.
+[event camera `close`]
+Bek: Als er kam, hat er seine erste Muschel besprochen. Selbst. Ich war dabei. Er hat gesagt, damit er nicht vergisst, wie er klingt.
+Bek: Die liegt noch in seinem Haus. Irgendwo. Zwischen hunderten anderen. Er weiß nicht mehr, welche.
+[event emotion `sad`]
+Bek: Ich auch nicht. Ich bin alt. Ich weiß nur noch, wie er gelacht hat. Laut. Wie ein Esel. Wir haben alle mitgelacht.

@@ -1,0 +1,13 @@
+# N316 – Falk Gratner, Zinnadler-Reiter. Eitel, schnell, Helm mit Federn. Hat nie verloren.
+===
+[set SpeakerName.Falk "Falk Gratner"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Falk: Eine Sturmschwinge! Na sowas. Hübscher Vogel. Ein bisschen dick um die Hüften.
+Falk: Ich bin Falk Gratner. Siebenundvierzig Rennen, siebenundvierzig Siege. Das ist Pfeil, mein Zinnadler. Er ist noch nie langsamer geflogen als der Wind.
+  * Dann wird es Zeit für Nummer achtundvierzig.
+    Falk: Oh, Mut! Das mag ich. Dauert meistens bis zur zweiten Zinne.
+  * Ist das ein Angebot?
+    Falk: Das ist eine Herausforderung. Angebote mach ich auf dem Markt.
+Falk: Drei Zinnen, einmal durchs Adlerloch, zurück zur Wiese. Wer zuerst landet, gewinnt. Wer abstürzt, verliert. Und muss den Arzt bezahlen.

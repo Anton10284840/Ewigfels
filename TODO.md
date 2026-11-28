@@ -118,7 +118,7 @@ Pro Akt gleiche Reihenfolge: 🤖 Quests, Dialoge, Gegner als Daten → 🤝 Reg
   - [x] 🤖 Regionen Graumoor + Glastiefen: N201–N216 + 23 Dialoge, Glutdachs-Zähmquest N216 (PR #18)
 - [ ] 55. Akt 3: Tiedmar, Weiße Zinnen, Kaelschlucht · Boss Wächter von Kael · Sturmschwinge + Dünenschreiter
   - [x] 🤖 Hauptmissionen M301–M310 als Quest-JSON + 26 Dialoge (PR #20)
-  - [ ] 🤖 Regionen Tiedmar, Weiße Zinnen, Kaelschlucht: Dörfer, Nebenquests, Dünenschreiter-Zähmquest
+  - [x] 🤖 Regionen Tiedmar, Weiße Zinnen, Kaelschlucht: N301–N326 + 37 Dialoge, Dünenschreiter-Zähmquest N321 (`docs/regionen/`)
 - [ ] 56. Akt 4: Treibende Inseln, Aurenburg · Boss Corvin · Perlsegler · Akademie zerstört
 - [ ] 57. Akt 5: Nachhall (Schattenreich) · Endboss Dirigent · 4 Enden
 - [ ] 58. 🤖 Questreihen, Fraktionen, 60 Nebenquests, 40+ Rätselschreine

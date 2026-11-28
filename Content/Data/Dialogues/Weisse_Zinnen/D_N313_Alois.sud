@@ -1,0 +1,14 @@
+# N313 – Pfarrer Alois, im Eis an der Kapellentür. Kann sich nicht bewegen, nur die Augen. Sein letzter Satz wiederholt sich, aber er hört zu.
+===
+[set SpeakerName.Alois "Pfarrer Alois"]
+===
+[event camera `closeup`]
+Alois: (Im Eis. Die Augen bewegen sich zu dir. Ganz leise, wie durch Glas.)
+Alois: Läutet doch einer die Glocke? Läutet doch einer die Glocke?
+  * Ich höre Sie.
+    Alois: (Die Augen werden feucht.) ... Du hörst mich. Gott sei Dank. Hör zu, Kind. Schnell.
+  * (Die Hand aufs Eis legen)
+    Alois: (Ein Herzschlag unter deiner Hand. Langsam.) ... Warm. Du bist warm. Hör zu.
+Alois: Sie ist nicht böse. Sie ist nur allein. Am Lawinenfeld steht ein Kreuz. Drei Namen. Sie war seit acht Jahren nicht mehr dort.
+Alois: Wer sie dort hinbringt ... der bringt sie zurück.
+Alois: Läutet doch einer die Glocke?

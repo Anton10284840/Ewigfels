@@ -1,0 +1,138 @@
+{
+  "id": "N314",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Gidi",
+  "duration_min": 35,
+  "auto_start": false,
+  "requires": [
+    "quest:M305"
+  ],
+  "title": {
+    "de": "Die Welpen vom Wolfsgrat",
+    "en": "The Cubs of Wolf Ridge"
+  },
+  "summary": {
+    "de": "Gidi hat Spuren gefunden: Wilderer, Käfige, drei kleine Pfotenpaare. Die Firnwölfin sucht ihre Welpen. Und sie sucht den Dieb.",
+    "en": "Gidi has found tracks: poachers, cages, three small sets of paws. The frost she-wolf is looking for her cubs. And for the thief."
+  },
+  "dialogues": [
+    "D_N314_Gidi",
+    "D_N314_Gidi_Rudel"
+  ],
+  "stages": [
+    {
+      "id": "s1_gidi",
+      "text": {
+        "de": "Gidi zeigt dir die Spuren.",
+        "en": "Gidi shows you the tracks."
+      },
+      "objectives": [
+        {
+          "id": "o_gidi",
+          "kind": "dialogue",
+          "target": "D_N314_Gidi",
+          "marker": "NPC_Gidi",
+          "text": {
+            "de": "Sprich mit Gidi auf der Alm",
+            "en": "Talk to Gidi on the pasture"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_lager"
+        }
+      ]
+    },
+    {
+      "id": "s2_lager",
+      "text": {
+        "de": "Das Lager der Wilderer.",
+        "en": "The poachers' camp."
+      },
+      "objectives": [
+        {
+          "id": "o_spuren",
+          "kind": "custom",
+          "target": "Spuren_Lesen",
+          "text": {
+            "de": "Folg den Spuren im Schnee",
+            "en": "Follow the tracks in the snow"
+          }
+        },
+        {
+          "id": "o_wilderer",
+          "kind": "defeat",
+          "target": "Wilderer",
+          "count": 3,
+          "text": {
+            "de": "Vertreib die Wilderer",
+            "en": "Drive off the poachers"
+          }
+        },
+        {
+          "id": "o_welpen",
+          "kind": "collect",
+          "target": "Firnwolf_Welpe",
+          "count": 3,
+          "text": {
+            "de": "Befrei die Welpen",
+            "en": "Free the cubs"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_rudel"
+        }
+      ]
+    },
+    {
+      "id": "s3_rudel",
+      "text": {
+        "de": "Bring die Welpen zurück. Langsam. Nicht rennen.",
+        "en": "Take the cubs back. Slowly. Don't run."
+      },
+      "objectives": [
+        {
+          "id": "o_bringen",
+          "kind": "custom",
+          "target": "Welpen_Zurueckbringen",
+          "marker": "Wolfsgrat",
+          "text": {
+            "de": "Trag die Welpen zum Rudel, ohne die Mutter zu reizen",
+            "en": "Carry the cubs to the pack without provoking the mother"
+          }
+        },
+        {
+          "id": "o_rudel",
+          "kind": "dialogue",
+          "target": "D_N314_Gidi_Rudel",
+          "marker": "NPC_Gidi",
+          "text": {
+            "de": "Sprich danach mit Gidi",
+            "en": "Talk to Gidi afterwards"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Cubs_Returned=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 300,
+    "gold": 0,
+    "items": [
+      "Kodex_Firnwolf"
+    ],
+    "effects": []
+  }
+}

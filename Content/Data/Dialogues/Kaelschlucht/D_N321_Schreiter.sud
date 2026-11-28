@@ -1,0 +1,17 @@
+# N321 – Funke, der junge Dünenschreiter. Spricht nicht. Rennt erst weg, kommt zurück, schämt sich (senkt den Kamm).
+===
+[set SpeakerName.Funke "Funke"]
+===
+[event camera `wide`]
+Funke: (Ein großer, schlaksiger Laufvogel mit einem Kamm wie ein Sonnenschirm. Er sieht dich. Er rennt. Sehr schnell. Sehr weit.)
+[event camera `medium`]
+Funke: (Dann bleibt er stehen. Dreht sich um. Kommt zurück, langsam. Der Kamm hängt.)
+  * (In die Hocke gehen)
+    Funke: (Er legt den Kopf schräg. Macht einen Schritt. Noch einen.)
+  * (Leise pfeifen)
+    Funke: (Er pfeift zurück. Falsch. Dann noch mal. Fast richtig.)
+[event camera `close`]
+Funke: (Er stupst dich mit dem Schnabel an die Schulter. Dann tritt er zurück und scharrt mit dem Fuß im Sand.)
+Funke: (Er will rennen. Mit dir. Um die Oase. Er schaut dich an, als wäre das die wichtigste Frage der Welt.)
+  * Na los. Wer zuerst am Teich ist.
+    Funke: (Der Kamm klappt auf, ganz weit. Er hüpft auf der Stelle.)

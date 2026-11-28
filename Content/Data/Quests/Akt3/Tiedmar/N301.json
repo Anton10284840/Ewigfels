@@ -1,0 +1,125 @@
+{
+  "id": "N301",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Pelle",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M302"
+  ],
+  "title": {
+    "de": "Gustav",
+    "en": "Gustav"
+  },
+  "summary": {
+    "de": "Die Möwe Gustav hat das Zunftsiegel geklaut. Pelle sagt, er weiß, wo ihr Nest ist. Er sagt das bei jeder Möwe.",
+    "en": "Gustav the gull has stolen the guild seal. Pelle says he knows where her nest is. He says that about every gull."
+  },
+  "dialogues": [
+    "D_N301_Pelle",
+    "D_N301_Pelle_Nest"
+  ],
+  "stages": [
+    {
+      "id": "s1_pelle",
+      "text": {
+        "de": "Pelle wartet am Fischmarkt.",
+        "en": "Pelle is waiting at the fish market."
+      },
+      "objectives": [
+        {
+          "id": "o_pelle",
+          "kind": "dialogue",
+          "target": "D_N301_Pelle",
+          "marker": "NPC_Pelle",
+          "text": {
+            "de": "Sprich mit Pelle",
+            "en": "Talk to Pelle"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_jagd"
+        }
+      ]
+    },
+    {
+      "id": "s2_jagd",
+      "text": {
+        "de": "Jag Gustav über die Dächer bis zum Kranberg.",
+        "en": "Chase Gustav across the rooftops to Crane Hill."
+      },
+      "objectives": [
+        {
+          "id": "o_jagd",
+          "kind": "custom",
+          "target": "Gustav_Jagd",
+          "marker": "Moewenkai",
+          "text": {
+            "de": "Folg Gustav über die Dächer",
+            "en": "Follow Gustav over the rooftops"
+          }
+        },
+        {
+          "id": "o_nest",
+          "kind": "reach",
+          "target": "Kranberg_Nest",
+          "marker": "Kranberg",
+          "text": {
+            "de": "Kletter zu Gustavs Nest auf dem Kran",
+            "en": "Climb to Gustav's nest on the crane"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_nest"
+        }
+      ]
+    },
+    {
+      "id": "s3_nest",
+      "text": {
+        "de": "Im Nest liegt das Siegel. Und noch etwas.",
+        "en": "The seal is in the nest. And something else."
+      },
+      "objectives": [
+        {
+          "id": "o_quarz",
+          "kind": "collect",
+          "target": "Kael_Quarz_Splitter",
+          "text": {
+            "de": "Nimm den Quarzsplitter aus dem Nest",
+            "en": "Take the quartz shard from the nest"
+          }
+        },
+        {
+          "id": "o_entscheid",
+          "kind": "dialogue",
+          "target": "D_N301_Pelle_Nest",
+          "text": {
+            "de": "Entscheide mit Pelle, was mit dem Siegel passiert",
+            "en": "Decide with Pelle what happens to the seal"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 20,
+    "items": [
+      "Federhut",
+      "Kodex_Moewenrecht"
+    ],
+    "effects": []
+  }
+}

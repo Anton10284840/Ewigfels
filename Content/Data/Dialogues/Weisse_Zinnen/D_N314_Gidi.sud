@@ -1,0 +1,18 @@
+# N314 – Gidi (16), Hirte. Redet kaum, kennt jede Spur im Schnee.
+===
+[set SpeakerName.Gidi "Gidi"]
+===
+[event camera `medium`]
+Gidi: Da.
+Gidi: (Er zeigt auf den Schnee. Stiefelspuren. Daneben: Schleifspuren. Und drei Paar ganz kleine Pfoten.)
+  * Wilderer?
+    Gidi: Drei Mann. Ein Käfig. Schwer. Sie gehen Richtung Pass.
+  * Was sind das für Pfoten?
+    Gidi: Firnwolf. Welpen. Drei.
+[event camera `close`]
+Gidi: Die Mutter sucht sie. Die ganze Nacht hat sie geheult. Wenn sie die Welpen nicht findet, holt der Fürst sich die Herde.
+Gidi: Und wenn sie jemanden mit den Welpen findet, denkt sie, das ist der Dieb.
+  * Dann bringen wir sie langsam zurück.
+    Gidi: Langsam. Nicht rennen. Nicht in die Augen schauen. Sie riechen dich vorher.
+  * Was passiert mit den Welpen in Aurenburg?
+    Gidi: Pelz. Oder Käfig im Garten von einem Reichen. Beides nicht gut.

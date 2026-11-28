@@ -1,0 +1,118 @@
+{
+  "id": "N325",
+  "type": "side",
+  "act": 3,
+  "region": "Kaelschlucht",
+  "giver": "Saffa",
+  "duration_min": 45,
+  "auto_start": false,
+  "requires": [
+    "quest:M308"
+  ],
+  "title": {
+    "de": "Der Letzte Sänger",
+    "en": "The Last Singer"
+  },
+  "summary": {
+    "de": "In der Sängerhalle von Vor-Kael ist etwas erwacht. Die Karawanen trauen sich nicht mehr durch die Schlucht.",
+    "en": "Something has woken in the Singers' Hall of Fore-Kael. The caravans no longer dare to pass through the gorge."
+  },
+  "dialogues": [
+    "D_N325_Saffa",
+    "D_N325_Saenger"
+  ],
+  "stages": [
+    {
+      "id": "s1_saffa",
+      "text": {
+        "de": "Saffa hat Angst um ihre Karawane.",
+        "en": "Saffa is worried about her caravan."
+      },
+      "objectives": [
+        {
+          "id": "o_saffa",
+          "kind": "dialogue",
+          "target": "D_N325_Saffa",
+          "marker": "NPC_Saffa",
+          "text": {
+            "de": "Sprich mit Saffa",
+            "en": "Talk to Saffa"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_halle"
+        }
+      ]
+    },
+    {
+      "id": "s2_halle",
+      "text": {
+        "de": "Die Sängerhalle.",
+        "en": "The Singers' Hall."
+      },
+      "objectives": [
+        {
+          "id": "o_halle",
+          "kind": "reach",
+          "target": "Saengerhalle",
+          "marker": "Saengerhalle",
+          "text": {
+            "de": "Geh in die Sängerhalle",
+            "en": "Enter the Singers' Hall"
+          }
+        },
+        {
+          "id": "o_boss",
+          "kind": "defeat",
+          "target": "Letzter_Saenger",
+          "text": {
+            "de": "Antworte dem Letzten Sänger mit Gegenakkorden",
+            "en": "Answer the Last Singer with counter-chords"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_lehre"
+        }
+      ]
+    },
+    {
+      "id": "s3_lehre",
+      "text": {
+        "de": "Er ergibt sich. Und singt dir etwas vor.",
+        "en": "He yields. And sings something for you."
+      },
+      "objectives": [
+        {
+          "id": "o_saenger",
+          "kind": "dialogue",
+          "target": "D_N325_Saenger",
+          "text": {
+            "de": "Hör dem Letzten Sänger zu",
+            "en": "Listen to the Last Singer"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Saenger_Taught=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 450,
+    "gold": 0,
+    "items": [
+      "Weise_Totenlied",
+      "Kodex_Sieben_Saenger"
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,15 @@
+# N315 – Gidi vor dem Aufstieg zum Wolfsgrat. Der Firnfürst greift Herden an.
+===
+[set SpeakerName.Gidi "Gidi"]
+===
+[event camera `medium`]
+Gidi: Vier Schafe. Ein Hirte mit gebrochenem Bein. Ein Wanderer, der nicht mehr redet.
+Gidi: Der Fürst ist wütend. Nicht hungrig. Er hat die Schafe nicht gefressen.
+[if {flag.Cubs_Returned}]
+  * Wir haben die Welpen zurückgebracht. Warum ist er noch wütend?
+    Gidi: Weil die Wilderer noch auf dem Berg sind. Und weil er nicht weiß, wer Freund ist und wer nicht. Du musst es ihm zeigen.
+[else]
+  * Warum ist er wütend?
+    Gidi: Jemand hat ihm etwas genommen. Junge Welpen. Ich hab die Spuren gesehen. Wenn man sie ihm zurückbringt ... vielleicht.
+[endif]
+Gidi: Er wohnt oben am Grat. Wo der Wind am lautesten ist. Ich geh mit. Bis zur letzten Lärche. Dann nicht weiter.

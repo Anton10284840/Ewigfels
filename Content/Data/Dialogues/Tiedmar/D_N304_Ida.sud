@@ -1,0 +1,16 @@
+# N304 – Ida Brack, Hafenmeisterin, Zunftrat. Rechnet alles in Fässern. Leiht die Taucherglocke.
+===
+[set SpeakerName.Ida "Ida Brack"]
+===
+[event camera `medium`]
+Ida: Die Heringskönigin. Achtzig Fass Ladung, zwölf Fass Ballast. Sie liegt seit dreißig Jahren im Becken, auf zwölf Faden Tiefe.
+Ida: Ich weiß das, weil ich jede Woche drüber fahre und mich ärgere.
+  * Ich brauche ihre Schiffsglocke.
+    Ida: Die Glocke. Natürlich die Glocke. Die liegt nicht mehr am Wrack. Die liegt im Nest.
+  * Was liegt da sonst noch?
+    Ida: Die Salzmutter. Eine Krake, so groß wie das Zunfthaus. Sie sammelt Schiffsglocken. Dreihundert Stück, schätze ich. In Fässern gerechnet: viele.
+[event camera `close`]
+Ida: Die Alte schläft am Nachmittag. Bei Flut. Nimm die Taucherglocke der Zunft, oder deine Robbe, wenn du eine hast.
+Ida: Und fass nichts an, was nicht deine Glocke ist. Sie zählt nach. Sie zählt immer nach.
+  * Danke, Ida.
+    Ida: Bedank dich, wenn du zurück bist. Mit allen zehn Fingern.

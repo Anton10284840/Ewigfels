@@ -1,0 +1,18 @@
+# N313 – Auf dem Lawinenfeld. Entklang zieht den Nachhall aus dem Kreuz, Reifhild sieht den Moment: Die Kinder hielten sich an den Händen und sangen.
+===
+[set SpeakerName.Reifhild "Reifhild"]
+===
+[event camera `wide`]
+Reifhild: (Sie steht vor dem Kreuz. Der Nachhall flimmert. Drei kleine Gestalten, Hand in Hand, und ein Lied.)
+[event camera `close`]
+Reifhild: Das Ziegenlied. Das hab ich ihnen beigebracht. „Geißlein, Geißlein, geh nach Haus ...“
+[event emotion `sad`]
+Reifhild: Sie haben gesungen. Sie hatten keine Angst. Sie haben sich festgehalten. Sie waren nicht allein.
+Reifhild: Acht Jahre hab ich geglaubt, sie haben nach mir gerufen. Und ich bin nicht gekommen.
+  * Sie haben gesungen. Für Sie.
+    Reifhild: Für mich. Ja. Damit ich das Lied nicht vergesse.
+  * (Schweigend ihre Hand halten)
+    Reifhild: (Sie drückt deine Hand. Lange.)
+[event emotion `soft`]
+Reifhild: Ich lass sie gehen. Alle. Die im Dorf und die hier oben.
+Reifhild: Die Schals schenk ich dem Dorf. Einer ist für dich. Der grüne. Der war für Jakob. Er hätte dich gemocht.

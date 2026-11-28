@@ -1,0 +1,18 @@
+# N305 – Nell hat den Hafen sperren lassen. Die Salzmutter reißt Boote um.
+===
+[set SpeakerName.Nell "Nell Tiedemann"]
+===
+[event camera `medium`]
+Nell: Drei Boote in zwei Tagen. Kein Toter, aber zwei Netzmacher im Wasser und ein sehr wütender Fischhändler.
+Nell: Die Salzmutter lebt seit hundert Jahren in diesem Becken. Sie hat noch nie ein Boot angerührt. Sie hat welche gerettet.
+  * Was hat sie so wütend gemacht?
+    Nell: Ich hab gefragt, wer zuletzt am Wrack war. Ich hab ein paar sehr unschuldige Gesichter gesehen. Und Ihr Gesicht.
+  * Ich kümmere mich darum.
+    Nell: Das hoffe ich. Ich hab nämlich keine Ahnung, wie man eine Krake verhaftet.
+[event camera `close`]
+[if {flag.Moor_Redeemed}]
+Nell: Okke hat mir erzählt, was in Ebbgrund passiert ist. Moor hat gesagt, die Glocke soll zurück zur Alten. Er hat gesagt, sie hat lange genug drauf aufgepasst.
+Nell: Klingt verrückt. Aber ich hab schon Verrückteres gesehen. Gestern zum Beispiel.
+[else]
+Nell: Wenn's nicht anders geht, dann eben anders. Die Kräne am Kai stehen bereit. Ich hab sie schmieren lassen.
+[endif]

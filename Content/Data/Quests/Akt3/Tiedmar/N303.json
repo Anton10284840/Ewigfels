@@ -1,0 +1,225 @@
+{
+  "id": "N303",
+  "type": "side",
+  "act": 3,
+  "region": "Tiedmar",
+  "giver": "Svea",
+  "duration_min": 50,
+  "auto_start": false,
+  "requires": [
+    "quest:M303"
+  ],
+  "title": {
+    "de": "Die Glocken von Ebbgrund",
+    "en": "The Bells of Ebbgrund"
+  },
+  "summary": {
+    "de": "In Ebbgrund binden sich alle mit Seilen fest. Bei Ebbe läuten Glocken unter dem Watt, und wer sie hört, geht ins Wasser.",
+    "en": "In Ebbgrund everyone ties themselves down with ropes. At low tide bells ring under the mudflats, and whoever hears them walks into the water."
+  },
+  "dialogues": [
+    "D_N303_Svea",
+    "D_N303_Okke",
+    "D_N303_Moor"
+  ],
+  "stages": [
+    {
+      "id": "s1_ebbgrund",
+      "text": {
+        "de": "Geh bei Ebbe über den Gezeitenpfad nach Ebbgrund.",
+        "en": "Cross the tidal path to Ebbgrund at low tide."
+      },
+      "objectives": [
+        {
+          "id": "o_pfad",
+          "kind": "reach",
+          "target": "Ebbgrund",
+          "marker": "Gezeitenpfad",
+          "text": {
+            "de": "Erreich Ebbgrund",
+            "en": "Reach Ebbgrund"
+          }
+        },
+        {
+          "id": "o_svea",
+          "kind": "dialogue",
+          "target": "D_N303_Svea",
+          "marker": "NPC_Svea",
+          "text": {
+            "de": "Sprich mit Svea (sie liest von deinen Lippen)",
+            "en": "Talk to Svea (she reads your lips)"
+          }
+        },
+        {
+          "id": "o_okke",
+          "kind": "dialogue",
+          "target": "D_N303_Okke",
+          "marker": "NPC_Okke",
+          "text": {
+            "de": "Sprich mit Smutje Okke",
+            "en": "Talk to Okke the cook"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_glocken"
+        }
+      ]
+    },
+    {
+      "id": "s2_glocken",
+      "text": {
+        "de": "Hör auf dem Glockengrund, wer da ruft.",
+        "en": "Listen on the bell ground to who is calling."
+      },
+      "objectives": [
+        {
+          "id": "o_echo",
+          "kind": "cast",
+          "target": "K55",
+          "marker": "Glockengrund",
+          "text": {
+            "de": "Wirk Seelenecho auf dem Glockengrund",
+            "en": "Cast Soul Echo on the bell ground"
+          }
+        },
+        {
+          "id": "o_kapitaen",
+          "kind": "reach",
+          "target": "Kapitaenshaus",
+          "marker": "Kapitaenshaus",
+          "text": {
+            "de": "Geh ins Kapitänshaus",
+            "en": "Go into the captain's house"
+          }
+        },
+        {
+          "id": "o_moor",
+          "kind": "dialogue",
+          "target": "D_N303_Moor",
+          "marker": "NPC_Moor",
+          "text": {
+            "de": "Stell dich Kapitän Moor",
+            "en": "Face Captain Moor"
+          }
+        },
+        {
+          "id": "o_entschieden",
+          "kind": "condition",
+          "target": "flag:Moor_Decided",
+          "text": {
+            "de": "Gib ihm die Glocke oder kämpfe",
+            "en": "Give him the bell or fight"
+          }
+        }
+      ],
+      "next": [
+        {
+          "if": [
+            "flag:Moor_Redeemed"
+          ],
+          "stage": "s3a_laeuten"
+        },
+        {
+          "stage": "s3b_kampf"
+        }
+      ]
+    },
+    {
+      "id": "s3a_laeuten",
+      "text": {
+        "de": "Moor läutet seine Glocke ein einziges Mal. Alle Glocken im Watt antworten.",
+        "en": "Moor rings his bell one single time. All the bells in the mudflats answer."
+      },
+      "objectives": [
+        {
+          "id": "o_laeuten",
+          "kind": "custom",
+          "target": "Moor_Glocke_Laeuten",
+          "text": {
+            "de": "Hör, wie die Glocken nach Hause läuten",
+            "en": "Hear the bells ring their way home"
+          }
+        }
+      ],
+      "on_complete": [
+        "rep:Zuenfte+10"
+      ],
+      "next": [
+        {
+          "stage": "s4_seile"
+        }
+      ]
+    },
+    {
+      "id": "s3b_kampf",
+      "text": {
+        "de": "Die Flut steigt. Moor singt die Mannschaft aus dem Schlick.",
+        "en": "The tide rises. Moor sings the crew up out of the mud."
+      },
+      "objectives": [
+        {
+          "id": "o_kampf",
+          "kind": "defeat",
+          "target": "Kapitaen_Moor",
+          "marker": "Kapitaenshaus",
+          "text": {
+            "de": "Besiege Kapitän Moor",
+            "en": "Defeat Captain Moor"
+          }
+        },
+        {
+          "id": "o_geister",
+          "kind": "defeat",
+          "target": "Schlickgeist",
+          "count": 6,
+          "text": {
+            "de": "Halt die Schlickgeister auf",
+            "en": "Stop the mud spirits"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s4_seile"
+        }
+      ]
+    },
+    {
+      "id": "s4_seile",
+      "text": {
+        "de": "Die Seile kommen ab.",
+        "en": "The ropes come off."
+      },
+      "objectives": [
+        {
+          "id": "o_seil",
+          "kind": "custom",
+          "target": "Seilfest",
+          "marker": "NPC_Svea",
+          "text": {
+            "de": "Knote mit Svea das erste Seil ans große Tau",
+            "en": "Tie the first rope to the great hawser with Svea"
+          }
+        }
+      ],
+      "on_complete": [
+        "flag:Ebbgrund_Freed=1"
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 400,
+    "gold": 60,
+    "items": [
+      "Kodex_Ebbgrund"
+    ],
+    "effects": []
+  }
+}

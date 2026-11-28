@@ -1,0 +1,15 @@
+# N302 – Hella Kraus, Wirtin der Nassen Katze. Singt tiefer als jeder Seemann. Der Shanty-Abend fällt aus.
+===
+[set SpeakerName.Hella "Hella Kraus"]
+===
+[event camera `medium`]
+Hella: Setz dich. Nimm Suppe. Und wundere dich nicht, dass es so leise ist. Das ist nicht normal.
+Hella: Donnerstag ist Shanty-Abend. Seit hundert Jahren. Und heute? Nichts. Knut kriegt keinen Ton raus.
+  * Wer ist Knut?
+    Hella: Knut Brand. Vorsänger. Wenn Knut singt, stampft der ganze Kai. Wenn Knut nicht singt, trinken alle nur. Das ist schlecht fürs Geschäft und schlecht für die Laune.
+  * Vielleicht ist er erkältet.
+    Hella: Knut war noch nie erkältet. Er hat mal im Winter vom Pier gebadet, um eine Wette zu gewinnen.
+[event camera `close`]
+[event emotion `sad`]
+Hella: Er war bei Ebbe am Watt. Unten bei Ebbgrund. Seitdem sitzt er am Kai und starrt aufs Wasser. Und manchmal steht er auf und geht ein paar Schritte. Richtung Meer.
+Hella: Geh zu ihm. Mit mir redet er nicht. Ich bin zu laut, sagt er.

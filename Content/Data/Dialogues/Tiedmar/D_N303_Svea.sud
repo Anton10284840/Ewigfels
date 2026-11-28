@@ -1,0 +1,18 @@
+# N303 – Svea Moor (12), Tochter des Kapitäns. Wachs in den Ohren, liest von Lippen. Spricht etwas zu laut.
+===
+[set SpeakerName.Svea "Svea Moor"]
+===
+[event camera `close`]
+Svea: DU MUSST LANGSAM REDEN. ICH HAB WACHS IN DEN OHREN.
+Svea: Entschuldigung. Ich weiß nie, wie laut ich bin.
+  * (Langsam) Warum das Wachs?
+    Svea: Wegen der Glocken. Wer sie hört, geht ins Wasser. Ich höre sie nicht. Darum brauch ich kein Seil. Ich bin die Einzige ohne Seil.
+  * (Langsam) Was ist hier los?
+    Svea: Bei Ebbe läuten die Glocken unterm Watt. Dann laufen alle los. Die Seile halten sie. Meistens.
+[event emotion `sad`]
+Svea: Mein Papa singt die Glocken. Er ist der Kapitän. Er will nicht, dass jemand ertrinkt. Darum hat er die Seile gemacht. Aber er hört nicht auf zu singen.
+Svea: Er sagt, er kann nicht. Er sagt, seine Leute wollen nach Hause.
+  * Wer sind seine Leute?
+    Svea: Die Mannschaft. Von der Heringskönigin. Die sind alle ertrunken. Vor dreißig Jahren. Ich war noch nicht mal geboren.
+  * Ich rede mit ihm.
+    Svea: Er wohnt im Schiff. Dem Haus, das umgekehrt ist. Und er sitzt immer mit dem Rücken zur Tür. Nicht erschrecken.

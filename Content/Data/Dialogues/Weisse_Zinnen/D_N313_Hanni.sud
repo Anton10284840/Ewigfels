@@ -1,0 +1,18 @@
+# N313 – Hanni (11) aus Frostwacht, halb aufgetaut, linker Arm noch Eis. Tapfer und wütend.
+===
+[set SpeakerName.Hanni "Hanni"]
+===
+[event camera `close`]
+Hanni: Nicht anfassen. Den Arm. Der ist noch kalt. Wenn man ihn anfasst, tut's weh.
+Hanni: Ich bin Hanni. Aus Frostwacht. Ich war im Eis. Ich hab mich rausgekämpft. Mit dem rechten Arm. Drei Tage.
+  * Was ist in Frostwacht passiert?
+    Hanni: Reifhild. Die Hirtin. Sie hat gesagt: Bleibt. Ganz freundlich. Und dann war alles Eis. Alle. Mama. Papa. Der Pfarrer.
+  * Wie geht es dir?
+    Hanni: Kalt. Und wütend. Wütend ist gut. Wütend hält warm.
+[event emotion `sad`]
+Hanni: Sie sind noch da drin. Sie leben. Sie gucken. Sie hören alles. Ich hab Mama gehört, als ich gegangen bin. Sie hat gesagt: Lauf.
+Hanni: Reifhild hat die Tür für mich offen gelassen. Sie hat gesagt, ich bin undankbar. Aber sie hat nicht abgeschlossen.
+  * Ich hole sie da raus.
+    Hanni: Versprich nichts. Mach's einfach.
+  * Warum macht Reifhild das?
+    Hanni: Ihre Kinder sind in der Lawine gestorben. Alle drei. Da war ich noch klein. Seitdem hat sie Angst, wenn jemand weggeht.

@@ -1,0 +1,151 @@
+{
+  "_kommentar": "Regionsdaten für Leveldesign und Karte. Beschreibung: docs/regionen/KAELSCHLUCHT.md. Marker-IDs = Quest-Marker.",
+  "id": "Kaelschlucht",
+  "act_from": 3,
+  "size_km": [
+    5,
+    3
+  ],
+  "villages": [
+    {
+      "id": "Oase_Sela",
+      "mood": "froehlich",
+      "music": "Oud, Rahmentrommeln, Handklatschen, Frauenchor mit Trillern",
+      "fast_travel": "Palmentor",
+      "npcs": [
+        "Saffa",
+        "Ysra",
+        "Liyan",
+        "Oskan",
+        "Kemi",
+        "Dunja"
+      ],
+      "shops": [
+        {
+          "npc": "Saffa",
+          "sells": [
+            "Gewürze (Trank-Zutaten)"
+          ]
+        },
+        {
+          "npc": "Dunja",
+          "sells": [
+            "Klang-Runen",
+            "Henna"
+          ]
+        },
+        {
+          "npc": "Ysra",
+          "sells": [
+            "Dünenschreiter-Ausrüstung"
+          ]
+        }
+      ],
+      "pois": [
+        "Oase_Sela",
+        "Gewuerzmarkt",
+        "Tanzplatz_Sela",
+        "Brunnenhaus",
+        "Karawanserei",
+        "Palmengarten"
+      ],
+      "minigames": [
+        "Tanz",
+        "Feilschen",
+        "Duenenrennen",
+        "Sternenlesen"
+      ]
+    },
+    {
+      "id": "Sandgrab",
+      "mood": "gruselig",
+      "music": "Flüstern aus allen Richtungen, eine einzelne Saite",
+      "fast_travel": "Brunnenstein",
+      "npcs": [
+        "Fluesterer",
+        "Mira",
+        "Bek"
+      ],
+      "shops": [],
+      "pois": [
+        "Sandgrab",
+        "Schweigeplatz",
+        "Gelehrtenhaus",
+        "Duene_der_Stimmen"
+      ]
+    }
+  ],
+  "pois": [
+    {
+      "id": "Vor_Kael",
+      "kind": "ort",
+      "quest": "M307"
+    },
+    {
+      "id": "Grabeingang",
+      "kind": "dungeon",
+      "quest": "M308"
+    },
+    {
+      "id": "Saengerhalle",
+      "kind": "boss",
+      "quest": "N325",
+      "boss": "Letzter_Saenger"
+    },
+    {
+      "id": "Echoschlucht",
+      "kind": "ort",
+      "quest": "N323"
+    },
+    {
+      "id": "Duenenmeer",
+      "kind": "gefahr",
+      "quest": "N321"
+    }
+  ],
+  "shrines": [
+    {
+      "id": "Schrein_Palmengarten",
+      "at": "Palmengarten",
+      "reward": "Atem_Kristall"
+    },
+    {
+      "id": "Schrein_Echoschlucht",
+      "at": "Echoschlucht",
+      "reward": "Quarz_Duenenrot"
+    },
+    {
+      "id": "Schrein_Sternenturm",
+      "at": "Vor_Kael",
+      "reward": "Kael_Inschrift"
+    }
+  ],
+  "collectibles": {
+    "Kael_Inschrift": 15,
+    "Echo_Muschel": 10,
+    "Nachklang": 5
+  },
+  "enemies": {
+    "act3": [
+      "Duenengraeber",
+      "Sandsaenger",
+      "Skorpionfloeter",
+      "Stille_Hand",
+      "Sandfluesterer",
+      "Sandschatten",
+      "Letzter_Saenger"
+    ]
+  },
+  "mechanics": {
+    "Hitze": "tagsüber ohne Schatten langsamere Atem-Regeneration",
+    "Stille": "Dünengräber hört Schritte auf Sand, nicht auf Fels; Dünenschreiter ist zu leicht für ihn"
+  },
+  "quests": [
+    "N321",
+    "N322",
+    "N323",
+    "N324",
+    "N325",
+    "N326"
+  ]
+}

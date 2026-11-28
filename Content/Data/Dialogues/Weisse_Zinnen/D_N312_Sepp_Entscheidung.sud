@@ -1,0 +1,16 @@
+# N312 – Die Quarzader in der Käsehöhle summt, und das Summen hält die Firnwölfe fern. Verschließen oder lassen.
+===
+[set SpeakerName.Sepp "Sepp Almer"]
+===
+[event camera `close`]
+Sepp: Eine Ader? Aus dem Stein, den die Leute in Grau suchen? In meinem Keller?
+Sepp: Und die Wölfe? Stimmt. Seit drei Wochen kein einziger Wolf am Dorf. Ich dachte, die haben Ferien.
+  * Lassen Sie die Ader. Summkäse und keine Wölfe.
+    [set flag.Summkaese_Kept true]
+    [event emotion `happy`]
+    Sepp: Summkäse. Das klingt gut. Das schreib ich auf das Schild. „Der einzige Käse, der zurücksingt.“
+    Sepp: Aber wenn die in Grau kommen, sag ich, das ist nur Schimmel.
+  * Verschließen Sie sie. Sonst kommt die Stille Hand.
+    [event emotion `sad`]
+    Sepp: Hm. Du hast recht. Die Wölfe haben wir hundert Jahre ausgehalten. Die in Grau nicht mal eine Woche.
+    Sepp: Hier, nimm Gold. Und ein Stück vom letzten Summkäse. Für die Erinnerung.

@@ -1,0 +1,17 @@
+# N323 – Die Runenschildkröte liest vor. Spricht nicht, ihr Panzer leuchtet. Die Strophe erzählt von Elin (Nymraels Kind, M309).
+===
+[set SpeakerName.Schildkroete "Runenschildkröte"]
+[set SpeakerName.Kemi "Kemi"]
+===
+[event camera `close`]
+Schildkroete: (Sie kaut langsam. Sehr langsam. Dann hebt sie den Kopf, und die Zeichen auf dem Panzer leuchten, eins nach dem anderen.)
+Kemi: Es leuchtet! Schnell, lies vor! Ich schreib mit!
+Schildkroete: (Die Zeichen formen eine Strophe. Du kannst sie lesen, ohne es gelernt zu haben.)
+Schildkroete: *„Elin, die Kleine, sang mit den Steinen. / Elin, die Kleine, schlief unter Sternen. / Und als sie schwieg, schwieg das ganze Becken. / Und keiner sang mehr, bis jemand kommt.“*
+[event emotion `sad`]
+Kemi: Wer ist Elin?
+  * Ein Kind. Vor sehr langer Zeit.
+    Kemi: Das ist traurig. ... Aber auch schön. Das letzte Wort. „Bis jemand kommt.“ Das heißt, es geht weiter, oder?
+  * Das erzähle ich dir, wenn du älter bist.
+    Kemi: Ich bin zehn! Das ist alt! ... Okay. Aber ich schreib es auf. Dann vergesse ich es nicht.
+Schildkroete: (Sie blinzelt. Einmal. Dann zieht sie den Kopf ein und schläft.)

@@ -1,0 +1,14 @@
+# N325 – Saffa hat Angst um ihre Karawane. In der Sängerhalle von Vor-Kael ist etwas erwacht.
+===
+[set SpeakerName.Saffa "Saffa"]
+===
+[event camera `medium`]
+Saffa: Ah, du bist zurück aus dem Grab. Und lebendig. Gut. Dann kann ich dich um etwas bitten.
+[event camera `close`]
+[event emotion `sad`]
+Saffa: Seit du in der Schlucht warst, singt etwas in der großen Halle von Vor-Kael. Tief. Die ganze Nacht. Und wer zu nah kommt, den trifft der Ton wie eine Faust.
+Saffa: Meine Karawane muss durch die Schlucht. Drei Tage. Sonst verdirbt der Safran.
+  * Was ist da drin?
+    Saffa: Die Alten sagen, sieben Sänger aus Stein haben dort für die Toten gesungen. Sechs sind zerfallen. Der siebte nie.
+  * Ich sehe nach.
+    Saffa: Gut. Und wenn er singt, sing zurück. Das sagen die Alten auch. Ich weiß nicht, was es heißt. Du vielleicht.

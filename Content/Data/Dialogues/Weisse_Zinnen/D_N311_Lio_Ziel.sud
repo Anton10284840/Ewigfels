@@ -1,0 +1,14 @@
+# N311 – Lio am Ziel, nachdem der Käse vom Adler zurückgeholt wurde.
+===
+[set SpeakerName.Lio "Lio"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Lio: Du hast ihn! Du hast den Käse einem Adler abgenommen! Das erzähl ich in Tiedmar jedem. Zweimal.
+  * Du hast im Rennen ganz schön geflucht.
+    Lio: Das war kein Fluchen. Das war ... Anfeuern. Mich selbst. Laut.
+  * Der Käse gehört uns beiden.
+    Lio: Wirklich? Dann nehm ich die Rinde. Nein, Spaß. Ich nehm die Hälfte. Die größere.
+[event emotion `soft`]
+Lio: Weißt du, was komisch ist? Ich hab da oben fünf Minuten nicht an Mara gedacht. Fünf ganze Minuten.
+Lio: Das fühlt sich gut an. Und ein bisschen falsch.

@@ -1,0 +1,115 @@
+{
+  "id": "N312",
+  "type": "side",
+  "act": 3,
+  "region": "Weisse_Zinnen",
+  "giver": "Sepp",
+  "duration_min": 25,
+  "auto_start": false,
+  "requires": [
+    "quest:M305"
+  ],
+  "title": {
+    "de": "Der Käse, der summt",
+    "en": "The Humming Cheese"
+  },
+  "summary": {
+    "de": "Sepp Almers Käselaibe summen. Er glaubt, sie sind krank. Er spricht seitdem sehr leise mit ihnen.",
+    "en": "Sepp Almer's cheese wheels are humming. He thinks they're ill. He's been speaking to them very softly ever since."
+  },
+  "dialogues": [
+    "D_N312_Sepp",
+    "D_N312_Sepp_Entscheidung"
+  ],
+  "stages": [
+    {
+      "id": "s1_sepp",
+      "text": {
+        "de": "Sepp zeigt dir den Reifekeller.",
+        "en": "Sepp shows you the ripening cellar."
+      },
+      "objectives": [
+        {
+          "id": "o_sepp",
+          "kind": "dialogue",
+          "target": "D_N312_Sepp",
+          "marker": "NPC_Sepp",
+          "text": {
+            "de": "Sprich mit Sepp",
+            "en": "Talk to Sepp"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s2_hoehle"
+        }
+      ]
+    },
+    {
+      "id": "s2_hoehle",
+      "text": {
+        "de": "Folg dem Summen in die Käsehöhle.",
+        "en": "Follow the humming into the cheese cave."
+      },
+      "objectives": [
+        {
+          "id": "o_hoehle",
+          "kind": "reach",
+          "target": "Kaesehoehle",
+          "marker": "Kaesehoehle",
+          "text": {
+            "de": "Geh in die Käsehöhle",
+            "en": "Enter the cheese cave"
+          }
+        },
+        {
+          "id": "o_ader",
+          "kind": "interact",
+          "target": "Quarzader_Kaesehoehle",
+          "text": {
+            "de": "Find die Quarzader, durch die das Wasser tropft",
+            "en": "Find the quartz vein the water drips through"
+          }
+        }
+      ],
+      "next": [
+        {
+          "stage": "s3_entscheid"
+        }
+      ]
+    },
+    {
+      "id": "s3_entscheid",
+      "text": {
+        "de": "Das Summen hält die Firnwölfe fern. Was soll Sepp tun?",
+        "en": "The humming keeps the frost wolves away. What should Sepp do?"
+      },
+      "objectives": [
+        {
+          "id": "o_entscheid",
+          "kind": "dialogue",
+          "target": "D_N312_Sepp_Entscheidung",
+          "marker": "NPC_Sepp",
+          "text": {
+            "de": "Sag Sepp, was du gefunden hast",
+            "en": "Tell Sepp what you found"
+          }
+        }
+      ],
+      "next": [
+        {
+          "end": "completed"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 200,
+    "gold": 30,
+    "items": [
+      "Kodex_Summkaese"
+    ],
+    "effects": []
+  }
+}

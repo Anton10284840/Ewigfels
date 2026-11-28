@@ -1,0 +1,15 @@
+# N301 – Pelle (9), Hafenjunge, barfuß, kennt jede Möwe. Gustav hat das Zunftsiegel geklaut.
+===
+[set SpeakerName.Pelle "Pelle"]
+===
+[event camera `medium`]
+[event emotion `happy`]
+Pelle: Du da! Akademie! Kannst du fliegen? Nein? Klettern? Gut genug.
+Pelle: Gustav hat das Zunftsiegel geklaut. Das große, goldene. Ida Brack hat es fünf Minuten auf den Tisch gelegt. Fünf Minuten!
+  * Wer ist Gustav?
+    Pelle: Die Möwe. Die größte Möwe von Tiedmar. Sie hat mal einem Kapitän die Pfeife aus dem Mund geklaut. Beim Rauchen!
+  * Warum holst du es nicht selbst?
+    Pelle: Weil Gustav mich kennt. Wenn sie mich sieht, fliegt sie extra hoch. Dich kennt sie noch nicht.
+Pelle: Sie fliegt immer über die Dächer zum Kranberg. Da oben hat sie ihr Nest. Voller Zeug. Glänzendes Zeug.
+[event emotion `surprised`]
+Pelle: Und Ida hat gesagt, wer das Siegel findet, kriegt einen Finderlohn. Ich hab's zuerst gesehen. Nur so.

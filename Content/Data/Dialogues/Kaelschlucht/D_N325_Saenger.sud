@@ -1,0 +1,15 @@
+# N325 – Der Letzte Sänger ergibt sich und lehrt das Totenlied. Spricht in Akkorden, Untertitel übersetzen. Ruhig, uralt, traurig.
+===
+[set SpeakerName.Saenger "Der Letzte Sänger"]
+===
+[event camera `wide`]
+Saenger: (Der Stein kniet. Die Orgelpfeifen in seiner Brust zittern.)
+Saenger: DU ANTWORTEST RICHTIG. DAS HAT LANGE NIEMAND GETAN.
+[event camera `close`]
+Saenger: WIR WAREN SIEBEN. WIR SANGEN FÜR DIE TOTEN DES BECKENS, DAMIT SIE NICHT VERKLINGEN. ALS ALLE VERSTUMMTEN, SANGEN WIR WEITER. FÜR NIEMANDEN.
+  * Warum hast du die Karawanen angegriffen?
+    Saenger: ICH HABE SIE NICHT ANGEGRIFFEN. ICH HABE GEFRAGT. SIE HABEN NICHT GEANTWORTET. DANN WIRD DIE FRAGE LAUTER.
+  * Du bist nicht mehr allein.
+    Saenger: (Ein leiser, weicher Akkord.) DAS IST EIN SCHÖNES WORT. ICH HEBE ES AUF.
+Saenger: ICH GEBE DIR DAS LIED. DAS TOTENLIED. ES HÄLT, WAS VERKLINGEN WILL. EINEN ATEMZUG LANG.
+Saenger: WENN DU ES SINGST, SINGE ICH MIT. AUCH WENN DU WEIT WEG BIST.
