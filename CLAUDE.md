@@ -25,6 +25,7 @@ Antworten auf **Deutsch**, direkt, ohne Floskeln. Vor großen Designentscheidung
 - Gameplay-Inhalte datengetrieben (JSON in `Content/Data`), Texte über String Tables (DE + EN).
 - Binär-Assets (`*.uasset`, `*.umap`, `art/`) nie in Git. Backup über OneDrive.
 - **Mehrspieler-Regel (GDD E11):** Koop 2–4 Spieler kommt später, darum alles server-autoritativ bauen: Spielwerte nur mit `HasAuthority()` ändern, Clients schicken Server-RPCs, Zustand per `DOREPLIFETIME`/OnRep, Optik per Multicast, Bewegung über die CMC, nie „Spieler 0“ annehmen.
+- Vor C++-Arbeit `docs/UNREAL_REGELN.md` beachten (Stolperfallen: Zeiger/GC, Komponenten, Netzwerk, Enhanced Input, Niagara, KI, Bauen/Testen).
 - Commits: ein funktionierendes Feature pro Commit, Nachricht auf Deutsch.
 
 ## Bauen und testen (Windows, beim Nutzer)

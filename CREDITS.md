@@ -27,6 +27,7 @@ Lizenz-Details und Bewertung der Tools: [`docs/KI_LIZENZEN.md`](docs/KI_LIZENZEN
 | UnrealImGui | https://github.com/IDI-Systems/UnrealImGui | MIT | optional, Debug-Overlays (`Plugins/ThirdParty/ImGui`) |
 | NVIDIA DLSS 4.5 Plugin | https://developer.nvidia.com/rtx/dlss | NVIDIA RTX SDK-Lizenz (Hinweispflichten vor Release prüfen) | ab Phase 4, Upscaling/Frame-Gen (`Plugins/ThirdParty/DLSS`, manuell) |
 | Send to Unreal (Blender-Add-on) | https://github.com/EpicGamesExt/BlenderTools | MIT | Export Blender → UE (Tool, nicht im Spiel) |
+| awesome-gamedev-agent-skills (Abhishek Barali und Mitwirkende) | https://github.com/gamedev-skills/awesome-gamedev-agent-skills (Stand c6ca6c4, 12.11.2026) | Apache 2.0 | Nur gelesen: Unreal-Tipps mit eigenen Worten in `docs/UNREAL_REGELN.md` zusammengefasst (nichts installiert, kein Code übernommen) |
 
 ## KI-Modelle (Inhalte, die damit erzeugt wurden, sind als „KI-generiert“ markiert)
 
