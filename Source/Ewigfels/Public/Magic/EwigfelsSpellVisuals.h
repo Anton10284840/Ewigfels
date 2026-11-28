@@ -221,9 +221,11 @@ namespace EwigfelsSpellVisuals
 	/** Niagara-Parameter User.Color / User.GlowColor / User.SparkColor (Akkord-Farben) setzen. */
 	EWIGFELS_API void SetNiagaraColors(UNiagaraComponent* Comp, const FLinearColor& Color, const FLinearColor& Glow, const FLinearColor& Spark);
 
+	/** BeamEnd (nur Strahlen): wird vor dem Start gesetzt, sonst liest der erste Spawn noch den Standardwert. */
 	EWIGFELS_API UNiagaraComponent* SpawnNiagaraAt(UWorld* World, const FSoftObjectPath& System, const FVector& Location,
 		const FRotator& Rotation, const FLinearColor& Color, float Scale,
-		const FLinearColor& Glow = FLinearColor::Transparent, const FLinearColor& Spark = FLinearColor::Transparent);
+		const FLinearColor& Glow = FLinearColor::Transparent, const FLinearColor& Spark = FLinearColor::Transparent,
+		const FVector* BeamEnd = nullptr);
 
 	EWIGFELS_API UNiagaraComponent* SpawnNiagaraAttached(USceneComponent* AttachTo, const FSoftObjectPath& System,
 		const FLinearColor& Color, float Scale,

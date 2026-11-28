@@ -240,15 +240,24 @@ void EwigfelsSpellVisuals::SetNiagaraColors(UNiagaraComponent* Comp, const FLine
 }
 
 UNiagaraComponent* EwigfelsSpellVisuals::SpawnNiagaraAt(UWorld* World, const FSoftObjectPath& System, const FVector& Location,
-	const FRotator& Rotation, const FLinearColor& Color, float Scale, const FLinearColor& Glow, const FLinearColor& Spark)
+	const FRotator& Rotation, const FLinearColor& Color, float Scale, const FLinearColor& Glow, const FLinearColor& Spark, const FVector* BeamEnd)
 {
 	UNiagaraSystem* Asset = Cast<UNiagaraSystem>(LoadIfExists(System));
 	if (!World || !Asset || World->GetNetMode() == NM_DedicatedServer)
 	{
 		return nullptr;
 	}
-	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAtLocation(World, Asset, Location, Rotation, FVector(Scale));
+	// Erst alle User-Parameter setzen, dann starten: sonst spawnt der erste Durchlauf (z. B. Strahl-Punkte) mit Standardwerten
+	UNiagaraComponent* Comp = UNiagaraFunctionLibrary::SpawnSystemAtLocation(World, Asset, Location, Rotation, FVector(Scale), true, false);
 	SetNiagaraColors(Comp, Color, Glow, Spark);
+	if (Comp)
+	{
+		if (BeamEnd)
+		{
+			Comp->SetVariableVec3(TEXT("User.BeamEnd"), *BeamEnd);
+		}
+		Comp->Activate(true);
+	}
 	return Comp;
 }
 
@@ -306,11 +315,7 @@ void EwigfelsSpellVisuals::PlayBeam(UWorld* World, const FEwigfelsSpellDef& Spel
 	const FVector Dir = (End - Start).GetSafeNormal();
 	const float Scale = Spell.Visual.Scale * (bStrong ? 1.6f : 1.f);
 
-	if (UNiagaraComponent* Beam = SpawnNiagaraAt(World, Spell.Visual.Niagara, Start, Dir.Rotation(), Spell.Visual.Color, Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor))
-	{
-		Beam->SetVariableVec3(TEXT("User.BeamEnd"), End);
-	}
-	else
+	if (!SpawnNiagaraAt(World, Spell.Visual.Niagara, Start, Dir.Rotation(), Spell.Visual.Color, Scale, Spell.Visual.GlowColor, Spell.Visual.SparkColor, &End))
 	{
 		FActorSpawnParameters Params;
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
